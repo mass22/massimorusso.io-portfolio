@@ -41,8 +41,10 @@ export default defineContentConfig({
       source: 'index.yml',
       schema: z.object({
         hero: z.object({
+          tags: z.array(z.string()),
           links: z.array(createButtonSchema()),
-          images: z.array(createImageSchema())
+          images: z.array(createImageSchema()),
+          isResourcesAvailable: z.boolean().optional()
         }),
         about: createBaseSchema(),
         experience: createBaseSchema().extend({
@@ -57,20 +59,8 @@ export default defineContentConfig({
             })
           }))
         }),
-        testimonials: z.array(createTestimonialSchema()),
         blog: createBaseSchema(),
-        faq: createBaseSchema().extend({
-          categories: z.array(
-            z.object({
-              title: z.string().nonempty(),
-              questions: z.array(
-                z.object({
-                  label: z.string().nonempty(),
-                  content: z.string().nonempty()
-                })
-              )
-            }))
-        })
+        podcast: createBaseSchema()
       })
     }),
     projects: defineCollection({
@@ -125,6 +115,44 @@ export default defineContentConfig({
       schema: z.object({
         content: z.object({}),
         images: z.array(createImageSchema())
+      })
+    }),
+    services: defineCollection({
+      type: 'page',
+      source: 'services.yml',
+      schema: z.object({
+        content: z.string(),
+        images: z.array(createImageSchema()),
+        testimonials: z.array(createTestimonialSchema()),
+        faq: createBaseSchema().extend({
+          categories: z.array(
+            z.object({
+              title: z.string().nonempty(),
+              questions: z.array(
+                z.object({
+                  label: z.string().nonempty(),
+                  content: z.string().nonempty()
+                })
+              )
+            }))
+        })
+      })
+    }),
+    ressources: defineCollection({
+      type: 'page',
+      source: 'ressources.yml',
+      schema: z.object({
+        title: z.string().nonempty(),
+        description: z.string().nonempty(),
+        links: z.array(createButtonSchema()),
+        ressources: z.array(z.object({
+          title: z.string().nonempty(),
+          description: z.string().nonempty(),
+          type: z.string().nonempty(),
+          icon: z.string().nonempty(),
+          url: z.string().nonempty(),
+          download: createButtonSchema().optional()
+        }))
       })
     })
   }

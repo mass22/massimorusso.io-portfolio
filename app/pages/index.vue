@@ -16,6 +16,8 @@ useSeoMeta({
   description: page.value?.seo.description || page.value?.description,
   ogDescription: page.value?.seo.description || page.value?.description
 })
+
+const isVisible = ref(false)
 </script>
 
 <template>
@@ -27,10 +29,9 @@ useSeoMeta({
       }"
     >
       <LandingAbout :page />
-      <LandingWorkExperience :page />
+      <LandingWorkExperience v-if="isVisible" :page/>
     </UPageSection>
     <LandingBlog :page />
-    <LandingTestimonials :page />
-    <LandingFAQ :page />
+    <PodcastPlayer :page />
   </UPage>
 </template>

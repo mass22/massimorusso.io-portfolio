@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content'
+import type { IndexCollectionItem } from '@nuxt/content';
 
 defineProps<{
   page: IndexCollectionItem
@@ -35,7 +35,7 @@ if (!posts.value) {
         v-bind="post"
         :to="post.path"
         :ui="{
-          root: 'group relative lg:items-start lg:flex ring-0 hover:ring-0',
+          root: 'group relative lg:items-start lg:flex ring-0 hover:ring-0 ring-color-primary',
           body: '!px-0',
           header: 'hidden'
         }"

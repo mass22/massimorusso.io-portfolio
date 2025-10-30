@@ -1,26 +1,81 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui'
+import type { NavigationMenuItem } from '@nuxt/ui';
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
+import { onMounted, ref, watchEffect } from 'vue';
+import { useRouter } from 'vue-router';
+const { footer } = useAppConfig()
 
-defineProps<{
-  links: NavigationMenuItem[]
-}>()
+const breakpoints = useBreakpoints(breakpointsTailwind);
+const isMobile = ref(false);
+const slideoverOpen = ref(false);
+const isReady = ref(false); // Hydratation client
+
+onMounted(() => {
+  isReady.value = true;
+  // Utilisation de watchEffect pour le breakpoint mobile
+  watchEffect(() => {
+    isMobile.value = breakpoints.smaller('md').value
+  })
+  // Fermeture du menu mobile dès la navigation (au changement de page)
+  const router = useRouter();
+  router.afterEach(() => {
+    slideoverOpen.value = false;
+  });
+});
+
+defineProps<{ links: NavigationMenuItem[] }>();
 </script>
 
 <template>
-  <div class="fixed top-2 sm:top-4 mx-auto left-1/2 transform -translate-x-1/2 z-10">
-    <UNavigationMenu
-      :items="links"
-      variant="link"
-      color="neutral"
-      class="bg-muted/80 backdrop-blur-sm rounded-full px-2 sm:px-4 border border-muted/50 shadow-lg shadow-neutral-950/5"
-      :ui="{
-        link: 'px-2 py-1',
-        linkLeadingIcon: 'hidden'
-      }"
-    >
-      <template #list-trailing>
-        <ColorModeButton />
-      </template>
-    </UNavigationMenu>
-  </div>
+  <!-- Affichage protégé SSR pour éviter le flash -->
+  <ClientOnly>
+    <div v-if="isReady" class="flex justify-end-safe">
+      <!-- Menu desktop : affiché uniquement si non mobile -->
+      <UNavigationMenu
+        v-if="!isMobile"
+        :items="links"
+        variant="link"
+        color="neutral"
+        :ui="{
+          link: 'px-2 py-1 text-lg',
+          linkLeadingIcon: 'hidden',
+        }"
+      >
+        <template #list-trailing>
+          <ColorModeButton />
+        </template>
+      </UNavigationMenu>
+
+      <!-- Bouton menu mobile et slideover -->
+      <UButton
+        v-if="isMobile"
+        icon="i-lucide-menu"
+        color="neutral"
+        variant="subtle"
+        @click="slideoverOpen = true"
+        class="ml-2"
+      />
+      <USlideover v-model:open="slideoverOpen" side="right" close>
+        <template #body>
+          <UNavigationMenu
+            :items="links"
+            orientation="vertical"
+            variant="link"
+            color="neutral"
+            :ui="{ link: 'px-2 py-1 text-lg', linkLeadingIcon: 'hidden' }"
+          />
+        </template>
+        <template #footer>
+          <template v-if="footer?.links">
+            <UButton
+              v-for="(link, index) of footer?.links"
+              :key="index"
+              v-bind="{ size: 'xs', color: 'neutral', variant: 'ghost', ...link }"
+            />
+            <ColorModeButton />
+          </template>
+        </template>
+      </USlideover>
+    </div>
+  </ClientOnly>
 </template>
