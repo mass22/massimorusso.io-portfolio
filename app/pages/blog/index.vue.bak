@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const { t, locale, defaultLocale } = useI18n()
+<<<<<<< Current (Your changes)
+const { t } = useI18n()
+=======
+const { t, locale } = useI18n()
+>>>>>>> Incoming (Background Agent changes)
+
 const { data: page } = await useAsyncData('blog-page', () => {
   return queryCollection('pages').path('/blog').first()
 })
@@ -10,13 +15,12 @@ if (!page.value) {
     fatal: true
   })
 }
-const { data: posts } = await useAsyncData(`blogs-${locale.value}`, async () => {
-  const allPosts = await queryCollection('blog')
+const { data: posts } = await useAsyncData(`blogs-${locale.value}`, () =>
+  queryCollection('blog')
+    .where({ locale: locale.value })
     .order('date', 'DESC')
     .all()
-  // Filtrer par locale
-  return allPosts.filter((post: any) => post.locale === locale.value)
-})
+)
 if (!posts.value) {
   throw createError({
     statusCode: 404,
@@ -24,30 +28,6 @@ if (!posts.value) {
     fatal: true
   })
 }
-
-const defaultLocaleCode = computed(() => defaultLocale.value || 'fr')
-
-const localizedPosts = computed(() => {
-  return (posts.value ?? []).map((post: any) => {
-    const localeCode = post.locale || defaultLocaleCode.value
-    const basePath = post.path || (post.slug ? `/blog/${post.slug}` : '/blog')
-    const segments = basePath.split('/').filter(Boolean)
-
-    if (segments[0] === localeCode && localeCode !== defaultLocaleCode.value) {
-      segments.shift()
-    }
-
-    const normalizedPath = `/${segments.join('/')}`
-    const localizedPath = localeCode && localeCode !== defaultLocaleCode.value
-      ? `/${localeCode}${normalizedPath}`
-      : normalizedPath
-
-    return {
-      ...post,
-      path: localizedPath
-    }
-  })
-})
 
 useSeoMeta({
   title: page.value?.seo?.title || page.value?.title,
@@ -76,7 +56,7 @@ useSeoMeta({
     >
       <UBlogPosts orientation="vertical">
         <Motion
-          v-for="(post, index) in localizedPosts"
+          v-for="(post, index) in posts"
           :key="index"
           :initial="{ opacity: 0, transform: 'translateY(10px)' }"
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"

@@ -36,7 +36,6 @@ export default defineNuxtConfig({
     ],
     lazy: true,
     langDir: 'locales',
-    restructureDir: '',
     detectBrowserLanguage: {
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
@@ -45,7 +44,6 @@ export default defineNuxtConfig({
     },
     compilation: {
       strictMessage: false
-    }
   },
 
   compatibilityDate: '2024-11-01',
@@ -65,37 +63,6 @@ export default defineNuxtConfig({
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
-    }
-  },
-
-  i18n: {
-    defaultLocale: 'fr',
-    strategy: 'prefix_except_default',
-    locales: [
-      {
-        code: 'fr',
-        iso: 'fr-FR',
-        name: 'Français',
-        file: 'fr.json'
-      },
-      {
-        code: 'en',
-        iso: 'en-US',
-        name: 'English',
-        file: 'en.json'
-      }
-    ],
-    lazy: true,
-    langDir: 'locales',
-    restructureDir: '',
-    detectBrowserLanguage: {
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-      useCookie: true,
-      alwaysRedirect: false
-    },
-    compilation: {
-      strictMessage: false
     }
   }
 })

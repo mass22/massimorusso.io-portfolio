@@ -1,6 +1,8 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 if (process.env.NODE_ENV === 'production') {
-  throw createError({ statusCode: 404, message: 'Page not found' })
+  throw createError({ statusCode: 404, message: t('common.pageNotFound') })
 }
 const { data: page } = await useAsyncData('projects-page', () => {
   return queryCollection('pages').path('/projects').first()
@@ -8,7 +10,7 @@ const { data: page } = await useAsyncData('projects-page', () => {
 if (!page.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: 'Page not found',
+    statusMessage: t('common.pageNotFound'),
     fatal: true
   })
 }
@@ -91,7 +93,7 @@ useSeoMeta({
               :to="project.url"
               class="text-sm text-primary flex items-center"
             >
-              View Project
+              {{ t('projects.viewProject') }}
               <UIcon
                 name="i-lucide-arrow-right"
                 class="size-4 text-primary transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"

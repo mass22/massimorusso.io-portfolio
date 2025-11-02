@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 const { data: page } = await useAsyncData('ressources', () =>
   queryCollection('ressources').first()
 )
@@ -6,13 +8,13 @@ const { data: page } = await useAsyncData('ressources', () =>
 if (!page.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: 'Page not found',
+    statusMessage: t('common.pageNotFound'),
     fatal: true
   })
 }
 
 useSeoMeta({
-  title: page.value?.title ?? 'Ressources',
+  title: page.value?.title ?? t('ressources.title'),
   description: page.value?.description ?? ''
 })
 </script>
@@ -53,6 +55,6 @@ useSeoMeta({
     </UPageSection>
   </UPage>
   <template v-else>
-    <div class="text-muted text-center py-16">Aucune ressource disponible pour le moment.</div>
+    <div class="text-muted text-center py-16">{{ t('ressources.noneAvailable') }}</div>
   </template>
 </template>

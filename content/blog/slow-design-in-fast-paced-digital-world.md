@@ -6,6 +6,7 @@ description: Why designing digital experiences that encourage users to slow down
 date: 2025-01-28
 image: https://images.pexels.com/photos/4050314/pexels-photo-4050314.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 minRead: 7
+locale: 'en'
 author:
   name: Emma Thompson
   avatar:

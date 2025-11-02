@@ -5,22 +5,77 @@ import { mapContentNavigation } from '@nuxt/ui/utils/content'
 import { useScroll } from '@vueuse/core'
 import { computed, onMounted, ref } from 'vue'
 
-const route = useRoute()
+definePageMeta({
+  layout: 'blog'
+})
 
-const { data: page } = await useAsyncData(route.path, () =>
-  queryCollection('blog').path(route.path).first()
-)
-if (!page.value) throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () =>
-  queryCollectionItemSurroundings('blog', route.path, {
+const route = useRoute()
+const { t, locale, defaultLocale } = useI18n()
+const localePath = useLocalePath()
+
+const slug = Array.isArray(route.params.slug)
+  ? route.params.slug.join('/')
+  : route.params.slug as string
+
+const buildPathForLocale = (targetLocale: string) => {
+  if (!targetLocale || targetLocale === 'fr') {
+    return `/blog/${slug}`
+  }
+  return `/${targetLocale}/blog/${slug}`
+}
+
+const matchPost = (post: any, targetLocale?: string) => {
+  if (!post) {
+    return false
+  }
+  if (targetLocale && post.locale !== targetLocale) {
+    return false
+  }
+  return post.slug === slug || post.path?.endsWith(`/${slug}`) || post.path?.includes(`/${slug}`)
+}
+
+const { data: page } = await useAsyncData(`blog-${locale.value}-${slug}`, async () => {
+  const allPosts = await queryCollection('blog').all()
+
+  const pathMatch = await queryCollection('blog')
+    .path(buildPathForLocale(locale.value))
+    .first()
+  if (pathMatch && matchPost(pathMatch, locale.value)) {
+    return pathMatch
+  }
+
+  const currentLocaleMatch = allPosts.find(post => matchPost(post, locale.value))
+  if (currentLocaleMatch) {
+    return currentLocaleMatch
+  }
+
+  const fallbackLocaleCode = defaultLocale.value || 'fr'
+  const defaultLocaleMatch = allPosts.find(post => matchPost(post, fallbackLocaleCode))
+  if (defaultLocaleMatch) {
+    return defaultLocaleMatch
+  }
+
+  return allPosts.find(post => matchPost(post)) || null
+})
+
+if (!page.value) throw createError({ statusCode: 404, statusMessage: t('common.pageNotFound'), fatal: true })
+const { data: surround } = await useAsyncData(`${route.path}-surround-${locale.value}`, async () => {
+  if (!page.value) return undefined
+  const items = await queryCollectionItemSurroundings('blog', page.value.path, {
     fields: ['description']
   })
-)
+  if (!items) return undefined
+  return items.filter((item: any) => item?.locale === locale.value)
+})
 
-const navigation = inject<Ref<ContentNavigationItem[]>>('navigation', ref([]))
-const blogNavigation = computed(() => navigation.value.find(item => item.path === '/blog')?.children || [])
+const navigation = inject<Ref<ContentNavigationItem[] | null>>('navigation', ref([]))
+const blogNavigation = computed(() => navigation.value?.find(item => item.path === '/blog')?.children || [])
 
-const breadcrumb = computed(() => mapContentNavigation(findPageBreadcrumb(blogNavigation?.value, page.value?.path)).map(({ icon, ...link }) => link))
+const breadcrumb = computed(() => {
+  const breadcrumbResult = findPageBreadcrumb(blogNavigation?.value, page.value?.path)
+  if (!breadcrumbResult) return []
+  return mapContentNavigation(breadcrumbResult).map(({ icon, ...link }) => link)
+})
 
 if (page.value.image) {
   defineOgImage({ url: page.value.image })
@@ -42,10 +97,15 @@ useSeoMeta({
   ogTitle: title
 })
 
-const articleLink = computed(() => `${window?.location}`)
+const articleLink = computed(() => {
+  if (typeof window !== 'undefined') {
+    return window.location.href
+  }
+  return ''
+})
 
 const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString('en-US', {
+  return new Date(dateString).toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric'
@@ -57,7 +117,6 @@ const isClient = typeof window !== 'undefined'
 const pageHeight = ref(0)
 
 onMounted(() => {
-  // Pour le SSR, on vérifie que window existe
   if (isClient) {
     scrollEl.value = window
     const updateHeight = () => {
@@ -74,21 +133,19 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
 
 <template>
   <div>
-    <!-- Barre de progression lecture -->
     <div
       style="position: fixed; left: 0; top: 0; height: 4px; background: #00b894; z-index: 10004; transition: width 0.15s;"
       :style="{ width: scrollPercent + '%' }"
     ></div>
-    <!-- Contenu principal -->
     <UMain class="mt-20 px-2">
       <UContainer class="relative min-h-screen">
         <UPage v-if="page">
           <ULink
-            to="/blog"
+            :to="localePath('/blog')"
             class="text-sm flex items-center gap-1"
           >
             <UIcon name="lucide:chevron-left" />
-            Blog
+            {{ t('blog.title') }}
           </ULink>
           <div class="flex flex-col gap-3 mt-8">
             <div class="flex text-xs text-muted items-center justify-center gap-2">
@@ -99,7 +156,7 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
                 -
               </span>
               <span v-if="page.minRead">
-                {{ page.minRead }} MIN READ
+                {{ page.minRead }} {{ t('blog.minRead') }}
               </span>
             </div>
             <NuxtImg
@@ -135,11 +192,11 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
                 size="sm"
                 variant="link"
                 color="neutral"
-                label="Copy link"
-                @click="copyToClipboard(articleLink, 'Article link copied to clipboard')"
+                :label="t('blog.copyLink')"
+                @click="copyToClipboard(articleLink, t('blog.linkCopied'))"
               />
             </div>
-            <UContentSurround :surround />
+            <UContentSurround v-if="surround" :surround="surround" />
           </UPageBody>
         </UPage>
       </UContainer>

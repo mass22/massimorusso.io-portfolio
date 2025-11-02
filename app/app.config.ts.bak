@@ -34,7 +34,7 @@ export default defineAppConfig({
     // },
       {
         icon: 'i-simple-icons-linkedin',
-        to: 'https://www.linkedin.com/in/russomassimo-frontend-consultant',
+        to: 'www.linkedin.com/in/russomassimo-frontend-consultant',
         target: '_blank',
         ariaLabelKey: 'footer.links.linkedin'
       },

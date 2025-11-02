@@ -82,7 +82,9 @@ export default defineContentConfig({
         minRead: z.number(),
         date: z.date(),
         image: z.string().nonempty().editor({ input: 'media' }),
-        author: createAuthorSchema()
+        author: createAuthorSchema(),
+        locale: z.enum(['fr', 'en']).default('fr'),
+        slug: z.string().optional()
       })
     }),
     pages: defineCollection({

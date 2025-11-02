@@ -11,7 +11,7 @@ const navLinks = computed<NavigationMenuItem[]>(() => getNavLinks(t, localePath)
 <template>
   <div>
     <UContainer class="sm:border-x border-default pt-10">
-      <AppHeader :links="navLinks" />
+      <AppHeader :links="navLinks" no-lang-switcher />
       <slot />
       <AppFooter />
     </UContainer>

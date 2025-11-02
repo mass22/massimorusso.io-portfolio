@@ -1,16 +1,48 @@
 <script setup lang="ts">
 import type { IndexCollectionItem } from '@nuxt/content';
 
+const { t, locale, defaultLocale } = useI18n()
+
 defineProps<{
   page: IndexCollectionItem
 }>()
 
-const { data: posts } = await useAsyncData('index-blogs', () =>
-  queryCollection('blog').order('date', 'DESC').limit(3).all()
-)
+const { data: posts } = await useAsyncData(`index-blogs-${locale.value}`, async () => {
+  const allPosts = await queryCollection('blog')
+    .order('date', 'DESC')
+    .all()
+  // Filtrer par locale et limiter à 3
+  return allPosts
+    .filter((post: any) => post.locale === locale.value)
+    .slice(0, 3)
+})
 if (!posts.value) {
-  throw createError({ statusCode: 404, statusMessage: 'blogs posts not found', fatal: true })
+  throw createError({ statusCode: 404, statusMessage: t('common.blogsNotFound'), fatal: true })
 }
+
+const defaultLocaleCode = computed(() => defaultLocale.value || 'fr')
+
+const localizedPosts = computed(() => {
+  return (posts.value ?? []).map((post: any) => {
+    const localeCode = post.locale || defaultLocaleCode.value
+    const basePath = post.path || (post.slug ? `/blog/${post.slug}` : '/blog')
+    const segments = basePath.split('/').filter(Boolean)
+
+    if (segments[0] === localeCode && localeCode !== defaultLocaleCode.value) {
+      segments.shift()
+    }
+
+    const normalizedPath = `/${segments.join('/')}`
+    const localizedPath = localeCode && localeCode !== defaultLocaleCode.value
+      ? `/${localeCode}${normalizedPath}`
+      : normalizedPath
+
+    return {
+      ...post,
+      path: localizedPath
+    }
+  })
+})
 </script>
 
 <template>
@@ -28,7 +60,7 @@ if (!posts.value) {
       class="gap-4 lg:gap-y-4"
     >
       <UBlogPost
-        v-for="(post, index) in posts"
+        v-for="(post, index) in localizedPosts"
         :key="index"
         orientation="horizontal"
         variant="naked"
@@ -45,7 +77,7 @@ if (!posts.value) {
             size="xs"
             variant="link"
             class="px-0 gap-0"
-            label="Read Article"
+            :label="t('blog.readArticle')"
           >
             <template #trailing>
               <UIcon

@@ -1,0 +1,49 @@
+{
+  "common": {
+    "language": "Français",
+    "switchLocale": "English",
+    "pageNotFound": "Page non trouvée",
+    "blogsNotFound": "Articles de blog non trouvés"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "blog": "Blog",
+    "speaking": "Conférences",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "blog": {
+    "title": "Blog",
+    "minRead": "MIN DE LECTURE",
+    "copyLink": "Copier le lien",
+    "linkCopied": "Lien de l'article copié dans le presse-papiers",
+    "readArticle": "Lire l'article"
+  },
+  "projects": {
+    "viewProject": "Voir le projet"
+  },
+  "speaking": {
+    "listen": "Écouter",
+    "watch": "Regarder",
+    "categories": {
+      "conference": "Conférences",
+      "liveTalk": "Talks en direct",
+      "podcast": "Podcasts"
+    }
+  },
+  "ressources": {
+    "title": "Ressources",
+    "noneAvailable": "Aucune ressource disponible pour le moment."
+  },
+  "error": {
+    "title": "Page non trouvée",
+    "description": "Nous sommes désolés mais cette page n'a pas pu être trouvée."
+  },
+  "clipboard": {
+    "copied": "Copié dans le presse-papiers"
+  },
+  "seo": {
+    "titleTemplate": "%s - Massimo Russo"
+  }
+}

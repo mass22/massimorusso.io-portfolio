@@ -1,34 +1,54 @@
 import type { NavigationMenuItem } from '@nuxt/ui'
+import type { LocalePathFunction } from '#i18n'
 
-export const navLinks: NavigationMenuItem[] = [{
-  label: 'Home',
-  icon: 'i-lucide-home',
-  to: '/'
-},
-// {
-//   label: 'Projects',
-//   icon: 'i-lucide-folder',
-//   to: '/projects'
-// },
-{
-  label: 'Services',
-  icon: 'i-lucide-folder',
-  to: '/services'
-},
-{
-  label: 'Blog',
-  icon: 'i-lucide-file-text',
-  to: '/blog'
-}, {
-  label: 'Speaking',
-  icon: 'i-lucide-mic',
-  to: '/speaking'
-}, {
-  label: 'About',
-  icon: 'i-lucide-user',
-  to: '/about'
-}, {
-  label: 'Contact',
-  icon: 'i-lucide-mail',
-  to: '/contact'
-}]
+type NavLinkDefinition = {
+  key: string
+  to: string
+  icon?: NavigationMenuItem['icon']
+}
+
+const NAV_LINKS: NavLinkDefinition[] = [
+  {
+    key: 'navigation.home',
+    icon: 'i-lucide-home',
+    to: '/'
+  },
+  {
+    key: 'navigation.services',
+    icon: 'i-lucide-folder',
+    to: '/services'
+  },
+  {
+    key: 'navigation.blog',
+    icon: 'i-lucide-file-text',
+    to: '/blog'
+  },
+  {
+    key: 'navigation.speaking',
+    icon: 'i-lucide-mic',
+    to: '/speaking'
+  },
+  {
+    key: 'navigation.about',
+    icon: 'i-lucide-user',
+    to: '/about'
+  },
+  {
+    key: 'navigation.contact',
+    icon: 'i-lucide-mail',
+    to: '/contact'
+  }
+]
+
+export function getNavLinks (
+  t: (key: string) => string,
+  localePath?: LocalePathFunction
+): NavigationMenuItem[] {
+  return NAV_LINKS.map(({ key, to, ...rest }) => ({
+    ...rest,
+    label: t(key),
+    to: localePath ? localePath(to) : to
+  }))
+}
+
+export const navLinkDefinitions = NAV_LINKS
