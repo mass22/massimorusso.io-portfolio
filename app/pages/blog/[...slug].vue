@@ -49,7 +49,7 @@ const { data: page } = await useAsyncData(`blog-${locale.value}-${slug}`, async 
     return currentLocaleMatch
   }
 
-  const fallbackLocaleCode = defaultLocale.value || 'fr'
+  const fallbackLocaleCode = (defaultLocale as any)?.value || defaultLocale || 'fr'
   const defaultLocaleMatch = allPosts.find(post => matchPost(post, fallbackLocaleCode))
   if (defaultLocaleMatch) {
     return defaultLocaleMatch
@@ -58,13 +58,13 @@ const { data: page } = await useAsyncData(`blog-${locale.value}-${slug}`, async 
   return allPosts.find(post => matchPost(post)) || null
 })
 
-if (!page.value) throw createError({ statusCode: 404, statusMessage: t('common.pageNotFound'), fatal: true })
+if (!page.value) {throw createError({ statusCode: 404, statusMessage: t('common.pageNotFound'), fatal: true })}
 const { data: surround } = await useAsyncData(`${route.path}-surround-${locale.value}`, async () => {
-  if (!page.value) return undefined
+  if (!page.value) {return undefined}
   const items = await queryCollectionItemSurroundings('blog', page.value.path, {
     fields: ['description']
   })
-  if (!items) return undefined
+  if (!items) {return undefined}
   return items.filter((item: any) => item?.locale === locale.value)
 })
 
@@ -73,8 +73,39 @@ const blogNavigation = computed(() => navigation.value?.find(item => item.path =
 
 const breadcrumb = computed(() => {
   const breadcrumbResult = findPageBreadcrumb(blogNavigation?.value, page.value?.path)
-  if (!breadcrumbResult) return []
-  return mapContentNavigation(breadcrumbResult).map(({ icon, ...link }) => link)
+  if (!breadcrumbResult) {
+    // Si pas de breadcrumb depuis la navigation, créer un breadcrumb simple
+    return [
+      {
+        label: t('navigation.home'),
+        to: localePath('/'),
+        icon: 'i-lucide-home'
+      },
+      {
+        label: t('blog.title'),
+        to: localePath('/blog'),
+        icon: 'i-lucide-book-open'
+      },
+      {
+        label: page.value?.title || '',
+        // Pas de 'to' pour le dernier élément (page actuelle)
+      }
+    ]
+  }
+  const mapped = mapContentNavigation(breadcrumbResult).map(({ icon, ...link }) => link)
+  // Ajouter l'accueil au début et s'assurer que le dernier élément n'a pas de 'to'
+  return [
+    {
+      label: t('navigation.home'),
+      to: localePath('/'),
+      icon: 'i-lucide-home'
+    },
+    ...mapped.map((item, index) => ({
+      ...item,
+      // Le dernier élément ne doit pas avoir de 'to' (page actuelle)
+      ...(index === mapped.length - 1 ? { to: undefined } : {})
+    }))
+  ]
 })
 
 if (page.value.image) {
@@ -89,12 +120,80 @@ if (page.value.image) {
 
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
+const { global } = useAppConfig()
+const siteUrl = useRequestURL().origin
 
 useSeoMeta({
-  title,
   description,
   ogDescription: description,
-  ogTitle: title
+  ogTitle: title,
+  ogType: 'article',
+  ogImage: page.value?.image || global.picture?.light,
+  articleAuthor: page.value?.author?.name ? [page.value.author.name] : ['Massimo Russo'],
+  articlePublishedTime: page.value?.date ? new Date(page.value.date).toISOString() : undefined,
+  title
+})
+
+// Données structurées Article pour le SEO
+const articleStructuredData = computed(() => {
+  if (!page.value) return null
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image: page.value.image ? [page.value.image] : [],
+    datePublished: page.value.date ? new Date(page.value.date).toISOString() : undefined,
+    dateModified: page.value.date ? new Date(page.value.date).toISOString() : undefined,
+    author: {
+      '@type': 'Person',
+      name: page.value.author?.name || 'Massimo Russo',
+      url: siteUrl
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Massimo Russo',
+      url: siteUrl
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}${route.path}`
+    }
+  }
+})
+
+// Données structurées BreadcrumbList pour le SEO
+const breadcrumbStructuredData = computed(() => {
+  if (!breadcrumb.value || breadcrumb.value.length === 0) return null
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumb.value.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.label,
+      ...(item.to ? { item: `${siteUrl}${item.to}` } : {})
+    }))
+  }
+})
+
+useHead({
+  script: [
+    ...(articleStructuredData.value ? [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify(articleStructuredData.value)
+      }
+    ] : []),
+    ...(breadcrumbStructuredData.value ? [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify(breadcrumbStructuredData.value)
+      }
+    ] : [])
+  ]
 })
 
 const articleLink = computed(() => {
@@ -106,9 +205,7 @@ const articleLink = computed(() => {
 
 const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
+    day: 'numeric', month: 'short', year: 'numeric'
   })
 }
 
@@ -140,14 +237,18 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
     <UMain class="mt-20 px-2">
       <UContainer class="relative min-h-screen">
         <UPage v-if="page">
-          <ULink
-            :to="localePath('/blog')"
-            class="text-sm flex items-center gap-1"
-          >
-            <UIcon name="lucide:chevron-left" />
-            {{ t('blog.title') }}
-          </ULink>
-          <div class="flex flex-col gap-3 mt-8">
+          <UBreadcrumb
+            v-if="breadcrumb.length > 0"
+            :items="breadcrumb"
+            separator-icon="i-lucide-chevron-right"
+            class="mb-6"
+            :ui="{
+              root: 'text-sm',
+              link: 'text-muted hover:text-default transition-colors',
+              separatorIcon: 'text-muted'
+            }"
+          />
+          <div class="flex flex-col gap-3 mt-4">
             <div class="flex text-xs text-muted items-center justify-center gap-2">
               <span v-if="page.date">
                 {{ formatDate(page.date) }}

@@ -1,13 +1,22 @@
 <script setup lang="ts">
 const { t, locale, defaultLocale } = useI18n()
-const { data: page } = await useAsyncData('blog-page', () => {
-  return queryCollection('pages').path('/blog').first()
+
+const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () => {
+  const allPages = await queryCollection('pages').all()
+  const blogPage = allPages.find((p: any) =>
+    (p.path === '/blog' || p.path === '/en/blog') && p.locale === locale.value
+  )
+  if (blogPage) {
+    return blogPage
+  }
+  const fallback = allPages.find((p: any) =>
+    (p.path === '/blog' || p.path?.includes('blog')) && p.locale === 'fr'
+  )
+  return fallback || null
 })
 if (!page.value) {
   throw createError({
-    statusCode: 404,
-    statusMessage: t('common.pageNotFound'),
-    fatal: true
+    fatal: true, statusCode: 404, statusMessage: t('common.pageNotFound')
   })
 }
 const { data: posts } = await useAsyncData(`blogs-${locale.value}`, async () => {
@@ -19,9 +28,7 @@ const { data: posts } = await useAsyncData(`blogs-${locale.value}`, async () => 
 })
 if (!posts.value) {
   throw createError({
-    statusCode: 404,
-    statusMessage: t('common.blogsNotFound'),
-    fatal: true
+    fatal: true, statusCode: 404, statusMessage: t('common.blogsNotFound')
   })
 }
 
@@ -50,10 +57,7 @@ const localizedPosts = computed(() => {
 })
 
 useSeoMeta({
-  title: page.value?.seo?.title || page.value?.title,
-  ogTitle: page.value?.seo?.title || page.value?.title,
-  description: page.value?.seo?.description || page.value?.description,
-  ogDescription: page.value?.seo?.description || page.value?.description
+  description: page.value?.seo?.description || page.value?.description, ogDescription: page.value?.seo?.description || page.value?.description, ogTitle: page.value?.seo?.title || page.value?.title, title: page.value?.seo?.title || page.value?.title
 })
 </script>
 

@@ -9,24 +9,21 @@ type Event = {
   category: 'Conference' | 'Live talk' | 'Podcast'
 }
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
-const { data: page } = await useAsyncData('speaking', () => {
-  return queryCollection('speaking').first()
+const { data: page } = await useAsyncData(`speaking-${locale.value}`, async () => {
+  const allPages = await queryCollection('speaking').all()
+  const found = allPages.find((p: any) => p.locale === locale.value)
+  return found || allPages.find((p: any) => p.locale === 'fr') || null
 })
 if (!page.value) {
   throw createError({
-    statusCode: 404,
-    statusMessage: t('common.pageNotFound'),
-    fatal: true
+    fatal: true, statusCode: 404, statusMessage: t('common.pageNotFound')
   })
 }
 
 useSeoMeta({
-  title: page.value?.seo?.title || page.value?.title,
-  ogTitle: page.value?.seo?.title || page.value?.title,
-  description: page.value?.seo?.description || page.value?.description,
-  ogDescription: page.value?.seo?.description || page.value?.description
+  description: page.value?.seo?.description || page.value?.description, ogDescription: page.value?.seo?.description || page.value?.description, ogTitle: page.value?.seo?.title || page.value?.title, title: page.value?.seo?.title || page.value?.title
 })
 
 const { global } = useAppConfig()
@@ -39,13 +36,13 @@ const groupedEvents = computed((): Record<Event['category'], Event[]> => {
     'Podcast': []
   }
   for (const event of events) {
-    if (grouped[event.category]) grouped[event.category].push(event)
+    if (grouped[event.category]) {grouped[event.category].push(event)}
   }
   return grouped
 })
 
 function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })
+  return new Date(dateString).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
 }
 
 function getCategoryLabel(category: string): string {
@@ -74,6 +71,7 @@ function getCategoryLabel(category: string): string {
           v-if="page.links"
           :to="`mailto:${global.email}`"
           v-bind="page.links[0]"
+          :aria-label="page.links[0]?.label || t('contact.hero.cta.contact')"
         />
       </template>
     </UPageHero>
@@ -104,6 +102,7 @@ function getCategoryLabel(category: string): string {
                 v-if="event.url"
                 :to="event.url"
                 class="absolute inset-0"
+                :aria-label="`${event.title} - ${event.category === 'Podcast' ? t('speaking.listen') : t('speaking.watch')}`"
               />
               <div class="mb-1 text-sm font-medium text-muted">
                 <span>{{ event.location }}</span>
@@ -129,6 +128,7 @@ function getCategoryLabel(category: string): string {
                   <UIcon
                     name="i-lucide-arrow-right"
                     class="size-4 transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
+                    aria-hidden="true"
                   />
                 </template>
               </UButton>

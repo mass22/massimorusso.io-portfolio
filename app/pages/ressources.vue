@@ -1,21 +1,20 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
-const { data: page } = await useAsyncData('ressources', () =>
-  queryCollection('ressources').first()
-)
+const { data: page } = await useAsyncData(`ressources-${locale.value}`, async () => {
+  const allPages = await queryCollection('ressources').all()
+  const found = allPages.find((p: any) => p.locale === locale.value)
+  return found || allPages.find((p: any) => p.locale === 'fr') || null
+})
 
 if (!page.value) {
   throw createError({
-    statusCode: 404,
-    statusMessage: t('common.pageNotFound'),
-    fatal: true
+    fatal: true, statusCode: 404, statusMessage: t('common.pageNotFound')
   })
 }
 
 useSeoMeta({
-  title: page.value?.title ?? t('ressources.title'),
-  description: page.value?.description ?? ''
+  description: page.value?.description ?? '', title: page.value?.title ?? t('ressources.title')
 })
 </script>
 

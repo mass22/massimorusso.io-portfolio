@@ -1,86 +1,87 @@
+locale: 'fr'
 title: Services
-description: Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences.
+description: Découvrez mes services en tant que Designer UX/UI & Développeur Front-End basé à Boston, ma philosophie de design et ma passion pour créer des expériences numériques intuitives.
 content: |
-  Hi, I'm **Emma Thompson**, a UX/UI Designer and Front-End Developer based right here in Boston. For the past six years, I've been immersed in the world of digital product creation, focusing on building experiences that are not just functional, but genuinely intuitive and engaging for users.
+  Salut, je suis **Massimo Russo**, un Designer UX/UI et Développeur Front-End basé à Boston. Depuis six ans, je suis immergé dans le monde de la création de produits numériques, en me concentrant sur la construction d'expériences qui ne sont pas seulement fonctionnelles, mais véritablement intuitives et engageantes pour les utilisateurs.
 
-  My path started at **Boston University**, where I earned a degree in Interactive Design. It was there I discovered my dual passion for the visual language of design and the logical puzzle of code. Since then, I've honed my skills in both areas, believing that the best digital products are born from a deep understanding of both aesthetics and implementation.
+  Mon parcours a commencé à l'**Université de Boston**, où j'ai obtenu un diplôme en Design Interactif. C'est là que j'ai découvert ma double passion pour le langage visuel du design et le puzzle logique du code. Depuis lors, j'ai affiné mes compétences dans les deux domaines, croyant que les meilleurs produits numériques naissent d'une compréhension approfondie à la fois de l'esthétique et de l'implémentation.
 
-  ### My Design Philosophy
+  ### Ma Philosophie de Design
 
-  My design philosophy is rooted in **empathy** and **problem-solving**. I believe great design starts with understanding the 'why' – the user's needs, motivations, and pain points. I use research, iterative prototyping (often with tools like Figma), and user testing to ensure the solutions I build are truly effective.
+  Ma philosophie de design est ancrée dans l'**empathie** et la **résolution de problèmes**. Je crois que le grand design commence par comprendre le 'pourquoi' – les besoins, motivations et points de douleur de l'utilisateur. J'utilise la recherche, le prototypage itératif (souvent avec des outils comme Figma) et les tests utilisateurs pour m'assurer que les solutions que je construis sont vraiment efficaces.
 
-  I strive to create interfaces that feel effortless, where functionality and beauty work hand-in-hand. Whether I'm crafting pixel-perfect UIs or writing clean Vue.js/Nuxt.js code, my focus is always on creating value for the end-user.
+  Je m'efforce de créer des interfaces qui semblent sans effort, où la fonctionnalité et la beauté travaillent main dans la main. Que je crée des interfaces pixel-perfect ou que j'écrive du code Vue.js/Nuxt.js propre, mon objectif est toujours de créer de la valeur pour l'utilisateur final.
 
-  ### What Drives Me
+  ### Ce qui me motive
 
-  What keeps me excited about this work is the constant learning and the challenge of translating complex ideas into simple, elegant solutions. There's nothing more rewarding than seeing a design come to life and knowing it's making someone's digital interaction easier or more enjoyable.
+  Ce qui me passionne dans ce travail, c'est l'apprentissage constant et le défi de traduire des idées complexes en solutions simples et élégantes. Il n'y a rien de plus gratifiant que de voir un design prendre vie et savoir qu'il rend l'interaction numérique de quelqu'un plus facile ou plus agréable.
 
-  ### Beyond the Screen
+  ### Au-delà de l'écran
 
-  When I'm not designing or coding, you might find me exploring Boston's latest coffee shops, hiking nearby trails, or occasionally contributing to open-source projects.
+  Quand je ne conçois pas ou ne code pas, vous pourriez me trouver en train d'explorer les derniers cafés de Boston, de faire de la randonnée sur les sentiers à proximité, ou de contribuer occasionnellement à des projets open-source.
 
-  Thanks for stopping by. Feel free to browse my [projects](/projects) or [get in touch](/#contact) if you'd like to collaborate!
+  Merci d'être passé par ici. N'hésitez pas à parcourir mes [projets](/projects) ou [me contacter](/#contact) si vous souhaitez collaborer !
 images:
   - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My coffee workspace
+    alt: Mon espace de travail avec café
   - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My trip to Tokyo
+    alt: Mon voyage à Tokyo
 testimonials:
-  - quote: "Emma's approach to UX design completely transformed our product. She has a rare ability to balance beautiful aesthetics with functional simplicity. The redesign not only looked better, but it reduced our customer support tickets by 40% and increased conversion rates across all key metrics."
+  - quote: "L'approche de Massimo en matière de design UX a complètement transformé notre produit. Il a une capacité rare à équilibrer une esthétique belle avec une simplicité fonctionnelle. La refonte n'a pas seulement mieux ressemblé, mais elle a réduit nos tickets de support client de 40% et augmenté les taux de conversion sur toutes les métriques clés."
     author:
       name: 'Sarah Chen'
-      description: 'Product Director at Bloom Finance'
+      description: 'Directrice Produit chez Bloom Finance'
       avatar:
         src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
         srcset: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Working with Emma was the best decision we made for our startup. She didn't just deliver designs—she challenged our assumptions, conducted thorough user research, and created an experience that truly resonated with our audience. Her technical knowledge of front-end development meant the handoff to our engineering team was seamless."
+  - quote: "Travailler avec Massimo a été la meilleure décision que nous ayons prise pour notre startup. Il n'a pas seulement livré des designs—il a remis en question nos hypothèses, a mené une recherche utilisateur approfondie et a créé une expérience qui a vraiment résonné avec notre audience. Sa connaissance technique du développement front-end a rendu la transmission à notre équipe d'ingénierie transparente."
     author:
       name: 'Michael Rodriguez'
-      description: 'Co-founder of Wavelength Music'
+      description: 'Co-fondateur de Wavelength Music'
       avatar:
         src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
         srcset: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Emma stands out in her ability to translate complex sustainability data into intuitive interfaces. Her work on EcoTrack wasn't just visually stunning—it fundamentally changed how our users interact with environmental information. She approaches each problem with both creativity and analytical rigor, which is exactly what we needed."
+  - quote: "Massimo se distingue par sa capacité à traduire des données complexes de durabilité en interfaces intuitives. Son travail sur EcoTrack n'était pas seulement visuellement époustouflant—il a fondamentalement changé la façon dont nos utilisateurs interagissent avec les informations environnementales. Il aborde chaque problème avec à la fois créativité et rigueur analytique, ce qui est exactement ce dont nous avions besoin."
     author:
       name: 'Dr. Aisha Johnson'
-      description: 'Chief Innovation Officer at GreenTech Solutions'
+      description: "Directrice de l'Innovation chez GreenTech Solutions"
       avatar:
         src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
         srcset: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
 faq:
-  title: Frequently Asked Questions
-  description: Answers to common questions about my process and services.
+  title: Questions Fréquemment Posées
+  description: Réponses aux questions courantes sur mon processus et mes services.
   categories:
-    - title: Services & Process
+    - title: Services & Processus
       questions:
-        - label: What services do you offer?
+        - label: Quels services proposez-vous ?
           content: |
-            I specialize in UX/UI design and front-end development. This includes user research, wireframing, interactive prototyping, creating intuitive user interfaces, building responsive websites and web applications (especially with Vue.js/Nuxt.js), and developing design systems. My goal is to create seamless digital experiences from concept to deployment.
-        - label: What is your design process like?
+            Je me spécialise dans le design UX/UI et le développement front-end. Cela inclut la recherche utilisateur, le wireframing, le prototypage interactif, la création d'interfaces utilisateur intuitives, la construction de sites web et d'applications web réactives (notamment avec Vue.js/Nuxt.js), et le développement de systèmes de design. Mon objectif est de créer des expériences numériques fluides de la conception au déploiement.
+        - label: À quoi ressemble votre processus de design ?
           content: |
-            My process is collaborative and iterative, typically involving stages like Discovery & Research, Ideation & Prototyping, User Testing, Visual Design, and close collaboration with development teams during implementation. I tailor the process based on project needs, always focusing on user-centered solutions.
-        - label: Do you work with startups?
+            Mon processus est collaboratif et itératif, impliquant généralement des étapes comme Découverte & Recherche, Idéation & Prototypage, Tests Utilisateurs, Design Visuel, et une collaboration étroite avec les équipes de développement pendant l'implémentation. J'adapte le processus en fonction des besoins du projet, en me concentrant toujours sur des solutions centrées sur l'utilisateur.
+        - label: Travaillez-vous avec des startups ?
           content: |
-            Absolutely! I enjoy working with startups to help shape their product vision and create user-friendly interfaces from the ground up. I can adapt my process to fit the fast-paced startup environment.
-    - title: Pricing & Timelines
+            Absolument ! J'aime travailler avec des startups pour les aider à façonner leur vision produit et créer des interfaces conviviales dès le départ. Je peux adapter mon processus pour s'adapter à l'environnement rapide des startups.
+    - title: Tarifs & Délais
       questions:
-        - label: How much does a project typically cost?
+        - label: Combien coûte généralement un projet ?
           content: |
-            Project costs vary based on scope, complexity, features, and timeline. For comprehensive UX/UI design and front-end development projects, my engagements typically start around $5,000, with average projects ranging between $8,000 and $25,000. For consulting or specific design tasks, my day rate is $700.
-        - label: What are your payment terms?
+            Les coûts des projets varient en fonction de la portée, de la complexité, des fonctionnalités et du délai. Pour les projets complets de design UX/UI et de développement front-end, mes engagements commencent généralement autour de 5 000 $, avec des projets moyens allant de 8 000 $ à 25 000 $. Pour le conseil ou des tâches de design spécifiques, mon tarif journalier est de 700 $.
+        - label: Quels sont vos conditions de paiement ?
           content: |
-            I generally require a 40% deposit to schedule the project and begin work, with the remaining 60% due upon successful project completion and delivery. I accept payments via bank transfer and Stripe.
-        - label: How long does a typical project take?
+            Je demande généralement un acompte de 40% pour planifier le projet et commencer le travail, les 60% restants étant dus à la réussite du projet et à la livraison. J'accepte les paiements par virement bancaire et Stripe.
+        - label: Combien de temps prend un projet typique ?
           content: |
-            Timelines depend heavily on the project's scope and complexity. Smaller projects might take 3-4 weeks, while larger, more involved projects can range from 2 to 4 months. I always provide a detailed timeline estimate after the initial discovery phase.
-        - label: Do you offer retainers or ongoing support?
+            Les délais dépendent fortement de la portée et de la complexité du projet. Les projets plus petits peuvent prendre 3-4 semaines, tandis que les projets plus importants et plus complexes peuvent aller de 2 à 4 mois. Je fournis toujours une estimation de délai détaillée après la phase de découverte initiale.
+        - label: Offrez-vous des contrats de maintenance ou un support continu ?
           content: |
-            Yes, for clients needing ongoing design support, feature development, or maintenance, I offer monthly retainer options tailored to specific needs. Let's discuss if this is something you're interested in.
-    - title: About Me
+            Oui, pour les clients ayant besoin d'un support de design continu, de développement de fonctionnalités ou de maintenance, j'offre des options de contrat mensuel adaptées à des besoins spécifiques. Discutons-en si cela vous intéresse.
+    - title: À propos de moi
       questions:
-        - label: What do you enjoy most about your work?
+        - label: Qu'est-ce que vous préférez dans votre travail ?
           content: |
-            I love the challenge of solving complex problems through design and technology. It's incredibly rewarding to see people interact with something I've created and find it genuinely useful and easy to navigate. Bridging the gap between user needs and technical possibilities is what truly excites me.
-        - label: What are your hobbies outside of work?
+            J'adore le défi de résoudre des problèmes complexes grâce au design et à la technologie. C'est incroyablement gratifiant de voir les gens interagir avec quelque chose que j'ai créé et le trouver vraiment utile et facile à naviguer. Combler le fossé entre les besoins des utilisateurs et les possibilités techniques est ce qui m'excite vraiment.
+        - label: Quels sont vos passe-temps en dehors du travail ?
           content: |
-            When I'm not designing or coding, I enjoy exploring Boston's neighborhoods, trying out new coffee shops, and hiking in the nearby reservations. I'm also passionate about photography and occasionally contribute to open-source projects.
+            Quand je ne conçois pas ou ne code pas, j'aime explorer les quartiers de Boston, essayer de nouveaux cafés et faire de la randonnée dans les réserves à proximité. Je suis aussi passionné de photographie et je contribue occasionnellement à des projets open-source.

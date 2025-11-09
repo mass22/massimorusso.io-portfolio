@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content'
+import type { IndexCollectionItem } from '@nuxt/content';
 
 defineProps<{
   page: IndexCollectionItem
@@ -7,15 +7,22 @@ defineProps<{
 </script>
 
 <template>
-  <UPageSection
-    :title="page.about.title"
-    :description="page.about.description"
-    :ui="{
-      container: '!p-0',
-      title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium',
-      description: 'text-left mt-3 text-sm sm:text-md lg:text-sm text-muted'
-    }"
-  />
+  <Motion
+    :initial="{ opacity: 0, transform: 'translateY(30px)' }"
+    :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
+    :transition="{ duration: 0.6 }"
+    :in-view-options="{ once: true, margin: '-100px' }"
+  >
+    <UPageSection
+      :title="page.about.title"
+      :description="page.about.description"
+      :ui="{
+        container: '!p-0',
+        title: 'text-left text-lg sm:text-xl lg:text-xl font-normal text-muted',
+        description: 'text-left mt-2 text-sm sm:text-sm lg:text-sm text-muted leading-relaxed'
+      }"
+    />
+  </Motion>
 </template>
 
 <style scoped>

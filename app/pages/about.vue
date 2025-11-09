@@ -1,22 +1,21 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('about', () => {
-  return queryCollection('about').first()
+const { t, locale } = useI18n()
+
+const { data: page } = await useAsyncData(`about-${locale.value}`, async () => {
+  const allPages = await queryCollection('about').all()
+  const found = allPages.find((p: any) => p.locale === locale.value)
+  return found || allPages.find((p: any) => p.locale === 'fr') || null
 })
 if (!page.value) {
   throw createError({
-    statusCode: 404,
-    statusMessage: 'Page not found',
-    fatal: true
+    fatal: true, statusCode: 404, statusMessage: t('common.pageNotFound')
   })
 }
 
 const { global } = useAppConfig()
 
 useSeoMeta({
-  title: page.value?.seo?.title || page.value?.title,
-  ogTitle: page.value?.seo?.title || page.value?.title,
-  description: page.value?.seo?.description || page.value?.description,
-  ogDescription: page.value?.seo?.description || page.value?.description
+  description: page.value?.seo?.description || page.value?.description, ogDescription: page.value?.seo?.description || page.value?.description, ogTitle: page.value?.seo?.title || page.value?.title, title: page.value?.seo?.title || page.value?.title
 })
 </script>
 
@@ -37,7 +36,7 @@ useSeoMeta({
         class="sm:rotate-4 size-36 rounded-lg ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
         :light="global.picture?.light!"
         :dark="global.picture?.dark!"
-        :alt="global.picture?.alt!"
+        :alt="t(global.picture?.altKey ?? 'global.picture.alt')"
       />
     </UPageHero>
     <UPageSection

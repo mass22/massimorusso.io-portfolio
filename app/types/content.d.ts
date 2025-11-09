@@ -18,9 +18,37 @@ export type Hero = {
   isResourcesAvailable?: boolean
 }
 
+export type FAQCategory = {
+  title: string
+  questions: {
+    label: string
+    content: string
+  }[]
+}
+
+export type FAQ = {
+  title: string
+  description: string
+  categories: FAQCategory[]
+}
+
+export type Testimonial = {
+  quote: string
+  author: {
+    name: string
+    description: string
+    avatar: {
+      src: string
+      srcset?: string
+    }
+  }
+}
+
 export type IndexPage = {
   title: string
   description: string
   hero: Hero
+  faq?: FAQ
+  testimonials?: Testimonial[]
   // Ajoute ici les autres propriétés utiles (exemple: about, experience, etc.)
 }

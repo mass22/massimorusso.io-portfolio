@@ -26,7 +26,9 @@ onMounted(() => {
 
   const router = useRouter()
   router.afterEach(() => {
-    slideoverOpen.value = false
+    if (!isSwitchingLocale.value) {
+      slideoverOpen.value = false
+    }
   })
 })
 
@@ -39,20 +41,14 @@ type UiLocale = {
 
 const baseUiLocales: Record<string, UiLocale> = {
   en: {
-    name: en.name,
-    code: en.code,
-    dir: en.dir,
-    messages: en.messages ?? {}
+    code: en.code, dir: en.dir, messages: en.messages ?? {}, name: en.name
   },
   fr: {
-    name: fr.name,
-    code: fr.code,
-    dir: fr.dir,
-    messages: fr.messages ?? {}
+    code: fr.code, dir: fr.dir, messages: fr.messages ?? {}, name: fr.name
   }
 }
 
-const uiLocales = computed<UiLocale[]>(() => {
+const uiLocales = computed(() => {
   const list = Array.isArray(availableLocales.value) ? availableLocales.value : []
 
   if (!list.length) {
@@ -74,34 +70,45 @@ const uiLocales = computed<UiLocale[]>(() => {
         return {
           ...base,
           name: item.name ?? base.name,
-          code: item.code
+          code: item.code as string
         }
       }
 
       return {
-        name: item.name ?? item.code,
-        code: item.code,
-        dir: (item.dir as 'ltr' | 'rtl') ?? 'ltr',
-        messages: {}
+        code: item.code as string, dir: (item.dir as 'ltr' | 'rtl') ?? 'ltr', messages: {}, name: item.name ?? item.code
       }
     })
     .filter((locale): locale is UiLocale => Boolean(locale))
 })
 
-const selectedLocale = computed({
-  get: () => locale.value,
-  set: (value: string) => {
-    if (value && value !== locale.value) {
-      void setLocale(value)
-    }
-  }
-})
 
 const props = withDefaults(defineProps<{ links: NavigationMenuItem[], noLangSwitcher?: boolean }>(), {
   noLangSwitcher: false
 })
 
 const showLocaleSwitcher = computed(() => !props.noLangSwitcher && uiLocales.value.length > 0)
+
+const inactiveLocale = computed(() => {
+  return uiLocales.value.find(loc => loc.code !== locale.value)
+})
+
+const isSwitchingLocale = ref(false)
+
+const switchLocale = (targetLocale: string, event?: Event) => {
+  if (event) {
+    event.stopPropagation()
+    event.preventDefault()
+  }
+  if (targetLocale && targetLocale !== locale.value) {
+    isSwitchingLocale.value = true
+    void setLocale(targetLocale as 'fr' | 'en').finally(() => {
+      // Réinitialiser après un court délai pour permettre la navigation
+      setTimeout(() => {
+        isSwitchingLocale.value = false
+      }, 100)
+    })
+  }
+}
 </script>
 
 <template>
@@ -119,14 +126,13 @@ const showLocaleSwitcher = computed(() => !props.noLangSwitcher && uiLocales.val
       >
         <template #list-trailing>
           <div class="flex items-center gap-2">
-            <ULocaleSelect
-              v-if="showLocaleSwitcher"
-              v-model="selectedLocale"
-              :locales="uiLocales"
+            <UButton
+              v-if="showLocaleSwitcher && inactiveLocale"
+              :label="inactiveLocale.code.toUpperCase()"
               size="sm"
               color="neutral"
-              variant="soft"
-              class="w-32"
+              variant="ghost"
+              @click="switchLocale(inactiveLocale.code)"
             />
             <ColorModeButton />
           </div>
@@ -139,6 +145,7 @@ const showLocaleSwitcher = computed(() => !props.noLangSwitcher && uiLocales.val
         color="neutral"
         variant="subtle"
         class="ml-2"
+        :aria-label="t('navigation.menu')"
         @click="slideoverOpen = true"
       />
 
@@ -149,24 +156,28 @@ const showLocaleSwitcher = computed(() => !props.noLangSwitcher && uiLocales.val
             orientation="vertical"
             variant="link"
             color="neutral"
-            :ui="{ link: 'px-2 py-1 text-lg', linkLeadingIcon: 'hidden' }"
+            :ui="{ link: 'px-2 py-1 text-lg', linkLeadingIcon: 'size-5' }"
           />
         </template>
         <template #footer>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-row gap-2">
             <UButton
               v-for="(link, index) of socialLinks"
               :key="index"
               v-bind="{ size: 'xs', color: 'neutral', variant: 'ghost', ...link }"
-            />
-            <ULocaleSelect
-              v-if="showLocaleSwitcher"
-              v-model="selectedLocale"
-              :locales="uiLocales"
+            >
+              <template v-if="link.icon" #leading>
+                <UIcon :name="link.icon" aria-hidden="true" />
+              </template>
+            </UButton>
+            <UButton
+              v-if="showLocaleSwitcher && inactiveLocale"
+              :label="inactiveLocale.code.toUpperCase()"
               size="sm"
               color="neutral"
-              variant="soft"
-              class="w-full"
+              variant="ghost"
+              block
+              @click.stop="switchLocale(inactiveLocale.code, $event)"
             />
             <ColorModeButton />
           </div>

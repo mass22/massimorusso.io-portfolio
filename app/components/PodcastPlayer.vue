@@ -1,25 +1,47 @@
 <script setup lang="ts">
 import type { IndexCollectionItem } from '@nuxt/content';
+import { onMounted, ref } from 'vue';
 
 defineProps<{
   page: IndexCollectionItem
 }>()
+
+const { t } = useI18n()
+
+const iframeLoaded = ref(false)
+const iframeError = ref(false)
+const iframeRef = ref<HTMLIFrameElement | null>(null)
+
+const handleIframeLoad = () => {
+  iframeLoaded.value = true
+  iframeError.value = false
+}
+
+const handleIframeError = () => {
+  iframeError.value = true
+  iframeLoaded.value = false
+  // Ne pas logger l'erreur dans la console pour éviter le bruit
+  // Les erreurs 403/404 du player externe sont normales et ne doivent pas être affichées
+}
+
 onMounted(() => {
-  if (!document.getElementById('ausha-player-script')) {
-    const script = document.createElement('script');
-    script.id = 'ausha-player-script';
-    script.src = 'https://player.ausha.co/ausha-player.js';
-    script.async = true;
-    document.body.appendChild(script);
+  // Vérifier si l'iframe est chargé après un délai
+  if (iframeRef.value) {
+    setTimeout(() => {
+      if (!iframeLoaded.value && !iframeError.value) {
+        // Si l'iframe n'a pas chargé après 5 secondes, on considère qu'il y a un problème
+        // mais on ne fait rien car cela peut être normal (CORS, blocage, etc.)
+      }
+    }, 5000)
   }
-});
+})
 </script>
 <template>
     <UPageSection
     :title="page.podcast.title"
     :description="page.podcast.description"
     :ui="{
-      container: 'px-0 !pt-0 sm:gap-6 lg:gap-8',
+      container: 'px-0 !pt-12 sm:!pt-16 lg:!pt-20 sm:gap-6 lg:gap-8',
       title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium',
       description: 'text-left mt-2 text-sm sm:text-md lg:text-sm text-muted'
     }"
@@ -29,7 +51,7 @@ onMounted(() => {
 
     <template #body>
       <div>
-        <div class="subscribe-overlay"><div class="subscribe-overlay__icon"> <a target="_blank" href="https://feed.ausha.co/pJ1YkF6eXmgj" class="css-1p78l3k"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 455.7 455.7" style="enable-background:new 0 0 455.7 455.7;" xml:space="preserve">
+        <div class="subscribe-overlay"><div class="subscribe-overlay__icon"> <a target="_blank" href="https://feed.ausha.co/pJ1YkF6eXmgj" aria-label="S'abonner au podcast via RSS" class="css-1p78l3k"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 455.7 455.7" style="enable-background:new 0 0 455.7 455.7;" xml:space="preserve">
 <g>
 	<path fill="#FF7D03" d="M31.8,0H424c17.5,0,31.8,14.2,31.8,31.8V424c0,17.5-14.2,31.8-31.8,31.8H31.8C14.2,455.7,0,441.5,0,424V31.8
 		C0,14.2,14.2,0,31.8,0z"></path>
@@ -41,10 +63,10 @@ onMounted(() => {
 	</g>
 </g>
 </svg>
-</a></div> <div class="subscribe-overlay__icon"> <a target="_blank" href="https://www.youtube.com/channel/UCMYbBAzF4nqB4R29vRJ3hXg" class="css-1p78l3k"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+</a></div> <div class="subscribe-overlay__icon"> <a target="_blank" href="https://www.youtube.com/channel/UCMYbBAzF4nqB4R29vRJ3hXg" aria-label="Écouter le podcast sur YouTube" class="css-1p78l3k"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
     <path fill="red" d="M180.32 53.36c-2.02-7.62-7.99-13.62-15.56-15.66C151.04 34 96 34 96 34s-55.04 0-68.76 3.7c-7.57 2.04-13.54 8.04-15.56 15.66C8 67.18 8 96 8 96s0 28.82 3.68 42.64c2.02 7.62 7.99 13.62 15.56 15.66C40.96 158 96 158 96 158s55.04 0 68.76-3.7c7.57-2.04 13.54-8.04 15.56-15.66C184 124.82 184 96 184 96s0-28.82-3.68-42.64z"></path>
     <path fill="#fff" d="M78 122.17L124 96 78 69.83z"></path>
-</svg></a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://podcasts.apple.com/ca/podcast/on-parle-dev/id1815187281" class="css-1p78l3k"><svg version="1.1" id="US" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 27.2 27.7" style="enable-background:new 0 0 27.2 27.7;" xml:space="preserve">
+</svg></a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://podcasts.apple.com/ca/podcast/on-parle-dev/id1815187281" aria-label="Écouter le podcast sur Apple Podcasts" class="css-1p78l3k"><svg version="1.1" id="US" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 27.2 27.7" style="enable-background:new 0 0 27.2 27.7;" xml:space="preserve">
 <g>
 	<g id="XMLID_632_">
 		<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="13.4713" y1="1.141" x2="13.4713" y2="26.304">
@@ -76,7 +98,7 @@ onMounted(() => {
 	</g>
 </g>
 </svg>
-</a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://open.spotify.com/show/7pRx7V2awXyEalPsrnC7i1" class="css-1p78l3k"><svg viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg">
+</a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://open.spotify.com/show/7pRx7V2awXyEalPsrnC7i1" aria-label="Écouter le podcast sur Spotify" class="css-1p78l3k"><svg viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g fill="#1db954" id="Diffusion-V2-Card-Recto-Modale-Spotify-Copy" transform="translate(-587.000000, -341.000000)">
         <g id="Group-8" transform="translate(575.000000, 329.000000)">
             <g id="spotify" transform="translate(12.000000, 12.000000)">
@@ -84,12 +106,12 @@ onMounted(() => {
             </g>
         </g>
     </g>
-</svg></a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://www.deezer.com/show/1001894371" class="css-1p78l3k"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+</svg></a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://www.deezer.com/show/1001894371" aria-label="Écouter le podcast sur Deezer" class="css-1p78l3k"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Podcast platform">
 <path id="Vector" fill-rule="evenodd" clip-rule="evenodd" d="M26.8386 4.88209C27.1347 3.16609 27.5691 2.08703 28.0503 2.08496H28.0513C28.9487 2.08805 29.6761 5.83027 29.6761 10.4506C29.6761 15.0709 28.9476 18.8162 28.0493 18.8162C27.681 18.8162 27.3412 18.1803 27.0675 17.1146C26.6351 21.0155 25.7378 23.6973 24.6991 23.6973C23.8953 23.6973 23.174 22.0864 22.6897 19.5459C22.3591 24.3775 21.5269 27.8053 20.5542 27.8053C19.9438 27.8053 19.3873 26.447 18.9753 24.2353C18.4798 28.8009 17.3353 32 16.0004 32C14.6656 32 13.5191 28.8019 13.0256 24.2353C12.6166 26.447 12.0601 27.8053 11.4466 27.8053C10.474 27.8053 9.64379 24.3775 9.31112 19.5459C8.82686 22.0864 8.10759 23.6973 7.30179 23.6973C6.26406 23.6973 5.36573 21.0166 4.93334 17.1146C4.6617 18.1834 4.31986 18.8162 3.95157 18.8162C3.05322 18.8162 2.32478 15.0709 2.32478 10.4506C2.32478 5.83027 3.05322 2.08496 3.95157 2.08496C4.43381 2.08496 4.86518 3.16712 5.16429 4.88209C5.64348 1.92315 6.42179 0 7.30179 0C8.34666 0 9.25212 2.71983 9.68046 6.6692C10.0996 3.79477 10.7355 1.96232 11.4477 1.96232C12.4457 1.96232 13.2942 5.56643 13.6086 10.5939C14.1997 8.0162 15.0553 6.39917 16.0025 6.39917C16.9497 6.39917 17.8053 8.01727 18.3953 10.5939C18.7107 5.56643 19.5582 1.96232 20.5563 1.96232C21.2674 1.96232 21.9023 3.79477 22.3235 6.6692C22.7507 2.71983 23.6562 0 24.7011 0C25.5781 0 26.3594 1.92419 26.8386 4.88209ZM0.000183105 9.6278C0.000183105 7.5624 0.413242 5.88761 0.922949 5.88761C1.43266 5.88761 1.84572 7.5624 1.84572 9.6278C1.84572 11.6931 1.43266 13.3679 0.922949 13.3679C0.413242 13.3679 0.000183105 11.6931 0.000183105 9.6278ZM30.1545 9.6278C30.1545 7.5624 30.5675 5.88761 31.0772 5.88761C31.5869 5.88761 32 7.5624 32 9.6278C32 11.6931 31.5869 13.3679 31.0772 13.3679C30.5675 13.3679 30.1545 11.6931 30.1545 9.6278Z" fill="#A238FF"></path>
 </g>
 </svg>
-</a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://podcastaddict.com/podcast/on-parle-dev/5885427" class="css-1p78l3k"><svg version="1.1" id="Calque_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 463.5 464.9" style="enable-background:new 0 0 463.5 464.9;" xml:space="preserve">
+</a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://podcastaddict.com/podcast/on-parle-dev/5885427" aria-label="Écouter le podcast sur Podcast Addict" class="css-1p78l3k"><svg version="1.1" id="Calque_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 463.5 464.9" style="enable-background:new 0 0 463.5 464.9;" xml:space="preserve">
 <path fill="#F4842D" d="M357.8,460.7H104.3C48,460.7,2,414.7,2,358.4V106.3C2,50,48,4,104.3,4h253.5C414,4,460.1,50,460.1,106.3v252.1
 	C460.1,414.7,414,460.7,357.8,460.7z"></path>
 <g>
@@ -114,7 +136,7 @@ onMounted(() => {
 	c0-0.1,0-0.1,0-0.2c0-48.2-39.1-87.3-87.3-87.3c0,0-0.1,0-0.1,0v-23.6c0,0,0.1,0,0.1,0c61.3,0,110.9,49.7,110.9,110.9
 	C341.6,232.5,341.6,232.5,341.6,232.6z"></path>
 </svg>
-</a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://music.amazon.com/podcasts/b773b6aa-e35b-422b-aebe-a5de9ad6f38d" class="css-1p78l3k"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+</a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://music.amazon.com/podcasts/b773b6aa-e35b-422b-aebe-a5de9ad6f38d" aria-label="Écouter le podcast sur Amazon Music" class="css-1p78l3k"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.6915 0H49.3084C57.4222 0 64 6.57778 64 14.6916V49.3085C64 57.4222 57.4222 64 49.3084 64H14.6915C6.57764 64 0 57.4222 0 49.3085V14.6916C0 6.57778 6.57764 0 14.6915 0Z" fill="#4FC5DF"></path>
 <path d="M37.3063 30.9183C38.5532 29.8675 38.8754 27.664 38.6201 27.3461C38.3666 27.0308 36.1863 26.7588 34.8558 27.7006C34.651 27.8453 34.6864 28.0452 34.9134 28.0178C35.6629 27.9275 37.3308 27.7259 37.6281 28.1092C37.9257 28.4931 37.2974 30.0743 37.0169 30.7804C36.9315 30.994 37.1139 31.0799 37.3063 30.9183Z" fill="#0F1215"></path>
 <path d="M52.4683 20.2859C52.0985 19.717 51.5189 19.509 50.9266 19.509C50.0135 19.509 49.4958 19.9389 49.1257 20.8405H49.1008V19.8329C49.0766 19.7305 48.981 19.654 48.8661 19.6476L47.6398 19.6484C47.5065 19.6484 47.3973 19.7429 47.3863 19.8635L47.3884 26.4558C47.3884 26.582 47.4933 26.6841 47.6256 26.6923H48.9419C49.083 26.6923 49.1972 26.5867 49.1996 26.4551V22.9067C49.1996 22.4629 49.2242 22.0608 49.4094 21.6587C49.5573 21.3397 49.8532 21.1317 50.1742 21.1317C51.0869 21.1317 51.0005 22.186 51.0005 22.9067V26.4846C51.0151 26.5973 51.114 26.6848 51.2363 26.6923H52.5607C52.6916 26.6923 52.7996 26.602 52.8142 26.4846V22.3385C52.8142 21.7003 52.8142 20.8132 52.4683 20.2859Z" fill="#0F1215"></path>
@@ -131,7 +153,7 @@ onMounted(() => {
 <path d="M31.665 23.5168C31.665 24.0025 31.6765 24.4064 31.4261 24.838C31.2235 25.1879 30.9017 25.4041 30.5438 25.4041C30.0549 25.4041 29.7687 25.04 29.7687 24.501C29.7687 23.44 30.7424 23.2473 31.665 23.2473V23.5168ZM31.665 22.2496C30.9252 22.3307 29.9594 22.3847 29.2679 22.6812C28.469 23.0183 27.9083 23.706 27.9083 24.7164C27.9083 26.0107 28.7433 26.6578 29.8164 26.6578C30.7229 26.6578 31.2182 26.4484 31.9182 25.7525C32.1494 26.0797 32.225 26.2386 32.6483 26.582C32.7439 26.6322 32.8657 26.6272 32.9499 26.5532L32.9526 26.5561C33.2071 26.3346 33.6699 25.9424 33.9303 25.7291C34.0343 25.6462 34.016 25.5115 33.9343 25.398C33.7015 25.0837 33.4532 24.8277 33.4532 24.2439V22.304C33.4532 21.4816 33.5129 20.7264 32.8929 20.1607C32.4037 19.702 31.5932 19.5403 30.9728 19.5403C29.7599 19.5403 28.4069 19.9826 28.1225 21.4471C28.0928 21.6025 28.2086 21.6843 28.3131 21.7074L29.5486 21.8386C29.6636 21.8325 29.7478 21.7212 29.7697 21.6089C29.8761 21.1047 30.3081 20.8612 30.7939 20.8612C31.0564 20.8612 31.3543 20.9554 31.5099 21.1851C31.6886 21.4411 31.665 21.7913 31.665 22.0882V22.2496Z" fill="#0F1215"></path>
 <path d="M17.086 27.7636C19.9344 30.2354 23.6992 31.7206 27.8796 31.7206C30.8628 31.7206 34.3264 30.8196 36.7161 29.1252C37.1111 28.8443 36.773 28.4242 36.3684 28.5886C33.6903 29.6803 30.7792 30.2086 28.1307 30.2086C24.205 30.2086 20.4043 29.1735 17.3307 27.4546C17.0617 27.3049 16.8619 27.5694 17.086 27.7636Z" fill="#0F1215"></path>
 </svg>
-</a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://overcast.fm/itunes1815187281" class="css-1p78l3k"><svg version="1.1" id="overcastCanvas" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
+</a> </div><div class="subscribe-overlay__icon"> <a target="_blank" href="https://overcast.fm/itunes1815187281" aria-label="Écouter le podcast sur Overcast" class="css-1p78l3k"><svg version="1.1" id="overcastCanvas" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
 <linearGradient id="SVGID1" gradientUnits="userSpaceOnUse" x1="500.0765" y1="0.9667" x2="500.0765" y2="945.0731">
 	<stop offset="0" stop-color="#FF9734"></stop>
 	<stop offset="1" stop-color="#FC7E0F"></stop>
@@ -164,7 +186,68 @@ onMounted(() => {
     </div>
     </template>
   </UModal>
-    <iframe name="Ausha Podcast Player" frameborder="0" loading="lazy" id="ausha-P04n" height="420" style="border: none; width:100%; height:420px; background-color: #000000;" src="https://player.ausha.co/?showId=pJ1YkF6eXmgj&color=%23ffffff&multishow=false&playlist=true&dark=true&v=3&playerId=ausha-P04n"></iframe>
+    <ClientOnly>
+      <div class="relative w-full" style="min-height: 420px;">
+        <iframe
+          ref="iframeRef"
+          name="Ausha Podcast Player"
+          title="Lecteur de podcast Ausha"
+          frameborder="0"
+          loading="lazy"
+          id="ausha-P04n"
+          height="420"
+          style="border: none; width:100%; height:420px; background-color: #000000;"
+          src="https://player.ausha.co/?showId=pJ1YkF6eXmgj&color=%23ffffff&multishow=false&playlist=true&dark=true&v=3&playerId=ausha-P04n"
+          referrerpolicy="no-referrer-when-downgrade"
+          allow="autoplay; encrypted-media"
+          @load="handleIframeLoad"
+          @error="handleIframeError"
+          :class="{ 'opacity-0': !iframeLoaded && !iframeError }"
+        />
+        <!-- Fallback silencieux si l'iframe ne charge pas -->
+        <div
+          v-if="iframeError"
+          class="absolute inset-0 flex items-center justify-center bg-muted rounded-lg"
+          role="region"
+          aria-label="Lecteur de podcast"
+        >
+          <div class="text-center p-6">
+            <p class="text-sm text-muted mb-4">
+              {{ t('podcast.player.error') }}
+            </p>
+            <UButton
+              to="https://feed.ausha.co/pJ1YkF6eXmgj"
+              target="_blank"
+              variant="outline"
+              size="sm"
+              :label="t('podcast.player.fallback')"
+            />
+          </div>
+        </div>
+        <!-- Indicateur de chargement -->
+        <div
+          v-if="!iframeLoaded && !iframeError"
+          class="absolute inset-0 flex items-center justify-center bg-muted rounded-lg animate-pulse"
+          :aria-label="t('podcast.player.loading')"
+          role="status"
+        >
+          <div class="text-center">
+            <div class="size-8 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+            <p class="text-xs text-muted">{{ t('podcast.player.loading') }}</p>
+          </div>
+        </div>
+      </div>
+      <template #fallback>
+        <div class="w-full" style="min-height: 420px;">
+          <div class="flex items-center justify-center bg-muted rounded-lg h-full min-h-[420px]">
+            <div class="text-center p-6">
+              <div class="size-8 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+              <p class="text-xs text-muted">{{ t('podcast.player.loading') }}</p>
+            </div>
+          </div>
+        </div>
+      </template>
+    </ClientOnly>
   </UPageSection>
 </template>
 

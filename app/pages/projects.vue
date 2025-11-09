@@ -1,17 +1,27 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 if (process.env.NODE_ENV === 'production') {
-  throw createError({ statusCode: 404, message: t('common.pageNotFound') })
+  throw createError({ message: t('common.pageNotFound'), statusCode: 404 })
 }
-const { data: page } = await useAsyncData('projects-page', () => {
-  return queryCollection('pages').path('/projects').first()
+
+const { data: page } = await useAsyncData(`projects-page-${locale.value}`, async () => {
+  const allPages = await queryCollection('pages').all()
+  const projectsPage = allPages.find((p: any) =>
+    p.path === '/projects' || p.path === '/en/projects' ||
+    (p.path?.includes('projects') && p.locale === locale.value)
+  )
+  if (projectsPage && projectsPage.locale === locale.value) {
+    return projectsPage
+  }
+  const fallback = allPages.find((p: any) =>
+    (p.path === '/projects' || p.path?.includes('projects')) && p.locale === 'fr'
+  )
+  return fallback || null
 })
 if (!page.value) {
   throw createError({
-    statusCode: 404,
-    statusMessage: t('common.pageNotFound'),
-    fatal: true
+    fatal: true, statusCode: 404, statusMessage: t('common.pageNotFound')
   })
 }
 
@@ -22,10 +32,7 @@ const { data: projects } = await useAsyncData('projects', () => {
 const { global } = useAppConfig()
 
 useSeoMeta({
-  title: page.value?.seo?.title || page.value?.title,
-  ogTitle: page.value?.seo?.title || page.value?.title,
-  description: page.value?.seo?.description || page.value?.description,
-  ogDescription: page.value?.seo?.description || page.value?.description
+  description: page.value?.seo?.description || page.value?.description, ogDescription: page.value?.seo?.description || page.value?.description, ogTitle: page.value?.seo?.title || page.value?.title, title: page.value?.seo?.title || page.value?.title
 })
 </script>
 
@@ -54,6 +61,7 @@ useSeoMeta({
           <UButton
             :to="`mailto:${global.email}`"
             v-bind="page.links[1]"
+            :aria-label="page.links[1]?.label || t('contact.hero.cta.contact')"
           />
         </div>
       </template>
@@ -75,6 +83,7 @@ useSeoMeta({
           :title="project.title"
           :description="project.description"
           :to="project.url"
+          :aria-label="project.title"
           orientation="horizontal"
           variant="naked"
           :reverse="index % 2 === 1"
@@ -97,6 +106,7 @@ useSeoMeta({
               <UIcon
                 name="i-lucide-arrow-right"
                 class="size-4 text-primary transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
+                aria-hidden="true"
               />
             </ULink>
           </template>

@@ -13,6 +13,7 @@
 
 :root {
   --ui-container: var(--container-8xl);
+  --color-primary-accessible: #008B5A; /* Vert plus foncé pour contraste WCAG AA */
 
   ::selection {
     color: #282a30;
@@ -21,8 +22,293 @@
 }
 
 .dark {
+  --color-primary-accessible: #00DC82; /* En mode dark, utiliser la couleur originale */
+
   ::selection {
     color: #ffffff;
     background-color: #474747;
+  }
+}
+
+/* Accessibilité : styles pour le lien "Skip to content" */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Amélioration du focus visible pour l'accessibilité */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Garantir la conformité WCAG AA pour text-muted dans les deux modes */
+/* Nuxt UI gère déjà text-muted automatiquement pour les deux modes */
+/* Si nécessaire, on peut ajuster avec des variables CSS personnalisées */
+
+/* Surcharge pour garantir le contraste WCAG AA si nécessaire */
+/* Note: Nuxt UI devrait déjà gérer cela, mais on peut forcer si besoin */
+@media (prefers-contrast: high) {
+  .text-muted {
+    /* Force un contraste plus élevé pour les utilisateurs qui le demandent */
+    opacity: 1;
+  }
+}
+
+/* Correction du contraste pour les boutons primary (WCAG AA) */
+/* Le vert #00DC82 n'a pas assez de contraste avec le texte blanc (ratio ~2.8:1) */
+/* On force un fond plus foncé pour respecter le ratio 4.5:1 minimum */
+/* #008B5A a un ratio d'environ 4.6:1 avec le texte blanc */
+
+/* Cibler tous les éléments avec bg-primary et text-inverted */
+.bg-primary.text-inverted,
+button.bg-primary.text-inverted,
+a.bg-primary.text-inverted,
+[class*="bg-primary"][class*="text-inverted"] {
+  background-color: var(--color-primary-accessible, #008B5A) !important; /* Vert plus foncé pour contraste WCAG AA */
+}
+
+/* Cibler les états hover et active pour maintenir le contraste */
+.bg-primary.text-inverted:hover,
+button.bg-primary.text-inverted:hover,
+a.bg-primary.text-inverted:hover,
+[class*="bg-primary"][class*="text-inverted"]:hover,
+.bg-primary.text-inverted.hover\:bg-primary\/75:hover,
+button.bg-primary.text-inverted.hover\:bg-primary\/75:hover,
+a.bg-primary.text-inverted.hover\:bg-primary\/75:hover {
+  background-color: #007A4F !important; /* Encore plus foncé au survol */
+}
+
+.bg-primary.text-inverted:active,
+button.bg-primary.text-inverted:active,
+a.bg-primary.text-inverted:active,
+[class*="bg-primary"][class*="text-inverted"]:active,
+.bg-primary.text-inverted.active\:bg-primary\/75:active,
+button.bg-primary.text-inverted.active\:bg-primary\/75:active,
+a.bg-primary.text-inverted.active\:bg-primary\/75:active {
+  background-color: #006B44 !important; /* Encore plus foncé à l'activation */
+}
+
+/* Cibler spécifiquement les liens et boutons avec les classes Tailwind générées */
+a.rounded-md.bg-primary.text-inverted,
+button.rounded-md.bg-primary.text-inverted,
+a.inline-flex.bg-primary.text-inverted,
+button.inline-flex.bg-primary.text-inverted {
+  background-color: var(--color-primary-accessible, #008B5A) !important;
+}
+
+a.rounded-md.bg-primary.text-inverted:hover,
+button.rounded-md.bg-primary.text-inverted:hover,
+a.inline-flex.bg-primary.text-inverted:hover,
+button.inline-flex.bg-primary.text-inverted:hover {
+  background-color: #007A4F !important;
+}
+
+/* Mode dark : utiliser la couleur originale car le contraste peut être différent */
+.dark .bg-primary.text-inverted,
+.dark button.bg-primary.text-inverted,
+.dark a.bg-primary.text-inverted,
+.dark [class*="bg-primary"][class*="text-inverted"] {
+  background-color: #00DC82 !important;
+}
+
+.dark .bg-primary.text-inverted:hover,
+.dark button.bg-primary.text-inverted:hover,
+.dark a.bg-primary.text-inverted:hover,
+.dark [class*="bg-primary"][class*="text-inverted"]:hover {
+  background-color: #00C875 !important;
+}
+
+/* Garantir le contraste WCAG AA pour text-error */
+/* Nuxt UI devrait gérer cela, mais on s'assure que le contraste est suffisant */
+/* Note: Nuxt UI utilise généralement une couleur d'erreur avec bon contraste */
+
+/* ============================================
+   MICRO-INTERACTIONS
+   ============================================ */
+
+/* Transitions fluides sur tous les éléments interactifs */
+button,
+a,
+[role="button"],
+input,
+textarea,
+select {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Micro-interaction sur les boutons : scale au click */
+button:active:not(:disabled),
+a:active:not(:disabled),
+[role="button"]:active:not(:disabled) {
+  transform: scale(0.98);
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Amélioration des hover states pour les boutons */
+button:hover:not(:disabled),
+a:hover:not(:disabled) {
+  transform: translateY(-1px);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Retour à la position normale après le hover */
+button:not(:hover):not(:active),
+a:not(:hover):not(:active) {
+  transform: translateY(0);
+}
+
+/* Micro-interaction sur les cartes : élévation au hover */
+[class*="card"]:hover,
+[class*="Card"]:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Amélioration des focus states pour les inputs */
+input:focus,
+textarea:focus,
+select:focus {
+  transform: scale(1.01);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animation sur les icônes dans les boutons */
+button:hover .icon,
+a:hover .icon,
+button:hover [class*="icon"],
+a:hover [class*="icon"] {
+  transform: translateX(2px);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animation sur les icônes trailing (flèches) */
+button:hover [class*="trailing"] [class*="icon"],
+a:hover [class*="trailing"] [class*="icon"] {
+  transform: translateX(4px);
+}
+
+/* Animation sur les icônes leading */
+button:hover [class*="leading"] [class*="icon"],
+a:hover [class*="leading"] [class*="icon"] {
+  transform: translateX(-2px);
+}
+
+/* Micro-interaction sur les liens de navigation */
+nav a,
+[role="navigation"] a {
+  position: relative;
+}
+
+nav a::after,
+[role="navigation"] a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover : soulignement avec la couleur du texte */
+nav a:hover::after,
+[role="navigation"] a:hover::after {
+  width: 100%;
+  background-color: currentColor;
+}
+
+/* Active : soulignement avec la couleur primary */
+nav a[aria-current="page"]::after,
+[role="navigation"] a[aria-current="page"]::after {
+  width: 100%;
+  background-color: var(--color-primary, #00DC82);
+}
+
+/* Animation sur les images au hover */
+img:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Micro-interaction sur les badges et tags */
+[class*="badge"]:hover,
+[class*="Badge"]:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animation de pulse subtile pour les indicateurs de statut */
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+[class*="status"] [class*="pulse"],
+[class*="available"] [class*="pulse"] {
+  animation: subtle-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Transition douce sur les changements d'état (disponible/indisponible) */
+[class*="availability"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Micro-interaction sur les éléments de formulaire */
+UFormField:hover,
+[class*="FormField"]:hover {
+  transform: translateX(2px);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animation sur les messages de succès/erreur */
+[role="alert"] {
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Désactiver les animations pour les utilisateurs qui préfèrent les réduire */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

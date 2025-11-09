@@ -17,20 +17,26 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 // useMouse: coordonnées relatives à la fenêtre (viewport)
 const { x, y } = useMouse({ touch: false })
-const scrollX = ref(window.scrollX)
-const scrollY = ref(window.scrollY)
+const scrollX = ref(typeof window !== 'undefined' ? window.scrollX : 0)
+const scrollY = ref(typeof window !== 'undefined' ? window.scrollY : 0)
 
 function updateScroll() {
-  scrollX.value = window.scrollX
-  scrollY.value = window.scrollY
+  if (typeof window !== 'undefined') {
+    scrollX.value = window.scrollX
+    scrollY.value = window.scrollY
+  }
 }
 
 // Suit la scroll position en live
 onMounted(() => {
-  window.addEventListener('scroll', updateScroll)
+  if (typeof window !== 'undefined') {
+    window.addEventListener('scroll', updateScroll, { passive: true })
+  }
 })
 onUnmounted(() => {
-  window.removeEventListener('scroll', updateScroll)
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('scroll', updateScroll)
+  }
 })
 
 const sizeNormal = 30
@@ -43,14 +49,12 @@ const isClicking = ref(false)
 
 const cursorStyle = computed(() => {
   let size = sizeNormal
-  if (isHoveringInteractive.value) size = sizeHover
-  if (isClicking.value) size = sizeClick
-  if (isClicking.value && isHoveringInteractive.value) size = sizeClick
+  if (isHoveringInteractive.value) {size = sizeHover}
+  if (isClicking.value) {size = sizeClick}
+  if (isClicking.value && isHoveringInteractive.value) {size = sizeClick}
   return {
     // Position du point : coordonnées souris + scroll
-    transform: `translate3d(${x.value + scrollX.value - size/2}px, ${y.value + scrollY.value - size/2}px, 0)`,
-    width: size + 'px',
-    height: size + 'px',
+    height: size + 'px', transform: `translate3d(${x.value + scrollX.value - size/2}px, ${y.value + scrollY.value - size/2}px, 0)`, width: size + 'px',
   }
 })
 
@@ -59,20 +63,17 @@ const spotlightStyle = computed(() => {
   const left = x.value + scrollX.value - spotlightRadius
   const top  = y.value + scrollY.value - spotlightRadius
   return {
-    left: `${left}px`,
-    top: `${top}px`,
-    width: `${spotlightRadius * 2}px`,
-    height: `${spotlightRadius * 2}px`,
+    height: `${spotlightRadius * 2}px`, left: `${left}px`, top: `${top}px`, width: `${spotlightRadius * 2}px`,
   }
 })
 
 const isInteractive = (el: HTMLElement | null) => {
-  if (!el) return false
+  if (!el) {return false}
   const t = el.tagName?.toLowerCase()
-  if (t === 'a' || t === 'button' || t === 'input' || t === 'textarea' || el.hasAttribute('tabindex')) return true
+  if (t === 'a' || t === 'button' || t === 'input' || t === 'textarea' || el.hasAttribute('tabindex')) {return true}
   if (el.getAttribute && [
     'button','link','checkbox','radio','switch','tab']
-    .includes(el.getAttribute('role') || '')) return true
+    .includes(el.getAttribute('role') || '')) {return true}
   return false
 }
 
@@ -104,16 +105,24 @@ function mouseDownHandler() { isClicking.value = true }
 function mouseUpHandler() { isClicking.value = false }
 
 onMounted(() => {
-  document.addEventListener('mouseover', mouseOverHandler, true)
-  document.addEventListener('mouseout', mouseOutHandler, true)
-  window.addEventListener('mousedown', mouseDownHandler)
-  window.addEventListener('mouseup', mouseUpHandler)
+  if (typeof document !== 'undefined') {
+    document.addEventListener('mouseover', mouseOverHandler, true)
+    document.addEventListener('mouseout', mouseOutHandler, true)
+  }
+  if (typeof window !== 'undefined') {
+    window.addEventListener('mousedown', mouseDownHandler, { passive: true })
+    window.addEventListener('mouseup', mouseUpHandler, { passive: true })
+  }
 })
 onUnmounted(() => {
-  document.removeEventListener('mouseover', mouseOverHandler, true)
-  document.removeEventListener('mouseout', mouseOutHandler, true)
-  window.removeEventListener('mousedown', mouseDownHandler)
-  window.removeEventListener('mouseup', mouseUpHandler)
+  if (typeof document !== 'undefined') {
+    document.removeEventListener('mouseover', mouseOverHandler, true)
+    document.removeEventListener('mouseout', mouseOutHandler, true)
+  }
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('mousedown', mouseDownHandler)
+    window.removeEventListener('mouseup', mouseUpHandler)
+  }
 })
 </script>
 

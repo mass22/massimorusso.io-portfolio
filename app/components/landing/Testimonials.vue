@@ -1,17 +1,25 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content'
+import type { IndexCollectionItem } from '@nuxt/content';
+import type { Testimonial } from '~/types/content';
 
 defineProps<{
-  page: IndexCollectionItem
+  page: IndexCollectionItem & { testimonials?: Testimonial[] }
 }>()
 </script>
 
 <template>
-  <UPageSection
-    :ui="{
-      container: 'px-0 !pt-0'
-    }"
+  <Motion
+    v-if="page.testimonials && page.testimonials.length > 0"
+    :initial="{ opacity: 0, transform: 'translateY(30px)' }"
+    :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
+    :transition="{ duration: 0.6 }"
+    :in-view-options="{ once: true, margin: '-100px' }"
   >
+    <UPageSection
+      :ui="{
+        container: 'px-0 !pt-12 sm:!pt-16 lg:!pt-20'
+      }"
+    >
     <UCarousel
       v-slot="{ item }"
       :items="page.testimonials"
@@ -39,4 +47,5 @@ defineProps<{
       </UPageCTA>
     </UCarousel>
   </UPageSection>
+  </Motion>
 </template>

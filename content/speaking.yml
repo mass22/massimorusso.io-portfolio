@@ -1,48 +1,49 @@
-title: Talks & Workshops
-description: Explore talks and workshops I've given on UX design, front-end development, and building better digital products.
+locale: 'fr'
+title: Conférences & Ateliers
+description: Découvrez les conférences et ateliers que j'ai donnés sur le design UX, le développement front-end et la création de meilleurs produits numériques.
 links:
-  - label: Invite me to speak
+  - label: M'inviter à parler
     size: md
 events:
   - category: Conference
-    title: "Bridging the Gap: Design Systems for Designer-Developer Collaboration"
+    title: "Combler le fossé : Design Systems pour la collaboration Designer-Développeur"
     date: "2024-10-26"
     location: "VueConf US, Miami, FL"
     url: "#"
   - category: Conference
-    title: "Intuitive Interfaces: Applying UX Principles in Nuxt.js Applications"
+    title: "Interfaces intuitives : Appliquer les principes UX dans les applications Nuxt.js"
     date: "2024-06-15"
-    location: "Nuxt Nation, Online"
+    location: "Nuxt Nation, En ligne"
     url: "#"
   - category: Conference
-    title: "Accessibility First: Building Inclusive Web Apps"
+    title: "Accessibilité d'abord : Construire des applications web inclusives"
     date: "2023-11-08"
     location: "Boston Web Performance Meetup, Boston, MA"
   - category: Live talk
-    title: "Mastering Component Design in Figma & Vue"
+    title: "Maîtriser le design de composants dans Figma & Vue"
     date: "2024-08-20"
     location: "Design & Dev Boston Meetup, Boston, MA"
     url: "#"
   - category: Live talk
-    title: "From Wireframe to Web: A Practical Front-End Workflow"
+    title: "Du Wireframe au Web : Un workflow front-end pratique"
     date: "2024-03-05"
-    location: "Internal Workshop @ PreviousCompany Inc."
+    location: "Atelier interne @ PreviousCompany Inc."
   - category: Live talk
-    title: "The Power of User Research in Product Development"
+    title: "Le pouvoir de la recherche utilisateur dans le développement produit"
     date: "2023-09-12"
-    location: "Boston University Guest Lecture, Boston, MA"
+    location: "Conférence invitée à l'Université de Boston, Boston, MA"
   - category: Podcast
-    title: "Designing for Developers: A UX Perspective"
+    title: "Designer pour les développeurs : Une perspective UX"
     date: "2024-07-18"
-    location: "Syntax.fm (Guest)"
+    location: "Syntax.fm (Invité)"
     url: "#"
   - category: Podcast
-    title: "The Future of Front-End Frameworks & Design Tooling"
+    title: "L'avenir des frameworks front-end et des outils de design"
     date: "2024-01-30"
-    location: "Design Details Podcast (Guest)"
+    location: "Design Details Podcast (Invité)"
     url: "#"
   - category: Podcast
-    title: "Building a Career in UX/UI & Development"
+    title: "Construire une carrière en UX/UI & Développement"
     date: "2023-05-22"
     location: "TechForward Boston Podcast"
     url: "#"

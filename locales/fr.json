@@ -11,7 +11,30 @@
     "blog": "Blog",
     "speaking": "Conférences",
     "about": "À propos",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "language": "Langue",
+    "theme": "Thème",
+    "follow": "Suivez-moi"
+  },
+  "index": {
+    "description": "Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d'Architecture"
+  },
+  "hero": {
+    "cta": {
+      "services": "Découvrir mes services",
+      "contact": "Me contacter"
+    },
+    "image": {
+      "alt": "Portfolio de Massimo Russo - Consultant Frontend Sénior spécialisé en Vue.js, Nuxt.js et Modernisation d'Architecture"
+    }
+  },
+  "homepage": {
+    "cta": {
+      "title": "Prêt à démarrer votre projet ?",
+      "description": "Discutons de vos besoins et voyons comment je peux vous aider à créer des expériences numériques exceptionnelles.",
+      "button": "Me contacter"
+    }
   },
   "blog": {
     "title": "Blog",
@@ -23,6 +46,157 @@
   "projects": {
     "viewProject": "Voir le projet"
   },
+  "services": {
+    "hero": {
+      "title": "Services",
+      "description": "Découvrez mes services en tant que Designer UX/UI & Développeur Front-End basé à Boston, ma philosophie de design et ma passion pour créer des expériences numériques intuitives."
+    },
+    "process": {
+      "title": "Mon Processus de Travail",
+      "description": "Une approche structurée et collaborative pour transformer vos idées en produits numériques performants.",
+      "steps": {
+        "discovery": {
+          "title": "Découverte & Recherche",
+          "description": "Analyse approfondie de vos besoins, de votre marché et de vos utilisateurs pour définir la stratégie optimale."
+        },
+        "design": {
+          "title": "Design & Prototypage",
+          "description": "Création de wireframes, prototypes interactifs et design visuel itératif basé sur les retours utilisateurs."
+        },
+        "development": {
+          "title": "Développement & Implémentation",
+          "description": "Code propre et maintenable avec Vue.js/Nuxt.js, en collaboration étroite avec votre équipe technique."
+        },
+        "optimization": {
+          "title": "Optimisation & Support",
+          "description": "Tests utilisateurs, optimisations de performance et support continu pour garantir le succès à long terme."
+        }
+      }
+    },
+    "items": {
+      "consulting": {
+        "title": "Conseil & Stratégie",
+        "description": "Accompagnement personnalisé pour améliorer vos produits numériques, optimiser vos processus de design et développer votre vision produit.",
+        "imageAlt": "Conseil et stratégie UX/UI"
+      },
+      "workshops": {
+        "title": "Formations & Ateliers",
+        "description": "Formations pratiques sur le design UX/UI, Vue.js, Nuxt.js et les meilleures pratiques de développement front-end.",
+        "imageAlt": "Formations et ateliers"
+      },
+      "audit": {
+        "title": "Audit & Optimisation",
+        "description": "Analyse approfondie de vos interfaces existantes pour identifier les opportunités d'amélioration et optimiser l'expérience utilisateur.",
+        "imageAlt": "Audit et optimisation UX"
+      }
+    },
+    "cta": {
+      "title": "Prêt à démarrer votre projet ?",
+      "description": "Discutons de vos besoins et voyons comment je peux vous aider à créer des expériences numériques exceptionnelles.",
+      "contact": "Me contacter",
+      "learnMore": "En savoir plus",
+      "booking": "Planifier un appel"
+    },
+    "stats": {
+      "clients": {
+        "value": "50+",
+        "label": "Clients satisfaits"
+      },
+      "projects": {
+        "value": "100+",
+        "label": "Projets réalisés"
+      },
+      "training": {
+        "value": "500+",
+        "label": "Personnes formées"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "Taux de satisfaction"
+      }
+    }
+  },
+  "contact": {
+    "seo": {
+      "title": "Contact - Massimo Russo",
+      "description": "Contactez-moi pour discuter de votre projet. Disponible pour des consultations, formations et audits UX/UI. Contactez-moi à {email}"
+    },
+    "hero": {
+      "title": "Parlons de votre projet",
+      "description": "Discutons de vos besoins et voyons comment je peux vous aider à créer des expériences numériques exceptionnelles.",
+      "cta": {
+        "booking": "Planifier un appel",
+        "write": "Écrire un message"
+      }
+    },
+    "availability": {
+      "available": {
+        "title": "Disponible pour de nouveaux projets",
+        "description": "Je suis actuellement disponible pour discuter de votre projet et voir comment je peux vous aider."
+      },
+      "unavailable": {
+        "title": "Actuellement indisponible",
+        "description": "Je suis actuellement occupé sur d'autres projets, mais n'hésitez pas à me laisser un message."
+      },
+      "cta": "Réserver un créneau"
+    },
+    "iframe": {
+      "title": "Planifier un rendez-vous avec Massimo Russo",
+      "button": "Préférer envoyer un message"
+    },
+    "form": {
+      "honeypotLabel": "Ne pas remplir ce champ",
+      "nameLabel": "Nom",
+      "namePlaceholder": "Votre nom",
+      "emailLabel": "Email",
+      "emailPlaceholder": "votre email",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Décrivez votre projet ou votre demande...",
+      "submit": "Envoyer le message",
+      "toggleBooking": "Planifier un appel à la place"
+    },
+    "validation": {
+      "nameRequired": "Le nom est requis",
+      "emailInvalid": "L'email n'est pas valide",
+      "messageRequired": "Le message est requis"
+    },
+    "errors": {
+      "submit": "Une erreur est survenue lors de l'envoi. Veuillez réessayer."
+    },
+    "quote": "Chaque projet commence par une conversation.",
+    "success": {
+      "title": "Message envoyé !",
+      "description": "Je vous répondrai dans les plus brefs délais.",
+      "back": "Envoyer un autre message"
+    },
+    "why": {
+      "title": "Pourquoi me contacter ?",
+      "description": "Voici ce qui fait la différence dans notre collaboration.",
+      "benefits": {
+        "expertise": {
+          "title": "Expertise Double",
+          "description": "Design UX/UI et développement front-end dans une seule personne pour une vision cohérente de bout en bout."
+        },
+        "reactivity": {
+          "title": "Réactivité",
+          "description": "Réponses rapides et communication transparente tout au long du projet."
+        },
+        "collaboration": {
+          "title": "Collaboration",
+          "description": "Approche flexible qui s'adapte à vos besoins et à votre équipe existante."
+        },
+        "results": {
+          "title": "Résultats Mesurables",
+          "description": "Focus sur les métriques qui comptent : conversion, engagement et satisfaction utilisateur."
+        }
+      }
+    }
+  },
+  "global": {
+    "picture": {
+      "alt": "Photo de profil de Massimo Russo"
+    }
+  },
   "speaking": {
     "listen": "Écouter",
     "watch": "Regarder",
@@ -30,6 +204,13 @@
       "conference": "Conférences",
       "liveTalk": "Talks en direct",
       "podcast": "Podcasts"
+    }
+  },
+  "podcast": {
+    "player": {
+      "loading": "Chargement du lecteur...",
+      "error": "Le lecteur de podcast n'est pas disponible pour le moment.",
+      "fallback": "Écouter sur Ausha"
     }
   },
   "ressources": {
@@ -43,7 +224,17 @@
   "clipboard": {
     "copied": "Copié dans le presse-papiers"
   },
+  "footer": {
+    "credits": "© {year} Massimo Russo. Tous droits réservés.",
+    "links": {
+      "linkedin": "Massimo Russo sur LinkedIn",
+      "bluesky": "Massimo Russo sur Bluesky"
+    }
+  },
   "seo": {
     "titleTemplate": "%s - Massimo Russo"
+  },
+  "accessibility": {
+    "skipToContent": "Aller au contenu principal"
   }
 }

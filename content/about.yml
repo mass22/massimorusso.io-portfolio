@@ -1,27 +1,28 @@
-title: About Me
-description: Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences.
+locale: 'fr'
+title: À propos de moi
+description: Découvrez mon parcours en tant que Designer UX/UI & Développeur Front-End basé à Boston, ma philosophie de design et ma passion pour créer des expériences numériques intuitives.
 content: |
-  Hi, I'm **Emma Thompson**, a UX/UI Designer and Front-End Developer based right here in Boston. For the past six years, I've been immersed in the world of digital product creation, focusing on building experiences that are not just functional, but genuinely intuitive and engaging for users.
+  Salut, je suis **Massimo Russo**, un Designer UX/UI et Développeur Front-End basé à Boston. Depuis six ans, je suis immergé dans le monde de la création de produits numériques, en me concentrant sur la construction d'expériences qui ne sont pas seulement fonctionnelles, mais véritablement intuitives et engageantes pour les utilisateurs.
 
-  My path started at **Boston University**, where I earned a degree in Interactive Design. It was there I discovered my dual passion for the visual language of design and the logical puzzle of code. Since then, I've honed my skills in both areas, believing that the best digital products are born from a deep understanding of both aesthetics and implementation.
+  Mon parcours a commencé à l'**Université de Boston**, où j'ai obtenu un diplôme en Design Interactif. C'est là que j'ai découvert ma double passion pour le langage visuel du design et le puzzle logique du code. Depuis lors, j'ai affiné mes compétences dans les deux domaines, croyant que les meilleurs produits numériques naissent d'une compréhension approfondie à la fois de l'esthétique et de l'implémentation.
 
-  ### My Design Philosophy
+  ### Ma Philosophie de Design
 
-  My design philosophy is rooted in **empathy** and **problem-solving**. I believe great design starts with understanding the 'why' – the user's needs, motivations, and pain points. I use research, iterative prototyping (often with tools like Figma), and user testing to ensure the solutions I build are truly effective.
+  Ma philosophie de design est ancrée dans l'**empathie** et la **résolution de problèmes**. Je crois que le grand design commence par comprendre le 'pourquoi' – les besoins, motivations et points de douleur de l'utilisateur. J'utilise la recherche, le prototypage itératif (souvent avec des outils comme Figma) et les tests utilisateurs pour m'assurer que les solutions que je construis sont vraiment efficaces.
 
-  I strive to create interfaces that feel effortless, where functionality and beauty work hand-in-hand. Whether I'm crafting pixel-perfect UIs or writing clean Vue.js/Nuxt.js code, my focus is always on creating value for the end-user.
+  Je m'efforce de créer des interfaces qui semblent sans effort, où la fonctionnalité et la beauté travaillent main dans la main. Que je crée des interfaces pixel-perfect ou que j'écrive du code Vue.js/Nuxt.js propre, mon objectif est toujours de créer de la valeur pour l'utilisateur final.
 
-  ### What Drives Me
+  ### Ce qui me motive
 
-  What keeps me excited about this work is the constant learning and the challenge of translating complex ideas into simple, elegant solutions. There's nothing more rewarding than seeing a design come to life and knowing it's making someone's digital interaction easier or more enjoyable.
+  Ce qui me passionne dans ce travail, c'est l'apprentissage constant et le défi de traduire des idées complexes en solutions simples et élégantes. Il n'y a rien de plus gratifiant que de voir un design prendre vie et savoir qu'il rend l'interaction numérique de quelqu'un plus facile ou plus agréable.
 
-  ### Beyond the Screen
+  ### Au-delà de l'écran
 
-  When I'm not designing or coding, you might find me exploring Boston's latest coffee shops, hiking nearby trails, or occasionally contributing to open-source projects.
+  Quand je ne conçois pas ou ne code pas, vous pourriez me trouver en train d'explorer les derniers cafés de Boston, de faire de la randonnée sur les sentiers à proximité, ou de contribuer occasionnellement à des projets open-source.
 
-  Thanks for stopping by. Feel free to browse my [projects](/projects) or [get in touch](/#contact) if you'd like to collaborate!
+  Merci d'être passé par ici. N'hésitez pas à parcourir mes [projets](/projects) ou [me contacter](/#contact) si vous souhaitez collaborer !
 images:
   - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My coffee workspace
+    alt: Mon espace de travail avec café
   - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My trip to Tokyo
+    alt: Mon voyage à Tokyo

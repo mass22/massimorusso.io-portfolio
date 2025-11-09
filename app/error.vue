@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
+import { computed } from 'vue'
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
+
+const navLinks = computed(() => getNavLinks(t, localePath))
 
 defineProps({
   error: {
-    type: Object as PropType<NuxtError>,
-    required: true
+    required: true, type: Object as PropType<NuxtError>
   }
 })
 
@@ -17,8 +20,7 @@ useHead({
 })
 
 useSeoMeta({
-  title: t('error.title'),
-  description: t('error.description')
+  description: t('error.description'), title: t('error.title')
 })
 
 const [{ data: navigation }, { data: files }] = await Promise.all([

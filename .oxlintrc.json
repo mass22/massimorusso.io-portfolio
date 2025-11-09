@@ -1,0 +1,124 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+
+  // Plugins activés (typescript, unicorn, oxc sont activés par défaut)
+  "plugins": [
+    "import",
+    "vue"
+  ],
+
+  // Catégories de règles activées
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "style": "warn",
+    "perf": "warn"
+  },
+
+  // Environnements
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2024": true,
+    "shared-node-browser": true
+  },
+
+  // Patterns de fichiers à ignorer
+  "ignorePatterns": [
+    "**/.output",
+    "**/.data",
+    "**/.nuxt",
+    "**/.nitro",
+    "**/.cache",
+    "**/dist",
+    "**/node_modules",
+    "**/logs",
+    "**/*.log",
+    "**/.DS_Store",
+    "**/.fleet",
+    "**/.idea",
+    "**/.env",
+    "**/.env.*",
+    "!**/.env.example",
+    "**/.history",
+    "**/.vercel",
+    "**/.netlify"
+  ],
+
+  // Règles spécifiques
+  "rules": {
+    // Règles d'import
+    "import/first": "error",
+    "import/no-duplicates": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-named-default": "error",
+
+    // Règles de débogage
+    "no-debugger": "error",
+    "no-console": "warn",
+
+    // Règles de variables non utilisées (configurées pour TypeScript)
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+        "vars": "all",
+        "varsIgnorePattern": "^_"
+      }
+    ]
+  },
+
+  // Overrides pour TypeScript
+  "overrides": [
+    {
+      "files": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.mts",
+        "**/*.cts"
+      ],
+      "rules": {
+        // Désactiver certaines règles qui sont gérées par TypeScript
+        "no-class-assign": "off",
+        "no-const-assign": "off",
+        "no-dupe-class-members": "off",
+        "no-dupe-keys": "off",
+        "no-func-assign": "off",
+        "no-import-assign": "off",
+        "no-redeclare": "off",
+        "no-setter-return": "off",
+        "no-this-before-super": "off",
+        "no-unsafe-negation": "off",
+        "valid-typeof": "off",
+
+        // Règles TypeScript spécifiques
+        "no-var": "error",
+        "prefer-rest-params": "error",
+        "prefer-spread": "error",
+        "no-array-constructor": "error",
+        "no-useless-constructor": "error"
+      }
+    },
+    {
+      // Overrides pour les fichiers Vue
+      "files": [
+        "**/*.vue"
+      ],
+      "rules": {
+        // Les règles Vue sont généralement gérées par le compilateur Vue
+        "no-unused-vars": [
+          "error",
+          {
+            "args": "after-used",
+            "argsIgnorePattern": "^_",
+            "ignoreRestSiblings": true,
+            "vars": "all",
+            "varsIgnorePattern": "^_|^\\$"
+          }
+        ]
+      }
+    }
+  ]
+}

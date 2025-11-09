@@ -1,5 +1,5 @@
-import type { NavigationMenuItem } from '@nuxt/ui'
 import type { LocalePathFunction } from '#i18n'
+import type { NavigationMenuItem } from '@nuxt/ui'
 
 type NavLinkDefinition = {
   key: string
@@ -9,46 +9,38 @@ type NavLinkDefinition = {
 
 const NAV_LINKS: NavLinkDefinition[] = [
   {
-    key: 'navigation.home',
-    icon: 'i-lucide-home',
-    to: '/'
+    icon: 'i-lucide-home', key: 'navigation.home', to: '/'
   },
   {
-    key: 'navigation.services',
-    icon: 'i-lucide-folder',
-    to: '/services'
+    icon: 'i-lucide-folder', key: 'navigation.services', to: '/services'
   },
   {
-    key: 'navigation.blog',
-    icon: 'i-lucide-file-text',
-    to: '/blog'
+    icon: 'i-lucide-user', key: 'navigation.about', to: '/about'
   },
   {
-    key: 'navigation.speaking',
-    icon: 'i-lucide-mic',
-    to: '/speaking'
+    icon: 'i-lucide-file-text', key: 'navigation.blog', to: '/blog'
   },
   {
-    key: 'navigation.about',
-    icon: 'i-lucide-user',
-    to: '/about'
+    icon: 'i-lucide-mic', key: 'navigation.speaking', to: '/speaking'
   },
   {
-    key: 'navigation.contact',
-    icon: 'i-lucide-mail',
-    to: '/contact'
+    icon: 'i-lucide-mail', key: 'navigation.contact', to: '/contact'
   }
 ]
 
-export function getNavLinks (
+export function getNavLinks(
   t: (key: string) => string,
   localePath?: LocalePathFunction
 ): NavigationMenuItem[] {
-  return NAV_LINKS.map(({ key, to, ...rest }) => ({
-    ...rest,
-    label: t(key),
-    to: localePath ? localePath(to) : to
-  }))
+  return NAV_LINKS.map(({ key, to, ...rest }) => {
+    const label = t(key)
+    return {
+      ...rest,
+      label,
+      'to': localePath ? localePath(to) : to,
+      'aria-label': label // S'assurer que chaque lien a un aria-label accessible
+    } as NavigationMenuItem
+  })
 }
 
 export const navLinkDefinitions = NAV_LINKS

@@ -11,7 +11,30 @@
     "blog": "Blog",
     "speaking": "Speaking",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "language": "Language",
+    "theme": "Theme",
+    "follow": "Follow me"
+  },
+  "index": {
+    "description": "Senior Frontend Consultant — Vue.js, Nuxt & Architecture Modernization"
+  },
+  "hero": {
+    "cta": {
+      "services": "Discover my services",
+      "contact": "Contact me"
+    },
+    "image": {
+      "alt": "Massimo Russo's portfolio - Senior Frontend Consultant specialized in Vue.js, Nuxt.js and Architecture Modernization"
+    }
+  },
+  "homepage": {
+    "cta": {
+      "title": "Ready to start your project?",
+      "description": "Let's discuss your needs and see how I can help you create exceptional digital experiences.",
+      "button": "Contact me"
+    }
   },
   "blog": {
     "title": "Blog",
@@ -23,6 +46,157 @@
   "projects": {
     "viewProject": "View Project"
   },
+  "services": {
+    "hero": {
+      "title": "Services",
+      "description": "Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences."
+    },
+    "process": {
+      "title": "My Work Process",
+      "description": "A structured and collaborative approach to transform your ideas into high-performing digital products.",
+      "steps": {
+        "discovery": {
+          "title": "Discovery & Research",
+          "description": "In-depth analysis of your needs, market, and users to define the optimal strategy."
+        },
+        "design": {
+          "title": "Design & Prototyping",
+          "description": "Creation of wireframes, interactive prototypes, and iterative visual design based on user feedback."
+        },
+        "development": {
+          "title": "Development & Implementation",
+          "description": "Clean and maintainable code with Vue.js/Nuxt.js, in close collaboration with your technical team."
+        },
+        "optimization": {
+          "title": "Optimization & Support",
+          "description": "User testing, performance optimization, and ongoing support to ensure long-term success."
+        }
+      }
+    },
+    "items": {
+      "consulting": {
+        "title": "Consulting & Strategy",
+        "description": "Personalized guidance to improve your digital products, optimize your design processes, and develop your product vision.",
+        "imageAlt": "UX/UI consulting and strategy"
+      },
+      "workshops": {
+        "title": "Training & Workshops",
+        "description": "Hands-on training on UX/UI design, Vue.js, Nuxt.js, and front-end development best practices.",
+        "imageAlt": "Training and workshops"
+      },
+      "audit": {
+        "title": "Audit & Optimization",
+        "description": "In-depth analysis of your existing interfaces to identify improvement opportunities and optimize user experience.",
+        "imageAlt": "UX audit and optimization"
+      }
+    },
+    "cta": {
+      "title": "Ready to start your project?",
+      "description": "Let's discuss your needs and see how I can help you create exceptional digital experiences.",
+      "contact": "Contact me",
+      "learnMore": "Learn more",
+      "booking": "Schedule a call"
+    },
+    "stats": {
+      "clients": {
+        "value": "50+",
+        "label": "Satisfied clients"
+      },
+      "projects": {
+        "value": "100+",
+        "label": "Projects completed"
+      },
+      "training": {
+        "value": "500+",
+        "label": "People trained"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "Satisfaction rate"
+      }
+    }
+  },
+  "contact": {
+    "seo": {
+      "title": "Contact - Massimo Russo",
+      "description": "Contact me to discuss your project. Available for consultations, training, and UX/UI audits. Contact me at {email}"
+    },
+    "hero": {
+      "title": "Let's talk about your project",
+      "description": "Let's discuss your needs and see how I can help you create exceptional digital experiences.",
+      "cta": {
+        "booking": "Schedule a call",
+        "write": "Write a message"
+      }
+    },
+    "availability": {
+      "available": {
+        "title": "Available for new projects",
+        "description": "I'm currently available to discuss your project and see how I can help you."
+      },
+      "unavailable": {
+        "title": "Currently unavailable",
+        "description": "I'm currently busy with other projects, but feel free to leave me a message."
+      },
+      "cta": "Book a slot"
+    },
+    "iframe": {
+      "title": "Schedule a meeting with Massimo Russo",
+      "button": "Prefer to send a message"
+    },
+    "form": {
+      "honeypotLabel": "Do not fill this field",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your email",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Describe your project or request...",
+      "submit": "Send message",
+      "toggleBooking": "Schedule a call instead"
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "emailInvalid": "Email is not valid",
+      "messageRequired": "Message is required"
+    },
+    "errors": {
+      "submit": "An error occurred while sending. Please try again."
+    },
+    "quote": "Every project starts with a conversation.",
+    "success": {
+      "title": "Message sent!",
+      "description": "I'll get back to you as soon as possible.",
+      "back": "Send another message"
+    },
+    "why": {
+      "title": "Why Contact Me?",
+      "description": "Here's what makes the difference in our collaboration.",
+      "benefits": {
+        "expertise": {
+          "title": "Dual Expertise",
+          "description": "UX/UI design and front-end development in one person for a consistent end-to-end vision."
+        },
+        "reactivity": {
+          "title": "Responsiveness",
+          "description": "Quick responses and transparent communication throughout the project."
+        },
+        "collaboration": {
+          "title": "Collaboration",
+          "description": "Flexible approach that adapts to your needs and existing team."
+        },
+        "results": {
+          "title": "Measurable Results",
+          "description": "Focus on metrics that matter: conversion, engagement, and user satisfaction."
+        }
+      }
+    }
+  },
+  "global": {
+    "picture": {
+      "alt": "Massimo Russo profile picture"
+    }
+  },
   "speaking": {
     "listen": "Listen",
     "watch": "Watch",
@@ -30,6 +204,13 @@
       "conference": "Conferences",
       "liveTalk": "Live talks",
       "podcast": "Podcasts"
+    }
+  },
+  "podcast": {
+    "player": {
+      "loading": "Loading player...",
+      "error": "The podcast player is not available at the moment.",
+      "fallback": "Listen on Ausha"
     }
   },
   "ressources": {
@@ -43,7 +224,17 @@
   "clipboard": {
     "copied": "Copied to clipboard"
   },
+  "footer": {
+    "credits": "© {year} Massimo Russo. All rights reserved.",
+    "links": {
+      "linkedin": "Massimo Russo on LinkedIn",
+      "bluesky": "Massimo Russo on Bluesky"
+    }
+  },
   "seo": {
     "titleTemplate": "%s - Massimo Russo"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content"
   }
 }

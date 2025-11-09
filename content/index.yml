@@ -1,63 +1,64 @@
+locale: 'fr'
 seo:
-  title: "Massimo Russo - Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d’Architecture"
-  description: "Welcome to my portfolio! I'm Massimo Russo, a Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d’Architecture and front-end developer based in Boston. I specialize in creating user-centered digital experiences that are both beautiful and functional."
-title: "Hey, I'm Massimo Russo"
-description: "Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d’Architecture.J’aide les équipes à accélérer, réduire la dette, et livrer plus vite sans casser la qualité."
+  title: "Massimo Russo - Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d'Architecture"
+  description: "Bienvenue sur mon portfolio ! Je suis Massimo Russo, Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d'Architecture et développeur front-end basé à Boston. Je me spécialise dans la création d'expériences numériques centrées sur l'utilisateur, à la fois belles et fonctionnelles."
+title: "Salut, je suis Massimo Russo"
+description: "Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d'Architecture. J'aide les équipes à accélérer, réduire la dette, et livrer plus vite sans casser la qualité."
 hero:
   tags:
-    - "Build"
-    - "Structure"
-    - "Elevate"
+    - "Construire"
+    - "Structurer"
+    - "Élever"
   links:
     - label: "Ressources gratuites"
       to: /ressources
       color: "neutral"
-    - label: "About Me"
+    - label: "À propos"
       to: /about
       trailingIcon: 'i-lucide-arrow-right'
   images:
     - src: /hero/random-1.avif
-      alt: Random Image 1
+      alt: Image aléatoire 1
     - src: /hero/random-2.avif
-      alt: Random Image 2
+      alt: Image aléatoire 2
     - src: /hero/random-3.avif
-      alt: Random Image 3
+      alt: Image aléatoire 3
     - src: /hero/random-4.avif
-      alt: Random Image 4
+      alt: Image aléatoire 4
     - src: /hero/random-5.avif
-      alt: Random Image 5
+      alt: Image aléatoire 5
     - src: /hero/random-6.avif
-      alt: Random Image 6
+      alt: Image aléatoire 6
     - src: /hero/random-7.avif
-      alt: Random Image 7
+      alt: Image aléatoire 7
     - src: /hero/random-8.avif
-      alt: Random Image 8
+      alt: Image aléatoire 8
     - src: /hero/random-9.avif
-      alt: Random Image 9
+      alt: Image aléatoire 9
   isResourcesAvailable: false
 about:
-  title: "About Me"
+  title: "À propos de moi"
   description: |
-    As a UX/UI designer and front-end developer with 6 years of experience, I leverage my Boston University Interactive Design degree to craft user-centered digital experiences.
-    My approach blends creative strategy with technical expertise, transforming concepts into functional, purposeful digital products that seamlessly integrate design and technology.
+    En tant que designer UX/UI et développeur front-end avec 6 ans d'expérience, j'utilise mon diplôme en Design Interactif de l'Université de Boston pour créer des expériences numériques centrées sur l'utilisateur.
+    Mon approche combine stratégie créative et expertise technique, transformant les concepts en produits numériques fonctionnels et pertinents qui intègrent harmonieusement design et technologie.
 experience:
   title: Certifications
   items:
-    - position: "Vue.js Mid-Level Developer"
+    - position: "Développeur Vue.js Niveau Intermédiaire"
       date: "2025"
       company:
         name: Vue.js
         logo: "i-simple-icons-vuedotjs"
         url: "https://certification.vuejs.org/certification-badge.html"
         color: "#00DC82"
-    - position: "Vue.js Senior Developer"
+    - position: "Développeur Vue.js Senior"
       date: "2025"
       company:
         name: Vue.js
         logo: "i-simple-icons-vuedotjs"
         url: "https://certification.vuejs.org/certification-badge.html"
         color: "#00DC82"
-    - position: "Nuxt mid-level Developer"
+    - position: "Développeur Nuxt Niveau Intermédiaire"
       date: "2025"
       company:
         name: Nuxt.js
@@ -65,8 +66,56 @@ experience:
         url: "https://certification.nuxtjs.org/certification-badge.html"
         color: "#00DC82"
 blog:
-  title: "Latest Articles"
-  description: "Some of my recent thoughts"
+  title: "Derniers articles"
+  description: "Quelques-unes de mes réflexions récentes"
 podcast:
   title: "Mon podcast: On parle dev"
-  description: "A écouter sans modération"
+  description: "À écouter sans modération"
+testimonials:
+  - quote: "L'approche de Massimo en matière de design UX a complètement transformé notre produit. Il a une capacité rare à équilibrer une esthétique belle avec une simplicité fonctionnelle. La refonte n'a pas seulement mieux ressemblé, mais elle a réduit nos tickets de support client de 40% et augmenté les taux de conversion sur toutes les métriques clés."
+    author:
+      name: 'Sarah Chen'
+      description: 'Directrice Produit chez Bloom Finance'
+      avatar:
+        src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
+        srcset: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
+  - quote: "Travailler avec Massimo a été la meilleure décision que nous ayons prise pour notre startup. Il n'a pas seulement livré des designs—il a remis en question nos hypothèses, a mené une recherche utilisateur approfondie et a créé une expérience qui a vraiment résonné avec notre audience. Sa connaissance technique du développement front-end a rendu la transmission à notre équipe d'ingénierie transparente."
+    author:
+      name: 'Michael Rodriguez'
+      description: 'Co-fondateur de Wavelength Music'
+      avatar:
+        src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
+        srcset: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
+  - quote: "Massimo se distingue par sa capacité à traduire des données complexes de durabilité en interfaces intuitives. Son travail sur EcoTrack n'était pas seulement visuellement époustouflant—il a fondamentalement changé la façon dont nos utilisateurs interagissent avec les informations environnementales. Il aborde chaque problème avec à la fois créativité et rigueur analytique, ce qui est exactement ce dont nous avions besoin."
+    author:
+      name: 'Dr. Aisha Johnson'
+      description: "Directrice de l'Innovation chez GreenTech Solutions"
+      avatar:
+        src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
+        srcset: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
+faq:
+  title: Questions Fréquemment Posées
+  description: Réponses aux questions courantes sur mon processus et mes services.
+  categories:
+    - title: Services & Processus
+      questions:
+        - label: Quels services proposez-vous ?
+          content: |
+            Je me spécialise dans le design UX/UI et le développement front-end. Cela inclut la recherche utilisateur, le wireframing, le prototypage interactif, la création d'interfaces utilisateur intuitives, la construction de sites web et d'applications web réactives (notamment avec Vue.js/Nuxt.js), et le développement de systèmes de design. Mon objectif est de créer des expériences numériques fluides de la conception au déploiement.
+        - label: À quoi ressemble votre processus de design ?
+          content: |
+            Mon processus est collaboratif et itératif, impliquant généralement des étapes comme Découverte & Recherche, Idéation & Prototypage, Tests Utilisateurs, Design Visuel, et une collaboration étroite avec les équipes de développement pendant l'implémentation. J'adapte le processus en fonction des besoins du projet, en me concentrant toujours sur des solutions centrées sur l'utilisateur.
+        - label: Travaillez-vous avec des startups ?
+          content: |
+            Absolument ! J'aime travailler avec des startups pour les aider à façonner leur vision produit et créer des interfaces conviviales dès le départ. Je peux adapter mon processus pour s'adapter à l'environnement rapide des startups.
+    - title: Tarifs & Délais
+      questions:
+        - label: Combien coûte généralement un projet ?
+          content: |
+            Les coûts des projets varient en fonction de la portée, de la complexité, des fonctionnalités et du délai. Pour les projets complets de design UX/UI et de développement front-end, mes engagements commencent généralement autour de 5 000 $, avec des projets moyens allant de 8 000 $ à 25 000 $. Pour le conseil ou des tâches de design spécifiques, mon tarif journalier est de 700 $.
+        - label: Quels sont vos conditions de paiement ?
+          content: |
+            Je demande généralement un acompte de 40% pour planifier le projet et commencer le travail, les 60% restants étant dus à la réussite du projet et à la livraison. J'accepte les paiements par virement bancaire et Stripe.
+        - label: Combien de temps prend un projet typique ?
+          content: |
+            Les délais dépendent fortement de la portée et de la complexité du projet. Les projets plus petits peuvent prendre 3-4 semaines, tandis que les projets plus importants et plus complexes peuvent aller de 2 à 4 mois. Je fournis toujours une estimation de délai détaillée après la phase de découverte initiale.
