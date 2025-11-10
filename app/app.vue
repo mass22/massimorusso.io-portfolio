@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { Analytics } from '@vercel/analytics/nuxt';
+import { computed } from 'vue';
 
 const colorMode = useColorMode()
 const { locale, t, locales } = useI18n()
@@ -170,6 +171,7 @@ const { data: files } = useLazyAsyncData('search', () => {
 </script>
 
 <template>
+  <Analytics />
   <UApp>
     <NuxtLayout>
       <UMain class="relative">
