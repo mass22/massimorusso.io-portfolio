@@ -33,5 +33,6 @@ const showStickyCTA = computed(() => y.value > 300 && !isContactPage.value)
       <AppFooter />
     </UContainer>
     <StickyCTA />
+    <BackToTop />
   </div>
 </template>

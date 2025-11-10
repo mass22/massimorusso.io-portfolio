@@ -13,14 +13,14 @@ defineProps<{
     :transition="{ duration: 0.6 }"
     :in-view-options="{ once: true, margin: '-100px' }"
   >
-    <UPageSection
-      :title="page.experience.title"
-      :ui="{
-        container: '!p-0 gap-4 sm:gap-4',
+  <UPageSection
+    :title="page.experience.title"
+    :ui="{
+      container: '!p-0 gap-4 sm:gap-4',
         title: 'text-left text-lg sm:text-xl lg:text-xl font-normal text-muted',
-        description: 'mt-2'
-      }"
-    >
+      description: 'mt-2'
+    }"
+  >
     <template #description>
       <div class="flex flex-col gap-2">
         <Motion

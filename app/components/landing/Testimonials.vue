@@ -15,11 +15,11 @@ defineProps<{
     :transition="{ duration: 0.6 }"
     :in-view-options="{ once: true, margin: '-100px' }"
   >
-    <UPageSection
-      :ui="{
+  <UPageSection
+    :ui="{
         container: 'px-0 !pt-12 sm:!pt-16 lg:!pt-20'
-      }"
-    >
+    }"
+  >
     <UCarousel
       v-slot="{ item }"
       :items="page.testimonials"

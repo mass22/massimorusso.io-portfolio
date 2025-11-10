@@ -46,8 +46,11 @@ const ctaLinks = computed(() => ([
         container: '!pt-12 sm:!pt-16 lg:!pt-20 lg:grid lg:grid-cols-2 lg:gap-8'
       }"
     >
+      <div class="flex flex-col gap-4">
       <LazyLandingAbout :page />
-      <LazyLandingWorkExperience v-if="isVisible" :page/>
+        <LazyLandingWorkExperience :page/>
+      </div>
+      <LazyLandingSpeaking :page />
     </UPageSection>
 
     <!-- 5. Blog (contenu secondaire) -->
@@ -56,7 +59,7 @@ const ctaLinks = computed(() => ([
         container: '!pt-12 sm:!pt-16 lg:!pt-20'
       }"
     >
-      <LazyLandingBlog :page />
+    <LazyLandingBlog :page />
     </UPageSection>
 
     <!-- 6. FAQ (répondre aux objections) -->
@@ -90,7 +93,13 @@ const ctaLinks = computed(() => ([
       </UPageSection>
     </Motion>
 
-    <!-- Podcast (optionnel, en bas) -->
-    <LazyPodcastPlayer :page />
+    <!-- 8. Derniers Speaking (Conférences, Talks, Podcasts) -->
+    <!-- <UPageSection
+      :ui="{
+        container: '!pt-12 sm:!pt-16 lg:!pt-20'
+      }"
+    >
+
+    </UPageSection> -->
   </UPage>
 </template>

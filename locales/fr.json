@@ -34,6 +34,10 @@
       "title": "Prêt à démarrer votre projet ?",
       "description": "Discutons de vos besoins et voyons comment je peux vous aider à créer des expériences numériques exceptionnelles.",
       "button": "Me contacter"
+    },
+    "speaking": {
+      "description": "Découvrez mes conférences, talks et podcasts",
+      "viewAll": "Voir toutes les conférences"
     }
   },
   "blog": {
@@ -144,6 +148,16 @@
       "title": "Planifier un rendez-vous avec Massimo Russo",
       "button": "Préférer envoyer un message"
     },
+    "booking": {
+      "title": "Planifiez un rendez-vous",
+      "description": "Choisissez un créneau qui vous convient pour discuter de votre projet."
+    },
+    "divider": "ou",
+    "linkedin": {
+      "title": "Contactez-moi sur LinkedIn",
+      "description": "Préférez-vous échanger via LinkedIn ? Envoyez-moi un message et je vous répondrai rapidement.",
+      "cta": "Me contacter sur LinkedIn"
+    },
     "form": {
       "honeypotLabel": "Ne pas remplir ce champ",
       "nameLabel": "Nom",
@@ -237,5 +251,8 @@
   },
   "accessibility": {
     "skipToContent": "Aller au contenu principal"
+  },
+  "backToTop": {
+    "ariaLabel": "Retour en haut de la page"
   }
 }

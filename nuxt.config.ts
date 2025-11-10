@@ -29,6 +29,11 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/main.css'],
+  content: {
+    preview: {
+      api: 'https://api.nuxt.studio'
+    }
+  },
   build: {
     transpile: ['motion-v']
   },
@@ -116,7 +121,8 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
-  }, i18n: {
+  },
+  i18n: {
     defaultLocale: 'fr',
     strategy: 'prefix_except_default',
     locales: [
@@ -151,7 +157,8 @@ export default defineNuxtConfig({
     bundle: {
       optimizeTranslationDirective: false
     }
-  }, image: {
+  },
+  image: {
     quality: 80,
     format: ['webp', 'avif'],
     screens: {

@@ -35,7 +35,7 @@ export function getNavLinks(
   return NAV_LINKS.map(({ key, to, ...rest }) => {
     const label = t(key)
     return {
-      ...rest,
+    ...rest,
       label,
       'to': localePath ? localePath(to) : to,
       'aria-label': label // S'assurer que chaque lien a un aria-label accessible

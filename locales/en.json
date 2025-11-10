@@ -34,6 +34,10 @@
       "title": "Ready to start your project?",
       "description": "Let's discuss your needs and see how I can help you create exceptional digital experiences.",
       "button": "Contact me"
+    },
+    "speaking": {
+      "description": "Discover my conferences, talks and podcasts",
+      "viewAll": "View all conferences"
     }
   },
   "blog": {
@@ -144,6 +148,16 @@
       "title": "Schedule a meeting with Massimo Russo",
       "button": "Prefer to send a message"
     },
+    "booking": {
+      "title": "Schedule a meeting",
+      "description": "Choose a time slot that works for you to discuss your project."
+    },
+    "divider": "or",
+    "linkedin": {
+      "title": "Contact me on LinkedIn",
+      "description": "Prefer to connect via LinkedIn? Send me a message and I'll get back to you quickly.",
+      "cta": "Contact me on LinkedIn"
+    },
     "form": {
       "honeypotLabel": "Do not fill this field",
       "nameLabel": "Name",
@@ -237,5 +251,8 @@
   },
   "accessibility": {
     "skipToContent": "Skip to main content"
+  },
+  "backToTop": {
+    "ariaLabel": "Back to top"
   }
 }

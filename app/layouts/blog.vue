@@ -15,5 +15,6 @@ const navLinks = computed<NavigationMenuItem[]>(() => getNavLinks(t, localePath)
       <slot />
       <AppFooter />
     </UContainer>
+    <BackToTop />
   </div>
 </template>

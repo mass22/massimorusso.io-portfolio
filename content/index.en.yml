@@ -68,6 +68,9 @@ experience:
 blog:
   title: "Latest Articles"
   description: "Some of my recent thoughts"
+speaking:
+  title: "Conferences & Podcasts"
+  description: "Discover my latest talks and podcasts"
 podcast:
   title: "My podcast: On parle dev"
   description: "Listen without moderation"
