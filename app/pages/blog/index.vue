@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t, locale, defaultLocale } = useI18n()
+const localePath = useLocalePath()
 
 const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () => {
   const allPages = await queryCollection('pages').all()
@@ -36,18 +37,43 @@ const defaultLocaleCode = computed(() => defaultLocale.value || 'fr')
 
 const localizedPosts = computed(() => {
   return (posts.value ?? []).map((post: any) => {
-    const localeCode = post.locale || defaultLocaleCode.value
-    const basePath = post.path || (post.slug ? `/blog/${post.slug}` : '/blog')
-    const segments = basePath.split('/').filter(Boolean)
+    // Extraire le slug du chemin du post
+    // Le chemin peut être /blog/slug ou /en/blog/slug ou blog/slug.md
+    let slug = post.slug
 
-    if (segments[0] === localeCode && localeCode !== defaultLocaleCode.value) {
-      segments.shift()
+    if (!slug && post.path) {
+      // Extraire le slug du chemin
+      const pathSegments = post.path.split('/').filter(Boolean)
+      // Enlever 'blog' et la locale si présente
+      const blogIndex = pathSegments.findIndex((seg: string) => seg === 'blog')
+      if (blogIndex !== -1 && blogIndex < pathSegments.length - 1) {
+        slug = pathSegments[blogIndex + 1]
+        // Enlever l'extension si présente
+        if (slug) {
+          slug = slug.replace(/\.(md|yml|yaml)$/, '')
+        }
+      }
     }
 
-    const normalizedPath = `/${segments.join('/')}`
-    const localizedPath = localeCode && localeCode !== defaultLocaleCode.value
-      ? `/${localeCode}${normalizedPath}`
-      : normalizedPath
+    // Si toujours pas de slug, utiliser le nom du fichier depuis _path ou _id
+    if (!slug) {
+      if (post._path) {
+        const pathParts = post._path.split('/')
+        const fileName = pathParts[pathParts.length - 1]
+        slug = fileName.replace(/\.(md|yml|yaml)$/, '')
+      } else if (post._id) {
+        // Utiliser _id comme fallback (format: content:blog:filename.md)
+        const idParts = post._id.split(':')
+        if (idParts.length > 0) {
+          const fileName = idParts[idParts.length - 1]
+          slug = fileName.replace(/\.(md|yml|yaml)$/, '')
+        }
+      }
+    }
+
+    // Construire le chemin localisé avec localePath
+    const blogPath = slug ? `/blog/${slug}` : '/blog'
+    const localizedPath = localePath(blogPath)
 
     return {
       ...post,
@@ -87,21 +113,22 @@ useSeoMeta({
           :transition="{ delay: 0.2 * index }"
           :in-view-options="{ once: true }"
         >
-          <UBlogPost
-            variant="naked"
-            orientation="horizontal"
-            :to="post.path"
-            v-bind="post"
-            :ui="{
-              root: 'md:grid md:grid-cols-2 group overflow-visible transition-all duration-300',
-              image:
-                'group-hover/blog-post:scale-105 rounded-lg shadow-lg border-4 border-muted ring-2 ring-default',
-              header:
-                index % 2 === 0
-                  ? 'sm:-rotate-1 overflow-visible'
-                  : 'sm:rotate-1 overflow-visible'
-            }"
-          />
+          <NuxtLink :to="post.path" class="block">
+            <UBlogPost
+              variant="naked"
+              orientation="horizontal"
+              v-bind="post"
+              :ui="{
+                root: 'md:grid md:grid-cols-2 group overflow-visible transition-all duration-300 cursor-pointer',
+                image:
+                  'group-hover/blog-post:scale-105 rounded-lg shadow-lg border-4 border-muted ring-2 ring-default',
+                header:
+                  index % 2 === 0
+                    ? 'sm:-rotate-1 overflow-visible'
+                    : 'sm:rotate-1 overflow-visible'
+              }"
+            />
+          </NuxtLink>
         </Motion>
       </UBlogPosts>
     </UPageSection>
