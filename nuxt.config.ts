@@ -89,12 +89,17 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-11-08',
   nitro: {
     compressPublicAssets: true,
-    minify: true
+    minify: true,
+    experimental: {
+      wasm: true
+    }
+    // La compression HTTP (gzip/brotli) est gérée automatiquement par Nitro avec compressPublicAssets
   },
   vite: {
     build: {
       chunkSizeWarningLimit: 1000,
-      cssCodeSplit: false // Force le CSS dans un seul fichier pour éviter le chargement asynchrone
+      cssCodeSplit: false, // Force le CSS dans un seul fichier pour éviter le chargement asynchrone
+      minify: 'esbuild' // Utiliser esbuild pour une minification plus rapide et efficace
     },
     css: {
       preprocessorOptions: {
@@ -157,7 +162,7 @@ export default defineNuxtConfig({
       xl: 1280,
       xxl: 1536
     },
-    domains: ['picsum.photos', 'images.unsplash.com', 'ui.nuxt.com'],
+    domains: ['picsum.photos', 'images.unsplash.com', 'images.pexels.com', 'ui.nuxt.com'],
     presets: {
       hero: {
         modifiers: {

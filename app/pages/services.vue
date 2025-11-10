@@ -135,12 +135,14 @@ const links = computed(() => ([
             :aria-label="t(service.titleKey)"
           >
             <ClientOnly>
-              <img
+              <NuxtImg
                 src="https://picsum.photos/200"
                 :alt="t(service.imageAltKey)"
                 width="200"
                 height="200"
                 loading="lazy"
+                format="webp"
+                quality="80"
                 class="w-full"
               />
               <template #fallback>

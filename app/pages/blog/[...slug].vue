@@ -263,6 +263,11 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
             <NuxtImg
               :src="page.image"
               :alt="page.title"
+              width="1200"
+              height="300"
+              loading="lazy"
+              format="webp"
+              quality="80"
               class="rounded-lg w-full h-[300px] object-cover object-center"
             />
             <h1 class="text-4xl text-center font-medium max-w-3xl mx-auto mt-4">

@@ -75,12 +75,14 @@ const serviceItems = [
           </UButton>
         </template>
         <ClientOnly>
-          <img
+          <NuxtImg
             src="https://picsum.photos/400/300"
             :alt="t(service.imageAltKey)"
             width="400"
             height="300"
             loading="lazy"
+            format="webp"
+            quality="80"
             class="w-full h-48 object-cover rounded-lg"
           />
           <template #fallback>

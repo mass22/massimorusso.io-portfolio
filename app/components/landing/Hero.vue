@@ -337,13 +337,15 @@ onMounted(() => {
       </Motion>
     </UMarquee> -->
     <ClientOnly>
-      <img
+      <NuxtImg
         src="https://picsum.photos/seed/picsum/800/800"
         :alt="t('hero.image.alt')"
         width="800"
         height="800"
         loading="eager"
         fetchpriority="high"
+        format="webp"
+        quality="80"
         class="rounded-lg shadow-2xl ring ring-default"
       />
       <template #fallback>
