@@ -187,7 +187,7 @@ onMounted(() => {
     </template>
   </UModal>
     <ClientOnly>
-      <div class="relative w-full" style="min-height: 420px;">
+      <div class="relative w-full min-h-[705px] sm:min-h-[420px]">
         <iframe
           ref="iframeRef"
           name="Ausha Podcast Player"
@@ -195,8 +195,8 @@ onMounted(() => {
           frameborder="0"
           loading="lazy"
           id="ausha-P04n"
-          height="420"
-          style="border: none; width:100%; height:420px; background-color: #000000;"
+          class="h-[705px] sm:h-[420px] rounded-xl mx-auto"
+          style="border: none; width:90%; background-color: #000000;"
           src="https://player.ausha.co/?showId=pJ1YkF6eXmgj&color=%23ffffff&multishow=false&playlist=true&dark=true&v=3&playerId=ausha-P04n"
           referrerpolicy="no-referrer-when-downgrade"
           allow="autoplay; encrypted-media"
@@ -238,8 +238,8 @@ onMounted(() => {
         </div>
       </div>
       <template #fallback>
-        <div class="w-full" style="min-height: 420px;">
-          <div class="flex items-center justify-center bg-muted rounded-lg h-full min-h-[420px]">
+        <div class="w-full min-h-[685px] sm:min-h-[420px]">
+          <div class="flex items-center justify-center bg-muted rounded-lg h-full min-h-[685px] sm:min-h-[420px]">
             <div class="text-center p-6">
               <div class="size-8 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-2" />
               <p class="text-xs text-muted">{{ t('podcast.player.loading') }}</p>

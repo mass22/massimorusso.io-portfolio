@@ -1,22 +1,27 @@
 <script setup lang="ts">
-const { footer } = useAppConfig()
+const { footer: footerConfig } = useAppConfig()
+
+const { t } = useI18n()
+const currentYear = new Date().getFullYear()
 </script>
 
 <template>
   <UFooter
     class="z-10 bg-default"
-    :ui="{ left: 'text-muted text-xs' }"
+    :ui="{ left: 'text-muted text-xs', center: 'text-muted text-xs' }"
   >
     <template #left>
-      {{ footer.credits }}
+      {{ t("footer.credits", { year: currentYear }) }}
     </template>
 
+    <span class="footer-license" v-html="t('footer.license')" />
+
     <template #right>
-      <template v-if="footer?.links">
+      <template v-if="footerConfig?.links">
         <UButton
-          v-for="(link, index) of footer?.links"
+          v-for="(link, index) of footerConfig?.links"
           :key="index"
-          v-bind="{ size: 'xs', color: 'neutral', variant: 'ghost', ...link }"
+          v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
         />
       </template>
     </template>

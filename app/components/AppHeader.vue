@@ -3,7 +3,7 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 import { en, fr } from '@nuxt/ui/locale'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 import { computed, onMounted, ref, watchEffect } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const { footer } = useAppConfig()
 const { t, locale, setLocale, locales: availableLocales } = useI18n()
@@ -13,6 +13,7 @@ const socialLinks = computed(() => footer?.links?.map(link => ({
   'aria-label': t(link.ariaLabelKey)
 })) ?? [])
 
+const route = useRoute()
 const breakpoints = useBreakpoints(breakpointsTailwind)
 const isMobile = ref(false)
 const slideoverOpen = ref(false)
@@ -109,6 +110,17 @@ const switchLocale = (targetLocale: string, event?: Event) => {
     })
   }
 }
+
+// Fonction pour déterminer le style du widget selon l'état actif/inactif
+const getWidgetClass = (link: NavigationMenuItem, index: number) => {
+  const isActive = link.to && (route.path === String(link.to) || (String(link.to) !== '/' && route.path.startsWith(String(link.to))))
+
+  if (isActive) {
+    return 'bg-primary text-white border-2 border-primary'
+  }
+
+  return 'bg-transparent text-default border-2 border-default/50 hover:border-default'
+}
 </script>
 
 <template>
@@ -151,23 +163,43 @@ const switchLocale = (targetLocale: string, event?: Event) => {
 
       <USlideover v-model:open="slideoverOpen" side="right" close>
         <template #body>
-          <UNavigationMenu
-            :items="links"
-            orientation="vertical"
-            variant="link"
-            color="neutral"
-            :ui="{ link: 'px-2 py-1 text-lg', linkLeadingIcon: 'size-5' }"
-          />
+          <div class="p-6">
+            <div class="grid grid-cols-2 gap-4">
+              <ULink
+                v-for="(link, index) in links"
+                :key="index"
+                :to="link.to"
+                :aria-label="link['aria-label'] || link.label"
+                class="group relative flex flex-col items-start justify-between p-6 rounded-3xl transition-all duration-300 ease-out hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl min-h-[140px]"
+                :class="getWidgetClass(link, index)"
+                @click="slideoverOpen = false"
+              >
+                <div class="flex items-start justify-between w-full mb-4">
+                  <UIcon
+                    v-if="link.icon"
+                    :name="link.icon"
+                    class="size-8 opacity-90 group-hover:opacity-100 transition-opacity"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div class="flex flex-col gap-1 w-full">
+                  <span class="text-lg font-bold leading-tight">
+                    {{ link.label }}
+                  </span>
+                </div>
+              </ULink>
+            </div>
+          </div>
         </template>
         <template #footer>
-          <div class="flex flex-row gap-2">
+          <div class="flex flex-row gap-2 h-16 px-6 w-full">
             <UButton
               v-for="(link, index) of socialLinks"
               :key="index"
               v-bind="{ size: 'xs', color: 'neutral', variant: 'ghost', ...link }"
             >
               <template v-if="link.icon" #leading>
-                <UIcon :name="link.icon" aria-hidden="true" />
+                <UIcon :name="link.icon" aria-hidden="true" class="size-6" />
               </template>
             </UButton>
             <UButton
@@ -177,9 +209,10 @@ const switchLocale = (targetLocale: string, event?: Event) => {
               color="neutral"
               variant="ghost"
               block
+              class="text-lg"
               @click.stop="switchLocale(inactiveLocale.code, $event)"
             />
-            <ColorModeButton />
+            <ColorModeButton size="md"/>
           </div>
         </template>
       </USlideover>

@@ -227,22 +227,27 @@ nav a::after,
   left: 0;
   width: 0;
   height: 2px;
-  background-color: currentColor;
+  background-color: var(--color-primary, #00DC82);
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hover : soulignement avec la couleur du texte */
+/* Hover : soulignement vert (couleur primary) */
 nav a:hover::after,
 [role="navigation"] a:hover::after {
   width: 100%;
-  background-color: currentColor;
+  background-color: var(--color-primary, #00DC82);
 }
 
-/* Active : soulignement avec la couleur primary */
+/* Active : pas de soulignement, texte vert */
+nav a[aria-current="page"],
+[role="navigation"] a[aria-current="page"] {
+  color: var(--color-primary, #00DC82) !important;
+}
+
 nav a[aria-current="page"]::after,
 [role="navigation"] a[aria-current="page"]::after {
-  width: 100%;
-  background-color: var(--color-primary, #00DC82);
+  width: 0;
+  background-color: transparent;
 }
 
 /* Animation sur les images au hover */

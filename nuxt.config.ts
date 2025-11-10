@@ -88,7 +88,6 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2025-11-08',
   nitro: {
-    preset: 'node-server',
     compressPublicAssets: true,
     minify: true
   },

@@ -226,6 +226,7 @@
   },
   "footer": {
     "credits": "© {year} Massimo Russo. Tous droits réservés.",
+    "license": "Le contenu du site est sous licence <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' rel='noopener'>CC-BY-NC-SA 4.0</a>",
     "links": {
       "linkedin": "Massimo Russo sur LinkedIn",
       "bluesky": "Massimo Russo sur Bluesky"

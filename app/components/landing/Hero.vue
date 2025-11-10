@@ -29,7 +29,7 @@ onMounted(() => {
     orientation="horizontal"
     reverse
     :ui="{
-      headline: 'flex items-center justify-center',
+      headline: 'flex flex-col items-center justify-center',
       title: 'text-shadow-md max-w-lg mx-auto',
       links: 'mt-4 flex-col justify-center items-center'
     }"
