@@ -38,6 +38,11 @@
     "speaking": {
       "description": "Discover my conferences, talks and podcasts",
       "viewAll": "View all conferences"
+    },
+    "companies": {
+      "title": "Companies I've worked with",
+      "description": "Discover some of the companies that have trusted me with their projects.",
+      "visit": "Visit website"
     }
   },
   "blog": {

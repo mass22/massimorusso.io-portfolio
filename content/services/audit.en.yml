@@ -1,0 +1,48 @@
+locale: 'en'
+slug: 'audit'
+title: "Audit & Optimization"
+description: "In-depth analysis of your existing interfaces to identify improvement opportunities and optimize user experience."
+icon: 'i-ph-sparkle'
+content: |
+  ## Audit & Optimization
+
+  A UX/UI audit helps identify problems and improvement opportunities in your user interface. I provide you with a detailed report with concrete and actionable recommendations.
+
+  ## Types of audits
+
+  ### UX Audit
+  - User experience analysis
+  - Identification of friction points
+  - User testing
+  - Improvement recommendations
+
+  ### UI Audit
+  - Visual interface analysis
+  - Design consistency
+  - Accessibility (WCAG)
+  - Responsive design
+
+  ### Technical Audit
+  - Front-end performance
+  - Code quality
+  - Architecture
+  - Security
+
+  ## Deliverables
+
+  At the end of the audit, you receive:
+  - A detailed report with priorities
+  - Concrete and actionable recommendations
+  - An action plan for improvements
+  - Visual examples and mockups if needed
+
+  ## Duration
+
+  A complete audit typically takes between 1 and 2 weeks depending on the complexity of your product.
+
+  ## Pricing
+
+  Audits start from **€2,500** for a basic UX/UI audit. Rates vary depending on scope and complexity.
+
+  [Contact me](/contact) to discuss your audit needs.
+

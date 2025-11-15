@@ -80,22 +80,15 @@ useHead({
 
 const localePath = useLocalePath()
 
-const links = computed(() => ([
-  {
-    label: t('services.cta.contact'),
-    to: localePath('/contact'),
-    trailingIcon: 'i-lucide-arrow-right',
-    variant: 'solid' as const,
-    color: 'primary' as const
-  },
-  {
-    label: t('services.cta.booking'),
-    to: global.available ? global.meetingLink : localePath('/contact'),
-    trailingIcon: 'i-lucide-calendar',
-    variant: 'outline' as const,
-    color: 'neutral' as const
+// Fonction pour obtenir le slug d'un service
+const getServiceSlug = (titleKey: string) => {
+  const serviceSlugs: Record<string, string> = {
+    'services.items.consulting.title': 'consulting',
+    'services.items.workshops.title': 'workshops',
+    'services.items.audit.title': 'audit'
   }
-]))
+  return serviceSlugs[titleKey] || ''
+}
 </script>
 
 <template>
@@ -131,9 +124,31 @@ const links = computed(() => ([
             :icon="service.icon"
             orientation="vertical"
             reverse
-            to="/services#"
+            :to="localePath(`/services/${getServiceSlug(service.titleKey)}`)"
             :aria-label="t(service.titleKey)"
+            class="group hover:scale-[1.02] hover:shadow-lg transition-all duration-300 ease-out"
+            :ui="{
+              root: 'h-full',
+              body: 'flex-1'
+            }"
           >
+            <template #footer>
+              <UButton
+                :to="localePath(`/services/${getServiceSlug(service.titleKey)}`)"
+                variant="link"
+                size="sm"
+                class="px-0 gap-1 text-primary"
+                :label="t('services.cta.learnMore')"
+              >
+                <template #trailing>
+                  <UIcon
+                    name="i-lucide-arrow-right"
+                    class="size-4 transition-all duration-300 ease-out opacity-0 group-hover:translate-x-2 group-hover:opacity-100"
+                    aria-hidden="true"
+                  />
+                </template>
+              </UButton>
+            </template>
             <ClientOnly>
               <NuxtImg
                 src="https://picsum.photos/200"
@@ -153,30 +168,7 @@ const links = computed(() => ([
         </Motion>
       </UBlogPosts>
     </Motion>
-    <Motion
-      :initial="{ opacity: 0, transform: 'translateY(30px)' }"
-      :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
-      :transition="{ duration: 0.6 }"
-      :in-view-options="{ once: true, margin: '-100px' }"
-    >
-      <UPageSection
-        :ui="{
-          container: '!pt-16 sm:!pt-20 lg:!pt-24'
-        }"
-      >
-        <UPageCTA
-          :title="t('services.cta.title')"
-          :description="t('services.cta.description')"
-          :links="links"
-          variant="solid"
-          :ui="{
-            container: 'bg-elevated/50 dark:bg-elevated/30 rounded-2xl p-8 sm:p-12 lg:p-16 gap-6 sm:gap-8',
-            title: 'text-2xl sm:text-3xl lg:text-4xl font-bold',
-            description: 'text-base sm:text-lg lg:text-xl max-w-2xl mx-auto'
-          }"
-        />
-      </UPageSection>
-    </Motion>
+    <ServicesCTA />
   <LazyLandingTestimonials v-if="page" :page="page as any" />
   <LazyLandingFAQ v-if="page" :page="page as any" />
   </UPage>

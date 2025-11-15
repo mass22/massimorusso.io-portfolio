@@ -80,7 +80,16 @@ export default defineContentConfig({
           }))
         }),
         blog: createBaseSchema(),
-        podcast: createBaseSchema()
+        podcast: createBaseSchema(),
+        companies: createBaseSchema().extend({
+          companies: z.array(z.object({
+            name: z.string(),
+            logo: z.string().optional(),
+            url: z.string().optional(),
+            description: z.string().optional()
+          }))
+        }).optional(),
+        speaking: createBaseSchema().optional()
       })
     }), pages: defineCollection({
       type: 'page',
@@ -152,6 +161,22 @@ export default defineContentConfig({
               )
             }))
         })
+      })
+    }), serviceItems: defineCollection({
+      type: 'page',
+      source: 'services/*.yml',
+      schema: z.object({
+        locale: z.enum(['fr', 'en']).default('fr'),
+        slug: z.string(),
+        title: z.string(),
+        description: z.string(),
+        icon: z.string(),
+        content: z.string(),
+        images: z.array(createImageSchema()).optional(),
+        seo: z.object({
+          title: z.string(),
+          description: z.string()
+        }).optional()
       })
     }), speaking: defineCollection({
       type: 'page',

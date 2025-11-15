@@ -68,11 +68,7 @@ const xDefaultLink = computed(() => ({
   href: canonicalUrl.value, hreflang: 'x-default', id: 'alt-x-default', rel: 'alternate'
 }))
 
-const i18nHead = useLocaleHead({
-  addDirAttribute: true,
-  addSeoAttributes: true,
-  identifierAttribute: 'id'
-})
+const i18nHead = useLocaleHead()
 
 useHead(() => {
   const { meta = [], link = [], htmlAttrs = {} } = i18nHead.value

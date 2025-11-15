@@ -24,23 +24,43 @@ defineProps<{
 
 // Récupérer les événements speaking
 const { data: speakingPage } = await useAsyncData(`speaking-${locale.value}`, async () => {
-  const allPages = await queryCollection('speaking').all()
-  const found = allPages.find((p: any) => p.locale === locale.value)
-  return found || allPages.find((p: any) => p.locale === 'fr') || null
+  try {
+    const allPages = await queryCollection('speaking').all()
+    const found = allPages.find((p: any) => p.locale === locale.value)
+    const page = found || allPages.find((p: any) => p.locale === 'fr') || null
+    return page
+  } catch (error) {
+    console.error('Error fetching speaking page:', error)
+    return null
+  }
 })
 
 // Récupérer les 3 derniers événements (toutes catégories, triés par date)
 const latestEvents = computed(() => {
-  if (!speakingPage.value?.events) return []
+  if (!speakingPage.value) {
+    console.warn('speakingPage.value is null/undefined')
+    return []
+  }
+
+  if (!speakingPage.value.events) {
+    console.warn('No events property in speakingPage:', speakingPage.value)
+    return []
+  }
 
   const events = [...speakingPage.value.events]
-    .filter((event: Event) => event.date) // Filtrer ceux qui ont une date
-    .sort((a: Event, b: Event) => {
+    .filter((event: any) => {
+      if (!event) return false
+      if (!event.date) {
+        console.warn('Event without date:', event)
+        return false
+      }
+      return true
+    })
+    .sort((a: any, b: any) => {
       // Trier par date décroissante (plus récent en premier)
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
     .slice(0, 3) // Limiter à 3
-
   return events as Event[]
 })
 
@@ -81,15 +101,18 @@ function getCategoryLabel(category: string): string {
       :title="page.speaking?.title || t('navigation.speaking')"
       :description="page.speaking?.description || t('homepage.speaking.description')"
       :ui="{
-        container: 'px-0 !pt-0 sm:gap-6 lg:gap-8',
+        container: '!pt-12 sm:!pt-16 lg:!pt-20',
         title: 'text-left text-lg sm:text-xl lg:text-xl font-normal text-muted',
         description: 'text-left mt-2 text-sm sm:text-sm lg:text-sm text-muted'
       }"
     >
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      <div v-if="latestEvents.length === 0" class="text-center text-muted py-8">
+        <p>Aucun événement disponible pour le moment.</p>
+      </div>
+      <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         <Motion
           v-for="(event, index) in latestEvents"
-          :key="index"
+          :key="`event-${index}-${event.title}`"
           :initial="{ opacity: 0, transform: 'translateY(20px)' }"
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
           :transition="{ delay: 0.1 * index, duration: 0.5 }"
@@ -98,7 +121,6 @@ function getCategoryLabel(category: string): string {
           <UCard
             :to="event.url || localePath('/speaking')"
             :target="event.url ? '_blank' : undefined"
-            :title="event.title"
             class="group h-full hover:shadow-lg transition-all duration-300 ease-out hover:scale-[1.02]"
             :ui="{
               root: 'flex flex-col h-full',
@@ -123,23 +145,21 @@ function getCategoryLabel(category: string): string {
               </div>
             </template>
 
-            <template #body>
-              <div class="flex-1 flex flex-col gap-3">
-                <h3 class="text-lg font-semibold text-highlighted leading-tight group-hover:text-primary transition-colors">
-                  {{ event.title }}
-                </h3>
-                <div class="flex flex-col gap-2 text-sm text-muted">
-                  <div class="flex items-center gap-2">
-                    <UIcon name="i-lucide-map-pin" class="size-4" aria-hidden="true" />
-                    <span>{{ event.location }}</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <UIcon name="i-lucide-calendar" class="size-4" aria-hidden="true" />
-                    <span>{{ formatDate(event.date) }}</span>
-                  </div>
+            <div class="flex-1 flex flex-col gap-3">
+              <h3 class="text-lg font-semibold text-highlighted leading-tight group-hover:text-primary transition-colors">
+                {{ event?.title || 'No title' }}
+              </h3>
+              <div class="flex flex-col gap-2 text-sm text-muted">
+                <div class="flex items-center gap-2">
+                  <UIcon name="i-lucide-map-pin" class="size-4 shrink-0" aria-hidden="true" />
+                  <span>{{ event?.location || 'No location' }}</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <UIcon name="i-lucide-calendar" class="size-4 shrink-0" aria-hidden="true" />
+                  <span>{{ event?.date ? formatDate(event.date) : 'No date' }}</span>
                 </div>
               </div>
-            </template>
+            </div>
 
             <template #footer>
               <UButton

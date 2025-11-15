@@ -71,6 +71,28 @@ blog:
 speaking:
   title: "Conferences & Podcasts"
   description: "Discover my latest talks and podcasts"
+companies:
+  title: "Companies I've worked with"
+  description: "Discover some of the companies that have trusted me with their projects."
+  companies:
+    - name: "Bloom Finance"
+      logo: "i-lucide-building-2"
+      url: "#"
+    - name: "Wavelength Music"
+      logo: "i-lucide-music"
+      url: "#"
+    - name: "GreenTech Solutions"
+      logo: "i-lucide-leaf"
+      url: "#"
+    - name: "EcoTrack"
+      logo: "i-lucide-activity"
+      url: "#"
+    - name: "TechForward"
+      logo: "i-lucide-rocket"
+      url: "#"
+    - name: "Design Systems Co"
+      logo: "i-lucide-layers"
+      url: "#"
 podcast:
   title: "My podcast: On parle dev"
   description: "Listen without moderation"

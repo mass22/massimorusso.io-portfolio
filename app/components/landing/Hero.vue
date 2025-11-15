@@ -169,7 +169,7 @@ onMounted(() => {
               :color="global.available ? 'success' : 'error'"
               variant="ghost"
               class="gap-2"
-              :to="global.available ? global.meetingLink : ''"
+              :to="global.available ? localePath('/contact#calendar') : ''"
               :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
             >
               <template #leading>
@@ -232,7 +232,7 @@ onMounted(() => {
               :color="global.available ? 'success' : 'error'"
               variant="ghost"
               class="gap-2"
-              :to="global.available ? global.meetingLink : ''"
+              :to="global.available ? localePath('/contact#calendar') : ''"
               :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
             >
               <template #leading>
@@ -347,9 +347,11 @@ onMounted(() => {
         format="webp"
         quality="80"
         class="rounded-lg shadow-2xl ring ring-default"
+        placeholder
+        sizes="(max-width: 768px) 100vw, 800px"
       />
       <template #fallback>
-        <div class="w-full h-[800px] bg-muted rounded-lg shadow-2xl ring ring-default animate-pulse" />
+        <div class="w-full bg-muted rounded-lg shadow-2xl ring ring-default animate-pulse" style="aspect-ratio: 1/1; max-width: 800px; margin: 0 auto;" />
       </template>
     </ClientOnly>
   </UPageHero>

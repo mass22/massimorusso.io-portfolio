@@ -72,7 +72,7 @@ useSeoMeta({
     <UPageSection>
       <div class="flex flex-col items-center gap-8">
         <!-- Cal.com - Option principale -->
-        <div class="w-full max-w-4xl">
+        <div id="calendar" class="w-full max-w-4xl scroll-mt-24">
           <div class="text-center mb-6">
             <h2 class="text-2xl sm:text-3xl font-semibold mb-2">
               {{ t('contact.booking.title') }}

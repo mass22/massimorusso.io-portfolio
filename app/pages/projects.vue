@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 
 if (process.env.NODE_ENV === 'production') {
   throw createError({ message: t('common.pageNotFound'), statusCode: 404 })
@@ -55,7 +56,7 @@ useSeoMeta({
         >
           <UButton
             :label="page.links[0]?.label"
-            :to="global.meetingLink"
+            :to="localePath('/contact#calendar')"
             v-bind="page.links[0]"
           />
           <UButton

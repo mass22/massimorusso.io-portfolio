@@ -33,7 +33,12 @@ if (!posts.value) {
   })
 }
 
-const defaultLocaleCode = computed(() => defaultLocale.value || 'fr')
+const defaultLocaleCode = computed(() => {
+  if (typeof defaultLocale === 'string') {
+    return defaultLocale
+  }
+  return (defaultLocale as any)?.value || defaultLocale || 'fr'
+})
 
 const localizedPosts = computed(() => {
   return (posts.value ?? []).map((post: any) => {

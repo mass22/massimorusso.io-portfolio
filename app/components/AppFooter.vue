@@ -1,8 +1,16 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const { footer: footerConfig } = useAppConfig()
 
 const { t } = useI18n()
 const currentYear = new Date().getFullYear()
+
+// Mapper les liens du footer avec leurs aria-labels pour l'accessibilité
+const footerLinksWithLabels = computed(() => footerConfig?.links?.map(link => ({
+  ...link,
+  'aria-label': link.ariaLabelKey ? t(link.ariaLabelKey) : (link as any).label
+})) ?? [])
 </script>
 
 <template>
@@ -17,12 +25,16 @@ const currentYear = new Date().getFullYear()
     <span class="footer-license" v-html="t('footer.license')" />
 
     <template #right>
-      <template v-if="footerConfig?.links">
+      <template v-if="footerLinksWithLabels.length > 0">
         <UButton
-          v-for="(link, index) of footerConfig?.links"
+          v-for="(link, index) of footerLinksWithLabels"
           :key="index"
           v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
-        />
+        >
+          <template v-if="link.icon" #leading>
+            <UIcon :name="link.icon" aria-hidden="true" />
+          </template>
+        </UButton>
       </template>
     </template>
   </UFooter>

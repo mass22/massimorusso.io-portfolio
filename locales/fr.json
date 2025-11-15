@@ -38,6 +38,11 @@
     "speaking": {
       "description": "Découvrez mes conférences, talks et podcasts",
       "viewAll": "Voir toutes les conférences"
+    },
+    "companies": {
+      "title": "Entreprises avec qui j'ai travaillé",
+      "description": "Découvrez quelques-unes des entreprises qui m'ont fait confiance pour leurs projets.",
+      "visit": "Visiter le site"
     }
   },
   "blog": {

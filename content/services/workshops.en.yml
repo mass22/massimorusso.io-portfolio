@@ -1,0 +1,45 @@
+locale: 'en'
+slug: 'workshops'
+title: "Training & Workshops"
+description: "Practical training on UX/UI design, Vue.js, Nuxt.js, and front-end development best practices."
+icon: 'i-ph-chalkboard-teacher'
+content: |
+  ## Training & Workshops
+
+  I offer practical and interactive training to help you and your team master modern UX/UI design and front-end development tools and techniques.
+
+  ## Available training
+
+  ### UX/UI Design
+  - Fundamentals of user-centered design
+  - Creating design systems
+  - Prototyping with Figma
+  - User testing and UX research
+
+  ### Vue.js & Nuxt.js
+  - Introduction to Vue.js
+  - Development with Nuxt.js
+  - Architecture and best practices
+  - Performance and optimization
+
+  ### Front-End Development
+  - Web accessibility (WCAG)
+  - Performance and optimization
+  - Testing and code quality
+  - Deployment and CI/CD
+
+  ## Training format
+
+  Training can be organized:
+  - **In-person**: at your premises or a dedicated space
+  - **Online**: via interactive video conferencing
+  - **Hybrid**: combination of both formats
+
+  Typical duration: from 1 day to 1 week depending on the topic.
+
+  ## Pricing
+
+  Rates vary depending on format, duration, and number of participants. Contact me for a personalized quote.
+
+  [Contact me](/contact) to discuss your training needs.
+

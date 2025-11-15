@@ -24,6 +24,15 @@ export default defineNuxtConfig({
           rel: 'preconnect',
           href: 'https://fonts.gstatic.com',
           crossorigin: ''
+        },
+        // Préchargement DNS pour les ressources externes
+        {
+          rel: 'dns-prefetch',
+          href: 'https://picsum.photos'
+        },
+        {
+          rel: 'dns-prefetch',
+          href: 'https://images.unsplash.com'
         }
       ]
     }
@@ -54,6 +63,12 @@ export default defineNuxtConfig({
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/services/**': {
+      isr: 3600,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, s-maxage=3600, must-revalidate'
       }
     },
     '/contact': {
@@ -95,16 +110,41 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     minify: true,
+    // Optimisations pour réduire la taille des bundles
+    esbuild: {
+      options: {
+        treeShaking: true,
+        minifyIdentifiers: true,
+        minifySyntax: true,
+        minifyWhitespace: true
+      }
+    },
     experimental: {
       wasm: true
-    }
+    },
     // La compression HTTP (gzip/brotli) est gérée automatiquement par Nitro avec compressPublicAssets
   },
   vite: {
     build: {
       chunkSizeWarningLimit: 1000,
       cssCodeSplit: false, // Force le CSS dans un seul fichier pour éviter le chargement asynchrone
-      minify: 'esbuild' // Utiliser esbuild pour une minification plus rapide et efficace
+      minify: 'esbuild', // Utiliser esbuild pour une minification plus rapide et efficace
+      rollupOptions: {
+        output: {
+          // Optimisation du code splitting pour réduire le JavaScript non utilisé
+          manualChunks: (id) => {
+            // Séparer les dépendances vendor
+            if (id.includes('node_modules')) {
+              // Séparer les grandes bibliothèques
+              if (id.includes('vue')) return 'vue-vendor'
+              if (id.includes('@nuxt/ui')) return 'nuxt-ui'
+              if (id.includes('motion-v')) return 'motion'
+              // Regrouper les autres dépendances
+              return 'vendor'
+            }
+          }
+        }
+      }
     },
     css: {
       preprocessorOptions: {
@@ -112,6 +152,24 @@ export default defineNuxtConfig({
           additionalData: '@use "sass:math";'
         }
       }
+    },
+    // Optimisations supplémentaires
+    optimizeDeps: {
+      include: ['vue', '@nuxt/ui', '@vueuse/core'],
+      // Exclure les dépendances natives qui causent des erreurs
+      exclude: [
+        'lightningcss',
+        '@tailwindcss/oxide',
+        '@tailwindcss/oxide-darwin-arm64',
+        '@tailwindcss/oxide-darwin-x64',
+        '@tailwindcss/oxide-linux-x64-gnu',
+        '@tailwindcss/oxide-linux-arm64-gnu',
+        '@tailwindcss/oxide-win32-x64-msvc'
+      ]
+    },
+    // Configuration pour les fichiers .node
+    ssr: {
+      noExternal: []
     }
   },
   eslint: {
