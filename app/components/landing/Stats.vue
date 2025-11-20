@@ -8,7 +8,7 @@ const stats = [
     labelKey: 'services.stats.clients.label'
   },
   {
-    icon: 'i-ph-project-diagram',
+    icon: 'i-ph-folder-open',
     valueKey: 'services.stats.projects.value',
     labelKey: 'services.stats.projects.label'
   },

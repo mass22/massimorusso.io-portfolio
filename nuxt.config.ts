@@ -65,10 +65,40 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/services/**': {
-      isr: 3600,
+    '/services/consulting': {
+      prerender: true,
       headers: {
-        'Cache-Control': 'public, max-age=3600, s-maxage=3600, must-revalidate'
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/en/services/consulting': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/services/workshops': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/en/services/workshops': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/services/audit': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/en/services/audit': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
     '/contact': {
@@ -121,7 +151,7 @@ export default defineNuxtConfig({
     },
     experimental: {
       wasm: true
-    },
+    }
     // La compression HTTP (gzip/brotli) est gérée automatiquement par Nitro avec compressPublicAssets
   },
   vite: {
@@ -129,20 +159,12 @@ export default defineNuxtConfig({
       chunkSizeWarningLimit: 1000,
       cssCodeSplit: false, // Force le CSS dans un seul fichier pour éviter le chargement asynchrone
       minify: 'esbuild', // Utiliser esbuild pour une minification plus rapide et efficace
+      sourcemap: process.env.NODE_ENV === 'development', // Générer des sourcemaps uniquement en développement
       rollupOptions: {
         output: {
-          // Optimisation du code splitting pour réduire le JavaScript non utilisé
-          manualChunks: (id) => {
-            // Séparer les dépendances vendor
-            if (id.includes('node_modules')) {
-              // Séparer les grandes bibliothèques
-              if (id.includes('vue')) return 'vue-vendor'
-              if (id.includes('@nuxt/ui')) return 'nuxt-ui'
-              if (id.includes('motion-v')) return 'motion'
-              // Regrouper les autres dépendances
-              return 'vendor'
-            }
-          }
+          // Code splitting automatique optimisé par Vite/Nuxt
+          // Éviter le splitting manuel qui peut causer des problèmes d'ordre de chargement
+          sourcemapExcludeSources: false // Inclure les sources dans les sourcemaps
         }
       }
     },
