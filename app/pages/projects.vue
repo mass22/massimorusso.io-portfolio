@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { PagesCollectionItem, ProjectsCollectionItem } from '@nuxt/content'
+
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
@@ -8,14 +10,14 @@ if (process.env.NODE_ENV === 'production') {
 
 const { data: page } = await useAsyncData(`projects-page-${locale.value}`, async () => {
   const allPages = await queryCollection('pages').all()
-  const projectsPage = allPages.find((p: any) =>
+  const projectsPage = allPages.find(p =>
     p.path === '/projects' || p.path === '/en/projects' ||
     (p.path?.includes('projects') && p.locale === locale.value)
   )
   if (projectsPage && projectsPage.locale === locale.value) {
     return projectsPage
   }
-  const fallback = allPages.find((p: any) =>
+  const fallback = allPages.find(p =>
     (p.path === '/projects' || p.path?.includes('projects')) && p.locale === 'fr'
   )
   return fallback || null

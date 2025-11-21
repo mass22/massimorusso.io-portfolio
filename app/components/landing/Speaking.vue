@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content';
+import type { IndexCollectionItem, SpeakingCollectionItem } from '@nuxt/content';
 import { computed } from 'vue';
 
 type Event = {
@@ -26,8 +26,8 @@ defineProps<{
 const { data: speakingPage } = await useAsyncData(`speaking-${locale.value}`, async () => {
   try {
     const allPages = await queryCollection('speaking').all()
-    const found = allPages.find((p: any) => p.locale === locale.value)
-    const page = found || allPages.find((p: any) => p.locale === 'fr') || null
+    const found = allPages.find(p => p.locale === locale.value)
+    const page = found || allPages.find(p => p.locale === 'fr') || null
     return page
   } catch (error) {
     console.error('Error fetching speaking page:', error)
@@ -48,7 +48,7 @@ const latestEvents = computed(() => {
   }
 
   const events = [...speakingPage.value.events]
-    .filter((event: any) => {
+    .filter(event => {
       if (!event) return false
       if (!event.date) {
         console.warn('Event without date:', event)
@@ -56,7 +56,7 @@ const latestEvents = computed(() => {
       }
       return true
     })
-    .sort((a: any, b: any) => {
+    .sort((a, b) => {
       // Trier par date décroissante (plus récent en premier)
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })

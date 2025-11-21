@@ -1,12 +1,10 @@
 <script setup lang="ts">
+import type { IndexCollectionItem } from '@nuxt/content'
+
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
-const { data: page } = await useAsyncData(`index-${locale.value}`, async () => {
-  const allPages = await queryCollection('index').all()
-  const found = allPages.find((p: any) => p.locale === locale.value)
-  return found || allPages.find((p: any) => p.locale === 'fr') || null
-})
+const { data: page } = await usePageData<IndexCollectionItem>('index')
 if (!page.value) {
   throw createError({
     fatal: true, statusCode: 404, statusMessage: t('common.pageNotFound')

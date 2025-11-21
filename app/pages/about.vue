@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, watch, nextTick, ref } from 'vue'
+import type { AboutCollectionItem } from '@nuxt/content'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -8,8 +9,8 @@ const { data: page } = await useAsyncData(
   () => `about-${locale.value}`,
   async () => {
     const allPages = await queryCollection('about').all()
-    const found = allPages.find((p: any) => p.locale === locale.value)
-    return found || allPages.find((p: any) => p.locale === 'fr') || null
+    const found = allPages.find(p => p.locale === locale.value)
+    return found || allPages.find(p => p.locale === 'fr') || null
   },
   {
     watch: [locale]

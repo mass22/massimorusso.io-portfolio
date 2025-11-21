@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { ServicesCollectionItem } from '@nuxt/content'
 
 const { t, locale } = useI18n()
 
 const { data: page } = await useAsyncData(`services-${locale.value}`, async () => {
   const allPages = await queryCollection('services').all()
-  const found = allPages.find((p: any) => p.locale === locale.value)
-  return found || allPages.find((p: any) => p.locale === 'fr') || null
+  const found = allPages.find(p => p.locale === locale.value)
+  return found || allPages.find(p => p.locale === 'fr') || null
 })
 if (!page.value) {
   throw createError({
@@ -169,7 +170,7 @@ const getServiceSlug = (titleKey: string) => {
       </UBlogPosts>
     </Motion>
     <ServicesCTA />
-  <LazyLandingTestimonials v-if="page" :page="page as any" />
-  <LazyLandingFAQ v-if="page" :page="page as any" />
+  <LazyLandingTestimonials v-if="page" :page="page" />
+  <LazyLandingFAQ v-if="page" :page="page" />
   </UPage>
 </template>

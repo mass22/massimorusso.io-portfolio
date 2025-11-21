@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { SpeakingCollectionItem } from '@nuxt/content'
 
 type Event = {
   title: string
@@ -13,8 +14,8 @@ const { t, locale } = useI18n()
 
 const { data: page } = await useAsyncData(`speaking-${locale.value}`, async () => {
   const allPages = await queryCollection('speaking').all()
-  const found = allPages.find((p: any) => p.locale === locale.value)
-  return found || allPages.find((p: any) => p.locale === 'fr') || null
+  const found = allPages.find(p => p.locale === locale.value)
+  return found || allPages.find(p => p.locale === 'fr') || null
 })
 if (!page.value) {
   throw createError({

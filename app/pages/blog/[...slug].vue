@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ContentNavigationItem } from '@nuxt/content'
+import type { ContentNavigationItem, BlogCollectionItem } from '@nuxt/content'
 import { findPageBreadcrumb } from '@nuxt/content/utils'
 import { mapContentNavigation } from '@nuxt/ui/utils/content'
 import { useScroll } from '@vueuse/core'
@@ -24,7 +24,7 @@ const buildPathForLocale = (targetLocale: string) => {
   return `/${targetLocale}/blog/${slug}`
 }
 
-const matchPost = (post: any, targetLocale?: string) => {
+const matchPost = (post: BlogCollectionItem, targetLocale?: string) => {
   if (!post) {
     return false
   }
@@ -49,7 +49,7 @@ const { data: page } = await useAsyncData(`blog-${locale.value}-${slug}`, async 
     return currentLocaleMatch
   }
 
-  const fallbackLocaleCode = (defaultLocale as any)?.value || defaultLocale || 'fr'
+  const fallbackLocaleCode = (defaultLocale as { value: string })?.value || defaultLocale || 'fr'
   const defaultLocaleMatch = allPosts.find(post => matchPost(post, fallbackLocaleCode))
   if (defaultLocaleMatch) {
     return defaultLocaleMatch
@@ -65,7 +65,7 @@ const { data: surround } = await useAsyncData(`${route.path}-surround-${locale.v
     fields: ['description']
   })
   if (!items) {return undefined}
-  return items.filter((item: any) => item?.locale === locale.value)
+  return items.filter((item) => item?.locale === locale.value)
 })
 
 const navigation = inject<Ref<ContentNavigationItem[] | null>>('navigation', ref([]))

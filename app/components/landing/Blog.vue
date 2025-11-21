@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content';
+import type { IndexCollectionItem, BlogCollectionItem } from '@nuxt/content';
 import { computed } from 'vue';
 
 const { t, locale, defaultLocale } = useI18n()
@@ -14,7 +14,7 @@ const { data: posts } = await useAsyncData(`index-blogs-${locale.value}`, async 
     .all()
   // Filtrer par locale et limiter à 3
   return allPosts
-    .filter((post: any) => post.locale === locale.value)
+    .filter(post => post.locale === locale.value)
     .slice(0, 3)
 })
 if (!posts.value) {
@@ -22,12 +22,12 @@ if (!posts.value) {
 }
 
 const defaultLocaleCode = computed(() => {
-  const localeValue = typeof defaultLocale === 'string' ? defaultLocale : (defaultLocale as any)?.value
+  const localeValue = typeof defaultLocale === 'string' ? defaultLocale : (defaultLocale as { value: string })?.value
   return localeValue || 'fr'
 })
 
 const localizedPosts = computed(() => {
-  return (posts.value ?? []).map((post: any) => {
+  return (posts.value ?? []).map(post => {
     const localeCode = post.locale || defaultLocaleCode.value
     const basePath = post.path || (post.slug ? `/blog/${post.slug}` : '/blog')
     const segments = basePath.split('/').filter(Boolean)

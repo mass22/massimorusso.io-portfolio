@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import type { RessourcesCollectionItem } from '@nuxt/content'
+
 const { t, locale } = useI18n()
 
 const { data: page } = await useAsyncData(`ressources-${locale.value}`, async () => {
   const allPages = await queryCollection('ressources').all()
-  const found = allPages.find((p: any) => p.locale === locale.value)
-  return found || allPages.find((p: any) => p.locale === 'fr') || null
+  const found = allPages.find(p => p.locale === locale.value)
+  return found || allPages.find(p => p.locale === 'fr') || null
 })
 
 if (!page.value) {

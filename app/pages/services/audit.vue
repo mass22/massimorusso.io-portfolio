@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { ServiceItemsCollectionItem } from '@nuxt/content'
 
 definePageMeta({
   layout: 'service'
@@ -15,9 +16,9 @@ const { data: page } = await useAsyncData(
   () => `service-${slug}-${locale.value}`,
   async () => {
     const allServices = await queryCollection('serviceItems').all()
-    return allServices.find((service: any) =>
+    return allServices.find(service =>
       service.slug === slug && service.locale === locale.value
-    ) || allServices.find((service: any) => service.slug === slug) || null
+    ) || allServices.find(service => service.slug === slug) || null
   },
   {
     watch: [locale]
