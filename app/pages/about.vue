@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, watch, nextTick, ref } from 'vue'
+import { computed } from 'vue'
 import type { AboutCollectionItem } from '@nuxt/content'
 
 const { t, locale } = useI18n()
-const route = useRoute()
 
 const { data: page } = await useAsyncData(
   () => `about-${locale.value}`,
@@ -33,7 +32,6 @@ useSeoMeta({
 const htmlContent = computed(() => {
   if (!page.value?.content) return ''
   const html = markdownToHtml(page.value.content)
-  console.log('[ABOUT] HTML generated:', html.substring(0, 200))
   return html
 })
 

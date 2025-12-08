@@ -34,6 +34,12 @@ export default defineNuxtConfig({
           rel: 'dns-prefetch',
           href: 'https://images.unsplash.com'
         }
+      ],
+      meta: [
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, viewport-fit=cover'
+        }
       ]
     }
   },
@@ -130,6 +136,22 @@ export default defineNuxtConfig({
       headers: {
         'Cache-Control': 'public, max-age=3600, s-maxage=3600, must-revalidate'
       }
+    },
+    // Headers de cache pour les assets statiques
+    '/_nuxt/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable'
+      }
+    },
+    '/favicon.ico': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable'
+      }
+    },
+    '/hero/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable'
+      }
     }
   },
   experimental: {
@@ -146,7 +168,8 @@ export default defineNuxtConfig({
         treeShaking: true,
         minifyIdentifiers: true,
         minifySyntax: true,
-        minifyWhitespace: true
+        minifyWhitespace: true,
+        legalComments: 'none' // Supprimer les commentaires légaux pour réduire la taille
       }
     },
     experimental: {
@@ -159,12 +182,53 @@ export default defineNuxtConfig({
       chunkSizeWarningLimit: 1000,
       cssCodeSplit: false, // Force le CSS dans un seul fichier pour éviter le chargement asynchrone
       minify: 'esbuild', // Utiliser esbuild pour une minification plus rapide et efficace
-      sourcemap: process.env.NODE_ENV === 'development', // Générer des sourcemaps uniquement en développement
+      sourcemap: false, // Pas de sourcemaps en production pour réduire la taille
       rollupOptions: {
         output: {
-          // Code splitting automatique optimisé par Vite/Nuxt
-          // Éviter le splitting manuel qui peut causer des problèmes d'ordre de chargement
-          sourcemapExcludeSources: false // Inclure les sources dans les sourcemaps
+          // Optimisation du code splitting pour réduire le JavaScript non utilisé
+          manualChunks: (id) => {
+            // Séparer les dépendances vendor
+            if (id.includes('node_modules')) {
+              // Séparer les grandes bibliothèques
+              if (id.includes('@nuxt/ui')) {
+                return 'nuxt-ui'
+              }
+              if (id.includes('@nuxt/content')) {
+                return 'nuxt-content'
+              }
+              if (id.includes('@nuxtjs/i18n')) {
+                return 'i18n'
+              }
+              if (id.includes('motion-v')) {
+                return 'motion'
+              }
+              if (id.includes('@vueuse')) {
+                return 'vueuse'
+              }
+              // Autres vendor dans un chunk séparé
+              return 'vendor'
+            }
+          },
+          // Optimisation des noms de chunks pour le cache
+          chunkFileNames: 'js/[name]-[hash].js',
+          entryFileNames: 'js/[name]-[hash].js',
+          assetFileNames: (assetInfo) => {
+            const info = assetInfo.name.split('.')
+            const ext = info[info.length - 1]
+            if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+              return 'img/[name]-[hash][extname]'
+            }
+            if (/woff2?|eot|ttf|otf/i.test(ext)) {
+              return 'fonts/[name]-[hash][extname]'
+            }
+            return 'assets/[name]-[hash][extname]'
+          }
+        },
+        // Tree-shaking agressif
+        treeshake: {
+          moduleSideEffects: false,
+          preset: 'recommended',
+          propertyReadSideEffects: false
         }
       }
     },
@@ -188,6 +252,10 @@ export default defineNuxtConfig({
         '@tailwindcss/oxide-linux-arm64-gnu',
         '@tailwindcss/oxide-win32-x64-msvc'
       ]
+    },
+    // Optimisation de la résolution des modules pour réduire la taille
+    resolve: {
+      dedupe: ['vue', '@nuxt/ui']
     },
     // Configuration pour les fichiers .node
     ssr: {
@@ -232,10 +300,11 @@ export default defineNuxtConfig({
       alwaysRedirect: false
     },
     compilation: {
-      strictMessage: false
+      strictMessage: false,
+      jit: true // Compilation JIT pour réduire la taille du bundle
     },
     bundle: {
-      optimizeTranslationDirective: false
+      optimizeTranslationDirective: true // Optimiser les directives de traduction
     }
   },
   image: {

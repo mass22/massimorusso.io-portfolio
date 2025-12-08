@@ -29,31 +29,20 @@ const { data: speakingPage } = await useAsyncData(`speaking-${locale.value}`, as
     const found = allPages.find(p => p.locale === locale.value)
     const page = found || allPages.find(p => p.locale === 'fr') || null
     return page
-  } catch (error) {
-    console.error('Error fetching speaking page:', error)
+  } catch {
     return null
   }
 })
 
 // Récupérer les 3 derniers événements (toutes catégories, triés par date)
 const latestEvents = computed(() => {
-  if (!speakingPage.value) {
-    console.warn('speakingPage.value is null/undefined')
-    return []
-  }
-
-  if (!speakingPage.value.events) {
-    console.warn('No events property in speakingPage:', speakingPage.value)
+  if (!speakingPage.value?.events) {
     return []
   }
 
   const events = [...speakingPage.value.events]
     .filter(event => {
-      if (!event) return false
-      if (!event.date) {
-        console.warn('Event without date:', event)
-        return false
-      }
+      if (!event || !event.date) return false
       return true
     })
     .sort((a, b) => {
