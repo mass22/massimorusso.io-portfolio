@@ -208,21 +208,8 @@ export default defineNuxtConfig({
               // Autres vendor dans un chunk séparé
               return 'vendor'
             }
-          },
-          // Optimisation des noms de chunks pour le cache
-          chunkFileNames: 'js/[name]-[hash].js',
-          entryFileNames: 'js/[name]-[hash].js',
-          assetFileNames: (assetInfo) => {
-            const info = assetInfo.name.split('.')
-            const ext = info[info.length - 1]
-            if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
-              return 'img/[name]-[hash][extname]'
-            }
-            if (/woff2?|eot|ttf|otf/i.test(ext)) {
-              return 'fonts/[name]-[hash][extname]'
-            }
-            return 'assets/[name]-[hash][extname]'
           }
+          // Laisser Nuxt gérer les noms de fichiers automatiquement
         },
         // Tree-shaking agressif
         treeshake: {
@@ -300,8 +287,7 @@ export default defineNuxtConfig({
       alwaysRedirect: false
     },
     compilation: {
-      strictMessage: false,
-      jit: true // Compilation JIT pour réduire la taille du bundle
+      strictMessage: false
     },
     bundle: {
       optimizeTranslationDirective: true // Optimiser les directives de traduction
