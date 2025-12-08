@@ -184,38 +184,10 @@ export default defineNuxtConfig({
       minify: 'esbuild', // Utiliser esbuild pour une minification plus rapide et efficace
       sourcemap: false, // Pas de sourcemaps en production pour réduire la taille
       rollupOptions: {
-        output: {
-          // Optimisation du code splitting pour réduire le JavaScript non utilisé
-          manualChunks: (id) => {
-            // Séparer les dépendances vendor
-            if (id.includes('node_modules')) {
-              // Séparer les grandes bibliothèques
-              if (id.includes('@nuxt/ui')) {
-                return 'nuxt-ui'
-              }
-              if (id.includes('@nuxt/content')) {
-                return 'nuxt-content'
-              }
-              if (id.includes('@nuxtjs/i18n')) {
-                return 'i18n'
-              }
-              if (id.includes('motion-v')) {
-                return 'motion'
-              }
-              if (id.includes('@vueuse')) {
-                return 'vueuse'
-              }
-              // Autres vendor dans un chunk séparé
-              return 'vendor'
-            }
-          }
-          // Laisser Nuxt gérer les noms de fichiers automatiquement
-        },
-        // Tree-shaking agressif
+        // Laisser Nuxt gérer le code splitting automatiquement
+        // Tree-shaking standard (suffisant pour Nuxt)
         treeshake: {
-          moduleSideEffects: false,
-          preset: 'recommended',
-          propertyReadSideEffects: false
+          preset: 'recommended'
         }
       }
     },
