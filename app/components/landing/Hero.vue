@@ -35,13 +35,14 @@ onMounted(() => {
     }"
   >
     <template #headline>
-      <Motion
-        v-if="!isMobile"
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
+      <ClientOnly>
+        <Motion
+          v-if="!isMobile"
+          :initial="{
+            scale: 1.1,
+            opacity: 0,
+            filter: 'blur(20px)'
+          }"
         :animate="{
           scale: 1,
           opacity: 1,
@@ -64,79 +65,85 @@ onMounted(() => {
               </span>
             </p>
       </Motion>
-      <template v-else>
-        <p v-for="(tag, i) in page.hero.tags" :key="tag" class="inline-flex items-center">
-          <span class="px-2 py-1 md:text-8xl text-5xl text-vue">
-            {{ tag }}
-          </span>
-        </p>
-      </template>
+        <template #fallback>
+          <p v-for="(tag, i) in page.hero.tags" :key="tag" class="inline-flex items-center">
+            <span class="px-2 py-1 md:text-8xl text-5xl text-vue">
+              {{ tag }}
+            </span>
+          </p>
+        </template>
+      </ClientOnly>
     </template>
 
     <template #title>
-      <Motion
-        v-if="!isMobile"
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.1
-        }"
-      >
-        {{ page.title }}
-      </Motion>
-      <template v-else>{{ page.title }}</template>
+      <ClientOnly>
+        <Motion
+          v-if="!isMobile"
+          :initial="{
+            scale: 1.1,
+            opacity: 0,
+            filter: 'blur(20px)'
+          }"
+          :animate="{
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)'
+          }"
+          :transition="{
+            duration: 0.6,
+            delay: 0.1
+          }"
+        >
+          {{ page.title }}
+        </Motion>
+        <template #fallback>{{ page.title }}</template>
+      </ClientOnly>
     </template>
 
     <template #description>
-      <Motion
-        v-if="!isMobile"
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.3
-        }"
-      >
-        {{ page.description }}
-      </Motion>
-      <template v-else>{{ page.description }}</template>
+      <ClientOnly>
+        <Motion
+          v-if="!isMobile"
+          :initial="{
+            scale: 1.1,
+            opacity: 0,
+            filter: 'blur(20px)'
+          }"
+          :animate="{
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)'
+          }"
+          :transition="{
+            duration: 0.6,
+            delay: 0.3
+          }"
+        >
+          {{ page.description }}
+        </Motion>
+        <template #fallback>{{ page.description }}</template>
+      </ClientOnly>
     </template>
 
     <template #links>
-      <Motion
-        v-if="!isMobile"
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.5
-        }"
-      >
+      <ClientOnly>
+        <Motion
+          v-if="!isMobile"
+          :initial="{
+            scale: 1.1,
+            opacity: 0,
+            filter: 'blur(20px)'
+          }"
+          :animate="{
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)'
+          }"
+          :transition="{
+            duration: 0.6,
+            delay: 0.5
+          }"
+        >
         <div class="flex flex-col items-center gap-3 w-full">
           <!-- CTA Principal vers Services -->
           <UButton
@@ -198,111 +205,127 @@ onMounted(() => {
           </div>
         </div>
       </Motion>
-      <template v-else>
-        <div class="flex flex-col items-center gap-3 w-full">
-          <!-- CTA Principal vers Services -->
-          <UButton
-            :to="localePath('/services')"
-            color="primary"
-            variant="solid"
-            size="lg"
-            class="font-semibold px-8 py-3 w-full group"
-            :label="t('hero.cta.services')"
-          >
-            <template #trailing>
-              <UIcon name="i-lucide-arrow-right" class="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true" />
-            </template>
-          </UButton>
-
-          <!-- CTA Secondaire vers Contact -->
-          <UButton
-            :to="localePath('/contact')"
-            color="neutral"
-            variant="outline"
-            size="md"
-            class="w-full group"
-            :label="t('hero.cta.contact')"
-          />
-
-          <div
-            v-if="page.hero.links"
-            class="flex items-center gap-2 mt-2"
-          >
+        <template #fallback>
+          <div class="flex flex-col items-center gap-3 w-full">
+            <!-- CTA Principal vers Services -->
             <UButton
-              :color="global.available ? 'success' : 'error'"
-              variant="ghost"
-              class="gap-2"
-              :to="global.available ? localePath('/contact#calendar') : ''"
-              :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
+              :to="localePath('/services')"
+              color="primary"
+              variant="solid"
+              size="lg"
+              class="font-semibold px-8 py-3 w-full group"
+              :label="t('hero.cta.services')"
             >
-              <template #leading>
-                <span class="relative flex size-2" aria-hidden="true">
-                  <span
-                    class="absolute inline-flex size-full rounded-full opacity-75"
-                    :class="global.available ? 'bg-success' : 'bg-error'"
-                  />
-                  <span
-                    class="relative inline-flex size-2 scale-90 rounded-full"
-                    :class="global.available ? 'bg-success' : 'bg-error'"
-                  />
-                </span>
+              <template #trailing>
+                <UIcon name="i-lucide-arrow-right" class="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true" />
               </template>
             </UButton>
-            <UButton
-              v-if="page.hero.isResourcesAvailable"
-              v-bind="page.hero.links[0]"
-              :aria-label="page.hero.links[0]?.label"
-            />
-            <UButton
-              v-else
-              v-bind="page.hero.links[1]"
-              :aria-label="page.hero.links[1]?.label"
-            />
-          </div>
-        </div>
-      </template>
 
-      <div class="gap-x-4 inline-flex mt-4">
-        <template v-if="!isMobile">
-          <Motion
-            v-for="(link, index) of footerLinksWithLabels"
-            :key="index"
-            :initial="{
-              scale: 1.1,
-              opacity: 0,
-              filter: 'blur(20px)'
-            }"
-            :animate="{
-              scale: 1,
-              opacity: 1,
-              filter: 'blur(0px)'
-            }"
-            :transition="{
-              duration: 0.6,
-              delay: 0.5 + index * 0.1
-            }"
-          >
+            <!-- CTA Secondaire vers Contact -->
             <UButton
+              :to="localePath('/contact')"
+              color="neutral"
+              variant="outline"
+              size="md"
+              class="w-full group"
+              :label="t('hero.cta.contact')"
+            />
+
+            <div
+              v-if="page.hero.links"
+              class="flex items-center gap-2 mt-2"
+            >
+              <UButton
+                :color="global.available ? 'success' : 'error'"
+                variant="ghost"
+                class="gap-2"
+                :to="global.available ? localePath('/contact#calendar') : ''"
+                :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
+              >
+                <template #leading>
+                  <span class="relative flex size-2" aria-hidden="true">
+                    <span
+                      class="absolute inline-flex size-full rounded-full opacity-75"
+                      :class="global.available ? 'bg-success' : 'bg-error'"
+                    />
+                    <span
+                      class="relative inline-flex size-2 scale-90 rounded-full"
+                      :class="global.available ? 'bg-success' : 'bg-error'"
+                    />
+                  </span>
+                </template>
+              </UButton>
+              <UButton
+                v-if="page.hero.isResourcesAvailable"
+                v-bind="page.hero.links[0]"
+                :aria-label="page.hero.links[0]?.label"
+              />
+              <UButton
+                v-else
+                v-bind="page.hero.links[1]"
+                :aria-label="page.hero.links[1]?.label"
+              />
+            </div>
+          </div>
+        </template>
+      </ClientOnly>
+
+      <ClientOnly>
+        <div class="gap-x-4 inline-flex mt-4">
+          <template v-if="!isMobile">
+            <Motion
+              v-for="(link, index) of footerLinksWithLabels"
+              :key="index"
+              :initial="{
+                scale: 1.1,
+                opacity: 0,
+                filter: 'blur(20px)'
+              }"
+              :animate="{
+                scale: 1,
+                opacity: 1,
+                filter: 'blur(0px)'
+              }"
+              :transition="{
+                duration: 0.6,
+                delay: 0.5 + index * 0.1
+              }"
+            >
+              <UButton
+                v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
+              >
+                <template v-if="link.icon" #leading>
+                  <UIcon :name="link.icon" aria-hidden="true" />
+                </template>
+              </UButton>
+            </Motion>
+          </template>
+          <template v-else>
+            <UButton
+              v-for="(link, index) of footerLinksWithLabels"
+              :key="index"
               v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
             >
               <template v-if="link.icon" #leading>
                 <UIcon :name="link.icon" aria-hidden="true" />
               </template>
             </UButton>
-          </Motion>
+          </template>
+        </div>
+        <template #fallback>
+          <div class="gap-x-4 inline-flex mt-4">
+            <UButton
+              v-for="(link, index) of footerLinksWithLabels"
+              :key="index"
+              v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
+            >
+              <template v-if="link.icon" #leading>
+                <UIcon :name="link.icon" aria-hidden="true" />
+              </template>
+            </UButton>
+          </div>
         </template>
-        <template v-else>
-          <UButton
-            v-for="(link, index) of footerLinksWithLabels"
-            :key="index"
-            v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
-          >
-            <template v-if="link.icon" #leading>
-              <UIcon :name="link.icon" aria-hidden="true" />
-            </template>
-          </UButton>
-        </template>
-      </div>
+      </ClientOnly>
     </template>
 
     <!-- <UMarquee

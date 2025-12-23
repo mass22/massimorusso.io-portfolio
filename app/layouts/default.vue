@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 import { useWindowScroll } from '@vueuse/core'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const { t } = useI18n()
@@ -11,9 +11,10 @@ const route = useRoute()
 const navLinks = computed<NavigationMenuItem[]>(() => getNavLinks(t, localePath))
 
 // Détecter si le StickyCTA est visible pour ajouter du padding conditionnel
-const { y } = useWindowScroll()
 const isContactPage = computed(() => route.path.includes('/contact'))
-const showStickyCTA = computed(() => y.value > 300 && !isContactPage.value)
+const isClient = typeof window !== 'undefined'
+const { y } = isClient ? useWindowScroll() : { y: ref(0) }
+const showStickyCTA = computed(() => isClient && y.value > 300 && !isContactPage.value)
 </script>
 
 <template>

@@ -4,7 +4,8 @@ import { computed } from 'vue'
 const { footer: footerConfig } = useAppConfig()
 
 const { t } = useI18n()
-const currentYear = new Date().getFullYear()
+// Utiliser une valeur constante pour éviter les problèmes d'hydratation
+const currentYear = 2025
 
 // Mapper les liens du footer avec leurs aria-labels pour l'accessibilité
 const footerLinksWithLabels = computed(() => footerConfig?.links?.map(link => ({
