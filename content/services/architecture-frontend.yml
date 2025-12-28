@@ -1,0 +1,57 @@
+locale: 'fr'
+slug: 'architecture-frontend'
+title: Architecture frontend
+description: Accompagnement en architecture frontend pour clarifier, évaluer et faire évoluer des stacks complexes sans réécriture aveugle ni dogme technique.
+icon: 'i-ph-lightbulb'
+
+content: |
+  Cette intervention s’adresse aux équipes confrontées à une architecture frontend devenue difficile à comprendre, maintenir ou faire évoluer.
+
+  Mon rôle n’est pas de proposer une “architecture idéale”.
+  Il est d’aider à définir une **architecture adaptée à votre contexte réel**, à vos contraintes et à votre équipe.
+
+  ---
+
+  ## Quand intervenir
+
+  - la base de code devient fragile ou imprévisible
+  - chaque évolution coûte plus cher que prévu
+  - une migration est envisagée sans trajectoire claire
+  - plusieurs choix techniques sont possibles sans consensus
+
+  ---
+
+  ## Ce que je fais
+
+  - audit ciblé de l’architecture existante
+  - identification des points de fragilité et de dette réelle
+  - clarification des options possibles (sans dogme)
+  - définition d’une trajectoire de modernisation progressive
+
+  ---
+
+  ## Ce que je ne fais pas
+
+  - refonte complète sans justification
+  - imposition d’un framework ou d’un pattern
+  - décisions hors sol, déconnectées de l’équipe
+
+  ---
+
+  ## Ce que vous obtenez
+
+  - une architecture plus lisible
+  - des décisions techniques explicites
+  - une trajectoire réaliste et assumée
+  - moins de dette… et moins d’incertitude
+
+  ---
+
+  ## Pour qui
+
+  CTO, Tech Leads et équipes frontend confrontées à des choix structurants.
+
+images:
+  - src: https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop
+    alt: Architecture frontend et prise de décision technique
+

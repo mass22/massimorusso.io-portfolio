@@ -41,9 +41,13 @@ export type CTA = {
 
 export type ServicesPage = IndexCollectionItem & {
   content?: string
+  heroSupportingLine?: string
   items?: ServiceItem[]
+  itemsIntro?: string
   process?: Process
+  processLeadIn?: string
   stats?: Stat[]
+  statsEnabled?: boolean
   faq?: FAQ
   cta?: CTA
 }

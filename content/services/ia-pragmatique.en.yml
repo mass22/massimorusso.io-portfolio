@@ -1,5 +1,5 @@
 locale: 'en'
-slug: 'workshops'
+slug: 'ia-pragmatique'
 title: "Training & Workshops"
 description: "Practical training on UX/UI design, Vue.js, Nuxt.js, and front-end development best practices."
 icon: 'i-ph-chalkboard-teacher'

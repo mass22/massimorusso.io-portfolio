@@ -36,9 +36,9 @@ useSeoMeta({
 const getServiceIcon = (item: { slug?: string; icon?: string }): string => {
   if (item.icon) return item.icon
   const iconMap: Record<string, string> = {
-    consulting: 'i-ph-lightbulb',
-    workshops: 'i-ph-chalkboard-teacher',
-    audit: 'i-ph-sparkle'
+    'architecture-frontend': 'i-ph-lightbulb',
+    'aide-decision-technique': 'i-ph-chalkboard-teacher',
+    'ia-pragmatique': 'i-ph-sparkle'
   }
   return item.slug ? (iconMap[item.slug] || 'i-ph-circle') : 'i-ph-circle'
 }
@@ -47,9 +47,9 @@ const getServiceIcon = (item: { slug?: string; icon?: string }): string => {
 const getServiceImage = (item: { slug?: string; image?: string }): string => {
   if (item.image) return item.image
   const imageMap: Record<string, number> = {
-    consulting: 1,
-    workshops: 2,
-    audit: 3
+    'architecture-frontend': 1,
+    'aide-decision-technique': 2,
+    'ia-pragmatique': 3
   }
   return `https://picsum.photos/200?random=${item.slug ? (imageMap[item.slug] || 1) : 1}`
 }
@@ -59,7 +59,7 @@ const getServiceLink = (item: { slug?: string }): string => {
   return item.slug ? localePath(`/services/${item.slug}`) : '#'
 }
 
-// JSON-LD structuré pour le SEO
+// JSON-LD structuré pour le SEO avec replacer pour éviter undefined
 const serviceStructuredData = computed(() => {
   const serviceTypeMap: Record<string, string> = {
     fr: 'Conseil en architecture frontend & IA pragmatique',
@@ -85,7 +85,7 @@ const serviceStructuredData = computed(() => {
       position: index + 1
     }))
 
-  return {
+  const structuredData: Record<string, any> = {
     '@context': 'https://schema.org',
     '@type': 'Service',
     inLanguage: locale.value,
@@ -100,22 +100,28 @@ const serviceStructuredData = computed(() => {
     areaServed: {
       '@type': 'Country',
       name: areaServedMap[locale.value] || areaServedMap.fr
-    },
-    ...(itemListElement.length > 0 && {
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: locale.value === 'fr' ? 'Services' : 'Services',
-        itemListElement
-      }
-    })
+    }
   }
+
+  if (itemListElement.length > 0) {
+    structuredData.hasOfferCatalog = {
+      '@type': 'OfferCatalog',
+      name: locale.value === 'fr' ? 'Services' : 'Services',
+      itemListElement
+    }
+  }
+
+  return structuredData
 })
 
 useHead({
   script: [
     {
       type: 'application/ld+json',
-      innerHTML: JSON.stringify(serviceStructuredData.value)
+      innerHTML: JSON.stringify(serviceStructuredData.value, (key, value) => {
+        // Supprimer les valeurs undefined pour éviter les erreurs JSON-LD
+        return value === undefined ? null : value
+      })
     }
   ]
 })
@@ -134,33 +140,73 @@ useHead({
       }"
     />
 
+    <!-- Supporting line sous le hero -->
+    <UPageSection
+      v-if="page?.heroSupportingLine"
+      :ui="{
+        container: 'px-0 !pt-4 !pb-0'
+      }"
+    >
+      <p class="text-sm text-muted max-w-xl">
+        {{ page.heroSupportingLine }}
+      </p>
+    </UPageSection>
+
+    <!-- Services Cards Section -->
+    <UPageSection
+      v-if="page?.items && page.items.length > 0"
+      :ui="{
+        container: 'px-0 !pt-12 sm:!pt-16 lg:!pt-20 gap-6 sm:gap-8'
+      }"
+    >
+      <!-- Mini-intro pour les cartes -->
+      <p
+        v-if="page?.itemsIntro"
+        class="text-sm text-muted max-w-2xl mb-6"
+      >
+        {{ page.itemsIntro }}
+      </p>
+
+      <CardGrid
+        :items="page.items"
+        :get-icon="getServiceIcon"
+        :get-image="getServiceImage"
+        :get-link="getServiceLink"
+        :columns="1"
+      />
+    </UPageSection>
+
+
     <!-- Content Section (Markdown) -->
     <ContentSection
       v-if="page?.content"
       :content="page.content"
     />
 
-    <!-- Services Cards Section -->
-    <CardGrid
-      v-if="page?.items && page.items.length > 0"
-      :items="page.items"
-      :get-icon="getServiceIcon"
-      :get-image="getServiceImage"
-      :get-link="getServiceLink"
-      :columns="3"
-    />
+    <!-- Process Section avec lead-in -->
+    <div v-if="page?.process && page.process.steps && page.process.steps.length > 0">
+      <!-- Lead-in pour le process -->
+      <UPageSection
+        v-if="page?.processLeadIn"
+        :ui="{
+          container: 'px-0 !pt-12 sm:!pt-16 lg:!pt-20 !pb-4'
+        }"
+      >
+        <p class="text-sm text-muted max-w-2xl">
+          {{ page.processLeadIn }}
+        </p>
+      </UPageSection>
 
-    <!-- Process Section -->
-    <ProcessSteps
-      v-if="page?.process && page.process.steps && page.process.steps.length > 0"
-      :title="page.process.title"
-      :description="page.process.description"
-      :steps="page.process.steps"
-    />
+      <ProcessSteps
+        :title="page.process.title"
+        :description="page.process.description"
+        :steps="page.process.steps"
+      />
+    </div>
 
-    <!-- Stats Section (optionnel) -->
+    <!-- Stats Section (optionnel - uniquement si statsEnabled === true) -->
     <StatsGrid
-      v-if="page?.stats && page.stats.length > 0"
+      v-if="page?.statsEnabled && page?.stats && page.stats.length > 0"
       :stats="page.stats"
     />
 
@@ -172,7 +218,7 @@ useHead({
       :categories="page.faq.categories"
     />
 
-    <!-- CTA Section -->
+    <!-- CTA Section Final - Unique avec plus d'espace -->
     <CTA
       v-if="page?.cta && (page.cta.primary || page.cta.secondary)"
       :title="page.cta.title"

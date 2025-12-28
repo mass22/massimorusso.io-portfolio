@@ -1,0 +1,57 @@
+locale: 'fr'
+slug: 'aide-decision-technique'
+title: Conseil & aide à la décision technique
+description: Accompagnement pour clarifier, structurer et assumer des décisions techniques complexes dans des contextes à forts enjeux.
+icon: 'i-ph-chalkboard-teacher'
+
+content: |
+  Certaines décisions techniques ne peuvent pas être prises à l’intuition, ni au consensus mou.
+
+  Mon rôle n’est pas de trancher à votre place.
+  Il est d’aider à **poser un cadre de décision clair**, compréhensible et assumé dans le temps.
+
+  ---
+
+  ## Quand intervenir
+
+  - plusieurs options techniques semblent valides
+  - les discussions tournent en rond sans convergence
+  - la décision est repoussée par manque de clarté
+  - les conséquences à long terme sont difficiles à évaluer
+
+  ---
+
+  ## Ce que je fais
+
+  - cadrage des enjeux et contraintes réelles (produit, équipe, technique)
+  - clarification des critères de décision
+  - analyse des compromis et des risques
+  - formalisation d’une décision documentée et partageable
+
+  ---
+
+  ## Ce que je ne fais pas
+
+  - décider de manière arbitraire
+  - “valider” une décision déjà prise
+  - fournir des réponses simplistes à des problèmes complexes
+
+  ---
+
+  ## Ce que vous obtenez
+
+  - une décision technique comprise et assumée
+  - une équipe alignée
+  - une réduction de la dette décisionnelle
+  - une base claire pour avancer sereinement
+
+  ---
+
+  ## Pour qui
+
+  CTO, Tech Leads et équipes produit/tech confrontés à des décisions structurantes ou bloquantes.
+
+images:
+  - src: https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop
+    alt: Aide à la décision technique et arbitrage
+

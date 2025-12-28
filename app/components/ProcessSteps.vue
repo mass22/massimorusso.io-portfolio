@@ -31,7 +31,7 @@ const getStepIcon = (index: number, step: ProcessStep): string => {
       :title="title"
       :description="description"
       :ui="{
-        container: 'px-0 !pt-12 sm:!pt-16 gap-8 sm:gap-12',
+        container: 'px-0 !pt-12 sm:!pt-16 lg:!pt-20 gap-8 sm:gap-12',
         title: 'text-left text-2xl sm:text-3xl lg:text-4xl font-bold',
         description: 'text-left mt-3 text-base sm:text-lg text-muted max-w-3xl'
       }"

@@ -1,0 +1,57 @@
+locale: 'fr'
+slug: 'ia-pragmatique'
+title: Usage pragmatique de l’IA
+description: Accompagnement pour décider si, où et comment l’IA apporte une valeur réelle, sans hype ni complexité inutile.
+icon: 'i-ph-sparkle'
+
+content: |
+  L’IA est aujourd’hui partout dans les discussions techniques.
+  Très peu de projets en tirent une valeur mesurable.
+
+  Mon rôle n’est pas d’“ajouter de l’IA”.
+  Il est d’aider à **décider si l’IA est pertinente**, où elle l’est réellement, et comment l’intégrer sans fragiliser l’existant.
+
+  ---
+
+  ## Quand intervenir
+
+  - pression interne ou marché autour de l’IA
+  - incertitude sur les cas d’usage réels
+  - crainte des coûts, des dépendances ou des risques
+  - intégration envisagée dans un produit ou une architecture existante
+
+  ---
+
+  ## Ce que je fais
+
+  - identification des cas d’usage où l’IA apporte une valeur concrète
+  - analyse coût / valeur / risques (qualité, dépendance, sécurité)
+  - cadrage architectural (orchestration, données, intégration)
+  - définition de garde-fous techniques et organisationnels
+
+  ---
+
+  ## Ce que je ne fais pas
+
+  - intégrer de l’IA “pour faire comme les autres”
+  - vendre des promesses irréalistes
+  - construire des systèmes opaques ou non maîtrisés
+
+  ---
+
+  ## Ce que vous obtenez
+
+  - une décision claire sur l’usage (ou non) de l’IA
+  - une intégration maîtrisée si elle a du sens
+  - moins de dette technique et cognitive
+  - une approche durable et compréhensible
+
+  ---
+
+  ## Pour qui
+
+  CTO, équipes produit et organisations qui explorent l’IA sans vouloir s’y perdre.
+
+images:
+  - src: https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop
+    alt: Usage pragmatique de l’intelligence artificielle et aide à la décision

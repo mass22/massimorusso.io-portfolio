@@ -10,16 +10,15 @@ const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 
-const slug = 'consulting'
+const slug = 'ia-pragmatique'
 
 const { data: page } = await useAsyncData(
   () => `service-${slug}-${locale.value}`,
   async () => {
     const allServices = await queryCollection('serviceItems').all()
-    const found = allServices.find(service =>
+    return allServices.find(service =>
       service.slug === slug && service.locale === locale.value
     ) || allServices.find(service => service.slug === slug) || null
-    return found
   },
   {
     watch: [locale]
@@ -31,8 +30,6 @@ const htmlContent = computed(() => {
   if (!page.value?.content) return ''
   return markdownToHtml(page.value.content)
 })
-
-
 
 if (!page.value) {
   throw createError({

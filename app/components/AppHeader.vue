@@ -111,15 +111,38 @@ const switchLocale = (targetLocale: string, event?: Event) => {
   }
 }
 
-// Fonction pour déterminer le style du widget selon l'état actif/inactif
-const getWidgetClass = (link: NavigationMenuItem, index: number) => {
-  const isActive = link.to && (route.path === String(link.to) || (String(link.to) !== '/' && route.path.startsWith(String(link.to))))
+// Fonction pour déterminer si un lien est prioritaire (Services ou Contact)
+const isPriorityLink = (link: NavigationMenuItem) => {
+  const to = String(link.to || '')
+  return to === '/services' || to === '/contact' || to.includes('/services') || to.includes('/contact')
+}
+
+// Séparation des liens en prioritaires et secondaires
+const priorityLinks = computed(() => props.links.filter(link => isPriorityLink(link)))
+const secondaryLinks = computed(() => props.links.filter(link => !isPriorityLink(link)))
+
+// Fonction pour vérifier si un lien est actif
+const isLinkActive = (link: NavigationMenuItem) => {
+  return link.to && (route.path === String(link.to) || (String(link.to) !== '/' && route.path.startsWith(String(link.to))))
+}
+
+// Fonction pour déterminer le style du widget selon l'état actif/inactif et la priorité
+const getWidgetClass = (link: NavigationMenuItem, isPriority: boolean) => {
+  const isActive = isLinkActive(link)
 
   if (isActive) {
-    return 'bg-primary text-white border-2 border-primary'
+    // Style sobre pour l'item actif : fond subtil avec bordure et ring
+    return 'bg-elevated/40 text-default border border-primary/30 ring-1 ring-primary/20'
   }
 
-  return 'bg-transparent text-default border-2 border-default/50 hover:border-default'
+  // Style pour les items inactifs
+  if (isPriority) {
+    // Items prioritaires : style plus visible mais sobre
+    return 'bg-elevated/20 text-default border border-default/20 hover:bg-elevated/35 hover:border-primary/30 hover:ring-1 hover:ring-primary/20'
+  }
+
+  // Items secondaires : style plus discret
+  return 'bg-elevated/20 text-default/80 border border-default/10 hover:bg-elevated/35 hover:border-default/20'
 }
 </script>
 
@@ -164,26 +187,56 @@ const getWidgetClass = (link: NavigationMenuItem, index: number) => {
       <USlideover v-model:open="slideoverOpen" side="right" close>
         <template #body>
           <div class="p-6">
-            <div class="grid grid-cols-2 gap-4">
+            <!-- Liens prioritaires (Services, Contact) -->
+            <div v-if="priorityLinks.length > 0" class="grid grid-cols-2 gap-4 mb-4">
               <ULink
-                v-for="(link, index) in links"
+                v-for="(link, index) in priorityLinks"
                 :key="index"
                 :to="link.to"
                 :aria-label="link['aria-label'] || link.label"
-                class="group relative flex flex-col items-start justify-between p-6 rounded-3xl transition-all duration-300 ease-out hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl min-h-[140px]"
-                :class="getWidgetClass(link, index)"
+                :aria-current="isLinkActive(link) ? 'page' : undefined"
+                class="group relative flex flex-col items-start justify-between p-5 rounded-2xl transition-all duration-300 ease-out active:scale-95 shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:outline-none min-h-[120px]"
+                :class="getWidgetClass(link, true)"
                 @click="slideoverOpen = false"
               >
-                <div class="flex items-start justify-between w-full mb-4">
+                <div class="flex items-start justify-between w-full mb-3">
                   <UIcon
                     v-if="link.icon"
                     :name="link.icon"
-                    class="size-8 opacity-90 group-hover:opacity-100 transition-opacity"
+                    class="size-8 text-primary/90 group-hover:text-primary transition-colors"
                     aria-hidden="true"
                   />
                 </div>
                 <div class="flex flex-col gap-1 w-full">
-                  <span class="text-lg font-bold leading-tight">
+                  <span class="text-base font-medium leading-tight tracking-normal">
+                    {{ link.label }}
+                  </span>
+                </div>
+              </ULink>
+            </div>
+
+            <!-- Liens secondaires -->
+            <div v-if="secondaryLinks.length > 0" class="grid grid-cols-2 gap-3">
+              <ULink
+                v-for="(link, index) in secondaryLinks"
+                :key="index"
+                :to="link.to"
+                :aria-label="link['aria-label'] || link.label"
+                :aria-current="isLinkActive(link) ? 'page' : undefined"
+                class="group relative flex flex-col items-start justify-between p-5 rounded-2xl transition-all duration-300 ease-out active:scale-95 shadow-sm hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:outline-none min-h-[100px]"
+                :class="getWidgetClass(link, false)"
+                @click="slideoverOpen = false"
+              >
+                <div class="flex items-start justify-between w-full mb-3">
+                  <UIcon
+                    v-if="link.icon"
+                    :name="link.icon"
+                    class="size-7 opacity-80 group-hover:opacity-100 transition-opacity"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div class="flex flex-col gap-1 w-full">
+                  <span class="text-base font-medium leading-tight tracking-normal">
                     {{ link.label }}
                   </span>
                 </div>
@@ -192,14 +245,15 @@ const getWidgetClass = (link: NavigationMenuItem, index: number) => {
           </div>
         </template>
         <template #footer>
-          <div class="flex flex-row gap-2 h-16 px-6 w-full">
+          <div class="flex flex-row gap-2 h-14 px-6 w-full items-center border-t border-default/10">
             <UButton
               v-for="(link, index) of socialLinks"
               :key="index"
               v-bind="{ size: 'xs', color: 'neutral', variant: 'ghost', ...link }"
+              class="opacity-80 hover:opacity-100 transition-opacity"
             >
               <template v-if="link.icon" #leading>
-                <UIcon :name="link.icon" aria-hidden="true" class="size-6" />
+                <UIcon :name="link.icon" aria-hidden="true" class="size-5" />
               </template>
             </UButton>
             <UButton
@@ -209,10 +263,10 @@ const getWidgetClass = (link: NavigationMenuItem, index: number) => {
               color="neutral"
               variant="ghost"
               block
-              class="text-lg"
+              class="text-base opacity-80 hover:opacity-100 transition-opacity"
               @click.stop="switchLocale(inactiveLocale.code, $event)"
             />
-            <ColorModeButton size="md"/>
+            <ColorModeButton size="sm" class="opacity-80 hover:opacity-100 transition-opacity"/>
           </div>
         </template>
       </USlideover>

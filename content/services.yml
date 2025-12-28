@@ -1,6 +1,7 @@
 locale: 'fr'
 title: Services
-description: Accompagnement en architecture frontend, aide à la décision technique et intégration pragmatique de l’IA pour des contextes complexes et structurants.
+description: Accompagnement en architecture frontend, aide à la décision technique et intégration pragmatique de l'IA pour des contextes complexes et structurants.
+heroSupportingLine: Pour les CTO, Tech Leads et dirigeants qui doivent prendre des décisions techniques structurantes dans un contexte de complexité et de contraintes réelles.
 
 seo:
   title: Services — Architecture frontend & conseil en IA
@@ -17,31 +18,33 @@ cta:
     href: /contact#booking
 
 items:
-  - slug: consulting
+  - slug: architecture-frontend
     title: Architecture frontend
-    description: Audit de stack, architecture cible, trajectoires de modernisation et migrations progressives (notamment Vue/Nuxt), avec un focus sur la performance, l’expérience développeur et la maintenabilité.
+    description: Audit de stack, architecture cible, trajectoires de modernisation et migrations progressives (notamment Vue/Nuxt), avec un focus sur la performance, l'expérience développeur et la maintenabilité.
     imageAlt: Architecture et modernisation frontend
     icon: i-ph-lightbulb
 
-  - slug: workshops
+  - slug: aide-decision-technique
     title: Conseil & aide à la décision
     description: >
       Regard externe pour clarifier, prioriser et arbitrer des décisions techniques à fort impact :
-      revues d’architecture, choix technologiques, trajectoire long terme.
+      revues d'architecture, choix technologiques, trajectoire long terme.
     imageAlt: Conseil et aide à la décision technique
     icon: i-ph-chalkboard-teacher
 
-  - slug: audit
-    title: Usage pragmatique de l’IA
+  - slug: ia-pragmatique
+    title: Usage pragmatique de l'IA
     description: >
-      Intégration raisonnée de l’IA quand la question n’est plus “est-ce possible ?” mais “est-ce pertinent ?” :
-      cas d’usage, risques, garde-fous et intégration progressive.
+      Intégration raisonnée de l'IA quand la question n'est plus "est-ce possible ?" mais "est-ce pertinent ?" :
+      cas d'usage, risques, garde-fous et intégration progressive.
     imageAlt: IA pragmatique et intégration produit
     icon: i-ph-sparkle
 
+itemsIntro: Trois axes d'intervention pour clarifier vos décisions techniques et structurer votre architecture.
+
 process:
-  title: Comment j’interviens
-  description: Une approche structurée et collaborative pour réduire l’incertitude, clarifier les options et sécuriser les décisions techniques.
+  title: Comment j'interviens
+  description: Une approche structurée et collaborative pour réduire l'incertitude, clarifier les options et sécuriser les décisions techniques.
   steps:
     - title: Cadrage & contexte
       description: Compréhension des enjeux, contraintes (legacy, équipe, livraison) et des décisions à prendre. Clarification des objectifs et des critères de succès.
@@ -55,7 +58,9 @@ process:
         gains rapides, jalons et décisions documentées.
     - title: Accompagnement & suivi
       description: >
-        Sessions régulières, revues d’architecture, support aux Tech Leads/CTO, et ajustements en fonction des retours terrain.
+        Sessions régulières, revues d'architecture, support aux Tech Leads/CTO, et ajustements en fonction des retours terrain.
+
+processLeadIn: Mon intervention suit une méthodologie éprouvée, adaptée à chaque contexte et pensée pour vous rendre autonome rapidement.
 
 stats:
   - value: "50+"
@@ -70,6 +75,7 @@ stats:
   - value: "98%"
     label: "Taux de satisfaction"
     icon: i-ph-star
+statsEnabled: false
 
 content: |
   J’interviens auprès d’équipes et d’organisations lorsque les décisions techniques deviennent structurantes, difficiles à arbitrer ou lourdes de conséquences à long terme.

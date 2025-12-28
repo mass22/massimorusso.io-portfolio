@@ -10,7 +10,7 @@ const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 
-const slug = 'audit'
+const slug = 'aide-decision-technique'
 
 const { data: page } = await useAsyncData(
   () => `service-${slug}-${locale.value}`,

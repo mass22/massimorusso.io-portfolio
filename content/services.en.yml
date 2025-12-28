@@ -1,32 +1,136 @@
 locale: 'en'
 title: Services
 description: Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences.
+heroSupportingLine: For CTOs, Tech Leads, and executives who need to make structuring technical decisions in a context of complexity and real constraints.
+
+seo:
+  title: Services — Frontend Architecture & AI Consulting
+  description: Frontend architecture consulting, technical decision support, and pragmatic AI integration for complex and structuring contexts.
+
+cta:
+  title: Ready to clarify your technical decisions?
+  description: Let's discuss your context, constraints, and decisions to secure. I'll propose a clear and realistic plan.
+  primary:
+    label: Contact me
+    href: /contact
+  secondary:
+    label: Schedule a call
+    href: /contact#booking
+
+items:
+  - slug: architecture-frontend
+    title: Frontend Architecture
+    description: Stack audit, target architecture, modernization trajectories and progressive migrations (especially Vue/Nuxt), with a focus on performance, developer experience, and maintainability.
+    imageAlt: Frontend architecture and modernization
+    icon: i-ph-lightbulb
+
+  - slug: aide-decision-technique
+    title: Consulting & Decision Support
+    description: >
+      External perspective to clarify, prioritize, and arbitrate high-impact technical decisions:
+      architecture reviews, technology choices, long-term trajectory.
+    imageAlt: Consulting and technical decision support
+    icon: i-ph-chalkboard-teacher
+
+  - slug: ia-pragmatique
+    title: Pragmatic AI Usage
+    description: >
+      Reasoned AI integration when the question is no longer "is it possible?" but "is it relevant?":
+      use cases, risks, safeguards, and progressive integration.
+    imageAlt: Pragmatic AI and product integration
+    icon: i-ph-sparkle
+
+itemsIntro: Three areas of intervention to clarify your technical decisions and structure your architecture.
+
+process:
+  title: How I Intervene
+  description: A structured and collaborative approach to reduce uncertainty, clarify options, and secure technical decisions.
+  steps:
+    - title: Scoping & Context
+      description: Understanding the challenges, constraints (legacy, team, delivery) and decisions to be made. Clarifying objectives and success criteria.
+    - title: Analysis & Options
+      description: >
+        Targeted audit, risk mapping, identification of realistic options and their trade-offs
+        (cost, timeline, maintenance, performance).
+    - title: Actionable Recommendations
+      description: >
+        Proposal of a strategy (migration, target architecture, safeguards) and a concrete plan:
+        quick wins, milestones, and documented decisions.
+    - title: Support & Follow-up
+      description: >
+        Regular sessions, architecture reviews, support for Tech Leads/CTOs, and adjustments based on field feedback.
+
+processLeadIn: My intervention follows a proven methodology, adapted to each context and designed to make you autonomous quickly.
+
+stats:
+  - value: "50+"
+    label: "Satisfied Clients"
+    icon: i-ph-users
+  - value: "100+"
+    label: "Projects Completed"
+    icon: i-ph-folder-open
+  - value: "500+"
+    label: "People Trained"
+    icon: i-ph-graduation-cap
+  - value: "98%"
+    label: "Satisfaction Rate"
+    icon: i-ph-star
+statsEnabled: false
+
 content: |
-  Hi, I'm **Massimo Russo**, a UX/UI Designer and Front-End Developer based right here in Boston. For the past six years, I've been immersed in the world of digital product creation, focusing on building experiences that are not just functional, but genuinely intuitive and engaging for users.
+  I work with teams and organizations when technical decisions become structuring, difficult to arbitrate, or have long-term consequences.
 
-  My path started at **Boston University**, where I earned a degree in Interactive Design. It was there I discovered my dual passion for the visual language of design and the logical puzzle of code. Since then, I've honed my skills in both areas, believing that the best digital products are born from a deep understanding of both aesthetics and implementation.
+  My role is not to deliver features, but to help **clarify**, **structure**, and **assume** technical decisions in contexts of complexity, legacy, and real constraints.
 
-  ### My Design Philosophy
+  ## What I Do
 
-  My design philosophy is rooted in **empathy** and **problem-solving**. I believe great design starts with understanding the 'why' – the user's needs, motivations, and pain points. I use research, iterative prototyping (often with tools like Figma), and user testing to ensure the solutions I build are truly effective.
+  ### Frontend Architecture
+  I help evaluate existing architectures, identify points of fragility, and define realistic modernization trajectories.
+  The goal is not perfect rewriting, but an architecture that is understandable, maintainable, and aligned with the team's capabilities.
 
-  I strive to create interfaces that feel effortless, where functionality and beauty work hand-in-hand. Whether I'm crafting pixel-perfect UIs or writing clean Vue.js/Nuxt.js code, my focus is always on creating value for the end-user.
+  ### Consulting & Decision Support
+  I intervene when several technical options are possible, but no clear decision emerges.
+  I help structure criteria, clarify trade-offs, and document decisions so they are understood and assumed over time.
 
-  ### What Drives Me
+  ### Pragmatic AI
+  I accompany teams when AI enters the discussion: product opportunity, market pressure, or internal initiative.
+  My role is to identify relevant use cases, frame risks (costs, quality, dependency, security), and integrate AI without unnecessarily complicating the existing architecture.
 
-  What keeps me excited about this work is the constant learning and the challenge of translating complex ideas into simple, elegant solutions. There's nothing more rewarding than seeing a design come to life and knowing it's making someone's digital interaction easier or more enjoyable.
+  ## How I Intervene
 
-  ### Beyond the Screen
+  My intervention can take different forms:
+  - targeted audits
+  - decision support
+  - technical workshops
+  - ad-hoc support for senior teams
 
-  When I'm not designing or coding, you might find me exploring Boston's latest coffee shops, hiking nearby trails, or occasionally contributing to open-source projects.
+  It is always time-limited, decision-oriented, and designed to make the team autonomous.
 
-  Thanks for stopping by. Feel free to browse my [projects](/projects) or [get in touch](/#contact) if you'd like to collaborate!
+  ## When to Call Me
+
+  - A frontend architecture becomes difficult to evolve
+  - Modernization is considered without a clear trajectory
+  - Technical choices need to be arbitrated quickly
+  - AI arrives in the roadmap without precise framing
+
+  ## What I Don't Do
+
+  - Long-term development or execution
+  - Project management or operational delivery
+  - "Turnkey" AI implementation without prior reflection
+
+  ## What You Get
+
+  - Clarified and documented technical decisions
+  - A more readable vision of your architecture
+  - A reduction in uncertainty and decision debt
 images:
   - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My coffee workspace
+    alt: My workspace with coffee
   - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: My trip to Tokyo
-testimonials:
+
+faq:
   - quote: "Massimo's approach to UX design completely transformed our product. He has a rare ability to balance beautiful aesthetics with functional simplicity. The redesign not only looked better, but it reduced our customer support tickets by 40% and increased conversion rates across all key metrics."
     author:
       name: 'Sarah Chen'
@@ -50,39 +154,27 @@ testimonials:
         srcset: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
 faq:
   title: Frequently Asked Questions
-  description: Answers to common questions about my process and services.
+  description: Answers to the most common questions about my support.
   categories:
-    - title: Services & Process
+    - title: Intervention & Framework
       questions:
-        - label: What services do you offer?
+        - label: Do you still work as a developer?
           content: |
-            I specialize in UX/UI design and front-end development. This includes user research, wireframing, interactive prototyping, creating intuitive user interfaces, building responsive websites and web applications (especially with Vue.js/Nuxt.js), and developing design systems. My goal is to create seamless digital experiences from concept to deployment.
-        - label: What is your design process like?
+            No. My role today is focused on architecture, decision support, and strategic guidance.
+            I can analyze existing code, but I don't work as a developer in a long-term capacity.
+        - label: When should I call you?
           content: |
-            My process is collaborative and iterative, typically involving stages like Discovery & Research, Ideation & Prototyping, User Testing, Visual Design, and close collaboration with development teams during implementation. I tailor the process based on project needs, always focusing on user-centered solutions.
-        - label: Do you work with startups?
-          content: |
-            Absolutely! I enjoy working with startups to help shape their product vision and create user-friendly interfaces from the ground up. I can adapt my process to fit the fast-paced startup environment.
-    - title: Pricing & Timelines
+            As early as possible, ideally before irreversible technical choices are made.
+            I also intervene when decisions have already been made and need to be reassessed.
+
+    - title: AI & Modernization
       questions:
-        - label: How much does a project typically cost?
+        - label: Do you offer turnkey AI solutions?
           content: |
-            Project costs vary based on scope, complexity, features, and timeline. For comprehensive UX/UI design and front-end development projects, my engagements typically start around $5,000, with average projects ranging between $8,000 and $25,000. For consulting or specific design tasks, my day rate is $700.
-        - label: What are your payment terms?
+            No. I don't integrate AI without prior framing.
+            My role is to help decide if AI is relevant, where it adds value, and how to integrate it without creating unnecessary dependency.
+        - label: Do you work with teams that are not AI experts?
           content: |
-            I generally require a 40% deposit to schedule the project and begin work, with the remaining 60% due upon successful project completion and delivery. I accept payments via bank transfer and Stripe.
-        - label: How long does a typical project take?
-          content: |
-            Timelines depend heavily on the project's scope and complexity. Smaller projects might take 3-4 weeks, while larger, more involved projects can range from 2 to 4 months. I always provide a detailed timeline estimate after the initial discovery phase.
-        - label: Do you offer retainers or ongoing support?
-          content: |
-            Yes, for clients needing ongoing design support, feature development, or maintenance, I offer monthly retainer options tailored to specific needs. Let's discuss if this is something you're interested in.
-    - title: About Me
-      questions:
-        - label: What do you enjoy most about your work?
-          content: |
-            I love the challenge of solving complex problems through design and technology. It's incredibly rewarding to see people interact with something I've created and find it genuinely useful and easy to navigate. Bridging the gap between user needs and technical possibilities is what truly excites me.
-        - label: What are your hobbies outside of work?
-          content: |
-            When I'm not designing or coding, I enjoy exploring Boston's neighborhoods, trying out new coffee shops, and hiking in the nearby reservations. I'm also passionate about photography and occasionally contribute to open-source projects.
+            Yes. What matters is not the initial level, but the ability to make informed decisions.
+            I adapt my support to the context and maturity of the team.
 
