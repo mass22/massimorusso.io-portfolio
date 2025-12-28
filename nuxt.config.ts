@@ -113,12 +113,6 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/projects': {
-      prerender: true,
-      headers: {
-        'Cache-Control': 'public, max-age=3600, must-revalidate'
-      }
-    },
     '/ressources': {
       prerender: true,
       headers: {
