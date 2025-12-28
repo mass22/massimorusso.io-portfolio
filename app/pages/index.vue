@@ -15,8 +15,6 @@ useSeoMeta({
   description: page.value?.seo?.description || page.value?.description, ogDescription: page.value?.seo?.description || page.value?.description, ogTitle: page.value?.seo?.title || page.value?.title, title: page.value?.seo?.title || page.value?.title
 })
 
-const isVisible = ref(false)
-
 const ctaLinks = computed(() => ([
   {
     label: t('homepage.cta.button'),
@@ -48,10 +46,10 @@ const ctaLinks = computed(() => ([
       <LazyLandingWorkExperience :page/>
     </UPageSection>
 
-    <!-- 8. Derniers Speaking (Conférences, Talks, Podcasts) -->
+    <!-- 5. Speaking (Conférences, Talks, prises de parole) -->
     <LazyLandingSpeaking :page />
 
-    <!-- 5. Blog (contenu secondaire) -->
+    <!-- 6. Blog (contenu secondaire) -->
     <UPageSection
       :ui="{
         container: '!pt-12 sm:!pt-16 lg:!pt-20'
@@ -60,9 +58,8 @@ const ctaLinks = computed(() => ([
       <LazyLandingBlog :page />
     </UPageSection>
 
-    <!-- 6. FAQ (répondre aux objections) -->
+    <!-- 7. FAQ (répondre aux objections) -->
     <UPageSection
-      v-if="isVisible"
       :ui="{
         container: '!pt-12 sm:!pt-16 lg:!pt-20'
       }"
@@ -70,7 +67,7 @@ const ctaLinks = computed(() => ([
       <LazyLandingFAQ :page />
     </UPageSection>
 
-    <!-- 7. CTA final vers Contact -->
+    <!-- 8. CTA final vers Contact -->
     <Motion
       :initial="{ opacity: 0, transform: 'translateY(30px)' }"
       :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"

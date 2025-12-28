@@ -1,14 +1,14 @@
 locale: 'fr'
 seo:
-  title: "Massimo Russo - Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d'Architecture"
-  description: "Bienvenue sur mon portfolio ! Je suis Massimo Russo, Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d'Architecture et développeur front-end basé à Boston. Je me spécialise dans la création d'expériences numériques centrées sur l'utilisateur, à la fois belles et fonctionnelles."
-title: "Salut, je suis Massimo Russo"
-description: "Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d'Architecture. J'aide les équipes à accélérer, réduire la dette, et livrer plus vite sans casser la qualité."
+  title: "Massimo Russo — Architecture frontend & conseil en IA"
+  description: "Massimo Russo est consultant senior en architecture frontend et usage pragmatique de l’IA. Il aide les entreprises à décider quand et comment utiliser l’IA face au legacy, à la complexité et à la hype."
+title: "Architecture frontend & conseil en IA"
+description: "J’aide les entreprises à prendre des décisions techniques claires face à la complexité, au legacy et à la hype autour de l’IA."
 hero:
   tags:
-    - "Construire"
+    - "Décider"
     - "Structurer"
-    - "Élever"
+    - "IA pragmatique"
   links:
     - label: "Ressources gratuites"
       to: /ressources
@@ -37,12 +37,52 @@ hero:
       alt: Image aléatoire 9
   isResourcesAvailable: false
 about:
-  title: "À propos de moi"
+  title: "À propos"
   description: |
-    En tant que designer UX/UI et développeur front-end avec 6 ans d'expérience, j'utilise mon diplôme en Design Interactif de l'Université de Boston pour créer des expériences numériques centrées sur l'utilisateur.
-    Mon approche combine stratégie créative et expertise technique, transformant les concepts en produits numériques fonctionnels et pertinents qui intègrent harmonieusement design et technologie.
+    Je suis consultant frontend senior, spécialisé en architecture frontend et en accompagnement à la décision technique.
+
+    J’interviens auprès d’équipes et d’organisations confrontées à des stacks complexes, du legacy et des choix structurants à long terme — notamment quand l’IA devient un sujet produit, technique ou organisationnel.
+
+    Mon rôle n’est pas d’exécuter des tickets, mais d’aider à structurer, arbitrer et sécuriser les décisions techniques.
+services:
+  title: "Services"
+  description: "J’accompagne les entreprises sur des sujets d’architecture frontend, d’aide à la décision technique et d’usage pragmatique de l’IA, dans des contextes complexes et à fort enjeu."
+  items:
+    - title: "Architecture frontend"
+      description: |
+        J’aide les équipes à structurer et moderniser leur frontend dans des contextes complexes et contraints.
+
+        Cela inclut l’analyse de stacks existantes, la définition de cibles d’architecture, les stratégies de migration (progressives ou non) et l’arbitrage de choix structurants sur le long terme.
+      bullets:
+        - Audit de stack frontend
+        - Architecture Vue / Nuxt
+        - Stratégies de modernisation
+        - Performance & scalabilité
+
+    - title: "Conseil & aide à la décision"
+      description: |
+        J’interviens comme regard externe pour aider à clarifier, prioriser et sécuriser des décisions techniques à fort impact.
+
+        Mon rôle est de réduire l’incertitude, pas d’ajouter de la complexité.
+      bullets:
+        - Support CTO / Tech Leads
+        - Revue d’architecture
+        - Arbitrage technologique
+        - Vision long terme
+
+    - title: "Usage pragmatique de l’IA"
+      description: |
+        J’accompagne les équipes dans l’intégration raisonnée de l’IA lorsque la question n’est plus “est‑ce possible ?” mais “est‑ce pertinent ?”.
+
+        Mon rôle est d’aider à décider où l’IA apporte une vraie valeur, à cadrer les risques (coût, qualité, dépendance, sécurité) et à l’intégrer progressivement dans des produits et des architectures existantes.
+      bullets:
+        - Identification des vrais cas d’usage
+        - Orchestration IA
+        - Intégration produit
+        - Aide à la décision par l’IA
+        - Cadrage des risques & impacts
 experience:
-  title: Certifications
+  title: "Expertise & écosystème"
   items:
     - position: "Développeur Vue.js Niveau Intermédiaire"
       date: "2025"
@@ -66,81 +106,93 @@ experience:
         url: "https://certification.nuxtjs.org/certification-badge.html"
         color: "#00DC82"
 blog:
-  title: "Derniers articles"
-  description: "Quelques-unes de mes réflexions récentes"
+  title: "Notes & analyses"
+  description: "Analyses courtes et retours terrain sur l’architecture frontend, la modernisation de stacks et l’usage pragmatique de l’IA. Du concret, orienté décision."
 speaking:
-  title: "Conférences & Podcasts"
-  description: "Découvrez mes dernières interventions et podcasts"
+  title: "Conférences & prises de parole"
+  description: "Interventions publiques, talks et podcasts autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur."
 companies:
-  title: "Entreprises avec qui j'ai travaillé"
-  description: "Découvrez quelques-unes des entreprises qui m'ont fait confiance pour leurs projets."
+  title: "Environnements & organisations"
+  description: "J’interviens auprès d’équipes et d’organisations confrontées à des enjeux de complexité, de legacy et de décisions techniques structurantes — notamment lorsque l’IA entre dans la roadmap."
+  patterns:
+    - title: "Sortir d’une impasse architecturale"
+      description: "Lorsque plusieurs options existent mais qu’aucune décision claire n’émerge, j’aide les équipes à structurer les critères et à arbitrer."
+    - title: "Clarifier une modernisation frontend"
+      description: "Définir une trajectoire réaliste de modernisation sans réécriture complète, en tenant compte du legacy et des équipes en place."
+    - title: "Challenger des choix déjà engagés"
+      description: "Apporter un regard externe pour valider, ajuster ou corriger des décisions prises trop rapidement."
+    - title: "Décider quand (et quand ne pas) utiliser l’IA"
+      description: "Aider les équipes à distinguer les vrais cas d’usage IA des effets de mode, et à décider en amont avant d’investir du temps et de la complexité."
   companies:
-    - name: "Bloom Finance"
+    - name: "Grandes entreprises"
       logo: "i-lucide-building-2"
-      url: "#"
-    - name: "Wavelength Music"
-      logo: "i-lucide-music"
-      url: "#"
-    - name: "GreenTech Solutions"
-      logo: "i-lucide-leaf"
-      url: "#"
-    - name: "EcoTrack"
-      logo: "i-lucide-activity"
-      url: "#"
-    - name: "TechForward"
-      logo: "i-lucide-rocket"
-      url: "#"
-    - name: "Design Systems Co"
+    - name: "Produits à forte complexité frontend"
       logo: "i-lucide-layers"
-      url: "#"
+    - name: "Équipes techniques matures"
+      logo: "i-lucide-users"
+    - name: "Stacks legacy en cours de modernisation"
+      logo: "i-lucide-refresh-cw"
+    - name: "Organisations en transition technique"
+      logo: "i-lucide-trending-up"
 podcast:
-  title: "Mon podcast: On parle dev"
-  description: "À écouter sans modération"
-testimonials:
-  - quote: "L'approche de Massimo en matière de design UX a complètement transformé notre produit. Il a une capacité rare à équilibrer une esthétique belle avec une simplicité fonctionnelle. La refonte n'a pas seulement mieux ressemblé, mais elle a réduit nos tickets de support client de 40% et augmenté les taux de conversion sur toutes les métriques clés."
-    author:
-      name: 'Sarah Chen'
-      description: 'Directrice Produit chez Bloom Finance'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Travailler avec Massimo a été la meilleure décision que nous ayons prise pour notre startup. Il n'a pas seulement livré des designs—il a remis en question nos hypothèses, a mené une recherche utilisateur approfondie et a créé une expérience qui a vraiment résonné avec notre audience. Sa connaissance technique du développement front-end a rendu la transmission à notre équipe d'ingénierie transparente."
-    author:
-      name: 'Michael Rodriguez'
-      description: 'Co-fondateur de Wavelength Music'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Massimo se distingue par sa capacité à traduire des données complexes de durabilité en interfaces intuitives. Son travail sur EcoTrack n'était pas seulement visuellement époustouflant—il a fondamentalement changé la façon dont nos utilisateurs interagissent avec les informations environnementales. Il aborde chaque problème avec à la fois créativité et rigueur analytique, ce qui est exactement ce dont nous avions besoin."
-    author:
-      name: 'Dr. Aisha Johnson'
-      description: "Directrice de l'Innovation chez GreenTech Solutions"
-      avatar:
-        src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
+  title: "Podcast — On parle dev"
+  description: "Un podcast dédié à l’architecture frontend, aux décisions techniques et à l’évolution de carrière des développeurs seniors."
 faq:
-  title: Questions Fréquemment Posées
-  description: Réponses aux questions courantes sur mon processus et mes services.
+  title: Questions fréquentes
+  description: Réponses aux questions les plus courantes sur mon rôle, mon positionnement et la manière dont j’interviens.
   categories:
-    - title: Services & Processus
+    - title: Architecture & Décision technique
       questions:
-        - label: Quels services proposez-vous ?
+        - label: Quelle est la différence entre un développeur senior et un consultant en architecture frontend ?
           content: |
-            Je me spécialise dans le design UX/UI et le développement front-end. Cela inclut la recherche utilisateur, le wireframing, le prototypage interactif, la création d'interfaces utilisateur intuitives, la construction de sites web et d'applications web réactives (notamment avec Vue.js/Nuxt.js), et le développement de systèmes de design. Mon objectif est de créer des expériences numériques fluides de la conception au déploiement.
-        - label: À quoi ressemble votre processus de design ?
+            Un développeur senior se concentre principalement sur l’implémentation et la livraison.
+
+            Un consultant en architecture frontend intervient plus en amont : il aide à structurer la stack, à analyser les contraintes existantes, à comparer des options et à sécuriser des décisions techniques ayant un impact à long terme.
+            Mon rôle est d’aider les équipes à éviter de mauvaises décisions avant qu’elles ne deviennent coûteuses.
+
+        - label: Quand faire appel à un consultant en architecture frontend ?
           content: |
-            Mon processus est collaboratif et itératif, impliquant généralement des étapes comme Découverte & Recherche, Idéation & Prototypage, Tests Utilisateurs, Design Visuel, et une collaboration étroite avec les équipes de développement pendant l'implémentation. J'adapte le processus en fonction des besoins du projet, en me concentrant toujours sur des solutions centrées sur l'utilisateur.
-        - label: Travaillez-vous avec des startups ?
+            Lorsque les décisions deviennent structurantes : migration de stack, dette technique importante, problèmes de performance, difficulté à faire évoluer le frontend ou manque de vision claire.
+
+            J’interviens généralement dans des contextes où improviser n’est plus une option.
+
+        - label: Travaillez-vous uniquement sur des projets Vue.js / Nuxt ?
           content: |
-            Absolument ! J'aime travailler avec des startups pour les aider à façonner leur vision produit et créer des interfaces conviviales dès le départ. Je peux adapter mon processus pour s'adapter à l'environnement rapide des startups.
-    - title: Tarifs & Délais
+            Vue.js et Nuxt sont mes domaines d’expertise principaux, mais mon travail porte avant tout sur l’architecture et la prise de décision.
+
+            Les principes que j’applique restent valables quel que soit le framework, dès lors que le frontend est critique dans le produit.
+
+    - title: Advisory & accompagnement
       questions:
-        - label: Combien coûte généralement un projet ?
+        - label: Intervenez-vous comme consultant ou comme développeur ?
           content: |
-            Les coûts des projets varient en fonction de la portée, de la complexité, des fonctionnalités et du délai. Pour les projets complets de design UX/UI et de développement front-end, mes engagements commencent généralement autour de 5 000 $, avec des projets moyens allant de 8 000 $ à 25 000 $. Pour le conseil ou des tâches de design spécifiques, mon tarif journalier est de 700 $.
-        - label: Quels sont vos conditions de paiement ?
+            J’interviens principalement comme consultant et conseiller technique.
+
+            Mon rôle n’est pas de prendre des tickets mais d’aider à structurer, arbitrer et sécuriser les décisions techniques aux côtés des équipes existantes.
+
+        - label: À quoi ressemble concrètement un accompagnement en advisory ?
           content: |
-            Je demande généralement un acompte de 40% pour planifier le projet et commencer le travail, les 60% restants étant dus à la réussite du projet et à la livraison. J'accepte les paiements par virement bancaire et Stripe.
-        - label: Combien de temps prend un projet typique ?
+            Cela peut prendre la forme de revues d’architecture, de sessions de travail avec des CTO ou Tech Leads, d’audits ciblés ou d’un accompagnement régulier.
+
+            Le format dépend du contexte, des enjeux et du niveau d’incertitude à réduire.
+
+    - title: IA & modernisation
+      questions:
+        - label: Comment abordez-vous l’intégration de l’IA dans un produit existant ?
           content: |
-            Les délais dépendent fortement de la portée et de la complexité du projet. Les projets plus petits peuvent prendre 3-4 semaines, tandis que les projets plus importants et plus complexes peuvent aller de 2 à 4 mois. Je fournis toujours une estimation de délai détaillée après la phase de découverte initiale.
+            L’IA n’est pas un objectif en soi.
+
+            Je commence par identifier les vrais problèmes à résoudre, puis j’évalue si l’IA apporte une valeur mesurable.
+            L’objectif est d’intégrer l’IA de manière pragmatique, sans ajouter de complexité inutile.
+
+        - label: Travaillez-vous sur des projets d’IA “from scratch” ?
+          content: |
+            Rarement.
+
+            J’interviens surtout sur des produits existants, là où l’intégration de l’IA doit cohabiter avec une architecture, des contraintes métiers et des équipes déjà en place.
+
+        - label: L’IA peut-elle réellement aider à la prise de décision technique ?
+          content: |
+            Oui, mais uniquement si elle est utilisée comme un outil d’aide à la réflexion, pas comme un oracle.
+
+            J’utilise l’IA pour explorer des options, comparer des scénarios et expliciter des trade-offs, tout en gardant la responsabilité finale côté humain.

@@ -1,87 +1,152 @@
 locale: 'fr'
 title: Services
-description: Découvrez mes services en tant que Designer UX/UI & Développeur Front-End basé à Boston, ma philosophie de design et ma passion pour créer des expériences numériques intuitives.
+description: Accompagnement en architecture frontend, aide à la décision technique et intégration pragmatique de l’IA pour des contextes complexes et structurants.
+
+seo:
+  title: Services — Architecture frontend & conseil en IA
+  description: Accompagnement en architecture frontend, aide à la décision technique et intégration pragmatique de l’IA pour des contextes complexes et structurants.
+
+cta:
+  title: Prêt à clarifier vos décisions techniques ?
+  description: Discutons de votre contexte, de vos contraintes et des décisions à sécuriser. Je vous propose un plan clair et réaliste.
+  primary:
+    label: Me contacter
+    href: /contact
+  secondary:
+    label: Planifier un appel
+    href: /contact#booking
+
+items:
+  - slug: consulting
+    title: Architecture frontend
+    description: Audit de stack, architecture cible, trajectoires de modernisation et migrations progressives (notamment Vue/Nuxt), avec un focus sur la performance, l’expérience développeur et la maintenabilité.
+    imageAlt: Architecture et modernisation frontend
+    icon: i-ph-lightbulb
+
+  - slug: workshops
+    title: Conseil & aide à la décision
+    description: >
+      Regard externe pour clarifier, prioriser et arbitrer des décisions techniques à fort impact :
+      revues d’architecture, choix technologiques, trajectoire long terme.
+    imageAlt: Conseil et aide à la décision technique
+    icon: i-ph-chalkboard-teacher
+
+  - slug: audit
+    title: Usage pragmatique de l’IA
+    description: >
+      Intégration raisonnée de l’IA quand la question n’est plus “est-ce possible ?” mais “est-ce pertinent ?” :
+      cas d’usage, risques, garde-fous et intégration progressive.
+    imageAlt: IA pragmatique et intégration produit
+    icon: i-ph-sparkle
+
+process:
+  title: Comment j’interviens
+  description: Une approche structurée et collaborative pour réduire l’incertitude, clarifier les options et sécuriser les décisions techniques.
+  steps:
+    - title: Cadrage & contexte
+      description: Compréhension des enjeux, contraintes (legacy, équipe, livraison) et des décisions à prendre. Clarification des objectifs et des critères de succès.
+    - title: Analyse & options
+      description: >
+        Audit ciblé, cartographie des risques, identification des options réalistes et de leurs arbitrages
+        (coût, délai, maintenance, performance).
+    - title: Recommandations actionnables
+      description: >
+        Proposition d’une stratégie (migration, architecture cible, garde-fous) et d’un plan concret :
+        gains rapides, jalons et décisions documentées.
+    - title: Accompagnement & suivi
+      description: >
+        Sessions régulières, revues d’architecture, support aux Tech Leads/CTO, et ajustements en fonction des retours terrain.
+
+stats:
+  - value: "50+"
+    label: "Clients satisfaits"
+    icon: i-ph-users
+  - value: "100+"
+    label: "Projets réalisés"
+    icon: i-ph-folder-open
+  - value: "500+"
+    label: "Personnes formées"
+    icon: i-ph-graduation-cap
+  - value: "98%"
+    label: "Taux de satisfaction"
+    icon: i-ph-star
+
 content: |
-  Salut, je suis **Massimo Russo**, un Designer UX/UI et Développeur Front-End basé à Boston. Depuis six ans, je suis immergé dans le monde de la création de produits numériques, en me concentrant sur la construction d'expériences qui ne sont pas seulement fonctionnelles, mais véritablement intuitives et engageantes pour les utilisateurs.
+  J’interviens auprès d’équipes et d’organisations lorsque les décisions techniques deviennent structurantes, difficiles à arbitrer ou lourdes de conséquences à long terme.
 
-  Mon parcours a commencé à l'**Université de Boston**, où j'ai obtenu un diplôme en Design Interactif. C'est là que j'ai découvert ma double passion pour le langage visuel du design et le puzzle logique du code. Depuis lors, j'ai affiné mes compétences dans les deux domaines, croyant que les meilleurs produits numériques naissent d'une compréhension approfondie à la fois de l'esthétique et de l'implémentation.
+  Mon rôle n’est pas de livrer des fonctionnalités, mais d’aider à **clarifier**, **structurer** et **assumer** des décisions techniques dans des contextes de complexité, de legacy et de contraintes réelles.
 
-  ### Ma Philosophie de Design
+  ## Ce que je fais
 
-  Ma philosophie de design est ancrée dans l'**empathie** et la **résolution de problèmes**. Je crois que le grand design commence par comprendre le 'pourquoi' – les besoins, motivations et points de douleur de l'utilisateur. J'utilise la recherche, le prototypage itératif (souvent avec des outils comme Figma) et les tests utilisateurs pour m'assurer que les solutions que je construis sont vraiment efficaces.
+  ### Architecture frontend
+  J’aide à évaluer des architectures existantes, à identifier les points de fragilité et à définir des trajectoires de modernisation réalistes.
+  L’objectif n’est pas la réécriture parfaite, mais une architecture compréhensible, maintenable et alignée avec les capacités de l’équipe.
 
-  Je m'efforce de créer des interfaces qui semblent sans effort, où la fonctionnalité et la beauté travaillent main dans la main. Que je crée des interfaces pixel-perfect ou que j'écrive du code Vue.js/Nuxt.js propre, mon objectif est toujours de créer de la valeur pour l'utilisateur final.
+  ### Conseil & aide à la décision
+  J’interviens lorsque plusieurs options techniques sont possibles, mais qu’aucune décision claire n’émerge.
+  J’aide à structurer les critères, expliciter les arbitrages et documenter les décisions pour qu’elles soient comprises et assumées dans le temps.
 
-  ### Ce qui me motive
+  ### IA pragmatique
+  J’accompagne les équipes lorsque l’IA entre dans la discussion : opportunité produit, pression du marché ou initiative interne.
+  Mon rôle est d’identifier les cas d’usage pertinents, de cadrer les risques (coûts, qualité, dépendance, sécurité) et d’intégrer l’IA sans complexifier inutilement l’architecture existante.
 
-  Ce qui me passionne dans ce travail, c'est l'apprentissage constant et le défi de traduire des idées complexes en solutions simples et élégantes. Il n'y a rien de plus gratifiant que de voir un design prendre vie et savoir qu'il rend l'interaction numérique de quelqu'un plus facile ou plus agréable.
+  ## Comment j’interviens
 
-  ### Au-delà de l'écran
+  Mon intervention peut prendre différentes formes :
+  - audits ciblés
+  - accompagnement à la décision
+  - ateliers techniques
+  - support ponctuel à des équipes senior
 
-  Quand je ne conçois pas ou ne code pas, vous pourriez me trouver en train d'explorer les derniers cafés de Boston, de faire de la randonnée sur les sentiers à proximité, ou de contribuer occasionnellement à des projets open-source.
+  Elle est toujours limitée dans le temps, orientée décision et pensée pour rendre l’équipe autonome.
 
-  Merci d'être passé par ici. N'hésitez pas à parcourir mes [projets](/projects) ou [me contacter](/#contact) si vous souhaitez collaborer !
+  ## Quand faire appel à moi
+
+  - Une architecture frontend devient difficile à faire évoluer
+  - Une modernisation est envisagée sans trajectoire claire
+  - Des choix techniques doivent être arbitrés rapidement
+  - L’IA arrive dans la roadmap sans cadrage précis
+
+  ## Ce que je ne fais pas
+
+  - Développement en régie ou exécution long terme
+  - Gestion de projet ou delivery opérationnel
+  - Implémentation d’IA “clé en main” sans réflexion préalable
+
+  ## Ce que vous obtenez
+
+  - Des décisions techniques clarifiées et documentées
+  - Une vision plus lisible de votre architecture
+  - Une réduction de l’incertitude et de la dette décisionnelle
+
 images:
   - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: Mon espace de travail avec café
   - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: Mon voyage à Tokyo
-testimonials:
-  - quote: "L'approche de Massimo en matière de design UX a complètement transformé notre produit. Il a une capacité rare à équilibrer une esthétique belle avec une simplicité fonctionnelle. La refonte n'a pas seulement mieux ressemblé, mais elle a réduit nos tickets de support client de 40% et augmenté les taux de conversion sur toutes les métriques clés."
-    author:
-      name: 'Sarah Chen'
-      description: 'Directrice Produit chez Bloom Finance'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Travailler avec Massimo a été la meilleure décision que nous ayons prise pour notre startup. Il n'a pas seulement livré des designs—il a remis en question nos hypothèses, a mené une recherche utilisateur approfondie et a créé une expérience qui a vraiment résonné avec notre audience. Sa connaissance technique du développement front-end a rendu la transmission à notre équipe d'ingénierie transparente."
-    author:
-      name: 'Michael Rodriguez'
-      description: 'Co-fondateur de Wavelength Music'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Massimo se distingue par sa capacité à traduire des données complexes de durabilité en interfaces intuitives. Son travail sur EcoTrack n'était pas seulement visuellement époustouflant—il a fondamentalement changé la façon dont nos utilisateurs interagissent avec les informations environnementales. Il aborde chaque problème avec à la fois créativité et rigueur analytique, ce qui est exactement ce dont nous avions besoin."
-    author:
-      name: 'Dr. Aisha Johnson'
-      description: "Directrice de l'Innovation chez GreenTech Solutions"
-      avatar:
-        src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
+
 faq:
-  title: Questions Fréquemment Posées
-  description: Réponses aux questions courantes sur mon processus et mes services.
+  title: Questions fréquentes
+  description: Réponses aux questions les plus courantes concernant mon accompagnement.
   categories:
-    - title: Services & Processus
+    - title: Intervention & cadre
       questions:
-        - label: Quels services proposez-vous ?
+        - label: Travaillez-vous encore comme développeur ?
           content: |
-            Je me spécialise dans le design UX/UI et le développement front-end. Cela inclut la recherche utilisateur, le wireframing, le prototypage interactif, la création d'interfaces utilisateur intuitives, la construction de sites web et d'applications web réactives (notamment avec Vue.js/Nuxt.js), et le développement de systèmes de design. Mon objectif est de créer des expériences numériques fluides de la conception au déploiement.
-        - label: À quoi ressemble votre processus de design ?
+            Non. Mon rôle est aujourd’hui centré sur l’architecture, l’aide à la décision et l’accompagnement stratégique.
+            Je peux analyser du code existant, mais je n’interviens pas comme développeur en régie.
+        - label: À quel moment intervenir ?
           content: |
-            Mon processus est collaboratif et itératif, impliquant généralement des étapes comme Découverte & Recherche, Idéation & Prototypage, Tests Utilisateurs, Design Visuel, et une collaboration étroite avec les équipes de développement pendant l'implémentation. J'adapte le processus en fonction des besoins du projet, en me concentrant toujours sur des solutions centrées sur l'utilisateur.
-        - label: Travaillez-vous avec des startups ?
-          content: |
-            Absolument ! J'aime travailler avec des startups pour les aider à façonner leur vision produit et créer des interfaces conviviales dès le départ. Je peux adapter mon processus pour s'adapter à l'environnement rapide des startups.
-    - title: Tarifs & Délais
+            Le plus tôt possible, idéalement avant que des choix techniques irréversibles ne soient engagés.
+            J’interviens aussi lorsque des décisions ont déjà été prises et nécessitent d’être réévaluées.
+
+    - title: IA & modernisation
       questions:
-        - label: Combien coûte généralement un projet ?
+        - label: Proposez-vous des solutions IA clé en main ?
           content: |
-            Les coûts des projets varient en fonction de la portée, de la complexité, des fonctionnalités et du délai. Pour les projets complets de design UX/UI et de développement front-end, mes engagements commencent généralement autour de 5 000 $, avec des projets moyens allant de 8 000 $ à 25 000 $. Pour le conseil ou des tâches de design spécifiques, mon tarif journalier est de 700 $.
-        - label: Quels sont vos conditions de paiement ?
+            Non. Je n’intègre pas d’IA sans cadrage préalable.
+            Mon rôle est d’aider à décider si l’IA est pertinente, où elle apporte de la valeur et comment l’intégrer sans créer de dépendance inutile.
+        - label: Travaillez-vous avec des équipes non expertes en IA ?
           content: |
-            Je demande généralement un acompte de 40% pour planifier le projet et commencer le travail, les 60% restants étant dus à la réussite du projet et à la livraison. J'accepte les paiements par virement bancaire et Stripe.
-        - label: Combien de temps prend un projet typique ?
-          content: |
-            Les délais dépendent fortement de la portée et de la complexité du projet. Les projets plus petits peuvent prendre 3-4 semaines, tandis que les projets plus importants et plus complexes peuvent aller de 2 à 4 mois. Je fournis toujours une estimation de délai détaillée après la phase de découverte initiale.
-        - label: Offrez-vous des contrats de maintenance ou un support continu ?
-          content: |
-            Oui, pour les clients ayant besoin d'un support de design continu, de développement de fonctionnalités ou de maintenance, j'offre des options de contrat mensuel adaptées à des besoins spécifiques. Discutons-en si cela vous intéresse.
-    - title: À propos de moi
-      questions:
-        - label: Qu'est-ce que vous préférez dans votre travail ?
-          content: |
-            J'adore le défi de résoudre des problèmes complexes grâce au design et à la technologie. C'est incroyablement gratifiant de voir les gens interagir avec quelque chose que j'ai créé et le trouver vraiment utile et facile à naviguer. Combler le fossé entre les besoins des utilisateurs et les possibilités techniques est ce qui m'excite vraiment.
-        - label: Quels sont vos passe-temps en dehors du travail ?
-          content: |
-            Quand je ne conçois pas ou ne code pas, j'aime explorer les quartiers de Boston, essayer de nouveaux cafés et faire de la randonnée dans les réserves à proximité. Je suis aussi passionné de photographie et je contribue occasionnellement à des projets open-source.
+            Oui. L’essentiel n’est pas le niveau initial, mais la capacité à prendre des décisions éclairées.
+            J’adapte mon accompagnement au contexte et à la maturité de l’équipe.

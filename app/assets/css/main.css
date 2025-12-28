@@ -317,3 +317,10 @@ UFormField:hover,
     scroll-behavior: auto !important;
   }
 }
+
+/* Classe personnalisée pour grid-cols-5 sur les grands écrans */
+@media (min-width: 1024px) {
+  .lg\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}

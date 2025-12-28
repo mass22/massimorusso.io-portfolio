@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { IndexCollectionItem, BlogCollectionItem } from '@nuxt/content';
+import type { IndexCollectionItem } from '@nuxt/content';
 import { computed } from 'vue';
 
 const { t, locale, defaultLocale } = useI18n()
+const localePath = useLocalePath()
 
 defineProps<{
   page: IndexCollectionItem
@@ -17,9 +18,6 @@ const { data: posts } = await useAsyncData(`index-blogs-${locale.value}`, async 
     .filter(post => post.locale === locale.value)
     .slice(0, 3)
 })
-if (!posts.value) {
-  throw createError({ fatal: true, statusCode: 404, statusMessage: t('common.blogsNotFound') })
-}
 
 const defaultLocaleCode = computed(() => {
   const localeValue = typeof defaultLocale === 'string' ? defaultLocale : (defaultLocale as { value: string })?.value
@@ -65,13 +63,17 @@ const localizedPosts = computed(() => {
         description: 'text-left mt-2 text-sm sm:text-sm lg:text-sm text-muted'
     }"
   >
+    <div v-if="localizedPosts.length === 0" class="mt-6 text-sm text-muted">
+      {{ t('blog.empty') }}
+    </div>
     <UBlogPosts
+      v-else
       orientation="vertical"
       class="gap-4 lg:gap-y-4"
     >
         <Motion
         v-for="(post, index) in localizedPosts"
-        :key="index"
+        :key="post._id || post.slug || post.path || index"
           :initial="{ opacity: 0, transform: 'translateY(20px)' }"
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
           :transition="{ delay: 0.1 * index, duration: 0.5 }"
@@ -107,6 +109,24 @@ const localizedPosts = computed(() => {
       </UBlogPost>
         </Motion>
     </UBlogPosts>
+    <div class="flex justify-center mt-8">
+      <UButton
+        :to="localePath('/blog')"
+        variant="outline"
+        size="md"
+        :label="t('blog.viewAll')"
+        icon="i-lucide-arrow-right"
+        class="group"
+      >
+        <template #trailing>
+          <UIcon
+            name="i-lucide-arrow-right"
+            class="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1"
+            aria-hidden="true"
+          />
+        </template>
+      </UButton>
+    </div>
   </UPageSection>
   </Motion>
 </template>

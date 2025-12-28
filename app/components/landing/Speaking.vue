@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IndexCollectionItem, SpeakingCollectionItem } from '@nuxt/content';
+import type { IndexCollectionItem } from '@nuxt/content';
 import { computed } from 'vue';
 
 type Event = {
@@ -34,23 +34,28 @@ const { data: speakingPage } = await useAsyncData(`speaking-${locale.value}`, as
   }
 })
 
-// Récupérer les 3 derniers événements (toutes catégories, triés par date)
-const latestEvents = computed(() => {
-  if (!speakingPage.value?.events) {
-    return []
-  }
+function normalizeAndSortEvents(all: any[]): Event[] {
+  return [...all]
+    .filter((event) => !!event && !!event.date)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) as Event[]
+}
 
-  const events = [...speakingPage.value.events]
-    .filter(event => {
-      if (!event || !event.date) return false
-      return true
-    })
-    .sort((a, b) => {
-      // Trier par date décroissante (plus récent en premier)
-      return new Date(b.date).getTime() - new Date(a.date).getTime()
-    })
-    .slice(0, 3) // Limiter à 3
-  return events as Event[]
+// Récupérer les derniers TALKS (Conference + Live talk)
+const latestTalks = computed(() => {
+  if (!speakingPage.value?.events) return []
+  const events = normalizeAndSortEvents(speakingPage.value.events)
+    .filter((e) => e.category === 'Conference' || e.category === 'Live talk')
+    .slice(0, 3)
+  return events
+})
+
+// Récupérer les derniers PODCASTS
+const latestPodcasts = computed(() => {
+  if (!speakingPage.value?.events) return []
+  const events = normalizeAndSortEvents(speakingPage.value.events)
+    .filter((e) => e.category === 'Podcast')
+    .slice(0, 3)
+  return events
 })
 
 function formatDate(dateString: string): string {
@@ -95,84 +100,182 @@ function getCategoryLabel(category: string): string {
         description: 'text-left mt-2 text-sm sm:text-sm lg:text-sm text-muted'
       }"
     >
-      <div v-if="latestEvents.length === 0" class="text-center text-muted py-8">
+      <div
+        v-if="latestTalks.length === 0 && latestPodcasts.length === 0"
+        class="text-center text-muted py-8"
+      >
         <p>Aucun événement disponible pour le moment.</p>
       </div>
-      <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-        <Motion
-          v-for="(event, index) in latestEvents"
-          :key="`event-${index}-${event.title}`"
-          :initial="{ opacity: 0, transform: 'translateY(20px)' }"
-          :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
-          :transition="{ delay: 0.1 * index, duration: 0.5 }"
-          :in-view-options="{ once: true, margin: '-50px' }"
-        >
-          <UCard
-            :to="event.url || localePath('/speaking')"
-            :target="event.url ? '_blank' : undefined"
-            class="group h-full hover:shadow-lg transition-all duration-300 ease-out hover:scale-[1.02]"
-            :ui="{
-              root: 'flex flex-col h-full',
-              body: 'flex-1 flex flex-col',
-              footer: 'pt-4'
-            }"
-          >
-            <template #header>
-              <div class="flex items-start justify-between gap-3">
-                <div class="flex items-center gap-2">
-                  <div class="p-2 rounded-lg bg-primary/10 dark:bg-primary/20">
-                    <UIcon
-                      :name="getCategoryIcon(event.category)"
-                      class="size-5 text-primary"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <span class="text-xs font-medium text-muted uppercase tracking-wide">
-                    {{ getCategoryLabel(event.category) }}
-                  </span>
-                </div>
-              </div>
-            </template>
 
-            <div class="flex-1 flex flex-col gap-3">
-              <h3 class="text-lg font-semibold text-highlighted leading-tight group-hover:text-primary transition-colors">
-                {{ event?.title || 'No title' }}
-              </h3>
-              <div class="flex flex-col gap-2 text-sm text-muted">
-                <div class="flex items-center gap-2">
-                  <UIcon name="i-lucide-map-pin" class="size-4 shrink-0" aria-hidden="true" />
-                  <span>{{ event?.location || 'No location' }}</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <UIcon name="i-lucide-calendar" class="size-4 shrink-0" aria-hidden="true" />
-                  <span>{{ event?.date ? formatDate(event.date) : 'No date' }}</span>
-                </div>
-              </div>
-            </div>
+      <div v-else class="mt-8 space-y-10">
+        <!-- Talks -->
+        <div v-if="latestTalks.length > 0">
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-sm font-semibold text-highlighted uppercase tracking-wide">
+              {{ t('speaking.blocks.talks') }}
+            </h3>
+          </div>
 
-            <template #footer>
-              <UButton
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+            <Motion
+              v-for="(event, index) in latestTalks"
+              :key="`talk-${index}-${event.title}`"
+              :initial="{ opacity: 0, transform: 'translateY(20px)' }"
+              :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
+              :transition="{ delay: 0.1 * index, duration: 0.5 }"
+              :in-view-options="{ once: true, margin: '-50px' }"
+            >
+              <UCard
                 :to="event.url || localePath('/speaking')"
                 :target="event.url ? '_blank' : undefined"
-                variant="link"
-                size="sm"
-                class="px-0 gap-1 text-primary"
-                :label="event.category === 'Podcast' ? t('speaking.listen') : t('speaking.watch')"
+                class="group h-full hover:shadow-lg transition-all duration-300 ease-out hover:scale-[1.02]"
+                :ui="{
+                  root: 'flex flex-col h-full',
+                  body: 'flex-1 flex flex-col',
+                  footer: 'pt-4'
+                }"
               >
-                <template #trailing>
-                  <UIcon
-                    name="i-lucide-arrow-right"
-                    class="size-4 transition-all duration-300 ease-out opacity-0 group-hover:translate-x-2 group-hover:opacity-100"
-                    aria-hidden="true"
-                  />
+                <template #header>
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                      <div class="p-2 rounded-lg bg-primary/10 dark:bg-primary/20">
+                        <UIcon
+                          :name="getCategoryIcon(event.category)"
+                          class="size-5 text-primary"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <span class="text-xs font-medium text-muted uppercase tracking-wide">
+                        {{ getCategoryLabel(event.category) }}
+                      </span>
+                    </div>
+                  </div>
                 </template>
-              </UButton>
-            </template>
-          </UCard>
-        </Motion>
+
+                <div class="flex-1 flex flex-col gap-3">
+                  <h3 class="text-lg font-semibold text-highlighted leading-tight group-hover:text-primary transition-colors">
+                    {{ event?.title || 'No title' }}
+                  </h3>
+                  <div class="flex flex-col gap-2 text-sm text-muted">
+                    <div class="flex items-center gap-2">
+                      <UIcon name="i-lucide-map-pin" class="size-4 shrink-0" aria-hidden="true" />
+                      <span>{{ event?.location || 'No location' }}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <UIcon name="i-lucide-calendar" class="size-4 shrink-0" aria-hidden="true" />
+                      <span>{{ event?.date ? formatDate(event.date) : 'No date' }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <template #footer>
+                  <UButton
+                    :to="event.url || localePath('/speaking')"
+                    :target="event.url ? '_blank' : undefined"
+                    variant="link"
+                    size="sm"
+                    class="px-0 gap-1 text-primary"
+                    :label="t('speaking.watch')"
+                  >
+                    <template #trailing>
+                      <UIcon
+                        name="i-lucide-arrow-right"
+                        class="size-4 transition-all duration-300 ease-out opacity-0 group-hover:translate-x-2 group-hover:opacity-100"
+                        aria-hidden="true"
+                      />
+                    </template>
+                  </UButton>
+                </template>
+              </UCard>
+            </Motion>
+          </div>
+        </div>
+
+        <!-- Podcasts -->
+        <div v-if="latestPodcasts.length > 0">
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-sm font-semibold text-highlighted uppercase tracking-wide">
+              {{ t('speaking.blocks.podcasts') }}
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+            <Motion
+              v-for="(event, index) in latestPodcasts"
+              :key="`podcast-${index}-${event.title}`"
+              :initial="{ opacity: 0, transform: 'translateY(20px)' }"
+              :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
+              :transition="{ delay: 0.1 * index, duration: 0.5 }"
+              :in-view-options="{ once: true, margin: '-50px' }"
+            >
+              <UCard
+                :to="event.url || localePath('/speaking')"
+                :target="event.url ? '_blank' : undefined"
+                class="group h-full hover:shadow-lg transition-all duration-300 ease-out hover:scale-[1.02]"
+                :ui="{
+                  root: 'flex flex-col h-full',
+                  body: 'flex-1 flex flex-col',
+                  footer: 'pt-4'
+                }"
+              >
+                <template #header>
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-center gap-2">
+                      <div class="p-2 rounded-lg bg-primary/10 dark:bg-primary/20">
+                        <UIcon
+                          :name="getCategoryIcon(event.category)"
+                          class="size-5 text-primary"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <span class="text-xs font-medium text-muted uppercase tracking-wide">
+                        {{ getCategoryLabel(event.category) }}
+                      </span>
+                    </div>
+                  </div>
+                </template>
+
+                <div class="flex-1 flex flex-col gap-3">
+                  <h3 class="text-lg font-semibold text-highlighted leading-tight group-hover:text-primary transition-colors">
+                    {{ event?.title || 'No title' }}
+                  </h3>
+                  <div class="flex flex-col gap-2 text-sm text-muted">
+                    <div class="flex items-center gap-2">
+                      <UIcon name="i-lucide-map-pin" class="size-4 shrink-0" aria-hidden="true" />
+                      <span>{{ event?.location || 'No location' }}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <UIcon name="i-lucide-calendar" class="size-4 shrink-0" aria-hidden="true" />
+                      <span>{{ event?.date ? formatDate(event.date) : 'No date' }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <template #footer>
+                  <UButton
+                    :to="event.url || localePath('/speaking')"
+                    :target="event.url ? '_blank' : undefined"
+                    variant="link"
+                    size="sm"
+                    class="px-0 gap-1 text-primary"
+                    :label="t('speaking.listen')"
+                  >
+                    <template #trailing>
+                      <UIcon
+                        name="i-lucide-arrow-right"
+                        class="size-4 transition-all duration-300 ease-out opacity-0 group-hover:translate-x-2 group-hover:opacity-100"
+                        aria-hidden="true"
+                      />
+                    </template>
+                  </UButton>
+                </template>
+              </UCard>
+            </Motion>
+          </div>
+        </div>
       </div>
 
-      <div class="flex justify-center mt-8">
+      <div class="flex justify-center mt-10">
         <UButton
           :to="localePath('/speaking')"
           variant="outline"
@@ -193,4 +296,3 @@ function getCategoryLabel(category: string): string {
     </UPageSection>
   </Motion>
 </template>
-

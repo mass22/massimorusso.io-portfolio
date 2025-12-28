@@ -89,7 +89,20 @@ export default defineContentConfig({
             description: z.string().optional()
           }))
         }).optional(),
-        speaking: createBaseSchema().optional()
+        speaking: createBaseSchema().optional(),
+        faq: createBaseSchema().extend({
+          categories: z.array(
+            z.object({
+              title: z.string().nonempty(),
+              questions: z.array(
+                z.object({
+                  label: z.string().nonempty(),
+                  content: z.string().nonempty()
+                })
+              )
+            }))
+        }).optional(),
+        testimonials: z.array(createTestimonialSchema()).optional()
       })
     }), pages: defineCollection({
       type: 'page',
@@ -146,9 +159,30 @@ export default defineContentConfig({
           title: z.string(),
           description: z.string()
         }).optional(),
-        content: z.string(),
-        images: z.array(createImageSchema()),
-        testimonials: z.array(createTestimonialSchema()),
+        content: z.string().optional(),
+        images: z.array(createImageSchema()).optional(),
+        items: z.array(z.object({
+          slug: z.string(),
+          title: z.string(),
+          description: z.string(),
+          image: z.string().optional(),
+          imageAlt: z.string().optional(),
+          icon: z.string().optional()
+        })).optional(),
+        process: z.object({
+          title: z.string(),
+          description: z.string(),
+          steps: z.array(z.object({
+            title: z.string(),
+            description: z.string()
+          }))
+        }).optional(),
+        stats: z.array(z.object({
+          value: z.string(),
+          label: z.string(),
+          icon: z.string().optional()
+        })).optional(),
+        testimonials: z.array(createTestimonialSchema()).optional(),
         faq: createBaseSchema().extend({
           categories: z.array(
             z.object({
@@ -160,7 +194,19 @@ export default defineContentConfig({
                 })
               )
             }))
-        })
+        }).optional(),
+        cta: z.object({
+          title: z.string(),
+          description: z.string(),
+          primary: z.object({
+            label: z.string(),
+            href: z.string()
+          }).optional(),
+          secondary: z.object({
+            label: z.string(),
+            href: z.string()
+          }).optional()
+        }).optional()
       })
     }), serviceItems: defineCollection({
       type: 'page',

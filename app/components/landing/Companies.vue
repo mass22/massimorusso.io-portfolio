@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { IndexCollectionItem } from '@nuxt/content';
 
+type EngagementPattern = {
+  title: string
+  description: string
+}
+
 type Company = {
   name: string
   logo?: string
@@ -12,6 +17,7 @@ type CompaniesSection = {
   title?: string
   description?: string
   companies?: Company[]
+  patterns?: EngagementPattern[]
 }
 
 const { t } = useI18n()
@@ -38,7 +44,24 @@ defineProps<{
         description: 'text-left mt-3 text-base sm:text-lg text-muted max-w-3xl'
       }"
     >
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 mt-8">
+      <div
+        v-if="page.companies?.patterns && page.companies.patterns.length > 0"
+        class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"
+      >
+        <div
+          v-for="(item, i) in page.companies.patterns"
+          :key="`${item.title}-${i}`"
+          class="rounded-xl border border-default/20 bg-elevated/30 px-5 py-4"
+        >
+          <div class="text-sm font-semibold text-highlighted">
+            {{ item.title }}
+          </div>
+          <div class="mt-1 text-sm text-muted leading-relaxed">
+            {{ item.description }}
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 mt-8">
         <Motion
           v-for="(company, index) in page.companies.companies"
           :key="index"
@@ -99,4 +122,3 @@ defineProps<{
     </UPageSection>
   </Motion>
 </template>
-
