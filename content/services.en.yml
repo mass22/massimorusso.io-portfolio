@@ -1,6 +1,6 @@
 locale: 'en'
 title: Services
-description: Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences.
+description: Frontend architecture consulting, technical decision support, and pragmatic AI integration for complex and structuring contexts.
 heroSupportingLine: For CTOs, Tech Leads, and executives who need to make structuring technical decisions in a context of complexity and real constraints.
 
 seo:
@@ -115,7 +115,7 @@ content: |
 
   ## What I Don't Do
 
-  - Long-term development or execution
+  - Long-term development or execution on a time-and-materials basis
   - Project management or operational delivery
   - "Turnkey" AI implementation without prior reflection
 
@@ -124,34 +124,13 @@ content: |
   - Clarified and documented technical decisions
   - A more readable vision of your architecture
   - A reduction in uncertainty and decision debt
+
 images:
   - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: My workspace with coffee
   - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: My trip to Tokyo
 
-faq:
-  - quote: "Massimo's approach to UX design completely transformed our product. He has a rare ability to balance beautiful aesthetics with functional simplicity. The redesign not only looked better, but it reduced our customer support tickets by 40% and increased conversion rates across all key metrics."
-    author:
-      name: 'Sarah Chen'
-      description: 'Product Director at Bloom Finance'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Working with Massimo was the best decision we made for our startup. He didn't just deliver designs—he challenged our assumptions, conducted thorough user research, and created an experience that truly resonated with our audience. His technical knowledge of front-end development meant the handoff to our engineering team was seamless."
-    author:
-      name: 'Michael Rodriguez'
-      description: 'Co-founder of Wavelength Music'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Massimo stands out in his ability to translate complex sustainability data into intuitive interfaces. His work on EcoTrack wasn't just visually stunning—it fundamentally changed how our users interact with environmental information. He approaches each problem with both creativity and analytical rigor, which is exactly what we needed."
-    author:
-      name: 'Dr. Aisha Johnson'
-      description: 'Chief Innovation Officer at GreenTech Solutions'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
 faq:
   title: Frequently Asked Questions
   description: Answers to the most common questions about my support.
@@ -161,7 +140,7 @@ faq:
         - label: Do you still work as a developer?
           content: |
             No. My role today is focused on architecture, decision support, and strategic guidance.
-            I can analyze existing code, but I don't work as a developer in a long-term capacity.
+            I can analyze existing code, but I don't work as a developer on a time-and-materials basis.
         - label: When should I call you?
           content: |
             As early as possible, ideally before irreversible technical choices are made.
@@ -177,4 +156,3 @@ faq:
           content: |
             Yes. What matters is not the initial level, but the ability to make informed decisions.
             I adapt my support to the context and maturity of the team.
-

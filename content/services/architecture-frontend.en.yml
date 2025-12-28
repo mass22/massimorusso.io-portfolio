@@ -1,37 +1,56 @@
 locale: 'en'
 slug: 'architecture-frontend'
-title: "Consulting & Strategy"
-description: "Personalized guidance to improve your digital products, optimize your design processes, and develop your product vision."
+title: Frontend Architecture
+description: Frontend architecture support to clarify, evaluate, and evolve complex stacks without blind rewriting or technical dogma.
 icon: 'i-ph-lightbulb'
+
 content: |
-  ## What is Consulting & Strategy?
+  This intervention is for teams facing a frontend architecture that has become difficult to understand, maintain, or evolve.
 
-  UX/UI design and front-end development consulting involves guiding you in making strategic decisions to improve your digital products. I help you identify improvement opportunities, optimize your processes, and develop a coherent product vision.
+  My role is not to propose an "ideal architecture".
+  It is to help define an **architecture adapted to your real context**, your constraints, and your team.
 
-  ## How I can help you
+  ---
 
-  ### Audit of your existing product
-  - In-depth analysis of your user interface
-  - Identification of friction points and improvement opportunities
-  - Concrete and actionable recommendations
+  ## When to Intervene
 
-  ### Product strategy
-  - Definition of product vision
-  - Development roadmap
-  - Feature prioritization
+  - the codebase becomes fragile or unpredictable
+  - each evolution costs more than expected
+  - a migration is considered without a clear trajectory
+  - several technical choices are possible without consensus
 
-  ### Process optimization
-  - Improvement of your design workflow
-  - Implementation of design systems
-  - Training your team on best practices
+  ---
 
-  ## My approach
+  ## What I Do
 
-  I always start by understanding your context, goals, and constraints. Then, I propose solutions tailored to your situation, whether for a one-time project or long-term support.
+  - targeted audit of the existing architecture
+  - identification of fragility points and real debt
+  - clarification of possible options (without dogma)
+  - definition of a progressive modernization trajectory
 
-  ## Pricing
+  ---
 
-  My daily rate for consulting is **€700**. Projects can range from a few days to several weeks depending on your needs.
+  ## What I Don't Do
 
-  Feel free to [contact me](/contact) to discuss your project.
+  - complete rewrite without justification
+  - imposition of a framework or pattern
+  - decisions disconnected from the team
 
+  ---
+
+  ## What You Get
+
+  - a more readable architecture
+  - explicit technical decisions
+  - a realistic and assumed trajectory
+  - less debt... and less uncertainty
+
+  ---
+
+  ## For Whom
+
+  CTOs, Tech Leads, and frontend teams facing structuring choices.
+
+images:
+  - src: https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop
+    alt: Frontend architecture and technical decision-making

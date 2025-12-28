@@ -1,29 +1,99 @@
 locale: 'en'
-title: About Me
-description: Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences.
+title: About
+description: Senior frontend architecture consultant and technical decision support. I intervene when decisions become critical, complex, or costly in the long term.
+
 content: |
-  Hi, I'm **Massimo Russo**, a UX/UI Designer and Front-End Developer based right here in Boston. For the past six years, I've been immersed in the world of digital product creation, focusing on building experiences that are not just functional, but genuinely intuitive and engaging for users.
+  I intervene when technical decisions stop being obvious.
 
-  My path started at **Boston University**, where I earned a degree in Interactive Design. It was there I discovered my dual passion for the visual language of design and the logical puzzle of code. Since then, I've honed my skills in both areas, believing that the best digital products are born from a deep understanding of both aesthetics and implementation.
+  When a frontend architecture starts weighing on the team.
+  When multiple options seem possible, but none clearly stands out.
+  When a bad decision today can cost months — or years — tomorrow.
 
-  ### My Design Philosophy
+  My role is not to execute.
+  My role is to help **decide**.
 
-  My design philosophy is rooted in **empathy** and **problem-solving**. I believe great design starts with understanding the 'why' – the user's needs, motivations, and pain points. I use research, iterative prototyping (often with tools like Figma), and user testing to ensure the solutions I build are truly effective.
+  ---
 
-  I strive to create interfaces that feel effortless, where functionality and beauty work hand-in-hand. Whether I'm crafting pixel-perfect UIs or writing clean Vue.js/Nuxt.js code, my focus is always on creating value for the end-user.
+  ## What I do (and what I don't do)
 
-  ### What Drives Me
+  I don't intervene to deliver features.
+  I don't intervene on a time-and-materials basis.
+  I don't "reinforce a team" to produce faster.
 
-  What keeps me excited about this work is the constant learning and the challenge of translating complex ideas into simple, elegant solutions. There's nothing more rewarding than seeing a design come to life and knowing it's making someone's digital interaction easier or more enjoyable.
+  I intervene when:
+  - strategic technical choices need to be arbitrated
+  - a frontend architecture becomes difficult to evolve
+  - complexity starts slowing down the product and teams
 
-  ### Beyond the Screen
+  My work consists of:
+  - clarifying real options (not theoretical ones)
+  - making trade-offs explicit
+  - documenting decisions that stand the test of time
 
-  When I'm not designing or coding, you might find me exploring Boston's latest coffee shops, hiking nearby trails, or occasionally contributing to open-source projects.
+  ---
 
-  Thanks for stopping by. Feel free to browse my [projects](/projects) or [get in touch](/#contact) if you'd like to collaborate!
+  ## Why this approach
+
+  I've spent enough time in teams to know that the most costly problems are not always technical.
+
+  They are often decision-related:
+  - unclear choices
+  - implicit trade-offs
+  - directions never really assumed
+
+  Over time, debt is no longer just technical.
+  It becomes a **decision debt**.
+
+  That's where I intervene.
+
+  ---
+
+  ## How I work
+
+  I work with teams, not in their place.
+  I ask questions that are sometimes avoided:
+  - Why this option?
+  - Why now?
+  - What are we willing to sacrifice?
+
+  I prioritize:
+  - clarity over sophistication
+  - collective understanding over individual complexity
+  - readable architectures rather than brilliant ones on paper
+
+  My goal is not to make the system "perfect".
+  It is to make it **understandable, maintainable, and assumed**.
+
+  ---
+
+  ## About AI
+
+  AI is everywhere in technical discussions today.
+  Very few projects derive real value from it.
+
+  I intervene to:
+  - distinguish opportunity from trend
+  - frame the risks (costs, dependencies, quality)
+  - decide if AI is relevant, where it is, and where it isn't
+
+  I don't sell promises.
+  I sell **lucidity**.
+
+  ---
+
+  ## If you're considering working with me
+
+  We're probably aligned if:
+  - an important technical decision is blocking
+  - the current architecture is hindering product evolution
+  - you need an external, experienced, and independent perspective
+
+  If you're looking for someone to execute or "keep the machine running", I'm not the right person.
+
+  If you're looking to **clarify**, **arbitrate**, and **assume** complex technical decisions, then the discussion is worth having.
+
 images:
   - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My coffee workspace
+    alt: My workspace with coffee
   - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: My trip to Tokyo
-

@@ -1,45 +1,57 @@
 locale: 'en'
 slug: 'ia-pragmatique'
-title: "Training & Workshops"
-description: "Practical training on UX/UI design, Vue.js, Nuxt.js, and front-end development best practices."
-icon: 'i-ph-chalkboard-teacher'
+title: Pragmatic AI Usage
+description: Support to decide if, where, and how AI brings real value, without hype or unnecessary complexity.
+icon: 'i-ph-sparkle'
+
 content: |
-  ## Training & Workshops
+  AI is everywhere in technical discussions today.
+  Very few projects derive measurable value from it.
 
-  I offer practical and interactive training to help you and your team master modern UX/UI design and front-end development tools and techniques.
+  My role is not to "add AI".
+  It is to help **decide if AI is relevant**, where it really is, and how to integrate it without weakening what exists.
 
-  ## Available training
+  ---
 
-  ### UX/UI Design
-  - Fundamentals of user-centered design
-  - Creating design systems
-  - Prototyping with Figma
-  - User testing and UX research
+  ## When to Intervene
 
-  ### Vue.js & Nuxt.js
-  - Introduction to Vue.js
-  - Development with Nuxt.js
-  - Architecture and best practices
-  - Performance and optimization
+  - internal or market pressure around AI
+  - uncertainty about real use cases
+  - concerns about costs, dependencies, or risks
+  - integration considered in an existing product or architecture
 
-  ### Front-End Development
-  - Web accessibility (WCAG)
-  - Performance and optimization
-  - Testing and code quality
-  - Deployment and CI/CD
+  ---
 
-  ## Training format
+  ## What I Do
 
-  Training can be organized:
-  - **In-person**: at your premises or a dedicated space
-  - **Online**: via interactive video conferencing
-  - **Hybrid**: combination of both formats
+  - identification of use cases where AI brings concrete value
+  - cost / value / risk analysis (quality, dependency, security)
+  - architectural framing (orchestration, data, integration)
+  - definition of technical and organizational safeguards
 
-  Typical duration: from 1 day to 1 week depending on the topic.
+  ---
 
-  ## Pricing
+  ## What I Don't Do
 
-  Rates vary depending on format, duration, and number of participants. Contact me for a personalized quote.
+  - integrate AI "to follow the crowd"
+  - sell unrealistic promises
+  - build opaque or uncontrolled systems
 
-  [Contact me](/contact) to discuss your training needs.
+  ---
 
+  ## What You Get
+
+  - a clear decision on using (or not) AI
+  - a controlled integration if it makes sense
+  - less technical and cognitive debt
+  - a sustainable and understandable approach
+
+  ---
+
+  ## For Whom
+
+  CTOs, product teams, and organizations exploring AI without wanting to get lost in it.
+
+images:
+  - src: https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop
+    alt: Pragmatic artificial intelligence usage and decision support

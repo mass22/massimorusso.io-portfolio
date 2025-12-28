@@ -1,19 +1,19 @@
 locale: 'en'
 seo:
-  title: "Massimo Russo - Senior Frontend Consultant — Vue.js, Nuxt & Architecture Modernization"
-  description: "Welcome to my portfolio! I'm Massimo Russo, a Senior Frontend Consultant — Vue.js, Nuxt & Architecture Modernization and front-end developer based in Boston. I specialize in creating user-centered digital experiences that are both beautiful and functional."
-title: "Hey, I'm Massimo Russo"
-description: "Senior Frontend Consultant — Vue.js, Nuxt & Architecture Modernization. I help teams accelerate, reduce debt, and deliver faster without breaking quality."
+  title: "Massimo Russo — Frontend Architecture & AI Consulting"
+  description: "Massimo Russo is a senior frontend architecture consultant specializing in pragmatic AI usage. He helps companies decide when and how to use AI in the face of legacy systems, complexity, and hype."
+title: "Frontend Architecture & AI Consulting"
+description: "I help companies make clear technical decisions in the face of complexity, legacy systems, and AI hype."
 hero:
   tags:
-    - "Build"
+    - "Decide"
     - "Structure"
-    - "Elevate"
+    - "Pragmatic AI"
   links:
     - label: "Free Resources"
       to: /ressources
       color: "neutral"
-    - label: "About Me"
+    - label: "About"
       to: /about
       trailingIcon: 'i-lucide-arrow-right'
   images:
@@ -37,12 +37,52 @@ hero:
       alt: Random Image 9
   isResourcesAvailable: false
 about:
-  title: "About Me"
+  title: "About"
   description: |
-    As a UX/UI designer and front-end developer with 6 years of experience, I leverage my Boston University Interactive Design degree to craft user-centered digital experiences.
-    My approach blends creative strategy with technical expertise, transforming concepts into functional, purposeful digital products that seamlessly integrate design and technology.
+    I'm a senior frontend consultant, specialized in frontend architecture and technical decision support.
+
+    I work with teams and organizations facing complex stacks, legacy systems, and long-term strategic choices — especially when AI becomes a product, technical, or organizational topic.
+
+    My role is not to execute tickets, but to help structure, arbitrate, and secure technical decisions.
+services:
+  title: "Services"
+  description: "I support companies on frontend architecture, technical decision support, and pragmatic AI usage, in complex and high-stakes contexts."
+  items:
+    - title: "Frontend architecture"
+      description: |
+        I help teams structure and modernize their frontend in complex and constrained contexts.
+
+        This includes analyzing existing stacks, defining architecture targets, migration strategies (progressive or not), and arbitrating long-term strategic choices.
+      bullets:
+        - Frontend stack audit
+        - Vue / Nuxt architecture
+        - Modernization strategies
+        - Performance & scalability
+
+    - title: "Consulting & decision support"
+      description: |
+        I provide an external perspective to help clarify, prioritize, and secure high-impact technical decisions.
+
+        My role is to reduce uncertainty, not to add complexity.
+      bullets:
+        - CTO / Tech Leads support
+        - Architecture review
+        - Technology arbitration
+        - Long-term vision
+
+    - title: "Pragmatic AI usage"
+      description: |
+        I guide teams in the reasoned integration of AI when the question is no longer "is it possible?" but "is it relevant?".
+
+        My role is to help decide where AI brings real value, frame the risks (cost, quality, dependency, security), and integrate it progressively into existing products and architectures.
+      bullets:
+        - Real use case identification
+        - AI orchestration
+        - Product integration
+        - AI-assisted decision making
+        - Risk & impact framing
 experience:
-  title: Certifications
+  title: "Expertise & ecosystem"
   items:
     - position: "Vue.js Mid-Level Developer"
       date: "2025"
@@ -66,82 +106,93 @@ experience:
         url: "https://certification.nuxtjs.org/certification-badge.html"
         color: "#00DC82"
 blog:
-  title: "Latest Articles"
-  description: "Some of my recent thoughts"
+  title: "Notes & analysis"
+  description: "Short analyses and field insights on frontend architecture, stack modernization, and pragmatic AI usage. Concrete, decision-oriented content."
 speaking:
-  title: "Conferences & Podcasts"
-  description: "Discover my latest talks and podcasts"
+  title: "Conferences & speaking"
+  description: "Public interventions, talks, and podcasts around frontend architecture, technical decision-making, and the evolution of the senior developer role."
 companies:
-  title: "Companies I've worked with"
-  description: "Discover some of the companies that have trusted me with their projects."
+  title: "Environments & organizations"
+  description: "I work with teams and organizations facing complexity, legacy, and strategic technical decisions — especially when AI enters the roadmap."
+  patterns:
+    - title: "Breaking out of an architectural deadlock"
+      description: "When multiple options exist but no clear decision emerges, I help teams structure criteria and arbitrate."
+    - title: "Clarifying frontend modernization"
+      description: "Defining a realistic modernization trajectory without complete rewrite, taking into account legacy systems and existing teams."
+    - title: "Challenging already committed choices"
+      description: "Providing an external perspective to validate, adjust, or correct decisions made too quickly."
+    - title: "Deciding when (and when not) to use AI"
+      description: "Helping teams distinguish real AI use cases from trends, and decide upfront before investing time and complexity."
   companies:
-    - name: "Bloom Finance"
+    - name: "Large enterprises"
       logo: "i-lucide-building-2"
-      url: "#"
-    - name: "Wavelength Music"
-      logo: "i-lucide-music"
-      url: "#"
-    - name: "GreenTech Solutions"
-      logo: "i-lucide-leaf"
-      url: "#"
-    - name: "EcoTrack"
-      logo: "i-lucide-activity"
-      url: "#"
-    - name: "TechForward"
-      logo: "i-lucide-rocket"
-      url: "#"
-    - name: "Design Systems Co"
+    - name: "Products with high frontend complexity"
       logo: "i-lucide-layers"
-      url: "#"
+    - name: "Mature technical teams"
+      logo: "i-lucide-users"
+    - name: "Legacy stacks undergoing modernization"
+      logo: "i-lucide-refresh-cw"
+    - name: "Organizations in technical transition"
+      logo: "i-lucide-trending-up"
 podcast:
-  title: "My podcast: On parle dev"
-  description: "Listen without moderation"
-testimonials:
-  - quote: "Massimo's approach to UX design completely transformed our product. He has a rare ability to balance beautiful aesthetics with functional simplicity. The redesign not only looked better, but it reduced our customer support tickets by 40% and increased conversion rates across all key metrics."
-    author:
-      name: 'Sarah Chen'
-      description: 'Product Director at Bloom Finance'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Working with Massimo was the best decision we made for our startup. He didn't just deliver designs—he challenged our assumptions, conducted thorough user research, and created an experience that truly resonated with our audience. His technical knowledge of front-end development meant the handoff to our engineering team was seamless."
-    author:
-      name: 'Michael Rodriguez'
-      description: 'Co-founder of Wavelength Music'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
-  - quote: "Massimo stands out in his ability to translate complex sustainability data into intuitive interfaces. His work on EcoTrack wasn't just visually stunning—it fundamentally changed how our users interact with environmental information. He approaches each problem with both creativity and analytical rigor, which is exactly what we needed."
-    author:
-      name: 'Dr. Aisha Johnson'
-      description: 'Chief Innovation Officer at GreenTech Solutions'
-      avatar:
-        src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=40&h=40&q=80'
-        srcset: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=80&h=80&q=80 2x'
+  title: "Podcast — On parle dev"
+  description: "A podcast dedicated to frontend architecture, technical decisions, and the career evolution of senior developers."
 faq:
   title: Frequently Asked Questions
-  description: Answers to common questions about my process and services.
+  description: Answers to the most common questions about my role, my positioning, and how I work.
   categories:
-    - title: Services & Process
+    - title: Architecture & Technical Decision
       questions:
-        - label: What services do you offer?
+        - label: What's the difference between a senior developer and a frontend architecture consultant?
           content: |
-            I specialize in UX/UI design and front-end development. This includes user research, wireframing, interactive prototyping, creating intuitive user interfaces, building responsive websites and web applications (especially with Vue.js/Nuxt.js), and developing design systems. My goal is to create seamless digital experiences from concept to deployment.
-        - label: What is your design process like?
-          content: |
-            My process is collaborative and iterative, typically involving stages like Discovery & Research, Ideation & Prototyping, User Testing, Visual Design, and close collaboration with development teams during implementation. I tailor the process based on project needs, always focusing on user-centered solutions.
-        - label: Do you work with startups?
-          content: |
-            Absolutely! I enjoy working with startups to help shape their product vision and create user-friendly interfaces from the ground up. I can adapt my process to fit the fast-paced startup environment.
-    - title: Pricing & Timelines
-      questions:
-        - label: How much does a project typically cost?
-          content: |
-            Project costs vary based on scope, complexity, features, and timeline. For comprehensive UX/UI design and front-end development projects, my engagements typically start around $5,000, with average projects ranging between $8,000 and $25,000. For consulting or specific design tasks, my day rate is $700.
-        - label: What are your payment terms?
-          content: |
-            I generally require a 40% deposit to schedule the project and begin work, with the remaining 60% due upon successful project completion and delivery. I accept payments via bank transfer and Stripe.
-        - label: How long does a typical project take?
-          content: |
-            Timelines depend heavily on the project's scope and complexity. Smaller projects might take 3-4 weeks, while larger, more involved projects can range from 2 to 4 months. I always provide a detailed timeline estimate after the initial discovery phase.
+            A senior developer focuses primarily on implementation and delivery.
 
+            A frontend architecture consultant intervenes earlier: they help structure the stack, analyze existing constraints, compare options, and secure technical decisions with long-term impact.
+            My role is to help teams avoid bad decisions before they become costly.
+
+        - label: When should you call on a frontend architecture consultant?
+          content: |
+            When decisions become strategic: stack migration, significant technical debt, performance issues, difficulty evolving the frontend, or lack of clear vision.
+
+            I generally work in contexts where improvising is no longer an option.
+
+        - label: Do you only work on Vue.js / Nuxt projects?
+          content: |
+            Vue.js and Nuxt are my main areas of expertise, but my work focuses primarily on architecture and decision-making.
+
+            The principles I apply remain valid regardless of the framework, as long as the frontend is critical to the product.
+
+    - title: Advisory & Support
+      questions:
+        - label: Do you work as a consultant or as a developer?
+          content: |
+            I work primarily as a consultant and technical advisor.
+
+            My role is not to take tickets but to help structure, arbitrate, and secure technical decisions alongside existing teams.
+
+        - label: What does advisory support look like in practice?
+          content: |
+            This can take the form of architecture reviews, working sessions with CTOs or Tech Leads, targeted audits, or regular support.
+
+            The format depends on the context, the challenges, and the level of uncertainty to reduce.
+
+    - title: AI & Modernization
+      questions:
+        - label: How do you approach integrating AI into an existing product?
+          content: |
+            AI is not an end in itself.
+
+            I start by identifying the real problems to solve, then evaluate whether AI brings measurable value.
+            The goal is to integrate AI pragmatically, without adding unnecessary complexity.
+
+        - label: Do you work on "from scratch" AI projects?
+          content: |
+            Rarely.
+
+            I mainly work on existing products, where AI integration must coexist with an architecture, business constraints, and teams already in place.
+
+        - label: Can AI really help with technical decision-making?
+          content: |
+            Yes, but only if it's used as a thinking aid tool, not as an oracle.
+
+            I use AI to explore options, compare scenarios, and clarify trade-offs, while keeping final responsibility on the human side.

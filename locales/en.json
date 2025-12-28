@@ -18,7 +18,7 @@
     "follow": "Follow me"
   },
   "index": {
-    "description": "Senior Frontend Consultant — Vue.js, Nuxt & Architecture Modernization"
+    "description": "Senior frontend architecture consultant, stack modernization and technical decision support."
   },
   "hero": {
     "cta": {
@@ -26,13 +26,13 @@
       "contact": "Contact me"
     },
     "image": {
-      "alt": "Massimo Russo's portfolio - Senior Frontend Consultant specialized in Vue.js, Nuxt.js and Architecture Modernization"
+      "alt": "Massimo Russo, senior frontend architecture consultant and stack modernization expert"
     }
   },
   "homepage": {
     "cta": {
-      "title": "Ready to start your project?",
-      "description": "Let's discuss your needs and see how I can help you create exceptional digital experiences.",
+      "title": "Ready to clarify your technical decisions?",
+      "description": "Let's discuss your context, your technical constraints and the strategic decisions to make.",
       "button": "Contact me"
     },
     "speaking": {
@@ -41,7 +41,7 @@
     },
     "companies": {
       "title": "Companies I've worked with",
-      "description": "Discover some of the companies that have trusted me with their projects.",
+      "description": "Discover some of the organizations I've collaborated with on strategic technical challenges.",
       "visit": "Visit website"
     }
   },
@@ -50,58 +50,60 @@
     "minRead": "MIN READ",
     "copyLink": "Copy link",
     "linkCopied": "Article link copied to clipboard",
-    "readArticle": "Read Article"
+    "readArticle": "Read article",
+    "empty": "Articles coming soon.",
+    "viewAll": "View all articles"
   },
   "projects": {
-    "viewProject": "View Project"
+    "viewProject": "View project"
   },
   "services": {
     "hero": {
       "title": "Services",
-      "description": "Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences."
+      "description": "I support companies on frontend architecture, stack modernization (Vue/Nuxt) and technical decision support — with a pragmatic approach to AI when it brings real value."
     },
     "process": {
-      "title": "My Work Process",
-      "description": "A structured and collaborative approach to transform your ideas into high-performing digital products.",
+      "title": "How I work",
+      "description": "A structured and collaborative approach to reduce uncertainty, clarify options and secure technical decisions.",
       "steps": {
         "discovery": {
-          "title": "Discovery & Research",
-          "description": "In-depth analysis of your needs, market, and users to define the optimal strategy."
+          "title": "Scoping & context",
+          "description": "Understanding the challenges, constraints (legacy, team, delivery) and decisions to be made. Clarifying objectives and success criteria."
         },
         "design": {
-          "title": "Design & Prototyping",
-          "description": "Creation of wireframes, interactive prototypes, and iterative visual design based on user feedback."
+          "title": "Analysis & options",
+          "description": "Targeted audit, risk mapping, identification of realistic options and their trade-offs (cost, timeline, maintenance, performance)."
         },
         "development": {
-          "title": "Development & Implementation",
-          "description": "Clean and maintainable code with Vue.js/Nuxt.js, in close collaboration with your technical team."
+          "title": "Actionable recommendations",
+          "description": "Proposal of a strategy (migration, target architecture, safeguards) and a concrete plan: quick wins, milestones and documented decisions."
         },
         "optimization": {
-          "title": "Optimization & Support",
-          "description": "User testing, performance optimization, and ongoing support to ensure long-term success."
+          "title": "Support & follow-up",
+          "description": "Regular sessions, architecture reviews, support for Tech Leads/CTOs, and adjustments based on field feedback."
         }
       }
     },
     "items": {
       "consulting": {
-        "title": "Consulting & Strategy",
-        "description": "Personalized guidance to improve your digital products, optimize your design processes, and develop your product vision.",
-        "imageAlt": "UX/UI consulting and strategy"
+        "title": "Frontend architecture",
+        "description": "Stack audit, target architecture, modernization strategies and progressive migrations (especially Vue/Nuxt), with a focus on performance, developer experience and maintainability.",
+        "imageAlt": "Frontend architecture and modernization"
       },
       "workshops": {
-        "title": "Training & Workshops",
-        "description": "Hands-on training on UX/UI design, Vue.js, Nuxt.js, and front-end development best practices.",
-        "imageAlt": "Training and workshops"
+        "title": "Consulting & decision support",
+        "description": "External perspective to clarify, prioritize and arbitrate high-impact technical decisions: architecture reviews, technology choices, long-term trajectory.",
+        "imageAlt": "Technical consulting and decision support"
       },
       "audit": {
-        "title": "Audit & Optimization",
-        "description": "In-depth analysis of your existing interfaces to identify improvement opportunities and optimize user experience.",
-        "imageAlt": "UX audit and optimization"
+        "title": "Pragmatic AI usage",
+        "description": "Identification of real AI use cases, orchestration and integration into existing products: measurable value, no hype or unnecessary complexity.",
+        "imageAlt": "Pragmatic AI and product integration"
       }
     },
     "cta": {
-      "title": "Ready to start your project?",
-      "description": "Let's discuss your needs and see how I can help you create exceptional digital experiences.",
+      "title": "Ready to clarify your technical decisions?",
+      "description": "Let's discuss your context, your constraints and the technical decisions to secure. I'll propose a clear and realistic plan.",
       "contact": "Contact me",
       "learnMore": "Learn more",
       "booking": "Schedule a call"
@@ -128,11 +130,11 @@
   "contact": {
     "seo": {
       "title": "Contact - Massimo Russo",
-      "description": "Contact me to discuss your project. Available for consultations, training, and UX/UI audits. Contact me at {email}"
+      "description": "Contact me to discuss frontend architecture, stack modernization or technical decision support. Available for consulting and strategic support missions. Contact me at {email}"
     },
     "hero": {
       "title": "Let's talk about your project",
-      "description": "Let's discuss your needs and see how I can help you create exceptional digital experiences.",
+      "description": "Let's discuss your context, your technical challenges and the decisions to secure.",
       "cta": {
         "booking": "Schedule a call",
         "write": "Write a message"
@@ -140,8 +142,8 @@
     },
     "availability": {
       "available": {
-        "title": "Available for new projects",
-        "description": "I'm currently available to discuss your project and see how I can help you."
+        "title": "Available for new support engagements",
+        "description": "I'm currently available to discuss your context and the technical decisions to clarify."
       },
       "unavailable": {
         "title": "Currently unavailable",
@@ -189,24 +191,24 @@
       "back": "Send another message"
     },
     "why": {
-      "title": "Why Contact Me?",
+      "title": "Why contact me?",
       "description": "Here's what makes the difference in our collaboration.",
       "benefits": {
         "expertise": {
-          "title": "Dual Expertise",
-          "description": "UX/UI design and front-end development in one person for a consistent end-to-end vision."
+          "title": "Senior expertise",
+          "description": "Frontend architecture, complex stack modernization and technical decision support."
         },
         "reactivity": {
-          "title": "Responsiveness",
-          "description": "Quick responses and transparent communication throughout the project."
+          "title": "Clarity & pragmatism",
+          "description": "Clear, well-argued and directly actionable recommendations."
         },
         "collaboration": {
-          "title": "Collaboration",
-          "description": "Flexible approach that adapts to your needs and existing team."
+          "title": "Working with your teams",
+          "description": "Intervention alongside your existing teams, without disrupting the current organization."
         },
         "results": {
-          "title": "Measurable Results",
-          "description": "Focus on metrics that matter: conversion, engagement, and user satisfaction."
+          "title": "Secured decisions",
+          "description": "Less uncertainty, less technical debt, and choices that stand the test of time."
         }
       }
     }
@@ -223,6 +225,10 @@
       "conference": "Conferences",
       "liveTalk": "Live talks",
       "podcast": "Podcasts"
+    },
+    "blocks": {
+      "talks": "Talks & conferences",
+      "podcasts": "Podcasts"
     }
   },
   "podcast": {
@@ -245,7 +251,7 @@
   },
   "footer": {
     "credits": "© {year} Massimo Russo. All rights reserved.",
-    "license": "The website content is licensed under <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' class='text-primary' target='_blank' rel='noopener'>CC-BY-NC-SA 4.0</a>",
+    "license": "The website content is licensed under <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' rel='noopener'>CC-BY-NC-SA 4.0</a>",
     "links": {
       "linkedin": "Massimo Russo on LinkedIn",
       "bluesky": "Massimo Russo on Bluesky"

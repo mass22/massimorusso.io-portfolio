@@ -71,37 +71,37 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/services/consulting': {
+    '/services/architecture-frontend': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/en/services/consulting': {
+    '/en/services/architecture-frontend': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/services/workshops': {
+    '/services/aide-decision-technique': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/en/services/workshops': {
+    '/en/services/aide-decision-technique': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/services/audit': {
+    '/services/ia-pragmatique': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/en/services/audit': {
+    '/en/services/ia-pragmatique': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'

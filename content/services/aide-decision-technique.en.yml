@@ -1,48 +1,56 @@
 locale: 'en'
 slug: 'aide-decision-technique'
-title: "Audit & Optimization"
-description: "In-depth analysis of your existing interfaces to identify improvement opportunities and optimize user experience."
-icon: 'i-ph-sparkle'
+title: Consulting & Technical Decision Support
+description: Support to clarify, structure, and assume complex technical decisions in high-stakes contexts.
+icon: 'i-ph-chalkboard-teacher'
+
 content: |
-  ## Audit & Optimization
+  Some technical decisions cannot be made by intuition, nor by weak consensus.
 
-  A UX/UI audit helps identify problems and improvement opportunities in your user interface. I provide you with a detailed report with concrete and actionable recommendations.
+  My role is not to decide for you.
+  It is to help **establish a clear decision framework**, understandable and assumed over time.
 
-  ## Types of audits
+  ---
 
-  ### UX Audit
-  - User experience analysis
-  - Identification of friction points
-  - User testing
-  - Improvement recommendations
+  ## When to Intervene
 
-  ### UI Audit
-  - Visual interface analysis
-  - Design consistency
-  - Accessibility (WCAG)
-  - Responsive design
+  - several technical options seem valid
+  - discussions go in circles without convergence
+  - the decision is postponed due to lack of clarity
+  - long-term consequences are difficult to assess
 
-  ### Technical Audit
-  - Front-end performance
-  - Code quality
-  - Architecture
-  - Security
+  ---
 
-  ## Deliverables
+  ## What I Do
 
-  At the end of the audit, you receive:
-  - A detailed report with priorities
-  - Concrete and actionable recommendations
-  - An action plan for improvements
-  - Visual examples and mockups if needed
+  - framing of real challenges and constraints (product, team, technical)
+  - clarification of decision criteria
+  - analysis of trade-offs and risks
+  - formalization of a documented and shareable decision
 
-  ## Duration
+  ---
 
-  A complete audit typically takes between 1 and 2 weeks depending on the complexity of your product.
+  ## What I Don't Do
 
-  ## Pricing
+  - decide arbitrarily
+  - "validate" a decision already made
+  - provide simplistic answers to complex problems
 
-  Audits start from **€2,500** for a basic UX/UI audit. Rates vary depending on scope and complexity.
+  ---
 
-  [Contact me](/contact) to discuss your audit needs.
+  ## What You Get
 
+  - a technical decision understood and assumed
+  - an aligned team
+  - a reduction in decision debt
+  - a clear foundation to move forward serenely
+
+  ---
+
+  ## For Whom
+
+  CTOs, Tech Leads, and product/tech teams facing structuring or blocking decisions.
+
+images:
+  - src: https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop
+    alt: Technical decision support and arbitration
