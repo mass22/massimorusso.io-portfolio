@@ -41,7 +41,7 @@ about:
   description: |
     Je suis consultant frontend senior, spécialisé en architecture frontend et en accompagnement à la décision technique.
 
-    J’interviens auprès d’équipes et d’organisations confrontées à des stacks complexes, du legacy et des choix structurants à long terme — notamment quand l’IA devient un sujet produit, technique ou organisationnel.
+    J'interviens auprès d'équipes et d'organisations confrontées à des stacks complexes, du legacy et des choix structurants à long terme. Notamment quand l'IA devient un sujet produit, technique ou organisationnel.
 
     Mon rôle n’est pas d’exécuter des tickets, mais d’aider à structurer, arbitrer et sécuriser les décisions techniques.
 services:
@@ -119,7 +119,7 @@ speaking:
   description: "Interventions publiques, talks et podcasts autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur."
 companies:
   title: "Environnements & organisations"
-  description: "J’interviens auprès d’équipes et d’organisations confrontées à des enjeux de complexité, de legacy et de décisions techniques structurantes — notamment lorsque l’IA entre dans la roadmap."
+  description: "J'interviens auprès d'équipes et d'organisations confrontées à des enjeux de complexité, de legacy et de décisions techniques structurantes. Notamment lorsque l'IA entre dans la roadmap."
   patterns:
     - title: "Sortir d’une impasse architecturale"
       description: "Lorsque plusieurs options existent mais qu’aucune décision claire n’émerge, j’aide les équipes à structurer les critères et à arbitrer."

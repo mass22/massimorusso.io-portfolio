@@ -20,7 +20,7 @@ cta:
 items:
   - slug: architecture-frontend
     title: Frontend Architecture
-    description: Architecture audits, target trajectories, and modernization paths for complex frontends — with explicit trade-offs, long-term clarity, and controlled migrations (especially Vue/Nuxt).
+    description: Architecture audits, target trajectories, and modernization paths for complex frontends. With explicit trade-offs, long-term clarity, and controlled migrations (especially Vue/Nuxt).
     imageAlt: Frontend architecture and modernization
     icon: i-ph-lightbulb
 

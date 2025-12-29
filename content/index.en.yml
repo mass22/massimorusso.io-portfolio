@@ -41,7 +41,7 @@ about:
   description: |
     I'm a senior frontend architecture consultant focused on technical decision-making.
 
-    I work with teams and organizations facing complex stacks, legacy systems, and long-term strategic choices — especially when AI becomes a product, technical, or organizational concern.
+    I work with teams and organizations facing complex stacks, legacy systems, and long-term strategic choices. Especially when AI becomes a product, technical, or organizational concern.
 
     My role is not to execute tickets, but to help structure, arbitrate, and secure decisions with long-term impact.
 services:
@@ -113,13 +113,13 @@ experience:
         color: "#00DC82"
 blog:
   title: "Notes & analysis"
-  description: "Short analyses and field insights on frontend architecture, stack modernization, and pragmatic AI usage — concrete, decision-oriented content."
+  description: "Short analyses and field insights on frontend architecture, stack modernization, and pragmatic AI usage. Concrete, decision-oriented content."
 speaking:
   title: "Conferences & talks"
   description: "Public interventions, talks, and podcasts around frontend architecture, technical decision-making, and the evolution of the senior developer role."
 companies:
   title: "Environments & organizations"
-  description: "I work with teams and organizations facing complexity, legacy, and strategic technical decisions — especially when AI becomes part of the roadmap."
+  description: "I work with teams and organizations facing complexity, legacy, and strategic technical decisions. Especially when AI becomes part of the roadmap."
   patterns:
     - title: "Breaking out of an architectural deadlock"
       description: "When multiple options exist but no clear decision emerges, I help teams structure criteria and arbitrate."
@@ -141,7 +141,7 @@ companies:
     - name: "Organizations in technical transition"
       logo: "i-lucide-trending-up"
 podcast:
-  title: "Podcast — On parle dev"
+  title: "Podcast - On parle dev"
   description: "A podcast dedicated to frontend architecture, technical decisions, and the career evolution of senior developers."
 faq:
   title: "Frequently Asked Questions"
