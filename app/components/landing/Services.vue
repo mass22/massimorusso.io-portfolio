@@ -146,7 +146,7 @@ const serviceItems = computed(() => {
         </template>
         <ClientOnly>
           <NuxtImg
-            :src="`/services/service-${index + 1}.png`"
+            :src="`/services/service-${index + 1}.webp`"
             :alt="service.imageAlt || service.title"
             width="400"
             height="300"

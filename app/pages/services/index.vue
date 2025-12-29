@@ -60,7 +60,7 @@ const getServiceImage = (item: { slug?: string; image?: string }): string => {
   }
   const imageNumber = item.slug ? (imageMap[item.slug] || 1) : 1
   // Chemin vers les images dans public/services/
-  return `/services/service-${imageNumber}.png`
+  return `/services/service-${imageNumber}.webp`
 }
 
 // Génération du lien pour les services
