@@ -11,9 +11,6 @@ if (!page.value) {
   })
 }
 
-useSeoMeta({
-  description: page.value?.seo?.description || page.value?.description, ogDescription: page.value?.seo?.description || page.value?.description, ogTitle: page.value?.seo?.title || page.value?.title, title: page.value?.seo?.title || page.value?.title
-})
 
 const ctaLinks = computed(() => ([
   {

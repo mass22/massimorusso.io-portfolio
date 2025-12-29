@@ -140,6 +140,9 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
+    '/about': {
+      redirect: { to: '/a-propos', statusCode: 301 }
+    },
     '/speaking': {
       redirect: { to: '/conferences', statusCode: 301 }
     },
@@ -282,6 +285,21 @@ export default defineNuxtConfig({
     },
     bundle: {
       optimizeTranslationDirective: true // Optimiser les directives de traduction
+    },
+    // Configuration des routes personnalisées par langue
+    pages: {
+      about: {
+        fr: '/a-propos',
+        en: '/about'
+      },
+      speaking: {
+        fr: '/conferences',
+        en: '/speaking'
+      },
+      resources: {
+        fr: '/ressources',
+        en: '/resources'
+      }
     }
   },
   image: {

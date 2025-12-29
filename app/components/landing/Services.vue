@@ -146,7 +146,7 @@ const serviceItems = computed(() => {
         </template>
         <ClientOnly>
           <NuxtImg
-            src="https://picsum.photos/400/300"
+            :src="`/services/service-${index + 1}.png`"
             :alt="service.imageAlt || service.title"
             width="400"
             height="300"

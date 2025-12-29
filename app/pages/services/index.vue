@@ -47,6 +47,7 @@ const getServiceIcon = (item: { slug?: string; icon?: string }): string => {
 }
 
 // Génération d'une image stable par slug pour le placeholder
+// Les images sont dans public/services/ et accessibles via /services/
 const getServiceImage = (item: { slug?: string; image?: string }): string => {
   if (item.image) return item.image
   const imageMap: Record<string, number> = {
@@ -57,7 +58,9 @@ const getServiceImage = (item: { slug?: string; image?: string }): string => {
     'ia-pragmatique': 3,
     'pragmatic-ai': 3
   }
-  return `https://picsum.photos/200?random=${item.slug ? (imageMap[item.slug] || 1) : 1}`
+  const imageNumber = item.slug ? (imageMap[item.slug] || 1) : 1
+  // Chemin vers les images dans public/services/
+  return `/services/service-${imageNumber}.png`
 }
 
 // Génération du lien pour les services
