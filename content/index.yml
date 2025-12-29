@@ -49,10 +49,12 @@ services:
   description: "J’accompagne les entreprises sur des sujets d’architecture frontend, d’aide à la décision technique et d’usage pragmatique de l’IA, dans des contextes complexes et à fort enjeu."
   items:
     - title: "Architecture frontend"
+      slug: "architecture-frontend"
+      icon: "i-ph-lightbulb"
       description: |
-        J’aide les équipes à structurer et moderniser leur frontend dans des contextes complexes et contraints.
+        J'aide les équipes à structurer et moderniser leur frontend dans des contextes complexes et contraints.
 
-        Cela inclut l’analyse de stacks existantes, la définition de cibles d’architecture, les stratégies de migration (progressives ou non) et l’arbitrage de choix structurants sur le long terme.
+        Cela inclut l'analyse de stacks existantes, la définition de cibles d'architecture, les stratégies de migration (progressives ou non) et l'arbitrage de choix structurants sur le long terme.
       bullets:
         - Audit de stack frontend
         - Architecture Vue / Nuxt
@@ -60,26 +62,30 @@ services:
         - Performance & scalabilité
 
     - title: "Conseil & aide à la décision"
+      slug: "aide-decision-technique"
+      icon: "i-ph-chalkboard-teacher"
       description: |
-        J’interviens comme regard externe pour aider à clarifier, prioriser et sécuriser des décisions techniques à fort impact.
+        J'interviens comme regard externe pour aider à clarifier, prioriser et sécuriser des décisions techniques à fort impact.
 
-        Mon rôle est de réduire l’incertitude, pas d’ajouter de la complexité.
+        Mon rôle est de réduire l'incertitude, pas d'ajouter de la complexité.
       bullets:
         - Support CTO / Tech Leads
-        - Revue d’architecture
+        - Revue d'architecture
         - Arbitrage technologique
         - Vision long terme
 
-    - title: "Usage pragmatique de l’IA"
+    - title: "Usage pragmatique de l'IA"
+      slug: "ia-pragmatique"
+      icon: "i-ph-sparkle"
       description: |
-        J’accompagne les équipes dans l’intégration raisonnée de l’IA lorsque la question n’est plus “est‑ce possible ?” mais “est‑ce pertinent ?”.
+        J'accompagne les équipes dans l'intégration raisonnée de l'IA lorsque la question n'est plus "est‑ce possible ?" mais "est‑ce pertinent ?".
 
-        Mon rôle est d’aider à décider où l’IA apporte une vraie valeur, à cadrer les risques (coût, qualité, dépendance, sécurité) et à l’intégrer progressivement dans des produits et des architectures existantes.
+        Mon rôle est d'aider à décider où l'IA apporte une vraie valeur, à cadrer les risques (coût, qualité, dépendance, sécurité) et à l'intégrer progressivement dans des produits et des architectures existantes.
       bullets:
-        - Identification des vrais cas d’usage
+        - Identification des vrais cas d'usage
         - Orchestration IA
         - Intégration produit
-        - Aide à la décision par l’IA
+        - Aide à la décision par l'IA
         - Cadrage des risques & impacts
 experience:
   title: "Expertise & écosystème"

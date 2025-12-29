@@ -5,9 +5,18 @@ const { footer, global } = useAppConfig()
 const { t } = useI18n()
 const localePath = useLocalePath()
 
-defineProps<{
+const props = defineProps<{
   page: IndexPage
 }>()
+
+// Transformer les liens du hero pour appliquer localePath
+const heroLinks = computed(() => {
+  if (!props.page?.hero?.links) return []
+  return props.page.hero.links.map(link => ({
+    ...link,
+    to: link.to ? localePath(link.to) : link.to
+  }))
+})
 
 // Mapper les liens du footer avec leurs aria-labels pour l'accessibilité
 const footerLinksWithLabels = computed(() => footer?.links?.map(link => ({
@@ -68,10 +77,17 @@ onMounted(() => {
               </p>
             </div>
       </Motion>
+      <div v-else class="flex flex-col items-start">
+        <p v-for="(tag, i) in page.hero.tags" :key="tag" class="flex items-center">
+          <span class="px-2 py-1 md:text-6xl text-5xl text-vue">
+            {{ tag }}
+          </span>
+        </p>
+      </div>
         <template #fallback>
           <div class="flex flex-col items-start">
             <p v-for="(tag, i) in page.hero.tags" :key="tag" class="flex items-center">
-              <span class="px-2 py-1 md:text-8xl text-5xl text-vue">
+              <span class="px-2 py-1 md:text-6xl text-5xl text-vue">
                 {{ tag }}
               </span>
             </p>
@@ -181,7 +197,7 @@ onMounted(() => {
 
           <!-- Boutons secondaires empilés -->
           <div
-            v-if="page.hero.links"
+            v-if="heroLinks.length > 0"
             class="flex flex-col items-center gap-2 w-full mt-2"
           >
             <UButton
@@ -206,29 +222,101 @@ onMounted(() => {
             </UButton>
             <UButton
               v-if="page.hero.isResourcesAvailable"
-              v-bind="page.hero.links[0]"
+              v-bind="heroLinks[0]"
               class="w-full"
-              :aria-label="page.hero.links[0]?.label"
+              :aria-label="heroLinks[0]?.label"
             />
             <UButton
               v-else
-              v-bind="page.hero.links[1]"
-              :aria-label="page.hero.links[1]?.label"
+              v-bind="heroLinks[1]"
+              class="w-full"
+              :aria-label="heroLinks[1]?.label"
             />
           </div>
         </div>
       </Motion>
+      <div v-else class="flex flex-col items-center gap-3 w-full">
+        <!-- CTA Principaux empilés verticalement -->
+        <div class="flex flex-col items-center gap-3 w-full">
+          <UButton
+            :to="localePath('/services')"
+            color="primary"
+            variant="solid"
+            size="lg"
+            class="font-semibold px-8 py-3 w-full group justify-center"
+            :label="t('hero.cta.services')"
+            :ui="{ base: 'justify-center' }"
+          >
+            <template #trailing>
+              <UIcon name="i-lucide-arrow-right" class="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true" />
+            </template>
+          </UButton>
+
+          <UButton
+            :to="localePath('/contact')"
+            color="neutral"
+            variant="outline"
+            size="lg"
+            class="font-semibold px-8 py-3 w-full group justify-center"
+            :label="t('hero.cta.contact')"
+            :ui="{ base: 'justify-center' }"
+          />
+        </div>
+
+        <!-- Boutons secondaires empilés -->
+        <div
+          v-if="heroLinks.length > 0"
+          class="flex flex-col items-center gap-2 w-full mt-2"
+        >
+          <UButton
+            :color="global.available ? 'success' : 'error'"
+            variant="ghost"
+            class="gap-2 w-full justify-center"
+            :to="global.available ? localePath('/contact#calendar') : ''"
+            :label="global.available ? t('contact.availability.available.title') : t('contact.availability.unavailable.title')"
+            :ui="{ base: 'justify-center' }"
+          >
+            <template #leading>
+              <span class="relative flex size-2" aria-hidden="true">
+                <span
+                  class="absolute inline-flex size-full rounded-full opacity-75"
+                  :class="global.available ? 'bg-success' : 'bg-error'"
+                />
+                <span
+                  class="relative inline-flex size-2 scale-90 rounded-full"
+                  :class="global.available ? 'bg-success' : 'bg-error'"
+                />
+              </span>
+            </template>
+          </UButton>
+          <UButton
+            v-if="page.hero.isResourcesAvailable"
+            v-bind="heroLinks[0]"
+            class="w-full justify-center"
+            :aria-label="heroLinks[0]?.label"
+            :ui="{ base: 'justify-center' }"
+          />
+          <UButton
+            v-else
+            v-bind="heroLinks[1]"
+            class="w-full justify-center"
+            :aria-label="heroLinks[1]?.label"
+            :ui="{ base: 'justify-center' }"
+          />
+        </div>
+      </div>
         <template #fallback>
           <div class="flex flex-col items-center gap-3 w-full">
-            <!-- CTA Principaux côte à côte -->
-            <div class="flex items-center gap-3 w-full">
+            <!-- CTA Principaux empilés verticalement -->
+            <div class="flex flex-col items-center gap-3 w-full">
               <UButton
                 :to="localePath('/services')"
                 color="primary"
                 variant="solid"
                 size="lg"
-                class="font-semibold px-8 py-3 flex-1 group"
+                class="font-semibold px-8 py-3 w-full group justify-center"
                 :label="t('hero.cta.services')"
+                :ui="{ base: 'justify-center' }"
               >
                 <template #trailing>
                   <UIcon name="i-lucide-arrow-right" class="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true" />
@@ -240,22 +328,24 @@ onMounted(() => {
                 color="neutral"
                 variant="outline"
                 size="lg"
-                class="font-semibold px-8 py-3 flex-1 group"
+                class="font-semibold px-8 py-3 w-full group justify-center"
                 :label="t('hero.cta.contact')"
+                :ui="{ base: 'justify-center' }"
               />
             </div>
 
             <!-- Boutons secondaires empilés -->
             <div
-              v-if="page.hero.links"
+              v-if="heroLinks.length > 0"
               class="flex flex-col items-center gap-2 w-full mt-2"
             >
               <UButton
                 :color="global.available ? 'success' : 'error'"
                 variant="ghost"
-                class="gap-2 w-full"
+                class="gap-2 w-full justify-center"
                 :to="global.available ? localePath('/contact#calendar') : ''"
-                :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
+                :label="global.available ? t('contact.availability.available.title') : t('contact.availability.unavailable.title')"
+                :ui="{ base: 'justify-center' }"
               >
                 <template #leading>
                   <span class="relative flex size-2" aria-hidden="true">
@@ -272,15 +362,17 @@ onMounted(() => {
               </UButton>
               <UButton
                 v-if="page.hero.isResourcesAvailable"
-                v-bind="page.hero.links[0]"
-                class="w-full"
-                :aria-label="page.hero.links[0]?.label"
+                v-bind="heroLinks[0]"
+                class="w-full justify-center"
+                :aria-label="heroLinks[0]?.label"
+                :ui="{ base: 'justify-center' }"
               />
               <UButton
                 v-else
-                v-bind="page.hero.links[1]"
-                class="w-full"
-                :aria-label="page.hero.links[1]?.label"
+                v-bind="heroLinks[1]"
+                class="w-full justify-center"
+                :aria-label="heroLinks[1]?.label"
+                :ui="{ base: 'justify-center' }"
               />
             </div>
           </div>

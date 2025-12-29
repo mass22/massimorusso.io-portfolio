@@ -5,7 +5,7 @@ import { computed } from 'vue';
 type ServiceItem = {
   title: string
   description: string
-  icon: string
+  icon?: string
   imageAlt?: string
   slug?: string
 }
@@ -22,6 +22,20 @@ const localePath = useLocalePath()
 const props = defineProps<{
   page: IndexCollectionItem & { services?: ServicesSection }
 }>()
+
+// Fonction pour obtenir l'icône du service
+const getServiceIcon = (service: ServiceItem): string => {
+  if (service.icon) return service.icon
+  const iconMap: Record<string, string> = {
+    'architecture-frontend': 'i-ph-lightbulb',
+    'frontend-architecture': 'i-ph-lightbulb',
+    'aide-decision-technique': 'i-ph-chalkboard-teacher',
+    'technical-decision-support': 'i-ph-chalkboard-teacher',
+    'ia-pragmatique': 'i-ph-sparkle',
+    'pragmatic-ai': 'i-ph-sparkle'
+  }
+  return service.slug ? (iconMap[service.slug] || 'i-ph-circle') : 'i-ph-circle'
+}
 
 // Fonction pour obtenir le chemin du service
 const getServicePath = (service: ServiceItem) => {
@@ -102,7 +116,7 @@ const serviceItems = computed(() => {
         <UPageCard
           :title="service.title"
           :description="service.description"
-          :icon="service.icon"
+          :icon="getServiceIcon(service)"
           orientation="vertical"
           reverse
           :to="getServicePath(service)"

@@ -18,6 +18,11 @@ type SpeakingSection = {
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
+// Fonction helper pour obtenir la route speaking/conferences selon la locale
+const getSpeakingRoute = () => {
+  return locale.value === 'fr' ? '/conferences' : '/en/speaking'
+}
+
 defineProps<{
   page: IndexCollectionItem & { speaking?: SpeakingSection }
 }>()
@@ -126,7 +131,7 @@ function getCategoryLabel(category: string): string {
               :in-view-options="{ once: true, margin: '-50px' }"
             >
               <UCard
-                :to="event.url || localePath('/speaking')"
+                :to="event.url || getSpeakingRoute()"
                 :target="event.url ? '_blank' : undefined"
                 class="group h-full hover:shadow-lg transition-all duration-300 ease-out hover:scale-[1.02]"
                 :ui="{
@@ -170,7 +175,7 @@ function getCategoryLabel(category: string): string {
 
                 <template #footer>
                   <UButton
-                    :to="event.url || localePath('/speaking')"
+                    :to="event.url || getSpeakingRoute()"
                     :target="event.url ? '_blank' : undefined"
                     variant="link"
                     size="sm"
@@ -209,7 +214,7 @@ function getCategoryLabel(category: string): string {
               :in-view-options="{ once: true, margin: '-50px' }"
             >
               <UCard
-                :to="event.url || localePath('/speaking')"
+                :to="event.url || getSpeakingRoute()"
                 :target="event.url ? '_blank' : undefined"
                 class="group h-full hover:shadow-lg transition-all duration-300 ease-out hover:scale-[1.02]"
                 :ui="{
@@ -253,7 +258,7 @@ function getCategoryLabel(category: string): string {
 
                 <template #footer>
                   <UButton
-                    :to="event.url || localePath('/speaking')"
+                    :to="event.url || getSpeakingRoute()"
                     :target="event.url ? '_blank' : undefined"
                     variant="link"
                     size="sm"
@@ -277,7 +282,7 @@ function getCategoryLabel(category: string): string {
 
       <div class="flex justify-center mt-10">
         <UButton
-          :to="localePath('/speaking')"
+          :to="getSpeakingRoute()"
           variant="outline"
           size="md"
           :label="t('homepage.speaking.viewAll')"

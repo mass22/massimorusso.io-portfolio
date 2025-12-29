@@ -1,54 +1,50 @@
 locale: en
-title: Conferences & Workshops
-description: Discover the conferences and workshops I've given on UX design, front-end development, and creating better digital products.
+title: Conferences & Speaking
+description: Interventions, conferences, and public formats around frontend architecture, technical decision-making, and the evolution of the developer role.
+
 links:
   - label: Invite me to speak
     size: md
+
 events:
   - category: Conference
-    title: 'Bridging the Gap: Storybook for Designer-Developer Collaboration'
-    date: '2024-10-26'
+    title: 'Frontend Architecture: Decide Rather Than Rewrite'
+    date: '2025-10-26'
     location: VueConf US, Miami, FL
     url: '#'
+
   - category: Conference
-    title: 'Intuitive Interfaces: Applying UX Principles in Nuxt.js Applications'
-    date: '2024-06-15'
-    location: Nuxt Nation, Online
+    title: Technical Debt vs Decision Debt
+    date: '2025-06-15'
+    location: Frontend Conference (to be confirmed)
     url: '#'
+
   - category: Conference
-    title: 'Accessibility First: Building Inclusive Web Applications'
-    date: '2023-11-08'
-    location: Boston Web Performance Meetup, Boston, MA
-  - category: Live talk
-    title: Mastering Component Design in Figma & Vue
-    date: '2024-08-20'
-    location: Design & Dev Boston Meetup, Boston, MA
+    title: Evolving a Legacy Frontend Without Illusion
+    date: '2024-11-08'
+    location: Frontend / Architecture Meetup
     url: '#'
+
   - category: Live talk
-    title: 'From Wireframe to Web: A Practical Front-End Workflow'
-    date: '2024-03-05'
-    location: Internal Workshop @ PreviousCompany Inc.
+    title: Making Technical Decisions in Uncertain Contexts
+    date: '2025-03-05'
+    location: Internal / Corporate Intervention
+    url: '#'
+
   - category: Live talk
-    title: The Power of User Research in Product Development
-    date: '2023-09-12'
-    location: Boston University Guest Lecture, Boston, MA
+    title: The Role of the Senior Developer Facing Complexity
+    date: '2024-09-12'
+    location: Tech Meetup
+    url: '#'
+
   - category: Podcast
-    title: 'Designing for Developers: A UX Perspective'
-    date: '2024-07-18'
-    location: Syntax.fm (Guest)
+    title: Frontend Architecture and Technical Responsibility
+    date: '2025-07-18'
+    location: Tech Podcast (Guest)
     url: '#'
+
   - category: Podcast
-    title: The Future of Front-End Frameworks and Design Tools
-    date: '2024-01-30'
-    location: Design Details Podcast (Guest)
+    title: 'Pragmatic AI: Decide Before Implementing'
+    date: '2025-01-30'
+    location: Product / Tech Podcast
     url: '#'
-  - category: Podcast
-    title: Building a Career in UX/UI & Development
-    date: '2023-05-22'
-    location: TechForward Boston Podcast
-    url: '#'
-  - category: Live talk
-    title: Vue Montreal 2026.1
-    date: '2026-01-29T00:00:00.000Z'
-    location: Tower Research
-    url: blala.com

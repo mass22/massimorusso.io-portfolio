@@ -16,7 +16,7 @@ const slugByLocale: Record<string, string> = {
   en: 'pragmatic-ai'
 }
 
-const slug = slugByLocale[locale.value] || slugByLocale.fr
+const slug = slugByLocale[locale.value] || slugByLocale.en
 
 const { data: page } = await useAsyncData(
   () => `service-${slug}-${locale.value}`,
@@ -260,3 +260,4 @@ useHead({
     <ServicesCTA />
   </UPage>
 </template>
+

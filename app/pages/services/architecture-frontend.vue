@@ -10,7 +10,13 @@ const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 
-const slug = 'architecture-frontend'
+// Mapping des slugs par langue
+const slugByLocale: Record<string, string> = {
+  fr: 'architecture-frontend',
+  en: 'frontend-architecture'
+}
+
+const slug = slugByLocale[locale.value] || slugByLocale.fr
 
 const { data: page } = await useAsyncData(
   () => `service-${slug}-${locale.value}`,

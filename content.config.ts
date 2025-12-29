@@ -89,6 +89,16 @@ export default defineContentConfig({
             description: z.string().optional()
           }))
         }).optional(),
+        services: createBaseSchema().extend({
+          items: z.array(z.object({
+            title: z.string(),
+            description: z.string(),
+            slug: z.string().optional(),
+            icon: z.string().optional(),
+            imageAlt: z.string().optional(),
+            bullets: z.array(z.string()).optional()
+          }))
+        }).optional(),
         speaking: createBaseSchema().optional(),
         faq: createBaseSchema().extend({
           categories: z.array(

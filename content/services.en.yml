@@ -1,11 +1,11 @@
 locale: 'en'
 title: Services
-description: Frontend architecture consulting, technical decision support, and pragmatic AI integration for complex and structuring contexts.
-heroSupportingLine: For CTOs, Tech Leads, and executives who need to make structuring technical decisions in a context of complexity and real constraints.
+description: Frontend architecture advisory, technical decision-making support, and pragmatic AI integration in complex and structuring contexts.
+heroSupportingLine: For CTOs, Tech Leads, and executives facing structuring technical decisions in contexts of complexity and real constraints.
 
 seo:
   title: Services — Frontend Architecture & AI Consulting
-  description: Frontend architecture consulting, technical decision support, and pragmatic AI integration for complex and structuring contexts.
+  description: Frontend architecture advisory, technical decision-making support, and pragmatic AI integration in complex and structuring contexts.
 
 cta:
   title: Ready to clarify your technical decisions?
@@ -20,27 +20,27 @@ cta:
 items:
   - slug: architecture-frontend
     title: Frontend Architecture
-    description: Stack audit, target architecture, modernization trajectories and progressive migrations (especially Vue/Nuxt), with a focus on performance, developer experience, and maintainability.
+    description: Architecture audits, target trajectories, and modernization paths for complex frontends — with explicit trade-offs, long-term clarity, and controlled migrations (especially Vue/Nuxt).
     imageAlt: Frontend architecture and modernization
     icon: i-ph-lightbulb
 
   - slug: aide-decision-technique
     title: Consulting & Decision Support
     description: >
-      External perspective to clarify, prioritize, and arbitrate high-impact technical decisions:
-      architecture reviews, technology choices, long-term trajectory.
+      External advisory perspective to clarify, prioritize, and arbitrate high-impact technical decisions:
+      architectural choices, strategic options, and long-term direction.
     imageAlt: Consulting and technical decision support
     icon: i-ph-chalkboard-teacher
 
   - slug: ia-pragmatique
     title: Pragmatic AI Usage
     description: >
-      Reasoned AI integration when the question is no longer "is it possible?" but "is it relevant?":
-      use cases, risks, safeguards, and progressive integration.
+      Pragmatic AI integration when the question is no longer "is it possible?" but "is it relevant?":
+      meaningful use cases, explicit risks, safeguards, and controlled integration.
     imageAlt: Pragmatic AI and product integration
     icon: i-ph-sparkle
 
-itemsIntro: Three areas of intervention to clarify your technical decisions and structure your architecture.
+itemsIntro: Three areas of intervention to clarify technical decisions and bring long-term structure to your architecture.
 
 process:
   title: How I Intervene
@@ -60,7 +60,7 @@ process:
       description: >
         Regular sessions, architecture reviews, support for Tech Leads/CTOs, and adjustments based on field feedback.
 
-processLeadIn: My intervention follows a proven methodology, adapted to each context and designed to make you autonomous quickly.
+processLeadIn: My intervention follows a structured approach, adapted to each context and designed to make teams autonomous quickly.
 
 stats:
   - value: "50+"
@@ -80,13 +80,13 @@ statsEnabled: false
 content: |
   I work with teams and organizations when technical decisions become structuring, difficult to arbitrate, or have long-term consequences.
 
-  My role is not to deliver features, but to help **clarify**, **structure**, and **assume** technical decisions in contexts of complexity, legacy, and real constraints.
+  My role is not to deliver features, but to help **clarify**, **structure**, and **consciously own** technical decisions in contexts of complexity, legacy, and real constraints.
 
   ## What I Do
 
   ### Frontend Architecture
   I help evaluate existing architectures, identify points of fragility, and define realistic modernization trajectories.
-  The goal is not perfect rewriting, but an architecture that is understandable, maintainable, and aligned with the team's capabilities.
+  The goal is not a perfect rewrite, but an architecture that is understandable, maintainable, and aligned with the team's real capabilities.
 
   ### Consulting & Decision Support
   I intervene when several technical options are possible, but no clear decision emerges.

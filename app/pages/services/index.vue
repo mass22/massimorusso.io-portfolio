@@ -37,8 +37,11 @@ const getServiceIcon = (item: { slug?: string; icon?: string }): string => {
   if (item.icon) return item.icon
   const iconMap: Record<string, string> = {
     'architecture-frontend': 'i-ph-lightbulb',
+    'frontend-architecture': 'i-ph-lightbulb',
     'aide-decision-technique': 'i-ph-chalkboard-teacher',
-    'ia-pragmatique': 'i-ph-sparkle'
+    'technical-decision-support': 'i-ph-chalkboard-teacher',
+    'ia-pragmatique': 'i-ph-sparkle',
+    'pragmatic-ai': 'i-ph-sparkle'
   }
   return item.slug ? (iconMap[item.slug] || 'i-ph-circle') : 'i-ph-circle'
 }
@@ -48,8 +51,11 @@ const getServiceImage = (item: { slug?: string; image?: string }): string => {
   if (item.image) return item.image
   const imageMap: Record<string, number> = {
     'architecture-frontend': 1,
+    'frontend-architecture': 1,
     'aide-decision-technique': 2,
-    'ia-pragmatique': 3
+    'technical-decision-support': 2,
+    'ia-pragmatique': 3,
+    'pragmatic-ai': 3
   }
   return `https://picsum.photos/200?random=${item.slug ? (imageMap[item.slug] || 1) : 1}`
 }

@@ -12,11 +12,11 @@ const route = useRoute()
 
 // Mapping des slugs par langue
 const slugByLocale: Record<string, string> = {
-  fr: 'ia-pragmatique',
-  en: 'pragmatic-ai'
+  fr: 'aide-decision-technique',
+  en: 'technical-decision-support'
 }
 
-const slug = slugByLocale[locale.value] || slugByLocale.fr
+const slug = slugByLocale[locale.value] || slugByLocale.en
 
 const { data: page } = await useAsyncData(
   () => `service-${slug}-${locale.value}`,
@@ -260,3 +260,4 @@ useHead({
     <ServicesCTA />
   </UPage>
 </template>
+

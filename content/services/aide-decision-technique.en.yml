@@ -1,49 +1,49 @@
 locale: 'en'
-slug: 'aide-decision-technique'
-title: Consulting & Technical Decision Support
-description: Support to clarify, structure, and assume complex technical decisions in high-stakes contexts.
+slug: 'technical-decision-support'
+title: Technical Decision Advisory
+description: Advisory support to clarify, structure, and consciously own complex technical decisions in high-stakes contexts.
 icon: 'i-ph-chalkboard-teacher'
 
 content: |
   Some technical decisions cannot be made by intuition, nor by weak consensus.
 
   My role is not to decide for you.
-  It is to help **establish a clear decision framework**, understandable and assumed over time.
+  It is to help **establish a clear decision framework** — understandable, explicit, and consciously owned over time.
 
   ---
 
   ## When to Intervene
 
-  - several technical options seem valid
+  - several technical options appear valid
   - discussions go in circles without convergence
-  - the decision is postponed due to lack of clarity
+  - decisions are postponed due to lack of clarity
   - long-term consequences are difficult to assess
 
   ---
 
   ## What I Do
 
-  - framing of real challenges and constraints (product, team, technical)
-  - clarification of decision criteria
-  - analysis of trade-offs and risks
-  - formalization of a documented and shareable decision
+  - frame real constraints and challenges (product, team, technical)
+  - clarify decision criteria and success signals
+  - analyze trade-offs, risks, and long-term implications
+  - formalize decisions in a documented and shareable way
 
   ---
 
   ## What I Don't Do
 
   - decide arbitrarily
-  - "validate" a decision already made
+  - rubber-stamp decisions already made
   - provide simplistic answers to complex problems
 
   ---
 
   ## What You Get
 
-  - a technical decision understood and assumed
+  - a technical decision clearly understood and consciously owned
   - an aligned team
-  - a reduction in decision debt
-  - a clear foundation to move forward serenely
+  - reduced decision debt
+  - a solid foundation to move forward with confidence
 
   ---
 
@@ -53,4 +53,4 @@ content: |
 
 images:
   - src: https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop
-    alt: Technical decision support and arbitration
+    alt: Technical decision advisory and arbitration

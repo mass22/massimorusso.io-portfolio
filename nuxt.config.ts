@@ -59,7 +59,13 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/about': {
+    '/a-propos': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/en/about': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
@@ -119,7 +125,31 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
+    '/en/ressources': {
+      redirect: { to: '/en/resources', statusCode: 301 }
+    },
+    '/resources': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/en/resources': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
     '/speaking': {
+      redirect: { to: '/conferences', statusCode: 301 }
+    },
+    '/conferences': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/en/speaking': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
@@ -229,15 +259,15 @@ export default defineNuxtConfig({
     locales: [
       {
         code: 'fr',
-        iso: 'fr-FR',
-        language: 'fr-FR',
+        iso: 'fr-CA',
+        language: 'fr-CA',
         name: 'Français',
         file: 'fr.json'
       },
       {
         code: 'en',
-        iso: 'en-US',
-        language: 'en-US',
+        iso: 'en',
+        language: 'en',
         name: 'English',
         file: 'en.json'
       }
@@ -248,9 +278,9 @@ export default defineNuxtConfig({
     baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://massimorusso.io',
     detectBrowserLanguage: {
       cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
       useCookie: true,
-      alwaysRedirect: false
+      alwaysRedirect: false,
+      fallbackLocale: 'fr'
     },
     compilation: {
       strictMessage: false

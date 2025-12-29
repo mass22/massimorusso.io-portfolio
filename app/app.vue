@@ -56,7 +56,8 @@ const alternateLinks = computed(() => {
         return null
       }
       const href = toAbsoluteUrl(targetPath)
-      const hreflang = typeof localeObj === 'string' ? localeObj : localeObj.iso || localeObj.code
+      // Utiliser iso pour hreflang (fr-CA ou en), sinon fallback sur code
+      const hreflang = typeof localeObj === 'string' ? localeObj : (localeObj.iso || localeObj.code)
       return {
         href, hreflang, id: `alt-${localeObj.code}`, rel: 'alternate'
       }
@@ -64,9 +65,14 @@ const alternateLinks = computed(() => {
     .filter((link): link is { id: string; rel: string; hreflang: string; href: string } => Boolean(link))
 })
 
-const xDefaultLink = computed(() => ({
-  href: canonicalUrl.value, hreflang: 'x-default', id: 'alt-x-default', rel: 'alternate'
-}))
+// x-default doit pointer vers la version française (locale par défaut)
+const xDefaultLink = computed(() => {
+  const defaultLocalePath = locale.value === 'fr' ? route.path : switchLocalePath('fr')
+  const defaultHref = defaultLocalePath ? toAbsoluteUrl(defaultLocalePath) : canonicalUrl.value
+  return {
+    href: defaultHref, hreflang: 'x-default', id: 'alt-x-default', rel: 'alternate'
+  }
+})
 
 const i18nHead = useLocaleHead()
 

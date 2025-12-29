@@ -6,7 +6,9 @@ import { computed, onMounted, ref, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const { footer } = useAppConfig()
-const { t, locale, setLocale, locales: availableLocales } = useI18n()
+const { t, locale, locales: availableLocales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+const router = useRouter()
 
 const socialLinks = computed(() => footer?.links?.map(link => ({
   ...link,
@@ -102,12 +104,17 @@ const switchLocale = (targetLocale: string, event?: Event) => {
   }
   if (targetLocale && targetLocale !== locale.value) {
     isSwitchingLocale.value = true
-    void setLocale(targetLocale as 'fr' | 'en').finally(() => {
-      // Réinitialiser après un court délai pour permettre la navigation
-      setTimeout(() => {
-        isSwitchingLocale.value = false
-      }, 100)
-    })
+    const targetPath = switchLocalePath(targetLocale)
+    if (targetPath) {
+      void router.push(targetPath).finally(() => {
+        // Réinitialiser après un court délai pour permettre la navigation
+        setTimeout(() => {
+          isSwitchingLocale.value = false
+        }, 100)
+      })
+    } else {
+      isSwitchingLocale.value = false
+    }
   }
 }
 

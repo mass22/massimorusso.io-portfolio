@@ -3,7 +3,7 @@ title: About
 description: Senior frontend architecture consultant and technical decision support. I intervene when decisions become critical, complex, or costly in the long term.
 
 content: |
-  I intervene when technical decisions stop being obvious.
+  I step in when technical decisions stop being obvious.
 
   When a frontend architecture starts weighing on the team.
   When multiple options seem possible, but none clearly stands out.
@@ -44,7 +44,7 @@ content: |
   Over time, debt is no longer just technical.
   It becomes a **decision debt**.
 
-  That's where I intervene.
+  That's where I step in.
 
   ---
 
@@ -62,7 +62,7 @@ content: |
   - readable architectures rather than brilliant ones on paper
 
   My goal is not to make the system "perfect".
-  It is to make it **understandable, maintainable, and assumed**.
+  It is to make it **understandable, maintainable, and consciously owned**.
 
   ---
 
@@ -84,7 +84,7 @@ content: |
   ## If you're considering working with me
 
   We're probably aligned if:
-  - an important technical decision is blocking
+  - an important technical decision is blocking progress
   - the current architecture is hindering product evolution
   - you need an external, experienced, and independent perspective
 

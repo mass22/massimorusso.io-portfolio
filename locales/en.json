@@ -36,7 +36,7 @@
       "button": "Contact me"
     },
     "speaking": {
-      "description": "Discover my conferences, talks and podcasts",
+      "description": "Talks, conferences and podcasts on frontend architecture, technical decisions and pragmatic AI.",
       "viewAll": "View all conferences"
     },
     "companies": {
@@ -55,7 +55,7 @@
     "viewAll": "View all articles"
   },
   "projects": {
-    "viewProject": "View project"
+    "viewProject": "View details"
   },
   "services": {
     "hero": {
@@ -87,17 +87,17 @@
     "items": {
       "consulting": {
         "title": "Frontend architecture",
-        "description": "Stack audit, target architecture, modernization strategies and progressive migrations (especially Vue/Nuxt), with a focus on performance, developer experience and maintainability.",
+        "description": "Architecture audits, target trajectories and modernization strategies for complex frontends — with explicit trade-offs, long-term clarity and controlled migrations (especially Vue/Nuxt).",
         "imageAlt": "Frontend architecture and modernization"
       },
       "workshops": {
         "title": "Consulting & decision support",
-        "description": "External perspective to clarify, prioritize and arbitrate high-impact technical decisions: architecture reviews, technology choices, long-term trajectory.",
+        "description": "External advisory support to clarify, prioritize and arbitrate high-impact technical decisions: architecture choices, strategic options and long-term direction.",
         "imageAlt": "Technical consulting and decision support"
       },
       "audit": {
         "title": "Pragmatic AI usage",
-        "description": "Identification of real AI use cases, orchestration and integration into existing products: measurable value, no hype or unnecessary complexity.",
+        "description": "Identification of meaningful AI use cases and integration paths into existing systems — with measurable value, explicit risks and no unnecessary complexity.",
         "imageAlt": "Pragmatic AI and product integration"
       }
     },
@@ -130,11 +130,11 @@
   "contact": {
     "seo": {
       "title": "Contact - Massimo Russo",
-      "description": "Contact me to discuss frontend architecture, stack modernization or technical decision support. Available for consulting and strategic support missions. Contact me at {email}"
+      "description": "Contact me to discuss frontend architecture, stack modernization or technical decision support. Available for strategic advisory engagements. Contact me at {email}"
     },
     "hero": {
-      "title": "Let's talk about your project",
-      "description": "Let's discuss your context, your technical challenges and the decisions to secure.",
+      "title": "Let's talk about your technical decisions",
+      "description": "Let's discuss your context, your technical constraints and the decisions to clarify.",
       "cta": {
         "booking": "Schedule a call",
         "write": "Write a message"
@@ -142,8 +142,8 @@
     },
     "availability": {
       "available": {
-        "title": "Available for new support engagements",
-        "description": "I'm currently available to discuss your context and the technical decisions to clarify."
+        "title": "Available for new advisory engagements",
+        "description": "I'm currently available to discuss your context and the technical decisions to structure."
       },
       "unavailable": {
         "title": "Currently unavailable",
@@ -156,13 +156,13 @@
       "button": "Prefer to send a message"
     },
     "booking": {
-      "title": "Schedule a meeting",
-      "description": "Choose a time slot that works for you to discuss your project."
+      "title": "Schedule a conversation",
+      "description": "Choose a time slot to discuss your context and the technical decisions to clarify."
     },
     "divider": "or",
     "linkedin": {
-      "title": "Contact me on LinkedIn",
-      "description": "Prefer to connect via LinkedIn? Send me a message and I'll get back to you quickly.",
+      "title": "Connect on LinkedIn",
+      "description": "Prefer an informal first exchange? Send me a message and I'll get back to you shortly.",
       "cta": "Contact me on LinkedIn"
     },
     "form": {
@@ -172,7 +172,7 @@
       "emailLabel": "Email",
       "emailPlaceholder": "your email",
       "messageLabel": "Message",
-      "messagePlaceholder": "Describe your project or request...",
+      "messagePlaceholder": "Describe your context, constraints and the technical decisions to clarify...",
       "submit": "Send message",
       "toggleBooking": "Schedule a call instead"
     },
@@ -184,7 +184,7 @@
     "errors": {
       "submit": "An error occurred while sending. Please try again."
     },
-    "quote": "Every project starts with a conversation.",
+    "quote": "Every structural decision starts with a conversation.",
     "success": {
       "title": "Message sent!",
       "description": "I'll get back to you as soon as possible.",
@@ -265,5 +265,16 @@
   },
   "backToTop": {
     "ariaLabel": "Back to top"
+  },
+  "context": {
+    "lines": {
+      "1": "Most teams don't struggle",
+      "2": "because of bad code.",
+      "3": "They struggle because",
+      "4": "critical technical decisions",
+      "5": "were never clearly made,",
+      "6": "documented,",
+      "7": "or consciously owned."
+    }
   }
 }

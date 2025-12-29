@@ -30,6 +30,9 @@ const ctaLinks = computed(() => ([
     <!-- 1. Hero avec CTA principal -->
     <LazyLandingHero :page />
 
+    <!-- 1.1. Context -->
+    <LazyLandingContext />
+
     <!-- 2. Services (aperçu) -->
     <LazyLandingServices :page />
 

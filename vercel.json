@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/about",
+      "destination": "/a-propos",
+      "permanent": true,
+      "locale": "fr"
+    },
+    {
+      "source": "/en/ressources",
+      "destination": "/en/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources",
+      "destination": "/en/resources",
+      "permanent": true
+    },
+    {
+      "source": "/en/a-propos",
+      "destination": "/en/about",
+      "permanent": true
+    }
+  ]
+}
+

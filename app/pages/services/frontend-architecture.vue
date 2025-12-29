@@ -12,19 +12,20 @@ const route = useRoute()
 
 // Mapping des slugs par langue
 const slugByLocale: Record<string, string> = {
-  fr: 'ia-pragmatique',
-  en: 'pragmatic-ai'
+  fr: 'architecture-frontend',
+  en: 'frontend-architecture'
 }
 
-const slug = slugByLocale[locale.value] || slugByLocale.fr
+const slug = slugByLocale[locale.value] || slugByLocale.en
 
 const { data: page } = await useAsyncData(
   () => `service-${slug}-${locale.value}`,
   async () => {
     const allServices = await queryCollection('serviceItems').all()
-    return allServices.find(service =>
+    const found = allServices.find(service =>
       service.slug === slug && service.locale === locale.value
     ) || allServices.find(service => service.slug === slug) || null
+    return found
   },
   {
     watch: [locale]
@@ -260,3 +261,4 @@ useHead({
     <ServicesCTA />
   </UPage>
 </template>
+

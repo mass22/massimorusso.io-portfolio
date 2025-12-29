@@ -1,7 +1,7 @@
 locale: 'en'
-slug: 'ia-pragmatique'
+slug: 'pragmatic-ai'
 title: Pragmatic AI Usage
-description: Support to decide if, where, and how AI brings real value, without hype or unnecessary complexity.
+description: Advisory support to decide if, where, and how AI brings real value — without hype or unnecessary complexity.
 icon: 'i-ph-sparkle'
 
 content: |
@@ -9,7 +9,7 @@ content: |
   Very few projects derive measurable value from it.
 
   My role is not to "add AI".
-  It is to help **decide if AI is relevant**, where it really is, and how to integrate it without weakening what exists.
+  It is to help **decide if AI is relevant**, where it truly is, and how to integrate it without weakening existing systems.
 
   ---
 
@@ -24,10 +24,10 @@ content: |
 
   ## What I Do
 
-  - identification of use cases where AI brings concrete value
-  - cost / value / risk analysis (quality, dependency, security)
-  - architectural framing (orchestration, data, integration)
-  - definition of technical and organizational safeguards
+  - identification of use cases where AI brings concrete, measurable value
+  - cost, value, and risk analysis (quality, dependency, security)
+  - architectural framing and integration paths (orchestration, data, systems)
+  - definition of clear technical and organizational safeguards
 
   ---
 
@@ -42,7 +42,7 @@ content: |
   ## What You Get
 
   - a clear decision on using (or not) AI
-  - a controlled integration if it makes sense
+  - a controlled integration path if it makes sense
   - less technical and cognitive debt
   - a sustainable and understandable approach
 
@@ -50,7 +50,7 @@ content: |
 
   ## For Whom
 
-  CTOs, product teams, and organizations exploring AI without wanting to get lost in it.
+  CTOs, product teams, and organizations exploring AI without wanting to lose clarity or control.
 
 images:
   - src: https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop

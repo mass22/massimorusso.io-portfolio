@@ -1,54 +1,50 @@
 locale: fr
-title: Conférences & Ateliers
-description: Découvrez les conférences et ateliers que j'ai donnés sur le design UX, le développement front-end et la création de meilleurs produits numériques.
+title: Conférences & prises de parole
+description: Interventions, conférences et formats publics autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.
+
 links:
-  - label: M'inviter à parler
+  - label: M’inviter à intervenir
     size: md
+
 events:
   - category: Conference
-    title: 'Combler le fossé : Storybook pour la collaboration Designer-Développeur'
-    date: '2024-10-26'
+    title: 'Architecture frontend : décider plutôt que réécrire'
+    date: '2025-10-26'
     location: VueConf US, Miami, FL
     url: '#'
+
   - category: Conference
-    title: 'Interfaces intuitives : Appliquer les principes UX dans les applications Nuxt.js'
-    date: '2024-06-15'
-    location: Nuxt Nation, En ligne
+    title: Dette technique vs dette de décision
+    date: '2025-06-15'
+    location: Conférence frontend (à confirmer)
     url: '#'
+
   - category: Conference
-    title: 'Accessibilité d''abord : Construire des applications web inclusives'
-    date: '2023-11-08'
-    location: Boston Web Performance Meetup, Boston, MA
-  - category: Live talk
-    title: Maîtriser le design de composants dans Figma & Vue
-    date: '2024-08-20'
-    location: Design & Dev Boston Meetup, Boston, MA
+    title: Faire évoluer un frontend legacy sans illusion
+    date: '2024-11-08'
+    location: Meetup frontend / architecture
     url: '#'
+
   - category: Live talk
-    title: 'Du Wireframe au Web : Un workflow front-end pratique'
-    date: '2024-03-05'
-    location: Atelier interne @ PreviousCompany Inc.
+    title: Prendre des décisions techniques en contexte d’incertitude
+    date: '2025-03-05'
+    location: Intervention interne / entreprise
+    url: '#'
+
   - category: Live talk
-    title: Le pouvoir de la recherche utilisateur dans le développement produit
-    date: '2023-09-12'
-    location: Conférence invitée à l'Université de Boston, Boston, MA
+    title: Le rôle du développeur senior face à la complexité
+    date: '2024-09-12'
+    location: Meetup tech
+    url: '#'
+
   - category: Podcast
-    title: 'Designer pour les développeurs : Une perspective UX'
-    date: '2024-07-18'
-    location: Syntax.fm (Invité)
+    title: Architecture frontend et responsabilité technique
+    date: '2025-07-18'
+    location: Podcast tech (invité)
     url: '#'
+
   - category: Podcast
-    title: L'avenir des frameworks front-end et des outils de design
-    date: '2024-01-30'
-    location: Design Details Podcast (Invité)
+    title: 'IA pragmatique : décider avant d''implémenter'
+    date: '2025-01-30'
+    location: Podcast produit / tech
     url: '#'
-  - category: Podcast
-    title: Construire une carrière en UX/UI & Développement
-    date: '2023-05-22'
-    location: TechForward Boston Podcast
-    url: '#'
-  - category: Live talk
-    title: Vue Montreal 2026.1
-    date: '2026-01-29T00:00:00.000Z'
-    location: Tower Research
-    url: blala.com

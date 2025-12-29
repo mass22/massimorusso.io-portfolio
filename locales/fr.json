@@ -36,7 +36,7 @@
       "button": "Me contacter"
     },
     "speaking": {
-      "description": "Découvrez mes conférences, talks et podcasts",
+      "description": "Conférences, talks et podcasts autour de l’architecture frontend, de la prise de décision technique et de l’IA pragmatique.",
       "viewAll": "Voir toutes les conférences"
     },
     "companies": {
@@ -55,7 +55,7 @@
     "viewAll": "Voir tous les articles"
   },
   "projects": {
-    "viewProject": "Voir le projet"
+    "viewProject": "Voir les détails"
   },
   "services": {
     "hero": {
@@ -87,17 +87,17 @@
     "items": {
       "consulting": {
         "title": "Architecture frontend",
-        "description": "Audit de stack, architecture cible, stratégies de modernisation et migrations progressives (notamment Vue/Nuxt), avec un focus sur la performance, l’expérience développeur et la maintenabilité.",
+        "description": "Audit d’architecture, trajectoires cibles et stratégies de modernisation pour des frontends complexes — avec des arbitrages explicites, une vision long terme et des migrations maîtrisées (notamment Vue/Nuxt).",
         "imageAlt": "Architecture et modernisation frontend"
       },
       "workshops": {
         "title": "Conseil & aide à la décision",
-        "description": "Regard externe pour clarifier, prioriser et arbitrer des décisions techniques à fort impact : revues d’architecture, choix technologiques, trajectoire long terme.",
+        "description": "Accompagnement externe pour clarifier, prioriser et arbitrer des décisions techniques à fort impact : choix structurants, options techniques et trajectoires long terme.",
         "imageAlt": "Conseil et aide à la décision technique"
       },
       "audit": {
         "title": "Usage pragmatique de l’IA",
-        "description": "Identification des vrais cas d’usage IA, orchestration et intégration dans des produits existants : valeur mesurable, pas de hype ni de complexité inutile.",
+        "description": "Identification des cas d’usage IA réellement pertinents et des modes d’intégration adaptés — avec une valeur mesurable, des risques explicites et sans complexité inutile.",
         "imageAlt": "IA pragmatique et intégration produit"
       }
     },
@@ -130,11 +130,11 @@
   "contact": {
     "seo": {
       "title": "Contact - Massimo Russo",
-      "description": "Contactez-moi pour discuter d’architecture frontend, de modernisation de stack ou d’aide à la décision technique. Disponible pour des missions de conseil et d’accompagnement stratégique. Contactez-moi à {email}"
+      "description": "Contactez-moi pour discuter d’architecture frontend, de modernisation de stack ou d’aide à la décision technique. Disponible pour des accompagnements de conseil stratégique. Contactez-moi à {email}"
     },
     "hero": {
-      "title": "Parlons de votre projet",
-      "description": "Discutons de votre contexte, de vos enjeux techniques et des décisions à sécuriser.",
+      "title": "Parlons de vos décisions techniques",
+      "description": "Discutons de votre contexte, de vos enjeux techniques et des arbitrages à clarifier.",
       "cta": {
         "booking": "Planifier un appel",
         "write": "Écrire un message"
@@ -143,7 +143,7 @@
     "availability": {
       "available": {
         "title": "Disponible pour de nouveaux accompagnements",
-        "description": "Je suis actuellement disponible pour discuter de votre contexte et des décisions techniques à clarifier."
+        "description": "Je suis actuellement disponible pour échanger sur votre contexte et les décisions techniques à structurer."
       },
       "unavailable": {
         "title": "Actuellement indisponible",
@@ -156,13 +156,13 @@
       "button": "Préférer envoyer un message"
     },
     "booking": {
-      "title": "Planifiez un rendez-vous",
-      "description": "Choisissez un créneau qui vous convient pour discuter de votre projet."
+      "title": "Planifier un échange",
+      "description": "Choisissez un créneau pour discuter de votre contexte et des décisions techniques à clarifier."
     },
     "divider": "ou",
     "linkedin": {
-      "title": "Contactez-moi sur LinkedIn",
-      "description": "Préférez-vous échanger via LinkedIn ? Envoyez-moi un message et je vous répondrai rapidement.",
+      "title": "Échanger sur LinkedIn",
+      "description": "Vous préférez un premier échange informel ? Envoyez-moi un message et je vous répondrai rapidement.",
       "cta": "Me contacter sur LinkedIn"
     },
     "form": {
@@ -172,7 +172,7 @@
       "emailLabel": "Email",
       "emailPlaceholder": "votre email",
       "messageLabel": "Message",
-      "messagePlaceholder": "Décrivez votre projet ou votre demande...",
+      "messagePlaceholder": "Décrivez votre contexte, vos contraintes et les décisions techniques à clarifier...",
       "submit": "Envoyer le message",
       "toggleBooking": "Planifier un appel à la place"
     },
@@ -184,7 +184,7 @@
     "errors": {
       "submit": "Une erreur est survenue lors de l'envoi. Veuillez réessayer."
     },
-    "quote": "Chaque projet commence par une conversation.",
+    "quote": "Chaque décision structurante commence par une conversation.",
     "success": {
       "title": "Message envoyé !",
       "description": "Je vous répondrai dans les plus brefs délais.",
@@ -265,5 +265,16 @@
   },
   "backToTop": {
     "ariaLabel": "Retour en haut de la page"
+  },
+  "context": {
+    "lines": {
+      "1": "La plupart des équipes ne souffrent pas",
+      "2": "à cause d'un mauvais code.",
+      "3": "Elles souffrent parce que",
+      "4": "des décisions techniques critiques",
+      "5": "n'ont jamais été clairement prises,",
+      "6": "documentées,",
+      "7": "ni réellement assumées."
+    }
   }
 }
