@@ -276,12 +276,7 @@ export default defineNuxtConfig({
     langDir: 'locales',
     restructureDir: '',
     baseUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://massimorusso.io',
-    detectBrowserLanguage: {
-      cookieKey: 'i18n_redirected',
-      useCookie: true,
-      alwaysRedirect: false,
-      fallbackLocale: 'fr'
-    },
+    detectBrowserLanguage: false,
     compilation: {
       strictMessage: false
     },
