@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IndexCollectionItem } from '@nuxt/content'
 
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const localePath = useLocalePath()
 
 const { data: page } = await usePageData<IndexCollectionItem>('index')

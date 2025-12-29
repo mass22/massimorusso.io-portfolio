@@ -36,11 +36,14 @@ export type Testimonial = {
   quote: string
   author: {
     name: string
-    description: string
-    avatar: {
+    description?: string
+    avatar?: {
       src: string
-      srcset?: string
+      alt: string
     }
+    to?: string
+    twitter?: string
+    username?: string
   }
 }
 

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { IndexPage } from '~/types/content';
+import type { IndexCollectionItem } from '@nuxt/content'
 
 const { footer, global } = useAppConfig()
 const { t } = useI18n()
 const localePath = useLocalePath()
 
 const props = defineProps<{
-  page: IndexPage
+  page: IndexCollectionItem
 }>()
 
 // Transformer les liens du hero pour appliquer localePath
