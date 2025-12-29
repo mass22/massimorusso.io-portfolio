@@ -224,7 +224,19 @@ const isLinkDisabled = (link: string): boolean => {
           <div class="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent z-10" />
           <div class="absolute inset-0 image-blur">
             <ClientOnly>
+              <!-- Utiliser <img> pour les fichiers WebP statiques déjà optimisés -->
+              <img
+                v-if="getItemImage(item)?.endsWith('.webp')"
+                :src="getItemImage(item)"
+                :alt="item.imageAlt || item.title"
+                width="400"
+                height="400"
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+              <!-- Utiliser NuxtImg pour les autres images qui nécessitent traitement -->
               <NuxtImg
+                v-else
                 :src="getItemImage(item)"
                 :alt="item.imageAlt || item.title"
                 width="400"
