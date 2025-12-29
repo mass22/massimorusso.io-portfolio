@@ -3,8 +3,7 @@
     {
       "source": "/about",
       "destination": "/a-propos",
-      "permanent": true,
-      "locale": "fr"
+      "permanent": true
     },
     {
       "source": "/en/ressources",
