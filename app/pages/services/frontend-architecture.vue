@@ -258,7 +258,7 @@ useHead({
       />
     </UPageBody>
 
-    <ServicesCTA />
+    <ServicesCTADefault />
   </UPage>
 </template>
 

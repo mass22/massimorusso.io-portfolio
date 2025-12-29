@@ -306,6 +306,11 @@ UFormField:hover,
   }
 }
 
+/* Forcer le scroll instantané lors de la navigation */
+html {
+  scroll-behavior: auto !important;
+}
+
 /* Désactiver les animations pour les utilisateurs qui préfèrent les réduire */
 @media (prefers-reduced-motion: reduce) {
   *,
