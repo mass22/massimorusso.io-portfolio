@@ -53,5 +53,5 @@ content: |
   CTOs, product teams, and organizations exploring AI without wanting to lose clarity or control.
 
 images:
-  - src: https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop
+  - src: /services/service-3.webp
     alt: Pragmatic artificial intelligence usage and decision support

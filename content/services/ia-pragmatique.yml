@@ -53,5 +53,5 @@ content: |
   CTO, équipes produit et organisations qui explorent l’IA sans vouloir s’y perdre.
 
 images:
-  - src: https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop
-    alt: Usage pragmatique de l’intelligence artificielle et aide à la décision
+  - src: /services/service-3.webp
+    alt: Usage pragmatique de l'intelligence artificielle et aide à la décision

@@ -52,6 +52,6 @@ content: |
   CTO, Tech Leads et équipes frontend confrontées à des choix structurants.
 
 images:
-  - src: https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop
+  - src: /services/service-1.webp
     alt: Architecture frontend et prise de décision technique
 
