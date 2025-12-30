@@ -3,15 +3,34 @@ const { t, locale } = useI18n()
 
 const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () => {
   const allPages = await queryCollection('pages').all()
-  const blogPage = allPages.find(p =>
+
+  // Chercher par path exact d'abord
+  let blogPage = allPages.find(p =>
     (p.path === '/blog' || p.path === '/en/blog') && p.locale === locale.value
   )
+
   if (blogPage) {
     return blogPage
   }
-  const fallback = allPages.find(p =>
-    (p.path === '/blog' || p.path?.includes('blog')) && p.locale === 'fr'
-  )
+
+  // Chercher par nom de fichier (blog.yml ou blog.en.yml)
+  blogPage = allPages.find(p => {
+    const fileName = p._path?.split('/').pop() || ''
+    const isBlogFile = fileName === 'blog.yml' || fileName === 'blog.en.yml'
+    return isBlogFile && p.locale === locale.value
+  })
+
+  if (blogPage) {
+    return blogPage
+  }
+
+  // Fallback: chercher n'importe quel fichier blog avec locale fr
+  const fallback = allPages.find(p => {
+    const fileName = p._path?.split('/').pop() || ''
+    const isBlogFile = fileName === 'blog.yml' || fileName === 'blog.en.yml'
+    return isBlogFile && p.locale === 'fr'
+  })
+
   return fallback || null
 })
 if (!page.value) {
