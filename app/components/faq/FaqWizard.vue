@@ -149,11 +149,17 @@ const toggleCheckbox = (questionId: string, value: string | number | boolean) =>
   }
 }
 
+// Obtenir la valeur pour un select (uniquement string)
+const getSelectValue = (questionId: string): string | undefined => {
+  const value = answers.value[questionId]
+  return typeof value === 'string' ? value : undefined
+}
+
 // Vérifier si une option checkbox est sélectionnée
 const isCheckboxSelected = (questionId: string, value: string | number | boolean): boolean => {
   const currentValue = answers.value[questionId]
   if (!Array.isArray(currentValue)) return false
-  return currentValue.includes(value)
+  return currentValue.some((v: string | number | boolean) => v === value)
 }
 </script>
 
@@ -244,7 +250,7 @@ const isCheckboxSelected = (questionId: string, value: string | number | boolean
           <USelect
             v-else-if="question.type === 'select'"
             :id="question.id"
-            :model-value="(typeof answers[question.id] === 'string' ? answers[question.id] : undefined)"
+            :model-value="getSelectValue(question.id)"
             :options="question.options || []"
             :placeholder="question.placeholder || 'Sélectionnez une option'"
             :error="errors[question.id]"

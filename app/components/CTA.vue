@@ -25,26 +25,47 @@ const props = withDefaults(defineProps<Props>(), {
 
 const localePath = useLocalePath()
 
+// Helper pour convertir la couleur en type valide
+const normalizeColor = (color?: string): 'primary' | 'neutral' | 'error' | 'secondary' | 'success' | 'info' | 'warning' | undefined => {
+  if (!color || color === 'gray') return 'neutral'
+  if (color === 'primary' || color === 'neutral' || color === 'error' || color === 'secondary' || color === 'success' || color === 'info' || color === 'warning') {
+    return color
+  }
+  return 'primary'
+}
+
 // Transformation des données CTA pour UPageCTA
-const ctaLinks = computed(() => {
+const ctaLinks = computed((): Array<{
+  label: string
+  to: string
+  trailingIcon: string
+  variant: 'solid' | 'outline' | 'ghost' | 'soft' | 'link'
+  color: 'primary' | 'neutral' | 'error' | 'secondary' | 'success' | 'info' | 'warning' | undefined
+}> => {
   if (props.links && props.links.length > 0) {
     return props.links.map(link => ({
       label: link.label,
       to: localePath(link.href),
       trailingIcon: link.icon || 'i-lucide-arrow-right',
       variant: (link.variant || 'solid') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link',
-      color: (link.color || 'primary') as 'primary' | 'gray' | 'neutral'
+      color: normalizeColor(link.color)
     }))
   }
 
-  const links = []
+  const links: Array<{
+    label: string
+    to: string
+    trailingIcon: string
+    variant: 'solid' | 'outline' | 'ghost' | 'soft' | 'link'
+    color: 'primary' | 'neutral' | 'error' | 'secondary' | 'success' | 'info' | 'warning' | undefined
+  }> = []
   if (props.primary) {
     links.push({
       label: props.primary.label,
       to: localePath(props.primary.href),
       trailingIcon: props.primary.icon || 'i-lucide-arrow-right',
       variant: (props.primary.variant || 'solid') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link',
-      color: (props.primary.color || 'primary') as 'primary' | 'gray' | 'neutral'
+      color: normalizeColor(props.primary.color)
     })
   }
   if (props.secondary) {
@@ -53,7 +74,7 @@ const ctaLinks = computed(() => {
       to: localePath(props.secondary.href),
       trailingIcon: props.secondary.icon || 'i-lucide-calendar',
       variant: (props.secondary.variant || 'outline') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link',
-      color: (props.secondary.color || 'neutral') as 'primary' | 'gray' | 'neutral'
+      color: normalizeColor(props.secondary.color || 'neutral')
     })
   }
   return links
