@@ -290,22 +290,7 @@ function generateEmailBody(
   const leadQuery = `token=${encodeURIComponent(token)}`
   const leadUrl = `${baseUrl}${leadPath}?${leadQuery}`
 
-  // Vérification de sécurité : s'assurer que l'URL contient bien /lead/
-  if (!leadUrl.includes('/lead/')) {
-    console.error('[Email] ⚠️  ERREUR: L\'URL générée ne contient pas "/lead/":', leadUrl)
-    console.error('[Email] ⚠️  baseUrl:', baseUrl)
-    console.error('[Email] ⚠️  leadPath:', leadPath)
-  }
-
-  // Log pour déboguer dans le corps de l'email aussi
-  lines.push(`DEBUG - baseUrl: ${baseUrl}`)
-  lines.push(`DEBUG - leadPath: ${leadPath}`)
-  lines.push(`DEBUG - URL complète: ${leadUrl}`)
-  lines.push('')
   lines.push(leadUrl)
-  lines.push('')
-  // Ajouter aussi l'URL sur une ligne séparée pour faciliter le copier-coller
-  lines.push(`(Copier-coller: ${leadUrl})`)
   lines.push('')
 
   return lines.join('\n')
@@ -326,21 +311,19 @@ export async function sendAdminLeadEmail(params: SendAdminLeadEmailParams): Prom
   const fromEmail = process.env.FROM_EMAIL
   const baseUrl = process.env.BASE_URL || 'https://massimorusso.io'
 
-  // Validation des variables d'environnement avec logs détaillés
-  console.log('[Email] 🔍 Vérification des variables d\'environnement...')
-
+  // Validation des variables d'environnement
   if (!apiKey) {
-    console.error('[Email] RESEND_API_KEY n\'est pas définie')
+    console.error('[Email] ❌ RESEND_API_KEY n\'est pas définie')
     return false
   }
 
   if (!adminEmail) {
-    console.error('[Email] ADMIN_EMAIL n\'est pas définie')
+    console.error('[Email] ❌ ADMIN_EMAIL n\'est pas définie')
     return false
   }
 
   if (!fromEmail) {
-    console.error('[Email] FROM_EMAIL n\'est pas définie')
+    console.error('[Email] ❌ FROM_EMAIL n\'est pas définie')
     return false
   }
 
@@ -349,119 +332,47 @@ export async function sendAdminLeadEmail(params: SendAdminLeadEmailParams): Prom
   const subject = generateSubject(service, urgency, locale)
 
   // Nettoyer le baseUrl pour éviter les problèmes de formatage
-  // Enlever les trailing slashes et s'assurer qu'il n'y a pas de chemin déjà présent
   let cleanBaseUrl = baseUrl.trim().replace(/\/+$/, '')
-
-  // Log du BASE_URL original pour déboguer
-  console.log('[Email] 🔍 BASE_URL original:', baseUrl)
 
   // S'assurer que le BASE_URL ne contient pas déjà /lead/
   if (cleanBaseUrl.includes('/lead')) {
-    console.warn('[Email] ⚠️  BASE_URL contient déjà "/lead/". Nettoyage en cours...')
-    const beforeClean = cleanBaseUrl
     cleanBaseUrl = cleanBaseUrl.replace(/\/lead\/?.*$/, '')
-    console.log('[Email] 🔍 BASE_URL avant nettoyage:', beforeClean)
-    console.log('[Email] 🔍 BASE_URL après nettoyage:', cleanBaseUrl)
   }
-
-  console.log('[Email] 🔍 BASE_URL final utilisé:', cleanBaseUrl)
 
   // Générer le corps de l'email
   const body = generateEmailBody(email, name, context, qualification, locale, leadId, token, cleanBaseUrl)
 
-  // Log pour déboguer (toujours afficher pour vérifier)
-  const debugUrl = `${cleanBaseUrl}/lead/${leadId}?token=${encodeURIComponent(token)}`
-  console.log('[Email] 📧 URL générée pour le lead:', debugUrl)
-  console.log('[Email] 📧 BASE_URL utilisé:', cleanBaseUrl)
-
-  // Log avant l'appel API
-  console.log('[Email] 🚀 Préparation de l\'appel à l\'API Resend...')
-  console.log('[Email]   Subject:', subject)
-  console.log('[Email]   Body length:', body.length, 'caractères')
-
   try {
     // Appel à l'API Resend avec $fetch de Nuxt (meilleure compatibilité Vercel)
-    console.log('[Email] 📡 Envoi de la requête à Resend...')
-    console.log('[Email]   URL: https://api.resend.com/emails')
-    console.log('[Email]   Method: POST')
-    console.log('[Email]   Utilisation de $fetch (Nuxt) au lieu de fetch natif')
-
     const requestBody = {
       from: fromEmail,
       to: [adminEmail],
       subject,
       text: body
     }
-    console.log('[Email]   Request body:', JSON.stringify({
-      from: fromEmail,
-      to: [adminEmail],
-      subject,
-      text: `[${body.length} caractères]`
-    }))
 
-    console.log('[Email]   Début de l\'appel API...')
-    const fetchStartTime = Date.now()
+    const result = await $fetch<{ id: string }>('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: requestBody,
+      timeout: 20000 // 20 secondes de timeout
+    })
 
-    // Utiliser $fetch de Nuxt qui est mieux adapté à l'environnement serverless
-    try {
-      const result = await $fetch<{ id: string }>('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        body: requestBody,
-        timeout: 20000 // 20 secondes de timeout
-      })
-
-      const fetchDuration = Date.now() - fetchStartTime
-      console.log('[Email]   Appel API terminé en', fetchDuration, 'ms')
-      console.log('[Email] ✅ Email envoyé avec succès!')
-      console.log('[Email]   ID Resend:', result.id)
-      console.log('[Email]   À:', adminEmail)
-      console.log('[Email]   Depuis:', fromEmail)
-      console.log('[Email]   Vérifiez sur: https://resend.com/emails')
-      return true
-    } catch (fetchError: any) {
-      const fetchDuration = Date.now() - fetchStartTime
-      console.error('[Email] ❌ Erreur lors de l\'appel API:')
-      console.error('[Email]   Durée avant erreur:', fetchDuration, 'ms')
-      console.error('[Email]   Type:', fetchError.name || 'Unknown')
-      console.error('[Email]   Message:', fetchError.message)
-      console.error('[Email]   Status:', fetchError.status || fetchError.statusCode || 'N/A')
-      console.error('[Email]   Status Text:', fetchError.statusText || 'N/A')
-
-      // Gestion spécifique de l'erreur 403 (domaine non vérifié)
-      if (fetchError.status === 403 || fetchError.statusCode === 403) {
-        const errorMessage = fetchError.data?.message || fetchError.message || 'Domaine non vérifié'
-        console.error('[Email] ⚠️  Erreur 403 - Domaine non vérifié dans Resend')
-        console.error('[Email] Message:', errorMessage)
-        console.error('[Email] 💡 Solutions:')
-        console.error('[Email]   1. Pour les tests: Utilisez "onboarding@resend.dev" comme FROM_EMAIL')
-        console.error('[Email]   2. Pour la production: Vérifiez un domaine sur https://resend.com/domains')
-        console.error('[Email]      et utilisez une adresse FROM avec ce domaine (ex: noreply@votredomaine.com)')
-        console.error('[Email] 📧 FROM_EMAIL actuel:', fromEmail)
-        console.error('[Email] 📧 ADMIN_EMAIL actuel:', adminEmail)
-        return false
-      }
-
-      if (fetchError.stack) {
-        console.error('[Email]   Stack:', fetchError.stack)
-      }
-      throw fetchError
-    }
+    console.log('[Email] ✅ Email envoyé avec succès (ID Resend:', result.id, ')')
+    return true
   } catch (error: any) {
-    console.error('[Email] ❌ Exception lors de l\'envoi de l\'email:')
-    console.error('[Email]   Type:', error?.constructor?.name || typeof error)
-    console.error('[Email]   Message:', error.message || error)
-    console.error('[Email]   Code:', error.code)
-    if (error.stack) {
-      console.error('[Email]   Stack:', error.stack)
+    // Gestion spécifique de l'erreur 403 (domaine non vérifié)
+    if (error.status === 403 || error.statusCode === 403) {
+      console.error('[Email] ❌ Erreur 403 - Domaine non vérifié dans Resend')
+      console.error('[Email] 💡 Pour les tests: Utilisez "onboarding@resend.dev" comme FROM_EMAIL')
+      console.error('[Email] 💡 Pour la production: Vérifiez un domaine sur https://resend.com/domains')
+      return false
     }
-    console.error('[Email]   FROM_EMAIL:', fromEmail)
-    console.error('[Email]   ADMIN_EMAIL:', adminEmail)
-    console.error('[Email]   RESEND_API_KEY configurée:', !!apiKey)
-    console.error('[Email]   RESEND_API_KEY longueur:', apiKey?.length || 0)
+
+    console.error('[Email] ❌ Erreur lors de l\'envoi de l\'email:', error.message || error)
     return false
   }
 }
