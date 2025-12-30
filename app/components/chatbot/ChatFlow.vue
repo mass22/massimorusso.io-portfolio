@@ -2,7 +2,7 @@
 import type { LeadContext as LeadContextType } from '~/types/content'
 import { getChatConfig, type LeadContext } from './chatConfig'
 import type { Locale } from './i18n'
-import { formatQualificationMessage, qualifyLead, type QualificationResult } from './qualification'
+import { qualifyLead, type QualificationResult } from './qualification'
 
 interface Message {
   id: string
@@ -133,21 +133,8 @@ const showAssessmentMessage = () => {
   const result = qualifyLead(context.value)
   qualificationResult.value = result
 
-  // Utiliser formatQualificationMessage qui retourne déjà le message complet localisé
-  const assessmentMessage = formatQualificationMessage(props.locale, context.value, result)
-
-  // Afficher le message du bot
-  addBotMessage(assessmentMessage)
-
-  // Attendre assez longtemps pour que l'utilisateur puisse lire le message
-  // Le message peut être long, surtout pour les niveaux low/medium avec des raisons
-  // On calcule un délai basé sur la longueur du message (environ 50ms par caractère, minimum 2s)
-  const messageLength = assessmentMessage.length
-  const readingTime = Math.max(2000, messageLength * 50)
-
-  setTimeout(() => {
-    completeFlow()
-  }, readingTime)
+  // Passer directement au formulaire (le message sera affiché dans LeadCaptureForm)
+  completeFlow()
 }
 
 // Terminer le flux

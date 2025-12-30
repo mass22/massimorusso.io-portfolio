@@ -198,6 +198,9 @@ export default defineEventHandler(async (event) => {
   } catch (error: any) {
     // Gérer les erreurs de base de données
     console.error('[API] Erreur lors de l\'insertion du lead:', error)
+    console.error('[API] Message d\'erreur:', error.message)
+    console.error('[API] Stack:', error.stack)
+    console.error('[API] Code d\'erreur:', error.code)
 
     // Si c'est une erreur de contrainte unique (token dupliqué, très rare)
     // Code SQLite: SQLITE_CONSTRAINT_UNIQUE, Postgres: 23505

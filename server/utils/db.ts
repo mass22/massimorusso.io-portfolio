@@ -10,7 +10,22 @@ const usePostgres = isVercel || !!databaseUrl
 let sql: ReturnType<typeof neon> | null = null
 
 if (usePostgres && databaseUrl) {
-  sql = neon(databaseUrl)
+  try {
+    sql = neon(databaseUrl)
+    console.log('[DB] Connexion Neon initialisée')
+  } catch (error: any) {
+    console.error('[DB] Erreur lors de l\'initialisation de la connexion Neon:', error)
+    console.error('[DB] DATABASE_URL présent:', !!databaseUrl)
+  }
+} else if (usePostgres && !databaseUrl) {
+  console.error('[DB] ⚠️  Postgres requis mais DATABASE_URL non configuré!')
+  console.error('[DB] Variables disponibles:', {
+    VERCEL: process.env.VERCEL,
+    VERCEL_ENV: process.env.VERCEL_ENV,
+    DATABASE_URL: !!process.env.DATABASE_URL,
+    POSTGRES_URL: !!process.env.POSTGRES_URL,
+    POSTGRES_PRISMA_URL: !!process.env.POSTGRES_PRISMA_URL
+  })
 }
 
 // Fallback vers SQLite en développement local si Postgres n'est pas configuré
@@ -25,7 +40,9 @@ async function initSQLite(): Promise<void> {
     return
   }
 
-  if (!import.meta.dev) {
+  // Permettre l'initialisation en mode test ou dev
+  const isDev = import.meta.dev || process.env.NODE_ENV === 'test'
+  if (!isDev) {
     return
   }
 
@@ -118,9 +135,12 @@ async function initPostgresDatabase(): Promise<void> {
 }
 
 // Initialiser Postgres au chargement du module si on utilise Postgres
+// Note: L'initialisation se fera à la première requête si elle échoue ici
 if (usePostgres && sql && import.meta.server) {
   initPostgresDatabase().catch((error) => {
-    console.error('[DB] Erreur lors de l\'initialisation:', error)
+    console.error('[DB] Erreur lors de l\'initialisation au démarrage:', error)
+    console.error('[DB] DATABASE_URL configuré:', !!databaseUrl)
+    console.error('[DB] L\'initialisation sera réessayée à la première requête')
   })
 }
 
@@ -156,21 +176,45 @@ export async function insertLead(
   accessToken?: string,
   qualification?: any
 ): Promise<number> {
-  if (usePostgres && sql) {
-    const result = await sql`
-      INSERT INTO leads (answers, completed_at, step_count, metadata, qualification, access_token, updated_at)
-      VALUES (
-        ${JSON.stringify(context.answers)}::jsonb,
-        ${context.completedAt}::timestamp,
-        ${context.stepCount},
-        ${context.metadata ? JSON.stringify(context.metadata) : null}::jsonb,
-        ${qualification ? JSON.stringify(qualification) : null}::jsonb,
-        ${accessToken || null},
-        NOW()
-      )
-      RETURNING id
-    ` as Array<{ id: number }>
-    return result[0].id
+  if (usePostgres) {
+    if (!sql) {
+      const errorMessage = 'Connexion Postgres non initialisée. DATABASE_URL n\'est pas configuré. ' +
+        'Vérifiez que vous avez configuré Neon dans Vercel Storage.'
+      console.error('[DB]', errorMessage)
+      throw new Error(errorMessage)
+    }
+
+    // S'assurer que la base de données est initialisée
+    try {
+      await initPostgresDatabase()
+    } catch (initError: any) {
+      // Si l'initialisation échoue, logger mais continuer (peut-être que la table existe déjà)
+      console.warn('[DB] Erreur lors de l\'initialisation avant insertion:', initError.message)
+    }
+
+    try {
+      const result = await sql`
+        INSERT INTO leads (answers, completed_at, step_count, metadata, qualification, access_token, updated_at)
+        VALUES (
+          ${JSON.stringify(context.answers)}::jsonb,
+          ${context.completedAt}::timestamp,
+          ${context.stepCount},
+          ${context.metadata ? JSON.stringify(context.metadata) : null}::jsonb,
+          ${qualification ? JSON.stringify(qualification) : null}::jsonb,
+          ${accessToken || null},
+          NOW()
+        )
+        RETURNING id
+      ` as Array<{ id: number }>
+      return result[0].id
+    } catch (error: any) {
+      console.error('[DB] Erreur lors de l\'insertion:', error)
+      console.error('[DB] Message:', error.message)
+      console.error('[DB] Code:', error.code)
+      console.error('[DB] DATABASE_URL configuré:', !!databaseUrl)
+      console.error('[DB] Stack:', error.stack)
+      throw error
+    }
   } else {
     // Fallback SQLite pour le développement local
     await initSQLite()

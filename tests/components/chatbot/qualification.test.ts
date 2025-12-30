@@ -1,65 +1,64 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
+import type { LeadContext } from '~/app/components/chatbot/chatConfig'
 import {
-  qualifyLead,
-  formatReasons,
   formatQualificationMessage,
+  formatReasons,
+  qualifyLead,
   type QualificationResult
 } from '~/app/components/chatbot/qualification.ts'
-import type { LeadContext } from '~/app/components/chatbot/chatConfig'
 
 describe('qualification', () => {
   describe('qualifyLead', () => {
-      it('doit attribuer +2 points pour architecture-frontend', () => {
-        const context: LeadContext = {
-          service: 'architecture-frontend'
-        }
-        const result = qualifyLead(context)
+    it('doit attribuer +2 points pour architecture-frontend', () => {
+      const context: LeadContext = {
+        service: 'architecture-frontend'
+      }
+      const result = qualifyLead(context)
 
-        expect(result.score).toBe(2)
-        expect(result.reasons).toContain('service_architecture_frontend')
-      })
+      expect(result.score).toBe(2)
+      expect(result.reasons).toContain('service_architecture_frontend')
+    })
 
-      it('doit attribuer +2 points pour vue-nuxt comme service', () => {
-        const context: LeadContext = {
-          service: 'vue-nuxt'
-        }
-        const result = qualifyLead(context)
+    it('doit attribuer +2 points pour vue-nuxt comme service', () => {
+      const context: LeadContext = {
+        service: 'vue-nuxt'
+      }
+      const result = qualifyLead(context)
 
-        expect(result.score).toBe(2)
-        expect(result.reasons).toContain('service_vue_nuxt')
-      })
+      expect(result.score).toBe(2)
+      expect(result.reasons).toContain('service_vue_nuxt')
+    })
 
-      it('doit mapper ia-pragmatique à ai-orchestration et attribuer +2 points', () => {
-        const context: LeadContext = {
-          service: 'ia-pragmatique'
-        }
-        const result = qualifyLead(context)
+    it('doit mapper ia-pragmatique à ai-orchestration et attribuer +2 points', () => {
+      const context: LeadContext = {
+        service: 'ia-pragmatique'
+      }
+      const result = qualifyLead(context)
 
-        expect(result.score).toBe(2)
-        expect(result.reasons).toContain('service_ai_orchestration')
-      })
+      expect(result.score).toBe(2)
+      expect(result.reasons).toContain('service_ai_orchestration')
+    })
 
-      it('doit utiliser stack vue-nuxt comme service si service est absent', () => {
-        const context: LeadContext = {
-          stack: 'vue-nuxt'
-        }
-        const result = qualifyLead(context)
+    it('doit utiliser stack vue-nuxt comme service si service est absent', () => {
+      const context: LeadContext = {
+        stack: 'vue-nuxt'
+      }
+      const result = qualifyLead(context)
 
-        // vue-nuxt compte comme service (+2) ET comme stack (+1) = 3 points
-        expect(result.score).toBe(3)
-        expect(result.reasons).toContain('service_vue_nuxt')
-        expect(result.reasons).toContain('stack_vue_nuxt')
-      })
+      // vue-nuxt compte comme service (+2) ET comme stack (+1) = 3 points
+      expect(result.score).toBe(3)
+      expect(result.reasons).toContain('service_vue_nuxt')
+      expect(result.reasons).toContain('stack_vue_nuxt')
+    })
 
-      it('ne doit pas attribuer de points pour un service non éligible', () => {
-        const context: LeadContext = {
-          service: 'autre'
-        }
-        const result = qualifyLead(context)
+    it('ne doit pas attribuer de points pour un service non éligible', () => {
+      const context: LeadContext = {
+        service: 'autre'
+      }
+      const result = qualifyLead(context)
 
-        expect(result.score).toBe(0)
-        expect(result.reasons).not.toContain('service_architecture_frontend')
-      })
+      expect(result.score).toBe(0)
+      expect(result.reasons).not.toContain('service_architecture_frontend')
     })
 
     describe('Scoring - Goal', () => {

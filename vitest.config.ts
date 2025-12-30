@@ -11,6 +11,10 @@ export default defineConfig({
       '~': path.resolve(__dirname, '.'),
       '@': path.resolve(__dirname, '.')
     },
-    globals: true
+    globals: true,
+    setupFiles: ['./tests/setup.ts'],
+    // Configuration pour les tests serveur
+    testTimeout: 10000,
+    hookTimeout: 10000
   }
 })

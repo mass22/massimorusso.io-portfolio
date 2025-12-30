@@ -32,7 +32,7 @@ const chatbotContext = computed<ChatbotLeadContext>(() => {
   return props.context.answers as ChatbotLeadContext
 })
 const contextSummary = computed(() => formatContextSummary(chatbotContext.value, props.locale))
-const qualificationMessage = computed(() => formatQualificationMessage(props.locale, props.context, props.qualification))
+const qualificationMessage = computed(() => formatQualificationMessage(props.locale, chatbotContext.value, props.qualification))
 const canSubmit = computed(() => {
   return email.value.trim() !== '' && consent.value && !isSubmitting.value
 })
