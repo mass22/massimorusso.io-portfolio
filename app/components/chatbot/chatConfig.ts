@@ -270,11 +270,14 @@ export function getChatConfig(locale: 'fr' | 'en'): ChatConfig {
           throw new Error(`Missing translation for option ${opt.value} in question ${def.id}`)
         }
 
-        return {
+        const option: { label: string, value: string, nextQuestionId?: string } = {
           label,
-          value: opt.value,
-          ...(opt.nextQuestionId && { nextQuestionId: opt.nextQuestionId })
+          value: opt.value
         }
+        if ('nextQuestionId' in opt && opt.nextQuestionId) {
+          option.nextQuestionId = opt.nextQuestionId
+        }
+        return option
       })
     }
   })

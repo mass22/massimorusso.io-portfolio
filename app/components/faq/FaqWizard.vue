@@ -56,6 +56,10 @@ const validateQuestion = (question: FaqWizardQuestion, value: any): string | nul
 const validateCurrentStep = (): boolean => {
   const stepErrors: Record<string, string> = {}
 
+  if (!currentStep.value) {
+    return false
+  }
+
   currentStep.value.questions.forEach((question) => {
     const value = answers.value[question.id]
     const error = validateQuestion(question, value)
@@ -136,12 +140,12 @@ const completeWizard = () => {
 // Gestion des réponses pour les checkboxes
 const toggleCheckbox = (questionId: string, value: string | number | boolean) => {
   const currentValue = answers.value[questionId]
-  const arrayValue = Array.isArray(currentValue) ? currentValue : []
+  const arrayValue: Array<string | number | boolean> = Array.isArray(currentValue) ? currentValue : []
 
   if (arrayValue.includes(value)) {
-    updateAnswer(questionId, arrayValue.filter(v => v !== value))
+    updateAnswer(questionId, arrayValue.filter(v => v !== value) as string[])
   } else {
-    updateAnswer(questionId, [...arrayValue, value])
+    updateAnswer(questionId, [...arrayValue, value] as string[])
   }
 }
 
@@ -240,7 +244,7 @@ const isCheckboxSelected = (questionId: string, value: string | number | boolean
           <USelect
             v-else-if="question.type === 'select'"
             :id="question.id"
-            :model-value="answers[question.id]"
+            :model-value="(typeof answers[question.id] === 'string' ? answers[question.id] : undefined)"
             :options="question.options || []"
             :placeholder="question.placeholder || 'Sélectionnez une option'"
             :error="errors[question.id]"

@@ -32,8 +32,8 @@ const ctaLinks = computed(() => {
       label: link.label,
       to: localePath(link.href),
       trailingIcon: link.icon || 'i-lucide-arrow-right',
-      variant: (link.variant || 'solid') as const,
-      color: (link.color || 'primary') as const
+      variant: (link.variant || 'solid') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link',
+      color: (link.color || 'primary') as 'primary' | 'gray' | 'neutral'
     }))
   }
 
@@ -43,8 +43,8 @@ const ctaLinks = computed(() => {
       label: props.primary.label,
       to: localePath(props.primary.href),
       trailingIcon: props.primary.icon || 'i-lucide-arrow-right',
-      variant: (props.primary.variant || 'solid') as const,
-      color: (props.primary.color || 'primary') as const
+      variant: (props.primary.variant || 'solid') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link',
+      color: (props.primary.color || 'primary') as 'primary' | 'gray' | 'neutral'
     })
   }
   if (props.secondary) {
@@ -52,8 +52,8 @@ const ctaLinks = computed(() => {
       label: props.secondary.label,
       to: localePath(props.secondary.href),
       trailingIcon: props.secondary.icon || 'i-lucide-calendar',
-      variant: (props.secondary.variant || 'outline') as const,
-      color: (props.secondary.color || 'neutral') as const
+      variant: (props.secondary.variant || 'outline') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link',
+      color: (props.secondary.color || 'neutral') as 'primary' | 'gray' | 'neutral'
     })
   }
   return links

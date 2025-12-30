@@ -79,9 +79,11 @@ function formatMetadata(metadata: LeadContext['metadata']): string[] {
 
     if (browserMatch || osMatch) {
       const parts: string[] = []
-      if (browserMatch) parts.push(browserMatch[0])
-      if (osMatch) parts.push(osMatch[1])
-      lines.push(`Navigateur/Système: ${parts.join(' - ')}`)
+      if (browserMatch && browserMatch[0]) parts.push(browserMatch[0])
+      if (osMatch && osMatch[1]) parts.push(osMatch[1])
+      if (parts.length > 0) {
+        lines.push(`Navigateur/Système: ${parts.join(' - ')}`)
+      }
     } else {
       lines.push(`User Agent: ${ua.substring(0, 100)}${ua.length > 100 ? '...' : ''}`)
     }

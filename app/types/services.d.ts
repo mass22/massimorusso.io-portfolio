@@ -13,6 +13,7 @@ export type ServiceItem = {
 export type ProcessStep = {
   title: string
   description: string
+  icon?: string
 }
 
 export type Process = {

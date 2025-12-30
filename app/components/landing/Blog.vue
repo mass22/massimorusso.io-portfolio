@@ -76,7 +76,7 @@ const localizedPosts = computed(() => {
       >
         <Motion
           v-for="(post, index) in localizedPosts"
-          :key="post._id || post.slug || post.path || index"
+          :key="(post as any)._id || post.slug || post.path || index"
           :initial="{ opacity: 0, transform: 'translateY(20px)' }"
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
           :transition="{ delay: 0.1 * index, duration: 0.5 }"

@@ -216,6 +216,9 @@ export async function insertLead(
         )
         RETURNING id
       ` as Array<{ id: number }>
+      if (!result[0]) {
+        throw new Error('Failed to insert lead')
+      }
       return result[0].id
     } catch (error: any) {
       console.error('[DB] Erreur lors de l\'insertion:', error)
@@ -287,6 +290,9 @@ export async function getLeadById(id: number): Promise<Lead | null> {
     }
 
     const row = result[0]
+    if (!row) {
+      return null
+    }
     return {
       id: row.id,
       answers: row.answers as LeadContext['answers'],
@@ -378,6 +384,9 @@ export async function getLeadByIdAndToken(id: number, token: string): Promise<Le
     }
 
     const row = result[0]
+    if (!row) {
+      return null
+    }
     return {
       id: row.id,
       answers: row.answers as LeadContext['answers'],
@@ -517,7 +526,10 @@ export async function getAllLeads(limit: number = 100, offset: number = 0): Prom
 export async function countLeads(): Promise<number> {
   if (usePostgres && sql) {
     const result = await sql`SELECT COUNT(*) as count FROM leads` as Array<{ count: string | number }>
-    const count = result[0].count
+    const count = result[0]?.count
+    if (count === undefined) {
+      return 0
+    }
     return typeof count === 'string' ? parseInt(count, 10) : count
   } else {
     // Fallback SQLite

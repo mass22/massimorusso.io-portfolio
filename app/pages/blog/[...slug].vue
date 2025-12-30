@@ -49,7 +49,11 @@ const { data: page } = await useAsyncData(`blog-${locale.value}-${slug}`, async 
     return currentLocaleMatch
   }
 
-  const fallbackLocaleCode = (defaultLocale as { value: string })?.value || defaultLocale || 'fr'
+  const fallbackLocaleCode = typeof defaultLocale === 'object' && defaultLocale !== null && 'value' in defaultLocale
+    ? (defaultLocale as { value: string }).value
+    : typeof defaultLocale === 'string'
+      ? defaultLocale
+      : 'fr'
   const defaultLocaleMatch = allPosts.find(post => matchPost(post, fallbackLocaleCode))
   if (defaultLocaleMatch) {
     return defaultLocaleMatch

@@ -29,6 +29,10 @@ export default defineEventHandler(async (event) => {
     const sql = neon(databaseUrl)
     const [response] = await sql`SELECT version()`
 
+    if (!response) {
+      throw new Error('Failed to get database version')
+    }
+
     return {
       version: response.version,
       connected: true,

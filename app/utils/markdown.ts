@@ -13,6 +13,7 @@ export function markdownToHtml(markdown: string): string {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]
+    if (!line) continue
 
     // Empty line - close paragraph or list
     if (line.trim() === '') {
@@ -33,7 +34,8 @@ export function markdownToHtml(markdown: string): string {
       if (inList) result.push('</ul>')
       inParagraph = false
       inList = false
-      result.push(`<h3>${processInline(line.substring(4))}</h3>`)
+      const headerText = line.substring(4)
+      result.push(`<h3>${processInline(headerText)}</h3>`)
       continue
     }
     if (line.startsWith('## ')) {
@@ -41,7 +43,8 @@ export function markdownToHtml(markdown: string): string {
       if (inList) result.push('</ul>')
       inParagraph = false
       inList = false
-      result.push(`<h2>${processInline(line.substring(3))}</h2>`)
+      const headerText = line.substring(3)
+      result.push(`<h2>${processInline(headerText)}</h2>`)
       continue
     }
     if (line.startsWith('# ')) {
@@ -49,12 +52,14 @@ export function markdownToHtml(markdown: string): string {
       if (inList) result.push('</ul>')
       inParagraph = false
       inList = false
-      result.push(`<h1>${processInline(line.substring(2))}</h1>`)
+      const headerText = line.substring(2)
+      result.push(`<h1>${processInline(headerText)}</h1>`)
       continue
     }
 
     // Lists
-    if (line.trim().startsWith('- ')) {
+    const trimmedLine = line.trim()
+    if (trimmedLine.startsWith('- ')) {
       if (inParagraph) {
         result.push('</p>')
         inParagraph = false
@@ -63,7 +68,8 @@ export function markdownToHtml(markdown: string): string {
         result.push('<ul>')
         inList = true
       }
-      result.push(`<li>${processInline(line.trim().substring(2))}</li>`)
+      const listItemText = trimmedLine.substring(2)
+      result.push(`<li>${processInline(listItemText)}</li>`)
       continue
     }
 

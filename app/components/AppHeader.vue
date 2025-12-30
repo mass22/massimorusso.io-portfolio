@@ -103,7 +103,7 @@ const switchLocale = (targetLocale: string, event?: Event) => {
   }
   if (targetLocale && targetLocale !== locale.value) {
     isSwitchingLocale.value = true
-    const targetPath = switchLocalePath(targetLocale)
+    const targetPath = switchLocalePath(targetLocale as 'fr' | 'en')
     if (targetPath) {
       void router.push(targetPath).finally(() => {
         // Réinitialiser après un court délai pour permettre la navigation
