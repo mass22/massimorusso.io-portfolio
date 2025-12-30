@@ -14,7 +14,7 @@ const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () 
   }
 
   // Chercher par nom de fichier (blog.yml ou blog.en.yml) - utile pour le prerender
-  blogPage = allPages.find(p => {
+  blogPage = allPages.find((p) => {
     const fileName = (p as any)._path?.split('/').pop() || ''
     const isBlogFile = fileName === 'blog.yml' || fileName === 'blog.en.yml'
     return isBlogFile && p.locale === locale.value
@@ -25,7 +25,7 @@ const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () 
   }
 
   // Fallback: chercher n'importe quel fichier blog avec locale fr
-  const fallback = allPages.find(p => {
+  const fallback = allPages.find((p) => {
     const fileName = (p as any)._path?.split('/').pop() || ''
     const isBlogFile = fileName === 'blog.yml' || fileName === 'blog.en.yml'
     return isBlogFile && p.locale === 'fr'
