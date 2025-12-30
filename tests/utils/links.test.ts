@@ -2,7 +2,6 @@ import { describe, expect, it } from 'vitest'
 import { getNavLinks } from '../../app/utils/links'
 
 describe('getNavLinks', () => {
-
   it('should return navigation links with translated labels', () => {
     const t = (key: string) => `translated_${key}`
     const locale = { value: 'fr' }

@@ -22,7 +22,6 @@ const footerLinksWithLabels = computed(() => footerConfig?.links?.map(link => ({
     <template #left>
       {{ t("footer.credits", { year: currentYear }) }}
     </template>
-
     <!-- eslint-disable-next-line vue/no-v-html -->
     <span
       class="footer-license"
