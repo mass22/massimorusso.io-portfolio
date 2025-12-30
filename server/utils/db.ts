@@ -177,6 +177,16 @@ export async function insertLead(
   qualification?: any
 ): Promise<number> {
   if (usePostgres) {
+    // Réinitialiser la connexion si nécessaire (conforme au guide Neon)
+    if (!sql && databaseUrl) {
+      try {
+        sql = neon(databaseUrl)
+        console.log('[DB] Connexion Neon réinitialisée')
+      } catch (error: any) {
+        console.error('[DB] Erreur lors de la réinitialisation:', error)
+      }
+    }
+
     if (!sql) {
       const errorMessage = 'Connexion Postgres non initialisée. DATABASE_URL n\'est pas configuré. ' +
         'Vérifiez que vous avez configuré Neon dans Vercel Storage.'
