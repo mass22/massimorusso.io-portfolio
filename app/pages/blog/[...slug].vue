@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { ContentNavigationItem, BlogCollectionItem } from '@nuxt/content'
+import type { BlogCollectionItem, ContentNavigationItem } from '@nuxt/content'
 import { findPageBreadcrumb } from '@nuxt/content/utils'
 import { mapContentNavigation } from '@nuxt/ui/utils/content'
 import { useScroll } from '@vueuse/core'
 import { computed, onMounted, ref } from 'vue'
+import { useSiteUrl } from '~/composables/useSiteUrl'
 
 definePageMeta({
   layout: 'blog'
@@ -131,7 +132,7 @@ if (page.value.image) {
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
 const { global } = useAppConfig()
-const siteUrl = useRequestURL().origin
+const siteUrl = useSiteUrl()
 
 useSeoMeta({
   description,

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useSiteUrl } from '~/composables/useSiteUrl'
 import type { ServicesPage } from '~/types/services'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const { global } = useAppConfig()
-const siteUrl = useRequestURL().origin
+const siteUrl = useSiteUrl()
 
 // Chargement du contenu depuis Nuxt Content
 const { data: page } = await useAsyncData(`services-${locale.value}`, async () => {

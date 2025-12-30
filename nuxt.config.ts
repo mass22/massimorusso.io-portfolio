@@ -221,6 +221,10 @@ export default defineNuxtConfig({
     compressPublicAssets: true,
     minify: true,
     sourceMap: true, // Source maps pour le code serveur
+    prerender: {
+      // Forcer la génération de la route /blog pour la locale par défaut (fr)
+      routes: ['/blog']
+    },
     // Optimisations pour réduire la taille des bundles
     esbuild: {
       options: {
@@ -370,5 +374,10 @@ export default defineNuxtConfig({
   },
   devtools: {
     enabled: process.env.NODE_ENV === 'development'
+  },
+  runtimeConfig: {
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://massimorusso.io'
+    }
   }
 })

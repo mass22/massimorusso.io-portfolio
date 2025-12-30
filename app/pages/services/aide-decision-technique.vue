@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useSiteUrl } from '~/composables/useSiteUrl'
 
 definePageMeta({
   layout: 'service'
@@ -43,7 +44,7 @@ if (!page.value) {
 }
 
 const { global } = useAppConfig()
-const siteUrl = useRequestURL().origin
+const siteUrl = useSiteUrl()
 
 if (page.value?.images && page.value.images.length > 0 && page.value.images[0]?.src) {
   defineOgImage({ url: page.value.images[0].src })
