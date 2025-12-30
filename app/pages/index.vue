@@ -20,18 +20,8 @@ useSeoMeta({
 })
 
 // Preload de l'image LCP pour optimiser le Largest Contentful Paint
-// Utiliser l'URL IPX optimisée (530x530, webp, qualité 80)
-const lcpImageUrl = `/_ipx/f_webp&q_80&s_530x530/hero/random-1.avif`
-useHead({
-  link: [
-    {
-      rel: 'preload',
-      as: 'image',
-      href: lcpImageUrl,
-      fetchpriority: 'high'
-    }
-  ]
-})
+// Note: Le preload sera géré automatiquement par NuxtImg avec fetchpriority="high"
+// Pas besoin de preload manuel car NuxtImg génère l'URL optimisée dynamiquement
 
 const ctaLinks = computed(() => ([
   {

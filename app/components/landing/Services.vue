@@ -150,7 +150,7 @@ const serviceItems = computed(() => {
           width="400"
           height="300"
           loading="lazy"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          densities="1x"
           class="w-full h-48 object-cover rounded-lg"
           format="webp"
           quality="80"
