@@ -4,12 +4,11 @@ import {
   formatReasons,
   formatQualificationMessage,
   type QualificationResult
-} from '~/app/components/chatbot/qualification'
+} from '~/app/components/chatbot/qualification.ts'
 import type { LeadContext } from '~/app/components/chatbot/chatConfig'
 
 describe('qualification', () => {
   describe('qualifyLead', () => {
-    describe('Scoring - Service', () => {
       it('doit attribuer +2 points pour architecture-frontend', () => {
         const context: LeadContext = {
           service: 'architecture-frontend'

@@ -132,6 +132,43 @@ useHead({
           </div>
         </UCard>
 
+        <!-- Qualification -->
+        <UCard v-if="leadData.qualification">
+          <template #header>
+            <h2 class="text-xl font-semibold">Qualification</h2>
+          </template>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-muted">Score:</span>
+              <UBadge
+                :label="leadData.qualification.score.toString()"
+                :color="leadData.qualification.score >= 7 ? 'success' : leadData.qualification.score >= 4 ? 'warning' : 'error'"
+              />
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-muted">Niveau:</span>
+              <UBadge
+                :label="leadData.qualification.level === 'high' ? 'Élevé' : leadData.qualification.level === 'medium' ? 'Moyen' : 'Faible'"
+                :color="leadData.qualification.level === 'high' ? 'success' : leadData.qualification.level === 'medium' ? 'warning' : 'error'"
+              />
+            </div>
+            <div v-if="leadData.qualification.recommendedOffer && leadData.qualification.recommendedOffer !== 'unknown'" class="flex items-center justify-between">
+              <span class="text-muted">Offre recommandée:</span>
+              <span class="font-medium">
+                {{ leadData.qualification.recommendedOffer === 'audit' ? 'Audit' : leadData.qualification.recommendedOffer === 'coaching' ? 'Coaching' : 'Mission' }}
+              </span>
+            </div>
+            <div v-if="leadData.qualification.reasons && leadData.qualification.reasons.length > 0">
+              <span class="text-muted block mb-2">Raisons:</span>
+              <ul class="list-disc list-inside space-y-1">
+                <li v-for="(reason, index) in leadData.qualification.reasons" :key="index" class="text-sm">
+                  {{ reason }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </UCard>
+
         <!-- Résumé -->
         <UCard>
           <template #header>

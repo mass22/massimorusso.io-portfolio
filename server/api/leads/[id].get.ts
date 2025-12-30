@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
   }
 
   // Récupérer le lead avec vérification du token
-  const lead = getLeadByIdAndToken(id, token.trim())
+  const lead = await getLeadByIdAndToken(id, token.trim())
 
   if (!lead) {
     throw createError({
@@ -77,6 +77,7 @@ export default defineEventHandler(async (event) => {
     id: lead.id,
     summary,
     context: leadContext,
+    qualification: lead.qualification,
     createdAt: lead.createdAt,
     updatedAt: lead.updatedAt
   }

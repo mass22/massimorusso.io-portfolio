@@ -171,7 +171,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     // Insérer le lead dans la base de données avec la qualification
-    const leadId = insertLead(leadContext, accessToken, data.qualification)
+    const leadId = await insertLead(leadContext, accessToken, data.qualification)
 
     // Si consent est true, envoyer l'email de notification
     // Ne pas faire échouer la requête si l'envoi d'email échoue
@@ -200,11 +200,12 @@ export default defineEventHandler(async (event) => {
     console.error('[API] Erreur lors de l\'insertion du lead:', error)
 
     // Si c'est une erreur de contrainte unique (token dupliqué, très rare)
-    if (error.code === 'SQLITE_CONSTRAINT_UNIQUE') {
+    // Code SQLite: SQLITE_CONSTRAINT_UNIQUE, Postgres: 23505
+    if (error.code === 'SQLITE_CONSTRAINT_UNIQUE' || error.code === '23505') {
       // Réessayer avec un nouveau token
       const newToken = generateAccessToken()
       try {
-        const leadId = insertLead(leadContext, newToken, data.qualification)
+        const leadId = await insertLead(leadContext, newToken, data.qualification)
 
         // Si consent est true, envoyer l'email de notification
         if (data.consent) {
