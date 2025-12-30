@@ -402,28 +402,39 @@ export async function sendAdminLeadEmail(params: SendAdminLeadEmailParams): Prom
     console.log('[Email]   Début du fetch...')
     const fetchStartTime = Date.now()
 
+    // Créer un AbortController pour gérer le timeout
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => {
+      console.error('[Email] ⏱️  Timeout après 20 secondes, annulation du fetch...')
+      controller.abort()
+    }, 20000) // 20 secondes de timeout
+
     let response: Response
     try {
-      response = await Promise.race([
-        fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${apiKey}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestBody)
-        }),
-        new Promise<never>((_, reject) =>
-          setTimeout(() => reject(new Error('Fetch timeout après 30 secondes')), 30000)
-        )
-      ]) as Response
+      response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody),
+        signal: controller.signal
+      })
 
+      clearTimeout(timeoutId)
       const fetchDuration = Date.now() - fetchStartTime
       console.log('[Email]   Fetch terminé en', fetchDuration, 'ms')
     } catch (fetchError: any) {
+      clearTimeout(timeoutId)
       console.error('[Email] ❌ Erreur lors du fetch:')
-      console.error('[Email]   Erreur:', fetchError.message)
-      console.error('[Email]   Stack:', fetchError.stack)
+      console.error('[Email]   Type:', fetchError.name || 'Unknown')
+      console.error('[Email]   Message:', fetchError.message)
+      if (fetchError.name === 'AbortError') {
+        console.error('[Email]   ⚠️  Le fetch a été annulé (timeout ou abort)')
+      }
+      if (fetchError.stack) {
+        console.error('[Email]   Stack:', fetchError.stack)
+      }
       throw fetchError
     }
 
