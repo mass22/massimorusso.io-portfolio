@@ -277,6 +277,7 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
               </span>
             </div>
             <NuxtImg
+              v-if="page.image && typeof page.image === 'string' && (page.image.startsWith('http') || page.image.startsWith('/'))"
               :src="page.image"
               :alt="page.title"
               width="1200"

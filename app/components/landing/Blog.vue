@@ -39,10 +39,19 @@ const localizedPosts = computed(() => {
       ? `/${localeCode}${normalizedPath}`
       : normalizedPath
 
+    // Nettoyer l'image si c'est un ID de média au lieu d'une URL
+    let image: string | undefined = post.image as string | undefined
+    if (image && typeof image === 'string') {
+      if (image.startsWith('blog:') || (!image.startsWith('http') && !image.startsWith('/'))) {
+        image = undefined
+      }
+    }
+
     return {
       ...post,
-      path: localizedPath
-    }
+      path: localizedPath,
+      image: image as string | undefined
+    } as typeof post & { image?: string }
   })
 })
 </script>

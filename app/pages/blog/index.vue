@@ -27,6 +27,19 @@ if (!posts.value) {
   })
 }
 
+// Filtrer et nettoyer les posts pour s'assurer que les images sont des URLs valides
+const validPosts = computed(() => {
+  return posts.value?.map((post) => {
+    // Si l'image est un ID de média (commence par "blog:" ou n'est pas une URL), la retirer
+    if (post.image && typeof post.image === 'string') {
+      if (post.image.startsWith('blog:') || (!post.image.startsWith('http') && !post.image.startsWith('/'))) {
+        return { ...post, image: undefined }
+      }
+    }
+    return post
+  }) || []
+})
+
 useSeoMeta({
   description: page.value?.seo?.description || page.value?.description,
   ogDescription: page.value?.seo?.description || page.value?.description,
@@ -54,7 +67,7 @@ useSeoMeta({
     >
       <UBlogPosts orientation="vertical">
         <Motion
-          v-for="(post, index) in posts"
+          v-for="(post, index) in validPosts"
           :key="index"
           :initial="{ opacity: 0, transform: 'translateY(10px)' }"
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
