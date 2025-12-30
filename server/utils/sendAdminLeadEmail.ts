@@ -380,11 +380,11 @@ export async function sendAdminLeadEmail(params: SendAdminLeadEmailParams): Prom
   console.log('[Email]   Body length:', body.length, 'caractères')
 
   try {
-    // Appel à l'API Resend
+    // Appel à l'API Resend avec $fetch de Nuxt (meilleure compatibilité Vercel)
     console.log('[Email] 📡 Envoi de la requête à Resend...')
     console.log('[Email]   URL: https://api.resend.com/emails')
     console.log('[Email]   Method: POST')
-    console.log('[Email]   Headers: Authorization Bearer (présent), Content-Type: application/json')
+    console.log('[Email]   Utilisation de $fetch (Nuxt) au lieu de fetch natif')
 
     const requestBody = {
       from: fromEmail,
@@ -399,73 +399,41 @@ export async function sendAdminLeadEmail(params: SendAdminLeadEmailParams): Prom
       text: `[${body.length} caractères]`
     }))
 
-    console.log('[Email]   Début du fetch...')
+    console.log('[Email]   Début de l\'appel API...')
     const fetchStartTime = Date.now()
 
-    // Créer un AbortController pour gérer le timeout
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => {
-      console.error('[Email] ⏱️  Timeout après 20 secondes, annulation du fetch...')
-      controller.abort()
-    }, 20000) // 20 secondes de timeout
-
-    let response: Response
+    // Utiliser $fetch de Nuxt qui est mieux adapté à l'environnement serverless
     try {
-      response = await fetch('https://api.resend.com/emails', {
+      const result = await $fetch<{ id: string }>('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${apiKey}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(requestBody),
-        signal: controller.signal
+        body: requestBody,
+        timeout: 20000 // 20 secondes de timeout
       })
 
-      clearTimeout(timeoutId)
       const fetchDuration = Date.now() - fetchStartTime
-      console.log('[Email]   Fetch terminé en', fetchDuration, 'ms')
+      console.log('[Email]   Appel API terminé en', fetchDuration, 'ms')
+      console.log('[Email] ✅ Email envoyé avec succès!')
+      console.log('[Email]   ID Resend:', result.id)
+      console.log('[Email]   À:', adminEmail)
+      console.log('[Email]   Depuis:', fromEmail)
+      console.log('[Email]   Vérifiez sur: https://resend.com/emails')
+      return true
     } catch (fetchError: any) {
-      clearTimeout(timeoutId)
-      console.error('[Email] ❌ Erreur lors du fetch:')
+      const fetchDuration = Date.now() - fetchStartTime
+      console.error('[Email] ❌ Erreur lors de l\'appel API:')
+      console.error('[Email]   Durée avant erreur:', fetchDuration, 'ms')
       console.error('[Email]   Type:', fetchError.name || 'Unknown')
       console.error('[Email]   Message:', fetchError.message)
-      if (fetchError.name === 'AbortError') {
-        console.error('[Email]   ⚠️  Le fetch a été annulé (timeout ou abort)')
-      }
-      if (fetchError.stack) {
-        console.error('[Email]   Stack:', fetchError.stack)
-      }
-      throw fetchError
-    }
-
-    console.log('[Email] 📥 Réponse reçue de Resend')
-    console.log('[Email]   Status:', response.status)
-    console.log('[Email]   Status Text:', response.statusText)
-    console.log('[Email]   OK:', response.ok)
-
-    if (!response.ok) {
-      console.log('[Email] ⚠️  La réponse n\'est pas OK, lecture de l\'erreur...')
-      let errorData: any = {}
-      let errorText = ''
-
-      try {
-        const text = await response.text()
-        errorText = text
-        try {
-          errorData = JSON.parse(text)
-        } catch {
-          // Si ce n'est pas du JSON, on garde le texte
-        }
-      } catch (e) {
-        console.error('[Email]   Erreur lors de la lecture de la réponse:', e)
-      }
-
-      console.log('[Email]   Error Data:', errorData)
-      console.log('[Email]   Error Text:', errorText)
+      console.error('[Email]   Status:', fetchError.status || fetchError.statusCode || 'N/A')
+      console.error('[Email]   Status Text:', fetchError.statusText || 'N/A')
 
       // Gestion spécifique de l'erreur 403 (domaine non vérifié)
-      if (response.status === 403) {
-        const errorMessage = errorData?.message || errorText || 'Domaine non vérifié'
+      if (fetchError.status === 403 || fetchError.statusCode === 403) {
+        const errorMessage = fetchError.data?.message || fetchError.message || 'Domaine non vérifié'
         console.error('[Email] ⚠️  Erreur 403 - Domaine non vérifié dans Resend')
         console.error('[Email] Message:', errorMessage)
         console.error('[Email] 💡 Solutions:')
@@ -477,32 +445,10 @@ export async function sendAdminLeadEmail(params: SendAdminLeadEmailParams): Prom
         return false
       }
 
-      console.error('[Email] ❌ Erreur lors de l\'envoi de l\'email:')
-      console.error('[Email]   Status:', response.status, response.statusText)
-      console.error('[Email]   Erreur:', errorData || errorText)
-      console.error('[Email]   FROM_EMAIL:', fromEmail)
-      console.error('[Email]   ADMIN_EMAIL:', adminEmail)
-      return false
-    }
-
-    console.log('[Email] ✅ Réponse OK, lecture du JSON...')
-    let result: any
-    try {
-      const text = await response.text()
-      console.log('[Email]   Response text length:', text.length)
-      console.log('[Email]   Response text preview:', text.substring(0, 200))
-      result = JSON.parse(text)
-      console.log('[Email] ✅ Email envoyé avec succès!')
-      console.log('[Email]   ID Resend:', result.id)
-      console.log('[Email]   À:', adminEmail)
-      console.log('[Email]   Depuis:', fromEmail)
-      console.log('[Email]   Vérifiez sur: https://resend.com/emails')
-      return true
-    } catch (parseError: any) {
-      console.error('[Email] ❌ Erreur lors du parsing de la réponse JSON:')
-      console.error('[Email]   Erreur:', parseError.message)
-      console.error('[Email]   Stack:', parseError.stack)
-      return false
+      if (fetchError.stack) {
+        console.error('[Email]   Stack:', fetchError.stack)
+      }
+      throw fetchError
     }
   } catch (error: any) {
     console.error('[Email] ❌ Exception lors de l\'envoi de l\'email:')
