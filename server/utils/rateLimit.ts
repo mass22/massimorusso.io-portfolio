@@ -91,4 +91,3 @@ export function getResetTime(ip: string): number {
   }
   return Math.ceil((entry.resetAt - Date.now()) / 1000)
 }
-

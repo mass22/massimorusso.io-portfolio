@@ -4,11 +4,11 @@ import { useWindowScroll } from '@vueuse/core'
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 
-const navLinks = computed<NavigationMenuItem[]>(() => getNavLinks(t, localePath))
+const navLinks = computed<NavigationMenuItem[]>(() => getNavLinks(t, localePath, locale))
 
 // Détecter si le StickyCTA est visible pour ajouter du padding conditionnel
 const isContactPage = computed(() => route.path.includes('/contact'))
@@ -29,7 +29,10 @@ const showStickyCTA = computed(() => isClient && y.value > 300 && !isContactPage
     </a>
     <UContainer :class="['sm:border-x border-default pt-10', { 'pb-24 sm:pb-28': showStickyCTA }]">
       <AppHeader :links="navLinks" />
-      <main id="main-content" tabindex="-1">
+      <main
+        id="main-content"
+        tabindex="-1"
+      >
         <slot />
       </main>
       <AppFooter />

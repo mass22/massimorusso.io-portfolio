@@ -84,7 +84,6 @@ const uiLocales = computed(() => {
     .filter((locale): locale is UiLocale => Boolean(locale))
 })
 
-
 const props = withDefaults(defineProps<{ links: NavigationMenuItem[], noLangSwitcher?: boolean }>(), {
   noLangSwitcher: false
 })
@@ -155,7 +154,10 @@ const getWidgetClass = (link: NavigationMenuItem, isPriority: boolean) => {
 
 <template>
   <ClientOnly>
-    <div v-if="isReady" class="flex justify-end-safe">
+    <div
+      v-if="isReady"
+      class="flex justify-end-safe"
+    >
       <UNavigationMenu
         v-if="!isMobile"
         :items="links"
@@ -191,11 +193,18 @@ const getWidgetClass = (link: NavigationMenuItem, isPriority: boolean) => {
         @click="slideoverOpen = true"
       />
 
-      <USlideover v-model:open="slideoverOpen" side="right" close>
+      <USlideover
+        v-model:open="slideoverOpen"
+        side="right"
+        close
+      >
         <template #body>
           <div class="p-6">
             <!-- Liens prioritaires (Services, Contact) -->
-            <div v-if="priorityLinks.length > 0" class="grid grid-cols-2 gap-4 mb-4">
+            <div
+              v-if="priorityLinks.length > 0"
+              class="grid grid-cols-2 gap-4 mb-4"
+            >
               <ULink
                 v-for="(link, index) in priorityLinks"
                 :key="index"
@@ -223,7 +232,10 @@ const getWidgetClass = (link: NavigationMenuItem, isPriority: boolean) => {
             </div>
 
             <!-- Liens secondaires -->
-            <div v-if="secondaryLinks.length > 0" class="grid grid-cols-2 gap-3">
+            <div
+              v-if="secondaryLinks.length > 0"
+              class="grid grid-cols-2 gap-3"
+            >
               <ULink
                 v-for="(link, index) in secondaryLinks"
                 :key="index"
@@ -259,8 +271,15 @@ const getWidgetClass = (link: NavigationMenuItem, isPriority: boolean) => {
               v-bind="{ size: 'xs', color: 'neutral', variant: 'ghost', ...link }"
               class="opacity-80 hover:opacity-100 transition-opacity"
             >
-              <template v-if="link.icon" #leading>
-                <UIcon :name="link.icon" aria-hidden="true" class="size-5" />
+              <template
+                v-if="link.icon"
+                #leading
+              >
+                <UIcon
+                  :name="link.icon"
+                  aria-hidden="true"
+                  class="size-5"
+                />
               </template>
             </UButton>
             <UButton
@@ -273,7 +292,10 @@ const getWidgetClass = (link: NavigationMenuItem, isPriority: boolean) => {
               class="text-base opacity-80 hover:opacity-100 transition-opacity"
               @click.stop="switchLocale(inactiveLocale.code, $event)"
             />
-            <ColorModeButton size="sm" class="opacity-80 hover:opacity-100 transition-opacity"/>
+            <ColorModeButton
+              size="sm"
+              class="opacity-80 hover:opacity-100 transition-opacity"
+            />
           </div>
         </template>
       </USlideover>

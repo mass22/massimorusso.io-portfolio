@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
-import { createApp } from 'vue'
-import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { createApp, ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import ChatbotWidget from '~/app/components/chatbot/ChatbotWidget.vue'
 
 // NOTE: Pour une meilleure compatibilité et fonctionnalités complètes, installez @vue/test-utils :
@@ -40,7 +39,7 @@ function mount(component: any, options: any = {}) {
   if (instance && typeof instance === 'object') {
     // Pour les composants avec <script setup>, les méthodes ne sont pas directement accessibles
     // On doit les exposer via l'instance ou les appeler via les événements
-    Object.keys(instance).forEach(key => {
+    Object.keys(instance).forEach((key) => {
       if (typeof (instance as any)[key] === 'function') {
         exposedMethods[key] = (instance as any)[key].bind(instance)
       }
@@ -50,28 +49,30 @@ function mount(component: any, options: any = {}) {
   return {
     find: (selector: string) => {
       const el = container.querySelector(selector)
-      return el ? {
-        exists: () => true,
-        text: () => el.textContent?.trim() || '',
-        attributes: (name?: string) => {
-          if (name) {
-            return el.getAttribute(name) || undefined
+      return el
+        ? {
+            exists: () => true,
+            text: () => el.textContent?.trim() || '',
+            attributes: (name?: string) => {
+              if (name) {
+                return el.getAttribute(name) || undefined
+              }
+              return Object.fromEntries(
+                Array.from(el.attributes).map(attr => [attr.name, attr.value])
+              )
+            },
+            trigger: async (event: string) => {
+              const evt = new Event(event, { bubbles: true, cancelable: true })
+              el.dispatchEvent(evt)
+              await new Promise(resolve => setTimeout(resolve, 10))
+            }
           }
-          return Object.fromEntries(
-            Array.from(el.attributes).map(attr => [attr.name, attr.value])
-          )
-        },
-        trigger: async (event: string) => {
-          const evt = new Event(event, { bubbles: true, cancelable: true })
-          el.dispatchEvent(evt)
-          await new Promise(resolve => setTimeout(resolve, 10))
-        }
-      } : {
-        exists: () => false,
-        text: () => '',
-        attributes: () => ({}),
-        trigger: async () => {}
-      }
+        : {
+            exists: () => false,
+            text: () => '',
+            attributes: () => ({}),
+            trigger: async () => {}
+          }
     },
     findAll: (selector: string) => {
       const elements = Array.from(container.querySelectorAll(selector))
@@ -87,26 +88,28 @@ function mount(component: any, options: any = {}) {
     findComponent: (options: { name: string }) => {
       // Chercher par classe CSS (les composants mockés utilisent des classes)
       const nameLower = options.name.toLowerCase().replace(/([A-Z])/g, '-$1').toLowerCase()
-      const el = container.querySelector(`.${nameLower}`) ||
-                  container.querySelector(`[class*="${nameLower}"]`) ||
-                  container.querySelector(`.chat-flow`) ||
-                  container.querySelector(`.lead-capture-form`)
-      return el ? {
-        exists: () => true,
-        vm: {
-          $emit: (event: string, ...args: any[]) => {
-            const customEvent = new CustomEvent(event, { detail: args })
-            el.dispatchEvent(customEvent)
-          },
-          $nextTick: () => Promise.resolve()
-        }
-      } : {
-        exists: () => false,
-        vm: {
-          $emit: () => {},
-          $nextTick: () => Promise.resolve()
-        }
-      }
+      const el = container.querySelector(`.${nameLower}`)
+        || container.querySelector(`[class*="${nameLower}"]`)
+        || container.querySelector(`.chat-flow`)
+        || container.querySelector(`.lead-capture-form`)
+      return el
+        ? {
+            exists: () => true,
+            vm: {
+              $emit: (event: string, ...args: any[]) => {
+                const customEvent = new CustomEvent(event, { detail: args })
+                el.dispatchEvent(customEvent)
+              },
+              $nextTick: () => Promise.resolve()
+            }
+          }
+        : {
+            exists: () => false,
+            vm: {
+              $emit: () => {},
+              $nextTick: () => Promise.resolve()
+            }
+          }
     },
     vm: {
       ...instance,
@@ -349,7 +352,7 @@ describe('ChatbotWidget', () => {
     it('doit fermer le widget avec la touche ESC', async () => {
       mockState.value.isOpen = true
 
-      const wrapper = mount(ChatbotWidget)
+      mount(ChatbotWidget)
 
       // Simuler la touche ESC
       const event = new KeyboardEvent('keydown', { key: 'Escape' })
@@ -363,7 +366,7 @@ describe('ChatbotWidget', () => {
     it('ne doit pas fermer le widget avec une autre touche que ESC', async () => {
       mockState.value.isOpen = true
 
-      const wrapper = mount(ChatbotWidget)
+      mount(ChatbotWidget)
 
       // Simuler une autre touche
       const event = new KeyboardEvent('keydown', { key: 'Enter' })
@@ -377,7 +380,7 @@ describe('ChatbotWidget', () => {
     it('ne doit pas fermer le widget avec ESC si le widget est déjà fermé', async () => {
       mockState.value.isOpen = false
 
-      const wrapper = mount(ChatbotWidget)
+      mount(ChatbotWidget)
 
       const event = new KeyboardEvent('keydown', { key: 'Escape' })
       window.dispatchEvent(event)
@@ -513,7 +516,7 @@ describe('ChatbotWidget', () => {
       mockState.value.isOpen = true
       mockState.value.leadContext = null
 
-      const wrapper = mount(ChatbotWidget)
+      mount(ChatbotWidget)
 
       const mockContext = {
         answers: { service: 'architecture-frontend' },
@@ -552,7 +555,7 @@ describe('ChatbotWidget', () => {
       }
       mockState.value.showSuccess = false
 
-      const wrapper = mount(ChatbotWidget)
+      mount(ChatbotWidget)
 
       // Simuler l'événement success directement via mockState pour ce test
       // car findComponent ne peut pas facilement émettre des événements dans notre helper
@@ -902,4 +905,3 @@ describe('ChatbotWidget', () => {
     })
   })
 })
-

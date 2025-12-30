@@ -51,4 +51,3 @@ export type ServicesPage = IndexCollectionItem & {
   faq?: FAQ
   cta?: CTA
 }
-

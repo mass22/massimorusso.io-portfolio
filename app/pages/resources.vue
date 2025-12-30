@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { RessourcesCollectionItem } from '@nuxt/content'
-
 const { t, locale } = useI18n()
 
 // Rediriger vers /ressources si on est en français
@@ -21,7 +19,8 @@ if (!page.value) {
 }
 
 useSeoMeta({
-  description: page.value?.description ?? '', title: page.value?.title ?? t('ressources.title')
+  description: page.value?.description ?? '',
+  title: page.value?.title ?? t('ressources.title')
 })
 </script>
 
@@ -41,11 +40,16 @@ useSeoMeta({
       >
         <template #header>
           <div class="flex items-center gap-2">
-            <UIcon :name="r.icon" size="24" />
+            <UIcon
+              :name="r.icon"
+              size="24"
+            />
             <span class="font-bold text-primary">{{ r.title }}</span>
           </div>
         </template>
-        <div class="grow text-muted-foreground mb-4">{{ r.description }}</div>
+        <div class="grow text-muted-foreground mb-4">
+          {{ r.description }}
+        </div>
         <template #footer>
           <UButton
             :to="r.url"
@@ -60,8 +64,10 @@ useSeoMeta({
       </UCard>
     </UPageSection>
   </UPage>
-  <template v-else>
-    <div class="text-muted text-center py-16">{{ t('ressources.noneAvailable') }}</div>
-  </template>
+  <div
+    v-else
+    class="text-muted text-center py-16"
+  >
+    {{ t('ressources.noneAvailable') }}
+  </div>
 </template>
-

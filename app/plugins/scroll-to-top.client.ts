@@ -26,4 +26,3 @@ export default defineNuxtPlugin(() => {
     setTimeout(scrollToTop, 100)
   })
 })
-

@@ -43,16 +43,15 @@ const NAV_LINKS: NavLinkDefinition[] = [
 
 export function getNavLinks(
   t: (key: string) => string,
-  localePath?: LocalePathFunction
+  localePath?: LocalePathFunction,
+  locale?: { value: string }
 ): NavigationMenuItem[] {
-  const { locale } = useI18n()
-
   return NAV_LINKS.map(({ key, to, customRoutes, ...rest }) => {
     const label = t(key)
 
     // Utiliser la route personnalisée si disponible, sinon utiliser localePath
     let finalTo = to
-    if (customRoutes) {
+    if (customRoutes && locale) {
       if (locale.value === 'fr' && customRoutes.fr) {
         finalTo = customRoutes.fr
       } else if (locale.value === 'en' && customRoutes.en) {

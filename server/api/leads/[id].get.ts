@@ -82,4 +82,3 @@ export default defineEventHandler(async (event) => {
     updatedAt: lead.updatedAt
   }
 })
-

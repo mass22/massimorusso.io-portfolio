@@ -4,4 +4,3 @@ export default defineEventHandler((event) => {
     event.node.res.setHeader('Cache-Control', 'public, max-age=31536000, immutable')
   }
 })
-

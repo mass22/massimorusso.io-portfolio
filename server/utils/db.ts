@@ -188,8 +188,8 @@ export async function insertLead(
     }
 
     if (!sql) {
-      const errorMessage = 'Connexion Postgres non initialisée. DATABASE_URL n\'est pas configuré. ' +
-        'Vérifiez que vous avez configuré Neon dans Vercel Storage.'
+      const errorMessage = 'Connexion Postgres non initialisée. DATABASE_URL n\'est pas configuré. '
+        + 'Vérifiez que vous avez configuré Neon dans Vercel Storage.'
       console.error('[DB]', errorMessage)
       throw new Error(errorMessage)
     }

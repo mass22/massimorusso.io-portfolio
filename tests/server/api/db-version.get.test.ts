@@ -182,4 +182,3 @@ describe('GET /api/db-version', () => {
     expect(result.timestamp <= after).toBe(true)
   })
 })
-

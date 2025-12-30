@@ -38,4 +38,3 @@ const imageHeight = computed(() => {
     class="rounded-lg w-full h-auto object-cover"
   />
 </template>
-

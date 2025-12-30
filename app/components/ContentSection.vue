@@ -4,7 +4,7 @@ type Props = {
   withAnimation?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   withAnimation: true
 })
 </script>
@@ -62,4 +62,3 @@ const props = withDefaults(defineProps<Props>(), {
     </div>
   </UPageSection>
 </template>
-

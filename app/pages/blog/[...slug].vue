@@ -58,14 +58,20 @@ const { data: page } = await useAsyncData(`blog-${locale.value}-${slug}`, async 
   return allPosts.find(post => matchPost(post)) || null
 })
 
-if (!page.value) {throw createError({ statusCode: 404, statusMessage: t('common.pageNotFound'), fatal: true })}
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: t('common.pageNotFound'), fatal: true })
+}
 const { data: surround } = await useAsyncData(`${route.path}-surround-${locale.value}`, async () => {
-  if (!page.value) {return undefined}
+  if (!page.value) {
+    return undefined
+  }
   const items = await queryCollectionItemSurroundings('blog', page.value.path, {
     fields: ['description']
   })
-  if (!items) {return undefined}
-  return items.filter((item) => item?.locale === locale.value)
+  if (!items) {
+    return undefined
+  }
+  return items.filter(item => item?.locale === locale.value)
 })
 
 const navigation = inject<Ref<ContentNavigationItem[] | null>>('navigation', ref([]))
@@ -87,7 +93,7 @@ const breadcrumb = computed(() => {
         icon: 'i-lucide-book-open'
       },
       {
-        label: page.value?.title || '',
+        label: page.value?.title || ''
         // Pas de 'to' pour le dernier élément (page actuelle)
       }
     ]
@@ -141,22 +147,22 @@ const articleStructuredData = computed(() => {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: title,
+    'headline': title,
     description,
-    image: page.value.image ? [page.value.image] : [],
-    datePublished: page.value.date ? new Date(page.value.date).toISOString() : undefined,
-    dateModified: page.value.date ? new Date(page.value.date).toISOString() : undefined,
-    author: {
+    'image': page.value.image ? [page.value.image] : [],
+    'datePublished': page.value.date ? new Date(page.value.date).toISOString() : undefined,
+    'dateModified': page.value.date ? new Date(page.value.date).toISOString() : undefined,
+    'author': {
       '@type': 'Person',
-      name: page.value.author?.name || 'Massimo Russo',
-      url: siteUrl
+      'name': page.value.author?.name || 'Massimo Russo',
+      'url': siteUrl
     },
-    publisher: {
+    'publisher': {
       '@type': 'Person',
-      name: 'Massimo Russo',
-      url: siteUrl
+      'name': 'Massimo Russo',
+      'url': siteUrl
     },
-    mainEntityOfPage: {
+    'mainEntityOfPage': {
       '@type': 'WebPage',
       '@id': `${siteUrl}${route.path}`
     }
@@ -170,10 +176,10 @@ const breadcrumbStructuredData = computed(() => {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumb.value.map((item, index) => ({
+    'itemListElement': breadcrumb.value.map((item, index) => ({
       '@type': 'ListItem',
-      position: index + 1,
-      name: item.label,
+      'position': index + 1,
+      'name': item.label,
       ...(item.to ? { item: `${siteUrl}${item.to}` } : {})
     }))
   }
@@ -181,18 +187,22 @@ const breadcrumbStructuredData = computed(() => {
 
 useHead({
   script: [
-    ...(articleStructuredData.value ? [
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(articleStructuredData.value)
-      }
-    ] : []),
-    ...(breadcrumbStructuredData.value ? [
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(breadcrumbStructuredData.value)
-      }
-    ] : [])
+    ...(articleStructuredData.value
+      ? [
+          {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify(articleStructuredData.value)
+          }
+        ]
+      : []),
+    ...(breadcrumbStructuredData.value
+      ? [
+          {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify(breadcrumbStructuredData.value)
+          }
+        ]
+      : [])
   ]
 })
 
@@ -233,7 +243,7 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
     <div
       style="position: fixed; left: 0; top: 0; height: 4px; background: #00b894; z-index: 10004; transition: width 0.15s;"
       :style="{ width: scrollPercent + '%' }"
-    ></div>
+    />
     <UMain class="mt-20 px-2">
       <UContainer class="relative min-h-screen">
         <UPage v-if="page">
@@ -280,11 +290,11 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
             </p>
             <div class="flex items-center justify-center gap-2 mt-2">
               <UUser
+                v-if="page.author"
                 orientation="vertical"
                 color="neutral"
                 variant="outline"
                 class="justify-center items-center text-center"
-                v-if="page.author"
                 v-bind="page.author"
               />
             </div>
@@ -304,7 +314,10 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
                 @click="copyToClipboard(articleLink, t('blog.linkCopied'))"
               />
             </div>
-            <UContentSurround v-if="surround" :surround="surround" />
+            <UContentSurround
+              v-if="surround"
+              :surround="surround"
+            />
           </UPageBody>
         </UPage>
       </UContainer>

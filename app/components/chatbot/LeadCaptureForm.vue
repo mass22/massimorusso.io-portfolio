@@ -39,21 +39,21 @@ const canSubmit = computed(() => {
 
 // Labels pour les niveaux et offres (localisés)
 const levelLabels = computed(() => ({
-  'high': t(props.locale, 'qualification.level.high'),
-  'medium': t(props.locale, 'qualification.level.medium'),
-  'low': t(props.locale, 'qualification.level.low')
+  high: t(props.locale, 'qualification.level.high'),
+  medium: t(props.locale, 'qualification.level.medium'),
+  low: t(props.locale, 'qualification.level.low')
 }))
 
 const offerLabels = computed(() => ({
-  'audit': t(props.locale, 'qualification.offer.audit'),
-  'coaching': t(props.locale, 'qualification.offer.coaching'),
-  'mission': t(props.locale, 'qualification.offer.mission')
+  audit: t(props.locale, 'qualification.offer.audit'),
+  coaching: t(props.locale, 'qualification.offer.coaching'),
+  mission: t(props.locale, 'qualification.offer.mission')
 }))
 
 const levelColors: Record<string, string> = {
-  'high': 'bg-success/20 text-success border-success/30',
-  'medium': 'bg-warning/20 text-warning border-warning/30',
-  'low': 'bg-muted text-muted-foreground border-default'
+  high: 'bg-success/20 text-success border-success/30',
+  medium: 'bg-warning/20 text-warning border-warning/30',
+  low: 'bg-muted text-muted-foreground border-default'
 }
 
 // Reasons localisées (limitées à 3)
@@ -132,16 +132,24 @@ const submitForm = async () => {
 
     <!-- Message de qualification -->
     <div class="bg-muted/30 rounded-lg p-4 border border-default">
-      <p class="text-sm text-foreground whitespace-pre-wrap leading-relaxed">{{ qualificationMessage }}</p>
+      <p class="text-sm text-foreground whitespace-pre-wrap leading-relaxed">
+        {{ qualificationMessage }}
+      </p>
     </div>
 
     <!-- Recommandation -->
-    <div v-if="qualification.recommendedOffer && qualification.recommendedOffer !== 'unknown'" class="text-sm text-foreground">
+    <div
+      v-if="qualification.recommendedOffer && qualification.recommendedOffer !== 'unknown'"
+      class="text-sm text-foreground"
+    >
       {{ t(locale, 'qualification.recommendation') }} {{ offerLabels[qualification.recommendedOffer] }}
     </div>
 
     <!-- Reasons comme chips/pills -->
-    <div v-if="displayedReasons.length > 0" class="flex flex-wrap gap-2">
+    <div
+      v-if="displayedReasons.length > 0"
+      class="flex flex-wrap gap-2"
+    >
       <span
         v-for="(reason, index) in displayedReasons"
         :key="index"
@@ -153,17 +161,25 @@ const submitForm = async () => {
 
     <!-- Résumé du contexte -->
     <div class="bg-muted/50 rounded-lg p-4 border border-default">
-      <h3 class="text-sm font-semibold mb-2 text-foreground">{{ t(locale, 'form.summary.title') }}</h3>
+      <h3 class="text-sm font-semibold mb-2 text-foreground">
+        {{ t(locale, 'form.summary.title') }}
+      </h3>
       <div class="bg-background rounded p-3">
         <pre class="text-xs text-muted whitespace-pre-wrap font-mono m-0">{{ contextSummary }}</pre>
       </div>
     </div>
 
     <!-- Formulaire -->
-    <form @submit.prevent="submitForm" class="space-y-4">
+    <form
+      class="space-y-4"
+      @submit.prevent="submitForm"
+    >
       <!-- Nom (optionnel) -->
       <div class="space-y-2">
-        <label for="name" class="block text-sm font-medium text-foreground">
+        <label
+          for="name"
+          class="block text-sm font-medium text-foreground"
+        >
           {{ t(locale, 'form.name.label') }}
         </label>
         <UInput
@@ -177,7 +193,10 @@ const submitForm = async () => {
 
       <!-- Email (requis) -->
       <div class="space-y-2">
-        <label for="email" class="block text-sm font-medium text-foreground">
+        <label
+          for="email"
+          class="block text-sm font-medium text-foreground"
+        >
           {{ t(locale, 'form.email.label') }} <span class="text-error">*</span>
         </label>
         <UInput
@@ -206,13 +225,19 @@ const submitForm = async () => {
           </template>
         </UCheckbox>
         <!-- Erreur inline pour le consentement -->
-        <p v-if="consentError" class="text-xs text-error mt-1">
+        <p
+          v-if="consentError"
+          class="text-xs text-error mt-1"
+        >
           {{ consentError }}
         </p>
       </div>
 
       <!-- Message d'erreur général -->
-      <div v-if="error && !consentError" class="text-sm text-error bg-error/10 border border-error/20 rounded-lg p-3">
+      <div
+        v-if="error && !consentError"
+        class="text-sm text-error bg-error/10 border border-error/20 rounded-lg p-3"
+      >
         {{ error }}
       </div>
 

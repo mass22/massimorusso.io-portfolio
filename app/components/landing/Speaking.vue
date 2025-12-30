@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content';
-import { computed } from 'vue';
+import type { IndexCollectionItem } from '@nuxt/content'
+import { computed } from 'vue'
 
 type Event = {
   title: string
@@ -16,7 +16,6 @@ type SpeakingSection = {
 }
 
 const { t, locale } = useI18n()
-const localePath = useLocalePath()
 
 // Fonction helper pour obtenir la route speaking/conferences selon la locale
 const getSpeakingRoute = () => {
@@ -41,7 +40,7 @@ const { data: speakingPage } = await useAsyncData(`speaking-${locale.value}`, as
 
 function normalizeAndSortEvents(all: any[]): Event[] {
   return [...all]
-    .filter((event) => !!event && !!event.date)
+    .filter(event => !!event && !!event.date)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) as Event[]
 }
 
@@ -49,7 +48,7 @@ function normalizeAndSortEvents(all: any[]): Event[] {
 const latestTalks = computed(() => {
   if (!speakingPage.value?.events) return []
   const events = normalizeAndSortEvents(speakingPage.value.events)
-    .filter((e) => e.category === 'Conference' || e.category === 'Live talk')
+    .filter(e => e.category === 'Conference' || e.category === 'Live talk')
     .slice(0, 3)
   return events
 })
@@ -58,7 +57,7 @@ const latestTalks = computed(() => {
 const latestPodcasts = computed(() => {
   if (!speakingPage.value?.events) return []
   const events = normalizeAndSortEvents(speakingPage.value.events)
-    .filter((e) => e.category === 'Podcast')
+    .filter(e => e.category === 'Podcast')
     .slice(0, 3)
   return events
 })
@@ -112,7 +111,10 @@ function getCategoryLabel(category: string): string {
         <p>Aucun événement disponible pour le moment.</p>
       </div>
 
-      <div v-else class="mt-8 space-y-10">
+      <div
+        v-else
+        class="mt-8 space-y-10"
+      >
         <!-- Talks -->
         <div v-if="latestTalks.length > 0">
           <div class="flex items-baseline justify-between gap-4">
@@ -163,11 +165,19 @@ function getCategoryLabel(category: string): string {
                   </h3>
                   <div class="flex flex-col gap-2 text-sm text-muted">
                     <div class="flex items-center gap-2">
-                      <UIcon name="i-lucide-map-pin" class="size-4 shrink-0" aria-hidden="true" />
+                      <UIcon
+                        name="i-lucide-map-pin"
+                        class="size-4 shrink-0"
+                        aria-hidden="true"
+                      />
                       <span>{{ event?.location || 'No location' }}</span>
                     </div>
                     <div class="flex items-center gap-2">
-                      <UIcon name="i-lucide-calendar" class="size-4 shrink-0" aria-hidden="true" />
+                      <UIcon
+                        name="i-lucide-calendar"
+                        class="size-4 shrink-0"
+                        aria-hidden="true"
+                      />
                       <span>{{ event?.date ? formatDate(event.date) : 'No date' }}</span>
                     </div>
                   </div>
@@ -246,11 +256,19 @@ function getCategoryLabel(category: string): string {
                   </h3>
                   <div class="flex flex-col gap-2 text-sm text-muted">
                     <div class="flex items-center gap-2">
-                      <UIcon name="i-lucide-map-pin" class="size-4 shrink-0" aria-hidden="true" />
+                      <UIcon
+                        name="i-lucide-map-pin"
+                        class="size-4 shrink-0"
+                        aria-hidden="true"
+                      />
                       <span>{{ event?.location || 'No location' }}</span>
                     </div>
                     <div class="flex items-center gap-2">
-                      <UIcon name="i-lucide-calendar" class="size-4 shrink-0" aria-hidden="true" />
+                      <UIcon
+                        name="i-lucide-calendar"
+                        class="size-4 shrink-0"
+                        aria-hidden="true"
+                      />
                       <span>{{ event?.date ? formatDate(event.date) : 'No date' }}</span>
                     </div>
                   </div>

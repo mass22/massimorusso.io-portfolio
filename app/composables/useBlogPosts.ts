@@ -1,11 +1,11 @@
 import type { BlogCollectionItem } from '@nuxt/content'
 
 export const useBlogPosts = async (limit?: number) => {
-  const { locale, defaultLocale } = useI18n()
+  const { locale } = useI18n()
   const localePath = useLocalePath()
 
   const { data: posts } = await useAsyncData(`blog-posts-${locale.value}-${limit || 'all'}`, async () => {
-    let query = queryCollection('blog').order('date', 'DESC')
+    const query = queryCollection('blog').order('date', 'DESC')
     const allPosts = await query.all()
 
     let filtered = allPosts.filter((post: any) => post.locale === locale.value)
@@ -17,15 +17,8 @@ export const useBlogPosts = async (limit?: number) => {
     return filtered as BlogCollectionItem[]
   })
 
-  const defaultLocaleCode = computed(() => {
-    if (typeof defaultLocale === 'string') {
-      return defaultLocale
-    }
-    return (defaultLocale as { value: string })?.value || defaultLocale || 'fr'
-  })
-
   const localizedPosts = computed(() => {
-    return (posts.value ?? []).map(post => {
+    return (posts.value ?? []).map((post) => {
       let slug = post.slug
 
       if (!slug && post.path) {

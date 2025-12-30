@@ -54,7 +54,7 @@ const ctaLinks = computed(() => ([
       }"
     >
       <LazyLandingAbout :page />
-      <LazyLandingWorkExperience :page/>
+      <LazyLandingWorkExperience :page />
     </UPageSection>
 
     <!-- 5. Speaking (Conférences, Talks, prises de parole) -->

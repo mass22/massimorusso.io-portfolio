@@ -5,7 +5,7 @@ import { computed } from 'vue'
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
-const navLinks = computed(() => getNavLinks(t, localePath))
+const navLinks = computed(() => getNavLinks(t, localePath, locale))
 
 defineProps({
   error: {

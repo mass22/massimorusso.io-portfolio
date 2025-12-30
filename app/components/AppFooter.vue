@@ -23,7 +23,11 @@ const footerLinksWithLabels = computed(() => footerConfig?.links?.map(link => ({
       {{ t("footer.credits", { year: currentYear }) }}
     </template>
 
-    <span class="footer-license" v-html="t('footer.license')" />
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <span
+      class="footer-license"
+      v-html="t('footer.license')"
+    />
 
     <template #right>
       <template v-if="footerLinksWithLabels.length > 0">
@@ -32,8 +36,14 @@ const footerLinksWithLabels = computed(() => footerConfig?.links?.map(link => ({
           :key="index"
           v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
         >
-          <template v-if="link.icon" #leading>
-            <UIcon :name="link.icon" aria-hidden="true" />
+          <template
+            v-if="link.icon"
+            #leading
+          >
+            <UIcon
+              :name="link.icon"
+              aria-hidden="true"
+            />
           </template>
         </UButton>
       </template>

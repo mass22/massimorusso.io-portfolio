@@ -55,7 +55,10 @@ const getStepIcon = (index: number, step: ProcessStep): string => {
                     class="size-6 text-primary"
                   />
                 </div>
-                <span class="text-2xl font-bold text-muted" aria-hidden="true">
+                <span
+                  class="text-2xl font-bold text-muted"
+                  aria-hidden="true"
+                >
                   {{ String(index + 1).padStart(2, '0') }}
                 </span>
               </div>
@@ -106,7 +109,10 @@ const getStepIcon = (index: number, step: ProcessStep): string => {
                 class="size-6 text-primary"
               />
             </div>
-            <span class="text-2xl font-bold text-muted" aria-hidden="true">
+            <span
+              class="text-2xl font-bold text-muted"
+              aria-hidden="true"
+            >
               {{ String(index + 1).padStart(2, '0') }}
             </span>
           </div>
@@ -132,4 +138,3 @@ const getStepIcon = (index: number, step: ProcessStep): string => {
     </div>
   </UPageSection>
 </template>
-

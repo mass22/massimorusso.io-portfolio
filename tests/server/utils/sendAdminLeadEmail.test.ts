@@ -1,20 +1,25 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import type { LeadContext } from '~/types/content'
 
+// Import après le mock
+import { sendAdminLeadEmail } from '~/server/utils/sendAdminLeadEmail'
+
 // Mock de $fetch (auto-import de Nuxt) AVANT l'import du module
 const mockFetch = vi.fn()
 
 // Exposer $fetch globalement pour les auto-imports Nuxt
 ;(globalThis as any).$fetch = mockFetch
 
-// Import après le mock
-import { sendAdminLeadEmail } from '~/server/utils/sendAdminLeadEmail'
-
 describe('sendAdminLeadEmail', () => {
   const originalEnv = process.env
+  const originalConsoleLog = console.log
+  const originalConsoleError = console.error
 
   beforeEach(() => {
     vi.clearAllMocks()
+    // Mock console.log et console.error pour éviter les logs dans les tests
+    console.log = vi.fn()
+    console.error = vi.fn()
     process.env = {
       ...originalEnv,
       RESEND_API_KEY: 'test-api-key',
@@ -26,6 +31,8 @@ describe('sendAdminLeadEmail', () => {
 
   afterEach(() => {
     process.env = originalEnv
+    console.log = originalConsoleLog
+    console.error = originalConsoleError
   })
 
   const mockLeadContext: LeadContext = {
@@ -249,4 +256,3 @@ describe('sendAdminLeadEmail', () => {
     expect(body.text).toContain('https://massimorusso.io/lead/1')
   })
 })
-

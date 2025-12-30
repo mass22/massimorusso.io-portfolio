@@ -19,9 +19,8 @@ useSeoMeta({
       orientation="horizontal"
       :title="t('contact.hero.title')"
       :description="t('contact.hero.description')"
-      :ui="{root: 'mb-2', description: 'mt-3 text-xl text-primary/80 font-serif italic'}"
-    >
-    </UPageHero>
+      :ui="{ root: 'mb-2', description: 'mt-3 text-xl text-primary/80 font-serif italic' }"
+    />
 
     <!-- Indicateur de disponibilité -->
     <UPageSection
@@ -39,7 +38,10 @@ useSeoMeta({
       >
         <div class="flex items-center gap-4 p-4 sm:p-6">
           <div class="shrink-0">
-            <span class="relative flex size-3" aria-hidden="true">
+            <span
+              class="relative flex size-3"
+              aria-hidden="true"
+            >
               <span
                 class="absolute inline-flex size-full rounded-full animate-pulse"
                 :class="global.available ? 'bg-success opacity-75' : 'bg-error opacity-75'"
@@ -72,7 +74,10 @@ useSeoMeta({
     <UPageSection>
       <div class="flex flex-col items-center gap-8">
         <!-- Cal.com - Option principale -->
-        <div id="calendar" class="w-full max-w-4xl scroll-mt-24">
+        <div
+          id="calendar"
+          class="w-full max-w-4xl scroll-mt-24"
+        >
           <div class="text-center mb-6">
             <h2 class="text-2xl sm:text-3xl font-semibold mb-2">
               {{ t('contact.booking.title') }}
@@ -94,13 +99,11 @@ useSeoMeta({
           </UCard>
         </div>
 
-
-
         <!-- Divider élégant -->
         <div class="flex items-center gap-4 w-full max-w-md">
-          <div class="flex-1 h-px bg-border"></div>
+          <div class="flex-1 h-px bg-border" />
           <span class="text-sm text-muted font-medium">{{ t('contact.divider') }}</span>
-          <div class="flex-1 h-px bg-border"></div>
+          <div class="flex-1 h-px bg-border" />
         </div>
 
         <!-- LinkedIn - Option alternative -->
@@ -109,7 +112,10 @@ useSeoMeta({
             <div class="flex flex-col sm:flex-row items-center gap-6 p-6 sm:p-8">
               <div class="shrink-0">
                 <div class="size-16 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
-                  <UIcon name="i-simple-icons-linkedin" class="size-8 text-primary" />
+                  <UIcon
+                    name="i-simple-icons-linkedin"
+                    class="size-8 text-primary"
+                  />
                 </div>
               </div>
               <div class="flex-1 text-center sm:text-left">

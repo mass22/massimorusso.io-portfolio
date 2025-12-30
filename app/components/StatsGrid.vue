@@ -95,4 +95,3 @@ const getStatIcon = (index: number, stat: Stat): string => {
     </div>
   </UPageSection>
 </template>
-

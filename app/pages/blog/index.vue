@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import type { PagesCollectionItem, BlogCollectionItem } from '@nuxt/content'
-
-const { t, locale, defaultLocale } = useI18n()
-const localePath = useLocalePath()
+const { t, locale } = useI18n()
 
 const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () => {
   const allPages = await queryCollection('pages').all()
@@ -31,7 +28,10 @@ if (!posts.value) {
 }
 
 useSeoMeta({
-  description: page.value?.seo?.description || page.value?.description, ogDescription: page.value?.seo?.description || page.value?.description, ogTitle: page.value?.seo?.title || page.value?.title, title: page.value?.seo?.title || page.value?.title
+  description: page.value?.seo?.description || page.value?.description,
+  ogDescription: page.value?.seo?.description || page.value?.description,
+  ogTitle: page.value?.seo?.title || page.value?.title,
+  title: page.value?.seo?.title || page.value?.title
 })
 </script>
 
@@ -61,7 +61,10 @@ useSeoMeta({
           :transition="{ delay: 0.2 * index }"
           :in-view-options="{ once: true }"
         >
-          <NuxtLink :to="post.path" class="block">
+          <NuxtLink
+            :to="post.path"
+            class="block"
+          >
             <UBlogPost
               variant="naked"
               orientation="horizontal"

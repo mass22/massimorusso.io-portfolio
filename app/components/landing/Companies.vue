@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content';
+import type { IndexCollectionItem } from '@nuxt/content'
 
 type EngagementPattern = {
   title: string

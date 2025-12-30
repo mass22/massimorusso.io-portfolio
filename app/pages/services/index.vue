@@ -33,7 +33,7 @@ useSeoMeta({
 })
 
 // Mapping des icônes par slug si non fourni
-const getServiceIcon = (item: { slug?: string; icon?: string }): string => {
+const getServiceIcon = (item: { slug?: string, icon?: string }): string => {
   if (item.icon) return item.icon
   const iconMap: Record<string, string> = {
     'architecture-frontend': 'i-ph-lightbulb',
@@ -48,7 +48,7 @@ const getServiceIcon = (item: { slug?: string; icon?: string }): string => {
 
 // Génération d'une image stable par slug pour le placeholder
 // Les images sont dans public/services/ et accessibles via /services/
-const getServiceImage = (item: { slug?: string; image?: string }): string => {
+const getServiceImage = (item: { slug?: string, image?: string }): string => {
   if (item.image) return item.image
   const imageMap: Record<string, number> = {
     'architecture-frontend': 1,
@@ -86,36 +86,36 @@ const serviceStructuredData = computed(() => {
     .filter(item => item.title && item.description)
     .map((item, index) => ({
       '@type': 'Offer' as const,
-      itemOffered: {
+      'itemOffered': {
         '@type': 'Service' as const,
-        name: item.title,
-        description: item.description
+        'name': item.title,
+        'description': item.description
       },
-      position: index + 1
+      'position': index + 1
     }))
 
   const structuredData: Record<string, any> = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    inLanguage: locale.value,
-    serviceType: serviceTypeMap[locale.value] || serviceTypeMap.fr,
-    provider: {
+    'inLanguage': locale.value,
+    'serviceType': serviceTypeMap[locale.value] || serviceTypeMap.fr,
+    'provider': {
       '@type': 'Person',
-      name: 'Massimo Russo',
-      url: siteUrl,
-      email: global.email,
-      jobTitle: locale.value === 'fr' ? 'Consultant senior en architecture frontend' : 'Senior Frontend Consultant'
+      'name': 'Massimo Russo',
+      'url': siteUrl,
+      'email': global.email,
+      'jobTitle': locale.value === 'fr' ? 'Consultant senior en architecture frontend' : 'Senior Frontend Consultant'
     },
-    areaServed: {
+    'areaServed': {
       '@type': 'Country',
-      name: areaServedMap[locale.value] || areaServedMap.fr
+      'name': areaServedMap[locale.value] || areaServedMap.fr
     }
   }
 
   if (itemListElement.length > 0) {
     structuredData.hasOfferCatalog = {
       '@type': 'OfferCatalog',
-      name: locale.value === 'fr' ? 'Services' : 'Services',
+      'name': locale.value === 'fr' ? 'Services' : 'Services',
       itemListElement
     }
   }
@@ -134,7 +134,6 @@ useHead({
     }
   ]
 })
-
 </script>
 
 <template>
@@ -184,7 +183,6 @@ useHead({
         :columns="1"
       />
     </UPageSection>
-
 
     <!-- Content Section (Markdown) -->
     <ContentSection

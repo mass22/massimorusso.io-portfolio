@@ -51,9 +51,11 @@ useSeoMeta({
       }"
     >
       <div class="prose prose-neutral dark:prose-invert max-w-none">
-        <MDC v-if="page.content" :value="page.content" />
+        <MDC
+          v-if="page.content"
+          :value="page.content"
+        />
       </div>
     </UPageSection>
   </UPage>
 </template>
-

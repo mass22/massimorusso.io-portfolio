@@ -58,7 +58,10 @@ const processSteps = [
                   class="size-6 text-primary"
                 />
               </div>
-              <span class="text-2xl font-bold text-muted" aria-hidden="true">
+              <span
+                class="text-2xl font-bold text-muted"
+                aria-hidden="true"
+              >
                 {{ step.number }}
               </span>
             </div>
@@ -85,4 +88,3 @@ const processSteps = [
     </div>
   </UPageSection>
 </template>
-

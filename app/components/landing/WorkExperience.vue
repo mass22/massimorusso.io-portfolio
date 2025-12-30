@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content';
+import type { IndexCollectionItem } from '@nuxt/content'
 
 defineProps<{
   page: IndexCollectionItem
@@ -13,50 +13,53 @@ defineProps<{
     :transition="{ duration: 0.6 }"
     :in-view-options="{ once: true, margin: '-100px' }"
   >
-  <UPageSection
-    :title="page.experience.title"
-    :ui="{
-      container: '!p-0 gap-4 sm:gap-4',
+    <UPageSection
+      :title="page.experience.title"
+      :ui="{
+        container: '!p-0 gap-4 sm:gap-4',
         title: 'text-left text-lg sm:text-xl lg:text-xl font-normal text-muted',
-      description: 'mt-2'
-    }"
-  >
-    <template #description>
-      <div class="flex flex-col gap-2">
-        <Motion
-          v-for="(experience, index) in page.experience.items"
-          :key="index"
-          :initial="{ opacity: 0, transform: 'translateY(20px)' }"
-          :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
-          :transition="{ delay: 0.4 + 0.2 * index }"
-          :in-view-options="{ once: true }"
-          class="text-muted flex items-center text-nowrap gap-2"
-        >
-          <p class="text-sm">
-            {{ experience.date }}
-          </p>
-          <USeparator />
-          <ULink
-            class="flex items-center gap-1"
-            :to="experience.company.url"
-            target="_blank"
-            :aria-label="`${experience.position} chez ${experience.company.name}`"
+        description: 'mt-2'
+      }"
+    >
+      <template #description>
+        <div class="flex flex-col gap-2">
+          <Motion
+            v-for="(experience, index) in page.experience.items"
+            :key="index"
+            :initial="{ opacity: 0, transform: 'translateY(20px)' }"
+            :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
+            :transition="{ delay: 0.4 + 0.2 * index }"
+            :in-view-options="{ once: true }"
+            class="text-muted flex items-center text-nowrap gap-2"
           >
-            <span class="text-sm">
-              {{ experience.position }}
-            </span>
-            <div
-              class="inline-flex items-center gap-1"
-              :style="{ color: experience.company.color }"
+            <p class="text-sm">
+              {{ experience.date }}
+            </p>
+            <USeparator />
+            <ULink
+              class="flex items-center gap-1"
+              :to="experience.company.url"
+              target="_blank"
+              :aria-label="`${experience.position} chez ${experience.company.name}`"
             >
-              <span class="font-medium">{{ experience.company.name }}</span>
-              <UIcon :name="experience.company.logo" aria-hidden="true" />
-            </div>
-          </ULink>
-        </Motion>
-      </div>
-    </template>
-  </UPageSection>
+              <span class="text-sm">
+                {{ experience.position }}
+              </span>
+              <div
+                class="inline-flex items-center gap-1"
+                :style="{ color: experience.company.color }"
+              >
+                <span class="font-medium">{{ experience.company.name }}</span>
+                <UIcon
+                  :name="experience.company.logo"
+                  aria-hidden="true"
+                />
+              </div>
+            </ULink>
+          </Motion>
+        </div>
+      </template>
+    </UPageSection>
   </Motion>
 </template>
 

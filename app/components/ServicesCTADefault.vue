@@ -85,4 +85,3 @@ const links = computed(() => ([
     />
   </UPageSection>
 </template>
-

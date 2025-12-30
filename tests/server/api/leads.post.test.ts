@@ -1,6 +1,11 @@
 import { describe, it, expect, beforeEach, vi, beforeAll } from 'vitest'
 import type { LeadContext } from '~/types/content'
 
+// Import après les mocks
+import { insertLead } from '~/server/utils/db'
+import { checkRateLimit } from '~/server/utils/rateLimit'
+import { sendAdminLeadEmail } from '~/server/utils/sendAdminLeadEmail'
+
 // Mock des dépendances AVANT les imports
 vi.mock('~/server/utils/db', () => ({
   insertLead: vi.fn()
@@ -40,11 +45,6 @@ vi.mock('h3', async () => {
 ;(globalThis as any).readBody = mockReadBody
 ;(globalThis as any).createError = mockCreateError
 ;(globalThis as any).defineEventHandler = mockDefineEventHandler
-
-// Import après les mocks
-import { insertLead } from '~/server/utils/db'
-import { checkRateLimit } from '~/server/utils/rateLimit'
-import { sendAdminLeadEmail } from '~/server/utils/sendAdminLeadEmail'
 
 // Import dynamique du handler pour éviter les problèmes d'auto-imports
 let handler: any

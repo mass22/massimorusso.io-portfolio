@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { LeadContext } from '~/types/content'
 import { copyToClipboard } from '~/utils/clipboard'
 
 const route = useRoute()
-const { t } = useI18n()
 
 // Extraire l'ID depuis les paramètres de route
 const id = computed(() => {
@@ -106,18 +104,32 @@ useHead({
     />
 
     <UPageSection>
-      <div v-if="pending" class="flex items-center justify-center py-12">
-        <UIcon name="i-lucide-loader-2" class="size-8 animate-spin text-muted" />
+      <div
+        v-if="pending"
+        class="flex items-center justify-center py-12"
+      >
+        <UIcon
+          name="i-lucide-loader-2"
+          class="size-8 animate-spin text-muted"
+        />
         <span class="ml-3 text-muted">Chargement...</span>
       </div>
 
-      <div v-else-if="leadData" class="space-y-6">
+      <div
+        v-else-if="leadData"
+        class="space-y-6"
+      >
         <!-- Informations générales -->
         <UCard>
           <template #header>
             <div class="flex items-center justify-between">
-              <h2 class="text-xl font-semibold">Informations générales</h2>
-              <UBadge :label="`ID: ${leadData.id}`" color="primary" />
+              <h2 class="text-xl font-semibold">
+                Informations générales
+              </h2>
+              <UBadge
+                :label="`ID: ${leadData.id}`"
+                color="primary"
+              />
             </div>
           </template>
           <div class="space-y-2 text-sm">
@@ -135,7 +147,9 @@ useHead({
         <!-- Qualification -->
         <UCard v-if="leadData.qualification">
           <template #header>
-            <h2 class="text-xl font-semibold">Qualification</h2>
+            <h2 class="text-xl font-semibold">
+              Qualification
+            </h2>
           </template>
           <div class="space-y-4">
             <div class="flex items-center justify-between">
@@ -152,7 +166,10 @@ useHead({
                 :color="leadData.qualification.level === 'high' ? 'success' : leadData.qualification.level === 'medium' ? 'warning' : 'error'"
               />
             </div>
-            <div v-if="leadData.qualification.recommendedOffer && leadData.qualification.recommendedOffer !== 'unknown'" class="flex items-center justify-between">
+            <div
+              v-if="leadData.qualification.recommendedOffer && leadData.qualification.recommendedOffer !== 'unknown'"
+              class="flex items-center justify-between"
+            >
               <span class="text-muted">Offre recommandée:</span>
               <span class="font-medium">
                 {{ leadData.qualification.recommendedOffer === 'audit' ? 'Audit' : leadData.qualification.recommendedOffer === 'coaching' ? 'Coaching' : 'Mission' }}
@@ -161,7 +178,11 @@ useHead({
             <div v-if="leadData.qualification.reasons && leadData.qualification.reasons.length > 0">
               <span class="text-muted block mb-2">Raisons:</span>
               <ul class="list-disc list-inside space-y-1">
-                <li v-for="(reason, index) in leadData.qualification.reasons" :key="index" class="text-sm">
+                <li
+                  v-for="(reason, index) in leadData.qualification.reasons"
+                  :key="index"
+                  class="text-sm"
+                >
                   {{ reason }}
                 </li>
               </ul>
@@ -173,7 +194,9 @@ useHead({
         <UCard>
           <template #header>
             <div class="flex items-center justify-between">
-              <h2 class="text-xl font-semibold">Résumé</h2>
+              <h2 class="text-xl font-semibold">
+                Résumé
+              </h2>
               <UButton
                 icon="i-lucide-copy"
                 color="primary"
@@ -194,7 +217,9 @@ useHead({
         <UCard>
           <template #header>
             <div class="flex items-center justify-between">
-              <h2 class="text-xl font-semibold">Contexte JSON</h2>
+              <h2 class="text-xl font-semibold">
+                Contexte JSON
+              </h2>
               <UButton
                 icon="i-lucide-copy"
                 color="primary"
@@ -221,4 +246,3 @@ pre {
   overflow-y: auto;
 }
 </style>
-

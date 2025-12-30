@@ -59,4 +59,3 @@ const stats = [
     </div>
   </UPageSection>
 </template>
-

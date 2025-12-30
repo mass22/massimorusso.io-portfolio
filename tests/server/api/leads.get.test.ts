@@ -1,13 +1,17 @@
 import { describe, it, expect, beforeEach, vi, beforeAll } from 'vitest'
 import type { Lead } from '~/server/utils/db'
 
+// Import après les mocks
+import { getLeadByIdAndToken } from '~/server/utils/db'
+import { leadSummary } from '~/server/utils/leadSummary'
+
 // Mock des dépendances AVANT les imports
 vi.mock('~/server/utils/db', () => ({
   getLeadByIdAndToken: vi.fn()
 }))
 
 vi.mock('~/server/utils/leadSummary', () => ({
-  leadSummary: vi.fn((context) => `Summary for ${context.answers.email}`)
+  leadSummary: vi.fn(context => `Summary for ${context.answers.email}`)
 }))
 
 // Mock de h3 (utilisé par Nuxt pour les auto-imports)
@@ -35,10 +39,6 @@ vi.mock('h3', async () => {
 ;(globalThis as any).getQuery = mockGetQuery
 ;(globalThis as any).createError = mockCreateError
 ;(globalThis as any).defineEventHandler = mockDefineEventHandler
-
-// Import après les mocks
-import { getLeadByIdAndToken } from '~/server/utils/db'
-import { leadSummary } from '~/server/utils/leadSummary'
 
 // Import dynamique du handler
 let handler: any

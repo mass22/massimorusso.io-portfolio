@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content';
-import { computed } from 'vue';
+import type { IndexCollectionItem } from '@nuxt/content'
+import { computed } from 'vue'
 
 type ServiceItem = {
   title: string
@@ -127,34 +127,34 @@ const serviceItems = computed(() => {
             body: 'flex-1'
           }"
         >
-        <template #footer>
-          <UButton
-            :to="getServicePath(service)"
-            variant="link"
-            size="sm"
-            class="px-0 gap-1 text-primary"
-            :label="t('services.cta.learnMore')"
-          >
-            <template #trailing>
-              <UIcon
-                name="i-lucide-arrow-right"
-                class="size-4 transition-all duration-300 ease-out opacity-0 group-hover:translate-x-2 group-hover:opacity-100"
-                aria-hidden="true"
-              />
-            </template>
-          </UButton>
-        </template>
-        <NuxtImg
-          :src="`/services/service-${index + 1}.webp`"
-          :alt="service.imageAlt || service.title"
-          width="400"
-          height="300"
-          loading="lazy"
-          densities="1x"
-          class="w-full h-48 object-cover rounded-lg"
-          format="webp"
-          quality="80"
-        />
+          <template #footer>
+            <UButton
+              :to="getServicePath(service)"
+              variant="link"
+              size="sm"
+              class="px-0 gap-1 text-primary"
+              :label="t('services.cta.learnMore')"
+            >
+              <template #trailing>
+                <UIcon
+                  name="i-lucide-arrow-right"
+                  class="size-4 transition-all duration-300 ease-out opacity-0 group-hover:translate-x-2 group-hover:opacity-100"
+                  aria-hidden="true"
+                />
+              </template>
+            </UButton>
+          </template>
+          <NuxtImg
+            :src="`/services/service-${index + 1}.webp`"
+            :alt="service.imageAlt || service.title"
+            width="400"
+            height="300"
+            loading="lazy"
+            densities="1x"
+            class="w-full h-48 object-cover rounded-lg"
+            format="webp"
+            quality="80"
+          />
         </UPageCard>
       </Motion>
     </UBlogPosts>
@@ -169,10 +169,13 @@ const serviceItems = computed(() => {
         :label="t('hero.cta.services')"
       >
         <template #trailing>
-          <UIcon name="i-lucide-arrow-right" class="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true" />
+          <UIcon
+            name="i-lucide-arrow-right"
+            class="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1"
+            aria-hidden="true"
+          />
         </template>
       </UButton>
     </div>
   </UPageSection>
 </template>
-

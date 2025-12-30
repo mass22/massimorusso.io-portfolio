@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { ServiceItemsCollectionItem } from '@nuxt/content'
 
 definePageMeta({
   layout: 'service'
@@ -8,7 +7,6 @@ definePageMeta({
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
-const route = useRoute()
 
 // Mapping des slugs par langue
 const slugByLocale: Record<string, string> = {
@@ -31,10 +29,9 @@ const { data: page } = await useAsyncData(
   }
 )
 
-// Render markdown content reactively
-const htmlContent = computed(() => {
-  if (!page.value?.content) return ''
-  return markdownToHtml(page.value.content)
+// Content markdown pour MDC
+const markdownContent = computed(() => {
+  return page.value?.content || ''
 })
 
 if (!page.value) {
@@ -72,19 +69,19 @@ const serviceStructuredData = computed(() => {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: title,
+    'name': title,
     description,
-    image: page.value.images?.[0]?.src || [],
-    provider: {
+    'image': page.value.images?.[0]?.src || [],
+    'provider': {
       '@type': 'Person',
-      name: 'Massimo Russo',
-      url: siteUrl,
-      email: global.email,
-      jobTitle: 'Senior Frontend Consultant'
+      'name': 'Massimo Russo',
+      'url': siteUrl,
+      'email': global.email,
+      'jobTitle': 'Senior Frontend Consultant'
     },
-    areaServed: {
+    'areaServed': {
       '@type': 'Country',
-      name: 'Worldwide'
+      'name': 'Worldwide'
     }
   }
 })
@@ -111,10 +108,10 @@ const breadcrumbStructuredData = computed(() => {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumb.value.map((item, index) => ({
+    'itemListElement': breadcrumb.value.map((item, index) => ({
       '@type': 'ListItem',
-      position: index + 1,
-      name: item.label,
+      'position': index + 1,
+      'name': item.label,
       ...(item.to ? { item: `${siteUrl}${item.to}` } : {})
     }))
   }
@@ -122,21 +119,92 @@ const breadcrumbStructuredData = computed(() => {
 
 useHead({
   script: [
-    ...(serviceStructuredData.value ? [
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(serviceStructuredData.value)
-      }
-    ] : []),
-    ...(breadcrumbStructuredData.value ? [
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(breadcrumbStructuredData.value)
-      }
-    ] : [])
+    ...(serviceStructuredData.value
+      ? [
+          {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify(serviceStructuredData.value)
+          }
+        ]
+      : []),
+    ...(breadcrumbStructuredData.value
+      ? [
+          {
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify(breadcrumbStructuredData.value)
+          }
+        ]
+      : [])
   ]
 })
 </script>
+
+<template>
+  <UPage v-if="page">
+    <div class="mb-6">
+      <UButton
+        :to="localePath('/services')"
+        variant="ghost"
+        color="neutral"
+        size="sm"
+        :label="t('blog.back')"
+        icon="i-lucide-arrow-left"
+        :ui="{
+          label: 'text-muted hover:text-default transition-colors'
+        }"
+      />
+    </div>
+    <UPageHero
+      :title="page.title"
+      :description="page.description"
+      :ui="{
+        title: 'text-3xl md:text-5xl font-bold',
+        description: 'mt-6 text-base md:text-xl text-muted'
+      }"
+    >
+      <template #headline>
+        <div class="flex items-center gap-2">
+          <UIcon
+            v-if="page.icon"
+            :name="page.icon"
+            class="size-6 text-primary"
+            aria-hidden="true"
+          />
+          <span class="text-sm font-medium text-primary">
+            {{ t('services.hero.title') }}
+          </span>
+        </div>
+      </template>
+    </UPageHero>
+
+    <UPageBody class="max-w-4xl mx-auto">
+      <div
+        v-if="page.images && page.images.length > 0 && page.images[0]"
+        class="mb-8"
+      >
+        <NuxtImg
+          :src="page.images[0]?.src"
+          :alt="page.images[0]?.alt || page.title"
+          class="rounded-lg w-full h-[400px] object-cover object-center"
+          width="1200"
+          height="400"
+          loading="eager"
+          format="webp"
+          quality="85"
+        />
+      </div>
+
+      <div
+        v-if="markdownContent"
+        class="markdown-content prose prose-neutral dark:prose-invert max-w-none"
+      >
+        <MDC :value="markdownContent" />
+      </div>
+    </UPageBody>
+
+    <ServicesCTADefault />
+  </UPage>
+</template>
 
 <style scoped>
 .markdown-content :deep(h1) {
@@ -196,69 +264,3 @@ useHead({
   font-size: 0.875em;
 }
 </style>
-
-<template>
-  <UPage v-if="page">
-    <div class="mb-6">
-      <UButton
-        :to="localePath('/services')"
-        variant="ghost"
-        color="neutral"
-        size="sm"
-        :label="t('blog.back')"
-        icon="i-lucide-arrow-left"
-        :ui="{
-          label: 'text-muted hover:text-default transition-colors'
-        }"
-      />
-    </div>
-    <UPageHero
-      :title="page.title"
-      :description="page.description"
-      :ui="{
-        title: 'text-3xl md:text-5xl font-bold',
-        description: 'mt-6 text-base md:text-xl text-muted'
-      }"
-    >
-      <template #headline>
-        <div class="flex items-center gap-2">
-          <UIcon
-            v-if="page.icon"
-            :name="page.icon"
-            class="size-6 text-primary"
-            aria-hidden="true"
-          />
-          <span class="text-sm font-medium text-primary">
-            {{ t('services.hero.title') }}
-          </span>
-        </div>
-      </template>
-    </UPageHero>
-
-    <UPageBody class="max-w-4xl mx-auto">
-      <div
-        v-if="page.images && page.images.length > 0 && page.images[0]"
-        class="mb-8"
-      >
-        <NuxtImg
-          :src="page.images[0]?.src"
-          :alt="page.images[0]?.alt || page.title"
-          class="rounded-lg w-full h-[400px] object-cover object-center"
-          width="1200"
-          height="400"
-          loading="eager"
-          format="webp"
-          quality="85"
-        />
-      </div>
-
-      <div
-        v-if="htmlContent"
-        class="markdown-content prose prose-neutral dark:prose-invert max-w-none"
-        v-html="htmlContent"
-      />
-    </UPageBody>
-
-    <ServicesCTADefault />
-  </UPage>
-</template>

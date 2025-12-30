@@ -74,7 +74,8 @@ const updateAnswer = (questionId: string, value: any) => {
   answers.value[questionId] = value
   // Supprimer l'erreur si elle existe
   if (errors.value[questionId]) {
-    delete errors.value[questionId]
+    const { [questionId]: _, ...rest } = errors.value
+    errors.value = rest
   }
 }
 
@@ -138,7 +139,7 @@ const toggleCheckbox = (questionId: string, value: string | number | boolean) =>
   const arrayValue = Array.isArray(currentValue) ? currentValue : []
 
   if (arrayValue.includes(value)) {
-    updateAnswer(questionId, arrayValue.filter((v) => v !== value))
+    updateAnswer(questionId, arrayValue.filter(v => v !== value))
   } else {
     updateAnswer(questionId, [...arrayValue, value])
   }
@@ -164,16 +165,26 @@ const isCheckboxSelected = (questionId: string, value: string | number | boolean
           {{ Math.round(progress) }}%
         </span>
       </div>
-      <UProgress :value="progress" :max="100" class="w-full" />
+      <UProgress
+        :value="progress"
+        :max="100"
+        class="w-full"
+      />
     </div>
 
     <!-- Contenu de l'étape actuelle -->
-    <div v-if="currentStep" class="step-content">
+    <div
+      v-if="currentStep"
+      class="step-content"
+    >
       <div class="mb-6">
         <h2 class="text-2xl font-semibold mb-2">
           {{ currentStep.title }}
         </h2>
-        <p v-if="currentStep.description" class="text-muted">
+        <p
+          v-if="currentStep.description"
+          class="text-muted"
+        >
           {{ currentStep.description }}
         </p>
       </div>
@@ -184,12 +195,21 @@ const isCheckboxSelected = (questionId: string, value: string | number | boolean
           :key="question.id"
           class="question-group"
         >
-          <label :for="question.id" class="block mb-2 font-medium">
+          <label
+            :for="question.id"
+            class="block mb-2 font-medium"
+          >
             {{ question.label }}
-            <span v-if="question.required" class="text-error">*</span>
+            <span
+              v-if="question.required"
+              class="text-error"
+            >*</span>
           </label>
 
-          <p v-if="question.description" class="text-sm text-muted mb-3">
+          <p
+            v-if="question.description"
+            class="text-sm text-muted mb-3"
+          >
             {{ question.description }}
           </p>
 
@@ -228,39 +248,54 @@ const isCheckboxSelected = (questionId: string, value: string | number | boolean
           />
 
           <!-- Radio buttons -->
-          <div v-else-if="question.type === 'radio'" class="space-y-2">
+          <div
+            v-else-if="question.type === 'radio'"
+            class="space-y-2"
+          >
             <URadio
               v-for="option in question.options"
-              :key="`${question.id}-${option.value}`"
               :id="`${question.id}-${option.value}`"
+              :key="`${question.id}-${option.value}`"
               :name="question.id"
               :value="option.value"
               :model-value="answers[question.id]"
               :label="option.label"
               @update:model-value="updateAnswer(question.id, $event)"
             />
-            <p v-if="errors[question.id]" class="text-sm text-error mt-1">
+            <p
+              v-if="errors[question.id]"
+              class="text-sm text-error mt-1"
+            >
               {{ errors[question.id] }}
             </p>
           </div>
 
           <!-- Checkboxes -->
-          <div v-else-if="question.type === 'checkbox'" class="space-y-2">
+          <div
+            v-else-if="question.type === 'checkbox'"
+            class="space-y-2"
+          >
             <UCheckbox
               v-for="option in question.options"
-              :key="`${question.id}-${option.value}`"
               :id="`${question.id}-${option.value}`"
+              :key="`${question.id}-${option.value}`"
               :model-value="isCheckboxSelected(question.id, option.value)"
               :label="option.label"
               @update:model-value="toggleCheckbox(question.id, option.value)"
             />
-            <p v-if="errors[question.id]" class="text-sm text-error mt-1">
+            <p
+              v-if="errors[question.id]"
+              class="text-sm text-error mt-1"
+            >
               {{ errors[question.id] }}
             </p>
           </div>
 
           <!-- Message d'erreur -->
-          <p v-if="errors[question.id]" class="text-sm text-error mt-1">
+          <p
+            v-if="errors[question.id]"
+            class="text-sm text-error mt-1"
+          >
             {{ errors[question.id] }}
           </p>
         </div>
@@ -276,7 +311,10 @@ const isCheckboxSelected = (questionId: string, value: string | number | boolean
         @click="goToPrevious"
       >
         <template #leading>
-          <UIcon name="i-lucide-arrow-left" class="size-4" />
+          <UIcon
+            name="i-lucide-arrow-left"
+            class="size-4"
+          />
         </template>
         Précédent
       </UButton>
@@ -330,4 +368,3 @@ const isCheckboxSelected = (questionId: string, value: string | number | boolean
   @apply space-y-2;
 }
 </style>
-

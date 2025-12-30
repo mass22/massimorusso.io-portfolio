@@ -1,6 +1,18 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import type { LeadContext } from '~/types/content'
 
+// NODE_ENV est défini dans setup.ts pour permettre l'initialisation SQLite
+
+// Import après les mocks
+import {
+  insertLead,
+  getLeadById,
+  getLeadByIdAndToken,
+  getAllLeads,
+  countLeads,
+  closeDatabase
+} from '~/server/utils/db'
+
 // Mock complet de better-sqlite3 et des modules Node.js AVANT l'import
 const mockDb = {
   pragma: vi.fn(),
@@ -22,7 +34,8 @@ class MockDatabase {
   prepare = mockDb.prepare
   close = mockDb.close
 
-  constructor(path: string) {
+  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+  constructor(_path: string) {
     // Le constructeur est appelé avec le chemin de la DB
   }
 }
@@ -48,18 +61,6 @@ vi.mock('node:path', () => ({
 vi.mock('node:url', () => ({
   fileURLToPath: vi.fn(() => '/test/server/utils/db.ts')
 }))
-
-// NODE_ENV est défini dans setup.ts pour permettre l'initialisation SQLite
-
-// Import après les mocks
-import {
-  insertLead,
-  getLeadById,
-  getLeadByIdAndToken,
-  getAllLeads,
-  countLeads,
-  closeDatabase
-} from '~/server/utils/db'
 
 describe('db', () => {
   // Mock console pour éviter les logs dans les tests

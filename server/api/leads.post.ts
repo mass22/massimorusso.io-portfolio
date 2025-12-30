@@ -96,7 +96,7 @@ export default defineEventHandler(async (event) => {
   let body: unknown
   try {
     body = await readBody(event)
-  } catch (error) {
+  } catch {
     throw createError({
       statusCode: 400,
       statusMessage: 'Invalid Request Body',
@@ -243,7 +243,7 @@ export default defineEventHandler(async (event) => {
           id: leadId,
           token: newToken
         }
-      } catch (retryError) {
+      } catch {
         throw createError({
           statusCode: 500,
           statusMessage: 'Internal Server Error',

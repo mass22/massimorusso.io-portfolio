@@ -1,4 +1,4 @@
-import { vi } from 'vitest'
+// Setup file for tests
 
 // Mock de import.meta pour les tests
 if (typeof (globalThis as any).import === 'undefined') {

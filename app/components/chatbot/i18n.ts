@@ -65,7 +65,7 @@ export function getWebsiteLocale(): Locale {
       if (locale && locale.value) {
         return locale.value === 'fr' ? 'fr' : 'en'
       }
-    } catch (error) {
+    } catch {
       // useI18n n'est pas disponible, continuer avec la détection de route
     }
   }
@@ -80,7 +80,7 @@ export function getWebsiteLocale(): Locale {
           return 'fr'
         }
       }
-    } catch (error) {
+    } catch {
       // useRoute n'est pas disponible
     }
   }
@@ -192,4 +192,3 @@ export function t(locale: Locale, key: string, params?: Record<string, string | 
 
   return text
 }
-

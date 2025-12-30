@@ -12,7 +12,7 @@ export function markdownToHtml(markdown: string): string {
   let inParagraph = false
 
   for (let i = 0; i < lines.length; i++) {
-    let line = lines[i]
+    const line = lines[i]
 
     // Empty line - close paragraph or list
     if (line.trim() === '') {
@@ -102,4 +102,3 @@ function processInline(text: string): string {
     // Code inline
     .replace(/`([^`]+)`/g, '<code>$1</code>')
 }
-

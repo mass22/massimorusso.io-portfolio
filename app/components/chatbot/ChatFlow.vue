@@ -102,7 +102,7 @@ const addUserMessage = (text: string) => {
 }
 
 // Gérer la sélection d'une option
-const handleOptionSelect = (option: { label: string; value: string; nextQuestionId?: string }) => {
+const handleOptionSelect = (option: { label: string, value: string, nextQuestionId?: string }) => {
   // Ajouter le message utilisateur
   addUserMessage(option.label)
 
@@ -203,12 +203,17 @@ defineExpose({
           class="max-w-[80%] rounded-2xl px-4 py-2.5 wrap-break-word"
           :class="message.type === 'user' ? 'bg-primary text-black' : 'bg-muted text-foreground'"
         >
-          <p class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.text }}</p>
+          <p class="text-sm leading-relaxed whitespace-pre-wrap">
+            {{ message.text }}
+          </p>
         </div>
       </div>
 
       <!-- Options de réponse rapide -->
-      <div v-if="currentQuestion && !isComplete" class="flex flex-wrap gap-2 mt-4 px-4 pb-2">
+      <div
+        v-if="currentQuestion && !isComplete"
+        class="flex flex-wrap gap-2 mt-4 px-4 pb-2"
+      >
         <button
           v-for="option in currentQuestion.options"
           :key="option.value"

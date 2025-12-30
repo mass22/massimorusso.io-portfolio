@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { Analytics } from '@vercel/analytics/nuxt';
-import { computed } from 'vue';
+import { Analytics } from '@vercel/analytics/nuxt'
+import { computed } from 'vue'
 
 const colorMode = useColorMode()
 const { locale, t, locales } = useI18n()
 const localePath = useLocalePath()
 const navLinks = computed(() => {
   try {
-    return getNavLinks(t, localePath) || []
+    return getNavLinks(t, localePath, locale) || []
   } catch {
     return []
   }
@@ -62,7 +62,7 @@ const alternateLinks = computed(() => {
         href, hreflang, id: `alt-${localeObj.code}`, rel: 'alternate'
       }
     })
-    .filter((link): link is { id: string; rel: string; hreflang: string; href: string } => Boolean(link))
+    .filter((link): link is { id: string, rel: string, hreflang: string, href: string } => Boolean(link))
 })
 
 // x-default doit pointer vers la version française (locale par défaut)
@@ -122,26 +122,26 @@ useSeoMeta({
 const structuredData = computed(() => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Massimo Russo',
-  jobTitle: 'Consultant Frontend Sénior',
-  description: t('index.description') || 'Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d\'Architecture',
-  url: siteUrl.value,
-  image: global.picture?.light,
-  email: global.email,
-  sameAs: [
+  'name': 'Massimo Russo',
+  'jobTitle': 'Consultant Frontend Sénior',
+  'description': t('index.description') || 'Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d\'Architecture',
+  'url': siteUrl.value,
+  'image': global.picture?.light,
+  'email': global.email,
+  'sameAs': [
     'https://www.linkedin.com/in/russomassimo-frontend-consultant',
     'https://bsky.app/profile/massimorusso.bsky.social'
   ],
-  knowsAbout: ['Vue.js', 'Nuxt.js', 'UX/UI Design', 'Frontend Development', 'Architecture Modernization'],
-  alumniOf: {
+  'knowsAbout': ['Vue.js', 'Nuxt.js', 'UX/UI Design', 'Frontend Development', 'Architecture Modernization'],
+  'alumniOf': {
     '@type': 'CollegeOrUniversity',
-    name: 'Boston University',
-    department: 'Interactive Design'
+    'name': 'Boston University',
+    'department': 'Interactive Design'
   },
-  address: {
+  'address': {
     '@type': 'PostalAddress',
-    addressLocality: 'Boston',
-    addressCountry: 'US'
+    'addressLocality': 'Boston',
+    'addressCountry': 'US'
   }
 }))
 

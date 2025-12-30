@@ -16,7 +16,7 @@ function formatValue(value: unknown): string {
     if (value.length === 0) {
       return 'Aucune sélection'
     }
-    return value.map((v) => formatValue(v)).join(', ')
+    return value.map(v => formatValue(v)).join(', ')
   }
 
   if (typeof value === 'string' && value.trim() === '') {
@@ -125,7 +125,7 @@ export function leadSummary(context: LeadContext): string {
       // Formater la clé pour l'affichage (remplacer les underscores par des espaces, capitaliser)
       const formattedKey = key
         .split(/[-_]/)
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
         .join(' ')
 
       lines.push(`${formattedKey}: ${formattedValue}`)
@@ -145,7 +145,7 @@ export function leadSummary(context: LeadContext): string {
     if (metadataLines.length > 0) {
       lines.push('🔍 MÉTADONNÉES')
       lines.push('-'.repeat(60))
-      metadataLines.forEach((line) => lines.push(line))
+      metadataLines.forEach(line => lines.push(line))
       lines.push('')
     }
   }
@@ -190,7 +190,7 @@ export function leadSummaryHtml(context: LeadContext): string {
       const formattedValue = formatValue(value)
       const formattedKey = key
         .split(/[-_]/)
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
         .join(' ')
 
       lines.push(`<li><strong>${formattedKey}:</strong> ${formattedValue}</li>`)
@@ -221,4 +221,3 @@ export function leadSummaryHtml(context: LeadContext): string {
 
   return lines.join('\n')
 }
-

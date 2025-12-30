@@ -71,7 +71,10 @@ const ui = {
             }"
           >
             <template #body="{ item }">
-              <div v-if="item?.content" class="prose prose-sm dark:prose-invert max-w-none">
+              <div
+                v-if="item?.content"
+                class="prose prose-sm dark:prose-invert max-w-none"
+              >
                 <MDC
                   :value="item.content"
                   unwrap="p"
@@ -113,7 +116,10 @@ const ui = {
           }"
         >
           <template #body="{ item }">
-            <div v-if="item?.content" class="prose prose-sm dark:prose-invert max-w-none">
+            <div
+              v-if="item?.content"
+              class="prose prose-sm dark:prose-invert max-w-none"
+            >
               <MDC
                 :value="item.content"
                 unwrap="p"
@@ -125,4 +131,3 @@ const ui = {
     </UTabs>
   </UPageSection>
 </template>
-

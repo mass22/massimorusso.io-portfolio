@@ -70,9 +70,11 @@ export function qualifyLead(context: LeadContext): QualificationResult {
   // Règle 4: Urgency (+1 point pour urgences)
   const urgencyValue = context.urgency
   // Mapper les valeurs réelles aux valeurs attendues
-  const mappedUrgency = urgencyValue === 'immediat' ? 'urgent' :
-                        urgencyValue === '1-2-mois' ? '1_month' :
-                        urgencyValue === '3-6-mois' ? '3_months' : urgencyValue
+  const mappedUrgency = urgencyValue === 'immediat'
+    ? 'urgent'
+    : urgencyValue === '1-2-mois'
+      ? '1_month'
+      : urgencyValue === '3-6-mois' ? '3_months' : urgencyValue
 
   if (urgencyValue && (mappedUrgency === 'urgent' || mappedUrgency === '1_month' || mappedUrgency === '3_months')) {
     score += 1
@@ -111,9 +113,11 @@ export function qualifyLead(context: LeadContext): QualificationResult {
   // Mapper goal "performances" à "performance"
   const goalForOffer = context.goal === 'performances' ? 'performance' : context.goal
   // Mapper urgency
-  const urgencyForOffer = urgencyValue === 'immediat' ? 'urgent' :
-                         urgencyValue === '1-2-mois' ? '1_month' :
-                         urgencyValue === '3-6-mois' ? '3_months' : urgencyValue
+  const urgencyForOffer = urgencyValue === 'immediat'
+    ? 'urgent'
+    : urgencyValue === '1-2-mois'
+      ? '1_month'
+      : urgencyValue === '3-6-mois' ? '3_months' : urgencyValue
   // Mapper teamSize "11-25" et "25+" à "10+"
   const teamSizeForOffer = (context.teamSize === '11-25' || context.teamSize === '25+') ? '10+' : context.teamSize
 
@@ -121,8 +125,8 @@ export function qualifyLead(context: LeadContext): QualificationResult {
     recommendedOffer = 'audit'
   } else if (context.teamSize === '1-3' && urgencyForOffer !== 'urgent') {
     recommendedOffer = 'coaching'
-  } else if (teamSizeForOffer === '10+' ||
-             (serviceValue === 'ai-orchestration' && (urgencyForOffer === '3_months' || urgencyForOffer === 'urgent'))) {
+  } else if (teamSizeForOffer === '10+'
+    || (serviceValue === 'ai-orchestration' && (urgencyForOffer === '3_months' || urgencyForOffer === 'urgent'))) {
     recommendedOffer = 'mission'
   }
 
@@ -140,45 +144,45 @@ export function qualifyLead(context: LeadContext): QualificationResult {
 const reasonTranslations: Record<Locale, Record<string, string>> = {
   fr: {
     // Services
-    'service_architecture_frontend': 'Architecture Frontend',
-    'service_vue_nuxt': 'Vue/Nuxt',
-    'service_ai_orchestration': 'IA Pragmatique',
+    service_architecture_frontend: 'Architecture Frontend',
+    service_vue_nuxt: 'Vue/Nuxt',
+    service_ai_orchestration: 'IA Pragmatique',
     // Goals
-    'goal_modernize': 'Modernisation',
-    'goal_performance': 'Performance',
-    'goal_reduce_costs': 'Réduction des coûts',
-    'goal_accelerate': 'Accélération',
-    'goal_other': 'Autre objectif',
+    goal_modernize: 'Modernisation',
+    goal_performance: 'Performance',
+    goal_reduce_costs: 'Réduction des coûts',
+    goal_accelerate: 'Accélération',
+    goal_other: 'Autre objectif',
     // Teams
-    'team_4_10': 'Équipe 4-10 développeurs',
-    'team_10_plus': 'Équipe 10+ développeurs',
+    team_4_10: 'Équipe 4-10 développeurs',
+    team_10_plus: 'Équipe 10+ développeurs',
     // Urgency
-    'urgency_urgent': 'Urgence immédiate',
-    'urgency_1_month': 'Urgence 1-2 mois',
-    'urgency_3_months': 'Urgence 3-6 mois',
+    urgency_urgent: 'Urgence immédiate',
+    urgency_1_month: 'Urgence 1-2 mois',
+    urgency_3_months: 'Urgence 3-6 mois',
     // Stack
-    'stack_vue_nuxt': 'Stack Vue/Nuxt'
+    stack_vue_nuxt: 'Stack Vue/Nuxt'
   },
   en: {
     // Services
-    'service_architecture_frontend': 'Frontend Architecture',
-    'service_vue_nuxt': 'Vue/Nuxt',
-    'service_ai_orchestration': 'Pragmatic AI',
+    service_architecture_frontend: 'Frontend Architecture',
+    service_vue_nuxt: 'Vue/Nuxt',
+    service_ai_orchestration: 'Pragmatic AI',
     // Goals
-    'goal_modernize': 'Modernization',
-    'goal_performance': 'Performance',
-    'goal_reduce_costs': 'Cost reduction',
-    'goal_accelerate': 'Acceleration',
-    'goal_other': 'Other objective',
+    goal_modernize: 'Modernization',
+    goal_performance: 'Performance',
+    goal_reduce_costs: 'Cost reduction',
+    goal_accelerate: 'Acceleration',
+    goal_other: 'Other objective',
     // Teams
-    'team_4_10': 'Team of 4-10 developers',
-    'team_10_plus': 'Team of 10+ developers',
+    team_4_10: 'Team of 4-10 developers',
+    team_10_plus: 'Team of 10+ developers',
     // Urgency
-    'urgency_urgent': 'Immediate urgency',
-    'urgency_1_month': 'Urgency 1-2 months',
-    'urgency_3_months': 'Urgency 3-6 months',
+    urgency_urgent: 'Immediate urgency',
+    urgency_1_month: 'Urgency 1-2 months',
+    urgency_3_months: 'Urgency 3-6 months',
     // Stack
-    'stack_vue_nuxt': 'Vue/Nuxt stack'
+    stack_vue_nuxt: 'Vue/Nuxt stack'
   }
 }
 

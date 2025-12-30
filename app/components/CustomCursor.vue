@@ -5,9 +5,13 @@
       v-if="isHoveringInteractive"
       class="custom-cursor-spotlight"
       :style="spotlightStyle"
-    ></div>
+    />
     <!-- Le point du curseur -->
-    <div ref="cursor" class="custom-cursor" :style="cursorStyle"></div>
+    <div
+      ref="cursor"
+      class="custom-cursor"
+      :style="cursorStyle"
+    />
   </div>
 </template>
 
@@ -49,31 +53,48 @@ const isClicking = ref(false)
 
 const cursorStyle = computed(() => {
   let size = sizeNormal
-  if (isHoveringInteractive.value) {size = sizeHover}
-  if (isClicking.value) {size = sizeClick}
-  if (isClicking.value && isHoveringInteractive.value) {size = sizeClick}
+  if (isHoveringInteractive.value) {
+    size = sizeHover
+  }
+  if (isClicking.value) {
+    size = sizeClick
+  }
+  if (isClicking.value && isHoveringInteractive.value) {
+    size = sizeClick
+  }
   return {
-    // Position du point : coordonnées souris + scroll
-    height: size + 'px', transform: `translate3d(${x.value + scrollX.value - size/2}px, ${y.value + scrollY.value - size/2}px, 0)`, width: size + 'px',
+    // Position du point : coordonnées souris + scroll
+    height: size + 'px',
+    transform: `translate3d(${x.value + scrollX.value - size / 2}px, ${y.value + scrollY.value - size / 2}px, 0)`,
+    width: size + 'px'
   }
 })
 
 // Lampe poursuite : coordonnées souris + scroll
 const spotlightStyle = computed(() => {
   const left = x.value + scrollX.value - spotlightRadius
-  const top  = y.value + scrollY.value - spotlightRadius
+  const top = y.value + scrollY.value - spotlightRadius
   return {
-    height: `${spotlightRadius * 2}px`, left: `${left}px`, top: `${top}px`, width: `${spotlightRadius * 2}px`,
+    height: `${spotlightRadius * 2}px`,
+    left: `${left}px`,
+    top: `${top}px`,
+    width: `${spotlightRadius * 2}px`
   }
 })
 
 const isInteractive = (el: HTMLElement | null) => {
-  if (!el) {return false}
+  if (!el) {
+    return false
+  }
   const t = el.tagName?.toLowerCase()
-  if (t === 'a' || t === 'button' || t === 'input' || t === 'textarea' || el.hasAttribute('tabindex')) {return true}
+  if (t === 'a' || t === 'button' || t === 'input' || t === 'textarea' || el.hasAttribute('tabindex')) {
+    return true
+  }
   if (el.getAttribute && [
-    'button','link','checkbox','radio','switch','tab']
-    .includes(el.getAttribute('role') || '')) {return true}
+    'button', 'link', 'checkbox', 'radio', 'switch', 'tab']
+    .includes(el.getAttribute('role') || '')) {
+    return true
+  }
   return false
 }
 
@@ -101,8 +122,12 @@ function mouseOutHandler(e: MouseEvent) {
   isHoveringInteractive.value = false
 }
 
-function mouseDownHandler() { isClicking.value = true }
-function mouseUpHandler() { isClicking.value = false }
+function mouseDownHandler() {
+  isClicking.value = true
+}
+function mouseUpHandler() {
+  isClicking.value = false
+}
 
 onMounted(() => {
   if (typeof document !== 'undefined') {
@@ -151,6 +176,7 @@ onUnmounted(() => {
   will-change: left, top, width, height;
 }
 </style>
+
 <style>
 /* disabled by default
 to enable, add the class "custom-cursor-enabled" to the body

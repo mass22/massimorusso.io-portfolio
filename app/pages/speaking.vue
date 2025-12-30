@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { SpeakingCollectionItem } from '@nuxt/content'
 
 type Event = {
   title: string
@@ -37,7 +36,9 @@ const groupedEvents = computed((): Record<Event['category'], Event[]> => {
     'Podcast': []
   }
   for (const event of events) {
-    if (grouped[event.category]) {grouped[event.category].push(event)}
+    if (grouped[event.category]) {
+      grouped[event.category].push(event)
+    }
   }
   return grouped
 })
@@ -81,7 +82,10 @@ function getCategoryLabel(category: string): string {
         container: '!pt-0'
       }"
     >
-      <template v-for="(eventsInCategory, category) in groupedEvents" :key="category">
+      <template
+        v-for="(eventsInCategory, category) in groupedEvents"
+        :key="category"
+      >
         <div
           class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8 mb-16 last:mb-0"
         >

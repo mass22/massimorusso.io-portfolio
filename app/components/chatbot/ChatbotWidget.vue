@@ -3,9 +3,10 @@ import type { LeadContext as LeadContextType } from '~/types/content'
 import ChatFlow from './ChatFlow.vue'
 import type { Locale } from './i18n'
 import { t } from './i18n'
-const { y } = useWindowScroll()
 
 import LeadCaptureForm from './LeadCaptureForm.vue'
+
+const { y } = useWindowScroll()
 
 // État du widget
 const isOpen = ref(false)
@@ -14,7 +15,6 @@ const leadContext = ref<LeadContextType | null>(null)
 const showSuccess = ref(false)
 const isContactPage = computed(() => route.path.includes('/contact'))
 const showStickyWidget = computed(() => y.value > 300 && !isContactPage.value)
-
 
 // Locale du site web : utiliser useI18n() si disponible, sinon détecter depuis la route
 // Appeler useI18n() et useRoute() au niveau du setup (pas dans un computed)
@@ -114,7 +114,8 @@ onUnmounted(() => {
 <template>
   <div
     v-if="showStickyWidget"
-    class="fixed bottom-25 right-10 md:bottom-4 md:right-4 z-[9999]">
+    class="fixed bottom-25 right-10 md:bottom-4 md:right-4 z-[9999]"
+  >
     <!-- Bouton flottant -->
     <button
       v-if="!isOpen"
@@ -123,7 +124,10 @@ onUnmounted(() => {
       :aria-label="t(locale, 'widget.openChat')"
       @click="toggleWidget"
     >
-      <UIcon name="i-lucide-message-circle" class="size-6" />
+      <UIcon
+        name="i-lucide-message-circle"
+        class="size-6"
+      />
     </button>
 
     <!-- Panneau de chat -->
@@ -138,8 +142,12 @@ onUnmounted(() => {
         <!-- En-tête -->
         <div class="flex items-start justify-between p-4 border-b border-default bg-black">
           <div class="flex-1">
-            <h2 class="text-lg font-semibold text-white">{{ t(locale, 'widget.title') }}</h2>
-            <p class="text-sm text-muted mt-0.5">{{ t(locale, 'widget.subtitle') }}</p>
+            <h2 class="text-lg font-semibold text-white">
+              {{ t(locale, 'widget.title') }}
+            </h2>
+            <p class="text-sm text-muted mt-0.5">
+              {{ t(locale, 'widget.subtitle') }}
+            </p>
           </div>
           <div class="flex items-center gap-2 ml-4">
             <button
@@ -149,7 +157,10 @@ onUnmounted(() => {
               :aria-label="t(locale, 'widget.restart')"
               @click="resetWidget"
             >
-              <UIcon name="i-lucide-refresh-cw" class="size-4" />
+              <UIcon
+                name="i-lucide-refresh-cw"
+                class="size-4"
+              />
             </button>
             <button
               type="button"
@@ -157,7 +168,10 @@ onUnmounted(() => {
               :aria-label="t(locale, 'widget.close')"
               @click="closeWidget"
             >
-              <UIcon name="i-lucide-x" class="size-5" />
+              <UIcon
+                name="i-lucide-x"
+                class="size-5"
+              />
             </button>
           </div>
         </div>
@@ -165,11 +179,19 @@ onUnmounted(() => {
         <!-- Contenu -->
         <div class="flex-1 overflow-hidden flex flex-col">
           <!-- Message de succès -->
-          <div v-if="showSuccess" class="flex flex-col items-center justify-center p-8 text-center min-h-[300px]">
+          <div
+            v-if="showSuccess"
+            class="flex flex-col items-center justify-center p-8 text-center min-h-[300px]"
+          >
             <div class="mb-4">
-              <UIcon name="i-lucide-check-circle" class="size-12 text-success" />
+              <UIcon
+                name="i-lucide-check-circle"
+                class="size-12 text-success"
+              />
             </div>
-            <h3 class="text-xl font-semibold mb-2 text-foreground">{{ t(locale, 'success.title') }}</h3>
+            <h3 class="text-xl font-semibold mb-2 text-foreground">
+              {{ t(locale, 'success.title') }}
+            </h3>
             <p class="text-muted mb-6 max-w-sm">
               {{ t(locale, 'success.message') }}
             </p>
@@ -183,7 +205,10 @@ onUnmounted(() => {
           </div>
 
           <!-- Formulaire de capture -->
-          <div v-else-if="leadContext && leadContext.qualification" class="flex-1 overflow-y-auto">
+          <div
+            v-else-if="leadContext && leadContext.qualification"
+            class="flex-1 overflow-y-auto"
+          >
             <LeadCaptureForm
               :qualification="leadContext.qualification"
               :context="leadContext"
@@ -193,7 +218,10 @@ onUnmounted(() => {
           </div>
 
           <!-- Flux de conversation -->
-          <div v-else class="flex-1 overflow-scroll">
+          <div
+            v-else
+            class="flex-1 overflow-scroll"
+          >
             <ChatFlow
               ref="chatFlowRef"
               :locale="locale"

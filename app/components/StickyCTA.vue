@@ -55,7 +55,11 @@ const ctaLinks = computed(() => ([
               class="font-semibold"
             >
               <template #trailing>
-                <UIcon name="i-lucide-arrow-right" class="size-4" aria-hidden="true" />
+                <UIcon
+                  name="i-lucide-arrow-right"
+                  class="size-4"
+                  aria-hidden="true"
+                />
               </template>
             </UButton>
           </div>
@@ -71,4 +75,3 @@ const ctaLinks = computed(() => ([
   padding-bottom: 0;
 }
 </style>
-

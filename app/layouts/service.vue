@@ -2,10 +2,10 @@
 import type { NavigationMenuItem } from '@nuxt/ui'
 import { computed } from 'vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
-const navLinks = computed<NavigationMenuItem[]>(() => getNavLinks(t, localePath))
+const navLinks = computed<NavigationMenuItem[]>(() => getNavLinks(t, localePath, locale))
 </script>
 
 <template>
