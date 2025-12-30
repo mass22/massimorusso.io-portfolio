@@ -1,101 +1,303 @@
-# Nuxt Portfolio Template
+# Website Massimo Russo
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+[![Nuxt](https://img.shields.io/badge/Nuxt-4.2.1-00DC82?logo=nuxt&labelColor=020420)](https://nuxt.com)
+[![Nuxt UI](https://img.shields.io/badge/Nuxt%20UI-4.0.1-00DC82)](https://ui.nuxt.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue)](https://www.typescriptlang.org/)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://vercel.com)
 
-Use this template to create your own portfolio with [Nuxt UI](https://ui.nuxt.com).
+Professional website of Massimo Russo, senior frontend architecture consultant and AI advisor. Bilingual website (French/English) built with Nuxt 4, Nuxt UI, and Nuxt Content.
 
-- [Live demo](https://portfolio-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/getting-started/installation)
+## ✨ Features
 
-<a href="https://portfolio-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png">
-    <img alt="Nuxt Portfolio Template" src="https://ui.nuxt.com/assets/templates/nuxt/portfolio-dark.png">
-  </picture>
-</a>
+### 🌐 Internationalization
+- Bilingual French/English support with `@nuxtjs/i18n`
+- Localized routes with language prefix
+- Automatic language detection
+- Translated content for all pages
 
-## Quick Start
+### 📝 Blog & Content
+- Blog powered by Nuxt Content (Markdown)
+- Nuxt Studio for real-time content editing
+- Automatic SEO metadata generation
+- Optimized images with Nuxt Image (WebP, AVIF)
+- Open Graph image support
 
-```bash [Terminal]
-npm create nuxt@latest -- -t github:nuxt-ui-templates/portfolio
-```
+### 🤖 Intelligent Chatbot
+- Chat widget with lead qualification
+- Lead capture with integrated form
+- Lead storage in Neon database (PostgreSQL)
+- Email notifications via Resend
+- Multilingual interface synchronized with the site
 
-## Deploy your own
+### ⚡ Performance
+- Prerendering and ISR (Incremental Static Regeneration)
+- Image optimization with Nuxt Image
+- Automatic code splitting
+- HTTP cache configured for static assets
+- Public assets compression
+- Source maps for debugging
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=portfolio&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fportfolio&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fportfolio-dark.png&demo-url=https%3A%2F%2Fportfolio-template.nuxt.dev%2F&demo-title=Nuxt%20Portfolio%20Template&demo-description=A%20sleek%20portfolio%20template%20to%20showcase%20your%20work%2C%20skills%20and%20blog%20powered%20by%20Nuxt%20Content.)
+### 🎨 UI/UX
+- Design system with Nuxt UI
+- Dark mode by default
+- Smooth animations with Motion V
+- Mobile-first responsive design
+- Custom cursor
+- "Back to top" button
 
-## Setup
+### 🧪 Code Quality
+- Unit tests with Vitest
+- Linting with ESLint and Oxlint
+- Strict TypeScript
+- CI/CD with GitHub Actions
+- Renovate for dependency updates
 
-Make sure to install the dependencies:
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+ or 20+
+- pnpm 10.18.3+ (package manager)
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/mass22/massimorusso.io-portfolio.git
+cd massimorusso.io-portfolio
+
+# Install dependencies
 pnpm install
 ```
 
-## Development Server
+### Environment Variables
 
-Start the development server on `http://localhost:3000`:
+Create a `.env` file at the root of the project:
+
+```env
+# Neon Database (PostgreSQL)
+DATABASE_URL=postgresql://user:password@host/database
+
+# Resend Email
+RESEND_API_KEY=re_xxxxxxxxxxxxx
+RESEND_FROM_EMAIL=noreply@massimorusso.io
+RESEND_ADMIN_EMAIL=admin@massimorusso.io
+
+# Site
+NUXT_PUBLIC_SITE_URL=https://massimorusso.io
+
+# Nuxt Studio (optional, for production editing)
+STUDIO_GITHUB_CLIENT_ID=your_github_client_id
+STUDIO_GITHUB_CLIENT_SECRET=your_github_client_secret
+```
+
+### Development
 
 ```bash
+# Start the development server
 pnpm dev
+
+# The site will be available at http://localhost:3000
 ```
 
-### Nuxt Studio (Mode Développement)
+#### Nuxt Studio (Development Mode)
 
-Nuxt Studio est maintenant configuré ! En mode développement, vous pouvez éditer votre contenu directement depuis le site :
+In development mode, Nuxt Studio is automatically available:
 
-1. Lancez le serveur de développement avec `pnpm dev`
-2. Un bouton flottant apparaîtra en bas à gauche pour accéder à l'éditeur
-3. Toutes les modifications seront synchronisées en temps réel avec le système de fichiers
+1. Start the server with `pnpm dev`
+2. A floating button appears at the bottom left to access the editor
+3. All changes are synchronized in real-time with the file system
 
-> **Note** : Le système de publication n'est disponible qu'en mode production. En développement, utilisez votre workflow habituel (IDE, CLI, GitHub Desktop...) pour publier vos modifications.
+> **Note**: The publishing system is only available in production mode. In development, use your usual workflow (IDE, CLI, GitHub Desktop...) to publish your changes.
 
-## Production
-
-Build the application for production:
+### Production
 
 ```bash
+# Build for production
 pnpm build
-```
 
-Locally preview production build:
-
-```bash
+# Preview the build locally
 pnpm preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 📁 Project Structure
 
-### Nuxt Studio (Mode Production)
-
-Pour activer Nuxt Studio en production et permettre l'édition du contenu directement depuis votre site déployé, vous devez configurer :
-
-#### 1. Authentification
-
-Configurez un fournisseur d'authentification OAuth. Exemple avec GitHub :
-
-```bash
-STUDIO_GITHUB_CLIENT_ID=<votre_client_id>
-STUDIO_GITHUB_CLIENT_SECRET=<votre_client_secret>
+```
+├── app/
+│   ├── components/          # Reusable Vue components
+│   │   ├── chatbot/        # Chat widget and qualification
+│   │   ├── landing/        # Homepage sections
+│   │   └── ...
+│   ├── composables/        # Nuxt composables
+│   ├── layouts/            # Page layouts
+│   ├── pages/              # Application routes
+│   ├── plugins/            # Nuxt plugins
+│   ├── types/              # TypeScript definitions
+│   └── utils/              # Utilities
+├── content/                # Markdown and YAML content
+│   ├── blog/              # Blog posts
+│   └── services/          # Service pages
+├── locales/               # i18n translation files
+├── public/                # Static assets
+├── server/                # API routes and server utilities
+│   ├── api/              # API endpoints
+│   └── utils/            # Server utilities (DB, email, etc.)
+├── tests/                 # Unit tests
+└── nuxt.config.ts        # Nuxt configuration
 ```
 
-Pour créer une GitHub OAuth App :
-1. Allez sur [GitHub Settings > Developer settings > OAuth Apps](https://github.com/settings/developers)
-2. Créez une nouvelle OAuth App
-3. Définissez l'URL de callback : `https://votre-domaine.com/_studio/auth/github/callback`
-4. Utilisez le Client ID et Client Secret générés
+## 🛠️ Technologies Used
 
-#### 2. Déploiement
+### Core
+- **[Nuxt 4](https://nuxt.com)** - Full-stack Vue.js framework
+- **[Vue 3](https://vuejs.org)** - Progressive JavaScript framework
+- **[TypeScript](https://www.typescriptlang.org/)** - Static typing
 
-Nuxt Studio nécessite des routes côté serveur pour l'authentification. Votre site doit être **déployé sur une plateforme qui supporte le SSR** avec `nuxt build`.
+### UI & Design
+- **[Nuxt UI](https://ui.nuxt.com)** - Tailwind CSS-based UI components
+- **[Motion V](https://motion-v.com)** - Vue animations
+- **[Tailwind CSS](https://tailwindcss.com)** - Utility-first CSS framework
 
-#### 3. Accéder à Studio
+### Content & CMS
+- **[Nuxt Content](https://content.nuxt.com)** - Markdown-based headless CMS
+- **[Nuxt Studio](https://content.nuxt.com/docs/studio)** - Visual content editor
 
-Une fois déployé, naviguez vers `/_studio` (ou la route configurée) et authentifiez-vous pour commencer à éditer.
+### Internationalization
+- **[@nuxtjs/i18n](https://i18n.nuxtjs.org)** - Internationalization
 
-> 📖 Documentation complète : [Nuxt Studio Setup](https://content.nuxt.com/docs/studio/setup)
+### Database
+- **[Neon](https://neon.tech)** - Serverless PostgreSQL
+- **[@neondatabase/serverless](https://github.com/neondatabase/serverless-js)** - Neon driver
 
-## Renovate integration
+### Email
+- **[Resend](https://resend.com)** - Transactional email service
 
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+### Images
+- **[Nuxt Image](https://image.nuxt.com)** - Image optimization
+- **[Sharp](https://sharp.pixelplumbing.com)** - Image processing
+
+### Testing
+- **[Vitest](https://vitest.dev)** - Testing framework
+- **[Vue Test Utils](https://test-utils.vuejs.org)** - Vue testing utilities
+
+### Linting & Formatting
+- **[ESLint](https://eslint.org)** - JavaScript/TypeScript linter
+- **[Oxlint](https://oxc-project.github.io)** - Fast linter
+
+## 📦 Available Scripts
+
+```bash
+# Development
+pnpm dev              # Development server
+pnpm build            # Build for production
+pnpm preview          # Preview production build
+pnpm preprod          # Build + preview on port 3001
+
+# Code Quality
+pnpm lint             # Lint with ESLint
+pnpm lint:fix         # Lint and auto-fix
+pnpm lint:oxlint      # Lint with Oxlint
+pnpm lint:oxlint:fix  # Lint and fix with Oxlint
+pnpm typecheck        # Check TypeScript types
+
+# Tests
+pnpm test             # Run tests with Vitest
+```
+
+## 🚢 Deployment
+
+The project is configured to be deployed on **Vercel**:
+
+1. Connect your GitHub repository to Vercel
+2. Configure environment variables in the Vercel dashboard
+3. Deployment happens automatically on every push to `main`
+
+### Vercel Configuration
+
+The following environment variables must be configured in Vercel:
+
+- `DATABASE_URL` - Neon PostgreSQL connection URL
+- `RESEND_API_KEY` - Resend API key
+- `RESEND_FROM_EMAIL` - Sender email
+- `RESEND_ADMIN_EMAIL` - Notification recipient email
+- `NUXT_PUBLIC_SITE_URL` - Public site URL
+
+### Nuxt Studio in Production
+
+To enable Nuxt Studio in production:
+
+1. Create a GitHub OAuth App at [GitHub Settings > Developer settings > OAuth Apps](https://github.com/settings/developers)
+2. Set the callback URL: `https://your-domain.com/_studio/auth/github/callback`
+3. Add environment variables:
+   - `STUDIO_GITHUB_CLIENT_ID`
+   - `STUDIO_GITHUB_CLIENT_SECRET`
+4. Access `/_studio` on your deployed site
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+pnpm test
+
+# Run tests in watch mode
+pnpm test --watch
+
+# Run tests with coverage
+pnpm test --coverage
+```
+
+Tests are organized in the `tests/` folder and cover:
+- Components (chatbot, qualification)
+- Composables (blog posts, page data)
+- Utilities (links, markdown)
+- Server API routes
+
+## 📚 Documentation
+
+### Configuration
+
+- **Nuxt Config** : `nuxt.config.ts` - Main configuration
+- **Content Config** : `content.config.ts` - Content configuration
+- **i18n Config** : `i18n.config.ts` - Internationalization configuration
+- **App Config** : `app/app.config.ts` - Application configuration
+
+### Available Guides
+
+- `doc/VERCEL_SETUP_CHECKLIST.md` - Vercel setup checklist
+- `doc/VERCEL_NEON_VERIFICATION.md` - Neon connection verification
+- `doc/EMAIL_SETUP.md` - Email setup with Resend
+- `doc/TROUBLESHOOTING.md` - Troubleshooting guide
+
+## 🤝 Contributing
+
+Contributions are welcome! To contribute:
+
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is private and owned by Massimo Russo.
+
+## 👤 Author
+
+**Massimo Russo**
+
+- Website: [massimorusso.io](https://massimorusso.io)
+- LinkedIn: [@russomassimo-frontend-consultant](https://www.linkedin.com/in/russomassimo-frontend-consultant)
+- Bluesky: [@massimorusso.bsky.social](https://bsky.app/profile/massimorusso.bsky.social)
+
+## 🙏 Acknowledgments
+
+- [Nuxt](https://nuxt.com) - Amazing framework for Vue.js
+- [Nuxt UI](https://ui.nuxt.com) - Elegant UI components
+- [Nuxt Content](https://content.nuxt.com) - Powerful headless CMS
+- [Vercel](https://vercel.com) - Exceptional deployment platform
+- [Neon](https://neon.tech) - High-performance serverless PostgreSQL
+
+---
+
+Made with ❤️ using Nuxt 4
