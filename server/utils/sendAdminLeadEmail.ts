@@ -327,7 +327,7 @@ export async function sendAdminLeadEmail(params: SendAdminLeadEmailParams): Prom
   const baseUrl = process.env.BASE_URL || 'https://massimorusso.io'
 
   // Validation des variables d'environnement avec logs détaillés
-  console.log('[Email] 🔍 Vérification des variables d'environnement...')
+  console.log('[Email] 🔍 Vérification des variables d\'environnement...')
 
   if (!apiKey) {
     console.error('[Email] RESEND_API_KEY n\'est pas définie')
