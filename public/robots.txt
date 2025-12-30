@@ -7,3 +7,4 @@ Sitemap: https://massimorusso.io/sitemap.xml
 # Disallow admin and private paths
 Disallow: /api/
 Disallow: /_nuxt/
+Disallow: /lead/

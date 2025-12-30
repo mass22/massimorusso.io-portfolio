@@ -12,9 +12,10 @@ const navLinks = computed<NavigationMenuItem[]>(() => getNavLinks(t, localePath)
 
 // Détecter si le StickyCTA est visible pour ajouter du padding conditionnel
 const isContactPage = computed(() => route.path.includes('/contact'))
+const isLeadPage = computed(() => route.path.startsWith('/lead/'))
 const isClient = typeof window !== 'undefined'
 const { y } = isClient ? useWindowScroll() : { y: ref(0) }
-const showStickyCTA = computed(() => isClient && y.value > 300 && !isContactPage.value)
+const showStickyCTA = computed(() => isClient && y.value > 300 && !isContactPage.value && !isLeadPage.value)
 </script>
 
 <template>
@@ -33,7 +34,7 @@ const showStickyCTA = computed(() => isClient && y.value > 300 && !isContactPage
       </main>
       <AppFooter />
     </UContainer>
-    <StickyCTA />
+    <StickyCTA v-if="!isLeadPage" />
     <BackToTop />
   </div>
 </template>

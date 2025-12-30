@@ -8,7 +8,8 @@ const route = useRoute()
 
 const { y } = useWindowScroll()
 const isContactPage = computed(() => route.path.includes('/contact'))
-const showStickyCTA = computed(() => y.value > 300 && !isContactPage.value)
+const isLeadPage = computed(() => route.path.startsWith('/lead/'))
+const showStickyCTA = computed(() => y.value > 300 && !isContactPage.value && !isLeadPage.value)
 
 const ctaLinks = computed(() => ([
   {
@@ -36,7 +37,7 @@ const ctaLinks = computed(() => ([
       class="fixed bottom-0 left-0 right-0 z-50 bg-default/95 backdrop-blur-md border-t border-default shadow-lg"
     >
       <UContainer class="py-3 sm:py-4">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-12">
           <div class="flex-1 text-center sm:text-left">
             <p class="text-sm sm:text-base font-medium text-highlighted">
               {{ t('homepage.cta.title') }}

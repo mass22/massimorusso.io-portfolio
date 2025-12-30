@@ -189,6 +189,7 @@ const { data: files } = useLazyAsyncData('search', () => {
         :links="navLinks"
         :fuse="{ resultLimit: 42 }"
       />
+      <ChatbotWidget v-if="!route.path.startsWith('/lead/')" />
     </ClientOnly>
   </UApp>
 </template>

@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+/* eslint-disable */
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -10,9 +11,6 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     'motion-v/nuxt'
   ],
-  devtools: {
-    enabled: process.env.NODE_ENV === 'development'
-  },
   app: {
     head: {
       link: [
@@ -53,6 +51,12 @@ export default defineNuxtConfig({
     transpile: ['motion-v']
   },
   routeRules: {
+    // Empêcher l'indexation des pages de leads
+    '/lead/**': {
+      headers: {
+        'X-Robots-Tag': 'noindex, nofollow, noarchive, nosnippet'
+      }
+    },
     '/': {
       prerender: true,
       headers: {
@@ -236,16 +240,14 @@ export default defineNuxtConfig({
         '@tailwindcss/oxide-darwin-x64',
         '@tailwindcss/oxide-linux-x64-gnu',
         '@tailwindcss/oxide-linux-arm64-gnu',
-        '@tailwindcss/oxide-win32-x64-msvc'
+        '@tailwindcss/oxide-win32-x64-msvc',
+        'fsevents',
+        'better-sqlite3'
       ]
     },
     // Optimisation de la résolution des modules pour réduire la taille
     resolve: {
       dedupe: ['vue', '@nuxt/ui']
-    },
-    // Configuration pour les fichiers .node
-    ssr: {
-      noExternal: []
     }
   },
   eslint: {
@@ -255,6 +257,10 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+  colorMode: {
+    preference: 'dark',
+    fallback: 'dark'
   },
   i18n: {
     defaultLocale: 'fr',
@@ -299,7 +305,9 @@ export default defineNuxtConfig({
       resources: {
         fr: '/ressources',
         en: '/resources'
-      }
+      },
+      // Exclure la route /lead de la localisation i18n
+      'lead/[id]': false
     }
   },
   image: {
@@ -329,5 +337,8 @@ export default defineNuxtConfig({
     ipx: {
       maxAge: 31536000 // 1 an en secondes
     }
+  },
+  devtools: {
+    enabled: process.env.NODE_ENV === 'development'
   }
 })

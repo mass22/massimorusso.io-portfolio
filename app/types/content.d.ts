@@ -55,3 +55,57 @@ export type IndexPage = {
   testimonials?: Testimonial[]
   // Ajoute ici les autres propriétés utiles (exemple: about, experience, etc.)
 }
+
+// Types pour le FAQ Wizard
+export type FaqWizardQuestionType = 'text' | 'select' | 'radio' | 'checkbox' | 'textarea'
+
+export type FaqWizardOption = {
+  label: string
+  value: string | number | boolean
+}
+
+export type FaqWizardQuestion = {
+  id: string
+  type: FaqWizardQuestionType
+  label: string
+  description?: string
+  required?: boolean
+  options?: FaqWizardOption[]
+  placeholder?: string
+  validation?: {
+    min?: number
+    max?: number
+    pattern?: string
+    message?: string
+  }
+}
+
+export type FaqWizardStep = {
+  id: string
+  title: string
+  description?: string
+  questions: FaqWizardQuestion[]
+}
+
+export type FaqWizardConfig = {
+  steps: FaqWizardStep[]
+}
+
+export type FaqWizardAnswers = Record<string, string | number | boolean | string[]>
+
+export type LeadContext = {
+  answers: FaqWizardAnswers
+  completedAt: string
+  stepCount: number
+  qualification?: {
+    score: number
+    level: 'high' | 'medium' | 'low'
+    reasons: string[]
+    recommendedOffer: 'audit' | 'coaching' | 'mission' | 'unknown'
+  }
+  metadata?: {
+    userAgent?: string
+    referrer?: string
+    timestamp?: string
+  }
+}
