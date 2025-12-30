@@ -9,21 +9,13 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@vueuse/nuxt',
     'nuxt-og-image',
+    'nuxt-studio',
     'motion-v/nuxt'
   ],
   app: {
     head: {
       link: [
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.googleapis.com'
-        },
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-          crossorigin: ''
-        },
-        // Préchargement DNS pour les ressources externes
+        // Préchargement DNS pour les ressources externes (si utilisées)
         {
           rel: 'dns-prefetch',
           href: 'https://picsum.photos'
@@ -45,6 +37,17 @@ export default defineNuxtConfig({
   content: {
     preview: {
       api: 'https://api.nuxt.studio'
+    }
+  },
+  studio: {
+    // Route d'administration Studio (par défaut: '/_studio')
+    route: '/_studio',
+    // Configuration du dépôt Git
+    repository: {
+      provider: 'github', // 'github' ou 'gitlab'
+      owner: 'mass22', // Votre nom d'utilisateur GitHub
+      repo: 'massimorusso.io-portfolio', // Nom du dépôt
+      branch: 'main' // Branche sur laquelle commiter (par défaut: main)
     }
   },
   build: {
@@ -87,7 +90,7 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/en/services/architecture-frontend': {
+    '/en/services/frontend-architecture': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
@@ -99,7 +102,7 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/en/services/aide-decision-technique': {
+    '/en/services/technical-decision-support': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
@@ -111,7 +114,7 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
-    '/en/services/ia-pragmatique': {
+    '/en/services/pragmatic-ai': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'
@@ -183,6 +186,18 @@ export default defineNuxtConfig({
       headers: {
         'Cache-Control': 'public, max-age=31536000, immutable'
       }
+    },
+    // Cache pour les images optimisées par Nuxt Image (IPX)
+    '/_ipx/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable'
+      }
+    },
+    // Cache pour les images de services
+    '/services/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable'
+      }
     }
   },
   experimental: {
@@ -193,6 +208,7 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     minify: true,
+    sourceMap: true, // Source maps pour le code serveur
     // Optimisations pour réduire la taille des bundles
     esbuild: {
       options: {
@@ -213,7 +229,9 @@ export default defineNuxtConfig({
       chunkSizeWarningLimit: 1000,
       cssCodeSplit: false, // Force le CSS dans un seul fichier pour éviter le chargement asynchrone
       minify: 'esbuild', // Utiliser esbuild pour une minification plus rapide et efficace
-      sourcemap: false, // Pas de sourcemaps en production pour réduire la taille
+      sourcemap: 'hidden', // Source maps cachés (disponibles pour débogage mais pas chargés automatiquement)
+      // Note: Les warnings Tailwind CSS concernant les source maps sont normaux et non critiques
+      // Lighthouse vérifie principalement les source maps JavaScript, pas CSS
       rollupOptions: {
         // Laisser Nuxt gérer le code splitting automatiquement
         // Tree-shaking standard (suffisant pour Nuxt)
@@ -335,7 +353,7 @@ export default defineNuxtConfig({
     // Optimisations de performance
     provider: 'ipx',
     ipx: {
-      maxAge: 31536000 // 1 an en secondes
+      maxAge: 31536000 // 1 an en secondes (géré par le middleware server/middleware/ipx-cache.ts)
     }
   },
   devtools: {

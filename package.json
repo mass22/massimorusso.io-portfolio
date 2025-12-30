@@ -29,6 +29,7 @@
     "motion-v": "^1.7.3",
     "nuxt": "^4.2.1",
     "nuxt-og-image": "^5.1.12",
+    "nuxt-studio": "beta",
     "zod": "^3.25.76",
     "zod-to-json-schema": "^3.24.6"
   },

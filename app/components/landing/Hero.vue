@@ -33,7 +33,8 @@ const footerLinksWithLabels = computed(() => footer?.links?.map(link => ({
 })) ?? [])
 
 // Désactiver les animations sur mobile pour améliorer les performances
-const isMobile = ref(false)
+// Utiliser useState pour éviter les problèmes d'hydratation
+const isMobile = useState('isMobile', () => false)
 onMounted(() => {
   if (typeof window !== 'undefined') {
     isMobile.value = window.innerWidth < 768
@@ -71,12 +72,6 @@ onMounted(() => {
           delay: 0.1
         }"
       >
-        <!-- <UColorModeAvatar
-          class="size-18 ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
-          :light="global.picture?.light!"
-          :dark="global.picture?.dark!"
-          :alt="global.picture?.alt!"
-        /> -->
             <div class="flex flex-col items-start">
               <p v-for="(tag, i) in page.hero.tags" :key="tag" class="flex items-center">
                 <span class="px-2 py-1 md:text-6xl text-5xl text-vue">
@@ -510,54 +505,19 @@ onMounted(() => {
       </ClientOnly>
     </template>
 
-    <!-- <UMarquee
-      pause-on-hover
-      class="py-2 -mx-8 sm:-mx-12 lg:-mx-16 [--duration:40s]"
-    >
-      <Motion
-        v-for="(img, index) in page.hero.images"
-        :key="index"
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: index * 0.1
-        }"
-      >
-        <NuxtImg
-          width="234"
-          height="234"
-          class="rounded-lg aspect-square object-cover"
-          :class="index % 2 === 0 ? '-rotate-2' : 'rotate-2'"
-          v-bind="img"
-        />
-      </Motion>
-    </UMarquee> -->
-    <ClientOnly>
-      <NuxtImg
-        src="https://picsum.photos/seed/picsum/800/800"
-        :alt="t('hero.image.alt')"
-        width="800"
-        height="800"
-        loading="eager"
-        fetchpriority="high"
-        format="webp"
-        quality="80"
-        class="rounded-lg shadow-2xl ring ring-default"
-        placeholder
-        sizes="(max-width: 768px) 100vw, 800px"
-      />
-      <template #fallback>
-        <div class="w-full bg-muted rounded-lg shadow-2xl ring ring-default animate-pulse" style="aspect-ratio: 1/1; max-width: 800px; margin: 0 auto;" />
-      </template>
-    </ClientOnly>
+    <!-- Image LCP : doit être dans le HTML initial, pas dans ClientOnly -->
+    <!-- Optimisée avec tailles responsives pour réduire la taille téléchargée -->
+    <NuxtImg
+      src="/hero/random-1.avif"
+      :alt="t('hero.image.alt')"
+      width="530"
+      height="530"
+      loading="eager"
+      fetchpriority="high"
+      format="webp"
+      quality="80"
+      class="rounded-lg shadow-2xl ring ring-default"
+      sizes="(max-width: 768px) 100vw, 530px"
+    />
   </UPageHero>
 </template>

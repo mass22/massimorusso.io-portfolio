@@ -52,7 +52,8 @@
     "linkCopied": "Article link copied to clipboard",
     "readArticle": "Read article",
     "empty": "Articles coming soon.",
-    "viewAll": "View all articles"
+    "viewAll": "View all articles",
+    "back": "Back"
   },
   "projects": {
     "viewProject": "View details"

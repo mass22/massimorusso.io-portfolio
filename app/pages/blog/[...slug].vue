@@ -237,17 +237,19 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
     <UMain class="mt-20 px-2">
       <UContainer class="relative min-h-screen">
         <UPage v-if="page">
-          <UBreadcrumb
-            v-if="breadcrumb.length > 0"
-            :items="breadcrumb"
-            separator-icon="i-lucide-chevron-right"
-            class="mb-6"
-            :ui="{
-              root: 'text-sm',
-              link: 'text-muted hover:text-default transition-colors',
-              separatorIcon: 'text-muted'
-            }"
-          />
+          <div class="mb-6">
+            <UButton
+              :to="localePath('/blog')"
+              variant="ghost"
+              color="neutral"
+              size="sm"
+              :label="t('blog.back')"
+              icon="i-lucide-arrow-left"
+              :ui="{
+                label: 'text-muted hover:text-default transition-colors'
+              }"
+            />
+          </div>
           <div class="flex flex-col gap-3 mt-4">
             <div class="flex text-xs text-muted items-center justify-center gap-2">
               <span v-if="page.date">

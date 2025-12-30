@@ -144,19 +144,17 @@ const serviceItems = computed(() => {
             </template>
           </UButton>
         </template>
-        <ClientOnly>
-          <img
-            :src="`/services/service-${index + 1}.webp`"
-            :alt="service.imageAlt || service.title"
-            width="400"
-            height="300"
-            loading="lazy"
-            class="w-full h-48 object-cover rounded-lg"
-          />
-          <template #fallback>
-            <div class="w-full h-48 bg-muted rounded-lg animate-pulse" style="aspect-ratio: 4/3;" />
-          </template>
-        </ClientOnly>
+        <NuxtImg
+          :src="`/services/service-${index + 1}.webp`"
+          :alt="service.imageAlt || service.title"
+          width="400"
+          height="300"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          class="w-full h-48 object-cover rounded-lg"
+          format="webp"
+          quality="80"
+        />
         </UPageCard>
       </Motion>
     </UBlogPosts>

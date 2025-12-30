@@ -41,6 +41,16 @@ Start the development server on `http://localhost:3000`:
 pnpm dev
 ```
 
+### Nuxt Studio (Mode Développement)
+
+Nuxt Studio est maintenant configuré ! En mode développement, vous pouvez éditer votre contenu directement depuis le site :
+
+1. Lancez le serveur de développement avec `pnpm dev`
+2. Un bouton flottant apparaîtra en bas à gauche pour accéder à l'éditeur
+3. Toutes les modifications seront synchronisées en temps réel avec le système de fichiers
+
+> **Note** : Le système de publication n'est disponible qu'en mode production. En développement, utilisez votre workflow habituel (IDE, CLI, GitHub Desktop...) pour publier vos modifications.
+
 ## Production
 
 Build the application for production:
@@ -56,6 +66,35 @@ pnpm preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+### Nuxt Studio (Mode Production)
+
+Pour activer Nuxt Studio en production et permettre l'édition du contenu directement depuis votre site déployé, vous devez configurer :
+
+#### 1. Authentification
+
+Configurez un fournisseur d'authentification OAuth. Exemple avec GitHub :
+
+```bash
+STUDIO_GITHUB_CLIENT_ID=<votre_client_id>
+STUDIO_GITHUB_CLIENT_SECRET=<votre_client_secret>
+```
+
+Pour créer une GitHub OAuth App :
+1. Allez sur [GitHub Settings > Developer settings > OAuth Apps](https://github.com/settings/developers)
+2. Créez une nouvelle OAuth App
+3. Définissez l'URL de callback : `https://votre-domaine.com/_studio/auth/github/callback`
+4. Utilisez le Client ID et Client Secret générés
+
+#### 2. Déploiement
+
+Nuxt Studio nécessite des routes côté serveur pour l'authentification. Votre site doit être **déployé sur une plateforme qui supporte le SSR** avec `nuxt build`.
+
+#### 3. Accéder à Studio
+
+Une fois déployé, naviguez vers `/_studio` (ou la route configurée) et authentifiez-vous pour commencer à éditer.
+
+> 📖 Documentation complète : [Nuxt Studio Setup](https://content.nuxt.com/docs/studio/setup)
 
 ## Renovate integration
 

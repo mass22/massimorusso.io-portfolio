@@ -200,17 +200,19 @@ useHead({
 
 <template>
   <UPage v-if="page">
-    <UBreadcrumb
-      v-if="breadcrumb.length > 0"
-      :items="breadcrumb"
-      separator-icon="i-lucide-chevron-right"
-      class="mb-6"
-      :ui="{
-        root: 'text-sm',
-        link: 'text-muted hover:text-default transition-colors',
-        separatorIcon: 'text-muted'
-      }"
-    />
+    <div class="mb-6">
+      <UButton
+        :to="localePath('/services')"
+        variant="ghost"
+        color="neutral"
+        size="sm"
+        :label="t('blog.back')"
+        icon="i-lucide-arrow-left"
+        :ui="{
+          label: 'text-muted hover:text-default transition-colors'
+        }"
+      />
+    </div>
     <UPageHero
       :title="page.title"
       :description="page.description"

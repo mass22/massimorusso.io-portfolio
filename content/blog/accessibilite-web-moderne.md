@@ -1,18 +1,18 @@
 ---
 title: L'Accessibilité Web à l'Ère Moderne
-description: L'accessibilité web n'est plus une option mais une nécessité. Explorez les meilleures pratiques pour créer des interfaces accessibles à tous.
-date: 2025-02-10
-image: https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
-minRead: 6
-locale: 'fr'
 author:
   name: Massimo Russo
   avatar:
     src: https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: Massimo Russo
+date: 2025-02-10T00:00:00.000Z
+description: L'accessibilité web n'est plus une option mais une nécessité. Explorez les meilleures pratiques pour créer des interfaces accessibles à tous.
+image: https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+locale: fr
+minRead: 6
 ---
 
-## Pourquoi l'accessibilité est cruciale
+## Pourquoi l'accessibilité est cruciale ? Je me le demande....
 
 L'accessibilité web, souvent abrégée en "a11y", consiste à rendre vos sites web utilisables par le plus grand nombre de personnes possible, y compris celles qui utilisent des technologies d'assistance ou qui ont des limitations diverses.
 
@@ -63,4 +63,3 @@ Assurez-vous que l'indicateur de focus (le contour qui apparaît quand on navigu
 L'accessibilité n'est pas une fonctionnalité à ajouter en fin de projet. C'est un aspect fondamental qui doit être intégré dès le début de votre processus de design et de développement.
 
 En créant des interfaces accessibles, vous améliorez l'expérience pour tous vos utilisateurs, pas seulement ceux qui ont besoin d'aménagements. C'est une situation gagnant-gagnant qui mérite l'investissement.
-
