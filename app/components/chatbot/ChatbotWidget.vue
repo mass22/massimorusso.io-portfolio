@@ -119,7 +119,7 @@ onUnmounted(() => {
     <button
       v-if="!isOpen"
       type="button"
-      class="w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95"
+      class="w-14 h-14 rounded-full bg-primary text-black shadow-lg hover:shadow-xl transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95"
       :aria-label="t(locale, 'widget.openChat')"
       @click="toggleWidget"
     >
@@ -136,9 +136,9 @@ onUnmounted(() => {
         aria-modal="true"
       >
         <!-- En-tête -->
-        <div class="flex items-start justify-between p-4 border-b border-default bg-muted/30">
+        <div class="flex items-start justify-between p-4 border-b border-default bg-black">
           <div class="flex-1">
-            <h2 class="text-lg font-semibold text-foreground">{{ t(locale, 'widget.title') }}</h2>
+            <h2 class="text-lg font-semibold text-white">{{ t(locale, 'widget.title') }}</h2>
             <p class="text-sm text-muted mt-0.5">{{ t(locale, 'widget.subtitle') }}</p>
           </div>
           <div class="flex items-center gap-2 ml-4">

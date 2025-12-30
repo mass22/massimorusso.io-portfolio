@@ -9,6 +9,17 @@ const props = defineProps<{
   page: IndexCollectionItem
 }>()
 
+// Utiliser useState pour éviter les problèmes d'hydratation avec available
+// Valeur par défaut optimiste basée sur la config (true)
+const isAvailable = useState('global-available', () => global?.available ?? true)
+
+// Synchroniser avec la config réelle une fois monté
+onMounted(() => {
+  if (global?.available !== undefined) {
+    isAvailable.value = global.available
+  }
+})
+
 // Transformer les liens du hero pour appliquer localePath
 const heroLinks = computed(() => {
   if (!props.page?.hero?.links) return []
@@ -22,7 +33,7 @@ const heroLinks = computed(() => {
 // Toujours retourner le chemin sans hash pour éviter les problèmes d'hydratation
 // Le hash sera géré par le navigateur lors du clic
 const calendarLink = computed(() => {
-  if (!global.available) return undefined
+  if (!isAvailable.value) return undefined
   return localePath('/contact')
 })
 
@@ -205,47 +216,28 @@ onMounted(() => {
             v-if="heroLinks.length > 0"
             class="flex flex-col items-center gap-2 w-full mt-2"
           >
-            <ClientOnly>
-              <UButton
-                :color="global.available ? 'success' : 'error'"
-                variant="ghost"
-                class="gap-2 w-full justify-center"
-                :to="global.available ? calendarLink : undefined"
-                :disabled="!global.available"
-                :label="global.available ? t('contact.availability.available.title') : t('contact.availability.unavailable.title')"
-                :ui="{ base: 'justify-center' }"
-              >
-                <template #leading>
-                  <span class="relative flex size-2" aria-hidden="true">
-                    <span
-                      class="absolute inline-flex size-full rounded-full opacity-75"
-                      :class="global.available ? 'bg-success' : 'bg-error'"
-                    />
-                    <span
-                      class="relative inline-flex size-2 scale-90 rounded-full"
-                      :class="global.available ? 'bg-success' : 'bg-error'"
-                    />
-                  </span>
-                </template>
-              </UButton>
-              <template #fallback>
-                <UButton
-                  color="error"
-                  variant="ghost"
-                  class="gap-2 w-full justify-center"
-                  disabled
-                  :label="t('contact.availability.unavailable.title')"
-                  :ui="{ base: 'justify-center' }"
-                >
-                  <template #leading>
-                    <span class="relative flex size-2" aria-hidden="true">
-                      <span class="absolute inline-flex size-full rounded-full opacity-75 bg-error" />
-                      <span class="relative inline-flex size-2 scale-90 rounded-full bg-error" />
-                    </span>
-                  </template>
-                </UButton>
+            <UButton
+              :color="isAvailable ? 'success' : 'error'"
+              variant="ghost"
+              class="gap-2 w-full justify-center"
+              :to="isAvailable ? calendarLink : undefined"
+              :disabled="!isAvailable"
+              :label="isAvailable ? t('contact.availability.available.title') : t('contact.availability.unavailable.title')"
+              :ui="{ base: 'justify-center' }"
+            >
+              <template #leading>
+                <span class="relative flex size-2" aria-hidden="true">
+                  <span
+                    class="absolute inline-flex size-full rounded-full opacity-75"
+                    :class="isAvailable ? 'bg-success' : 'bg-error'"
+                  />
+                  <span
+                    class="relative inline-flex size-2 scale-90 rounded-full"
+                    :class="isAvailable ? 'bg-success' : 'bg-error'"
+                  />
+                </span>
               </template>
-            </ClientOnly>
+            </UButton>
             <UButton
               v-if="page.hero.isResourcesAvailable"
               v-bind="heroLinks[0]"
@@ -296,47 +288,28 @@ onMounted(() => {
           v-if="heroLinks.length > 0"
           class="flex flex-col items-center gap-2 w-full mt-2"
         >
-          <ClientOnly>
-            <UButton
-              :color="global.available ? 'success' : 'error'"
-              variant="ghost"
-              class="gap-2 w-full justify-center"
-              :to="global.available ? calendarLink : undefined"
-              :disabled="!global.available"
-              :label="global.available ? t('contact.availability.available.title') : t('contact.availability.unavailable.title')"
-              :ui="{ base: 'justify-center' }"
-            >
-              <template #leading>
-                <span class="relative flex size-2" aria-hidden="true">
-                  <span
-                    class="absolute inline-flex size-full rounded-full opacity-75"
-                    :class="global.available ? 'bg-success' : 'bg-error'"
-                  />
-                  <span
-                    class="relative inline-flex size-2 scale-90 rounded-full"
-                    :class="global.available ? 'bg-success' : 'bg-error'"
-                  />
-                </span>
-              </template>
-            </UButton>
-            <template #fallback>
-              <UButton
-                color="error"
-                variant="ghost"
-                class="gap-2 w-full justify-center"
-                disabled
-                :label="t('contact.availability.unavailable.title')"
-                :ui="{ base: 'justify-center' }"
-              >
-                <template #leading>
-                  <span class="relative flex size-2" aria-hidden="true">
-                    <span class="absolute inline-flex size-full rounded-full opacity-75 bg-error" />
-                    <span class="relative inline-flex size-2 scale-90 rounded-full bg-error" />
-                  </span>
-                </template>
-              </UButton>
+          <UButton
+            :color="isAvailable ? 'success' : 'error'"
+            variant="ghost"
+            class="gap-2 w-full justify-center"
+            :to="isAvailable ? calendarLink : undefined"
+            :disabled="!isAvailable"
+            :label="isAvailable ? t('contact.availability.available.title') : t('contact.availability.unavailable.title')"
+            :ui="{ base: 'justify-center' }"
+          >
+            <template #leading>
+              <span class="relative flex size-2" aria-hidden="true">
+                <span
+                  class="absolute inline-flex size-full rounded-full opacity-75"
+                  :class="isAvailable ? 'bg-success' : 'bg-error'"
+                />
+                <span
+                  class="relative inline-flex size-2 scale-90 rounded-full"
+                  :class="isAvailable ? 'bg-success' : 'bg-error'"
+                />
+              </span>
             </template>
-          </ClientOnly>
+          </UButton>
           <UButton
             v-if="page.hero.isResourcesAvailable"
             v-bind="heroLinks[0]"
@@ -387,47 +360,28 @@ onMounted(() => {
               v-if="heroLinks.length > 0"
               class="flex flex-col items-center gap-2 w-full mt-2"
             >
-              <ClientOnly>
-                <UButton
-                  :color="global.available ? 'success' : 'error'"
-                  variant="ghost"
-                  class="gap-2 w-full justify-center"
-                  :to="global.available ? calendarLink : undefined"
-                  :disabled="!global.available"
-                  :label="global.available ? t('contact.availability.available.title') : t('contact.availability.unavailable.title')"
-                  :ui="{ base: 'justify-center' }"
-                >
-                  <template #leading>
-                    <span class="relative flex size-2" aria-hidden="true">
-                      <span
-                        class="absolute inline-flex size-full rounded-full opacity-75"
-                        :class="global.available ? 'bg-success' : 'bg-error'"
-                      />
-                      <span
-                        class="relative inline-flex size-2 scale-90 rounded-full"
-                        :class="global.available ? 'bg-success' : 'bg-error'"
-                      />
-                    </span>
-                  </template>
-                </UButton>
-                <template #fallback>
-                  <UButton
-                    color="error"
-                    variant="ghost"
-                    class="gap-2 w-full justify-center"
-                    disabled
-                    :label="t('contact.availability.unavailable.title')"
-                    :ui="{ base: 'justify-center' }"
-                  >
-                    <template #leading>
-                      <span class="relative flex size-2" aria-hidden="true">
-                        <span class="absolute inline-flex size-full rounded-full opacity-75 bg-error" />
-                        <span class="relative inline-flex size-2 scale-90 rounded-full bg-error" />
-                      </span>
-                    </template>
-                  </UButton>
+              <UButton
+                :color="isAvailable ? 'success' : 'error'"
+                variant="ghost"
+                class="gap-2 w-full justify-center"
+                :to="isAvailable ? calendarLink : undefined"
+                :disabled="!isAvailable"
+                :label="isAvailable ? t('contact.availability.available.title') : t('contact.availability.unavailable.title')"
+                :ui="{ base: 'justify-center' }"
+              >
+                <template #leading>
+                  <span class="relative flex size-2" aria-hidden="true">
+                    <span
+                      class="absolute inline-flex size-full rounded-full opacity-75"
+                      :class="isAvailable ? 'bg-success' : 'bg-error'"
+                    />
+                    <span
+                      class="relative inline-flex size-2 scale-90 rounded-full"
+                      :class="isAvailable ? 'bg-success' : 'bg-error'"
+                    />
+                  </span>
                 </template>
-              </ClientOnly>
+              </UButton>
               <UButton
                 v-if="page.hero.isResourcesAvailable"
                 v-bind="heroLinks[0]"
