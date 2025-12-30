@@ -176,6 +176,7 @@ export default defineEventHandler(async (event) => {
     // Si consent est true, envoyer l'email de notification
     // Ne pas faire échouer la requête si l'envoi d'email échoue
     if (data.consent) {
+      console.log('[API] 📧 Tentative d\'envoi d\'email pour le lead:', leadId)
       sendAdminLeadEmail({
         email: data.email,
         name: data.name,
@@ -184,10 +185,23 @@ export default defineEventHandler(async (event) => {
         locale: data.locale || 'en',
         leadId,
         token: accessToken
-      }).catch((error) => {
-        // Logger l'erreur mais continuer
-        console.error('[API] Erreur lors de l\'envoi de l\'email (non bloquante):', error)
       })
+        .then((success) => {
+          if (success) {
+            console.log('[API] ✅ Email envoyé avec succès pour le lead:', leadId)
+          } else {
+            console.error('[API] ❌ Échec de l\'envoi d\'email pour le lead:', leadId)
+            console.error('[API] 💡 Vérifiez les logs ci-dessus pour plus de détails')
+          }
+        })
+        .catch((error) => {
+          // Logger l'erreur mais continuer
+          console.error('[API] ❌ Exception lors de l\'envoi de l\'email (non bloquante):', error)
+          console.error('[API]   Message:', error.message)
+          console.error('[API]   Stack:', error.stack)
+        })
+    } else {
+      console.log('[API] ⏭️  Consentement non donné, email non envoyé')
     }
 
     // Retourner l'ID et le token
