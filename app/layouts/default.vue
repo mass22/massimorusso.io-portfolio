@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
-import { SpeedInsights } from "@vercel/speed-insights/nuxt"
+import { SpeedInsights } from '@vercel/speed-insights/nuxt'
 import { useWindowScroll } from '@vueuse/core'
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
@@ -40,6 +40,6 @@ const showStickyCTA = computed(() => isClient && y.value > 300 && !isContactPage
     </UContainer>
     <StickyCTA v-if="!isLeadPage" />
     <BackToTop />
+    <SpeedInsights />
   </div>
-  <SpeedInsights/>
 </template>
