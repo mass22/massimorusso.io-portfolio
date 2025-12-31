@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { FAQCategory } from '~/types/content'
+import { markdownToHtml } from '~/utils/markdown'
 
 type Props = {
   title: string
@@ -12,6 +13,12 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
   withAnimation: true
 })
+
+// Helper pour convertir le contenu markdown en HTML
+const renderMarkdown = (content: string) => {
+  if (!content) return ''
+  return markdownToHtml(content)
+}
 
 // Transformation des données FAQ pour UTabs
 const faqTabsItems = computed(() => {
@@ -74,12 +81,8 @@ const ui = {
               <div
                 v-if="item?.content"
                 class="prose prose-sm dark:prose-invert max-w-none"
-              >
-                <MDC
-                  :value="item.content"
-                  unwrap="p"
-                />
-              </div>
+                v-html="renderMarkdown(item.content)"
+              />
             </template>
           </UAccordion>
         </template>
@@ -119,12 +122,8 @@ const ui = {
             <div
               v-if="item?.content"
               class="prose prose-sm dark:prose-invert max-w-none"
-            >
-              <MDC
-                :value="item.content"
-                unwrap="p"
-              />
-            </div>
+              v-html="renderMarkdown(item.content)"
+            />
           </template>
         </UAccordion>
       </template>

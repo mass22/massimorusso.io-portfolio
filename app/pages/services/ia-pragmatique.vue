@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useSiteUrl } from '~/composables/useSiteUrl'
+import { markdownToHtml } from '~/utils/markdown'
 
 definePageMeta({
   layout: 'service'
@@ -30,9 +31,10 @@ const { data: page } = await useAsyncData(
   }
 )
 
-// Content markdown pour MDC
-const markdownContent = computed(() => {
-  return page.value?.content || ''
+// Content markdown converti en HTML
+const htmlContent = computed(() => {
+  if (!page.value?.content) return ''
+  return markdownToHtml(page.value.content)
 })
 
 if (!page.value) {
@@ -196,10 +198,10 @@ useHead({
       </div>
 
       <div
-        v-if="markdownContent"
+        v-if="htmlContent"
         class="markdown-content prose prose-neutral dark:prose-invert max-w-none"
       >
-        <MDC :value="markdownContent" />
+        <div v-html="htmlContent" />
       </div>
     </UPageBody>
 

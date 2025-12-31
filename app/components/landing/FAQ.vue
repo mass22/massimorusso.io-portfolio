@@ -1,10 +1,18 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { IndexCollectionItem } from '@nuxt/content'
 import type { FAQ } from '~/types/content'
+import { markdownToHtml } from '~/utils/markdown'
 
 const props = defineProps<{
   page: IndexCollectionItem & { faq?: FAQ }
 }>()
+
+// Helper pour convertir le contenu markdown en HTML
+const renderMarkdown = (content: string) => {
+  if (!content) return ''
+  return markdownToHtml(content)
+}
 
 const items = computed(() => {
   if (!props.page?.faq?.categories) {
@@ -67,12 +75,8 @@ const ui = {
               <div
                 v-if="accordionItem?.content"
                 class="prose prose-sm dark:prose-invert max-w-none"
-              >
-                <MDC
-                  :value="accordionItem.content"
-                  unwrap="p"
-                />
-              </div>
+                v-html="renderMarkdown(accordionItem.content)"
+              />
             </template>
           </UAccordion>
         </template>

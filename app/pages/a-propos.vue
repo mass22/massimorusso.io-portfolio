@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { markdownToHtml } from '~/utils/markdown'
+
 const { t, locale } = useI18n()
 
 const { data: page } = await useAsyncData(`about-${locale.value}`, async () => {
@@ -16,6 +18,11 @@ if (!page.value) {
 }
 
 const { global } = useAppConfig()
+
+const htmlContent = computed(() => {
+  if (!page.value?.content) return ''
+  return markdownToHtml(page.value.content)
+})
 
 useSeoMeta({
   title: page.value?.seo?.title || page.value?.title,
@@ -50,12 +57,11 @@ useSeoMeta({
         container: '!pt-0'
       }"
     >
-      <div class="prose prose-neutral dark:prose-invert max-w-none">
-        <MDC
-          v-if="page.content"
-          :value="page.content"
-        />
-      </div>
+      <div
+        v-if="htmlContent"
+        class="prose prose-neutral dark:prose-invert max-w-none"
+        v-html="htmlContent"
+      />
     </UPageSection>
   </UPage>
 </template>

@@ -1,12 +1,17 @@
 <script setup lang="ts">
+import { markdownToHtml } from '~/utils/markdown'
+
 type Props = {
   content: string
   withAnimation?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   withAnimation: true
 })
+
+// Convertir le markdown en HTML côté serveur et client
+const htmlContent = computed(() => markdownToHtml(props.content))
 </script>
 
 <template>
@@ -33,7 +38,7 @@ withDefaults(defineProps<Props>(), {
 
           <!-- Contenu markdown avec typographie premium -->
           <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-highlighted prose-headings:leading-tight prose-h1:text-3xl md:prose-h1:text-4xl lg:prose-h1:text-5xl prose-h1:mb-6 prose-h1:mt-0 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mb-5 prose-h2:mt-8 prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-6 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:text-muted prose-p:mb-6 prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-a:transition-all prose-strong:text-highlighted prose-strong:font-semibold prose-ul:my-6 prose-ul:space-y-3 prose-li:text-muted prose-li:leading-relaxed prose-li:marker:text-primary/60 prose-ol:my-6 prose-ol:space-y-3 prose-blockquote:border-l-4 prose-blockquote:border-primary/30 prose-blockquote:pl-6 prose-blockquote:py-2 prose-blockquote:bg-primary/5 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:text-muted prose-code:text-sm prose-code:bg-default/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-default/50 prose-pre:rounded-xl prose-pre:p-6 prose-pre:border prose-pre:border-default/20 prose-hr:border-default/20 prose-hr:my-8">
-            <MDC :value="content" />
+            <div v-html="htmlContent" />
           </div>
         </div>
       </div>
@@ -56,7 +61,7 @@ withDefaults(defineProps<Props>(), {
 
         <!-- Contenu markdown avec typographie premium -->
         <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-highlighted prose-headings:leading-tight prose-h1:text-3xl md:prose-h1:text-4xl lg:prose-h1:text-5xl prose-h1:mb-6 prose-h1:mt-0 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mb-5 prose-h2:mt-8 prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-6 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:text-muted prose-p:mb-6 prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-a:transition-all prose-strong:text-highlighted prose-strong:font-semibold prose-ul:my-6 prose-ul:space-y-3 prose-li:text-muted prose-li:leading-relaxed prose-li:marker:text-primary/60 prose-ol:my-6 prose-ol:space-y-3 prose-blockquote:border-l-4 prose-blockquote:border-primary/30 prose-blockquote:pl-6 prose-blockquote:py-2 prose-blockquote:bg-primary/5 prose-blockquote:rounded-r-lg prose-blockquote:italic prose-blockquote:text-muted prose-code:text-sm prose-code:bg-default/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-default/50 prose-pre:rounded-xl prose-pre:p-6 prose-pre:border prose-pre:border-default/20 prose-hr:border-default/20 prose-hr:my-8">
-          <MDC :value="content" />
+          <div v-html="htmlContent" />
         </div>
       </div>
     </div>
