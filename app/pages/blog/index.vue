@@ -5,7 +5,7 @@ const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () 
   const allPages = await queryCollection('pages').all()
 
   // Stratégie 1: Chercher directement par locale (le plus fiable)
-  let blogPage = allPages.find((p) => {
+  const blogPage = allPages.find((p) => {
     const rawPage = p as any
     // Vérifier la locale d'abord
     if (rawPage.locale !== locale.value) {
@@ -13,21 +13,25 @@ const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () 
     }
 
     // Ensuite vérifier le nom de fichier ou le path
-    const fileName = rawPage._path?.split('/').pop() || rawPage._id?.split(':').pop() || ''
-    const path = rawPage.path || rawPage._path || ''
+    const fileName = rawPage._path?.split('/').pop()
+      || rawPage._id?.split(':').pop()
+      || ''
+    const path = rawPage.path
+      || rawPage._path
+      || ''
 
     // Pour la locale anglaise, chercher blog.en.yml ou /en/blog
     if (locale.value === 'en') {
-      return fileName === 'blog.en.yml' ||
-             fileName.includes('blog.en') ||
-             path.includes('/en/blog') ||
-             path.includes('blog.en')
+      return fileName === 'blog.en.yml'
+        || fileName.includes('blog.en')
+        || path.includes('/en/blog')
+        || path.includes('blog.en')
     }
 
     // Pour la locale française, chercher blog.yml ou /blog (sans préfixe)
-    return fileName === 'blog.yml' ||
-           (fileName.includes('blog') && !fileName.includes('.en')) ||
-           (path.includes('/blog') && !path.includes('/en/'))
+    return fileName === 'blog.yml'
+      || (fileName.includes('blog') && !fileName.includes('.en'))
+      || (path.includes('/blog') && !path.includes('/en/'))
   })
 
   if (blogPage) {
@@ -40,7 +44,9 @@ const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () 
     if (rawPage.locale !== locale.value) {
       return false
     }
-    const fileName = rawPage._path?.split('/').pop() || rawPage._id?.split(':').pop() || ''
+    const fileName = rawPage._path?.split('/').pop()
+      || rawPage._id?.split(':').pop()
+      || ''
     return fileName.includes('blog')
   })
 
@@ -54,8 +60,11 @@ const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () 
     if (rawPage.locale !== 'fr') {
       return false
     }
-    const fileName = rawPage._path?.split('/').pop() || rawPage._id?.split(':').pop() || ''
-    return fileName === 'blog.yml' || (fileName.includes('blog') && !fileName.includes('.en'))
+    const fileName = rawPage._path?.split('/').pop()
+      || rawPage._id?.split(':').pop()
+      || ''
+    return fileName === 'blog.yml'
+      || (fileName.includes('blog') && !fileName.includes('.en'))
   })
 
   return frFallback || null
