@@ -80,9 +80,13 @@ const { localizedPosts: posts } = await useBlogPosts()
 // La page peut exister même sans contenu
 
 // Fonction helper pour générer un hash stable basé sur l'ID du post
-// Cela garantit que la rotation est toujours la même pour le même post
+// Utiliser uniquement _id ou slug pour éviter les différences d'hydratation
+// Ne pas utiliser post.path car il peut varier entre serveur et client
 const getPostHash = (post: any): number => {
-  const id = post._id || post.slug || post.path || ''
+  // Utiliser _id en priorité car c'est l'identifiant le plus stable
+  const id = post._id || post.slug || ''
+  if (!id) return 0
+
   let hash = 0
   for (let i = 0; i < id.length; i++) {
     const char = id.charCodeAt(i)
@@ -136,7 +140,7 @@ useSeoMeta({
       >
         <Motion
           v-for="(post, index) in validPosts"
-          :key="(post as any)._id || post.slug || post.path || index"
+          :key="(post as any)._id || post.slug || `post-${index}`"
           :initial="{ opacity: 0, transform: 'translateY(10px)' }"
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
           :transition="{ delay: 0.2 * index }"

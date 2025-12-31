@@ -2,7 +2,6 @@ import type { BlogCollectionItem } from '@nuxt/content'
 
 export const useBlogPosts = async (limit?: number) => {
   const { locale } = useI18n()
-  const localePath = useLocalePath()
 
   const { data: posts } = await useAsyncData(`blog-posts-${locale.value}-${limit || 'all'}`, async () => {
     const query = queryCollection('blog').order('date', 'DESC')
@@ -18,6 +17,7 @@ export const useBlogPosts = async (limit?: number) => {
   })
 
   const localizedPosts = computed(() => {
+    const currentLocale = locale.value
     return (posts.value ?? []).map((post) => {
       let slug = post.slug
 
@@ -49,7 +49,11 @@ export const useBlogPosts = async (limit?: number) => {
       }
 
       const blogPath = slug ? `/blog/${slug}` : '/blog'
-      const localizedPath = localePath(blogPath)
+      // Calculer le chemin de manière déterministe pour éviter les erreurs d'hydratation
+      // Utiliser la locale actuelle de manière synchrone
+      const localizedPath = currentLocale === 'fr' || !currentLocale
+        ? blogPath
+        : `/${currentLocale}${blogPath}`
 
       return {
         ...post,

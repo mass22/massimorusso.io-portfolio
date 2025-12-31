@@ -3,7 +3,6 @@ import type { IndexCollectionItem } from '@nuxt/content'
 import { computed } from 'vue'
 
 const { t, locale, defaultLocale } = useI18n()
-const localePath = useLocalePath()
 
 defineProps<{
   page: IndexCollectionItem
@@ -24,19 +23,33 @@ const defaultLocaleCode = computed(() => {
   return localeValue || 'fr'
 })
 
-const localizedPosts = computed(() => {
-  return (posts.value ?? []).map((post) => {
-    const localeCode = post.locale || defaultLocaleCode.value
-    const basePath = post.path || (post.slug ? `/blog/${post.slug}` : '/blog')
-    const segments = basePath.split('/').filter(Boolean)
+// Calculer le chemin du blog de manière déterministe
+const blogPath = computed(() => {
+  const currentLocale = locale.value
+  const defaultLocaleVal = defaultLocaleCode.value
+  return currentLocale && currentLocale !== defaultLocaleVal
+    ? `/${currentLocale}/blog`
+    : '/blog'
+})
 
-    if (segments[0] === localeCode && localeCode !== defaultLocaleCode.value) {
+const localizedPosts = computed(() => {
+  const currentLocale = locale.value
+  const defaultLocaleVal = defaultLocaleCode.value
+
+  return (posts.value ?? []).map((post) => {
+    const basePath = post.path || (post.slug ? `/blog/${post.slug}` : '/blog')
+
+    // Normaliser le chemin en enlevant le préfixe de locale s'il existe
+    const segments = basePath.split('/').filter(Boolean)
+    if (segments[0] === 'en' || segments[0] === 'fr') {
       segments.shift()
     }
 
+    // Reconstruire le chemin de manière déterministe
     const normalizedPath = `/${segments.join('/')}`
-    const localizedPath = localeCode && localeCode !== defaultLocaleCode.value
-      ? `/${localeCode}${normalizedPath}`
+    // Calculer le chemin localisé de manière synchrone et déterministe
+    const localizedPath = currentLocale && currentLocale !== defaultLocaleVal
+      ? `/${currentLocale}${normalizedPath}`
       : normalizedPath
 
     // Nettoyer l'image si c'est un ID de média au lieu d'une URL
@@ -85,7 +98,7 @@ const localizedPosts = computed(() => {
       >
         <Motion
           v-for="(post, index) in localizedPosts"
-          :key="(post as any)._id || post.slug || post.path || index"
+          :key="(post as any)._id || post.slug || `post-${index}`"
           :initial="{ opacity: 0, transform: 'translateY(20px)' }"
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
           :transition="{ delay: 0.1 * index, duration: 0.5 }"
@@ -127,7 +140,7 @@ const localizedPosts = computed(() => {
       </UBlogPosts>
       <div class="flex justify-center mt-8">
         <UButton
-          :to="localePath('/blog')"
+          :to="blogPath"
           variant="outline"
           size="md"
           :label="t('blog.viewAll')"

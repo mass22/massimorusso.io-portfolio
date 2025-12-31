@@ -178,3 +178,4 @@ Le système utilise `$fetch` de Nuxt (basé sur `ofetch`) au lieu de `fetch` nat
 - [Documentation Nuxt $fetch](https://nuxt.com/docs/api/utils/dollarfetch)
 - [Guide de dépannage Resend](./RESEND_EMAIL_TROUBLESHOOTING.md)
 
+

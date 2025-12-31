@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+set -e  # Arrêter immédiatement si une commande échoue
+
+pnpm lint-staged
+
+# Exécuter le typecheck (seulement si des fichiers TypeScript/Vue ont été modifiés)
+if git diff --cached --name-only | grep -qE '\.(ts|tsx|vue)$'; then
+  pnpm typecheck
+fi
+
+# Exécuter les tests liés aux fichiers modifiés (seulement si des fichiers pertinents ont été modifiés)
+if git diff --cached --name-only | grep -qE '\.(js|ts|tsx|vue)$|\.(test|spec)\.(js|ts|tsx)$'; then
+  pnpm test:run
+fi
+

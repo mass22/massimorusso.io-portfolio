@@ -8,7 +8,9 @@
     "preview": "nuxt preview",
     "preprod": "nuxt build && nuxt preview --port 3001",
     "postinstall": "nuxt prepare",
+    "prepare": "husky",
     "test": "vitest",
+    "test:run": "vitest run",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:oxlint": "oxlint",
@@ -35,7 +37,9 @@
     "zod-to-json-schema": "^3.24.6"
   },
   "lint-staged": {
-    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint"
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue}": [
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.9.0",
@@ -45,6 +49,9 @@
     "@vueuse/nuxt": "^13.9.0",
     "eslint": "^9.38.0",
     "happy-dom": "^20.0.10",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
+    "oxlint": "^1.36.0",
     "sass-embedded": "^1.93.2",
     "sharp": "^0.34.5",
     "typescript": "^5.9.3",

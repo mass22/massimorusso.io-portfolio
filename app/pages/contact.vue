@@ -4,11 +4,14 @@ const { t } = useI18n()
 
 const linkedinUrl = 'https://www.linkedin.com/in/russomassimo-frontend-consultant'
 
+const seoDescription = computed(() => t('contact.seo.description', { email: global.email }))
+const seoTitle = computed(() => t('contact.seo.title'))
+
 useSeoMeta({
-  description: () => t('contact.seo.description', { email: global.email }),
-  ogDescription: () => t('contact.seo.description', { email: global.email }),
-  ogTitle: () => t('contact.seo.title'),
-  title: () => t('contact.seo.title')
+  description: seoDescription,
+  ogDescription: seoDescription,
+  ogTitle: seoTitle,
+  title: seoTitle
 })
 </script>
 
@@ -68,7 +71,7 @@ useSeoMeta({
     </UPageSection>
 
     <!-- Section "Pourquoi me contacter ?" -->
-    <LazyLandingContactWhy />
+    <LandingContactWhy />
 
     <!-- Section principale : Cal.com + LinkedIn -->
     <UPageSection>
