@@ -79,6 +79,19 @@ const { localizedPosts: posts } = await useBlogPosts()
 // Permettre une page blog vide (pas d'erreur si pas de posts)
 // La page peut exister même sans contenu
 
+// Fonction helper pour générer un hash stable basé sur l'ID du post
+// Cela garantit que la rotation est toujours la même pour le même post
+const getPostHash = (post: any): number => {
+  const id = post._id || post.slug || post.path || ''
+  let hash = 0
+  for (let i = 0; i < id.length; i++) {
+    const char = id.charCodeAt(i)
+    hash = ((hash << 5) - hash) + char
+    hash = hash & hash // Convert to 32bit integer
+  }
+  return Math.abs(hash)
+}
+
 // Filtrer et nettoyer les posts pour s'assurer que les images sont des URLs valides
 const validPosts = computed(() => {
   return posts.value?.map((post) => {
@@ -123,7 +136,7 @@ useSeoMeta({
       >
         <Motion
           v-for="(post, index) in validPosts"
-          :key="index"
+          :key="(post as any)._id || post.slug || post.path || index"
           :initial="{ opacity: 0, transform: 'translateY(10px)' }"
           :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
           :transition="{ delay: 0.2 * index }"
@@ -142,7 +155,7 @@ useSeoMeta({
                 image:
                   'group-hover/blog-post:scale-105 rounded-lg shadow-lg border-4 border-muted ring-2 ring-default',
                 header:
-                  index % 2 === 0
+                  getPostHash(post) % 2 === 0
                     ? 'sm:-rotate-1 overflow-visible'
                     : 'sm:rotate-1 overflow-visible'
               }"
