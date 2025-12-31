@@ -17,8 +17,9 @@ export function useSiteUrl(): string {
     return baseFromI18n
   }
 
-  // Priorité 3: useRequestURL() seulement si disponible et pas localhost
-  if (import.meta.server) {
+  // Priorité 3: useRequestURL() seulement si disponible, pas en prerender, et pas localhost
+  // Ne jamais utiliser useRequestURL() pendant le prerender car il n'est pas disponible
+  if (import.meta.server && !import.meta.prerender) {
     try {
       const requestURL = useRequestURL()
       if (requestURL.origin && !requestURL.origin.includes('localhost')) {

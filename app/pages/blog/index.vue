@@ -4,34 +4,61 @@ const { t, locale } = useI18n()
 const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () => {
   const allPages = await queryCollection('pages').all()
 
-  // Chercher par path exact d'abord
-  let blogPage = allPages.find(p =>
-    (p.path === '/blog' || p.path === '/en/blog') && p.locale === locale.value
-  )
+  // Stratégie 1: Chercher directement par locale (le plus fiable)
+  let blogPage = allPages.find((p) => {
+    const rawPage = p as any
+    // Vérifier la locale d'abord
+    if (rawPage.locale !== locale.value) {
+      return false
+    }
 
-  if (blogPage) {
-    return blogPage
-  }
+    // Ensuite vérifier le nom de fichier ou le path
+    const fileName = rawPage._path?.split('/').pop() || rawPage._id?.split(':').pop() || ''
+    const path = rawPage.path || rawPage._path || ''
 
-  // Chercher par nom de fichier (blog.yml ou blog.en.yml) - utile pour le prerender
-  blogPage = allPages.find((p) => {
-    const fileName = (p as any)._path?.split('/').pop() || ''
-    const isBlogFile = fileName === 'blog.yml' || fileName === 'blog.en.yml'
-    return isBlogFile && p.locale === locale.value
+    // Pour la locale anglaise, chercher blog.en.yml ou /en/blog
+    if (locale.value === 'en') {
+      return fileName === 'blog.en.yml' ||
+             fileName.includes('blog.en') ||
+             path.includes('/en/blog') ||
+             path.includes('blog.en')
+    }
+
+    // Pour la locale française, chercher blog.yml ou /blog (sans préfixe)
+    return fileName === 'blog.yml' ||
+           (fileName.includes('blog') && !fileName.includes('.en')) ||
+           (path.includes('/blog') && !path.includes('/en/'))
   })
 
   if (blogPage) {
     return blogPage
   }
 
-  // Fallback: chercher n'importe quel fichier blog avec locale fr
-  const fallback = allPages.find((p) => {
-    const fileName = (p as any)._path?.split('/').pop() || ''
-    const isBlogFile = fileName === 'blog.yml' || fileName === 'blog.en.yml'
-    return isBlogFile && p.locale === 'fr'
+  // Stratégie 2: Fallback - chercher n'importe quel fichier blog avec la bonne locale
+  const localeFallback = allPages.find((p) => {
+    const rawPage = p as any
+    if (rawPage.locale !== locale.value) {
+      return false
+    }
+    const fileName = rawPage._path?.split('/').pop() || rawPage._id?.split(':').pop() || ''
+    return fileName.includes('blog')
   })
 
-  return fallback || null
+  if (localeFallback) {
+    return localeFallback
+  }
+
+  // Stratégie 3: Dernier fallback - utiliser le fichier français si disponible
+  const frFallback = allPages.find((p) => {
+    const rawPage = p as any
+    if (rawPage.locale !== 'fr') {
+      return false
+    }
+    const fileName = rawPage._path?.split('/').pop() || rawPage._id?.split(':').pop() || ''
+    return fileName === 'blog.yml' || (fileName.includes('blog') && !fileName.includes('.en'))
+  })
+
+  return frFallback || null
 })
 if (!page.value) {
   throw createError({
@@ -40,11 +67,8 @@ if (!page.value) {
 }
 const { localizedPosts: posts } = await useBlogPosts()
 
-if (!posts.value) {
-  throw createError({
-    fatal: true, statusCode: 404, statusMessage: t('common.blogsNotFound')
-  })
-}
+// Permettre une page blog vide (pas d'erreur si pas de posts)
+// La page peut exister même sans contenu
 
 // Filtrer et nettoyer les posts pour s'assurer que les images sont des URLs valides
 const validPosts = computed(() => {
@@ -84,7 +108,10 @@ useSeoMeta({
         container: '!pt-0'
       }"
     >
-      <UBlogPosts orientation="vertical">
+      <UBlogPosts
+        v-if="validPosts.length > 0"
+        orientation="vertical"
+      >
         <Motion
           v-for="(post, index) in validPosts"
           :key="index"
@@ -114,6 +141,14 @@ useSeoMeta({
           </NuxtLink>
         </Motion>
       </UBlogPosts>
+      <div
+        v-else
+        class="text-center py-12"
+      >
+        <p class="text-muted">
+          {{ t('common.noPosts') || 'Aucun article disponible pour le moment.' }}
+        </p>
+      </div>
     </UPageSection>
   </UPage>
 </template>
