@@ -10,6 +10,7 @@
     "services": "Services",
     "blog": "Blog",
     "speaking": "Conférences",
+    "podcast": "Podcast",
     "about": "À propos",
     "contact": "Contact",
     "menu": "Menu",
@@ -36,7 +37,7 @@
       "button": "Me contacter"
     },
     "speaking": {
-      "description": "Conférences, talks et podcasts autour de l’architecture frontend, de la prise de décision technique et de l’IA pragmatique.",
+      "description": "Conférences et interventions publiques autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.",
       "viewAll": "Voir toutes les conférences"
     },
     "companies": {
@@ -223,16 +224,26 @@
     "listen": "Écouter",
     "watch": "Regarder",
     "categories": {
-      "conference": "Conférences",
-      "liveTalk": "Interventions en direct",
-      "podcast": "Podcasts"
+      "conference": "Conférences publiques",
+      "liveTalk": "Interventions & workshops",
+      "podcast": "Interviews"
     },
     "blocks": {
-      "talks": "Talks & conférences",
-      "podcasts": "Podcasts"
+      "talks": "Conférences publiques",
+      "podcasts": "Interviews"
     }
   },
   "podcast": {
+    "title": "Podcast",
+    "listen": "Écouter",
+    "download": "Télécharger",
+    "listenOn": "Écouter sur",
+    "featured": "À la une",
+    "featuredEpisodes": "Épisodes à la une",
+    "latestEpisodes": "Derniers épisodes",
+    "showMore": "Voir tous les épisodes",
+    "showLess": "Afficher moins",
+    "noneAvailable": "Aucun épisode disponible",
     "player": {
       "loading": "Chargement du lecteur...",
       "error": "Le lecteur de podcast n'est pas disponible pour le moment.",

@@ -1,7 +1,9 @@
 locale: 'fr'
 title: Services
 description: Accompagnement en architecture frontend, aide à la décision technique et intégration pragmatique de l'IA pour des contextes complexes et structurants.
-heroSupportingLine: Pour les CTO, Tech Leads et dirigeants qui doivent prendre des décisions techniques structurantes dans un contexte de complexité et de contraintes réelles.
+
+heroContext: |
+  Ces services s'adressent aux CTO, VP Engineering et leaders techniques confrontés à des décisions structurantes dans des contextes de forte complexité : dette frontend, systèmes legacy, refonte majeure ou intégration raisonnée de l'IA. J'interviens lorsque les enjeux ne sont plus "comment implémenter", mais quoi décider, dans quel ordre, et avec quels risques business, notamment lorsque ces décisions doivent être posées rapidement face à des contraintes budgétaires ou organisationnelles.
 
 seo:
   title: Services — Architecture frontend & conseil en IA

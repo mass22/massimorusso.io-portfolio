@@ -10,6 +10,7 @@
     "services": "Services",
     "blog": "Blog",
     "speaking": "Speaking",
+    "podcast": "Podcast",
     "about": "About",
     "contact": "Contact",
     "menu": "Menu",
@@ -36,7 +37,7 @@
       "button": "Contact me"
     },
     "speaking": {
-      "description": "Talks, conferences and podcasts on frontend architecture, technical decisions and pragmatic AI.",
+      "description": "Public talks, conferences and interviews on frontend architecture, technical decision-making and the evolution of the developer role.",
       "viewAll": "View all conferences"
     },
     "companies": {
@@ -223,16 +224,26 @@
     "listen": "Listen",
     "watch": "Watch",
     "categories": {
-      "conference": "Conferences",
-      "liveTalk": "Live talks",
-      "podcast": "Podcasts"
+      "conference": "Public conferences",
+      "liveTalk": "Interventions & workshops",
+      "podcast": "Interviews"
     },
     "blocks": {
-      "talks": "Talks & conferences",
-      "podcasts": "Podcasts"
+      "talks": "Public conferences",
+      "podcasts": "Interviews"
     }
   },
   "podcast": {
+    "title": "Podcast",
+    "listen": "Listen",
+    "download": "Download",
+    "listenOn": "Listen on",
+    "featured": "Featured",
+    "featuredEpisodes": "Featured Episodes",
+    "latestEpisodes": "Latest Episodes",
+    "showMore": "View All Episodes",
+    "showLess": "Show Less",
+    "noneAvailable": "No episodes available",
     "player": {
       "loading": "Loading player...",
       "error": "The podcast player is not available at the moment.",

@@ -82,6 +82,7 @@ export function markdownToHtml(markdown: string): string {
       result.push('<p>')
       inParagraph = true
     } else {
+      // Convert line breaks to <br> tags
       result.push('<br>')
     }
     result.push(processInline(line))

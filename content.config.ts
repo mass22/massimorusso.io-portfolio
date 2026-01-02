@@ -165,6 +165,8 @@ export default defineContentConfig({
       ],
       schema: z.object({
         locale: z.enum(['fr', 'en']).default('fr'),
+        heroSupportingLine: z.string().optional(),
+        heroContext: z.string().optional(),
         seo: z.object({
           title: z.string(),
           description: z.string()
@@ -179,6 +181,7 @@ export default defineContentConfig({
           imageAlt: z.string().optional(),
           icon: z.string().optional()
         })).optional(),
+        itemsIntro: z.string().optional(),
         process: z.object({
           title: z.string(),
           description: z.string(),
@@ -187,11 +190,13 @@ export default defineContentConfig({
             description: z.string()
           }))
         }).optional(),
+        processLeadIn: z.string().optional(),
         stats: z.array(z.object({
           value: z.string(),
           label: z.string(),
           icon: z.string().optional()
         })).optional(),
+        statsEnabled: z.boolean().optional(),
         testimonials: z.array(createTestimonialSchema()).optional(),
         faq: createBaseSchema().extend({
           categories: z.array(
@@ -254,6 +259,48 @@ export default defineContentConfig({
           location: z.string(),
           url: z.string().optional()
         }))
+      })
+    }), podcast: defineCollection({
+      type: 'page',
+      source: [
+        { include: 'podcast.yml' },
+        { include: 'podcast.en.yml' }
+      ],
+      schema: z.object({
+        locale: z.enum(['fr', 'en']).default('fr'),
+        seo: z.object({
+          title: z.string(),
+          description: z.string()
+        }).optional(),
+        title: z.string().nonempty(),
+        description: z.string().nonempty(),
+        intro: z.string().optional(),
+        links: z.array(createButtonSchema()).optional(),
+        platforms: z.array(z.object({
+          label: z.string(),
+          url: z.string(),
+          icon: z.string().optional()
+        })).optional(),
+        player: z.object({
+          enabled: z.boolean().optional(),
+          defaultAudioUrl: z.string().optional()
+        }).optional(),
+        // Liste des GUIDs ou liens des épisodes RSS à mettre en featured
+        featuredEpisodes: z.array(z.string()).optional(),
+        episodes: z.array(z.object({
+          title: z.string().nonempty(),
+          description: z.string().nonempty(),
+          date: z.date(),
+          duration: z.string().optional(),
+          tags: z.array(z.string()).optional(),
+          guest: z.string().optional(),
+          link: z.string().nonempty(),
+          audioUrl: z.string().optional(),
+          videoUrl: z.string().optional(),
+          cover: z.string().editor({ input: 'media' }).optional(),
+          coverAlt: z.string().optional(),
+          featured: z.boolean().optional()
+        })).optional()
       })
     })
   }

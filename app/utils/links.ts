@@ -37,6 +37,9 @@ const NAV_LINKS: NavLinkDefinition[] = [
     }
   },
   {
+    icon: 'i-lucide-headphones', key: 'navigation.podcast', to: '/podcast'
+  },
+  {
     icon: 'i-lucide-mail', key: 'navigation.contact', to: '/contact'
   }
 ]

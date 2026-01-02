@@ -7,7 +7,8 @@ describe('getNavLinks', () => {
     const locale = { value: 'fr' }
     const links = getNavLinks(t, undefined, locale)
 
-    expect(links).toHaveLength(6)
+    // Il y a maintenant 7 liens (home, services, about, blog, speaking, podcast, contact)
+    expect(links).toHaveLength(7)
     expect(links[0].label).toBe('translated_navigation.home')
     expect(links[0].to).toBe('/')
   })

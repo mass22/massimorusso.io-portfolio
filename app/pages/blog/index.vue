@@ -172,7 +172,7 @@ useSeoMeta({
         class="text-center py-12"
       >
         <p class="text-muted">
-          {{ t('common.noPosts') || 'Aucun article disponible pour le moment.' }}
+          {{ t('common.blogsNotFound') || 'Aucun article disponible pour le moment.' }}
         </p>
       </div>
     </UPageSection>

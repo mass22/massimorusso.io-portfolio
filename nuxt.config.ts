@@ -60,6 +60,12 @@ export default defineNuxtConfig({
         'X-Robots-Tag': 'noindex, nofollow, noarchive, nosnippet'
       }
     },
+    // Protéger les routes d'administration
+    '/admin/**': {
+      headers: {
+        'X-Robots-Tag': 'noindex, nofollow, noarchive, nosnippet'
+      }
+    },
     '/': {
       prerender: true,
       headers: {
@@ -160,6 +166,18 @@ export default defineNuxtConfig({
       }
     },
     '/en/speaking': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/podcast': {
+      prerender: true,
+      headers: {
+        'Cache-Control': 'public, max-age=3600, must-revalidate'
+      }
+    },
+    '/en/podcast': {
       prerender: true,
       headers: {
         'Cache-Control': 'public, max-age=3600, must-revalidate'

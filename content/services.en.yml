@@ -1,7 +1,9 @@
 locale: 'en'
 title: Services
 description: Frontend architecture advisory, technical decision-making support, and pragmatic AI integration in complex and structuring contexts.
-heroSupportingLine: For CTOs, Tech Leads, and executives facing structuring technical decisions in contexts of complexity and real constraints.
+
+heroContext: |
+  These services are designed for CTOs, VPs of Engineering, and technical leaders facing high-impact decisions in complex environments: frontend debt, legacy systems, major refactors, or pragmatic adoption of AI. I typically step in when the challenge is no longer how to implement, but what to decide, in what order, and with which business risks — especially when those decisions need to be made under time, budget, or organizational pressure.
 
 seo:
   title: Services — Frontend Architecture & AI Consulting

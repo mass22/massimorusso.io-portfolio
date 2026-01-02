@@ -12,7 +12,8 @@ const siteUrl = useSiteUrl()
 const { data: page } = await useAsyncData(`services-${locale.value}`, async () => {
   const allPages = await queryCollection('services').all()
   const found = allPages.find(p => p.locale === locale.value) as ServicesPage | undefined
-  return found || (allPages.find(p => p.locale === 'fr') as ServicesPage | undefined) || null
+  const result = found || (allPages.find(p => p.locale === 'fr') as ServicesPage | undefined) || null
+  return result
 })
 
 if (!page.value) {
@@ -149,16 +150,29 @@ useHead({
       }"
     />
 
-    <!-- Supporting line sous le hero -->
+    <!-- Context paragraph avec style identique à Context.vue -->
     <UPageSection
-      v-if="page?.heroSupportingLine"
+      v-if="page?.heroContext"
       :ui="{
-        container: 'px-0 !pt-4 !pb-0'
+        container: 'px-0 !py-8 sm:!py-12'
       }"
     >
-      <p class="text-sm text-muted max-w-xl">
-        {{ page.heroSupportingLine }}
-      </p>
+      <div class="mx-auto max-w-5xl">
+        <div class="relative px-8 sm:px-12">
+          <!-- Vertical accent -->
+          <div
+            class="absolute left-0 top-0 h-full w-px bg-primary/30"
+            aria-hidden="true"
+          />
+
+          <!-- Quote content -->
+          <div class="text-center">
+            <p class="text-md sm:text-lg leading-relaxed text-highlighted">
+              {{ typeof page.heroContext === 'string' ? page.heroContext : String(page.heroContext || '') }}
+            </p>
+          </div>
+        </div>
+      </div>
     </UPageSection>
 
     <!-- Services Cards Section -->
@@ -171,7 +185,7 @@ useHead({
       <!-- Mini-intro pour les cartes -->
       <p
         v-if="page?.itemsIntro"
-        class="text-sm text-muted max-w-2xl mb-6"
+        class="text-base text-muted max-w-2xl mb-6 px-8"
       >
         {{ page.itemsIntro }}
       </p>
@@ -200,7 +214,7 @@ useHead({
           container: 'px-0 !pt-12 sm:!pt-16 lg:!pt-20 !pb-4'
         }"
       >
-        <p class="text-sm text-muted max-w-2xl">
+        <p class="text-base text-muted max-w-2xl px-8">
           {{ page.processLeadIn }}
         </p>
       </UPageSection>

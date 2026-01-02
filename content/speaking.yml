@@ -1,50 +1,24 @@
-locale: fr
 title: Conférences & prises de parole
 description: Interventions, conférences et formats publics autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.
-
+events:
+  - category: Conference
+    title: L'IA et la dette technique
+    date: 2026-01-29
+    location: Vue Montreal
+    url: "#"
+  - category: Live talk
+    title: L'IA et la dette technique
+    date: 2026-02-20
+    location: The Wagon
+    url: "#"
+  - category: Podcast
+    title: Point d'expert - Massimo Russo
+    date: 2026-01-15
+    location: Podcast pro (invité)
+    url: "#"
 links:
   - label: M’inviter à intervenir
     size: md
-
-events:
-  - category: Conference
-    title: 'Architecture frontend : décider plutôt que réécrire'
-    date: '2025-10-26'
-    location: VueConf US, Miami, FL
-    url: '#'
-
-  - category: Conference
-    title: Dette technique vs dette de décision
-    date: '2025-06-15'
-    location: Conférence frontend (à confirmer)
-    url: '#'
-
-  - category: Conference
-    title: Faire évoluer un frontend legacy sans illusion
-    date: '2024-11-08'
-    location: Meetup frontend / architecture
-    url: '#'
-
-  - category: Live talk
-    title: Prendre des décisions techniques en contexte d’incertitude
-    date: '2025-03-05'
-    location: Intervention interne / entreprise
-    url: '#'
-
-  - category: Live talk
-    title: Le rôle du développeur senior face à la complexité
-    date: '2024-09-12'
-    location: Meetup tech
-    url: '#'
-
-  - category: Podcast
-    title: Architecture frontend et responsabilité technique
-    date: '2025-07-18'
-    location: Podcast tech (invité)
-    url: '#'
-
-  - category: Podcast
-    title: 'IA pragmatique : décider avant d''implémenter'
-    date: '2025-01-30'
-    location: Podcast produit / tech
-    url: '#'
+    target: ""
+    to: /contact
+locale: fr

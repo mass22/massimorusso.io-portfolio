@@ -43,6 +43,7 @@ export type CTA = {
 export type ServicesPage = IndexCollectionItem & {
   content?: string
   heroSupportingLine?: string
+  heroContext?: string
   items?: ServiceItem[]
   itemsIntro?: string
   process?: Process

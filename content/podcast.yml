@@ -1,0 +1,30 @@
+title: Podcast
+description: Écoutez mes interventions et discussions autour de l'architecture frontend, de la prise de décision technique et de l'évolution du métier de développeur.
+episodes: []
+featuredEpisodes:
+  - f4b514c7c74836f5784767e725ceef70268dc3f6
+intro: |
+  Découvrez mes conversations avec des experts du domaine, mes réflexions sur l'architecture frontend moderne,
+  et mes analyses sur les décisions techniques qui façonnent notre industrie.
+links:
+  - label: S'abonner au podcast
+    icon: i-lucide-rss
+    color: primary
+    variant: solid
+    size: md
+locale: fr
+platforms:
+  - label: Spotify
+    url: https://open.spotify.com/show/7pRx7V2awXyEalPsrnC7i1
+    icon: i-simple-icons-spotify
+  - label: Apple Podcasts
+    url: https://podcasts.apple.com/ca/podcast/on-parle-dev/id1815187281
+    icon: i-simple-icons-applepodcasts
+  - label: YouTube
+    url: https://www.youtube.com/channel/UCMYbBAzF4nqB4R29vRJ3hXg
+    icon: i-simple-icons-youtube
+  - label: RSS
+    url: https://feed.ausha.co/pJ1YkF6eXmgj
+    icon: i-lucide-rss
+player:
+  enabled: false
