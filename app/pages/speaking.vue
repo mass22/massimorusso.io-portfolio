@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 type Event = {
   title: string
@@ -15,6 +15,8 @@ const { data: page } = await useAsyncData(`speaking-${locale.value}`, async () =
   const allPages = await queryCollection('speaking').all()
   const found = allPages.find(p => p.locale === locale.value)
   return found || allPages.find(p => p.locale === 'fr') || null
+}, {
+  watch: [locale]
 })
 if (!page.value) {
   throw createError({
@@ -28,24 +30,66 @@ useSeoMeta({
 
 const { global } = useAppConfig()
 
-const groupedEvents = computed((): Record<Event['category'], Event[]> => {
-  const events = page.value?.events || []
-  const grouped: Record<Event['category'], Event[]> = {
+// Fonction pour formater les événements avec la bonne locale
+const formatEvents = (events: Event[], dateLocale: string): Record<Event['category'], (Event & { formattedDate: string })[]> => {
+  const grouped: Record<Event['category'], (Event & { formattedDate: string })[]> = {
     'Conference': [],
     'Live talk': [],
     'Podcast': []
   }
+
   for (const event of events) {
     if (grouped[event.category]) {
-      grouped[event.category].push(event)
+      let formattedDate = ''
+      if (event.date) {
+        try {
+          const date = new Date(event.date)
+          if (!isNaN(date.getTime())) {
+            formattedDate = new Intl.DateTimeFormat(dateLocale, {
+              month: 'long',
+              year: 'numeric'
+            }).format(date)
+          }
+        } catch (e) {
+          console.error('Error formatting date:', e)
+        }
+      }
+      grouped[event.category].push({ ...event, formattedDate })
     }
   }
   return grouped
+}
+
+// Utiliser un ref réactif pour stocker les événements formatés
+const groupedEvents = ref<Record<Event['category'], (Event & { formattedDate: string })[]>>({
+  'Conference': [],
+  'Live talk': [],
+  'Podcast': []
 })
 
-function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+// Fonction pour mettre à jour les événements formatés
+const updateFormattedEvents = () => {
+  const events = page.value?.events || []
+  // Utiliser UNIQUEMENT la locale de la page (page.value?.locale) qui correspond au contenu affiché
+  const pageLocale = page.value?.locale
+  if (!pageLocale) {
+    return
+  }
+  const dateLocale = pageLocale === 'fr' ? 'fr-CA' : 'en-US'
+  groupedEvents.value = formatEvents(events, dateLocale)
 }
+
+// Mettre à jour quand la page change
+watch(() => page.value, (newPage) => {
+  if (newPage) {
+    updateFormattedEvents()
+  }
+}, { immediate: true, deep: true })
+
+// Aussi mettre à jour au montage côté client pour éviter les problèmes SSR
+onMounted(() => {
+  updateFormattedEvents()
+})
 
 function getCategoryLabel(category: string): string {
   const categoryMap: Record<Event['category'], string> = {
@@ -115,7 +159,12 @@ function getCategoryLabel(category: string): string {
                   v-if="event.location && event.date"
                   class="mx-1"
                 >·</span>
-                <span v-if="event.date">{{ formatDate(event.date) }}</span>
+                <ClientOnly>
+                  <span v-if="event.formattedDate">{{ event.formattedDate }}</span>
+                  <template #fallback>
+                    <span v-if="event.date">{{ event.date }}</span>
+                  </template>
+                </ClientOnly>
               </div>
 
               <h3 class="text-lg font-semibold text-highlighted">

@@ -15,7 +15,8 @@
     "lint:fix": "eslint . --fix",
     "lint:oxlint": "oxlint",
     "lint:oxlint:fix": "oxlint --fix",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "precommmit": "pnpm lint --fix && pnpm typecheck && pnpm test"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.70",

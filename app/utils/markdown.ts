@@ -13,10 +13,9 @@ export function markdownToHtml(markdown: string): string {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]
-    if (!line) continue
 
     // Empty line - close paragraph or list
-    if (line.trim() === '') {
+    if (!line || line.trim() === '') {
       if (inParagraph) {
         result.push('</p>')
         inParagraph = false
@@ -35,7 +34,7 @@ export function markdownToHtml(markdown: string): string {
       inParagraph = false
       inList = false
       const headerText = line.substring(4)
-      result.push(`<h3>${processInline(headerText)}</h3>`)
+      result.push(`<h3 style="margin-top: 2.5rem; margin-bottom: 1.25rem; color: var(--color-highlighted); font-weight: 700;">${processInline(headerText)}</h3>`)
       continue
     }
     if (line.startsWith('## ')) {
@@ -44,7 +43,7 @@ export function markdownToHtml(markdown: string): string {
       inParagraph = false
       inList = false
       const headerText = line.substring(3)
-      result.push(`<h2>${processInline(headerText)}</h2>`)
+      result.push(`<h2 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--color-primary); font-weight: 700;">${processInline(headerText)}</h2>`)
       continue
     }
     if (line.startsWith('# ')) {
@@ -53,12 +52,65 @@ export function markdownToHtml(markdown: string): string {
       inParagraph = false
       inList = false
       const headerText = line.substring(2)
-      result.push(`<h1>${processInline(headerText)}</h1>`)
+      result.push(`<h1 style="margin-top: 3rem; margin-bottom: 1.5rem;">${processInline(headerText)}</h1>`)
+      continue
+    }
+
+    const trimmedLine = line.trim()
+
+    // Horizontal rule (---) - can be standalone
+    if (trimmedLine === '---') {
+      if (inParagraph) {
+        result.push('</p>')
+        inParagraph = false
+      }
+      if (inList) {
+        result.push('</ul>')
+        inList = false
+      }
+      // Skip horizontal rules - they add unwanted visual separation
+      continue
+    }
+
+    // Check if line contains --- separator (even if embedded in text)
+    // Split on --- and process each part separately
+    if (line.includes('---')) {
+      const parts = line.split('---')
+      for (let j = 0; j < parts.length; j++) {
+        const part = parts[j]?.trim()
+        if (!part) {
+          // This is a separator, close current paragraph and continue
+          if (inParagraph) {
+            result.push('</p>')
+            inParagraph = false
+          }
+          if (inList) {
+            result.push('</ul>')
+            inList = false
+          }
+          continue
+        }
+
+        // Process the text part
+        if (inList) {
+          result.push('</ul>')
+          inList = false
+        }
+        if (!inParagraph) {
+          result.push('<p style="margin-bottom: 2rem; margin-top: 0;">')
+          inParagraph = true
+        } else if (j > 0) {
+          // If not the first part, close previous paragraph and start new one
+          result.push('</p><p style="margin-bottom: 2rem; margin-top: 0;">')
+        } else {
+          result.push('<br>')
+        }
+        result.push(processInline(part))
+      }
       continue
     }
 
     // Lists
-    const trimmedLine = line.trim()
     if (trimmedLine.startsWith('- ')) {
       if (inParagraph) {
         result.push('</p>')
@@ -79,7 +131,7 @@ export function markdownToHtml(markdown: string): string {
       inList = false
     }
     if (!inParagraph) {
-      result.push('<p>')
+      result.push('<p style="margin-bottom: 2rem; margin-top: 0;">')
       inParagraph = true
     } else {
       // Convert line breaks to <br> tags

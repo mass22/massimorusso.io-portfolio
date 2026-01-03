@@ -199,12 +199,6 @@ useHead({
       />
     </UPageSection>
 
-    <!-- Content Section (Markdown) -->
-    <ContentSection
-      v-if="page?.content"
-      :content="page.content"
-    />
-
     <!-- Process Section avec lead-in -->
     <div v-if="page?.process && page.process.steps && page.process.steps.length > 0">
       <!-- Lead-in pour le process -->
@@ -225,6 +219,12 @@ useHead({
         :steps="page.process.steps"
       />
     </div>
+
+    <!-- Content Section (Markdown) -->
+    <ContentSection
+      v-if="page?.content"
+      :content="page.content"
+    />
 
     <!-- Stats Section (optionnel - uniquement si statsEnabled === true) -->
     <StatsGrid

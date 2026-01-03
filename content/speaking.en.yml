@@ -1,50 +1,23 @@
-locale: en
 title: Conferences & Speaking
 description: Interventions, conferences, and public formats around frontend architecture, technical decision-making, and the evolution of the developer role.
-
+events:
+  - category: Conference
+    title: AI and technical debt
+    date: 2026-01-29
+    location: Vue Montreal
+    url: "#"
+  - category: Live talk
+    title: AI and technical dept
+    date: 2026-02-20
+    location: The Wagon
+    url: "#"
+  - category: Podcast
+    title: Point d'expert - Massimo Russo
+    date: 2026-01-15
+    location: Pro Podcast (Guest) [French]
+    url: "#"
 links:
   - label: Invite me to speak
     size: md
-
-events:
-  - category: Conference
-    title: 'Frontend Architecture: Decide Rather Than Rewrite'
-    date: '2025-10-26'
-    location: VueConf US, Miami, FL
-    url: '#'
-
-  - category: Conference
-    title: Technical Debt vs Decision Debt
-    date: '2025-06-15'
-    location: Frontend Conference (to be confirmed)
-    url: '#'
-
-  - category: Conference
-    title: Evolving a Legacy Frontend Without Illusion
-    date: '2024-11-08'
-    location: Frontend / Architecture Meetup
-    url: '#'
-
-  - category: Live talk
-    title: Making Technical Decisions in Uncertain Contexts
-    date: '2025-03-05'
-    location: Internal / Corporate Intervention
-    url: '#'
-
-  - category: Live talk
-    title: The Role of the Senior Developer Facing Complexity
-    date: '2024-09-12'
-    location: Tech Meetup
-    url: '#'
-
-  - category: Podcast
-    title: Frontend Architecture and Technical Responsibility
-    date: '2025-07-18'
-    location: Tech Podcast (Guest)
-    url: '#'
-
-  - category: Podcast
-    title: 'Pragmatic AI: Decide Before Implementing'
-    date: '2025-01-30'
-    location: Product / Tech Podcast
-    url: '#'
+    to: /contact
+locale: en

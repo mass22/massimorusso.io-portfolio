@@ -289,12 +289,6 @@ export function getChatConfig(locale: 'fr' | 'en'): ChatConfig {
 }
 
 /**
- * Configuration par défaut (FR) pour compatibilité rétroactive
- * @deprecated Utiliser getChatConfig(locale) à la place
- */
-export const chatConfig = getChatConfig('fr')
-
-/**
  * Formate le contexte en un résumé lisible selon la locale
  *
  * @param context - Le contexte du lead à formater

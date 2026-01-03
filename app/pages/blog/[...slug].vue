@@ -64,7 +64,7 @@ const { data: page } = await useAsyncData(`blog-${locale.value}-${slug}`, async 
 })
 
 if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: t('common.pageNotFound'), fatal: true })
+  throw createError({ statusCode: 404, message: t('common.pageNotFound'), fatal: true })
 }
 const { data: surround } = await useAsyncData(`${route.path}-surround-${locale.value}`, async () => {
   if (!page.value) {

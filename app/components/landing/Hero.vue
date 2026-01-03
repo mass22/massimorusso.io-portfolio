@@ -523,13 +523,12 @@ onMounted(() => {
     <!-- Image LCP : doit être dans le HTML initial, pas dans ClientOnly -->
     <!-- Optimisée avec taille fixe pour réduire la taille téléchargée -->
     <NuxtImg
-      src="/hero/random-1.avif"
+      src="/hero/Image.webp"
       :alt="t('hero.image.alt')"
-      width="530"
-      height="530"
+      width="695"
+      height="1024"
       loading="eager"
       fetchpriority="high"
-      format="webp"
       quality="80"
       densities="1x"
       class="rounded-lg shadow-2xl ring ring-default"

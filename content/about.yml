@@ -1,26 +1,23 @@
-locale: 'fr'
 title: À propos
-description: Consultant senior en architecture frontend et aide à la décision technique. J’interviens lorsque les décisions deviennent critiques, complexes ou coûteuses à long terme.
-
 content: |
-  J’interviens lorsque les décisions techniques cessent d’être évidentes.
+  J'interviens lorsque les décisions techniques cessent d'être évidentes.
 
-  Quand une architecture frontend commence à peser sur l’équipe.
-  Quand plusieurs options semblent possibles, mais qu’aucune ne s’impose clairement.
-  Quand une mauvaise décision aujourd'hui peut coûter des mois, Ou des années, demain.
+  Quand une architecture frontend commence à peser sur l'équipe.
+  Quand plusieurs options semblent possibles, mais qu'aucune ne s'impose clairement.
+  Quand une mauvaise décision aujourd'hui peut coûter des mois, ou des années, demain.
 
-  Mon rôle n’est pas d’exécuter.
-  Mon rôle est d’aider à **décider**.
+  Mon rôle n'est pas d'exécuter.
+  Mon rôle est d'aider à **décider**.
 
   ---
 
   ## Ce que je fais (et ce que je ne fais pas)
 
-  Je n’interviens pas pour livrer des fonctionnalités.
-  Je n’interviens pas en régie.
-  Je ne “renforce pas une équipe” pour produire plus vite.
+  Je n'interviens pas pour livrer des fonctionnalités.
+  Je n'interviens pas en régie.
+  Je ne "renforce pas une équipe" pour produire plus vite.
 
-  J’interviens lorsque :
+  J'interviens lorsque :
   - des choix techniques structurants doivent être arbitrés
   - une architecture frontend devient difficile à faire évoluer
   - la complexité commence à ralentir le produit et les équipes
@@ -34,47 +31,47 @@ content: |
 
   ## Pourquoi cette posture
 
-  J’ai passé suffisamment de temps dans des équipes pour savoir que les problèmes les plus coûteux ne sont pas toujours techniques.
+  J'ai passé suffisamment de temps dans des équipes pour savoir que les problèmes les plus coûteux ne sont pas toujours techniques.
 
   Ils sont souvent décisionnels :
   - des choix flous
   - des compromis implicites
   - des directions jamais réellement assumées
 
-  Avec le temps, la dette n’est plus seulement technique.
+  Avec le temps, la dette n'est plus seulement technique.
   Elle devient une **dette de décision**.
 
-  C’est là que j’interviens.
+  C'est là que j'interviens.
 
   ---
 
   ## Comment je travaille
 
   Je travaille avec les équipes, pas à leur place.
-  Je pose des questions que l’on évite parfois de poser :
+  Je pose des questions que l'on évite parfois de poser :
   - Pourquoi cette option ?
   - Pourquoi maintenant ?
-  - Qu’est-ce qu’on accepte de sacrifier ?
+  - Qu'est-ce qu'on accepte de sacrifier ?
 
   Je privilégie :
   - la clarté à la sophistication
   - la compréhension collective à la complexité individuelle
   - des architectures lisibles plutôt que brillantes sur le papier
 
-  Mon objectif n’est pas de rendre le système “parfait”.
+  Mon objectif n'est pas de rendre le système "parfait".
   Il est de le rendre **compréhensible, maintenable et assumé**.
 
   ---
 
-  ## À propos de l’IA
+  ## À propos de l'IA
 
-  L’IA est aujourd’hui partout dans les discussions techniques.
+  L'IA est aujourd'hui partout dans les discussions techniques.
   Très peu de projets en tirent une valeur réelle.
 
-  J’interviens pour :
+  J'interviens pour :
   - distinguer opportunité et effet de mode
   - cadrer les risques (coûts, dépendances, qualité)
-  - décider si l’IA est pertinente, où elle l’est, et où elle ne l’est pas
+  - décider si l'IA est pertinente, où elle l'est, et où elle ne l'est pas
 
   Je ne vends pas de promesse.
   Je vends de la **lucidité**.
@@ -85,15 +82,12 @@ content: |
 
   Nous sommes probablement alignés si :
   - une décision technique importante est bloquante
-  - l’architecture actuelle freine l’évolution du produit
-  - vous avez besoin d’un regard externe, expérimenté et indépendant
+  - l'architecture actuelle freine l'évolution du produit
+  - vous avez besoin d'un regard externe, expérimenté et indépendant
 
-  Si vous cherchez quelqu’un pour exécuter ou “faire tourner la machine”, je ne suis pas la bonne personne.
+  Si vous cherchez quelqu'un pour exécuter ou "faire tourner la machine", je ne suis pas la bonne personne.
 
-  Si vous cherchez à **clarifier**, **arbitrer** et **assumer** des décisions techniques complexes, alors la discussion vaut la peine d’avoir lieu.
-
-images:
-  - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: Mon espace de travail avec café
-  - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: Mon voyage à Tokyo
+  Si vous cherchez à **clarifier**, **arbitrer** et **assumer** des décisions techniques complexes, alors la discussion vaut la peine d'avoir lieu.
+description: Consultant senior en architecture frontend et aide à la décision technique. J'interviens lorsque les décisions deviennent critiques, complexes ou coûteuses à long terme.
+images: []
+locale: fr

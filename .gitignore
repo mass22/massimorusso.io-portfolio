@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+host
 
 # Database
 data/

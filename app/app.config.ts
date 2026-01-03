@@ -3,12 +3,6 @@ export default defineAppConfig({
     creditsKey: 'footer.credits',
     colorMode: false,
     links: [
-    //   {
-    //   'icon': 'i-simple-icons-discord',
-    //   'to': 'https://go.nuxt.com/discord',
-    //   'target': '_blank',
-    //   'aria-label': 'Nuxt on Discord'
-    // },
       {
         icon: 'i-simple-icons-linkedin',
         to: 'https://www.linkedin.com/in/russomassimo-frontend-consultant',
@@ -20,17 +14,11 @@ export default defineAppConfig({
         to: 'https://bsky.app/profile/massimorusso.bsky.social',
         target: '_blank',
         ariaLabelKey: 'footer.links.bluesky'
-      // },
-      // }, {
-      //   'icon': 'i-simple-icons-github',
-      //   'to': 'https://github.com/mass22',
-      //   'target': '_blank',
-      //   'aria-label': 'Massimo Russo on GitHub'
       }]
   }, global: {
     picture: {
-      dark: 'https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      light: 'https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      dark: '/hero/avatar.webp',
+      light: '/hero/avatar.webp',
       altKey: 'global.picture.alt'
     },
     meetingLink: 'https://cal.com/massimorusso/let-s-connect',

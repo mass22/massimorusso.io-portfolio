@@ -47,7 +47,10 @@ const groupedEvents = computed((): Record<Event['category'], Event[]> => {
 })
 
 function formatDate(dateString: string): string {
-  return new Date(dateString).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+  // Utiliser la locale de la page (contenu) plutôt que locale.value (interface)
+  const pageLocale = page.value?.locale || locale.value
+  const dateLocale = pageLocale === 'fr' ? 'fr-CA' : 'en-US'
+  return new Date(dateString).toLocaleDateString(dateLocale, { month: 'long', year: 'numeric' })
 }
 
 function getCategoryLabel(category: string): string {

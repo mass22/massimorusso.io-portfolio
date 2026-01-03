@@ -45,8 +45,8 @@ items:
 itemsIntro: Three areas of intervention to clarify technical decisions and bring long-term structure to your architecture.
 
 process:
-  title: How I Intervene
-  description: A structured and collaborative approach to reduce uncertainty, clarify options, and secure technical decisions.
+  title: My engagement framework
+  description: A structured and collaborative approach to reduce uncertainty, clarify options, and secure technical decisions. The format adapts to your context. The framework stays the same
   steps:
     - title: Scoping & Context
       description: Understanding the challenges, constraints (legacy, team, delivery) and decisions to be made. Clarifying objectives and success criteria.
