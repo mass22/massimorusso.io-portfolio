@@ -7,14 +7,14 @@ describe('markdownToHtml', () => {
   })
 
   it('should convert headers', () => {
-    expect(markdownToHtml('# Header 1')).toBe('<h1>Header 1</h1>')
-    expect(markdownToHtml('## Header 2')).toBe('<h2>Header 2</h2>')
-    expect(markdownToHtml('### Header 3')).toBe('<h3>Header 3</h3>')
+    expect(markdownToHtml('# Header 1')).toBe('<h1 style="margin-top: 3rem; margin-bottom: 1.5rem;">Header 1</h1>')
+    expect(markdownToHtml('## Header 2')).toBe('<h2 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--color-primary); font-weight: 700;">Header 2</h2>')
+    expect(markdownToHtml('### Header 3')).toBe('<h3 style="margin-top: 2.5rem; margin-bottom: 1.25rem; color: var(--color-highlighted); font-weight: 700;">Header 3</h3>')
   })
 
   it('should convert paragraphs', () => {
-    expect(markdownToHtml('Simple paragraph')).toBe('<p>Simple paragraph</p>')
-    expect(markdownToHtml('Line 1\nLine 2')).toBe('<p>Line 1<br>Line 2</p>')
+    expect(markdownToHtml('Simple paragraph')).toBe('<p style="margin-bottom: 2rem; margin-top: 0;">Simple paragraph</p>')
+    expect(markdownToHtml('Line 1\nLine 2')).toBe('<p style="margin-bottom: 2rem; margin-top: 0;">Line 1<br>Line 2</p>')
   })
 
   it('should convert lists', () => {
@@ -24,13 +24,13 @@ describe('markdownToHtml', () => {
   })
 
   it('should handle inline formatting', () => {
-    expect(markdownToHtml('**Bold**')).toBe('<p><strong>Bold</strong></p>')
-    expect(markdownToHtml('*Italic*')).toBe('<p><em>Italic</em></p>')
-    expect(markdownToHtml('`Code`')).toBe('<p><code>Code</code></p>')
+    expect(markdownToHtml('**Bold**')).toBe('<p style="margin-bottom: 2rem; margin-top: 0;"><strong>Bold</strong></p>')
+    expect(markdownToHtml('*Italic*')).toBe('<p style="margin-bottom: 2rem; margin-top: 0;"><em>Italic</em></p>')
+    expect(markdownToHtml('`Code`')).toBe('<p style="margin-bottom: 2rem; margin-top: 0;"><code>Code</code></p>')
   })
 
   it('should convert links', () => {
-    expect(markdownToHtml('[Link](https://example.com)')).toBe('<p><a href="https://example.com" target="_blank" rel="noopener noreferrer">Link</a></p>')
+    expect(markdownToHtml('[Link](https://example.com)')).toBe('<p style="margin-bottom: 2rem; margin-top: 0;"><a href="https://example.com" target="_blank" rel="noopener noreferrer">Link</a></p>')
   })
 
   it('should handle mixed content', () => {
@@ -41,7 +41,7 @@ Paragraph with **bold** text.
 - List item 1
 - List item 2`
 
-    const expected = '<h1>Title</h1><p>Paragraph with <strong>bold</strong> text.</p><ul><li>List item 1</li><li>List item 2</li></ul>'
+    const expected = '<h1 style="margin-top: 3rem; margin-bottom: 1.5rem;">Title</h1><p style="margin-bottom: 2rem; margin-top: 0;">Paragraph with <strong>bold</strong> text.</p><ul><li>List item 1</li><li>List item 2</li></ul>'
     expect(markdownToHtml(markdown)).toBe(expected)
   })
 })
