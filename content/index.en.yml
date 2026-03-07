@@ -159,61 +159,45 @@ podcast:
   title: "Podcast - On parle dev"
   description: "A podcast dedicated to frontend architecture, technical decisions, and the career evolution of senior developers."
 faq:
-  title: "Frequently Asked Questions"
+  title: Frequently Asked Questions
   description: Answers to the most common questions about my role, my positioning, and how I work.
   categories:
-    - title: Architecture & Technical Decision
+    - title: Architecture & Technical decisions
       questions:
-        - label: What's the difference between a senior developer and a frontend architecture consultant?
+        - label: What's the difference between a senior developer and someone who works on architecture?
           content: |
-            A senior developer focuses primarily on implementation and delivery.
+            A senior dev executes and ships. Someone with an architectural mindset builds while thinking about what it will cost to maintain in 2 years.
 
-            A frontend architecture consultant intervenes earlier: they help structure the stack, analyze existing constraints, compare options, and secure technical decisions with long-term impact.
-            My role is to help teams avoid bad decisions before they become costly.
-
-        - label: When should you call on a frontend architecture consultant?
+            I do both — that's what sets me apart.
+        - label: Do you only work on Vue.js and Nuxt projects?
           content: |
-            When decisions become strategic: stack migration, significant technical debt, performance issues, difficulty evolving the frontend, or lack of clear vision.
+            Yes. Vue.js and Nuxt have been my core expertise since 2011.
 
-            I generally work in contexts where improvising is no longer an option.
-
-        - label: Do you only work on Vue.js / Nuxt projects?
+            I'd rather be excellent in one ecosystem than average across several.
+        - label: What type of engagement do you take on?
           content: |
-            Vue.js and Nuxt are my main areas of expertise, but my work focuses primarily on architecture and decision-making.
+            Feature building, architecture structuring, technical review or decision support.
 
-            The principles I apply remain valid regardless of the framework, as long as the frontend is critical to the product.
-
-    - title: Advisory & Support
+            I don't do pure bugfix work or migration without associated construction.
+    - title: Collaboration & format
       questions:
-        - label: Do you work as a consultant or as a developer?
+        - label: What does an engagement look like in practice?
           content: |
-            I work primarily as a consultant and technical advisor.
+            I join the existing team, understand the context and constraints, then build and structure in parallel.
 
-            My role is not to take tickets but to help structure, arbitrate, and secure technical decisions alongside existing teams.
-
-        - label: What does advisory support look like in practice?
+            I work 4 days a week.
+        - label: Do you work remotely or on-site?
           content: |
-            This can take the form of architecture reviews, working sessions with CTOs or Tech Leads, targeted audits, or regular support.
+            Primarily remote from Belgium.
 
-            The format depends on the context, the challenges, and the level of uncertainty to reduce.
-
-    - title: AI & Modernization
+            Occasional on-site visits are possible depending on the context.
+    - title: AI & modernization
       questions:
-        - label: How do you approach integrating AI into an existing product?
+        - label: How do you use AI in your work?
           content: |
-            AI is not an end in itself.
+            As a tool, not an oracle. I use AI to explore options, speed up certain tasks and challenge my decisions.
 
-            I start by identifying the real problems to solve, then evaluate whether AI brings measurable value.
-            The goal is to integrate AI pragmatically, without adding unnecessary complexity.
-
-        - label: Do you work on "from scratch" AI projects?
+            Not to replace technical judgment.
+        - label: Can you help integrate AI into an existing product?
           content: |
-            Rarely.
-
-            I mainly work on existing products, where AI integration must coexist with an architecture, business constraints, and teams already in place.
-
-        - label: Can AI really help with technical decision-making?
-          content: |
-            Yes, but only if it's used as a thinking aid tool, not as an oracle.
-
-            I use AI to explore options, compare scenarios, and clarify trade-offs, while keeping final responsibility on the human side.
+            Yes, if it makes sense. My approach: identify real problems first, assess whether AI brings measurable value, then integrate progressively without weakening the existing architecture.
