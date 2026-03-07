@@ -1,4 +1,4 @@
-title: Architecture frontend & conseil en IA
+title: Clarté technique pour les décisions qui comptent
 about:
   title: À propos
   description: |
@@ -33,7 +33,7 @@ companies:
       logo: i-lucide-refresh-cw
     - name: Organisations en transition technique
       logo: i-lucide-trending-up
-description: J’aide les entreprises à prendre des décisions techniques claires face à la complexité, au legacy et à la hype autour de l’IA.
+description: "J’accompagne les CTO et Tech Leads confrontés à des décisions frontend structurantes en contexte complexe : architecture, modernisation, legacy, IA."
 experience:
   title: Expertise & écosystème
   items:
@@ -112,13 +112,13 @@ faq:
             J’utilise l’IA pour explorer des options, comparer des scénarios et expliciter des trade-offs, tout en gardant la responsabilité finale côté humain.
 hero:
   tags:
-    - Décider
-    - Structurer
-    - IA pragmatique
+    - Architecture
+    - Décision technique
+    - IA sans hype
   links:
-    - label: Ressources gratuites
-      to: /ressources
-      color: neutral
+    - label: Découvrir mes services
+      to: /services
+      color: primary
     - label: À propos
       to: /about
       trailingIcon: i-lucide-arrow-right
