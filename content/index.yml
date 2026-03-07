@@ -2,11 +2,13 @@ title: Clarté technique pour les décisions qui comptent
 about:
   title: À propos
   description: |
-    Je suis consultant frontend senior, spécialisé en architecture frontend et en accompagnement à la décision technique.
+    Développeur frontend depuis 2011, je travaille exclusivement sur Vue.js et Nuxt depuis leurs premières versions.
 
-    J'interviens auprès d'équipes et d'organisations confrontées à des stacks complexes, du legacy et des choix structurants à long terme. Notamment quand l'IA devient un sujet produit, technique ou organisationnel.
+    Avec le temps, j’ai compris que les projets qui échouent ne manquent pas de bons développeurs.
 
-    Mon rôle n’est pas d’exécuter des tickets, mais d’aider à structurer, arbitrer et sécuriser les décisions techniques.
+    Ils manquent de décisions claires, assumées et comprises par toute l’équipe.
+
+    C’est devenu mon terrain : aider les équipes à décider, pas seulement à coder.
 blog:
   title: Notes & analyses
   description: Analyses courtes et retours terrain sur l’architecture frontend, la modernisation de stacks et l’usage pragmatique de l’IA. Du concret, orienté décision.

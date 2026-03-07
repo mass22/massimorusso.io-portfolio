@@ -39,11 +39,13 @@ hero:
 about:
   title: "About"
   description: |
-    I'm a senior frontend architecture consultant focused on technical decision-making.
+    I've been building frontend products since 2011, exclusively with Vue.js and Nuxt since their early days.
 
-    I work with teams and organizations facing complex stacks, legacy systems, and long-term strategic choices. Especially when AI becomes a product, technical, or organizational concern.
+    Over time, I realized that failing projects rarely lack good developers.
 
-    My role is not to execute tickets, but to help structure, arbitrate, and secure decisions with long-term impact.
+    They lack clear decisions, owned by the team and built to last.
+
+    That's where I focus now: helping teams decide, not just ship.
 services:
   title: "Services"
   description: "I advise companies on frontend architecture, technical decision-making, and pragmatic AI usage in complex and high-stakes contexts."
