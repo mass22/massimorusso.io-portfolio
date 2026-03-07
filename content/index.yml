@@ -1,4 +1,4 @@
-title: Clarté technique pour les décisions qui comptent
+title: "Développeur Vue.js senior. Je construis et je structure."
 about:
   title: À propos
   description: |
@@ -35,7 +35,7 @@ companies:
       logo: i-lucide-refresh-cw
     - name: Organisations en transition technique
       logo: i-lucide-trending-up
-description: "J’accompagne les CTO et Tech Leads confrontés à des décisions frontend structurantes en contexte complexe : architecture, modernisation, legacy, IA."
+description: "Développeur Vue.js senior depuis 2011, j’intègre des équipes pour construire des frontends solides et aider à structurer les décisions techniques qui impactent le long terme."
 experience:
   title: Expertise & écosystème
   items:
@@ -114,9 +114,10 @@ faq:
             J’utilise l’IA pour explorer des options, comparer des scénarios et expliciter des trade-offs, tout en gardant la responsabilité finale côté humain.
 hero:
   tags:
-    - Architecture
-    - Décision technique
-    - IA sans hype
+    - Vue.js & Nuxt
+    - Architecture frontend
+    - Décisions techniques
+    - IA pragmatique
   links:
     - label: Découvrir mes services
       to: /services
