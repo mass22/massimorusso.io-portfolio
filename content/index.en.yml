@@ -117,8 +117,8 @@ blog:
   title: "Notes & analysis"
   description: "Short analyses and field insights on frontend architecture, stack modernization, and pragmatic AI usage. Concrete, decision-oriented content."
 speaking:
-  title: "Conferences & talks"
-  description: "Public interventions, talks, and podcasts around frontend architecture, technical decision-making, and the evolution of the senior developer role."
+  title: Talks & public appearances
+  description: Public talks and appearances on frontend architecture, technical decision-making and the evolution of the developer role.
 companies:
   title: "Environments & organizations"
   description: "I work with teams and organizations facing complexity, legacy, and strategic technical decisions. Especially when AI becomes part of the roadmap."

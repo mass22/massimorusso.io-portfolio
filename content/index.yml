@@ -194,5 +194,5 @@ services:
         - Cadrage des risques & impacts
 speaking:
   title: Conférences & prises de parole
-  description: Interventions publiques, talks et podcasts autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.
+  description: Interventions publiques et prises de parole autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.
 testimonials: []
