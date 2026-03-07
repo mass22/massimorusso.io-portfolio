@@ -2,13 +2,14 @@ locale: 'en'
 seo:
   title: "Massimo Russo — Frontend Architecture & AI Consulting"
   description: "Massimo Russo is a senior frontend architecture consultant specializing in pragmatic AI usage. He helps companies decide when and how to use AI in the face of legacy systems, complexity, and hype."
-title: "Technical clarity for decisions that matter"
-description: "I work with CTOs and Tech Leads facing critical frontend decisions in complex environments: architecture, modernization, legacy, AI."
+title: "Senior Vue.js developer. I build and I structure."
+description: "Senior Vue.js developer since 2011, I join teams to build solid frontends and help structure the technical decisions that matter long term."
 hero:
   tags:
-    - Architecture
+    - Vue.js & Nuxt
+    - Frontend architecture
     - Technical decisions
-    - AI without hype
+    - Pragmatic AI
   links:
     - label: Explore my services
       to: /services
