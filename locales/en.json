@@ -32,9 +32,9 @@
   },
   "homepage": {
     "cta": {
-      "title": "Ready to clarify your technical decisions?",
-      "description": "Let's discuss your context, your technical constraints and the strategic decisions to make.",
-      "button": "Contact me"
+      "title": "Your project deserves more than a developer who ships without thinking.",
+      "description": "I join your team to build, structure and make the right technical decisions — not just ship tickets.",
+      "button": "Get in touch"
     },
     "speaking": {
       "description": "Public talks, conferences and interviews on frontend architecture, technical decision-making and the evolution of the developer role.",
