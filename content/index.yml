@@ -154,44 +154,58 @@ seo:
   description: Massimo Russo est consultant senior en architecture frontend et usage pragmatique de l’IA. Il aide les entreprises à décider quand et comment utiliser l’IA face au legacy, à la complexité et à la hype.
 services:
   title: Services
-  description: J’accompagne les entreprises sur des sujets d’architecture frontend, d’aide à la décision technique et d’usage pragmatique de l’IA, dans des contextes complexes et à fort enjeu.
+  description: "Développeur Vue.js senior depuis 2011, j’interviens en construction, en architecture et en décision technique — selon les besoins de l’équipe et du projet."
   items:
+    - title: Développement Vue.js / Nuxt
+      slug: developpement-vuejs
+      icon: i-ph-code
+      description: |
+        J’intègre des équipes pour construire des applications Vue.js et Nuxt robustes, performantes et maintenables.
+
+        Je travaille sur de la construction, pas du bugfix ou de la migration.
+      bullets:
+        - Développement Vue.js / Nuxt
+        - Intégration design system
+        - Performance frontend
+        - Code review & bonnes pratiques
+
     - title: Architecture frontend
       slug: architecture-frontend
       icon: i-ph-lightbulb
       description: |
-        J'aide les équipes à structurer et moderniser leur frontend dans des contextes complexes et contraints.
+        J’aide les équipes à structurer et faire évoluer leur frontend en contexte complexe.
 
-        Cela inclut l'analyse de stacks existantes, la définition de cibles d'architecture, les stratégies de migration (progressives ou non) et l'arbitrage de choix structurants sur le long terme.
+        Analyse de stack, définition d’une architecture cible, stratégies de modernisation progressives et arbitrage des choix structurants.
       bullets:
         - Audit de stack frontend
         - Architecture Vue / Nuxt
         - Stratégies de modernisation
         - Performance & scalabilité
+
     - title: Conseil & aide à la décision
       slug: aide-decision-technique
       icon: i-ph-chalkboard-teacher
       description: |
-        J'interviens comme regard externe pour aider à clarifier, prioriser et sécuriser des décisions techniques à fort impact.
+        Fort de 14 ans sur des projets frontend complexes, j’apporte un regard expérimenté pour aider à clarifier et structurer les décisions techniques à fort impact.
 
-        Mon rôle est de réduire l'incertitude, pas d'ajouter de la complexité.
+        Mon rôle est de réduire l’incertitude, pas d’en ajouter.
       bullets:
-        - Support CTO / Tech Leads
-        - Revue d'architecture
+        - Revue d’architecture
         - Arbitrage technologique
+        - Support Tech Leads
         - Vision long terme
-    - title: Usage pragmatique de l'IA
+
+    - title: Usage pragmatique de l’IA
       slug: ia-pragmatique
       icon: i-ph-sparkle
       description: |
-        J'accompagne les équipes dans l'intégration raisonnée de l'IA lorsque la question n'est plus "est‑ce possible ?" mais "est‑ce pertinent ?".
+        J’accompagne les équipes qui veulent intégrer l’IA sans se perdre dans la hype.
 
-        Mon rôle est d'aider à décider où l'IA apporte une vraie valeur, à cadrer les risques (coût, qualité, dépendance, sécurité) et à l'intégrer progressivement dans des produits et des architectures existantes.
+        La question n’est plus "est-ce possible ?" mais "est-ce pertinent, et à quel coût ?".
       bullets:
-        - Identification des vrais cas d'usage
+        - Identification des vrais cas d’usage
         - Orchestration IA
         - Intégration produit
-        - Aide à la décision par l'IA
         - Cadrage des risques & impacts
 speaking:
   title: Conférences & prises de parole

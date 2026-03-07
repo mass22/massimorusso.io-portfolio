@@ -48,47 +48,59 @@ about:
 
     I build and I structure — both at once.
 services:
-  title: "Services"
-  description: "I advise companies on frontend architecture, technical decision-making, and pragmatic AI usage in complex and high-stakes contexts."
+  title: Services
+  description: "Senior Vue.js developer since 2011, I work on building, architecture and technical decisions — depending on what the team and project need."
   items:
-    - title: "Frontend architecture"
-      slug: "frontend-architecture"
-      icon: "i-ph-lightbulb"
+    - title: Vue.js / Nuxt Development
+      slug: vuejs-development
+      icon: i-ph-code
       description: |
-        I help teams structure and modernize their frontend in complex and constrained contexts.
+        I join teams to build robust, performant and maintainable Vue.js and Nuxt applications.
 
-        This includes analyzing existing stacks, defining architecture targets, migration strategies and long-term trade-offs, and arbitrating long-term strategic choices.
+        I focus on building, not fixing or migrating.
+      bullets:
+        - Vue.js / Nuxt development
+        - Design system integration
+        - Frontend performance
+        - Code review & best practices
+
+    - title: Frontend architecture
+      slug: frontend-architecture
+      icon: i-ph-lightbulb
+      description: |
+        I help teams structure and evolve their frontend in complex contexts.
+
+        Stack analysis, architecture target definition, progressive modernization strategies and long-term trade-off arbitration.
       bullets:
         - Frontend stack audit
         - Vue / Nuxt architecture
         - Modernization strategies
         - Performance & scalability
 
-    - title: "Consulting & decision support"
-      slug: "technical-decision-support"
-      icon: "i-ph-chalkboard-teacher"
+    - title: Consulting & decision support
+      slug: technical-decision-support
+      icon: i-ph-chalkboard-teacher
       description: |
-        I provide an external perspective to help clarify, prioritize, and secure high-impact technical decisions.
+        With 14 years on complex frontend projects, I bring an experienced perspective to help clarify and structure high-impact technical decisions.
 
-        My role is to reduce uncertainty, not to add complexity.
+        My role is to reduce uncertainty, not add to it.
       bullets:
-        - CTO & Tech Lead advisory support
         - Architecture review
         - Technology arbitration
+        - Tech Lead support
         - Long-term vision
 
-    - title: "Pragmatic AI usage"
-      slug: "pragmatic-ai"
-      icon: "i-ph-sparkle"
+    - title: Pragmatic AI usage
+      slug: pragmatic-ai
+      icon: i-ph-sparkle
       description: |
-        I guide teams in the reasoned integration of AI when the question is no longer "is it possible?" but "is it relevant?".
+        I help teams integrate AI without getting lost in the hype.
 
-        My role is to help decide where AI brings real value, frame the risks (cost, quality, dependency, security), and integrate it progressively into existing products and architectures.
+        The question is no longer "is it possible?" but "is it relevant, and at what cost?".
       bullets:
         - Real use case identification
         - AI orchestration
         - Product integration
-        - AI-assisted decision making
         - Risk & impact framing
 experience:
   title: "Expertise & ecosystem"
