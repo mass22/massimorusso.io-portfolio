@@ -8,7 +8,7 @@ about:
 
     Ils manquent de décisions claires, assumées et comprises par toute l’équipe.
 
-    C’est devenu mon terrain : aider les équipes à décider, pas seulement à coder.
+    Je construis et je structure — les deux à la fois.
 blog:
   title: Notes & analyses
   description: Analyses courtes et retours terrain sur l’architecture frontend, la modernisation de stacks et l’usage pragmatique de l’IA. Du concret, orienté décision.
@@ -66,52 +66,43 @@ faq:
   categories:
     - title: Architecture & Décision technique
       questions:
-        - label: Quelle est la différence entre un développeur senior et un consultant en architecture frontend ?
+        - label: Quelle différence entre un dev senior et quelqu’un qui travaille sur l’architecture ?
           content: |
-            Un développeur senior se concentre principalement sur l’implémentation et la livraison.
+            Un dev senior exécute et livre. Quelqu’un avec une vision architecturale construit en pensant à ce que ça coûtera à maintenir dans 2 ans.
 
-            Un consultant en architecture frontend intervient plus en amont : il aide à structurer la stack, à analyser les contraintes existantes, à comparer des options et à sécuriser des décisions techniques ayant un impact à long terme.
-            Mon rôle est d’aider les équipes à éviter de mauvaises décisions avant qu’elles ne deviennent coûteuses.
-        - label: Quand faire appel à un consultant en architecture frontend ?
+            Je fais les deux — c’est ce qui me différencie.
+        - label: Travaillez-vous uniquement sur des projets Vue.js et Nuxt ?
           content: |
-            Lorsque les décisions deviennent structurantes : migration de stack, dette technique importante, problèmes de performance, difficulté à faire évoluer le frontend ou manque de vision claire.
+            Oui. Vue.js et Nuxt sont mon domaine d’expertise depuis 2011.
 
-            J’interviens généralement dans des contextes où improviser n’est plus une option.
-        - label: Travaillez-vous uniquement sur des projets Vue.js / Nuxt ?
+            Je préfère être excellent dans un écosystème que moyen sur plusieurs.
+        - label: Sur quel type de mission intervenez-vous ?
           content: |
-            Vue.js et Nuxt sont mes domaines d’expertise principaux, mais mon travail porte avant tout sur l’architecture et la prise de décision.
+            Construction de fonctionnalités, structuration d’architecture, revue technique ou aide à la décision.
 
-            Les principes que j’applique restent valables quel que soit le framework, dès lors que le frontend est critique dans le produit.
-    - title: Advisory & accompagnement
+            Je ne fais pas de bugfix pur ni de migration sans construction associée.
+    - title: Collaboration & format
       questions:
-        - label: Intervenez-vous comme consultant ou comme développeur ?
+        - label: Comment se passe concrètement une mission ?
           content: |
-            J’interviens principalement comme consultant et conseiller technique.
+            J’intègre l’équipe existante, je comprends le contexte et les contraintes, puis je construis et structure en parallèle.
 
-            Mon rôle n’est pas de prendre des tickets mais d’aider à structurer, arbitrer et sécuriser les décisions techniques aux côtés des équipes existantes.
-        - label: À quoi ressemble concrètement un accompagnement en advisory ?
+            Je travaille en 4 jours par semaine.
+        - label: Travaillez-vous à distance ou sur site ?
           content: |
-            Cela peut prendre la forme de revues d’architecture, de sessions de travail avec des CTO ou Tech Leads, d’audits ciblés ou d’un accompagnement régulier.
+            Principalement à distance depuis la Belgique.
 
-            Le format dépend du contexte, des enjeux et du niveau d’incertitude à réduire.
+            Des déplacements ponctuels sont possibles selon le contexte.
     - title: IA & modernisation
       questions:
-        - label: Comment abordez-vous l’intégration de l’IA dans un produit existant ?
+        - label: Comment utilisez-vous l’IA dans votre travail ?
           content: |
-            L’IA n’est pas un objectif en soi.
+            Comme un outil, pas comme un oracle. J’utilise l’IA pour explorer des options, accélérer certaines tâches et challenger mes décisions.
 
-            Je commence par identifier les vrais problèmes à résoudre, puis j’évalue si l’IA apporte une valeur mesurable.
-            L’objectif est d’intégrer l’IA de manière pragmatique, sans ajouter de complexité inutile.
-        - label: Travaillez-vous sur des projets d’IA “from scratch” ?
+            Pas pour remplacer le jugement technique.
+        - label: Pouvez-vous aider à intégrer l’IA dans un produit existant ?
           content: |
-            Rarement.
-
-            J’interviens surtout sur des produits existants, là où l’intégration de l’IA doit cohabiter avec une architecture, des contraintes métiers et des équipes déjà en place.
-        - label: L’IA peut-elle réellement aider à la prise de décision technique ?
-          content: |
-            Oui, mais uniquement si elle est utilisée comme un outil d’aide à la réflexion, pas comme un oracle.
-
-            J’utilise l’IA pour explorer des options, comparer des scénarios et expliciter des trade-offs, tout en gardant la responsabilité finale côté humain.
+            Oui, si ça a du sens. Mon approche : identifier les vrais problèmes d’abord, évaluer si l’IA apporte une valeur mesurable, puis intégrer progressivement sans fragiliser l’architecture existante.
 hero:
   tags:
     - Vue.js & Nuxt
@@ -154,15 +145,27 @@ seo:
   description: Massimo Russo est consultant senior en architecture frontend et usage pragmatique de l’IA. Il aide les entreprises à décider quand et comment utiliser l’IA face au legacy, à la complexité et à la hype.
 services:
   title: Services
-  description: J’accompagne les entreprises sur des sujets d’architecture frontend, d’aide à la décision technique et d’usage pragmatique de l’IA, dans des contextes complexes et à fort enjeu.
+  description: Développeur Vue.js senior depuis 2011, j’interviens en construction, en architecture et en décision technique — selon les besoins de l’équipe et du projet.
   items:
+    - title: Développement Vue.js / Nuxt
+      slug: developpement-vuejs
+      icon: i-ph-code
+      description: |
+        J’intègre des équipes pour construire des applications Vue.js et Nuxt robustes, performantes et maintenables.
+
+        Je travaille sur de la construction, pas du bugfix ou de la migration.
+      bullets:
+        - Développement Vue.js / Nuxt
+        - Intégration design system
+        - Performance frontend
+        - Code review & bonnes pratiques
     - title: Architecture frontend
       slug: architecture-frontend
       icon: i-ph-lightbulb
       description: |
-        J'aide les équipes à structurer et moderniser leur frontend dans des contextes complexes et contraints.
+        J’aide les équipes à structurer et faire évoluer leur frontend en contexte complexe.
 
-        Cela inclut l'analyse de stacks existantes, la définition de cibles d'architecture, les stratégies de migration (progressives ou non) et l'arbitrage de choix structurants sur le long terme.
+        Analyse de stack, définition d’une architecture cible, stratégies de modernisation progressives et arbitrage des choix structurants.
       bullets:
         - Audit de stack frontend
         - Architecture Vue / Nuxt
@@ -172,26 +175,25 @@ services:
       slug: aide-decision-technique
       icon: i-ph-chalkboard-teacher
       description: |
-        J'interviens comme regard externe pour aider à clarifier, prioriser et sécuriser des décisions techniques à fort impact.
+        Fort de 14 ans sur des projets frontend complexes, j’apporte un regard expérimenté pour aider à clarifier et structurer les décisions techniques à fort impact.
 
-        Mon rôle est de réduire l'incertitude, pas d'ajouter de la complexité.
+        Mon rôle est de réduire l’incertitude, pas d’en ajouter.
       bullets:
-        - Support CTO / Tech Leads
-        - Revue d'architecture
+        - Revue d’architecture
         - Arbitrage technologique
+        - Support Tech Leads
         - Vision long terme
-    - title: Usage pragmatique de l'IA
+    - title: Usage pragmatique de l’IA
       slug: ia-pragmatique
       icon: i-ph-sparkle
       description: |
-        J'accompagne les équipes dans l'intégration raisonnée de l'IA lorsque la question n'est plus "est‑ce possible ?" mais "est‑ce pertinent ?".
+        J’accompagne les équipes qui veulent intégrer l’IA sans se perdre dans la hype.
 
-        Mon rôle est d'aider à décider où l'IA apporte une vraie valeur, à cadrer les risques (coût, qualité, dépendance, sécurité) et à l'intégrer progressivement dans des produits et des architectures existantes.
+        La question n’est plus "est-ce possible ?" mais "est-ce pertinent, et à quel coût ?".
       bullets:
-        - Identification des vrais cas d'usage
+        - Identification des vrais cas d’usage
         - Orchestration IA
         - Intégration produit
-        - Aide à la décision par l'IA
         - Cadrage des risques & impacts
 speaking:
   title: Conférences & prises de parole
