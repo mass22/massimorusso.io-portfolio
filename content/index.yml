@@ -137,6 +137,21 @@ hero:
       alt: Image aléatoire 9
   isResourcesAvailable: false
 locale: fr
+marquee:
+  title: Ils m'ont fait confiance
+  logos:
+    - name: ""
+      icon: ""
+      color: ""
+      image: /logos/aircanada.webp
+    - name: ""
+      icon: ""
+      color: ""
+      image: /logos/porsche.webp
+    - image: /logos/ftq.webp
+    - image: /logos/ferique.webp
+    - image: /logos/brother.webp
+    - image: /logos/intact.webp
 podcast:
   title: Podcast — On parle dev
   description: Un podcast dédié à l’architecture frontend, aux décisions techniques et à l’évolution de carrière des développeurs seniors.
@@ -198,4 +213,20 @@ services:
 speaking:
   title: Conférences & prises de parole
   description: Interventions publiques, talks et podcasts autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.
-testimonials: []
+testimonials:
+  - quote: |
+      Massimo a transformé notre approche de l'architecture frontend. En quelques semaines, il nous a aidés à clarifier des décisions qui traînaient depuis des mois. Sa capacité à structurer le débat sans imposer sa vision est remarquable.
+    author:
+      name: Felipe Massa
+      description: CTO @ StartupXYZ
+      linkedin: https://linkedin.com/in/example
+  - quote: |
+      Un accompagnement pragmatique et concret. Massimo ne se perd pas dans des concepts abstraits — il propose des options, des arbitrages clairs et un plan actionnable. Exactement ce dont notre équipe avait besoin pour sortir du legacy.
+    author:
+      name: Georges De La Jungle
+      description: Tech Lead @ Jungle Corp
+  - quote: |
+      Travailler avec Massimo sur notre migration Vue/Nuxt a été décisif. Il a su équilibrer la vélocité short-term et la vision long terme. Notre codebase est aujourd'hui plus maintenable et les décisions sont documentées.
+    author:
+      name: Hubert Bonisseur De La Batte
+      description: Lead Dev Frontend @ Acme

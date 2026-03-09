@@ -27,6 +27,8 @@ const props = defineProps<{
 const getServiceIcon = (service: ServiceItem): string => {
   if (service.icon) return service.icon
   const iconMap: Record<string, string> = {
+    'developpement-vuejs': 'i-ph-code',
+    'vuejs-development': 'i-ph-code',
     'architecture-frontend': 'i-ph-lightbulb',
     'frontend-architecture': 'i-ph-lightbulb',
     'aide-decision-technique': 'i-ph-chalkboard-teacher',

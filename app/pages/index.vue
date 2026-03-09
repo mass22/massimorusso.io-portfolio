@@ -47,6 +47,10 @@ const ctaLinks = computed(() => ([
     <!-- 3. Companies (preuve sociale) -->
     <LazyLandingCompanies :page />
 
+    <!-- 3.1. Logos marquee + Testimonials (avant CTA) -->
+    <LazyLandingMarquee :page />
+    <LazyLandingTestimonials :page />
+
     <!-- 4. About + WorkExperience (côte à côte) - Section secondaire -->
     <UPageSection
       :ui="{

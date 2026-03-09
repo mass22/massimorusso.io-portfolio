@@ -155,6 +155,15 @@ companies:
       logo: "i-lucide-refresh-cw"
     - name: "Organizations in technical transition"
       logo: "i-lucide-trending-up"
+marquee:
+  title: They trusted me
+  logos:
+    - name: Vue.js
+      icon: i-simple-icons-vuedotjs
+      color: "#42b883"
+    - name: Nuxt
+      icon: i-simple-icons-nuxtdotjs
+      color: "#00DC82"
 podcast:
   title: "Podcast - On parle dev"
   description: "A podcast dedicated to frontend architecture, technical decisions, and the career evolution of senior developers."
@@ -201,3 +210,28 @@ faq:
         - label: Can you help integrate AI into an existing product?
           content: |
             Yes, if it makes sense. My approach: identify real problems first, assess whether AI brings measurable value, then integrate progressively without weakening the existing architecture.
+testimonials:
+  - quote: |
+      Massimo transformed our approach to frontend architecture. Within a few weeks, he helped us clarify decisions that had been dragging on for months. His ability to structure the debate without imposing his vision is remarkable.
+    author:
+      name: Sophie Martin
+      description: CTO, SaaS startup
+      avatar:
+        src: https://api.dicebear.com/7.x/initials/svg?seed=SM
+        alt: Sophie Martin
+  - quote: |
+      Pragmatic and concrete support. Massimo doesn't get lost in abstract concepts — he proposes options, clear trade-offs and an actionable plan. Exactly what our team needed to get out of legacy.
+    author:
+      name: Thomas Leroy
+      description: Tech Lead, scale-up
+      avatar:
+        src: https://api.dicebear.com/7.x/initials/svg?seed=TL
+        alt: Thomas Leroy
+  - quote: |
+      Working with Massimo on our Vue/Nuxt migration was decisive. He managed to balance short-term velocity and long-term vision. Our codebase is now more maintainable and decisions are documented.
+    author:
+      name: Marie Dupont
+      description: Frontend Lead Dev
+      avatar:
+        src: https://api.dicebear.com/7.x/initials/svg?seed=MD
+        alt: Marie Dupont

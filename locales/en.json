@@ -40,6 +40,13 @@
       "description": "Public talks, conferences and interviews on frontend architecture, technical decision-making and the evolution of the developer role.",
       "viewAll": "View all conferences"
     },
+    "marquee": {
+      "title": "They trusted me"
+    },
+    "testimonials": {
+      "title": "What they say",
+      "description": "Feedback from clients and collaborators on architecture and advisory engagements."
+    },
     "companies": {
       "title": "Companies I've worked with",
       "description": "Discover some of the organizations I've collaborated with on strategic technical challenges.",

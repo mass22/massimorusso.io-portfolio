@@ -17,8 +17,16 @@ const createAuthorSchema = () => z.object({
   avatar: createImageSchema().optional(), description: z.string().optional(), name: z.string(), to: z.string().optional(), twitter: z.string().optional(), username: z.string().optional()
 })
 
+const createTestimonialAuthorSchema = () => z.object({
+  name: z.string(),
+  description: z.string().optional(), // Poste @ Entreprise
+  avatar: createImageSchema().optional(), // Photo
+  linkedin: z.string().optional()
+})
+
 const createTestimonialSchema = () => z.object({
-  author: createAuthorSchema(), quote: z.string()
+  quote: z.string(),
+  author: z.union([z.string(), createTestimonialAuthorSchema()])
 })
 
 export default defineContentConfig({
@@ -113,7 +121,19 @@ export default defineContentConfig({
               )
             }))
         }).optional(),
-        testimonials: z.array(createTestimonialSchema()).optional()
+        testimonials: z.array(createTestimonialSchema()).optional(),
+        marquee: z.object({
+          title: z.string().optional(),
+          logos: z.array(z.object({
+            name: z.string(),
+            icon: z.string().editor({ input: 'icon' }).optional(),
+            image: z.union([z.string().editor({ input: 'media' }), createImageSchema()]).optional(),
+            color: z.string().optional(),
+            url: z.string().optional()
+          }).refine(data => data.icon || data.image, {
+            message: 'Chaque logo doit avoir une icône ou une image'
+          })).optional()
+        }).optional()
       })
     }), pages: defineCollection({
       type: 'page',

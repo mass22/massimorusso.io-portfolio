@@ -1,0 +1,60 @@
+locale: 'fr'
+slug: 'developpement-vuejs'
+title: Développement Vue.js / Nuxt
+description: J'intègre des équipes pour construire des applications Vue.js et Nuxt robustes, performantes et maintenables. Je travaille sur de la construction, pas du bugfix ou de la migration.
+icon: 'i-ph-code'
+
+content: |
+  J'intègre des équipes pour construire des fonctionnalités et faire évoluer des applications Vue.js et Nuxt.
+
+  Mon rôle n'est pas du bugfix isolé ni de la migration sans construction associée.
+  Il est de **livrer du code de qualité**, maintenable et aligné avec les standards de l'équipe.
+
+  ---
+
+  ## Quand intervenir
+
+  - une équipe manque de capacité Vue.js / Nuxt
+  - un projet doit accélérer sur une stack Vue
+  - une intégration design system est à réaliser
+  - des revues de code et bonnes pratiques sont nécessaires
+
+  ---
+
+  ## Ce que je fais
+
+  - développement de fonctionnalités Vue.js et Nuxt
+  - intégration de design systems
+  - optimisation de la performance frontend
+  - code review et transmission des bonnes pratiques
+
+  ---
+
+  ## Ce que je ne fais pas
+
+  - bugfix pur sans évolution associée
+  - migration technique sans construction
+  - formation initiale (je m'intègre à des équipes déjà compétentes)
+
+  ---
+
+  ## Ce que vous obtenez
+
+  - du code livré et maintenable
+  - une équipe renforcée sur Vue.js / Nuxt
+  - des pratiques et patterns cohérents
+  - une base solide pour la suite du projet
+
+  ---
+
+  ## Pour qui
+
+  Équipes produits et techniques qui construisent ou font évoluer des applications Vue.js et Nuxt.
+
+images:
+  - src: /services/service-4.webp
+    alt: Développement Vue.js et Nuxt
+
+seo:
+  title: Développement Vue.js / Nuxt | Massimo Russo
+  description: Développeur Vue.js senior depuis 2011, j'intègre des équipes pour construire des applications robustes, performantes et maintenables.

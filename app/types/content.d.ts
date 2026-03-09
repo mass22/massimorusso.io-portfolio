@@ -34,17 +34,14 @@ export type FAQ = {
 
 export type Testimonial = {
   quote: string
-  author: {
-    name: string
-    description?: string
-    avatar?: {
-      src: string
-      alt: string
+  author:
+    | string
+    | {
+      name: string
+      description?: string // Poste @ Entreprise
+      avatar?: { src: string, alt: string } // Photo
+      linkedin?: string // Lien LinkedIn
     }
-    to?: string
-    twitter?: string
-    username?: string
-  }
 }
 
 export type IndexPage = {

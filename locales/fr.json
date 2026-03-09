@@ -40,6 +40,13 @@
       "description": "Conférences et interventions publiques autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.",
       "viewAll": "Voir toutes les conférences"
     },
+    "marquee": {
+      "title": "Ils m'ont fait confiance"
+    },
+    "testimonials": {
+      "title": "Ils en parlent",
+      "description": "Retours de clients et collaborateurs sur les missions d'architecture et d'accompagnement."
+    },
     "companies": {
       "title": "Entreprises avec qui j'ai travaillé",
       "description": "Découvrez quelques-unes des organisations avec lesquelles j’ai collaboré sur des enjeux techniques structurants.",
