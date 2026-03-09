@@ -5,7 +5,10 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   test: {
+    exclude: ['**/node_modules/**', '**/dist/**', '**/.claude/**'],
     environment: 'happy-dom',
+    pool: 'forks',
+    maxWorkers: 1,
     alias: {
       '#imports': path.resolve(__dirname, './.nuxt/imports.d.ts'),
       '~': path.resolve(__dirname, '.'),

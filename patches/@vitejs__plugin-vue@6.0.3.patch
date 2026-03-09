@@ -1,0 +1,13 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 09d3418894dfc0cb747c5f68cb3c74554a2c1e79..ff4c8d299a41cc1683aa4e241e5e0201e57817fa 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -112,7 +112,7 @@ function setSrcDescriptor(filename, entry, scoped) {
+ 	cache.set(filename, entry);
+ }
+ function getHash(text) {
+-	return crypto.hash("sha256", text, "hex").substring(0, 8);
++	return crypto.createHash("sha256").update(text).digest("hex").substring(0, 8);
+ }
+ 
+ //#endregion
