@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" rx="38" fill="#3178C6"/>
+  <text
+    x="200" y="288"
+    font-family="Arial, Helvetica, sans-serif"
+    font-weight="bold"
+    font-size="215"
+    fill="white"
+    text-anchor="middle"
+  >TS</text>
+</svg>
