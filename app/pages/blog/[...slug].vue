@@ -4,6 +4,7 @@ import { findPageBreadcrumb } from '@nuxt/content/utils'
 import { mapContentNavigation } from '@nuxt/ui/utils/content'
 import { useScroll } from '@vueuse/core'
 import { computed, onMounted, ref } from 'vue'
+import { useCopyToClipboard } from '~/composables/useCopyToClipboard'
 import { useSiteUrl } from '~/composables/useSiteUrl'
 
 definePageMeta({
@@ -13,6 +14,7 @@ definePageMeta({
 const route = useRoute()
 const { t, locale, defaultLocale } = useI18n()
 const localePath = useLocalePath()
+const copyToClipboard = useCopyToClipboard()
 
 const slug = Array.isArray(route.params.slug)
   ? route.params.slug.join('/')
@@ -212,11 +214,14 @@ useHead({
 })
 
 const articleLink = computed(() => {
-  if (typeof window !== 'undefined') {
-    return window.location.href
-  }
-  return ''
+  const base = siteUrl.replace(/\/$/, '')
+  const path = route.fullPath.startsWith('/') ? route.fullPath : `/${route.fullPath}`
+  return `${base}${path}`
 })
+
+const handleCopyLink = () => {
+  copyToClipboard(articleLink.value, t('blog.linkCopied'))
+}
 
 const formatDate = (dateString: string) => {
   return new Date(dateString).toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US', {
@@ -286,7 +291,7 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
               loading="lazy"
               format="webp"
               quality="80"
-              class="rounded-lg w-full h-[300px] object-cover object-center"
+              class="rounded-lg w-full h-[300px] object-contain object-center"
             />
             <h1 class="text-4xl text-center font-medium max-w-3xl mx-auto mt-4">
               {{ page.title }}
@@ -312,13 +317,17 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
             />
 
             <div class="flex items-center justify-end gap-2 text-sm text-muted">
-              <UButton
-                size="sm"
-                variant="link"
-                color="neutral"
-                :label="t('blog.copyLink')"
-                @click="copyToClipboard(articleLink, t('blog.linkCopied'))"
-              />
+              <button
+                type="button"
+                class="text-sm text-muted hover:text-foreground transition-colors inline-flex items-center gap-1.5 cursor-pointer"
+                @click="handleCopyLink"
+              >
+                <span
+                  class="i-lucide-copy w-4 h-4 shrink-0"
+                  aria-hidden="true"
+                />
+                {{ t('blog.copyLink') }}
+              </button>
             </div>
             <UContentSurround
               v-if="surround"

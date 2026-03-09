@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { copyToClipboard } from '~/utils/clipboard'
+import { useCopyToClipboard } from '~/composables/useCopyToClipboard'
 
 const route = useRoute()
+const copyToClipboard = useCopyToClipboard()
 
 // Extraire l'ID depuis les paramètres de route
 const id = computed(() => {

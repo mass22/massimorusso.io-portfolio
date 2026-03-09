@@ -2,20 +2,15 @@ title: Conférences & prises de parole
 description: Interventions, conférences et formats publics autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.
 events:
   - category: Conference
-    title: L'IA et la dette technique
+    title: "Quand l’IA accélère tout… sauf la compréhension  "
     date: 2026-01-29
     location: Vue Montreal
-    url: "#"
-  - category: Live talk
-    title: L'IA et la dette technique
-    date: 2026-02-20
-    location: The Wagon
-    url: "#"
+    url: ""
   - category: Podcast
-    title: Point d'expert - Massimo Russo
+    title: Pourquoi l'IA ne remplace pas les développeurs | Massimo Russo, expert Vue & Nuxt
     date: 2026-01-15
-    location: Podcast pro (invité)
-    url: https://www.youtube.com/watch?v=0sACx3FLJQU&t=3s
+    location: Studio ONPOD
+    url: https://www.youtube.com/watch?v=0sACx3FLJQU
 links:
   - label: M’inviter à intervenir
     size: md

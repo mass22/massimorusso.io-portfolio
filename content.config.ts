@@ -17,16 +17,14 @@ const createAuthorSchema = () => z.object({
   avatar: createImageSchema().optional(), description: z.string().optional(), name: z.string(), to: z.string().optional(), twitter: z.string().optional(), username: z.string().optional()
 })
 
-const createTestimonialAuthorSchema = () => z.object({
-  name: z.string(),
-  description: z.string().optional(), // Poste @ Entreprise
-  avatar: createImageSchema().optional(), // Photo
-  linkedin: z.string().optional()
-})
-
+// Structure plate pour que Nuxt Studio affiche des champs éditables (les objets imbriqués affichent [object Object])
 const createTestimonialSchema = () => z.object({
   quote: z.string(),
-  author: z.union([z.string(), createTestimonialAuthorSchema()])
+  authorName: z.string(),
+  authorDescription: z.string().optional(),
+  authorAvatar: z.string().optional().editor({ input: 'media' }),
+  authorAvatarAlt: z.string().optional(),
+  authorLinkedin: z.string().optional()
 })
 
 export default defineContentConfig({
@@ -86,7 +84,8 @@ export default defineContentConfig({
               logo: z.string().editor({ input: 'icon' }),
               color: z.string()
             })
-          }))
+          })),
+          isCertificationsAvailable: z.boolean()
         }),
         blog: createBaseSchema(),
         podcast: createBaseSchema(),

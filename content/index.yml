@@ -60,6 +60,7 @@ experience:
         logo: i-simple-icons-nuxtdotjs
         url: https://certification.nuxtjs.org/certification-badge.html
         color: "#00DC82"
+  isCertificationsAvailable: false
 faq:
   title: Questions fréquentes
   description: Réponses aux questions les plus courantes sur mon rôle, mon positionnement et la manière dont j’interviens.
@@ -214,19 +215,20 @@ speaking:
   title: Conférences & prises de parole
   description: Interventions publiques, talks et podcasts autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.
 testimonials:
-  - quote: |
-      Massimo a transformé notre approche de l'architecture frontend. En quelques semaines, il nous a aidés à clarifier des décisions qui traînaient depuis des mois. Sa capacité à structurer le débat sans imposer sa vision est remarquable.
+  - quote: I have worked with Massimo at VACV and found him to be knowledgeable and dedicated, particularly with Vue.js. He is always keen to stay updated and improve his skills. Massimo has a knack for leaving things better than he found them, which is a great asset in any team.
     author:
-      name: Felipe Massa
-      description: CTO @ StartupXYZ
-      linkedin: https://linkedin.com/in/example
-  - quote: |
-      Un accompagnement pragmatique et concret. Massimo ne se perd pas dans des concepts abstraits — il propose des options, des arbitrages clairs et un plan actionnable. Exactement ce dont notre équipe avait besoin pour sortir du legacy.
+      name: Martin Kilmartin
+    authorName: "Martin Kilmartin "
+    authorDescription: Results-driven Senior Full-Stack Software Engineer
+  - quote: I add the chance to work with Massimo at FTQ Fonds de Solidarité. He is highly skilled and very pleasant to work with. I would definitely recommend him.
     author:
       name: Georges De La Jungle
       description: Tech Lead @ Jungle Corp
-  - quote: |
-      Travailler avec Massimo sur notre migration Vue/Nuxt a été décisif. Il a su équilibrer la vélocité short-term et la vision long terme. Notre codebase est aujourd'hui plus maintenable et les décisions sont documentées.
+    authorName: "Achille Kamgang "
+    authorDescription: Software Architect / Senior Expert Advisor
+  - quote: J'ai eu le plaisir de travailler avec Massimo chez Logient, où il a démontré une expertise exceptionnelle en Vue.js.  Il a joué un rôle clé dans plusieurs projets complexes, proposant des solutions innovantes et écrivant du code propre et efficace.  En plus de ses compétences techniques, Massimo est un excellent communicateur et un formidable coéquipier, apportant toujours une attitude positive et une grande passion pour le développement.  Je recommande vivement Massimo pour toute opportunité nécessitant une expertise en Vue.js.
     author:
       name: Hubert Bonisseur De La Batte
       description: Lead Dev Frontend @ Acme
+    authorName: Firas Kallel
+    authorDescription: Analyste développeur .NET à la trésorerie chez Desjardins

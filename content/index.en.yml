@@ -126,6 +126,7 @@ experience:
         logo: "i-simple-icons-nuxtdotjs"
         url: "https://certification.nuxtjs.org/certification-badge.html"
         color: "#00DC82"
+  isCertificationsAvailable: false
 blog:
   title: "Notes & analysis"
   description: "Short analyses and field insights on frontend architecture, stack modernization, and pragmatic AI usage. Concrete, decision-oriented content."
@@ -213,25 +214,19 @@ faq:
 testimonials:
   - quote: |
       Massimo transformed our approach to frontend architecture. Within a few weeks, he helped us clarify decisions that had been dragging on for months. His ability to structure the debate without imposing his vision is remarkable.
-    author:
-      name: Sophie Martin
-      description: CTO, SaaS startup
-      avatar:
-        src: https://api.dicebear.com/7.x/initials/svg?seed=SM
-        alt: Sophie Martin
+    authorName: Sophie Martin
+    authorDescription: CTO, SaaS startup
+    authorAvatar: https://api.dicebear.com/7.x/initials/svg?seed=SM
+    authorAvatarAlt: Sophie Martin
   - quote: |
       Pragmatic and concrete support. Massimo doesn't get lost in abstract concepts — he proposes options, clear trade-offs and an actionable plan. Exactly what our team needed to get out of legacy.
-    author:
-      name: Thomas Leroy
-      description: Tech Lead, scale-up
-      avatar:
-        src: https://api.dicebear.com/7.x/initials/svg?seed=TL
-        alt: Thomas Leroy
+    authorName: Thomas Leroy
+    authorDescription: Tech Lead, scale-up
+    authorAvatar: https://api.dicebear.com/7.x/initials/svg?seed=TL
+    authorAvatarAlt: Thomas Leroy
   - quote: |
       Working with Massimo on our Vue/Nuxt migration was decisive. He managed to balance short-term velocity and long-term vision. Our codebase is now more maintainable and decisions are documented.
-    author:
-      name: Marie Dupont
-      description: Frontend Lead Dev
-      avatar:
-        src: https://api.dicebear.com/7.x/initials/svg?seed=MD
-        alt: Marie Dupont
+    authorName: Marie Dupont
+    authorDescription: Frontend Lead Dev
+    authorAvatar: https://api.dicebear.com/7.x/initials/svg?seed=MD
+    authorAvatarAlt: Marie Dupont

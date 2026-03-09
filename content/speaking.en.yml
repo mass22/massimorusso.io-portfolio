@@ -2,22 +2,17 @@ title: Conferences & Speaking
 description: Interventions, conferences, and public formats around frontend architecture, technical decision-making, and the evolution of the developer role.
 events:
   - category: Conference
-    title: AI and technical debt
+    title: Quand l’IA accélère tout… sauf la compréhension
     date: 2026-01-29
     location: Vue Montreal
-    url: "#"
-  - category: Live talk
-    title: AI and technical dept
-    date: 2026-02-20
-    location: The Wagon
-    url: "#"
+    url: ""
   - category: Podcast
-    title: Point d'expert - Massimo Russo
+    title: Pourquoi l'IA ne remplace pas les développeurs | Massimo Russo, expert Vue & Nuxt
     date: 2026-01-15
-    location: Pro Podcast (Guest) [French]
-    url: "#"
+    location: Studio ONPOD
+    url: https://www.youtube.com/watch?v=0sACx3FLJQU
 links:
   - label: Invite me to speak
     size: md
     to: /contact
-locale: en
+locale: fr

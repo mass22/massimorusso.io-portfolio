@@ -267,7 +267,8 @@
     "description": "Nous sommes désolés mais cette page n'a pas pu être trouvée."
   },
   "clipboard": {
-    "copied": "Copié dans le presse-papiers"
+    "copied": "Copié dans le presse-papiers",
+    "error": "Impossible de copier dans le presse-papiers"
   },
   "footer": {
     "credits": "© {year} Massimo Russo. Tous droits réservés.",

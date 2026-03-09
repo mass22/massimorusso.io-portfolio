@@ -10,14 +10,14 @@ defineProps<{
   page: IndexCollectionItem & { testimonials?: Testimonial[] }
 }>()
 
-// UUser attend { name, description?, avatar?, to?, target? } — normalise et mappe linkedin → to
-const getAuthorProps = (author: Testimonial['author']) => {
-  if (!author) return null
-  if (typeof author === 'string') return { name: author }
-  const { linkedin, ...rest } = author
+// UUser attend { name, description?, avatar?, to?, target? } — construit à partir des champs plats
+const getAuthorProps = (t: Testimonial) => {
+  if (!t?.authorName) return null
   return {
-    ...rest,
-    ...(linkedin && { to: linkedin, target: '_blank' as const })
+    name: t.authorName,
+    description: t.authorDescription,
+    avatar: t.authorAvatar ? { src: t.authorAvatar, alt: t.authorAvatarAlt || t.authorName } : undefined,
+    ...(t.authorLinkedin && { to: t.authorLinkedin, target: '_blank' as const })
   }
 }
 </script>
@@ -66,11 +66,11 @@ const getAuthorProps = (author: Testimonial['author']) => {
               {{ testimonial.quote }}
             </p>
             <div
-              v-if="getAuthorProps(testimonial.author)"
+              v-if="getAuthorProps(testimonial)"
               class="mt-4 pt-4 border-t border-default/50"
             >
               <UUser
-                v-bind="getAuthorProps(testimonial.author)!"
+                v-bind="getAuthorProps(testimonial)!"
                 size="lg"
                 :ui="{ description: 'text-sm text-muted' }"
               />
@@ -115,11 +115,11 @@ const getAuthorProps = (author: Testimonial['author']) => {
                 {{ testimonial.quote }}
               </p>
               <div
-                v-if="getAuthorProps(testimonial.author)"
+                v-if="getAuthorProps(testimonial)"
                 class="mt-4 pt-4 border-t border-default/50"
               >
                 <UUser
-                  v-bind="getAuthorProps(testimonial.author)!"
+                  v-bind="getAuthorProps(testimonial)!"
                   size="lg"
                   :ui="{
                     description: 'text-sm text-muted line-clamp-1'
@@ -162,11 +162,11 @@ const getAuthorProps = (author: Testimonial['author']) => {
                 {{ testimonial.quote }}
               </p>
               <div
-                v-if="getAuthorProps(testimonial.author)"
+                v-if="getAuthorProps(testimonial)"
                 class="mt-4 pt-4 border-t border-default/50"
               >
                 <UUser
-                  v-bind="getAuthorProps(testimonial.author)!"
+                  v-bind="getAuthorProps(testimonial)!"
                   size="lg"
                   :ui="{
                     description: 'text-sm text-muted line-clamp-1'

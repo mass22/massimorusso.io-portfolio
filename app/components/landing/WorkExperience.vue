@@ -14,6 +14,7 @@ defineProps<{
     :in-view-options="{ once: true, margin: '-100px' }"
   >
     <UPageSection
+      v-if="page.experience.isCertificationsAvailable"
       :title="page.experience.title"
       :ui="{
         container: '!p-0 gap-4 sm:gap-4',

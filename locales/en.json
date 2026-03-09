@@ -267,7 +267,8 @@
     "description": "We are sorry but this page could not be found."
   },
   "clipboard": {
-    "copied": "Copied to clipboard"
+    "copied": "Copied to clipboard",
+    "error": "Failed to copy to clipboard"
   },
   "footer": {
     "credits": "© {year} Massimo Russo. All rights reserved.",
