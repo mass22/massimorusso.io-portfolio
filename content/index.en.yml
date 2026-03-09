@@ -106,21 +106,21 @@ experience:
   title: "Expertise & ecosystem"
   items:
     - position: "Vue.js Mid-Level Developer"
-      date: "2025"
+      date: "2026"
       company:
         name: Vue.js
         logo: "i-simple-icons-vuedotjs"
         url: "https://certification.vuejs.org/certification-badge.html"
         color: "#00DC82"
     - position: "Vue.js Senior Developer"
-      date: "2025"
+      date: "2026"
       company:
         name: Vue.js
         logo: "i-simple-icons-vuedotjs"
         url: "https://certification.vuejs.org/certification-badge.html"
         color: "#00DC82"
     - position: "Nuxt Mid-Level Developer"
-      date: "2025"
+      date: "2026"
       company:
         name: Nuxt.js
         logo: "i-simple-icons-nuxtdotjs"

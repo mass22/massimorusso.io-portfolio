@@ -40,21 +40,21 @@ experience:
   title: Expertise & écosystème
   items:
     - position: Développeur Vue.js Niveau Intermédiaire
-      date: "2025"
+      date: "2026"
       company:
         name: Vue.js
         logo: i-simple-icons-vuedotjs
         url: https://certification.vuejs.org/certification-badge.html
         color: "#00DC82"
     - position: Développeur Vue.js Senior
-      date: "2025"
+      date: "2026"
       company:
         name: Vue.js
         logo: i-simple-icons-vuedotjs
         url: https://certification.vuejs.org/certification-badge.html
         color: "#00DC82"
     - position: Développeur Nuxt Niveau Intermédiaire
-      date: "2025"
+      date: "2026"
       company:
         name: Nuxt.js
         logo: i-simple-icons-nuxtdotjs
