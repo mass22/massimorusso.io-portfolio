@@ -57,6 +57,7 @@ const hasLogos = computed(() => logos.value.length > 0)
       <UMarquee
         pause-on-hover
         :repeat="4"
+        :aria-label="t('homepage.marquee.ariaLabel')"
         :ui="{
           root: '[--gap:--spacing(12)]',
           content: 'w-auto py-4'

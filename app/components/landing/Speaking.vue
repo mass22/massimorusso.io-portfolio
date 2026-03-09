@@ -160,9 +160,9 @@ function getCategoryLabel(category: string): string {
                 </template>
 
                 <div class="flex-1 flex flex-col gap-3">
-                  <h3 class="text-lg font-semibold text-highlighted leading-tight group-hover:text-primary transition-colors">
+                  <h4 class="text-lg font-semibold text-highlighted leading-tight group-hover:text-primary transition-colors">
                     {{ event?.title || 'No title' }}
-                  </h3>
+                  </h4>
                   <div class="flex flex-col gap-2 text-sm text-muted">
                     <div class="flex items-center gap-2">
                       <UIcon
@@ -251,9 +251,9 @@ function getCategoryLabel(category: string): string {
                 </template>
 
                 <div class="flex-1 flex flex-col gap-3">
-                  <h3 class="text-lg font-semibold text-highlighted leading-tight group-hover:text-primary transition-colors">
+                  <h4 class="text-lg font-semibold text-highlighted leading-tight group-hover:text-primary transition-colors">
                     {{ event?.title || 'No title' }}
-                  </h3>
+                  </h4>
                   <div class="flex flex-col gap-2 text-sm text-muted">
                     <div class="flex items-center gap-2">
                       <UIcon

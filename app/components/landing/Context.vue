@@ -13,26 +13,31 @@ const lines = computed(() => [
 </script>
 
 <template>
-  <UContainer class="py-12 sm:py-24">
-    <div class="mx-auto max-w-5xl">
-      <div class="relative px-8 sm:px-12">
-        <!-- Vertical accent -->
-        <div
-          class="absolute left-0 top-0 h-full w-px bg-primary/30"
-          aria-hidden="true"
-        />
+  <section
+    class="py-12 sm:py-24"
+    :aria-label="t('context.ariaLabel')"
+  >
+    <UContainer>
+      <div class="mx-auto max-w-5xl">
+        <div class="relative px-8 sm:px-12">
+          <!-- Vertical accent -->
+          <div
+            class="absolute left-0 top-0 h-full w-px bg-primary/30"
+            aria-hidden="true"
+          />
 
-        <!-- Quote content -->
-        <div class="space-y-3 text-center">
-          <p
-            v-for="(line, index) in lines"
-            :key="index"
-            class="text-lg sm:text-xl leading-relaxed text-highlighted"
-          >
-            {{ line }}
-          </p>
+          <!-- Quote content -->
+          <div class="space-y-3 text-center">
+            <p
+              v-for="(line, index) in lines"
+              :key="index"
+              class="text-lg sm:text-xl leading-relaxed text-highlighted"
+            >
+              {{ line }}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </UContainer>
+    </UContainer>
+  </section>
 </template>

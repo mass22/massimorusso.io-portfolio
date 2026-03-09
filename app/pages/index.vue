@@ -35,23 +35,16 @@ const ctaLinks = computed(() => ([
 
 <template>
   <UPage v-if="page">
-    <!-- 1. Hero avec CTA principal -->
+    <!-- 1. Hero -->
     <LazyLandingHero :page />
 
-    <!-- 1.1. Context -->
+    <!-- 1.1. Context (conservé, non listé) -->
     <LazyLandingContext />
 
-    <!-- 2. Services (aperçu) -->
+    <!-- 2. Services -->
     <LazyLandingServices :page />
 
-    <!-- 3. Companies (preuve sociale) -->
-    <LazyLandingCompanies :page />
-
-    <!-- 3.1. Logos marquee + Testimonials (avant CTA) -->
-    <LazyLandingMarquee :page />
-    <LazyLandingTestimonials :page />
-
-    <!-- 4. About + WorkExperience (côte à côte) - Section secondaire -->
+    <!-- 3. À propos + 4. Expertise & certifications (côte à côte) -->
     <UPageSection
       :ui="{
         container: '!pt-12 sm:!pt-16 lg:!pt-20 lg:grid lg:grid-cols-2 lg:gap-8'
@@ -61,10 +54,19 @@ const ctaLinks = computed(() => ([
       <LazyLandingWorkExperience :page />
     </UPageSection>
 
-    <!-- 5. Speaking (Conférences, Talks, prises de parole) -->
+    <!-- 5. Logos clients (Ils m'ont fait confiance) -->
+    <LazyLandingMarquee :page />
+
+    <!-- 6. Testimonials (Ils en parlent) -->
+    <LazyLandingTestimonials :page />
+
+    <!-- 7. Conférences & prises de parole -->
     <LazyLandingSpeaking :page />
 
-    <!-- 6. Blog (contenu secondaire) -->
+    <!-- 8. Environnements & organisations -->
+    <LazyLandingCompanies :page />
+
+    <!-- 9. Blog -->
     <UPageSection
       :ui="{
         container: '!pt-12 sm:!pt-16 lg:!pt-20'
@@ -73,7 +75,7 @@ const ctaLinks = computed(() => ([
       <LazyLandingBlog :page />
     </UPageSection>
 
-    <!-- 7. FAQ (répondre aux objections) -->
+    <!-- 10. FAQ -->
     <UPageSection
       :ui="{
         container: '!pt-12 sm:!pt-16 lg:!pt-20'
@@ -82,7 +84,7 @@ const ctaLinks = computed(() => ([
       <LazyLandingFAQ :page />
     </UPageSection>
 
-    <!-- 8. CTA final vers Contact -->
+    <!-- 11. CTA final -->
     <Motion
       :initial="{ opacity: 0, transform: 'translateY(30px)' }"
       :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"

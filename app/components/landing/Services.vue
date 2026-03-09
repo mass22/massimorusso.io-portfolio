@@ -106,7 +106,7 @@ const serviceItems = computed(() => {
       description: 'text-left mt-4 text-base sm:text-lg lg:text-xl text-muted max-w-3xl'
     }"
   >
-    <UBlogPosts class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">
       <Motion
         v-for="(service, index) in serviceItems"
         :key="service.title"
@@ -159,7 +159,7 @@ const serviceItems = computed(() => {
           />
         </UPageCard>
       </Motion>
-    </UBlogPosts>
+    </div>
 
     <div class="flex justify-center mt-8">
       <UButton
