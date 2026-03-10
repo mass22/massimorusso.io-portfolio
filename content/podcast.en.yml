@@ -1,11 +1,13 @@
-title: Podcast
-description: Listen to my interventions and discussions around frontend architecture, technical decision-making, and the evolution of the developer role.
+title: On parle Dev
+description: The podcast for developers who want to think beyond the code. Architecture, technical decisions, career growth — real experience, not theory.
+seo:
+  title: On parle Dev — Vue.js, frontend architecture & developer growth podcast
+  description: The podcast for developers who want to think beyond the code. Architecture, technical decisions, career growth — real experience, not theory.
 episodes: []
 featuredEpisodes:
   - f4b514c7c74836f5784767e725ceef70268dc3f6
 intro: |
-  Discover my conversations with domain experts, my thoughts on modern frontend architecture,
-  and my analyses on technical decisions that shape our industry.
+  Conversations with Vue.js community members, reflections on frontend architecture and field insights on what actually makes a developer grow.
 links:
   - label: Subscribe to the podcast
     icon: i-lucide-rss

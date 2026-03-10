@@ -4,9 +4,22 @@ import { computed } from 'vue'
 const { t } = useI18n()
 const localePath = useLocalePath()
 
+type CTALink = {
+  label: string
+  href: string
+}
+
+type CTA = {
+  title: string
+  description?: string
+  primary?: CTALink
+  secondary?: CTALink
+}
+
 type Props = {
   title?: string
   description?: string
+  cta?: CTA
   variant?: 'solid' | 'outline' | 'soft' | 'subtle' | 'naked'
   withAnimation?: boolean
 }
@@ -14,30 +27,55 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
   title: undefined,
   description: undefined,
+  cta: undefined,
   variant: 'solid',
   withAnimation: true
 })
 
 // Utiliser computed pour les valeurs par défaut qui dépendent de t()
-const title = computed(() => props.title ?? t('services.cta.title'))
-const description = computed(() => props.description ?? t('services.cta.description'))
+const title = computed(() => props.cta?.title ?? props.title ?? t('services.cta.title'))
+const description = computed(() => props.cta?.description ?? props.description ?? t('services.cta.description'))
 
-const links = computed(() => ([
-  {
-    label: t('services.cta.contact'),
-    to: localePath('/contact'),
-    trailingIcon: 'i-lucide-arrow-right',
-    variant: 'solid' as const,
-    color: 'primary' as const
-  },
-  {
-    label: t('services.cta.booking'),
-    to: localePath('/contact#calendar'),
-    trailingIcon: 'i-lucide-calendar',
-    variant: 'outline' as const,
-    color: 'neutral' as const
+const links = computed(() => {
+  if (props.cta?.primary || props.cta?.secondary) {
+    return [
+      ...(props.cta.primary
+        ? [{
+            label: props.cta.primary.label,
+            to: localePath(props.cta.primary.href),
+            trailingIcon: 'i-lucide-arrow-right',
+            variant: 'solid' as const,
+            color: 'primary' as const
+          }]
+        : []),
+      ...(props.cta.secondary
+        ? [{
+            label: props.cta.secondary.label,
+            to: localePath(props.cta.secondary.href),
+            trailingIcon: 'i-lucide-calendar',
+            variant: 'outline' as const,
+            color: 'neutral' as const
+          }]
+        : [])
+    ]
   }
-]))
+  return [
+    {
+      label: t('services.cta.contact'),
+      to: localePath('/contact'),
+      trailingIcon: 'i-lucide-arrow-right',
+      variant: 'solid' as const,
+      color: 'primary' as const
+    },
+    {
+      label: t('services.cta.booking'),
+      to: localePath('/contact#calendar'),
+      trailingIcon: 'i-lucide-calendar',
+      variant: 'outline' as const,
+      color: 'neutral' as const
+    }
+  ]
+})
 </script>
 
 <template>

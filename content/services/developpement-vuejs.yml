@@ -1,14 +1,11 @@
 locale: 'fr'
 slug: 'developpement-vuejs'
 title: Développement Vue.js / Nuxt
-description: J'intègre des équipes pour construire des applications Vue.js et Nuxt robustes, performantes et maintenables. Je travaille sur de la construction, pas du bugfix ou de la migration.
+description: Depuis 2011, je construis des applications Vue.js et Nuxt dans des équipes produit. Je m'intègre rapidement, je livre du code maintenable, et j'apporte une vision architecturale sans qu'on me le demande.
 icon: 'i-ph-code'
 
 content: |
-  J'intègre des équipes pour construire des fonctionnalités et faire évoluer des applications Vue.js et Nuxt.
-
-  Mon rôle n'est pas du bugfix isolé ni de la migration sans construction associée.
-  Il est de **livrer du code de qualité**, maintenable et aligné avec les standards de l'équipe.
+  Depuis 2011, je construis des applications Vue.js et Nuxt dans des équipes produit. Je m'intègre rapidement, je livre du code maintenable, et j'apporte une vision architecturale sans qu'on me le demande.
 
   ---
 
@@ -49,12 +46,25 @@ content: |
 
   ## Pour qui
 
-  Équipes produits et techniques qui construisent ou font évoluer des applications Vue.js et Nuxt.
+  - Équipes produit qui accélèrent sur une stack Vue.js ou Nuxt
+  - Startups et scale-ups qui construisent des features complexes
+  - Équipes qui veulent un dev senior capable de construire ET de structurer
+  - Projets avec des enjeux de performance, maintenabilité ou design system
 
 images:
   - src: /services/service-4.webp
     alt: Développement Vue.js et Nuxt
 
 seo:
-  title: Développement Vue.js / Nuxt | Massimo Russo
+  title: Développement Vue.js & Nuxt — Dev senior disponible 4j/semaine
   description: Développeur Vue.js senior depuis 2011, j'intègre des équipes pour construire des applications robustes, performantes et maintenables.
+
+cta:
+  title: Un projet Vue.js ou Nuxt à construire ?
+  description: Parlez-moi de votre stack, votre équipe et ce que vous voulez livrer. Je vous dis si je peux aider.
+  primary:
+    label: Me contacter
+    href: /contact
+  secondary:
+    label: Planifier un appel
+    href: /contact#booking

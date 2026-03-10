@@ -120,7 +120,7 @@ const isWebPImage = (imagePath: string): boolean => {
         <div class="flex flex-col gap-2">
           <div class="flex items-start justify-between gap-4">
             <h3 class="text-xl font-bold text-highlighted leading-tight group-hover:text-primary transition-colors duration-300">
-              {{ episode.title }}
+              {{ episode.title || episode.subtitle || t('podcast.untitled') }}
             </h3>
             <UBadge
               v-if="episode.featured"

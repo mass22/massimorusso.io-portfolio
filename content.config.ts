@@ -42,7 +42,18 @@ export default defineContentConfig({
           description: z.string()
         }).optional(),
         content: z.string(),
-        images: z.array(createImageSchema())
+        images: z.array(createImageSchema()),
+        cta: z.object({
+          title: z.string(),
+          primary: z.object({
+            label: z.string(),
+            href: z.string()
+          }).optional(),
+          secondary: z.object({
+            label: z.string(),
+            href: z.string()
+          }).optional()
+        }).optional()
       })
     }), blog: defineCollection({
       type: 'page',
@@ -144,6 +155,12 @@ export default defineContentConfig({
       ],
       schema: z.object({
         locale: z.enum(['fr', 'en']).default('fr'),
+        title: z.string().optional(),
+        description: z.string().optional(),
+        seo: z.object({
+          title: z.string(),
+          description: z.string()
+        }).optional(),
         links: z.array(createButtonSchema())
       })
     }), projects: defineCollection({
@@ -257,6 +274,18 @@ export default defineContentConfig({
         seo: z.object({
           title: z.string(),
           description: z.string()
+        }).optional(),
+        cta: z.object({
+          title: z.string(),
+          description: z.string(),
+          primary: z.object({
+            label: z.string(),
+            href: z.string()
+          }).optional(),
+          secondary: z.object({
+            label: z.string(),
+            href: z.string()
+          }).optional()
         }).optional()
       })
     }), speaking: defineCollection({

@@ -207,7 +207,7 @@ useHead({
       <!-- eslint-enable vue/no-v-html -->
     </UPageBody>
 
-    <ServicesCTADefault />
+    <ServicesCTADefault :cta="page.cta" />
   </UPage>
 </template>
 

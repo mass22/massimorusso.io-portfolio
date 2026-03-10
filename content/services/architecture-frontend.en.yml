@@ -1,11 +1,11 @@
 locale: 'en'
 slug: 'frontend-architecture'
 title: Frontend Architecture
-description: Frontend architecture advisory to clarify, evaluate, and evolve complex stacks without blind rewriting or technical dogma.
+description: "Frontend architecture advisory to clarify, evaluate, and evolve complex stacks without blind rewriting or technical dogma. I can step in upstream to structure decisions, or directly within the team to build in alignment with the defined architecture."
 icon: 'i-ph-lightbulb'
 
 content: |
-  This intervention is for teams facing a frontend architecture that has become difficult to understand, maintain, or evolve over time.
+  This intervention is for teams facing a frontend architecture that has become difficult to understand, maintain, or evolve over time. I can step in upstream to structure decisions, or directly within the team to build in alignment with the defined architecture.
 
   My role is not to propose an "ideal architecture".
   It is to help define an **architecture adapted to your real context**, your constraints, and your team.
@@ -49,8 +49,25 @@ content: |
 
   ## For Whom
 
-  CTOs, Tech Leads, and frontend teams facing structuring architectural decisions.
+  - Vue.js teams whose codebase is becoming difficult to evolve
+  - CTOs and Tech Leads who want a realistic modernization trajectory
+  - Fast-growing projects with architectural decisions to secure
+  - Teams who build and want to last
 
 images:
   - src: /services/service-1.webp
     alt: Frontend architecture and technical decision-making
+
+seo:
+  title: Vue.js Frontend Architecture — Audit, roadmap & progressive modernisation
+  description: Frontend architecture advisory to clarify, evaluate, and evolve complex stacks without blind rewriting or technical dogma.
+
+cta:
+  title: Is your frontend architecture slowing you down?
+  description: Tell me about your stack and constraints. We'll define a realistic path forward together.
+  primary:
+    label: Contact me
+    href: /contact
+  secondary:
+    label: Schedule a call
+    href: /contact#booking

@@ -1,34 +1,32 @@
 locale: 'en'
 title: About
-description: Senior frontend architecture consultant and technical decision support. I intervene when decisions become critical, complex, or costly in the long term.
-
+description: Senior Vue.js developer since 2011. I build robust frontend applications and help teams structure the technical decisions that matter long term.
+seo:
+  title: About — Massimo Russo, Senior Vue.js Developer & Frontend Architect
+  description: Senior Vue.js developer since 2011. I build robust frontend applications and help teams structure the technical decisions that matter long term.
 content: |
-  I step in when technical decisions stop being obvious.
-
-  When a frontend architecture starts weighing on the team.
-  When multiple options seem possible, but none clearly stands out.
-  When a bad decision today can cost months, or years, Tomorrow.
-
-  My role is not to execute.
-  My role is to help **decide**.
+  I've been building Vue.js and Nuxt applications since 2011. Over time, I realized that failing projects rarely lack good developers. They lack clear decisions, owned by the team and built to last. So I learned to do both — build and structure. Not one or the other.
 
   ---
 
   ## What I do (and what I don't do)
 
-  I don't intervene to deliver features.
-  I don't intervene on a time-and-materials basis.
-  I don't "reinforce a team" to produce faster.
+  I join teams to build Vue.js and Nuxt applications. I work on building, not bugfix or migration.
 
-  I intervene when:
-  - strategic technical choices need to be arbitrated
-  - a frontend architecture becomes difficult to evolve
-  - complexity starts slowing down the product and teams
+  And when technical decisions become complex or structural, I bring an experienced perspective to clarify, arbitrate, and document.
 
-  My work consists of:
-  - clarifying real options (not theoretical ones)
-  - making trade-offs explicit
-  - documenting decisions that stand the test of time
+  What I do:
+
+  - Vue.js / Nuxt development in active construction
+  - Structuring and evolving frontend architectures
+  - Decision support for high-impact technical choices
+  - Pragmatic AI integration when relevant
+
+  What I don't do:
+
+  - Pure bugfix or migration without associated construction
+  - Project management or operational delivery
+  - Arbitrary decisions disconnected from real context
 
   ---
 
@@ -42,7 +40,7 @@ content: |
   - directions never really assumed
 
   Over time, debt is no longer just technical.
-  It becomes a **decision debt**.
+  It becomes a *decision debt*.
 
   That's where I step in.
 
@@ -84,16 +82,23 @@ content: |
   ## If you're considering working with me
 
   We're probably aligned if:
-  - an important technical decision is blocking progress
-  - the current architecture is hindering product evolution
-  - you need an external, experienced, and independent perspective
 
-  If you're looking for someone to execute or "keep the machine running", I'm not the right person.
+  - You're building a Vue.js or Nuxt application and want a senior dev who thinks long term
+  - Your frontend architecture is becoming difficult to evolve
+  - Structural technical decisions need to be clarified or arbitrated
+  - You want an external, experienced, and independent perspective
 
-  If you're looking to **clarify**, **arbitrate**, and **assume** complex technical decisions, then the discussion is worth having.
-
+  If you're looking for someone who builds AND structures — not just one or the other — then the discussion is worth having.
 images:
   - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: My workspace with coffee
   - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: My trip to Tokyo
+cta:
+  title: Let's talk?
+  primary:
+    label: Contact me
+    href: /contact
+  secondary:
+    label: Schedule a call
+    href: /contact#booking

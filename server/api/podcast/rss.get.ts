@@ -33,9 +33,9 @@ export default defineEventHandler(async () => {
         return ''
       }
 
-      // Extraire les champs
-      const title = extractField('title', true)
-      const description = extractField('description', true)
+      // Extraire les champs (isCData=false pour matcher CDATA et format normal)
+      const title = extractField('title', false) || extractField('itunes:title', false)
+      const description = extractField('description', false) || extractField('itunes:summary', false)
       const pubDate = extractField('pubDate')
       const link = extractField('link')
 

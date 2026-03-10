@@ -1,5 +1,8 @@
 title: Conferences & Speaking
-description: Interventions, conferences, and public formats around frontend architecture, technical decision-making, and the evolution of the developer role.
+description: Talks, interviews and public appearances on Vue.js, frontend architecture and the evolution of the developer role.
+seo:
+  title: Conferences & talks — Massimo Russo, Vue.js & frontend architecture
+  description: Talks, interviews and public appearances on Vue.js, frontend architecture and the evolution of the developer role.
 events:
   - category: Conference
     title: Quand l’IA accélère tout… sauf la compréhension
@@ -15,4 +18,4 @@ links:
   - label: Invite me to speak
     size: md
     to: /contact
-locale: fr
+locale: 'en'

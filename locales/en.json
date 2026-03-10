@@ -139,12 +139,12 @@
   },
   "contact": {
     "seo": {
-      "title": "Contact - Massimo Russo",
+      "title": "Contact — Massimo Russo, senior Vue.js developer available",
       "description": "Contact me to discuss frontend architecture, stack modernization or technical decision support. Available for strategic advisory engagements. Contact me at {email}"
     },
     "hero": {
-      "title": "Let's talk about your technical decisions",
-      "description": "Let's discuss your context, your technical constraints and the decisions to clarify.",
+      "title": "Let's talk about your project",
+      "description": "Whether you need a senior Vue.js dev to build, or an experienced eye to structure your technical decisions — let's discuss your context.",
       "cta": {
         "booking": "Schedule a call",
         "write": "Write a message"
@@ -205,20 +205,20 @@
       "description": "Here's what makes the difference in our collaboration.",
       "benefits": {
         "expertise": {
-          "title": "Senior expertise",
-          "description": "Frontend architecture, complex stack modernization and technical decision support."
+          "title": "Vue.js / Nuxt development",
+          "description": "14 years of Vue.js in real conditions. I build robust, maintainable applications built to last."
         },
         "reactivity": {
-          "title": "Clarity & pragmatism",
-          "description": "Clear, well-argued and directly actionable recommendations."
+          "title": "Architectural vision",
+          "description": "I don't just ship tickets. I bring perspective on what holds over time — structure, patterns, decisions."
         },
         "collaboration": {
-          "title": "Working with your teams",
-          "description": "Intervention alongside your existing teams, without disrupting the current organization."
+          "title": "Integration with your team",
+          "description": "I work alongside your existing teams, 4 days a week, without disrupting your organisation."
         },
         "results": {
-          "title": "Secured decisions",
-          "description": "Less uncertainty, less technical debt, and choices that stand the test of time."
+          "title": "Clarified decisions",
+          "description": "When technical choices become complex, I help clarify, arbitrate and document — so your team moves forward with confidence."
         }
       }
     }
@@ -252,6 +252,7 @@
     "showMore": "View All Episodes",
     "showLess": "Show Less",
     "noneAvailable": "No episodes available",
+    "untitled": "Untitled",
     "player": {
       "loading": "Loading player...",
       "error": "The podcast player is not available at the moment.",

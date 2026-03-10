@@ -1,18 +1,10 @@
 locale: 'en'
 slug: 'pragmatic-ai'
 title: Pragmatic AI Usage
-description: Advisory support to decide if, where, and how AI brings real value. Without hype or unnecessary complexity.
+description: "AI is everywhere in technical discussions today. Very few projects extract measurable value from it. My role isn't to 'add AI'. It's to help decide whether AI is relevant, where it actually is, and how to integrate it without weakening what already works."
 icon: 'i-ph-sparkle'
 
 content: |
-  AI is everywhere in technical discussions today.
-  Very few projects derive measurable value from it.
-
-  My role is not to "add AI".
-  It is to help **decide if AI is relevant**, where it truly is, and how to integrate it without weakening existing systems.
-
-  ---
-
   ## When to Intervene
 
   - internal or market pressure around AI
@@ -50,8 +42,25 @@ content: |
 
   ## For Whom
 
-  CTOs, product teams, and organizations exploring AI without wanting to lose clarity or control.
+  - CTOs and Tech Leads under pressure to integrate AI without clear framing
+  - Product teams who want to assess relevance before building
+  - Projects with an existing stack to preserve
+  - Organizations that want safeguards, not hype
 
 images:
   - src: /services/service-3.webp
     alt: Pragmatic artificial intelligence usage and decision support
+
+seo:
+  title: Pragmatic AI Integration — Framing, architecture and technical guardrails
+  description: Advisory support to decide if, where, and how AI brings real value. Without hype or unnecessary complexity.
+
+cta:
+  title: AI entering your roadmap?
+  description: Tell me about your context, the use cases you're considering and your constraints. We'll frame it together.
+  primary:
+    label: Contact me
+    href: /contact
+  secondary:
+    label: Schedule a call
+    href: /contact#booking

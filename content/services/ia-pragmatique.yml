@@ -1,18 +1,5 @@
-locale: 'fr'
-slug: 'ia-pragmatique'
 title: Usage pragmatique de l’IA
-description: Accompagnement pour décider si, où et comment l’IA apporte une valeur réelle, sans hype ni complexité inutile.
-icon: 'i-ph-sparkle'
-
 content: |
-  L’IA est aujourd’hui partout dans les discussions techniques.
-  Très peu de projets en tirent une valeur mesurable.
-
-  Mon rôle n’est pas d’“ajouter de l’IA”.
-  Il est d’aider à **décider si l’IA est pertinente**, où elle l’est réellement, et comment l’intégrer sans fragiliser l’existant.
-
-  ---
-
   ## Quand intervenir
 
   - pression interne ou marché autour de l’IA
@@ -50,8 +37,26 @@ content: |
 
   ## Pour qui
 
-  CTO, équipes produit et organisations qui explorent l’IA sans vouloir s’y perdre.
-
+  - CTO et Tech Leads face à la pression d'intégrer l'IA sans cadrage clair
+  - Équipes produit qui veulent évaluer la pertinence avant de construire
+  - Projets avec une stack existante à préserver
+  - Organisations qui veulent des garde-fous, pas de la hype.
+cta:
+  title: L'IA entre dans votre roadmap ?
+  description: Parlez-moi de votre contexte, des cas d'usage envisagés et de vos contraintes. On cadre ça ensemble.
+  primary:
+    label: Me contacter
+    href: /contact
+  secondary:
+    label: Planifier un appel
+    href: /contact#booking
+description: "L'IA est aujourd'hui partout dans les discussions techniques. Très peu de projets en tirent une valeur mesurable. Mon rôle n'est pas d'« ajouter de l'IA ». Il est d'aider à décider si l'IA est pertinente, où elle l'est réellement, et comment l'intégrer sans fragiliser l'existant."
+icon: i-ph-sparkle
 images:
   - src: /services/service-3.webp
     alt: Usage pragmatique de l'intelligence artificielle et aide à la décision
+locale: fr
+seo:
+  title: Usage pragmatique de l'IA — Cadrage, intégration et garde-fous techniques
+  description: "L'IA est aujourd'hui partout dans les discussions techniques. Très peu de projets en tirent une valeur mesurable. Mon rôle n'est pas d'« ajouter de l'IA ». Il est d'aider à décider si l'IA est pertinente, où elle l'est réellement, et comment l'intégrer sans fragiliser l'existant."
+slug: ia-pragmatique

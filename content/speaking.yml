@@ -1,5 +1,8 @@
 title: Conférences & prises de parole
-description: Interventions, conférences et formats publics autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.
+description: Talks, interviews et interventions publics autour de Vue.js, de l’architecture frontend et de l’évolution du métier de développeur.
+seo:
+  title: Conférences & talks — Massimo Russo, Vue.js & architecture frontend
+  description: Talks, interviews et interventions publics autour de Vue.js, de l'architecture frontend et de l'évolution du métier de développeur.
 events:
   - category: Conference
     title: "Quand l’IA accélère tout… sauf la compréhension  "

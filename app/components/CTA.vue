@@ -10,7 +10,7 @@ type CTALinkExtended = CTALink & {
 
 type Props = {
   title: string
-  description: string
+  description?: string
   primary?: CTALinkExtended
   secondary?: CTALinkExtended
   links?: CTALinkExtended[]
@@ -19,6 +19,7 @@ type Props = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  description: '',
   variant: 'solid',
   withAnimation: true
 })

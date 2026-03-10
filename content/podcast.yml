@@ -1,11 +1,10 @@
-title: Podcast
-description: Écoutez mes interventions et discussions autour de l'architecture frontend, de la prise de décision technique et de l'évolution du métier de développeur.
+title: On parle Dev
+description: Le podcast pour les développeurs qui veulent penser plus loin que le code. Architecture, décisions techniques, évolution de carrière — du vécu, pas de la théorie.
 episodes: []
 featuredEpisodes:
   - f4b514c7c74836f5784767e725ceef70268dc3f6
 intro: |
-  Découvrez mes conversations avec des experts du domaine, mes réflexions sur l'architecture frontend moderne,
-  et mes analyses sur les décisions techniques qui façonnent notre industrie.
+  Des conversations avec des membres de la communauté Vue.js, des réflexions sur l'architecture frontend et des retours terrain sur ce qui fait vraiment évoluer un développeur.
 links:
   - label: S'abonner au podcast
     icon: i-lucide-rss
@@ -28,3 +27,6 @@ platforms:
     icon: i-lucide-rss
 player:
   enabled: false
+seo:
+  title: On parle Dev — Le podcast Vue.js, architecture frontend & évolution développeur
+  description: Le podcast pour les développeurs qui veulent penser plus loin que le code. Architecture, décisions techniques, évolution de carrière — du vécu, pas de la théorie.

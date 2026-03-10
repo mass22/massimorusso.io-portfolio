@@ -139,12 +139,12 @@
   },
   "contact": {
     "seo": {
-      "title": "Contact - Massimo Russo",
+      "title": "Contact — Massimo Russo, développeur Vue.js senior disponible",
       "description": "Contactez-moi pour discuter d’architecture frontend, de modernisation de stack ou d’aide à la décision technique. Disponible pour des accompagnements de conseil stratégique. Contactez-moi à {email}"
     },
     "hero": {
-      "title": "Parlons de vos décisions techniques",
-      "description": "Discutons de votre contexte, de vos enjeux techniques et des arbitrages à clarifier.",
+      "title": "Parlons de votre projet",
+      "description": "Que vous cherchiez un dev Vue.js senior pour construire, ou un regard expérimenté pour structurer vos décisions techniques — discutons de votre contexte.",
       "cta": {
         "booking": "Planifier un appel",
         "write": "Écrire un message"
@@ -205,20 +205,20 @@
       "description": "Voici ce qui fait la différence dans notre collaboration.",
       "benefits": {
         "expertise": {
-          "title": "Expertise senior",
-          "description": "Architecture frontend, modernisation de stacks complexes et accompagnement à la décision technique."
+          "title": "Construction Vue.js / Nuxt",
+          "description": "14 ans de Vue.js en conditions réelles. Je construis des applications robustes, maintenables et pensées long terme."
         },
         "reactivity": {
-          "title": "Clarté & pragmatisme",
-          "description": "Des recommandations claires, argumentées et directement actionnables."
+          "title": "Vision architecturale",
+          "description": "Je ne livre pas juste des tickets. J'apporte une perspective sur ce qui tient dans la durée — structure, patterns, décisions."
         },
         "collaboration": {
-          "title": "Travail avec vos équipes",
-          "description": "Intervention aux côtés de vos équipes existantes, sans perturber l’organisation en place."
+          "title": "Intégration dans votre équipe",
+          "description": "Je travaille avec vos équipes existantes, 4 jours par semaine, sans perturber l’organisation en place."
         },
         "results": {
-          "title": "Décisions sécurisées",
-          "description": "Moins d’incertitude, moins de dette technique, et des choix assumés sur le long terme."
+          "title": "Décisions clarifiées",
+          "description": "Quand les choix techniques deviennent complexes, j'aide à structurer, arbitrer et documenter — pour que l'équipe avance avec clarté."
         }
       }
     }
@@ -252,6 +252,7 @@
     "showMore": "Voir tous les épisodes",
     "showLess": "Afficher moins",
     "noneAvailable": "Aucun épisode disponible",
+    "untitled": "Sans titre",
     "player": {
       "loading": "Chargement du lecteur...",
       "error": "Le lecteur de podcast n'est pas disponible pour le moment.",

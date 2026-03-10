@@ -63,5 +63,10 @@ useSeoMeta({
         v-html="htmlContent"
       />
     </UPageSection>
+    <ServicesCTADefault
+      v-if="page.cta"
+      :cta="page.cta"
+      :with-animation="false"
+    />
   </UPage>
 </template>

@@ -205,7 +205,7 @@ useHead({
       </div>
     </UPageBody>
 
-    <ServicesCTADefault />
+    <ServicesCTADefault :cta="page.cta" />
   </UPage>
 </template>
 

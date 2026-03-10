@@ -1,14 +1,7 @@
-locale: 'fr'
-slug: 'aide-decision-technique'
 title: Conseil & aide à la décision technique
-description: Accompagnement pour clarifier, structurer et assumer des décisions techniques complexes dans des contextes à forts enjeux.
-icon: 'i-ph-chalkboard-teacher'
-
 content: |
-  Certaines décisions techniques ne peuvent pas être prises à l’intuition, ni au consensus mou.
-
-  Mon rôle n’est pas de trancher à votre place.
-  Il est d’aider à **poser un cadre de décision clair**, compréhensible et assumé dans le temps.
+  Certaines décisions techniques ne peuvent pas être prises à l’intuition, ni au consensus mou. Après 14 ans sur des projets Vue.js complexes, j'ai appris que les vrais blocages sont rarement techniques — ils sont décisionnels. Mon rôle n’est pas de trancher à votre place.
+  Il est d’aider à poser un cadre de décision clair, compréhensible et assumé dans le temps.
 
   ---
 
@@ -49,9 +42,26 @@ content: |
 
   ## Pour qui
 
-  CTO, Tech Leads et équipes produit/tech confrontés à des décisions structurantes ou bloquantes.
-
+  - CTO et Tech Leads face à des choix d'architecture ou de stack structurants
+  - Équipes Vue.js dont les discussions techniques tournent en rond sans convergence
+  - Projets à fort enjeu où une mauvaise décision coûte cher à corriger
+  - Organisations qui veulent documenter et assumer leurs décisions, pas juste les prendre
+cta:
+  title: Une décision technique qui bloque votre équipe ?
+  description: Parlez-moi du contexte, des options sur la table et de ce qui freine la décision. On structure ça ensemble.
+  primary:
+    label: Me contacter
+    href: /contact
+  secondary:
+    label: Planifier un appel
+    href: /contact#booking
+description: Certaines décisions techniques ne peuvent pas être prises à l'intuition, ni au consensus mou. Après 14 ans sur des projets Vue.js complexes, j'ai appris que les vrais blocages sont rarement techniques — ils sont décisionnels. Mon rôle n'est pas de trancher à votre place. Il est d'aider à poser un cadre de décision clair, compréhensible et assumé dans le temps.
+icon: i-ph-chalkboard-teacher
 images:
   - src: /services/service-2.webp
     alt: Aide à la décision technique et arbitrage
-
+locale: fr
+seo:
+  title: Aide à la décision technique frontend — Clarifier, arbitrer, documenter
+  description: Accompagnement pour clarifier, structurer et assumer des décisions techniques complexes dans des contextes à forts enjeux.
+slug: aide-decision-technique

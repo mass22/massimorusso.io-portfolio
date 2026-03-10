@@ -1,131 +1,118 @@
 title: Services
 content: |
-  J’interviens auprès d’équipes et d’organisations lorsque les décisions techniques deviennent structurantes, difficiles à arbitrer ou lourdes de conséquences à long terme.
+  ## Comment j'interviens
 
-  Mon rôle n’est pas de livrer des fonctionnalités, mais d’aider à **clarifier**, **structurer** et **assumer** des décisions techniques dans des contextes de complexité, de legacy et de contraintes réelles.
-
-  ## Ce que je fais
+  ### Développement Vue.js / Nuxt
+  J'intègre une équipe existante pour construire des fonctionnalités, des modules ou des applications complètes en Vue.js et Nuxt. Je travaille en 4 jours par semaine, à distance, sur de la construction — pas de la maintenance pure.
 
   ### Architecture frontend
-  J’aide à évaluer des architectures existantes, à identifier les points de fragilité et à définir des trajectoires de modernisation réalistes.
-  L’objectif n’est pas la réécriture parfaite, mais une architecture compréhensible, maintenable et alignée avec les capacités de l’équipe.
+  J'aide à évaluer une architecture existante, identifier les points de fragilité et définir une trajectoire de modernisation réaliste. L'objectif n'est pas la réécriture parfaite, mais une architecture compréhensible, maintenable et alignée avec les capacités de l'équipe.
 
   ### Conseil & aide à la décision
-  J’interviens lorsque plusieurs options techniques sont possibles, mais qu’aucune décision claire n’émerge.
-  J’aide à structurer les critères, expliciter les arbitrages et documenter les décisions pour qu’elles soient comprises et assumées dans le temps.
+  J'interviens lorsque plusieurs options techniques sont possibles mais qu'aucune décision claire n'émerge. J'aide à structurer les critères, expliciter les arbitrages et documenter les décisions pour qu'elles soient comprises et assumées dans le temps.
 
   ### IA pragmatique
-  J’accompagne les équipes lorsque l’IA entre dans la discussion : opportunité produit, pression du marché ou initiative interne.
-  Mon rôle est d’identifier les cas d’usage pertinents, de cadrer les risques (coûts, qualité, dépendance, sécurité) et d’intégrer l’IA sans complexifier inutilement l’architecture existante.
-
-  ## Comment j’interviens
-
-  Mon intervention peut prendre différentes formes :
-  - audits ciblés
-  - accompagnement à la décision
-  - ateliers techniques
-  - support ponctuel à des équipes senior
-
-  Elle est toujours limitée dans le temps, orientée décision et pensée pour rendre l’équipe autonome.
+  J'accompagne les équipes lorsque l'IA entre dans la discussion. Mon rôle : identifier les cas d'usage pertinents, cadrer les risques et intégrer progressivement sans fragiliser l'architecture existante.
 
   ## Quand faire appel à moi
 
-  - Une architecture frontend devient difficile à faire évoluer
+  - Vous construisez une application Vue.js ou Nuxt et avez besoin d'un dev senior qui pense long terme
+  - Votre architecture frontend devient difficile à faire évoluer
   - Une modernisation est envisagée sans trajectoire claire
   - Des choix techniques doivent être arbitrés rapidement
-  - L’IA arrive dans la roadmap sans cadrage précis
+  - L'IA entre dans la roadmap sans cadrage précis
 
   ## Ce que je ne fais pas
 
-  - Développement en régie ou exécution long terme
+  - Bugfix pur ou maintenance sans construction associée
+  - Migration sans vision architecturale claire
   - Gestion de projet ou delivery opérationnel
-  - Implémentation d’IA “clé en main” sans réflexion préalable
+  - Intégration d'IA clé en main sans réflexion préalable
 
   ## Ce que vous obtenez
 
+  - Un frontend construit pour durer, pas juste pour livrer
   - Des décisions techniques clarifiées et documentées
-  - Une vision plus lisible de votre architecture
-  - Une réduction de l’incertitude et de la dette décisionnelle
+  - Une architecture compréhensible par toute l'équipe
+  - Une réduction de l'incertitude et de la dette décisionnelle
 cta:
-  title: Prêt à clarifier vos décisions techniques ?
-  description: Discutons de votre contexte, de vos contraintes et des décisions à sécuriser. Je vous propose un plan clair et réaliste.
+  title: Vous cherchez un dev Vue.js senior qui pense architecture ?
+  description: Discutons de votre projet, vos contraintes et ce que vous voulez construire.
   primary:
     label: Me contacter
     href: /contact
   secondary:
     label: Planifier un appel
     href: /contact#booking
-description: Accompagnement en architecture frontend, aide à la décision technique et intégration pragmatique de l'IA pour des contextes complexes et structurants.
+description: Développeur Vue.js senior depuis 2011, j'interviens en construction, en architecture et en décision technique — selon les besoins de l'équipe et du projet.
 faq:
   title: Questions fréquentes
   description: Réponses aux questions les plus courantes concernant mon accompagnement.
   categories:
-    - title: Intervention & cadre
+    - title: Missions & collaboration
       questions:
-        - label: Travaillez-vous encore comme développeur ?
+        - label: Travaillez-vous comme développeur ou comme consultant ?
           content: |
-            Non. Mon rôle est aujourd’hui centré sur l’architecture, l’aide à la décision et l’accompagnement stratégique.
-            Je peux analyser du code existant, mais je n’interviens pas comme développeur en régie.
-        - label: À quel moment intervenir ?
+            Les deux. Je construis des applications Vue.js et Nuxt en intégrant une équipe, et j'apporte une vision architecturale sur les décisions structurantes. Ce n'est pas l'un ou l'autre — c'est ce qui me différencie.
+        - label: Travaillez-vous uniquement sur Vue.js et Nuxt ?
           content: |
-            Le plus tôt possible, idéalement avant que des choix techniques irréversibles ne soient engagés.
-            J’interviens aussi lorsque des décisions ont déjà été prises et nécessitent d’être réévaluées.
+            Oui. C'est mon écosystème depuis 2011. Je préfère être excellent dans un domaine que moyen sur plusieurs.
+        - label: Quel est votre rythme de travail ?
+          content: |
+            4 jours par semaine, principalement à distance depuis la Belgique. Des déplacements ponctuels sont possibles selon le contexte.
     - title: IA & modernisation
       questions:
         - label: Proposez-vous des solutions IA clé en main ?
           content: |
-            Non. Je n’intègre pas d’IA sans cadrage préalable.
-            Mon rôle est d’aider à décider si l’IA est pertinente, où elle apporte de la valeur et comment l’intégrer sans créer de dépendance inutile.
+            Non. J'intègre l'IA uniquement si c'est pertinent. Mon rôle est d'aider à décider si l'IA apporte une vraie valeur, où, et comment l'intégrer sans créer de dépendance inutile.
         - label: Travaillez-vous avec des équipes non expertes en IA ?
           content: |
-            Oui. L’essentiel n’est pas le niveau initial, mais la capacité à prendre des décisions éclairées.
-            J’adapte mon accompagnement au contexte et à la maturité de l’équipe.
+            Oui. L'essentiel n'est pas le niveau initial, mais la capacité à prendre des décisions éclairées. J'adapte mon approche au contexte et à la maturité de l'équipe.
 heroContext: |
-  Ces services s'adressent aux CTO, VP Engineering et leaders techniques confrontés à des décisions structurantes dans des contextes de forte complexité : dette frontend, systèmes legacy, refonte majeure ou intégration raisonnée de l'IA. J'interviens lorsque les enjeux ne sont plus "comment implémenter", mais quoi décider, dans quel ordre, et avec quels risques business, notamment lorsque ces décisions doivent être posées rapidement face à des contraintes budgétaires ou organisationnelles.
+  Je m'adresse aux équipes qui veulent construire des frontends solides, structurer leurs décisions techniques et avancer avec lucidité — sans réécriture inutile, sans hype, sans bullshit.
 images:
   - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: Mon espace de travail avec café
   - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     alt: Mon voyage à Tokyo
 items:
+  - slug: developpement-vuejs
+    title: Développement Vue.js / Nuxt
+    description: J'intègre des équipes pour construire des applications Vue.js et Nuxt robustes, performantes et maintenables. Je travaille sur de la construction, pas du bugfix ou de la migration.
+    imageAlt: Développement Vue.js et Nuxt
+    icon: i-ph-code
   - slug: architecture-frontend
     title: Architecture frontend
-    description: Audit de stack, architecture cible, trajectoires de modernisation et migrations progressives (notamment Vue/Nuxt), avec un focus sur la performance, l'expérience développeur et la maintenabilité.
+    description: J'aide les équipes à structurer et faire évoluer leur frontend en contexte complexe. Analyse de stack, architecture cible, modernisation progressive et arbitrage des choix structurants.
     imageAlt: Architecture et modernisation frontend
     icon: i-ph-lightbulb
   - slug: aide-decision-technique
     title: Conseil & aide à la décision
-    description: |
-      Regard externe pour clarifier, prioriser et arbitrer des décisions techniques à fort impact : revues d'architecture, choix technologiques, trajectoire long terme.
+    description: "Fort de 14 ans sur des projets Vue.js complexes, j'apporte un regard expérimenté pour clarifier et structurer les décisions techniques à fort impact. Mon rôle : réduire l'incertitude, pas en ajouter."
     imageAlt: Conseil et aide à la décision technique
     icon: i-ph-chalkboard-teacher
   - slug: ia-pragmatique
     title: Usage pragmatique de l'IA
-    description: |
-      Intégration raisonnée de l'IA quand la question n'est plus "est-ce possible ?" mais "est-ce pertinent ?" : cas d'usage, risques, garde-fous et intégration progressive.
+    description: J'accompagne les équipes qui veulent intégrer l'IA sans se perdre dans la hype. La question n'est plus "est-ce possible ?" mais "est-ce pertinent, et à quel coût ?".
     imageAlt: IA pragmatique et intégration produit
     icon: i-ph-sparkle
-itemsIntro: Trois axes d'intervention pour clarifier vos décisions techniques et structurer votre architecture.
+itemsIntro: Quatre axes d'intervention pour construire, structurer et décider.
 locale: fr
 process:
-  title: Mon cadre d’intervention
-  description: Une approche structurée et collaborative pour réduire l'incertitude, clarifier les options et sécuriser les décisions techniques. Le format s’adapte à votre contexte. Le cadre reste le même.
+  title: Mon cadre d'intervention
+  description: "Que j'intervienne en construction ou en architecture, mon approche reste la même : comprendre d'abord, construire ensuite, documenter toujours."
   steps:
     - title: Cadrage & contexte
-      description: Compréhension des enjeux, contraintes (legacy, équipe, livraison) et des décisions à prendre. Clarification des objectifs et des critères de succès.
-    - title: Analyse & options
-      description: |
-        Audit ciblé, cartographie des risques, identification des options réalistes et de leurs arbitrages (coût, délai, maintenance, performance).
-    - title: Recommandations actionnables
-      description: |
-        Proposition d’une stratégie (migration, architecture cible, garde-fous) et d’un plan concret : gains rapides, jalons et décisions documentées.
-    - title: Accompagnement & suivi
-      description: |
-        Sessions régulières, revues d'architecture, support aux Tech Leads/CTO, et ajustements en fonction des retours terrain.
-processLeadIn: Mon intervention suit une méthodologie éprouvée, adaptée à chaque contexte et pensée pour vous rendre autonome rapidement.
+      description: Compréhension du projet, de la stack existante, des contraintes (legacy, équipe, délais) et des objectifs. On aligne les attentes avant d'écrire la première ligne.
+    - title: Construction ou analyse
+      description: "Selon le besoin : intégration dans l'équipe pour construire des fonctionnalités, ou audit ciblé pour cartographier les risques et identifier les options réalistes."
+    - title: Décisions documentées
+      description: Chaque choix structurant est explicité, arbitré et documenté. Pas pour faire joli — pour que l'équipe puisse l'assumer dans le temps sans dépendre de moi.
+    - title: Autonomie & suivi
+      description: Mon objectif est de rendre l'équipe autonome, pas de créer une dépendance. Sessions de suivi, revues de code ou d'architecture selon le contexte.
 seo:
-  title: Services — Architecture frontend & conseil en IA
-  description: Accompagnement en architecture frontend, aide à la décision technique et intégration pragmatique de l’IA pour des contextes complexes et structurants.
+  title: Services — Développement Vue.js, Architecture frontend & Décision technique
+  description: Développeur Vue.js senior depuis 2011, j'interviens en construction, en architecture et en décision technique — selon les besoins de l'équipe et du projet.
 stats:
   - value: 50+
     label: Clients satisfaits

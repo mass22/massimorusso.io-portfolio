@@ -35,7 +35,7 @@ export type CTALink = {
 
 export type CTA = {
   title: string
-  description: string
+  description?: string
   primary?: CTALink
   secondary?: CTALink
 }

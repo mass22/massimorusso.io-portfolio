@@ -1,131 +1,118 @@
 title: Services
+description: Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making — depending on what your team needs.
+heroContext: |
+  I work with teams who want to build solid frontends, structure their technical decisions and move forward with clarity — no pointless rewrites, no hype, no bullshit.
+items:
+  - slug: vuejs-development
+    title: Vue.js / Nuxt Development
+    description: I join teams to build robust, performant and maintainable Vue.js and Nuxt applications. I focus on building, not fixing or migrating.
+    imageAlt: Vue.js and Nuxt development
+    icon: i-ph-code
+  - slug: frontend-architecture
+    title: Frontend architecture
+    description: I help teams structure and evolve their frontend in complex contexts. Stack analysis, target architecture, progressive modernization and trade-off arbitration.
+    imageAlt: Frontend architecture and modernization
+    icon: i-ph-lightbulb
+  - slug: technical-decision-support
+    title: Consulting & decision support
+    description: With 14 years on complex Vue.js projects, I bring an experienced perspective to clarify and structure high-impact technical decisions. My role: reduce uncertainty, not add to it.
+    imageAlt: Consulting and technical decision support
+    icon: i-ph-chalkboard-teacher
+  - slug: pragmatic-ai
+    title: Pragmatic AI usage
+    description: I help teams integrate AI without getting lost in the hype. The question is no longer "is it possible?" but "is it relevant, and at what cost?".
+    imageAlt: Pragmatic AI and product integration
+    icon: i-ph-sparkle
+itemsIntro: Four areas of intervention to build, structure and decide.
+images:
+  - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+    alt: My workspace with coffee
+  - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+    alt: My trip to Tokyo
+locale: en
+process:
+  title: My engagement framework
+  description: "Whether I'm building or architecting, my approach stays the same : understand first, build next, always document."
+  steps:
+    - title: Scoping & context
+      description: "Understanding the project, the existing stack, the constraints (legacy, team, deadlines) and the objectives. We align expectations before writing the first line."
+    - title: Construction or analysis
+      description: "Depending on the need : joining the team to build features, or a targeted audit to map risks and identify realistic options."
+    - title: Documented decisions
+      description: "Every structuring choice is clarified, arbitrated and documented. Not for show — so the team can own it over time without depending on me."
+    - title: Autonomy & follow-up
+      description: "My goal is to make the team autonomous, not to create dependency. Follow-up sessions, code or architecture reviews depending on the context."
 content: |
-  I work with teams and organizations when technical decisions become structuring, difficult to arbitrate, or have long-term consequences.
-
-  My role is not to deliver features, but to help **clarify**, **structure**, and **consciously own** technical decisions in contexts of complexity, legacy, and real constraints.
-
-  ## What I Do
-
-  ### Frontend Architecture
-  I help evaluate existing architectures, identify points of fragility, and define realistic modernization trajectories.
-  The goal is not a perfect rewrite, but an architecture that is understandable, maintainable, and aligned with the team's real capabilities.
-
-  ### Consulting & Decision Support
-  I intervene when several technical options are possible, but no clear decision emerges.
-  I help structure criteria, clarify trade-offs, and document decisions so they are understood and assumed over time.
-
-  ### Pragmatic AI
-  I accompany teams when AI enters the discussion: product opportunity, market pressure, or internal initiative.
-  My role is to identify relevant use cases, frame risks (costs, quality, dependency, security), and integrate AI without unnecessarily complicating the existing architecture.
-
   ## How I Intervene
 
-  My intervention can take different forms:
-  - targeted audits
-  - decision support
-  - technical workshops
-  - ad-hoc support for senior teams
+  ### Vue.js / Nuxt Development
+  I join an existing team to build features, modules or complete applications in Vue.js and Nuxt. I work 4 days per week, remotely, on building — not pure maintenance.
 
-  It is always time-limited, decision-oriented, and designed to make the team autonomous.
+  ### Frontend architecture
+  I help evaluate an existing architecture, identify points of fragility and define a realistic modernization trajectory. The goal is not a perfect rewrite, but an architecture that is understandable, maintainable, and aligned with the team's capabilities.
+
+  ### Consulting & decision support
+  I intervene when several technical options are possible but no clear decision emerges. I help structure criteria, clarify trade-offs and document decisions so they are understood and owned over time.
+
+  ### Pragmatic AI
+  I accompany teams when AI enters the discussion. My role: identify relevant use cases, frame risks and integrate progressively without weakening the existing architecture.
 
   ## When to Call Me
 
-  - A frontend architecture becomes difficult to evolve
-  - Modernization is considered without a clear trajectory
+  - You're building a Vue.js or Nuxt application and need a senior dev who thinks long term
+  - Your frontend architecture is becoming difficult to evolve
+  - Modernization is being considered without a clear trajectory
   - Technical choices need to be arbitrated quickly
-  - AI arrives in the roadmap without precise framing
+  - AI is entering the roadmap without clear framing
 
   ## What I Don't Do
 
-  - Long-term development or execution on a time-and-materials basis
+  - Pure bugfix or maintenance without associated construction
+  - Migration without a clear architectural vision
   - Project management or operational delivery
-  - "Turnkey" AI implementation without prior reflection
+  - Turnkey AI integration without prior reflection
 
   ## What You Get
 
+  - A frontend built to last, not just to ship
   - Clarified and documented technical decisions
-  - A more readable vision of your architecture
+  - An architecture understandable by the whole team
   - A reduction in uncertainty and decision debt
+faq:
+  title: Frequently Asked Questions
+  description: Answers to the most common questions about my support.
+  categories:
+    - title: Missions & collaboration
+      questions:
+        - label: Do you work as a developer or as a consultant?
+          content: |
+            Both. I build Vue.js and Nuxt applications by joining a team, and I bring an architectural perspective on structuring decisions. It's not one or the other — that's what sets me apart.
+        - label: Do you only work on Vue.js and Nuxt?
+          content: |
+            Yes. It's been my ecosystem since 2011. I'd rather be excellent in one domain than average across several.
+        - label: What is your working rhythm?
+          content: |
+            4 days per week, mainly remote from Belgium. Occasional on-site visits are possible depending on the context.
+    - title: AI & modernization
+      questions:
+        - label: Do you offer turnkey AI solutions?
+          content: |
+            No. I integrate AI only when it's relevant. My role is to help decide if AI brings real value, where, and how to integrate it without creating unnecessary dependency.
+        - label: Do you work with teams that are not AI experts?
+          content: |
+            Yes. What matters is not the initial level, but the ability to make informed decisions. I adapt my approach to the context and maturity of the team.
 cta:
-  title: Ready to clarify your technical decisions?
-  description: Let's discuss your context, constraints, and decisions to secure. I'll propose a clear and realistic plan.
+  title: Looking for a senior Vue.js dev who thinks architecture?
+  description: Let's discuss your project, your constraints and what you want to build.
   primary:
     label: Contact me
     href: /contact
   secondary:
     label: Schedule a call
     href: /contact#booking
-description: Frontend architecture advisory, technical decision-making support, and pragmatic AI integration in complex and structuring contexts.
-faq:
-  title: Frequently Asked Questions
-  description: Answers to the most common questions about my support.
-  categories:
-    - title: Intervention & Framework
-      questions:
-        - label: Do you still work as a developer?
-          content: |
-            No. My role today is focused on architecture, decision support, and strategic guidance.
-            I can analyze existing code, but I don't work as a developer on a time-and-materials basis.
-        - label: When should I call you?
-          content: |
-            As early as possible, ideally before irreversible technical choices are made.
-            I also intervene when decisions have already been made and need to be reassessed.
-    - title: AI & Modernization
-      questions:
-        - label: Do you offer turnkey AI solutions?
-          content: |
-            No. I don't integrate AI without prior framing.
-            My role is to help decide if AI is relevant, where it adds value, and how to integrate it without creating unnecessary dependency.
-        - label: Do you work with teams that are not AI experts?
-          content: |
-            Yes. What matters is not the initial level, but the ability to make informed decisions.
-            I adapt my support to the context and maturity of the team.
-heroContext: |
-  These services are designed for CTOs, VPs of Engineering, and technical leaders facing high-impact decisions in complex environments: frontend debt, legacy systems, major refactors, or pragmatic adoption of AI. I typically step in when the challenge is no longer how to implement, but what to decide, in what order, and with which business risks — especially when those decisions need to be made under time, budget, or organizational pressure.
-images:
-  - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My workspace with coffee
-  - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My trip to Tokyo
-items:
-  - slug: architecture-frontend
-    title: Frontend Architecture
-    description: Architecture audits, target trajectories, and modernization paths for complex frontends. With explicit trade-offs, long-term clarity, and controlled migrations (especially Vue/Nuxt).
-    imageAlt: Frontend architecture and modernization
-    icon: i-ph-lightbulb
-  - slug: aide-decision-technique
-    title: Consulting & Decision Support
-    description: |
-      External advisory perspective to clarify, prioritize, and arbitrate high-impact technical decisions: architectural choices, strategic options, and long-term direction.
-    imageAlt: Consulting and technical decision support
-    icon: i-ph-chalkboard-teacher
-  - slug: ia-pragmatique
-    title: Pragmatic AI Usage
-    description: |
-      Pragmatic AI integration when the question is no longer "is it possible?" but "is it relevant?": meaningful use cases, explicit risks, safeguards, and controlled integration.
-    imageAlt: Pragmatic AI and product integration
-    icon: i-ph-sparkle
-itemsIntro: Three areas of intervention to clarify technical decisions and bring long-term structure to your architecture.
-locale: en
-process:
-  title: My engagement framework
-  description: A structured and collaborative approach to reduce uncertainty, clarify options, and secure technical decisions. The format adapts to your context. The framework stays the same
-  steps:
-    - title: Scoping & Context
-      description: Understanding the challenges, constraints (legacy, team, delivery) and decisions to be made. Clarifying objectives and success criteria.
-    - title: Analysis & Options
-      description: |
-        Targeted audit, risk mapping, identification of realistic options and their trade-offs (cost, timeline, maintenance, performance).
-    - title: Actionable Recommendations
-      description: |
-        Proposal of a strategy (migration, target architecture, safeguards) and a concrete plan: quick wins, milestones, and documented decisions.
-    - title: Support & Follow-up
-      description: |
-        Regular sessions, architecture reviews, support for Tech Leads/CTOs, and adjustments based on field feedback.
-processLeadIn: My intervention follows a structured approach, adapted to each context and designed to make teams autonomous quickly.
 seo:
-  title: Services — Frontend Architecture & AI Consulting
-  description: Frontend architecture advisory, technical decision-making support, and pragmatic AI integration in complex and structuring contexts.
+  title: Services — Vue.js Development, Frontend Architecture & Technical Decision-Making
+  description: Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making — depending on what your team needs.
 stats:
   - value: 50+
     label: Satisfied Clients
