@@ -1,6 +1,6 @@
 locale: 'en'
 seo:
-  title: "Massimo Russo — Frontend Architecture & AI Consulting"
+  title: "Senior Vue.js Developer — Frontend Architecture & Engineering"
   description: "Massimo Russo is a senior frontend architecture consultant specializing in pragmatic AI usage. He helps companies decide when and how to use AI in the face of legacy systems, complexity, and hype."
 title: "Senior Vue.js developer. I build and I structure."
 description: "Senior Vue.js developer since 2011, I join teams to build solid frontends and help structure the technical decisions that matter long term."
@@ -134,37 +134,35 @@ speaking:
   title: "Conferences & talks"
   description: "Public interventions, talks, and podcasts around frontend architecture, technical decision-making, and the evolution of the senior developer role."
 companies:
-  title: "Environments & organizations"
-  description: "I work with teams and organizations facing complexity, legacy, and strategic technical decisions. Especially when AI becomes part of the roadmap."
+  title: "When I step in"
+  description: "I work on Vue.js and Nuxt projects where building fast and thinking long-term aren't opposites."
   patterns:
-    - title: "Breaking out of an architectural deadlock"
-      description: "When multiple options exist but no clear decision emerges, I help teams structure criteria and arbitrate."
-    - title: "Clarifying frontend modernization"
-      description: "Defining a realistic modernization trajectory without complete rewrite, taking into account legacy systems and existing teams."
-    - title: "Challenging already committed choices"
-      description: "Providing an external perspective to validate, adjust, or correct decisions made too quickly."
-    - title: "Deciding when (and when not) to use AI"
-      description: "Helping teams distinguish real AI use cases from trends, and decide upfront before investing time and complexity."
+    - title: "Active construction projects with real architectural stakes"
+      description: ""
+    - title: "Teams who move fast but want their codebase to last"
+      description: ""
+    - title: "Vue/Nuxt stacks to structure or evolve progressively"
+      description: ""
+    - title: "AI integration when it makes sense, not because it's trendy"
+      description: ""
   companies:
-    - name: "Large enterprises"
-      logo: "i-lucide-building-2"
-    - name: "Products with high frontend complexity"
-      logo: "i-lucide-layers"
-    - name: "Mature technical teams"
-      logo: "i-lucide-users"
-    - name: "Legacy stacks undergoing modernization"
-      logo: "i-lucide-refresh-cw"
-    - name: "Organizations in technical transition"
+    - name: "Scale-ups & tech products"
       logo: "i-lucide-trending-up"
+    - name: "Frontend teams of 3 to 15 devs"
+      logo: "i-lucide-users"
+    - name: "Vue.js & Nuxt"
+      logo: "i-simple-icons-vuedotjs"
+    - name: "4 days/week"
+      logo: "i-lucide-calendar"
 marquee:
   title: They trusted me
   logos:
-    - name: Vue.js
-      icon: i-simple-icons-vuedotjs
-      color: "#42b883"
-    - name: Nuxt
-      icon: i-simple-icons-nuxtdotjs
-      color: "#00DC82"
+    - image: /logos/aircanada.webp
+    - image: /logos/porsche.webp
+    - image: /logos/ftq.webp
+    - image: /logos/ferique.webp
+    - image: /logos/brother.webp
+    - image: /logos/intact.webp
 podcast:
   title: "Podcast - On parle dev"
   description: "A podcast dedicated to frontend architecture, technical decisions, and the career evolution of senior developers."
@@ -212,21 +210,20 @@ faq:
           content: |
             Yes, if it makes sense. My approach: identify real problems first, assess whether AI brings measurable value, then integrate progressively without weakening the existing architecture.
 testimonials:
-  - quote: |
-      Massimo transformed our approach to frontend architecture. Within a few weeks, he helped us clarify decisions that had been dragging on for months. His ability to structure the debate without imposing his vision is remarkable.
-    authorName: Sophie Martin
-    authorDescription: CTO, SaaS startup
-    authorAvatar: https://api.dicebear.com/7.x/initials/svg?seed=SM
-    authorAvatarAlt: Sophie Martin
-  - quote: |
-      Pragmatic and concrete support. Massimo doesn't get lost in abstract concepts — he proposes options, clear trade-offs and an actionable plan. Exactly what our team needed to get out of legacy.
-    authorName: Thomas Leroy
-    authorDescription: Tech Lead, scale-up
-    authorAvatar: https://api.dicebear.com/7.x/initials/svg?seed=TL
-    authorAvatarAlt: Thomas Leroy
-  - quote: |
-      Working with Massimo on our Vue/Nuxt migration was decisive. He managed to balance short-term velocity and long-term vision. Our codebase is now more maintainable and decisions are documented.
-    authorName: Marie Dupont
-    authorDescription: Frontend Lead Dev
-    authorAvatar: https://api.dicebear.com/7.x/initials/svg?seed=MD
-    authorAvatarAlt: Marie Dupont
+  - quote: I have worked with Massimo at VACV and found him to be knowledgeable and dedicated, particularly with Vue.js. He is always keen to stay updated and improve his skills. Massimo has a knack for leaving things better than he found them, which is a great asset in any team.
+    author:
+      name: Martin Kilmartin
+    authorName: "Martin Kilmartin "
+    authorDescription: Results-driven Senior Full-Stack Software Engineer
+  - quote: I add the chance to work with Massimo at FTQ Fonds de Solidarité. He is highly skilled and very pleasant to work with. I would definitely recommend him.
+    author:
+      name: Georges De La Jungle
+      description: Tech Lead @ Jungle Corp
+    authorName: "Achille Kamgang "
+    authorDescription: Software Architect / Senior Expert Advisor
+  - quote: J'ai eu le plaisir de travailler avec Massimo chez Logient, où il a démontré une expertise exceptionnelle en Vue.js.  Il a joué un rôle clé dans plusieurs projets complexes, proposant des solutions innovantes et écrivant du code propre et efficace.  En plus de ses compétences techniques, Massimo est un excellent communicateur et un formidable coéquipier, apportant toujours une attitude positive et une grande passion pour le développement.  Je recommande vivement Massimo pour toute opportunité nécessitant une expertise en Vue.js.
+    author:
+      name: Hubert Bonisseur De La Batte
+      description: Lead Dev Frontend @ Acme
+    authorName: Firas Kallel
+    authorDescription: Analyste développeur .NET à la trésorerie chez Desjardins

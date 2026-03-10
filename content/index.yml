@@ -13,28 +13,26 @@ blog:
   title: Notes & analyses
   description: Analyses courtes et retours terrain sur l’architecture frontend, la modernisation de stacks et l’usage pragmatique de l’IA. Du concret, orienté décision.
 companies:
-  title: Environnements & organisations
-  description: J'interviens auprès d'équipes et d'organisations confrontées à des enjeux de complexité, de legacy et de décisions techniques structurantes. Notamment lorsque l'IA entre dans la roadmap.
+  title: Contextes d'intervention
+  description: J'interviens sur des projets Vue.js et Nuxt où construction et décisions techniques vont de pair.
   patterns:
-    - title: Sortir d’une impasse architecturale
-      description: Lorsque plusieurs options existent mais qu’aucune décision claire n’émerge, j’aide les équipes à structurer les critères et à arbitrer.
-    - title: Clarifier une modernisation frontend
-      description: Définir une trajectoire réaliste de modernisation sans réécriture complète, en tenant compte du legacy et des équipes en place.
-    - title: Challenger des choix déjà engagés
-      description: Apporter un regard externe pour valider, ajuster ou corriger des décisions prises trop rapidement.
-    - title: Décider quand (et quand ne pas) utiliser l’IA
-      description: Aider les équipes à distinguer les vrais cas d’usage IA des effets de mode, et à décider en amont avant d’investir du temps et de la complexité.
+    - title: Projets en construction active avec des enjeux d'architecture
+      description: ""
+    - title: Équipes qui construisent vite mais veulent tenir dans la durée
+      description: ""
+    - title: Stacks Vue/Nuxt à structurer ou faire évoluer progressivement
+      description: ""
+    - title: Intégration d'IA quand c'est pertinent, pas par effet de mode
+      description: ""
   companies:
-    - name: Grandes entreprises
-      logo: i-lucide-building-2
-    - name: Produits à forte complexité frontend
-      logo: i-lucide-layers
-    - name: Équipes techniques matures
-      logo: i-lucide-users
-    - name: Stacks legacy en cours de modernisation
-      logo: i-lucide-refresh-cw
-    - name: Organisations en transition technique
+    - name: Scale-ups & produits tech
       logo: i-lucide-trending-up
+    - name: Équipes frontend de 3 à 15 devs
+      logo: i-lucide-users
+    - name: Vue.js & Nuxt
+      logo: i-simple-icons-vuedotjs
+    - name: 4 jours/semaine
+      logo: i-lucide-calendar
 description: Développeur Vue.js senior depuis 2011, j’intègre des équipes pour construire des frontends solides et aider à structurer les décisions techniques qui impactent le long terme.
 experience:
   title: Expertise & écosystème
@@ -141,14 +139,8 @@ locale: fr
 marquee:
   title: Ils m'ont fait confiance
   logos:
-    - name: ""
-      icon: ""
-      color: ""
-      image: /logos/aircanada.webp
-    - name: ""
-      icon: ""
-      color: ""
-      image: /logos/porsche.webp
+    - image: /logos/aircanada.webp
+    - image: /logos/porsche.webp
     - image: /logos/ftq.webp
     - image: /logos/ferique.webp
     - image: /logos/brother.webp
@@ -157,7 +149,7 @@ podcast:
   title: Podcast — On parle dev
   description: Un podcast dédié à l’architecture frontend, aux décisions techniques et à l’évolution de carrière des développeurs seniors.
 seo:
-  title: Massimo Russo — Architecture frontend & conseil en IA
+  title: Développeur Vue.js senior — Construction & architecture frontend
   description: Massimo Russo est consultant senior en architecture frontend et usage pragmatique de l’IA. Il aide les entreprises à décider quand et comment utiliser l’IA face au legacy, à la complexité et à la hype.
 services:
   title: Services
