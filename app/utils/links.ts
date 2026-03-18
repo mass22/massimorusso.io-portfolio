@@ -20,21 +20,21 @@ const NAV_LINKS: NavLinkDefinition[] = [
     icon: 'i-lucide-folder', key: 'navigation.services', to: '/services'
   },
   {
-    icon: 'i-lucide-user', key: 'navigation.about', to: '/about',
     customRoutes: {
-      fr: '/a-propos',
-      en: '/en/about'
-    }
+      en: '/en/about',
+      fr: '/a-propos'
+    }, icon: 'i-lucide-user', key: 'navigation.about',
+    to: '/about'
   },
   {
     icon: 'i-lucide-file-text', key: 'navigation.blog', to: '/blog'
   },
   {
-    icon: 'i-lucide-mic', key: 'navigation.speaking', to: '/speaking',
     customRoutes: {
-      fr: '/conferences',
-      en: '/en/speaking'
-    }
+      en: '/en/speaking',
+      fr: '/conferences'
+    }, icon: 'i-lucide-mic', key: 'navigation.speaking',
+    to: '/speaking'
   },
   {
     icon: 'i-lucide-headphones', key: 'navigation.podcast', to: '/podcast'

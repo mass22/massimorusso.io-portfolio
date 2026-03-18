@@ -13,10 +13,10 @@ const showStickyCTA = computed(() => y.value > 300 && !isContactPage.value && !i
 
 const ctaLinks = computed(() => ([
   {
+    color: 'primary' as const,
     label: t('homepage.cta.button'),
     to: localePath('/contact'),
-    variant: 'solid' as const,
-    color: 'primary' as const
+    variant: 'solid' as const
   }
 ]))
 </script>

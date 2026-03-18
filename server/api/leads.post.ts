@@ -7,22 +7,22 @@ import type { LeadContext } from '~/types/content'
 
 // Schéma de validation pour QualificationResult (validation minimale)
 const QualificationResultSchema = z.object({
-  score: z.number(),
   level: z.string(),
   reasons: z.array(z.string()).optional(),
-  recommendedOffer: z.string().optional()
+  recommendedOffer: z.string().optional(),
+  score: z.number()
 })
 
 // Schéma de validation pour le LeadContext
 const LeadContextSchema = z.object({
   answers: z.record(z.union([z.string(), z.number(), z.boolean(), z.array(z.union([z.string(), z.number(), z.boolean()]))])),
   completedAt: z.string().datetime(),
-  stepCount: z.number().int().min(1),
   metadata: z.object({
-    userAgent: z.string().optional(),
     referrer: z.string().optional(),
-    timestamp: z.string().optional()
-  }).optional()
+    timestamp: z.string().optional(),
+    userAgent: z.string().optional()
+  }).optional(),
+  stepCount: z.number().int().min(1)
 })
 
 // Schéma de validation pour la requête complète
@@ -83,12 +83,12 @@ export default defineEventHandler(async (event) => {
     const resetTime = getResetTime(clientIP)
 
     throw createError({
-      statusCode: 429,
-      statusMessage: 'Too Many Requests',
       data: {
         message: 'Trop de requêtes. Veuillez réessayer plus tard.',
         retryAfter: resetTime
-      }
+      },
+      statusCode: 429,
+      statusMessage: 'Too Many Requests'
     })
   }
 
@@ -98,11 +98,11 @@ export default defineEventHandler(async (event) => {
     body = await readBody(event)
   } catch {
     throw createError({
-      statusCode: 400,
-      statusMessage: 'Invalid Request Body',
       data: {
         message: 'Le corps de la requête est invalide.'
-      }
+      },
+      statusCode: 400,
+      statusMessage: 'Invalid Request Body'
     })
   }
 
@@ -111,29 +111,29 @@ export default defineEventHandler(async (event) => {
 
   if (!validationResult.success) {
     throw createError({
-      statusCode: 400,
-      statusMessage: 'Validation Error',
       data: {
-        message: 'Les données fournies sont invalides.',
-        errors: validationResult.error.errors
-      }
+        errors: validationResult.error.errors,
+        message: 'Les données fournies sont invalides.'
+      },
+      statusCode: 400,
+      statusMessage: 'Validation Error'
     })
   }
 
-  const data = validationResult.data
+  const { data } = validationResult
 
   // Vérification du honeypot
   // Le champ "website" doit être vide ou absent pour les vrais utilisateurs
   // Les bots remplissent souvent tous les champs
   if (data.website && data.website.trim() !== '') {
     // C'est probablement un bot, mais on ne le signalons pas explicitement
-    // pour ne pas leur donner d'indices
+    // Pour ne pas leur donner d'indices
     throw createError({
-      statusCode: 400,
-      statusMessage: 'Invalid Request',
       data: {
         message: 'Requête invalide.'
-      }
+      },
+      statusCode: 400,
+      statusMessage: 'Invalid Request'
     })
   }
 
@@ -149,8 +149,8 @@ export default defineEventHandler(async (event) => {
         ...(data.name && { name: data.name })
       },
       completedAt: data.context.completedAt,
-      stepCount: data.context.stepCount,
-      metadata: data.context.metadata
+      metadata: data.context.metadata,
+      stepCount: data.context.stepCount
     }
   } else {
     // Contexte complet avec toutes les réponses
@@ -161,8 +161,8 @@ export default defineEventHandler(async (event) => {
         ...data.context.answers
       },
       completedAt: data.context.completedAt,
-      stepCount: data.context.stepCount,
-      metadata: data.context.metadata
+      metadata: data.context.metadata,
+      stepCount: data.context.stepCount
     }
   }
 
@@ -178,12 +178,12 @@ export default defineEventHandler(async (event) => {
     if (data.consent) {
       console.log('[API] 📧 Tentative d\'envoi d\'email pour le lead:', leadId)
       sendAdminLeadEmail({
-        email: data.email,
-        name: data.name,
         context: leadContext,
-        qualification: data.qualification,
-        locale: data.locale || 'en',
+        email: data.email,
         leadId,
+        locale: data.locale || 'en',
+        name: data.name,
+        qualification: data.qualification,
         token: accessToken
       })
         .then((success) => {
@@ -227,12 +227,12 @@ export default defineEventHandler(async (event) => {
         // Si consent est true, envoyer l'email de notification
         if (data.consent) {
           sendAdminLeadEmail({
-            email: data.email,
-            name: data.name,
             context: leadContext,
-            qualification: data.qualification,
-            locale: data.locale || 'en',
+            email: data.email,
             leadId,
+            locale: data.locale || 'en',
+            name: data.name,
+            qualification: data.qualification,
             token: newToken
           }).catch((error) => {
             console.error('[API] Erreur lors de l\'envoi de l\'email (non bloquante):', error)
@@ -245,21 +245,21 @@ export default defineEventHandler(async (event) => {
         }
       } catch {
         throw createError({
-          statusCode: 500,
-          statusMessage: 'Internal Server Error',
           data: {
             message: 'Une erreur est survenue lors de l\'enregistrement.'
-          }
+          },
+          statusCode: 500,
+          statusMessage: 'Internal Server Error'
         })
       }
     }
 
     throw createError({
-      statusCode: 500,
-      statusMessage: 'Internal Server Error',
       data: {
         message: 'Une erreur est survenue lors de l\'enregistrement.'
-      }
+      },
+      statusCode: 500,
+      statusMessage: 'Internal Server Error'
     })
   }
 })

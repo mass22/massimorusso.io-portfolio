@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { LeadContext as LeadContextType } from '~/types/content'
-import { getChatConfig, type LeadContext } from './chatConfig'
+import { getChatConfig } from './chatConfig'
+import type { LeadContext } from './chatConfig'
 import type { Locale } from './i18n'
-import { qualifyLead, type QualificationResult } from './qualification'
+import { qualifyLead } from './qualification'
+import type { QualificationResult } from './qualification'
 
 interface Message {
   id: string
@@ -39,7 +41,9 @@ watch(() => chatConfig.value.startQuestionId, (startId) => {
 
 // Computed pour la question courante
 const currentQuestion = computed(() => {
-  if (!currentQuestionId.value) return null
+  if (!currentQuestionId.value) {
+    return null
+  }
   return chatConfig.value.questions.find(q => q.id === currentQuestionId.value!)
 })
 
@@ -54,7 +58,9 @@ const scrollToBottom = () => {
 
 // Observer les changements de locale pour mettre à jour la question courante et les options
 watch(() => props.locale, () => {
-  if (isComplete.value) return
+  if (isComplete.value) {
+    return
+  }
 
   // Si on a une question courante, mettre à jour son texte avec la nouvelle locale
   if (currentQuestionId.value && currentQuestion.value) {
@@ -85,9 +91,9 @@ watch(messages, () => {
 const addBotMessage = (text: string) => {
   messages.value.push({
     id: `bot-${Date.now()}`,
-    type: 'bot',
     text,
-    timestamp: new Date()
+    timestamp: new Date(),
+    type: 'bot'
   })
 }
 
@@ -95,9 +101,9 @@ const addBotMessage = (text: string) => {
 const addUserMessage = (text: string) => {
   messages.value.push({
     id: `user-${Date.now()}`,
-    type: 'user',
     text,
-    timestamp: new Date()
+    timestamp: new Date(),
+    type: 'user'
   })
 }
 
@@ -153,15 +159,15 @@ const completeFlow = () => {
   const leadContext: LeadContextType = {
     answers,
     completedAt: new Date().toISOString(),
-    stepCount: messages.value.filter(m => m.type === 'bot').length,
-    qualification: qualificationResult.value || undefined,
     metadata: {
       timestamp: new Date().toISOString(),
       ...(typeof window !== 'undefined' && {
-        userAgent: navigator.userAgent,
-        referrer: document.referrer || undefined
+        referrer: document.referrer || undefined,
+        userAgent: navigator.userAgent
       })
-    }
+    },
+    qualification: qualificationResult.value || undefined,
+    stepCount: messages.value.filter(m => m.type === 'bot').length
   }
 
   emit('complete', leadContext)

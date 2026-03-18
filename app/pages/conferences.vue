@@ -88,6 +88,66 @@ function getCategoryLabel(category: string): string {
         container: '!pt-0'
       }"
     >
+      <!-- Événements organisés (avant les conférences publiques) -->
+      <div
+        v-if="page.organizedEvents?.items?.length"
+        class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8 mb-16"
+      >
+        <div class="lg:col-span-1 mb-4 lg:mb-0">
+          <h2
+            class="lg:sticky lg:top-16 text-xl font-semibold tracking-tight text-highlighted"
+          >
+            {{ page.organizedEvents.title }}
+          </h2>
+        </div>
+
+        <div class="lg:col-span-2 space-y-8">
+          <div
+            v-for="(item, index) in page.organizedEvents.items"
+            :key="`organized-${index}`"
+            class="group relative pl-6 border-l border-default"
+          >
+            <NuxtLink
+              :to="item.url"
+              class="absolute inset-0"
+              target="_blank"
+              :aria-label="`${item.name} - ${t('homepage.companies.visit')}`"
+            />
+            <div class="flex items-center gap-3 mb-1">
+              <img
+                v-if="item.name?.toLowerCase().includes('vue montreal')"
+                src="/logos/vue-mtl.webp"
+                :alt="item.name"
+                class="size-10 object-contain shrink-0"
+                width="40"
+                height="40"
+              >
+              <h3 class="text-lg font-semibold text-highlighted">
+                {{ item.name }}
+              </h3>
+            </div>
+            <p class="text-muted">
+              {{ item.description }}
+            </p>
+            <UButton
+              target="_blank"
+              :to="item.url"
+              variant="link"
+              class="p-0 pt-2 gap-0"
+              :label="t('homepage.companies.visit')"
+            >
+              <template #trailing>
+                <UIcon
+                  name="i-lucide-arrow-right"
+                  class="size-4 transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
+                  aria-hidden="true"
+                />
+              </template>
+            </UButton>
+          </div>
+        </div>
+      </div>
+
       <template
         v-for="(eventsInCategory, category) in groupedEvents"
         :key="category"

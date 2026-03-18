@@ -24,7 +24,9 @@
   "hero": {
     "cta": {
       "services": "Découvrir mes services",
-      "contact": "Me contacter"
+      "contact": "Me contacter",
+      "schedule": "Planifier un échange — 30 min →",
+      "about": "À propos"
     },
     "image": {
       "alt": "Massimo Russo, consultant senior en architecture frontend et modernisation de stacks"
@@ -62,7 +64,16 @@
     "readArticle": "Lire l'article",
     "empty": "Articles à venir.",
     "viewAll": "Voir tous les articles",
-    "back": "Retour"
+    "back": "Retour",
+    "filters": {
+      "all": "Tous",
+      "decision": "Décision",
+      "dev": "Dev"
+    },
+    "audience": {
+      "decision": "Décision",
+      "dev": "Dev"
+    }
   },
   "projects": {
     "viewProject": "Voir les détails"
@@ -276,7 +287,10 @@
     "license": "Le contenu du site est sous licence <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' rel='noopener'>CC-BY-NC-SA 4.0</a>",
     "links": {
       "linkedin": "Massimo Russo sur LinkedIn",
-      "bluesky": "Massimo Russo sur Bluesky"
+      "bluesky": "Massimo Russo sur Bluesky",
+      "github": "Massimo Russo sur GitHub",
+      "twitter": "Massimo Russo sur X (Twitter)",
+      "discord": "Massimo Russo sur Discord"
     }
   },
   "seo": {

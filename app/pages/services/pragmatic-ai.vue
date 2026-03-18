@@ -12,8 +12,8 @@ const localePath = useLocalePath()
 
 // Mapping des slugs par langue
 const slugByLocale: Record<string, string> = {
-  fr: 'ia-pragmatique',
-  en: 'pragmatic-ai'
+  en: 'pragmatic-ai',
+  fr: 'ia-pragmatique'
 }
 
 const slug = slugByLocale[locale.value] || slugByLocale.en
@@ -33,15 +33,17 @@ const { data: page } = await useAsyncData(
 
 // Content markdown converti en HTML
 const htmlContent = computed(() => {
-  if (!page.value?.content) return ''
+  if (!page.value?.content) {
+    return ''
+  }
   return markdownToHtml(page.value.content)
 })
 
 if (!page.value) {
   throw createError({
+    fatal: true,
     statusCode: 404,
-    statusMessage: t('common.pageNotFound'),
-    fatal: true
+    statusMessage: t('common.pageNotFound')
   })
 }
 
@@ -60,45 +62,47 @@ const description = page.value?.seo?.description || page.value?.description
 useSeoMeta({
   description,
   ogDescription: description,
+  ogImage: page.value?.images?.[0]?.src || global.picture?.light,
   ogTitle: title,
   ogType: 'website',
-  ogImage: page.value?.images?.[0]?.src || global.picture?.light,
   title
 })
 
 const serviceStructuredData = computed(() => {
-  if (!page.value) return null
+  if (!page.value) {
+    return null
+  }
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    'name': title,
-    description,
-    'image': page.value.images?.[0]?.src || [],
-    'provider': {
-      '@type': 'Person',
-      'name': 'Massimo Russo',
-      'url': siteUrl,
-      'email': global.email,
-      'jobTitle': 'Senior Frontend Consultant'
-    },
     'areaServed': {
       '@type': 'Country',
       'name': 'Worldwide'
+    },
+    description,
+    'image': page.value.images?.[0]?.src || [],
+    'name': title,
+    'provider': {
+      '@type': 'Person',
+      'email': global.email,
+      'jobTitle': 'Senior Frontend Consultant',
+      'name': 'Massimo Russo',
+      'url': siteUrl
     }
   }
 })
 
 const breadcrumb = computed(() => [
   {
+    icon: 'i-lucide-home',
     label: t('navigation.home'),
-    to: localePath('/'),
-    icon: 'i-lucide-home'
+    to: localePath('/')
   },
   {
+    icon: 'i-lucide-briefcase',
     label: t('services.hero.title'),
-    to: localePath('/services'),
-    icon: 'i-lucide-briefcase'
+    to: localePath('/services')
   },
   {
     label: page.value?.title || ''
@@ -106,7 +110,9 @@ const breadcrumb = computed(() => [
 ])
 
 const breadcrumbStructuredData = computed(() => {
-  if (!breadcrumb.value || breadcrumb.value.length === 0) return null
+  if (!breadcrumb.value || breadcrumb.value.length === 0) {
+    return null
+  }
 
   return {
     '@context': 'https://schema.org',
@@ -125,16 +131,16 @@ useHead({
     ...(serviceStructuredData.value
       ? [
           {
-            type: 'application/ld+json',
-            innerHTML: JSON.stringify(serviceStructuredData.value)
+            innerHTML: JSON.stringify(serviceStructuredData.value),
+            type: 'application/ld+json'
           }
         ]
       : []),
     ...(breadcrumbStructuredData.value
       ? [
           {
-            type: 'application/ld+json',
-            innerHTML: JSON.stringify(breadcrumbStructuredData.value)
+            innerHTML: JSON.stringify(breadcrumbStructuredData.value),
+            type: 'application/ld+json'
           }
         ]
       : [])

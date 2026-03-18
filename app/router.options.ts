@@ -16,6 +16,6 @@ export default <RouterConfig>{
     }
 
     // Sinon, scroll vers le haut de la page (géré par le plugin)
-    return { top: 0, left: 0 }
+    return { left: 0, top: 0 }
   }
 }

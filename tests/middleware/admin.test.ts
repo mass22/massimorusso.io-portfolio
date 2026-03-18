@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi, beforeAll } from 'vitest'
+import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Mock de h3
 const mockCreateError = vi.fn((options: any) => {
@@ -37,8 +37,8 @@ describe('Admin Middleware', () => {
   it('doit permettre l\'accès en développement', () => {
     // En test, process.dev est généralement true
     const mockTo = {
-      query: {},
-      path: '/admin/podcast-episodes'
+      path: '/admin/podcast-episodes',
+      query: {}
     }
 
     // Le middleware devrait retourner sans erreur en dev
@@ -53,14 +53,14 @@ describe('Admin Middleware', () => {
 
     // Forcer import.meta.dev à false pour ce test
     Object.defineProperty(import.meta, 'dev', {
+      configurable: true,
       value: false,
-      writable: true,
-      configurable: true
+      writable: true
     })
 
     const mockTo = {
-      query: {},
-      path: '/admin/podcast-episodes'
+      path: '/admin/podcast-episodes',
+      query: {}
     }
 
     // Le middleware devrait bloquer l'accès en production
@@ -68,23 +68,23 @@ describe('Admin Middleware', () => {
 
     // Restaurer
     Object.defineProperty(import.meta, 'dev', {
+      configurable: true,
       value: originalDev,
-      writable: true,
-      configurable: true
+      writable: true
     })
   })
 
   it('doit retourner une erreur 403 en production', () => {
     const originalDev = import.meta.dev
     Object.defineProperty(import.meta, 'dev', {
+      configurable: true,
       value: false,
-      writable: true,
-      configurable: true
+      writable: true
     })
 
     const mockTo = {
-      query: {},
-      path: '/admin/podcast-episodes'
+      path: '/admin/podcast-episodes',
+      query: {}
     }
 
     try {
@@ -97,9 +97,9 @@ describe('Admin Middleware', () => {
 
     // Restaurer
     Object.defineProperty(import.meta, 'dev', {
+      configurable: true,
       value: originalDev,
-      writable: true,
-      configurable: true
+      writable: true
     })
   })
 })

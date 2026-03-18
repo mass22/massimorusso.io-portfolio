@@ -15,22 +15,22 @@ export default defineEventHandler(async (event) => {
   const idParam = event.context.params?.id
   if (!idParam) {
     throw createError({
-      statusCode: 400,
-      statusMessage: 'Bad Request',
       data: {
         message: 'L\'ID du lead est requis.'
-      }
+      },
+      statusCode: 400,
+      statusMessage: 'Bad Request'
     })
   }
 
   const id = parseInt(idParam, 10)
   if (isNaN(id) || id <= 0) {
     throw createError({
-      statusCode: 400,
-      statusMessage: 'Bad Request',
       data: {
         message: 'L\'ID du lead est invalide.'
-      }
+      },
+      statusCode: 400,
+      statusMessage: 'Bad Request'
     })
   }
 
@@ -40,11 +40,11 @@ export default defineEventHandler(async (event) => {
 
   if (!token || typeof token !== 'string' || token.trim() === '') {
     throw createError({
-      statusCode: 401,
-      statusMessage: 'Unauthorized',
       data: {
         message: 'Le token d\'accès est requis.'
-      }
+      },
+      statusCode: 401,
+      statusMessage: 'Unauthorized'
     })
   }
 
@@ -53,11 +53,11 @@ export default defineEventHandler(async (event) => {
 
   if (!lead) {
     throw createError({
-      statusCode: 404,
-      statusMessage: 'Not Found',
       data: {
         message: 'Lead introuvable ou token invalide.'
-      }
+      },
+      statusCode: 404,
+      statusMessage: 'Not Found'
     })
   }
 
@@ -65,8 +65,8 @@ export default defineEventHandler(async (event) => {
   const leadContext: LeadContext = {
     answers: lead.answers,
     completedAt: lead.completedAt,
-    stepCount: lead.stepCount,
-    metadata: lead.metadata
+    metadata: lead.metadata,
+    stepCount: lead.stepCount
   }
 
   // Générer le résumé
@@ -74,11 +74,11 @@ export default defineEventHandler(async (event) => {
 
   // Retourner les données
   return {
-    id: lead.id,
-    summary,
     context: leadContext,
-    qualification: lead.qualification,
     createdAt: lead.createdAt,
+    id: lead.id,
+    qualification: lead.qualification,
+    summary,
     updatedAt: lead.updatedAt
   }
 })

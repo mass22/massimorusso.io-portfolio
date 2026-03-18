@@ -1,4 +1,5 @@
-import { computed, type Ref } from 'vue'
+import { computed } from 'vue'
+import type { Ref } from 'vue'
 
 export const usePodcastEpisodes = (
   rssEpisodes: Ref<any[] | null | undefined>,
@@ -83,9 +84,15 @@ export const usePodcastEpisodes = (
       const dateB = b.date ? (typeof b.date === 'string' ? new Date(b.date) : b.date) : null
 
       if (!dateA || !dateB) {
-        if (!dateA && !dateB) return 0
-        if (!dateA) return 1
-        if (!dateB) return -1
+        if (!dateA && !dateB) {
+          return 0
+        }
+        if (!dateA) {
+          return 1
+        }
+        if (!dateB) {
+          return -1
+        }
       }
 
       const timeA = dateA instanceof Date && !isNaN(dateA.getTime()) ? dateA.getTime() : 0
@@ -96,9 +103,7 @@ export const usePodcastEpisodes = (
   })
 
   // Épisodes featured (sélectionnés via Nuxt Studio)
-  const featuredEpisodes = computed(() => {
-    return allEpisodes.value.filter((ep: any) => ep.featured)
-  })
+  const featuredEpisodes = computed(() => allEpisodes.value.filter((ep: any) => ep.featured))
 
   // Épisodes réguliers (non-featured)
   const regularEpisodes = computed(() => {
@@ -107,14 +112,12 @@ export const usePodcastEpisodes = (
   })
 
   // Tous les épisodes non-featured
-  const allNonFeaturedEpisodes = computed(() => {
-    return allEpisodes.value.filter((ep: any) => !ep.featured)
-  })
+  const allNonFeaturedEpisodes = computed(() => allEpisodes.value.filter((ep: any) => !ep.featured))
 
   return {
+    allNonFeaturedEpisodes,
     episodes: allEpisodes,
     featuredEpisodes,
-    regularEpisodes,
-    allNonFeaturedEpisodes
+    regularEpisodes
   }
 }

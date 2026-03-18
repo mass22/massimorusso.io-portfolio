@@ -1,4 +1,4 @@
-title: Développeur Vue.js senior. Je construis et je structure.
+title: Je construis et je structure.
 about:
   title: À propos
   description: |
@@ -33,7 +33,7 @@ companies:
       logo: i-simple-icons-vuedotjs
     - name: 4 jours/semaine
       logo: i-lucide-calendar
-description: Développeur Vue.js senior depuis 2011, j’intègre des équipes pour construire des frontends solides et aider à structurer les décisions techniques qui impactent le long terme.
+description: Pour les équipes Vue.js qui veulent avancer vite sans accumuler une dette technique qu'elles ne pourront plus démêler.
 experience:
   title: Expertise & écosystème
   items:
@@ -104,6 +104,9 @@ faq:
             Oui, si ça a du sens. Mon approche : identifier les vrais problèmes d’abord, évaluer si l’IA apporte une valeur mesurable, puis intégrer progressivement sans fragiliser l’architecture existante.
 hero:
   tags:
+    - Votre frontend grandit.
+    - Votre architecture, non.
+  badges:
     - Vue.js & Nuxt
     - Architecture frontend
     - Décisions techniques

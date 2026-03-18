@@ -13,9 +13,11 @@ type MarqueeLogo = {
 }
 
 const getImageProps = (logo: MarqueeLogo) => {
-  if (!logo.image) return null
+  if (!logo.image) {
+    return null
+  }
   if (typeof logo.image === 'string') {
-    return { src: logo.image, alt: logo.name }
+    return { alt: logo.name, src: logo.image }
   }
   return logo.image
 }

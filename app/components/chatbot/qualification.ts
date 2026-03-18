@@ -16,7 +16,7 @@ export function qualifyLead(context: LeadContext): QualificationResult {
   const reasons: string[] = []
 
   // Règle 1: Service (+2 points)
-  const highValueServices = ['architecture-frontend', 'vue-nuxt', 'ai-orchestration']
+  const highValueServices = ['architecture-frontend', 'developpement-vuejs', 'vue-nuxt', 'ai-orchestration']
   // Mapper les valeurs réelles aux valeurs attendues
   // "ia-pragmatique" -> "ai-orchestration"
   // Vérifier aussi si stack contient "vue-nuxt" comme service
@@ -30,7 +30,7 @@ export function qualifyLead(context: LeadContext): QualificationResult {
     // Utiliser des codes de raison
     if (serviceValue === 'architecture-frontend') {
       reasons.push('service_architecture_frontend')
-    } else if (serviceValue === 'vue-nuxt') {
+    } else if (serviceValue === 'developpement-vuejs' || serviceValue === 'vue-nuxt') {
       reasons.push('service_vue_nuxt')
     } else if (serviceValue === 'ai-orchestration') {
       reasons.push('service_ai_orchestration')
@@ -42,11 +42,11 @@ export function qualifyLead(context: LeadContext): QualificationResult {
     score += 1
     // Mapper les valeurs aux codes de raison
     const goalCodeMap: Record<string, string> = {
+      'accelerer': 'goal_accelerate',
+      'autre-objectif': 'goal_other',
       'moderniser': 'goal_modernize',
       'performances': 'goal_performance',
-      'reduire-couts': 'goal_reduce_costs',
-      'accelerer': 'goal_accelerate',
-      'autre-objectif': 'goal_other'
+      'reduire-couts': 'goal_reduce_costs'
     }
     const goalCode = goalCodeMap[context.goal] || `goal_${context.goal}`
     reasons.push(goalCode)
@@ -126,15 +126,16 @@ export function qualifyLead(context: LeadContext): QualificationResult {
   } else if (context.teamSize === '1-3' && urgencyForOffer !== 'urgent') {
     recommendedOffer = 'coaching'
   } else if (teamSizeForOffer === '10+'
-    || (serviceValue === 'ai-orchestration' && (urgencyForOffer === '3_months' || urgencyForOffer === 'urgent'))) {
+    || (serviceValue === 'ai-orchestration' && (urgencyForOffer === '3_months' || urgencyForOffer === 'urgent'))
+    || serviceValue === 'developpement-vuejs') {
     recommendedOffer = 'mission'
   }
 
   return {
-    score,
     level,
     reasons,
-    recommendedOffer
+    recommendedOffer,
+    score
   }
 }
 
@@ -142,27 +143,6 @@ export function qualifyLead(context: LeadContext): QualificationResult {
  * Dictionnaires de traduction pour les codes de raison
  */
 const reasonTranslations: Record<Locale, Record<string, string>> = {
-  fr: {
-    // Services
-    service_architecture_frontend: 'Architecture Frontend',
-    service_vue_nuxt: 'Vue/Nuxt',
-    service_ai_orchestration: 'IA Pragmatique',
-    // Goals
-    goal_modernize: 'Modernisation',
-    goal_performance: 'Performance',
-    goal_reduce_costs: 'Réduction des coûts',
-    goal_accelerate: 'Accélération',
-    goal_other: 'Autre objectif',
-    // Teams
-    team_4_10: 'Équipe 4-10 développeurs',
-    team_10_plus: 'Équipe 10+ développeurs',
-    // Urgency
-    urgency_urgent: 'Urgence immédiate',
-    urgency_1_month: 'Urgence 1-2 mois',
-    urgency_3_months: 'Urgence 3-6 mois',
-    // Stack
-    stack_vue_nuxt: 'Stack Vue/Nuxt'
-  },
   en: {
     // Services
     service_architecture_frontend: 'Frontend Architecture',
@@ -183,6 +163,27 @@ const reasonTranslations: Record<Locale, Record<string, string>> = {
     urgency_3_months: 'Urgency 3-6 months',
     // Stack
     stack_vue_nuxt: 'Vue/Nuxt stack'
+  },
+  fr: {
+    // Services
+    service_architecture_frontend: 'Architecture Frontend',
+    service_vue_nuxt: 'Vue/Nuxt',
+    service_ai_orchestration: 'IA Pragmatique',
+    // Goals
+    goal_modernize: 'Modernisation',
+    goal_performance: 'Performance',
+    goal_reduce_costs: 'Réduction des coûts',
+    goal_accelerate: 'Accélération',
+    goal_other: 'Autre objectif',
+    // Teams
+    team_4_10: 'Équipe 4-10 développeurs',
+    team_10_plus: 'Équipe 10+ développeurs',
+    // Urgency
+    urgency_urgent: 'Urgence immédiate',
+    urgency_1_month: 'Urgence 1-2 mois',
+    urgency_3_months: 'Urgence 3-6 mois',
+    // Stack
+    stack_vue_nuxt: 'Stack Vue/Nuxt'
   }
 }
 
@@ -202,35 +203,6 @@ const qualificationMessages: Record<Locale, Record<'high' | 'medium' | 'low', {
   rationale: (reasons: string[]) => string
   cta: string
 }>> = {
-  fr: {
-    high: {
-      rationale: (reasons) => {
-        if (reasons.length === 0) {
-          return 'D\'après ce que tu m\'as indiqué, je peux t\'aider.'
-        }
-        return `D'après ce que tu m'as indiqué (${reasons.slice(0, 2).join(', ')}), je peux t'aider.`
-      },
-      cta: 'Laisse ton email et je te réponds avec une première piste concrète.'
-    },
-    medium: {
-      rationale: (reasons) => {
-        if (reasons.length === 0) {
-          return 'Je peux peut-être t\'aider.'
-        }
-        return `Je peux peut-être t'aider. ${reasons.slice(0, 2).join(', ')}.`
-      },
-      cta: 'Laisse ton email et je te dis rapidement si ça vaut un échange.'
-    },
-    low: {
-      rationale: (reasons) => {
-        if (reasons.length === 0) {
-          return 'Je ne suis probablement pas la meilleure personne pour ton cas.'
-        }
-        return `Je ne suis probablement pas la meilleure personne pour ton cas. ${reasons.slice(0, 2).join(', ')}.`
-      },
-      cta: 'Si tu veux, laisse ton email et je te redirige vers la meilleure option.'
-    }
-  },
   en: {
     high: {
       rationale: (reasons) => {
@@ -241,15 +213,6 @@ const qualificationMessages: Record<Locale, Record<'high' | 'medium' | 'low', {
       },
       cta: 'Leave your email and I\'ll reply with a concrete first step.'
     },
-    medium: {
-      rationale: (reasons) => {
-        if (reasons.length === 0) {
-          return 'I might be able to help you.'
-        }
-        return `I might be able to help you. ${reasons.slice(0, 2).join(', ')}.`
-      },
-      cta: 'Leave your email and I\'ll quickly tell you if it\'s worth an exchange.'
-    },
     low: {
       rationale: (reasons) => {
         if (reasons.length === 0) {
@@ -258,6 +221,44 @@ const qualificationMessages: Record<Locale, Record<'high' | 'medium' | 'low', {
         return `I'm probably not the best person for your case. ${reasons.slice(0, 2).join(', ')}.`
       },
       cta: 'If you want, leave your email and I\'ll redirect you to the best option.'
+    },
+    medium: {
+      rationale: (reasons) => {
+        if (reasons.length === 0) {
+          return 'I might be able to help you.'
+        }
+        return `I might be able to help you. ${reasons.slice(0, 2).join(', ')}.`
+      },
+      cta: 'Leave your email and I\'ll quickly tell you if it\'s worth an exchange.'
+    }
+  },
+  fr: {
+    high: {
+      rationale: (reasons) => {
+        if (reasons.length === 0) {
+          return 'D\'après ce que tu m\'as indiqué, je peux t\'aider.'
+        }
+        return `D'après ce que tu m'as indiqué (${reasons.slice(0, 2).join(', ')}), je peux t'aider.`
+      },
+      cta: 'Laisse ton email et je te réponds avec une première piste concrète.'
+    },
+    low: {
+      rationale: (reasons) => {
+        if (reasons.length === 0) {
+          return 'Je ne suis probablement pas la meilleure personne pour ton cas.'
+        }
+        return `Je ne suis probablement pas la meilleure personne pour ton cas. ${reasons.slice(0, 2).join(', ')}.`
+      },
+      cta: 'Si tu veux, laisse ton email et je te redirige vers la meilleure option.'
+    },
+    medium: {
+      rationale: (reasons) => {
+        if (reasons.length === 0) {
+          return 'Je peux peut-être t\'aider.'
+        }
+        return `Je peux peut-être t'aider. ${reasons.slice(0, 2).join(', ')}.`
+      },
+      cta: 'Laisse ton email et je te dis rapidement si ça vaut un échange.'
     }
   }
 }
@@ -287,7 +288,7 @@ export function formatQualificationMessage(
 
   // Construire le message
   const rationale = levelMessages.rationale(selectedReasons)
-  const cta = levelMessages.cta
+  const { cta } = levelMessages
 
   return `${rationale}\n\n${cta}`
 }

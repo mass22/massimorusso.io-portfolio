@@ -8,8 +8,8 @@ export default withNuxt({
 }, {
   files: ['**/nuxt.config.ts'],
   rules: {
-    'perfectionist/sort-objects': 'off',
     '@stylistic/sort-keys': 'off',
+    'perfectionist/sort-objects': 'off',
     'sort-keys': 'off',
     'vue/sort-keys': 'off'
   }

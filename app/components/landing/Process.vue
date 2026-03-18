@@ -3,28 +3,28 @@ const { t } = useI18n()
 
 const processSteps = [
   {
-    icon: 'i-ph-magnifying-glass',
-    titleKey: 'services.process.steps.discovery.title',
     descriptionKey: 'services.process.steps.discovery.description',
-    number: '01'
+    icon: 'i-ph-magnifying-glass',
+    number: '01',
+    titleKey: 'services.process.steps.discovery.title'
   },
   {
-    icon: 'i-ph-paint-brush',
-    titleKey: 'services.process.steps.design.title',
     descriptionKey: 'services.process.steps.design.description',
-    number: '02'
+    icon: 'i-ph-paint-brush',
+    number: '02',
+    titleKey: 'services.process.steps.design.title'
   },
   {
-    icon: 'i-ph-code',
-    titleKey: 'services.process.steps.development.title',
     descriptionKey: 'services.process.steps.development.description',
-    number: '03'
+    icon: 'i-ph-code',
+    number: '03',
+    titleKey: 'services.process.steps.development.title'
   },
   {
-    icon: 'i-ph-rocket',
-    titleKey: 'services.process.steps.optimization.title',
     descriptionKey: 'services.process.steps.optimization.description',
-    number: '04'
+    icon: 'i-ph-rocket',
+    number: '04',
+    titleKey: 'services.process.steps.optimization.title'
   }
 ]
 </script>

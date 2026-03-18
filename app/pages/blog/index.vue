@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
 
+type AudienceFilter = 'all' | 'decision' | 'dev'
+const activeFilter = ref<AudienceFilter>('all')
+
 const { data: page } = await useAsyncData(`blog-page-${locale.value}`, async () => {
   const allPages = await queryCollection('pages').all()
 
@@ -85,29 +88,49 @@ const { localizedPosts: posts } = await useBlogPosts()
 const getPostHash = (post: any): number => {
   // Utiliser _id en priorité car c'est l'identifiant le plus stable
   const id = post._id || post.slug || ''
-  if (!id) return 0
+  if (!id) {
+    return 0
+  }
 
   let hash = 0
   for (let i = 0; i < id.length; i++) {
     const char = id.charCodeAt(i)
     hash = ((hash << 5) - hash) + char
-    hash = hash & hash // Convert to 32bit integer
+    hash &= hash // Convert to 32bit integer
   }
   return Math.abs(hash)
 }
 
 // Filtrer et nettoyer les posts pour s'assurer que les images sont des URLs valides
-const validPosts = computed(() => {
-  return posts.value?.map((post) => {
-    // Si l'image est un ID de média (commence par "blog:" ou n'est pas une URL), la retirer
-    if (post.image && typeof post.image === 'string') {
-      if (post.image.startsWith('blog:') || (!post.image.startsWith('http') && !post.image.startsWith('/'))) {
-        return { ...post, image: undefined }
-      }
+const cleanedPosts = computed(() => posts.value?.map((post) => {
+  // Si l'image est un ID de média (commence par "blog:" ou n'est pas une URL), la retirer
+  if (post.image && typeof post.image === 'string') {
+    if (post.image.startsWith('blog:') || (!post.image.startsWith('http') && !post.image.startsWith('/'))) {
+      return { ...post, image: undefined }
     }
-    return post
-  }) || []
+  }
+  return post
+}) || [])
+
+// Filtrer par audience (côté client) — comparaison exacte, insensible à la casse et aux espaces
+const validPosts = computed(() => {
+  const list = cleanedPosts.value
+  if (activeFilter.value === 'all') {
+    return list
+  }
+  return list.filter((post: any) => {
+    const audience = typeof post.audience === 'string' ? post.audience.toLowerCase().trim() : ''
+    return audience === activeFilter.value
+  })
 })
+
+// Label du badge audience pour un post
+const getAudienceLabel = (audience: string | undefined) => {
+  if (!audience) {
+    return null
+  }
+  return audience === 'decision' ? t('blog.audience.decision') : t('blog.audience.dev')
+}
 
 useSeoMeta({
   description: page.value?.seo?.description || page.value?.description,
@@ -134,6 +157,24 @@ useSeoMeta({
         container: '!pt-0'
       }"
     >
+      <!-- Filtres audience -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <button
+          v-for="filter in (['all', 'decision', 'dev'] as const)"
+          :key="filter"
+          type="button"
+          :class="[
+            'inline-flex items-center px-2.5 py-1 rounded-md text-sm transition-colors',
+            activeFilter === filter
+              ? 'bg-vue text-black border border-vue'
+              : 'border border-vue/40 text-vue bg-transparent hover:bg-vue/10'
+          ]"
+          @click="activeFilter = filter"
+        >
+          {{ t(`blog.filters.${filter}`) }}
+        </button>
+      </div>
+
       <UBlogPosts
         v-if="validPosts.length > 0"
         orientation="vertical"
@@ -163,7 +204,18 @@ useSeoMeta({
                     ? 'sm:-rotate-1 overflow-visible'
                     : 'sm:rotate-1 overflow-visible'
               }"
-            />
+            >
+              <template
+                v-if="(post as any).audience"
+                #badge
+              >
+                <span
+                  class="inline-flex items-center px-2.5 py-1 rounded-md border border-vue/40 text-vue text-sm"
+                >
+                  {{ getAudienceLabel((post as any).audience) }}
+                </span>
+              </template>
+            </UBlogPost>
           </NuxtLink>
         </Motion>
       </UBlogPosts>

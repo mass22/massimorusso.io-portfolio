@@ -1,11 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import type { LeadContext } from '~/app/components/chatbot/chatConfig'
-import {
-  formatQualificationMessage,
-  formatReasons,
-  qualifyLead,
-  type QualificationResult
-} from '~/app/components/chatbot/qualification.ts'
+import { formatQualificationMessage, formatReasons, qualifyLead } from '~/app/components/chatbot/qualification.ts'
+import type { QualificationResult } from '~/app/components/chatbot/qualification.ts'
 
 describe('qualification', () => {
   describe('qualifyLead', () => {
@@ -39,13 +35,23 @@ describe('qualification', () => {
       expect(result.reasons).toContain('service_ai_orchestration')
     })
 
+    it('doit attribuer +2 points pour developpement-vuejs comme service', () => {
+      const context: LeadContext = {
+        service: 'developpement-vuejs'
+      }
+      const result = qualifyLead(context)
+
+      expect(result.score).toBe(2)
+      expect(result.reasons).toContain('service_vue_nuxt')
+    })
+
     it('doit utiliser stack vue-nuxt comme service si service est absent', () => {
       const context: LeadContext = {
         stack: 'vue-nuxt'
       }
       const result = qualifyLead(context)
 
-      // vue-nuxt compte comme service (+2) ET comme stack (+1) = 3 points
+      // Vue-nuxt compte comme service (+2) ET comme stack (+1) = 3 points
       expect(result.score).toBe(3)
       expect(result.reasons).toContain('service_vue_nuxt')
       expect(result.reasons).toContain('stack_vue_nuxt')
@@ -76,11 +82,11 @@ describe('qualification', () => {
 
       it('doit mapper correctement les codes de raison pour chaque goal', () => {
         const goalMap: Record<string, string> = {
+          'accelerer': 'goal_accelerate',
+          'autre-objectif': 'goal_other',
           'moderniser': 'goal_modernize',
           'performances': 'goal_performance',
-          'reduire-couts': 'goal_reduce_costs',
-          'accelerer': 'goal_accelerate',
-          'autre-objectif': 'goal_other'
+          'reduire-couts': 'goal_reduce_costs'
         }
 
         Object.entries(goalMap).forEach(([goal, expectedCode]) => {
@@ -192,7 +198,7 @@ describe('qualification', () => {
         }
         const result = qualifyLead(context)
 
-        // vue-nuxt compte comme service (+2) ET comme stack (+1) = 3 points
+        // Vue-nuxt compte comme service (+2) ET comme stack (+1) = 3 points
         expect(result.score).toBe(3)
         expect(result.reasons).toContain('stack_vue_nuxt')
         expect(result.reasons).toContain('service_vue_nuxt')
@@ -419,8 +425,8 @@ describe('qualification', () => {
 
       it('doit gérer un contexte avec toutes les valeurs', () => {
         const context: LeadContext = {
-          service: 'architecture-frontend',
           goal: 'performances',
+          service: 'architecture-frontend',
           stack: 'vue-nuxt',
           teamSize: '4-10',
           urgency: 'immediat'
@@ -541,10 +547,10 @@ describe('qualification', () => {
     describe('Niveau high', () => {
       it('doit formater un message high en français sans raisons', () => {
         const result: QualificationResult = {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
+          recommendedOffer: 'audit',
+          score: 6
         }
         const context: LeadContext = {}
 
@@ -556,10 +562,10 @@ describe('qualification', () => {
 
       it('doit formater un message high en français avec raisons', () => {
         const result: QualificationResult = {
-          score: 6,
           level: 'high',
           reasons: ['service_architecture_frontend', 'goal_performance'],
-          recommendedOffer: 'audit'
+          recommendedOffer: 'audit',
+          score: 6
         }
         const context: LeadContext = {}
 
@@ -572,10 +578,10 @@ describe('qualification', () => {
 
       it('doit formater un message high en anglais sans raisons', () => {
         const result: QualificationResult = {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
+          recommendedOffer: 'audit',
+          score: 6
         }
         const context: LeadContext = {}
 
@@ -587,10 +593,10 @@ describe('qualification', () => {
 
       it('doit formater un message high en anglais avec raisons', () => {
         const result: QualificationResult = {
-          score: 6,
           level: 'high',
           reasons: ['service_architecture_frontend', 'goal_performance'],
-          recommendedOffer: 'audit'
+          recommendedOffer: 'audit',
+          score: 6
         }
         const context: LeadContext = {}
 
@@ -603,7 +609,6 @@ describe('qualification', () => {
 
       it('ne doit utiliser que les 2 premières raisons', () => {
         const result: QualificationResult = {
-          score: 6,
           level: 'high',
           reasons: [
             'service_architecture_frontend',
@@ -611,7 +616,8 @@ describe('qualification', () => {
             'team_4_10',
             'urgency_urgent'
           ],
-          recommendedOffer: 'audit'
+          recommendedOffer: 'audit',
+          score: 6
         }
         const context: LeadContext = {}
 
@@ -627,10 +633,10 @@ describe('qualification', () => {
     describe('Niveau medium', () => {
       it('doit formater un message medium en français sans raisons', () => {
         const result: QualificationResult = {
-          score: 4,
           level: 'medium',
           reasons: [],
-          recommendedOffer: 'coaching'
+          recommendedOffer: 'coaching',
+          score: 4
         }
         const context: LeadContext = {}
 
@@ -642,10 +648,10 @@ describe('qualification', () => {
 
       it('doit formater un message medium en français avec raisons', () => {
         const result: QualificationResult = {
-          score: 4,
           level: 'medium',
           reasons: ['goal_modernize', 'stack_vue_nuxt'],
-          recommendedOffer: 'coaching'
+          recommendedOffer: 'coaching',
+          score: 4
         }
         const context: LeadContext = {}
 
@@ -657,10 +663,10 @@ describe('qualification', () => {
 
       it('doit formater un message medium en anglais', () => {
         const result: QualificationResult = {
-          score: 4,
           level: 'medium',
           reasons: ['goal_modernize'],
-          recommendedOffer: 'coaching'
+          recommendedOffer: 'coaching',
+          score: 4
         }
         const context: LeadContext = {}
 
@@ -674,10 +680,10 @@ describe('qualification', () => {
     describe('Niveau low', () => {
       it('doit formater un message low en français sans raisons', () => {
         const result: QualificationResult = {
-          score: 1,
           level: 'low',
           reasons: [],
-          recommendedOffer: 'unknown'
+          recommendedOffer: 'unknown',
+          score: 1
         }
         const context: LeadContext = {}
 
@@ -689,10 +695,10 @@ describe('qualification', () => {
 
       it('doit formater un message low en français avec raisons', () => {
         const result: QualificationResult = {
-          score: 1,
           level: 'low',
           reasons: ['goal_other'],
-          recommendedOffer: 'unknown'
+          recommendedOffer: 'unknown',
+          score: 1
         }
         const context: LeadContext = {}
 
@@ -704,10 +710,10 @@ describe('qualification', () => {
 
       it('doit formater un message low en anglais', () => {
         const result: QualificationResult = {
-          score: 1,
           level: 'low',
           reasons: ['goal_other'],
-          recommendedOffer: 'unknown'
+          recommendedOffer: 'unknown',
+          score: 1
         }
         const context: LeadContext = {}
 
@@ -721,10 +727,10 @@ describe('qualification', () => {
     describe('Format du message', () => {
       it('doit séparer rationale et CTA par deux sauts de ligne', () => {
         const result: QualificationResult = {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
+          recommendedOffer: 'audit',
+          score: 6
         }
         const context: LeadContext = {}
 
@@ -738,14 +744,14 @@ describe('qualification', () => {
 
       it('doit fonctionner avec un contexte non utilisé', () => {
         const result: QualificationResult = {
-          score: 6,
           level: 'high',
           reasons: ['service_architecture_frontend'],
-          recommendedOffer: 'audit'
+          recommendedOffer: 'audit',
+          score: 6
         }
         const context: LeadContext = {
-          service: 'architecture-frontend',
-          goal: 'performances'
+          goal: 'performances',
+          service: 'architecture-frontend'
         }
 
         // Le contexte est passé mais n'est pas utilisé dans la fonction
@@ -760,8 +766,8 @@ describe('qualification', () => {
   describe('Intégration complète', () => {
     it('doit qualifier et formater un lead complet en français', () => {
       const context: LeadContext = {
-        service: 'architecture-frontend',
         goal: 'performances',
+        service: 'architecture-frontend',
         stack: 'vue-nuxt',
         teamSize: '4-10',
         urgency: 'immediat'

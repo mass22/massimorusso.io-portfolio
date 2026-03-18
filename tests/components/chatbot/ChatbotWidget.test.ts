@@ -1,9 +1,9 @@
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
-import { createApp, ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { computed, createApp, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import ChatbotWidget from '~/app/components/chatbot/ChatbotWidget.vue'
 
 // NOTE: Pour une meilleure compatibilité et fonctionnalités complètes, installez @vue/test-utils :
-// pnpm add -D @vue/test-utils
+// Pnpm add -D @vue/test-utils
 // Puis remplacez cette fonction helper par : import { mount } from '@vue/test-utils'
 
 // Helper pour monter un composant Vue (similaire à @vue/test-utils)
@@ -16,13 +16,13 @@ function mount(component: any, options: any = {}) {
   // Enregistrer les composants UI mockés
   app.component('UIcon', {
     name: 'UIcon',
-    template: '<span class="u-icon"></span>',
-    props: ['name']
+    props: ['name'],
+    template: '<span class="u-icon"></span>'
   })
   app.component('UButton', {
     name: 'UButton',
-    template: '<button class="u-button"><slot></slot></button>',
-    props: ['color', 'variant']
+    props: ['color', 'variant'],
+    template: '<button class="u-button"><slot></slot></button>'
   })
 
   // Ajouter les composants globaux si nécessaire
@@ -51,8 +51,6 @@ function mount(component: any, options: any = {}) {
       const el = container.querySelector(selector)
       return el
         ? {
-            exists: () => true,
-            text: () => el.textContent?.trim() || '',
             attributes: (name?: string) => {
               if (name) {
                 return el.getAttribute(name) || undefined
@@ -61,6 +59,8 @@ function mount(component: any, options: any = {}) {
                 Array.from(el.attributes).map(attr => [attr.name, attr.value])
               )
             },
+            exists: () => true,
+            text: () => el.textContent?.trim() || '',
             trigger: async (event: string) => {
               const evt = new Event(event, { bubbles: true, cancelable: true })
               el.dispatchEvent(evt)
@@ -68,9 +68,9 @@ function mount(component: any, options: any = {}) {
             }
           }
         : {
+            attributes: () => ({}),
             exists: () => false,
             text: () => '',
-            attributes: () => ({}),
             trigger: async () => {}
           }
     },
@@ -111,6 +111,13 @@ function mount(component: any, options: any = {}) {
             }
           }
     },
+    html: () => container.innerHTML,
+    unmount: () => {
+      app.unmount()
+      if (container.parentNode) {
+        document.body.removeChild(container)
+      }
+    },
     vm: {
       ...instance,
       ...exposedMethods,
@@ -122,49 +129,42 @@ function mount(component: any, options: any = {}) {
           restartButton.dispatchEvent(new Event('click', { bubbles: true }))
         }
       }
-    },
-    unmount: () => {
-      app.unmount()
-      if (container.parentNode) {
-        document.body.removeChild(container)
-      }
-    },
-    html: () => container.innerHTML
+    }
   }
 }
 
 // Mock des composants enfants
 vi.mock('~/app/components/chatbot/ChatFlow.vue', () => ({
   default: {
-    name: 'ChatFlow',
-    template: '<div class="chat-flow">ChatFlow</div>',
     emits: ['complete'],
     methods: {
       reset: vi.fn()
-    }
+    },
+    name: 'ChatFlow',
+    template: '<div class="chat-flow">ChatFlow</div>'
   }
 }))
 
 vi.mock('~/app/components/chatbot/LeadCaptureForm.vue', () => ({
   default: {
-    name: 'LeadCaptureForm',
-    template: '<div class="lead-capture-form">LeadCaptureForm</div>',
     emits: ['success'],
-    props: ['qualification', 'context', 'locale']
+    name: 'LeadCaptureForm',
+    props: ['qualification', 'context', 'locale'],
+    template: '<div class="lead-capture-form">LeadCaptureForm</div>'
   }
 }))
 
 // Mock des composants Nuxt UI
 vi.mock('#components', () => ({
-  UIcon: {
-    name: 'UIcon',
-    template: '<span class="u-icon"></span>',
-    props: ['name']
-  },
   UButton: {
     name: 'UButton',
-    template: '<button class="u-button"><slot></slot></button>',
-    props: ['color', 'variant']
+    props: ['color', 'variant'],
+    template: '<button class="u-button"><slot></slot></button>'
+  },
+  UIcon: {
+    name: 'UIcon',
+    props: ['name'],
+    template: '<span class="u-icon"></span>'
   }
 }))
 
@@ -172,25 +172,25 @@ vi.mock('~/app/components/chatbot/i18n', () => {
   // Fonction factory directement dans le mock pour éviter les problèmes de hoisting
   const mockT = (locale: string, key: string) => {
     const translations: Record<string, Record<string, string>> = {
-      fr: {
-        'widget.openChat': 'Ouvrir le chat',
-        'widget.chatAssistance': 'Assistance chat',
-        'widget.title': 'Besoin d\'aide ?',
-        'widget.subtitle': 'Je peux vous aider',
-        'widget.close': 'Fermer',
-        'widget.restart': 'Redémarrer',
-        'success.title': 'Merci !',
-        'success.message': 'Votre message a été envoyé'
-      },
       en: {
-        'widget.openChat': 'Open chat',
-        'widget.chatAssistance': 'Chat assistance',
-        'widget.title': 'Need help?',
-        'widget.subtitle': 'I can help you',
-        'widget.close': 'Close',
-        'widget.restart': 'Restart',
+        'success.message': 'Your message has been sent',
         'success.title': 'Thank you!',
-        'success.message': 'Your message has been sent'
+        'widget.chatAssistance': 'Chat assistance',
+        'widget.close': 'Close',
+        'widget.openChat': 'Open chat',
+        'widget.restart': 'Restart',
+        'widget.subtitle': 'I can help you',
+        'widget.title': 'Need help?'
+      },
+      fr: {
+        'success.message': 'Votre message a été envoyé',
+        'success.title': 'Merci !',
+        'widget.chatAssistance': 'Assistance chat',
+        'widget.close': 'Fermer',
+        'widget.openChat': 'Ouvrir le chat',
+        'widget.restart': 'Redémarrer',
+        'widget.subtitle': 'Je peux vous aider',
+        'widget.title': 'Besoin d\'aide ?'
       }
     }
     return translations[locale]?.[key] || key
@@ -219,7 +219,7 @@ const createMockState = () => ({
 let mockState: ReturnType<typeof createMockState>
 
 // IMPORTANT: Stubber les composables Vue AVANT les composables Nuxt
-// car le composant les utilise dans son setup
+// Car le composant les utilise dans son setup
 vi.stubGlobal('ref', ref)
 vi.stubGlobal('computed', computed)
 vi.stubGlobal('watch', watch)
@@ -497,13 +497,13 @@ describe('ChatbotWidget', () => {
       mockState.value.leadContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
         qualification: {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
-        }
+          recommendedOffer: 'audit',
+          score: 6
+        },
+        stepCount: 5
       }
 
       const wrapper = mount(ChatbotWidget)
@@ -521,17 +521,17 @@ describe('ChatbotWidget', () => {
       const mockContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
         qualification: {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
-        }
+          recommendedOffer: 'audit',
+          score: 6
+        },
+        stepCount: 5
       }
 
       // Simuler l'événement complete directement via mockState
-      // car l'événement du composant enfant est difficile à simuler dans notre helper
+      // Car l'événement du composant enfant est difficile à simuler dans notre helper
       mockState.value.leadContext = mockContext
       await nextTick()
 
@@ -545,20 +545,20 @@ describe('ChatbotWidget', () => {
       mockState.value.leadContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
         qualification: {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
-        }
+          recommendedOffer: 'audit',
+          score: 6
+        },
+        stepCount: 5
       }
       mockState.value.showSuccess = false
 
       mount(ChatbotWidget)
 
       // Simuler l'événement success directement via mockState pour ce test
-      // car findComponent ne peut pas facilement émettre des événements dans notre helper
+      // Car findComponent ne peut pas facilement émettre des événements dans notre helper
       mockState.value.showSuccess = true
       await nextTick()
 
@@ -599,13 +599,13 @@ describe('ChatbotWidget', () => {
       mockState.value.leadContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
         qualification: {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
-        }
+          recommendedOffer: 'audit',
+          score: 6
+        },
+        stepCount: 5
       }
       mockState.value.showSuccess = false
 
@@ -621,20 +621,20 @@ describe('ChatbotWidget', () => {
       mockState.value.leadContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
         qualification: {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
-        }
+          recommendedOffer: 'audit',
+          score: 6
+        },
+        stepCount: 5
       }
       mockState.value.showSuccess = true
 
       const wrapper = mount(ChatbotWidget)
 
       // Quand showSuccess est vrai, le message de succès est affiché et il ne doit y avoir
-      // qu'un seul bouton dans le header (close) car restart est conditionnel : v-if="leadContext && !showSuccess"
+      // Qu'un seul bouton dans le header (close) car restart est conditionnel : v-if="leadContext && !showSuccess"
       // Le header contient les boutons dans une div avec "flex items-center gap-2"
       const header = wrapper.find('.chatbot-panel .flex.items-center.gap-2')
       expect(header.exists()).toBe(true)
@@ -663,13 +663,13 @@ describe('ChatbotWidget', () => {
       mockState.value.leadContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
         qualification: {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
-        }
+          recommendedOffer: 'audit',
+          score: 6
+        },
+        stepCount: 5
       }
       mockState.value.showSuccess = false
 
@@ -714,13 +714,13 @@ describe('ChatbotWidget', () => {
       const mockContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
         qualification: {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
-        }
+          recommendedOffer: 'audit',
+          score: 6
+        },
+        stepCount: 5
       }
 
       mockState.value.isOpen = true
@@ -786,13 +786,13 @@ describe('ChatbotWidget', () => {
       mockState.value.leadContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
         qualification: {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
-        }
+          recommendedOffer: 'audit',
+          score: 6
+        },
+        stepCount: 5
       }
       mockState.value.showSuccess = false
 
@@ -826,13 +826,13 @@ describe('ChatbotWidget', () => {
       mockState.value.leadContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
         qualification: {
-          score: 6,
           level: 'high',
           reasons: [],
-          recommendedOffer: 'audit'
-        }
+          recommendedOffer: 'audit',
+          score: 6
+        },
+        stepCount: 5
       }
       mockState.value.showSuccess = false
 
@@ -870,8 +870,8 @@ describe('ChatbotWidget', () => {
       mockState.value.leadContext = {
         answers: { service: 'architecture-frontend' },
         completedAt: new Date().toISOString(),
-        stepCount: 5,
-        qualification: undefined
+        qualification: undefined,
+        stepCount: 5
       }
 
       const wrapper = mount(ChatbotWidget)
@@ -901,7 +901,7 @@ describe('ChatbotWidget', () => {
       await nextTick()
 
       // Note: Dans un vrai test, on devrait forcer la mise à jour du computed
-      // mais cela dépend de l'implémentation de useWindowScroll
+      // Mais cela dépend de l'implémentation de useWindowScroll
     })
   })
 })

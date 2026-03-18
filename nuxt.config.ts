@@ -207,6 +207,9 @@ export default defineNuxtConfig({
         'Cache-Control': 'public, max-age=3600, must-revalidate'
       }
     },
+    // Redirection typo slug "lia" → "ia" (l'IA mal slugifié)
+    '/blog/ce-que-lia-accelere-vraiment': { redirect: '/blog/ce-que-ia-accelere-vraiment' },
+    '/en/blog/ce-que-lia-accelere-vraiment': { redirect: '/en/blog/ce-que-ia-accelere-vraiment' },
     '/blog/**': {
       isr: 3600,
       headers: {
@@ -280,10 +283,7 @@ export default defineNuxtConfig({
       // Lighthouse vérifie principalement les source maps JavaScript, pas CSS
       rollupOptions: {
         // Laisser Nuxt gérer le code splitting automatiquement
-        // Tree-shaking standard (suffisant pour Nuxt)
-        treeshake: {
-          preset: 'recommended'
-        }
+        // Tree-shaking : les options par défaut de Vite/Rollup sont suffisantes pour Nuxt
       }
     },
     css: {

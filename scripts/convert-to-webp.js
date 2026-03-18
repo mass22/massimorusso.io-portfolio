@@ -1,6 +1,6 @@
 import sharp from 'sharp'
 import { readdir, stat } from 'fs/promises'
-import { join, dirname, resolve } from 'path'
+import { dirname, join, resolve } from 'path'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -48,7 +48,7 @@ async function convertToWebP() {
         const originalSize = await stat(inputPath).then(s => s.size)
 
         await sharp(inputPath)
-          .webp({ quality: 85, effort: 6 })
+          .webp({ effort: 6, quality: 85 })
           .toFile(outputPath)
 
         const newSizeBytes = await stat(outputPath).then(s => s.size)

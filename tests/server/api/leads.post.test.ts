@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi, beforeAll } from 'vitest'
+import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { LeadContext } from '~/types/content'
 
 // Import après les mocks
@@ -78,8 +78,6 @@ describe('POST /api/leads', () => {
 
     // Mock readBody par défaut
     mockReadBody.mockResolvedValue({
-      email: 'test@example.com',
-      name: 'Test User',
       consent: true,
       context: {
         answers: {
@@ -87,18 +85,20 @@ describe('POST /api/leads', () => {
           name: 'Test User'
         },
         completedAt: '2024-01-01T00:00:00Z',
-        stepCount: 5,
         metadata: {
           userAgent: 'Mozilla/5.0',
           referrer: 'https://example.com'
-        }
+        },
+        stepCount: 5
       },
+      email: 'test@example.com',
+      locale: 'fr',
+      name: 'Test User',
       qualification: {
-        score: 5,
         level: 'high',
-        reasons: ['service_architecture_frontend']
-      },
-      locale: 'fr'
+        reasons: ['service_architecture_frontend'],
+        score: 5
+      }
     })
   })
 
@@ -106,10 +106,10 @@ describe('POST /api/leads', () => {
     vi.mocked(insertLead).mockResolvedValue(1)
 
     const mockEvent = {
-      method: 'POST',
       headers: {
         'x-forwarded-for': '127.0.0.1'
       },
+      method: 'POST',
       node: {
         req: {
           socket: {
@@ -130,18 +130,18 @@ describe('POST /api/leads', () => {
 
   it('doit valider l\'email', async () => {
     mockReadBody.mockResolvedValue({
-      email: 'invalid-email',
       consent: true,
       context: {
         answers: {},
         completedAt: '2024-01-01T00:00:00Z',
         stepCount: 1
-      }
+      },
+      email: 'invalid-email'
     })
 
     const mockEvent = {
-      method: 'POST',
       headers: {},
+      method: 'POST',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 
@@ -150,18 +150,18 @@ describe('POST /api/leads', () => {
 
   it('doit valider le consent', async () => {
     mockReadBody.mockResolvedValue({
-      email: 'test@example.com',
       consent: undefined,
       context: {
         answers: {},
         completedAt: '2024-01-01T00:00:00Z',
         stepCount: 1
-      }
+      },
+      email: 'test@example.com'
     })
 
     const mockEvent = {
-      method: 'POST',
       headers: {},
+      method: 'POST',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 
@@ -170,19 +170,19 @@ describe('POST /api/leads', () => {
 
   it('doit rejeter les requêtes avec honeypot rempli', async () => {
     mockReadBody.mockResolvedValue({
-      email: 'test@example.com',
       consent: true,
-      website: 'spam-bot',
       context: {
         answers: {},
         completedAt: '2024-01-01T00:00:00Z',
         stepCount: 1
-      }
+      },
+      email: 'test@example.com',
+      website: 'spam-bot'
     })
 
     const mockEvent = {
-      method: 'POST',
       headers: {},
+      method: 'POST',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 
@@ -198,8 +198,8 @@ describe('POST /api/leads', () => {
       .mockResolvedValueOnce(2)
 
     const mockEvent = {
-      method: 'POST',
       headers: {},
+      method: 'POST',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 
@@ -215,8 +215,8 @@ describe('POST /api/leads', () => {
     vi.mocked(insertLead).mockRejectedValue(error)
 
     const mockEvent = {
-      method: 'POST',
       headers: {},
+      method: 'POST',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 
@@ -227,8 +227,8 @@ describe('POST /api/leads', () => {
     vi.mocked(insertLead).mockResolvedValue(1)
 
     const mockEvent = {
-      method: 'POST',
       headers: {},
+      method: 'POST',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 
@@ -243,7 +243,6 @@ describe('POST /api/leads', () => {
     vi.mocked(insertLead).mockResolvedValue(1)
 
     mockReadBody.mockResolvedValue({
-      email: 'test@example.com',
       consent: false,
       context: {
         answers: {
@@ -251,12 +250,13 @@ describe('POST /api/leads', () => {
         },
         completedAt: '2024-01-01T00:00:00Z',
         stepCount: 3
-      }
+      },
+      email: 'test@example.com'
     })
 
     const mockEvent = {
-      method: 'POST',
       headers: {},
+      method: 'POST',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 
@@ -271,7 +271,6 @@ describe('POST /api/leads', () => {
     vi.mocked(insertLead).mockResolvedValue(1)
 
     mockReadBody.mockResolvedValue({
-      email: 'test@example.com',
       consent: false,
       context: {
         answers: {
@@ -281,12 +280,13 @@ describe('POST /api/leads', () => {
         },
         completedAt: '2024-01-01T00:00:00Z',
         stepCount: 5
-      }
+      },
+      email: 'test@example.com'
     })
 
     const mockEvent = {
-      method: 'POST',
       headers: {},
+      method: 'POST',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 
@@ -304,8 +304,8 @@ describe('POST /api/leads', () => {
 
   it('doit rejeter les requêtes non-POST', async () => {
     const mockEvent = {
-      method: 'GET',
       headers: {},
+      method: 'GET',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 
@@ -316,8 +316,8 @@ describe('POST /api/leads', () => {
     vi.mocked(checkRateLimit).mockReturnValue(true)
 
     const mockEvent = {
-      method: 'POST',
       headers: {},
+      method: 'POST',
       node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
     }
 

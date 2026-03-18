@@ -16,18 +16,22 @@ const props = withDefaults(defineProps<Props>(), {
 
 // Helper pour convertir le contenu markdown en HTML
 const renderMarkdown = (content: string) => {
-  if (!content) return ''
+  if (!content) {
+    return ''
+  }
   return markdownToHtml(content)
 }
 
 // Transformation des données FAQ pour UTabs
 const faqTabsItems = computed(() => {
-  if (!props.categories || props.categories.length === 0) return []
+  if (!props.categories || props.categories.length === 0) {
+    return []
+  }
   return props.categories.map(category => ({
     label: category.title,
     questions: category.questions.map(q => ({
-      label: q.label,
-      content: q.content
+      content: q.content,
+      label: q.label
     }))
   }))
 })

@@ -28,94 +28,45 @@ export interface LeadContext {
  * Données de traduction pour les questions et options
  */
 const translations = {
-  fr: {
-    questions: {
-      service: {
-        prompt: 'Quel service vous intéresse ?',
-        options: {
-          'architecture-frontend': 'Architecture Frontend',
-          'aide-decision-technique': 'Aide à la décision technique',
-          'ia-pragmatique': 'IA Pragmatique',
-          'autre': 'Autre'
-        }
-      },
-      goal: {
-        prompt: 'Quel est votre objectif principal ?',
-        options: {
-          'moderniser': 'Moderniser notre stack',
-          'performances': 'Améliorer les performances',
-          'reduire-couts': 'Réduire les coûts',
-          'accelerer': 'Accélérer le développement',
-          'autre-objectif': 'Autre'
-        }
-      },
-      stack: {
-        prompt: 'Quelle est votre stack technique actuelle ?',
-        options: {
-          'vue-nuxt': 'Vue.js / Nuxt',
-          'react-next': 'React / Next.js',
-          'angular': 'Angular',
-          'autre-framework': 'Autre framework',
-          'pas-de-stack': 'Pas encore de stack définie'
-        }
-      },
-      teamSize: {
-        prompt: 'Quelle est la taille de votre équipe frontend ?',
-        options: {
-          '1-3': '1-3 développeurs',
-          '4-10': '4-10 développeurs',
-          '11-25': '11-25 développeurs',
-          '25+': 'Plus de 25 développeurs'
-        }
-      },
-      urgency: {
-        prompt: 'Quand souhaitez-vous commencer ?',
-        options: {
-          'immediat': 'Immédiatement',
-          '1-2-mois': 'Dans 1-2 mois',
-          '3-6-mois': 'Dans 3-6 mois',
-          '6-mois-plus': 'Plus de 6 mois'
-        }
-      }
-    },
+  en: {
     contextLabels: {
       service: {
-        'architecture-frontend': 'Architecture Frontend',
-        'aide-decision-technique': 'Aide à la décision technique',
-        'ia-pragmatique': 'IA Pragmatique',
-        'autre': 'Autre service'
+        'developpement-vuejs': 'Vue.js / Nuxt Development',
+        'architecture-frontend': 'Frontend Architecture',
+        'aide-decision-technique': 'Technical Decision Support',
+        'ia-pragmatique': 'Pragmatic AI Usage',
+        'autre': 'Other service'
       },
       goal: {
-        'moderniser': 'Moderniser la stack',
-        'performances': 'Améliorer les performances',
-        'reduire-couts': 'Réduire les coûts',
-        'accelerer': 'Accélérer le développement',
-        'autre-objectif': 'Autre objectif'
+        'moderniser': 'Modernize the stack',
+        'performances': 'Improve performance',
+        'reduire-couts': 'Reduce costs',
+        'accelerer': 'Accelerate development',
+        'autre-objectif': 'Other objective'
       },
       stack: {
         'vue-nuxt': 'Vue.js / Nuxt',
         'react-next': 'React / Next.js',
         'angular': 'Angular',
-        'autre-framework': 'Autre framework',
-        'pas-de-stack': 'Pas encore de stack définie'
+        'autre-framework': 'Other framework',
+        'pas-de-stack': 'No stack defined yet'
       },
-      teamSize: 'Équipe : {value} développeurs',
+      teamSize: 'Team: {value} developers',
       urgency: {
-        'immediat': 'Immédiatement',
-        '1-2-mois': 'Dans 1-2 mois',
-        '3-6-mois': 'Dans 3-6 mois',
-        '6-mois-plus': 'Plus de 6 mois'
+        'immediat': 'Immediately',
+        '1-2-mois': 'In 1-2 months',
+        '3-6-mois': 'In 3-6 months',
+        '6-mois-plus': 'More than 6 months'
       }
-    }
-  },
-  en: {
+    },
     questions: {
       service: {
         prompt: 'Which service interests you?',
         options: {
+          'developpement-vuejs': 'Vue.js / Nuxt Development',
           'architecture-frontend': 'Frontend Architecture',
           'aide-decision-technique': 'Technical Decision Support',
-          'ia-pragmatique': 'Pragmatic AI',
+          'ia-pragmatique': 'Pragmatic AI Usage',
           'autre': 'Other'
         }
       },
@@ -157,34 +108,87 @@ const translations = {
           '6-mois-plus': 'More than 6 months'
         }
       }
-    },
+    }
+  },
+  fr: {
     contextLabels: {
       service: {
-        'architecture-frontend': 'Frontend Architecture',
-        'aide-decision-technique': 'Technical Decision Support',
-        'ia-pragmatique': 'Pragmatic AI',
-        'autre': 'Other service'
+        'developpement-vuejs': 'Développement Vue.js / Nuxt',
+        'architecture-frontend': 'Architecture frontend',
+        'aide-decision-technique': 'Conseil & aide à la décision',
+        'ia-pragmatique': 'Usage pragmatique de l\'IA',
+        'autre': 'Autre service'
       },
       goal: {
-        'moderniser': 'Modernize the stack',
-        'performances': 'Improve performance',
-        'reduire-couts': 'Reduce costs',
-        'accelerer': 'Accelerate development',
-        'autre-objectif': 'Other objective'
+        'moderniser': 'Moderniser la stack',
+        'performances': 'Améliorer les performances',
+        'reduire-couts': 'Réduire les coûts',
+        'accelerer': 'Accélérer le développement',
+        'autre-objectif': 'Autre objectif'
       },
       stack: {
         'vue-nuxt': 'Vue.js / Nuxt',
         'react-next': 'React / Next.js',
         'angular': 'Angular',
-        'autre-framework': 'Other framework',
-        'pas-de-stack': 'No stack defined yet'
+        'autre-framework': 'Autre framework',
+        'pas-de-stack': 'Pas encore de stack définie'
       },
-      teamSize: 'Team: {value} developers',
+      teamSize: 'Équipe : {value} développeurs',
       urgency: {
-        'immediat': 'Immediately',
-        '1-2-mois': 'In 1-2 months',
-        '3-6-mois': 'In 3-6 months',
-        '6-mois-plus': 'More than 6 months'
+        'immediat': 'Immédiatement',
+        '1-2-mois': 'Dans 1-2 mois',
+        '3-6-mois': 'Dans 3-6 mois',
+        '6-mois-plus': 'Plus de 6 mois'
+      }
+    },
+    questions: {
+      service: {
+        prompt: 'Quel service vous intéresse ?',
+        options: {
+          'developpement-vuejs': 'Développement Vue.js / Nuxt',
+          'architecture-frontend': 'Architecture frontend',
+          'aide-decision-technique': 'Conseil & aide à la décision',
+          'ia-pragmatique': 'Usage pragmatique de l\'IA',
+          'autre': 'Autre'
+        }
+      },
+      goal: {
+        prompt: 'Quel est votre objectif principal ?',
+        options: {
+          'moderniser': 'Moderniser notre stack',
+          'performances': 'Améliorer les performances',
+          'reduire-couts': 'Réduire les coûts',
+          'accelerer': 'Accélérer le développement',
+          'autre-objectif': 'Autre'
+        }
+      },
+      stack: {
+        prompt: 'Quelle est votre stack technique actuelle ?',
+        options: {
+          'vue-nuxt': 'Vue.js / Nuxt',
+          'react-next': 'React / Next.js',
+          'angular': 'Angular',
+          'autre-framework': 'Autre framework',
+          'pas-de-stack': 'Pas encore de stack définie'
+        }
+      },
+      teamSize: {
+        prompt: 'Quelle est la taille de votre équipe frontend ?',
+        options: {
+          '1-3': '1-3 développeurs',
+          '4-10': '4-10 développeurs',
+          '11-25': '11-25 développeurs',
+          '25+': 'Plus de 25 développeurs'
+        }
+      },
+      urgency: {
+        prompt: 'Quand souhaitez-vous commencer ?',
+        options: {
+          'immediat': 'Immédiatement',
+          '1-2-mois': 'Dans 1-2 mois',
+          '3-6-mois': 'Dans 3-6 mois',
+          '6-mois-plus': 'Plus de 6 mois'
+        }
       }
     }
   }
@@ -198,39 +202,40 @@ const questionDefinitions = [
   {
     id: 'service',
     options: [
-      { value: 'architecture-frontend', nextQuestionId: 'goal' },
-      { value: 'aide-decision-technique', nextQuestionId: 'goal' },
-      { value: 'ia-pragmatique', nextQuestionId: 'goal' },
-      { value: 'autre', nextQuestionId: 'goal' }
+      { nextQuestionId: 'goal', value: 'developpement-vuejs' },
+      { nextQuestionId: 'goal', value: 'architecture-frontend' },
+      { nextQuestionId: 'goal', value: 'aide-decision-technique' },
+      { nextQuestionId: 'goal', value: 'ia-pragmatique' },
+      { nextQuestionId: 'goal', value: 'autre' }
     ]
   },
   {
     id: 'goal',
     options: [
-      { value: 'moderniser', nextQuestionId: 'stack' },
-      { value: 'performances', nextQuestionId: 'stack' },
-      { value: 'reduire-couts', nextQuestionId: 'stack' },
-      { value: 'accelerer', nextQuestionId: 'stack' },
-      { value: 'autre-objectif', nextQuestionId: 'stack' }
+      { nextQuestionId: 'stack', value: 'moderniser' },
+      { nextQuestionId: 'stack', value: 'performances' },
+      { nextQuestionId: 'stack', value: 'reduire-couts' },
+      { nextQuestionId: 'stack', value: 'accelerer' },
+      { nextQuestionId: 'stack', value: 'autre-objectif' }
     ]
   },
   {
     id: 'stack',
     options: [
-      { value: 'vue-nuxt', nextQuestionId: 'teamSize' },
-      { value: 'react-next', nextQuestionId: 'teamSize' },
-      { value: 'angular', nextQuestionId: 'teamSize' },
-      { value: 'autre-framework', nextQuestionId: 'teamSize' },
-      { value: 'pas-de-stack', nextQuestionId: 'teamSize' }
+      { nextQuestionId: 'teamSize', value: 'vue-nuxt' },
+      { nextQuestionId: 'teamSize', value: 'react-next' },
+      { nextQuestionId: 'teamSize', value: 'angular' },
+      { nextQuestionId: 'teamSize', value: 'autre-framework' },
+      { nextQuestionId: 'teamSize', value: 'pas-de-stack' }
     ]
   },
   {
     id: 'teamSize',
     options: [
-      { value: '1-3', nextQuestionId: 'urgency' },
-      { value: '4-10', nextQuestionId: 'urgency' },
-      { value: '11-25', nextQuestionId: 'urgency' },
-      { value: '25+', nextQuestionId: 'urgency' }
+      { nextQuestionId: 'urgency', value: '1-3' },
+      { nextQuestionId: 'urgency', value: '4-10' },
+      { nextQuestionId: 'urgency', value: '11-25' },
+      { nextQuestionId: 'urgency', value: '25+' }
     ]
   },
   {
@@ -263,7 +268,6 @@ export function getChatConfig(locale: 'fr' | 'en'): ChatConfig {
 
     return {
       id: def.id,
-      text: questionTranslations.prompt,
       options: def.options.map((opt) => {
         const label = questionTranslations.options[opt.value as keyof typeof questionTranslations.options]
         if (!label) {
@@ -278,13 +282,14 @@ export function getChatConfig(locale: 'fr' | 'en'): ChatConfig {
           option.nextQuestionId = opt.nextQuestionId
         }
         return option
-      })
+      }),
+      text: questionTranslations.prompt
     }
   })
 
   return {
-    startQuestionId: 'service',
-    questions
+    questions,
+    startQuestionId: 'service'
   }
 }
 

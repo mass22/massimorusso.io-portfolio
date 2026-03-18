@@ -41,12 +41,12 @@ function formatDate(dateString: string | undefined): string {
     }
 
     return date.toLocaleString('fr-FR', {
-      year: 'numeric',
-      month: 'long',
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
-      timeZone: 'America/Montreal'
+      month: 'long',
+      timeZone: 'America/Montreal',
+      year: 'numeric'
     })
   } catch {
     return 'Date invalide'
@@ -79,8 +79,12 @@ function formatMetadata(metadata: LeadContext['metadata']): string[] {
 
     if (browserMatch || osMatch) {
       const parts: string[] = []
-      if (browserMatch && browserMatch[0]) parts.push(browserMatch[0])
-      if (osMatch && osMatch[1]) parts.push(osMatch[1])
+      if (browserMatch && browserMatch[0]) {
+        parts.push(browserMatch[0])
+      }
+      if (osMatch && osMatch[1]) {
+        parts.push(osMatch[1])
+      }
       if (parts.length > 0) {
         lines.push(`Navigateur/Système: ${parts.join(' - ')}`)
       }

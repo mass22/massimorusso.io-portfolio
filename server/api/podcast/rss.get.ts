@@ -18,11 +18,15 @@ export default defineEventHandler(async () => {
 
     for (const match of itemMatches) {
       const itemXml = match[1]
-      if (!itemXml) continue
+      if (!itemXml) {
+        continue
+      }
 
       // Fonction helper pour extraire avec support CDATA
       const extractField = (fieldName: string, isCData = false): string => {
-        if (!itemXml) return ''
+        if (!itemXml) {
+          return ''
+        }
         const cdataPattern = `<${fieldName}><!\\[CDATA\\[([\\s\\S]*?)\\]\\]></${fieldName}>`
         const normalPattern = `<${fieldName}>([\\s\\S]*?)</${fieldName}>`
         const pattern = isCData ? cdataPattern : `${cdataPattern}|${normalPattern}`
@@ -73,20 +77,20 @@ export default defineEventHandler(async () => {
       }
 
       episodes.push({
-        title,
-        description,
-        date: date || new Date(),
-        duration,
-        tags,
-        link,
         audioUrl,
         cover,
         coverAlt: title,
-        subtitle,
+        date: date || new Date(),
+        description,
+        duration,
         episode: episodeNumber,
-        season,
+        featured: false,
         guid,
-        featured: false // Par défaut, les épisodes RSS ne sont pas featured
+        link,
+        season,
+        subtitle,
+        tags,
+        title // Par défaut, les épisodes RSS ne sont pas featured
       })
     }
 

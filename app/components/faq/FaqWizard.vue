@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FaqWizardConfig, FaqWizardAnswers, LeadContext, FaqWizardQuestion } from '~/types/content'
+import type { FaqWizardAnswers, FaqWizardConfig, FaqWizardQuestion, LeadContext } from '~/types/content'
 
 const props = defineProps<{
   config: FaqWizardConfig
@@ -20,7 +20,9 @@ const currentStep = computed(() => props.config.steps[currentStepIndex.value])
 const isFirstStep = computed(() => currentStepIndex.value === 0)
 const isLastStep = computed(() => currentStepIndex.value === props.config.steps.length - 1)
 const progress = computed(() => {
-  if (props.config.steps.length === 0) return 0
+  if (props.config.steps.length === 0) {
+    return 0
+  }
   return ((currentStepIndex.value + 1) / props.config.steps.length) * 100
 })
 
@@ -124,14 +126,14 @@ const completeWizard = () => {
   const context: LeadContext = {
     answers: { ...answers.value },
     completedAt: new Date().toISOString(),
-    stepCount: props.config.steps.length,
     metadata: {
       timestamp: new Date().toISOString(),
       ...(typeof window !== 'undefined' && {
-        userAgent: navigator.userAgent,
-        referrer: document.referrer || undefined
+        referrer: document.referrer || undefined,
+        userAgent: navigator.userAgent
       })
-    }
+    },
+    stepCount: props.config.steps.length
   }
 
   emit('complete', context)
@@ -158,7 +160,9 @@ const getSelectValue = (questionId: string): string | undefined => {
 // Vérifier si une option checkbox est sélectionnée
 const isCheckboxSelected = (questionId: string, value: string | number | boolean): boolean => {
   const currentValue = answers.value[questionId]
-  if (!Array.isArray(currentValue)) return false
+  if (!Array.isArray(currentValue)) {
+    return false
+  }
   return currentValue.some((v: string | number | boolean) => v === value)
 }
 </script>

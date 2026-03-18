@@ -13,9 +13,7 @@ vi.stubGlobal('queryCollection', mockQueryCollection)
 describe('usePageData', () => {
   it('should fetch data with correct locale', async () => {
     mockUseI18n.mockReturnValue({ locale: { value: 'en' } })
-    mockUseAsyncData.mockImplementation((key: any, handler: any) => {
-      return { data: { value: handler() } }
-    })
+    mockUseAsyncData.mockImplementation((key: any, handler: any) => ({ data: { value: handler() } }))
 
     const mockAll = vi.fn().mockResolvedValue([
       { locale: 'fr', title: 'French' },
@@ -31,9 +29,7 @@ describe('usePageData', () => {
 
   it('should fallback to fr if locale not found', async () => {
     mockUseI18n.mockReturnValue({ locale: { value: 'es' } })
-    mockUseAsyncData.mockImplementation((key: any, handler: any) => {
-      return { data: { value: handler() } }
-    })
+    mockUseAsyncData.mockImplementation((key: any, handler: any) => ({ data: { value: handler() } }))
 
     const mockAll = vi.fn().mockResolvedValue([
       { locale: 'fr', title: 'French' }

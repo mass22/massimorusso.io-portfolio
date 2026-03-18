@@ -3,7 +3,7 @@ import { formatContextSummary } from './chatConfig'
 import type { LeadContext as ChatbotLeadContext } from './chatConfig'
 import type { LeadContext as LeadContextType } from '~/types/content'
 import type { QualificationResult } from './qualification'
-import { formatReasons, formatQualificationMessage } from './qualification'
+import { formatQualificationMessage, formatReasons } from './qualification'
 import type { Locale } from './i18n'
 import { t } from './i18n'
 
@@ -28,20 +28,16 @@ const error = ref<string | null>(null)
 
 // Computed
 // Extraire le contexte du chatbot depuis answers pour l'affichage
-const chatbotContext = computed<ChatbotLeadContext>(() => {
-  return props.context.answers as ChatbotLeadContext
-})
+const chatbotContext = computed<ChatbotLeadContext>(() => props.context.answers as ChatbotLeadContext)
 const contextSummary = computed(() => formatContextSummary(chatbotContext.value, props.locale))
 const qualificationMessage = computed(() => formatQualificationMessage(props.locale, chatbotContext.value, props.qualification))
-const canSubmit = computed(() => {
-  return email.value.trim() !== '' && consent.value && !isSubmitting.value
-})
+const canSubmit = computed(() => email.value.trim() !== '' && consent.value && !isSubmitting.value)
 
 // Labels pour les niveaux et offres (localisés)
 const levelLabels = computed(() => ({
   high: t(props.locale, 'qualification.level.high'),
-  medium: t(props.locale, 'qualification.level.medium'),
-  low: t(props.locale, 'qualification.level.low')
+  low: t(props.locale, 'qualification.level.low'),
+  medium: t(props.locale, 'qualification.level.medium')
 }))
 
 const offerLabels = computed(() => ({
@@ -52,14 +48,12 @@ const offerLabels = computed(() => ({
 
 const levelColors: Record<string, string> = {
   high: 'bg-success/20 text-success border-success/30',
-  medium: 'bg-warning/20 text-warning border-warning/30',
-  low: 'bg-muted text-muted-foreground border-default'
+  low: 'bg-muted text-muted-foreground border-default',
+  medium: 'bg-warning/20 text-warning border-warning/30'
 }
 
 // Reasons localisées (limitées à 3)
-const displayedReasons = computed(() => {
-  return formatReasons(props.locale, props.qualification.reasons).slice(0, 3)
-})
+const displayedReasons = computed(() => formatReasons(props.locale, props.qualification.reasons).slice(0, 3))
 
 // Validation de l'email
 const validateEmail = (email: string): boolean => {
@@ -93,7 +87,6 @@ const submitForm = async () => {
 
   try {
     const response = await $fetch('/api/leads', {
-      method: 'POST',
       body: {
         email: email.value.trim(),
         name: name.value.trim() || undefined,
@@ -101,7 +94,8 @@ const submitForm = async () => {
         qualification: props.qualification, // Valeurs agnostiques (codes de raison)
         context: props.context, // LeadContextType complet avec answers, completedAt, stepCount, metadata
         locale: props.locale // Inclure la locale pour l'email admin
-      }
+      },
+      method: 'POST'
     })
 
     if (response) {

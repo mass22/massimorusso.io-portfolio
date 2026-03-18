@@ -28,7 +28,9 @@ const localePath = useLocalePath()
 
 // Helper pour convertir la couleur en type valide
 const normalizeColor = (color?: string): 'primary' | 'neutral' | 'error' | 'secondary' | 'success' | 'info' | 'warning' | undefined => {
-  if (!color || color === 'gray') return 'neutral'
+  if (!color || color === 'gray') {
+    return 'neutral'
+  }
   if (color === 'primary' || color === 'neutral' || color === 'error' || color === 'secondary' || color === 'success' || color === 'info' || color === 'warning') {
     return color
   }
@@ -45,11 +47,11 @@ const ctaLinks = computed((): Array<{
 }> => {
   if (props.links && props.links.length > 0) {
     return props.links.map(link => ({
+      color: normalizeColor(link.color),
       label: link.label,
       to: localePath(link.href),
       trailingIcon: link.icon || 'i-lucide-arrow-right',
-      variant: (link.variant || 'solid') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link',
-      color: normalizeColor(link.color)
+      variant: (link.variant || 'solid') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link'
     }))
   }
 
@@ -62,20 +64,20 @@ const ctaLinks = computed((): Array<{
   }> = []
   if (props.primary) {
     links.push({
+      color: normalizeColor(props.primary.color),
       label: props.primary.label,
       to: localePath(props.primary.href),
       trailingIcon: props.primary.icon || 'i-lucide-arrow-right',
-      variant: (props.primary.variant || 'solid') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link',
-      color: normalizeColor(props.primary.color)
+      variant: (props.primary.variant || 'solid') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link'
     })
   }
   if (props.secondary) {
     links.push({
+      color: normalizeColor(props.secondary.color || 'neutral'),
       label: props.secondary.label,
       to: localePath(props.secondary.href),
       trailingIcon: props.secondary.icon || 'i-lucide-calendar',
-      variant: (props.secondary.variant || 'outline') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link',
-      color: normalizeColor(props.secondary.color || 'neutral')
+      variant: (props.secondary.variant || 'outline') as 'solid' | 'outline' | 'ghost' | 'soft' | 'link'
     })
   }
   return links

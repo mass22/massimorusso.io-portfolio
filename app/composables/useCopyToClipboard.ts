@@ -42,16 +42,18 @@ export function useCopyToClipboard(successMessage?: string) {
 }
 
 function tryCopyWithExecCommand(text: string): boolean {
-  if (typeof document === 'undefined') return false
+  if (typeof document === 'undefined') {
+    return false
+  }
   const textarea = document.createElement('textarea')
   textarea.value = text
   textarea.setAttribute('readonly', '')
   Object.assign(textarea.style, {
-    position: 'fixed',
     left: '-9999px',
-    top: '0',
     opacity: '0.01',
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+    position: 'fixed',
+    top: '0'
   })
   document.body.appendChild(textarea)
   textarea.focus()

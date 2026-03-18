@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import type { LeadContext } from '~/types/content'
 import { leadSummary, leadSummaryHtml } from '~/server/utils/leadSummary'
 
@@ -22,8 +22,8 @@ describe('leadSummary', () => {
   it('devrait formater les réponses du formulaire', () => {
     const context: LeadContext = {
       answers: {
-        service: 'architecture-frontend',
         goal: 'performances',
+        service: 'architecture-frontend',
         team_size: '4-10'
       },
       completedAt: '2024-01-15T10:30:00.000Z',
@@ -86,12 +86,12 @@ describe('leadSummary', () => {
     const context: LeadContext = {
       answers: {},
       completedAt: '2024-01-15T10:30:00.000Z',
-      stepCount: 1,
       metadata: {
-        timestamp: '2024-01-15T10:30:00.000Z',
         referrer: 'https://google.com',
+        timestamp: '2024-01-15T10:30:00.000Z',
         userAgent: 'Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0'
-      }
+      },
+      stepCount: 1
     }
 
     const result = leadSummary(context)
@@ -118,8 +118,8 @@ describe('leadSummaryHtml', () => {
   it('devrait générer du HTML valide', () => {
     const context: LeadContext = {
       answers: {
-        service: 'vue-nuxt',
-        goal: 'moderniser'
+        goal: 'moderniser',
+        service: 'vue-nuxt'
       },
       completedAt: '2024-01-15T10:30:00.000Z',
       stepCount: 4

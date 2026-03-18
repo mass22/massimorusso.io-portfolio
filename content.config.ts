@@ -19,22 +19,17 @@ const createAuthorSchema = () => z.object({
 
 // Structure plate pour que Nuxt Studio affiche des champs éditables (les objets imbriqués affichent [object Object])
 const createTestimonialSchema = () => z.object({
-  quote: z.string(),
-  authorName: z.string(),
-  authorDescription: z.string().optional(),
   authorAvatar: z.string().optional().editor({ input: 'media' }),
   authorAvatarAlt: z.string().optional(),
-  authorLinkedin: z.string().optional()
+  authorDescription: z.string().optional(),
+  authorLinkedin: z.string().optional(),
+  authorName: z.string(),
+  quote: z.string()
 })
 
 export default defineContentConfig({
   collections: {
     about: defineCollection({
-      type: 'page',
-      source: [
-        { include: 'about.yml' },
-        { include: 'about.en.yml' }
-      ],
       schema: z.object({
         locale: z.enum(['fr', 'en']).default('fr'),
         seo: z.object({
@@ -54,24 +49,25 @@ export default defineContentConfig({
             href: z.string()
           }).optional()
         }).optional()
-      })
+      }),
+      source: [
+        { include: 'about.yml' },
+        { include: 'about.en.yml' }
+      ],
+      type: 'page'
     }), blog: defineCollection({
-      type: 'page',
-      source: 'blog/*.md',
       schema: z.object({
         minRead: z.number(),
         date: z.date(),
-        image: z.string().nonempty().editor({ input: 'media' }),
-        author: createAuthorSchema(),
+        image: z.string().optional().default('').editor({ input: 'media' }),
+        author: createAuthorSchema().optional(),
         locale: z.enum(['fr', 'en']).default('fr'),
-        slug: z.string().optional()
-      })
+        slug: z.string().optional(),
+        audience: z.enum(['decision', 'dev']).optional()
+      }),
+      source: 'blog/*.md',
+      type: 'page'
     }), index: defineCollection({
-      type: 'page',
-      source: [
-        { include: 'index.yml' },
-        { include: 'index.en.yml' }
-      ],
       schema: z.object({
         locale: z.enum(['fr', 'en']).default('fr'),
         seo: z.object({
@@ -80,6 +76,7 @@ export default defineContentConfig({
         }).optional(),
         hero: z.object({
           tags: z.array(z.string()),
+          badges: z.array(z.string()).optional(),
           links: z.array(createButtonSchema()),
           images: z.array(createImageSchema()),
           isResourcesAvailable: z.boolean().optional()
@@ -144,15 +141,13 @@ export default defineContentConfig({
             message: 'Chaque logo doit avoir une icône ou une image'
           })).optional()
         }).optional()
-      })
-    }), pages: defineCollection({
-      type: 'page',
+      }),
       source: [
-        { include: 'projects.yml' },
-        { include: 'projects.en.yml' },
-        { include: 'blog.yml' },
-        { include: 'blog.en.yml' }
+        { include: 'index.yml' },
+        { include: 'index.en.yml' }
       ],
+      type: 'page'
+    }), pages: defineCollection({
       schema: z.object({
         locale: z.enum(['fr', 'en']).default('fr'),
         title: z.string().optional(),
@@ -162,10 +157,57 @@ export default defineContentConfig({
           description: z.string()
         }).optional(),
         links: z.array(createButtonSchema())
-      })
+      }),
+      source: [
+        { include: 'projects.yml' },
+        { include: 'projects.en.yml' },
+        { include: 'blog.yml' },
+        { include: 'blog.en.yml' }
+      ],
+      type: 'page'
+    }), podcast: defineCollection({
+      schema: z.object({
+        locale: z.enum(['fr', 'en']).default('fr'),
+        seo: z.object({
+          title: z.string(),
+          description: z.string()
+        }).optional(),
+        title: z.string().nonempty(),
+        description: z.string().nonempty(),
+        intro: z.string().optional(),
+        links: z.array(createButtonSchema()).optional(),
+        platforms: z.array(z.object({
+          label: z.string(),
+          url: z.string(),
+          icon: z.string().optional()
+        })).optional(),
+        player: z.object({
+          enabled: z.boolean().optional(),
+          defaultAudioUrl: z.string().optional()
+        }).optional(),
+        // Liste des GUIDs ou liens des épisodes RSS à mettre en featured
+        featuredEpisodes: z.array(z.string()).optional(),
+        episodes: z.array(z.object({
+          title: z.string().nonempty(),
+          description: z.string().nonempty(),
+          date: z.date(),
+          duration: z.string().optional(),
+          tags: z.array(z.string()).optional(),
+          guest: z.string().optional(),
+          link: z.string().nonempty(),
+          audioUrl: z.string().optional(),
+          videoUrl: z.string().optional(),
+          cover: z.string().editor({ input: 'media' }).optional(),
+          coverAlt: z.string().optional(),
+          featured: z.boolean().optional()
+        })).optional()
+      }),
+      source: [
+        { include: 'podcast.yml' },
+        { include: 'podcast.en.yml' }
+      ],
+      type: 'page'
     }), projects: defineCollection({
-      type: 'data',
-      source: 'projects/*.yml',
       schema: z.object({
         title: z.string().nonempty(),
         description: z.string().nonempty(),
@@ -173,13 +215,10 @@ export default defineContentConfig({
         url: z.string().nonempty(),
         tags: z.array(z.string()),
         date: z.date()
-      })
+      }),
+      source: 'projects/*.yml',
+      type: 'data'
     }), ressources: defineCollection({
-      type: 'page',
-      source: [
-        { include: 'ressources.yml' },
-        { include: 'ressources.en.yml' }
-      ],
       schema: z.object({
         locale: z.enum(['fr', 'en']).default('fr'),
         title: z.string().nonempty(),
@@ -193,13 +232,41 @@ export default defineContentConfig({
           url: z.string().nonempty(),
           download: createButtonSchema().optional()
         }))
-      })
-    }), services: defineCollection({
-      type: 'page',
+      }),
       source: [
-        { include: 'services.yml' },
-        { include: 'services.en.yml' }
+        { include: 'ressources.yml' },
+        { include: 'ressources.en.yml' }
       ],
+      type: 'page'
+    }), serviceItems: defineCollection({
+      schema: z.object({
+        locale: z.enum(['fr', 'en']).default('fr'),
+        slug: z.string(),
+        title: z.string(),
+        description: z.string(),
+        icon: z.string(),
+        content: z.string(),
+        images: z.array(createImageSchema()).optional(),
+        seo: z.object({
+          title: z.string(),
+          description: z.string()
+        }).optional(),
+        cta: z.object({
+          title: z.string(),
+          description: z.string(),
+          primary: z.object({
+            label: z.string(),
+            href: z.string()
+          }).optional(),
+          secondary: z.object({
+            label: z.string(),
+            href: z.string()
+          }).optional()
+        }).optional()
+      }),
+      source: 'services/*.yml',
+      type: 'page'
+    }), services: defineCollection({
       schema: z.object({
         locale: z.enum(['fr', 'en']).default('fr'),
         heroSupportingLine: z.string().optional(),
@@ -259,41 +326,13 @@ export default defineContentConfig({
             href: z.string()
           }).optional()
         }).optional()
-      })
-    }), serviceItems: defineCollection({
-      type: 'page',
-      source: 'services/*.yml',
-      schema: z.object({
-        locale: z.enum(['fr', 'en']).default('fr'),
-        slug: z.string(),
-        title: z.string(),
-        description: z.string(),
-        icon: z.string(),
-        content: z.string(),
-        images: z.array(createImageSchema()).optional(),
-        seo: z.object({
-          title: z.string(),
-          description: z.string()
-        }).optional(),
-        cta: z.object({
-          title: z.string(),
-          description: z.string(),
-          primary: z.object({
-            label: z.string(),
-            href: z.string()
-          }).optional(),
-          secondary: z.object({
-            label: z.string(),
-            href: z.string()
-          }).optional()
-        }).optional()
-      })
-    }), speaking: defineCollection({
-      type: 'page',
+      }),
       source: [
-        { include: 'speaking.yml' },
-        { include: 'speaking.en.yml' }
+        { include: 'services.yml' },
+        { include: 'services.en.yml' }
       ],
+      type: 'page'
+    }), speaking: defineCollection({
       schema: z.object({
         locale: z.enum(['fr', 'en']).default('fr'),
         seo: z.object({
@@ -301,6 +340,14 @@ export default defineContentConfig({
           description: z.string()
         }).optional(),
         links: z.array(createButtonSchema()),
+        organizedEvents: z.object({
+          title: z.string(),
+          items: z.array(z.object({
+            name: z.string(),
+            description: z.string(),
+            url: z.string()
+          }))
+        }).optional(),
         events: z.array(z.object({
           category: z.enum(['Live talk', 'Podcast', 'Conference']),
           title: z.string(),
@@ -308,49 +355,12 @@ export default defineContentConfig({
           location: z.string(),
           url: z.string().optional()
         }))
-      })
-    }), podcast: defineCollection({
-      type: 'page',
+      }),
       source: [
-        { include: 'podcast.yml' },
-        { include: 'podcast.en.yml' }
+        { include: 'speaking.yml' },
+        { include: 'speaking.en.yml' }
       ],
-      schema: z.object({
-        locale: z.enum(['fr', 'en']).default('fr'),
-        seo: z.object({
-          title: z.string(),
-          description: z.string()
-        }).optional(),
-        title: z.string().nonempty(),
-        description: z.string().nonempty(),
-        intro: z.string().optional(),
-        links: z.array(createButtonSchema()).optional(),
-        platforms: z.array(z.object({
-          label: z.string(),
-          url: z.string(),
-          icon: z.string().optional()
-        })).optional(),
-        player: z.object({
-          enabled: z.boolean().optional(),
-          defaultAudioUrl: z.string().optional()
-        }).optional(),
-        // Liste des GUIDs ou liens des épisodes RSS à mettre en featured
-        featuredEpisodes: z.array(z.string()).optional(),
-        episodes: z.array(z.object({
-          title: z.string().nonempty(),
-          description: z.string().nonempty(),
-          date: z.date(),
-          duration: z.string().optional(),
-          tags: z.array(z.string()).optional(),
-          guest: z.string().optional(),
-          link: z.string().nonempty(),
-          audioUrl: z.string().optional(),
-          videoUrl: z.string().optional(),
-          cover: z.string().editor({ input: 'media' }).optional(),
-          coverAlt: z.string().optional(),
-          featured: z.boolean().optional()
-        })).optional()
-      })
+      type: 'page'
     })
   }
 })

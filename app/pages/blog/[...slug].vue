@@ -66,7 +66,7 @@ const { data: page } = await useAsyncData(`blog-${locale.value}-${slug}`, async 
 })
 
 if (!page.value) {
-  throw createError({ statusCode: 404, message: t('common.pageNotFound'), fatal: true })
+  throw createError({ fatal: true, message: t('common.pageNotFound'), statusCode: 404 })
 }
 const { data: surround } = await useAsyncData(`${route.path}-surround-${locale.value}`, async () => {
   if (!page.value) {
@@ -90,14 +90,14 @@ const breadcrumb = computed(() => {
     // Si pas de breadcrumb depuis la navigation, créer un breadcrumb simple
     return [
       {
+        icon: 'i-lucide-home',
         label: t('navigation.home'),
-        to: localePath('/'),
-        icon: 'i-lucide-home'
+        to: localePath('/')
       },
       {
+        icon: 'i-lucide-book-open',
         label: t('blog.title'),
-        to: localePath('/blog'),
-        icon: 'i-lucide-book-open'
+        to: localePath('/blog')
       },
       {
         label: page.value?.title || ''
@@ -109,9 +109,9 @@ const breadcrumb = computed(() => {
   // Ajouter l'accueil au début et s'assurer que le dernier élément n'a pas de 'to'
   return [
     {
+      icon: 'i-lucide-home',
       label: t('navigation.home'),
-      to: localePath('/'),
-      icon: 'i-lucide-home'
+      to: localePath('/')
     },
     ...mapped.map((item, index) => ({
       ...item,
@@ -137,48 +137,52 @@ const { global } = useAppConfig()
 const siteUrl = useSiteUrl()
 
 useSeoMeta({
-  description,
-  ogDescription: description,
-  ogTitle: title,
-  ogType: 'article',
-  ogImage: page.value?.image || global.picture?.light,
   articleAuthor: page.value?.author?.name ? [page.value.author.name] : ['Massimo Russo'],
   articlePublishedTime: page.value?.date ? new Date(page.value.date).toISOString() : undefined,
+  description,
+  ogDescription: description,
+  ogImage: page.value?.image || global.picture?.light,
+  ogTitle: title,
+  ogType: 'article',
   title
 })
 
 // Données structurées Article pour le SEO
 const articleStructuredData = computed(() => {
-  if (!page.value) return null
+  if (!page.value) {
+    return null
+  }
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    'headline': title,
-    description,
-    'image': page.value.image ? [page.value.image] : [],
-    'datePublished': page.value.date ? new Date(page.value.date).toISOString() : undefined,
-    'dateModified': page.value.date ? new Date(page.value.date).toISOString() : undefined,
     'author': {
       '@type': 'Person',
       'name': page.value.author?.name || 'Massimo Russo',
       'url': siteUrl
     },
+    'dateModified': page.value.date ? new Date(page.value.date).toISOString() : undefined,
+    'datePublished': page.value.date ? new Date(page.value.date).toISOString() : undefined,
+    description,
+    'headline': title,
+    'image': page.value.image ? [page.value.image] : [],
+    'mainEntityOfPage': {
+      '@id': `${siteUrl}${route.path}`,
+      '@type': 'WebPage'
+    },
     'publisher': {
       '@type': 'Person',
       'name': 'Massimo Russo',
       'url': siteUrl
-    },
-    'mainEntityOfPage': {
-      '@type': 'WebPage',
-      '@id': `${siteUrl}${route.path}`
     }
   }
 })
 
 // Données structurées BreadcrumbList pour le SEO
 const breadcrumbStructuredData = computed(() => {
-  if (!breadcrumb.value || breadcrumb.value.length === 0) return null
+  if (!breadcrumb.value || breadcrumb.value.length === 0) {
+    return null
+  }
 
   return {
     '@context': 'https://schema.org',
@@ -197,16 +201,16 @@ useHead({
     ...(articleStructuredData.value
       ? [
           {
-            type: 'application/ld+json',
-            innerHTML: JSON.stringify(articleStructuredData.value)
+            innerHTML: JSON.stringify(articleStructuredData.value),
+            type: 'application/ld+json'
           }
         ]
       : []),
     ...(breadcrumbStructuredData.value
       ? [
           {
-            type: 'application/ld+json',
-            innerHTML: JSON.stringify(breadcrumbStructuredData.value)
+            innerHTML: JSON.stringify(breadcrumbStructuredData.value),
+            type: 'application/ld+json'
           }
         ]
       : [])
@@ -223,11 +227,9 @@ const handleCopyLink = () => {
   copyToClipboard(articleLink.value, t('blog.linkCopied'))
 }
 
-const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US', {
-    day: 'numeric', month: 'short', year: 'numeric'
-  })
-}
+const formatDate = (dateString: string) => new Date(dateString).toLocaleDateString(locale.value === 'fr' ? 'fr-FR' : 'en-US', {
+  day: 'numeric', month: 'short', year: 'numeric'
+})
 
 const scrollEl = ref<HTMLElement | Window>()
 const isClient = typeof window !== 'undefined'
@@ -291,7 +293,7 @@ const scrollPercent = computed(() => (pageHeight.value > 0 ? (y.value / pageHeig
               loading="lazy"
               format="webp"
               quality="80"
-              class="rounded-lg w-full h-[300px] object-contain object-center"
+              class="rounded-lg w-full h-[300px] object-cover object-center"
             />
             <h1 class="text-4xl text-center font-medium max-w-3xl mx-auto mt-4">
               {{ page.title }}

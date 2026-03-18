@@ -20,15 +20,17 @@ if (!page.value) {
 const { global } = useAppConfig()
 
 const htmlContent = computed(() => {
-  if (!page.value?.content) return ''
+  if (!page.value?.content) {
+    return ''
+  }
   return markdownToHtml(page.value.content)
 })
 
 useSeoMeta({
-  title: page.value?.seo?.title || page.value?.title,
   description: page.value?.seo?.description || page.value?.description,
+  ogDescription: page.value?.seo?.description || page.value?.description,
   ogTitle: page.value?.seo?.title || page.value?.title,
-  ogDescription: page.value?.seo?.description || page.value?.description
+  title: page.value?.seo?.title || page.value?.title
 })
 </script>
 
@@ -62,6 +64,32 @@ useSeoMeta({
         class="prose prose-neutral dark:prose-invert max-w-none"
         v-html="htmlContent"
       />
+      <!-- Logo Vue Montreal près de la mention -->
+      <div
+        v-if="page.content?.includes('Vue Montreal')"
+        class="mt-8 flex items-center gap-4 p-4 rounded-lg border border-default bg-default/50"
+      >
+        <img
+          src="/logos/vue-mtl.webp"
+          alt="Vue Montreal"
+          class="size-12 object-contain shrink-0"
+          width="48"
+          height="48"
+        >
+        <div>
+          <p class="font-medium text-highlighted">
+            Vue Montreal
+          </p>
+          <a
+            href="https://www.meetup.com/vue-js-montreal/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-primary hover:underline"
+          >
+            {{ t('homepage.companies.visit') }}
+          </a>
+        </div>
+      </div>
     </UPageSection>
     <ServicesCTADefault
       v-if="page.cta"

@@ -19,7 +19,7 @@ export const useBlogPosts = async (limit?: number) => {
   const localizedPosts = computed(() => {
     const currentLocale = locale.value
     return (posts.value ?? []).map((post) => {
-      let slug = post.slug
+      let { slug } = post
 
       if (!slug && post.path) {
         const pathSegments = post.path.split('/').filter(Boolean)
@@ -63,7 +63,7 @@ export const useBlogPosts = async (limit?: number) => {
   })
 
   return {
-    posts,
-    localizedPosts
+    localizedPosts,
+    posts
   }
 }

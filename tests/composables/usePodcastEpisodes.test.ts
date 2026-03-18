@@ -1,32 +1,32 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { ref } from 'vue'
 import { usePodcastEpisodes } from '../../app/composables/usePodcastEpisodes'
 
 describe('usePodcastEpisodes', () => {
   const createMockRssEpisodes = () => ref([
     {
-      title: 'Episode RSS 1',
-      description: 'Description RSS 1',
-      date: new Date('2024-12-16'),
-      link: 'https://podcast.ausha.co/ep1',
-      guid: 'rss-guid-1',
       audioUrl: 'https://audio.ausha.co/ep1.mp3',
-      featured: false
+      date: new Date('2024-12-16'),
+      description: 'Description RSS 1',
+      featured: false,
+      guid: 'rss-guid-1',
+      link: 'https://podcast.ausha.co/ep1',
+      title: 'Episode RSS 1'
     },
     {
-      title: 'Episode RSS 2',
-      description: 'Description RSS 2',
-      date: new Date('2024-12-15'),
-      link: 'https://podcast.ausha.co/ep2',
-      guid: 'rss-guid-2',
       audioUrl: 'https://audio.ausha.co/ep2.mp3',
-      featured: false
+      date: new Date('2024-12-15'),
+      description: 'Description RSS 2',
+      featured: false,
+      guid: 'rss-guid-2',
+      link: 'https://podcast.ausha.co/ep2',
+      title: 'Episode RSS 2'
     }
   ])
 
   const createMockPageData = (featuredEpisodes: string[] = ['rss-guid-1'], episodes: any[] = []) => ref({
-    featuredEpisodes,
-    episodes
+    episodes,
+    featuredEpisodes
   })
 
   beforeEach(() => {
@@ -125,12 +125,12 @@ describe('usePodcastEpisodes', () => {
     const mockRssEpisodes = createMockRssEpisodes()
     const pageDataWithEpisodes = createMockPageData([], [
       {
-        title: 'Episode YAML',
-        description: 'Description YAML',
         date: new Date('2024-12-14'),
-        link: 'https://podcast.ausha.co/yaml',
+        description: 'Description YAML',
+        featured: true,
         guid: 'yaml-guid',
-        featured: true
+        link: 'https://podcast.ausha.co/yaml',
+        title: 'Episode YAML'
       }
     ])
 
@@ -148,13 +148,13 @@ describe('usePodcastEpisodes', () => {
     const mockRssEpisodes = createMockRssEpisodes()
     const pageDataWithMatchingEpisode = createMockPageData([], [
       {
-        title: 'Episode RSS 1 Modifié',
-        description: 'Description modifiée',
         date: new Date('2024-12-16'),
-        link: 'https://podcast.ausha.co/ep1',
-        guid: 'rss-guid-1',
+        description: 'Description modifiée',
         featured: true,
-        guest: 'Invité spécial'
+        guest: 'Invité spécial',
+        guid: 'rss-guid-1',
+        link: 'https://podcast.ausha.co/ep1',
+        title: 'Episode RSS 1 Modifié'
       }
     ])
 

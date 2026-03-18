@@ -23,7 +23,7 @@ export function getStoredLocale(): Locale | null {
       return stored
     }
   } catch (error) {
-    // localStorage peut être indisponible (mode privé, etc.)
+    // LocalStorage peut être indisponible (mode privé, etc.)
     console.warn('[i18n] Impossible d\'accéder à localStorage:', error)
   }
   return null
@@ -39,7 +39,7 @@ export function setStoredLocale(locale: Locale): void {
   try {
     localStorage.setItem('chatbot-locale', locale)
   } catch (error) {
-    // localStorage peut être indisponible (mode privé, etc.)
+    // LocalStorage peut être indisponible (mode privé, etc.)
     console.warn('[i18n] Impossible d\'écrire dans localStorage:', error)
   }
 }
@@ -66,7 +66,7 @@ export function getWebsiteLocale(): Locale {
         return locale.value === 'fr' ? 'fr' : 'en'
       }
     } catch {
-      // useI18n n'est pas disponible, continuer avec la détection de route
+      // UseI18n n'est pas disponible, continuer avec la détection de route
     }
   }
 
@@ -81,7 +81,7 @@ export function getWebsiteLocale(): Locale {
         }
       }
     } catch {
-      // useRoute n'est pas disponible
+      // UseRoute n'est pas disponible
     }
   }
 
@@ -93,44 +93,6 @@ export function getWebsiteLocale(): Locale {
  * Dictionnaires de traduction
  */
 const translations: Record<Locale, Record<string, string>> = {
-  fr: {
-    // Widget header
-    'widget.title': 'Besoin d\'aide ?',
-    'widget.subtitle': 'Posez vos questions et je vous guiderai',
-    'widget.openChat': 'Ouvrir le chat',
-    'widget.restart': 'Recommencer',
-    'widget.close': 'Fermer',
-    'widget.chatAssistance': 'Chat d\'assistance',
-
-    // Success message
-    'success.title': 'Merci !',
-    'success.message': 'Votre demande a été envoyée avec succès. Je vous contacterai très bientôt.',
-
-    // Form labels
-    'form.name.label': 'Nom (optionnel)',
-    'form.name.placeholder': 'Votre nom',
-    'form.email.label': 'Email',
-    'form.email.placeholder': 'votre@email.com',
-    'form.email.required': 'L\'email est requis',
-    'form.email.invalid': 'Veuillez entrer un email valide',
-    'form.consent.label': 'J\'accepte que mes données soient utilisées pour me contacter concernant ma demande.',
-    'form.consent.error': 'Vous devez accepter le consentement pour continuer',
-    'form.submit': 'Envoyer',
-    'form.submitting': 'Envoi en cours...',
-    'form.error.generic': 'Une erreur est survenue. Veuillez réessayer.',
-
-    // Qualification badges
-    'qualification.level.high': 'Match élevé',
-    'qualification.level.medium': 'Match moyen',
-    'qualification.level.low': 'Match faible',
-    'qualification.recommendation': 'Recommandation :',
-    'qualification.offer.audit': 'Audit',
-    'qualification.offer.coaching': 'Coaching',
-    'qualification.offer.mission': 'Mission',
-
-    // Form summary
-    'form.summary.title': 'Résumé de votre demande'
-  },
   en: {
     // Widget header
     'widget.title': 'Need help?',
@@ -168,6 +130,44 @@ const translations: Record<Locale, Record<string, string>> = {
 
     // Form summary
     'form.summary.title': 'Summary of your request'
+  },
+  fr: {
+    // Widget header
+    'widget.title': 'Besoin d\'aide ?',
+    'widget.subtitle': 'Posez vos questions et je vous guiderai',
+    'widget.openChat': 'Ouvrir le chat',
+    'widget.restart': 'Recommencer',
+    'widget.close': 'Fermer',
+    'widget.chatAssistance': 'Chat d\'assistance',
+
+    // Success message
+    'success.title': 'Merci !',
+    'success.message': 'Votre demande a été envoyée avec succès. Je vous contacterai très bientôt.',
+
+    // Form labels
+    'form.name.label': 'Nom (optionnel)',
+    'form.name.placeholder': 'Votre nom',
+    'form.email.label': 'Email',
+    'form.email.placeholder': 'votre@email.com',
+    'form.email.required': 'L\'email est requis',
+    'form.email.invalid': 'Veuillez entrer un email valide',
+    'form.consent.label': 'J\'accepte que mes données soient utilisées pour me contacter concernant ma demande.',
+    'form.consent.error': 'Vous devez accepter le consentement pour continuer',
+    'form.submit': 'Envoyer',
+    'form.submitting': 'Envoi en cours...',
+    'form.error.generic': 'Une erreur est survenue. Veuillez réessayer.',
+
+    // Qualification badges
+    'qualification.level.high': 'Match élevé',
+    'qualification.level.medium': 'Match moyen',
+    'qualification.level.low': 'Match faible',
+    'qualification.recommendation': 'Recommandation :',
+    'qualification.offer.audit': 'Audit',
+    'qualification.offer.coaching': 'Coaching',
+    'qualification.offer.mission': 'Mission',
+
+    // Form summary
+    'form.summary.title': 'Résumé de votre demande'
   }
 }
 

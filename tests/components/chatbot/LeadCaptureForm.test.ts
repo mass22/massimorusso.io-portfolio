@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import LeadCaptureForm from '~/app/components/chatbot/LeadCaptureForm.vue'
 import type { LeadContext } from '~/types/content'
@@ -12,16 +12,16 @@ vi.mock('~/app/components/chatbot/i18n', () => ({
 }))
 
 const defaultQualification: QualificationResult = {
-  score: 75,
   level: 'high',
   reasons: ['service_architecture_frontend', 'goal_performance'],
-  recommendedOffer: 'audit'
+  recommendedOffer: 'audit',
+  score: 75
 }
 
 const defaultContext: LeadContext = {
   answers: {
-    service: 'architecture-frontend',
     goal: 'performances',
+    service: 'architecture-frontend',
     teamSize: '4-10'
   },
   completedAt: '2024-01-15T10:00:00.000Z',
@@ -33,32 +33,30 @@ describe('LeadCaptureForm', () => {
     vi.clearAllMocks()
   })
 
-  const createWrapper = (props = {}) => {
-    return mount(LeadCaptureForm, {
-      props: {
-        qualification: defaultQualification,
-        context: defaultContext,
-        locale: 'fr',
-        ...props
-      },
-      global: {
-        stubs: {
-          UInput: {
-            template: '<input :type="type || \'text\'" :value="modelValue" @input="$emit(\'update:modelValue\', $event.target.value)" data-test="input" />',
-            props: ['modelValue', 'type', 'placeholder', 'error']
-          },
-          UCheckbox: {
-            template: '<label><input type="checkbox" :checked="modelValue" @change="$emit(\'update:modelValue\', $event.target.checked)" data-test="checkbox" /><slot /></label>',
-            props: ['modelValue']
-          },
-          UButton: {
-            template: '<button type="submit" :disabled="disabled" @click="$emit(\'click\')" data-test="submit"><slot /></button>',
-            props: ['disabled', 'loading', 'color', 'block']
-          }
+  const createWrapper = (props = {}) => mount(LeadCaptureForm, {
+    global: {
+      stubs: {
+        UInput: {
+          template: '<input :type="type || \'text\'" :value="modelValue" @input="$emit(\'update:modelValue\', $event.target.value)" data-test="input" />',
+          props: ['modelValue', 'type', 'placeholder', 'error']
+        },
+        UCheckbox: {
+          template: '<label><input type="checkbox" :checked="modelValue" @change="$emit(\'update:modelValue\', $event.target.checked)" data-test="checkbox" /><slot /></label>',
+          props: ['modelValue']
+        },
+        UButton: {
+          template: '<button type="submit" :disabled="disabled" @click="$emit(\'click\')" data-test="submit"><slot /></button>',
+          props: ['disabled', 'loading', 'color', 'block']
         }
       }
-    })
-  }
+    },
+    props: {
+      qualification: defaultQualification,
+      context: defaultContext,
+      locale: 'fr',
+      ...props
+    }
+  })
 
   it('devrait afficher le badge de niveau de qualification', () => {
     const wrapper = createWrapper()
@@ -95,14 +93,14 @@ describe('LeadCaptureForm', () => {
     await new Promise(resolve => setTimeout(resolve, 50))
 
     expect(mockFetch).toHaveBeenCalledWith('/api/leads', {
-      method: 'POST',
       body: expect.objectContaining({
-        email: 'valid@test.com',
         consent: true,
-        qualification: defaultQualification,
         context: defaultContext,
-        locale: 'fr'
-      })
+        email: 'valid@test.com',
+        locale: 'fr',
+        qualification: defaultQualification
+      }),
+      method: 'POST'
     })
     expect(wrapper.emitted('success')).toBeTruthy()
   })
@@ -122,7 +120,7 @@ describe('LeadCaptureForm', () => {
   it('devrait afficher une erreur si le consentement est manquant', async () => {
     const wrapper = createWrapper()
     await wrapper.find('input[type="email"]').setValue('valid@test.com')
-    // consent reste false
+    // Consent reste false
     await wrapper.find('form').trigger('submit')
 
     await wrapper.vm.$nextTick()

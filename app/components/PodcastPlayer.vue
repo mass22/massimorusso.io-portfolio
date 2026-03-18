@@ -30,7 +30,7 @@ onMounted(() => {
     setTimeout(() => {
       if (!iframeLoaded.value && !iframeError.value) {
         // Si l'iframe n'a pas chargé après 5 secondes, on considère qu'il y a un problème
-        // mais on ne fait rien car cela peut être normal (CORS, blocage, etc.)
+        // Mais on ne fait rien car cela peut être normal (CORS, blocage, etc.)
       }
     }, 5000)
   }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
 // Protéger cette page avec le middleware admin
 definePageMeta({
@@ -17,23 +17,29 @@ const { data: page } = await useAsyncData('admin-podcast-page', async () => {
   return allPages.find((p: any) => p.locale === 'fr') || null
 })
 
-const featuredEpisodes = computed(() => {
-  return page.value?.featuredEpisodes || []
-})
+const featuredEpisodes = computed(() => page.value?.featuredEpisodes || [])
 
 const isFeatured = (episode: any) => {
-  if (!featuredEpisodes.value || featuredEpisodes.value.length === 0) return false
+  if (!featuredEpisodes.value || featuredEpisodes.value.length === 0) {
+    return false
+  }
   return featuredEpisodes.value.some((ref: string) => {
     const refLower = ref.toLowerCase().trim()
     const guidLower = (episode.guid || '').toLowerCase().trim()
     const linkLower = (episode.link || '').toLowerCase().trim()
 
-    if (guidLower === refLower || linkLower === refLower) return true
-    if (linkLower && refLower && (linkLower.includes(refLower) || refLower.includes(linkLower))) return true
+    if (guidLower === refLower || linkLower === refLower) {
+      return true
+    }
+    if (linkLower && refLower && (linkLower.includes(refLower) || refLower.includes(linkLower))) {
+      return true
+    }
 
     const linkSlug = linkLower.split('/').pop() || ''
     const refSlug = refLower.split('/').pop() || ''
-    if (linkSlug && refSlug && (linkSlug === refSlug || linkSlug.includes(refSlug) || refSlug.includes(linkSlug))) return true
+    if (linkSlug && refSlug && (linkSlug === refSlug || linkSlug.includes(refSlug) || refSlug.includes(linkSlug))) {
+      return true
+    }
 
     return false
   })
@@ -59,8 +65,12 @@ const copyToClipboard = async (text: string, type: 'guid' | 'link' | 'slug') => 
 
 const searchQuery = ref('')
 const filteredEpisodes = computed(() => {
-  if (!episodes.value) return []
-  if (!searchQuery.value) return episodes.value
+  if (!episodes.value) {
+    return []
+  }
+  if (!searchQuery.value) {
+    return episodes.value
+  }
 
   const query = searchQuery.value.toLowerCase()
   return episodes.value.filter((ep: any) =>

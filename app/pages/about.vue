@@ -20,15 +20,17 @@ if (!page.value) {
 const { global } = useAppConfig()
 
 const htmlContent = computed(() => {
-  if (!page.value?.content) return ''
+  if (!page.value?.content) {
+    return ''
+  }
   return markdownToHtml(page.value.content)
 })
 
 useSeoMeta({
-  title: page.value?.seo?.title || page.value?.title,
   description: page.value?.seo?.description || page.value?.description,
+  ogDescription: page.value?.seo?.description || page.value?.description,
   ogTitle: page.value?.seo?.title || page.value?.title,
-  ogDescription: page.value?.seo?.description || page.value?.description
+  title: page.value?.seo?.title || page.value?.title
 })
 </script>
 
@@ -62,6 +64,32 @@ useSeoMeta({
         class="prose prose-lg prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-highlighted prose-headings:leading-tight prose-h1:text-3xl md:prose-h1:text-4xl lg:prose-h1:text-5xl prose-h1:mb-8 prose-h1:mt-0 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-12 prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-5 prose-h3:mt-10 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:text-muted prose-p:mb-8 prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-a:transition-all prose-strong:text-highlighted prose-strong:font-semibold prose-ul:my-8 prose-ul:space-y-4 prose-li:text-muted prose-li:leading-relaxed prose-ol:my-8 prose-ol:space-y-4"
         v-html="htmlContent"
       />
+      <!-- Vue Montreal logo près de la mention -->
+      <div
+        v-if="page.content?.includes('Vue Montreal')"
+        class="mt-8 flex items-center gap-4 p-4 rounded-lg border border-default bg-default/50"
+      >
+        <img
+          src="/logos/vue-mtl.webp"
+          alt="Vue Montreal"
+          class="size-12 object-contain shrink-0"
+          width="48"
+          height="48"
+        >
+        <div>
+          <p class="font-medium text-highlighted">
+            Vue Montreal
+          </p>
+          <a
+            href="https://www.meetup.com/vue-js-montreal/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-primary hover:underline"
+          >
+            {{ t('homepage.companies.visit') }}
+          </a>
+        </div>
+      </div>
     </UPageSection>
     <ServicesCTADefault
       v-if="page.cta"

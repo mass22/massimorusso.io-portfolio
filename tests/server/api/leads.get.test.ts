@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi, beforeAll } from 'vitest'
+import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Lead } from '~/server/utils/db'
 
 // Import après les mocks
@@ -77,30 +77,30 @@ describe('GET /api/leads/[id]', () => {
 
   it('doit récupérer un lead avec succès', async () => {
     const mockLead: Lead = {
-      id: 1,
+      accessToken: 'valid-token-123',
       answers: {
         email: 'test@example.com',
         name: 'Test User'
       },
       completedAt: '2024-01-01T00:00:00Z',
-      stepCount: 5,
+      createdAt: '2024-01-01T00:00:00Z',
+      id: 1,
       metadata: {
         userAgent: 'Mozilla/5.0'
       },
-      accessToken: 'valid-token-123',
-      createdAt: '2024-01-01T00:00:00Z',
+      stepCount: 5,
       updatedAt: '2024-01-01T00:00:00Z'
     }
 
     vi.mocked(getLeadByIdAndToken).mockResolvedValue(mockLead)
 
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {
           id: '1'
         }
-      }
+      },
+      method: 'GET'
     }
 
     const result = await handler(mockEvent)
@@ -117,12 +117,12 @@ describe('GET /api/leads/[id]', () => {
     vi.mocked(getLeadByIdAndToken).mockResolvedValue(null)
 
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {
           id: '999'
         }
-      }
+      },
+      method: 'GET'
     }
 
     await expect(handler(mockEvent)).rejects.toThrow()
@@ -132,12 +132,12 @@ describe('GET /api/leads/[id]', () => {
     mockGetQuery.mockReturnValue({})
 
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {
           id: '1'
         }
-      }
+      },
+      method: 'GET'
     }
 
     await expect(handler(mockEvent)).rejects.toThrow()
@@ -149,12 +149,12 @@ describe('GET /api/leads/[id]', () => {
     })
 
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {
           id: '1'
         }
-      }
+      },
+      method: 'GET'
     }
 
     await expect(handler(mockEvent)).rejects.toThrow()
@@ -162,10 +162,10 @@ describe('GET /api/leads/[id]', () => {
 
   it('doit retourner 400 si l\'ID est manquant', async () => {
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {}
-      }
+      },
+      method: 'GET'
     }
 
     await expect(handler(mockEvent)).rejects.toThrow()
@@ -173,12 +173,12 @@ describe('GET /api/leads/[id]', () => {
 
   it('doit retourner 400 si l\'ID est invalide', async () => {
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {
           id: 'invalid'
         }
-      }
+      },
+      method: 'GET'
     }
 
     await expect(handler(mockEvent)).rejects.toThrow()
@@ -186,12 +186,12 @@ describe('GET /api/leads/[id]', () => {
 
   it('doit retourner 400 si l\'ID est négatif', async () => {
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {
           id: '-1'
         }
-      }
+      },
+      method: 'GET'
     }
 
     await expect(handler(mockEvent)).rejects.toThrow()
@@ -199,12 +199,12 @@ describe('GET /api/leads/[id]', () => {
 
   it('doit retourner 405 pour les requêtes non-GET', async () => {
     const mockEvent = {
-      method: 'POST',
       context: {
         params: {
           id: '1'
         }
-      }
+      },
+      method: 'POST'
     }
 
     await expect(handler(mockEvent)).rejects.toThrow()
@@ -212,32 +212,32 @@ describe('GET /api/leads/[id]', () => {
 
   it('doit inclure la qualification dans la réponse', async () => {
     const mockLead: Lead = {
-      id: 1,
+      accessToken: 'valid-token-123',
       answers: {
         email: 'test@example.com'
       },
       completedAt: '2024-01-01T00:00:00Z',
-      stepCount: 3,
+      createdAt: '2024-01-01T00:00:00Z',
+      id: 1,
       qualification: {
-        score: 5,
         level: 'high',
         reasons: ['service_architecture_frontend'],
-        recommendedOffer: 'audit'
+        recommendedOffer: 'audit',
+        score: 5
       },
-      accessToken: 'valid-token-123',
-      createdAt: '2024-01-01T00:00:00Z',
+      stepCount: 3,
       updatedAt: '2024-01-01T00:00:00Z'
     }
 
     vi.mocked(getLeadByIdAndToken).mockResolvedValue(mockLead)
 
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {
           id: '1'
         }
-      }
+      },
+      method: 'GET'
     }
 
     const result = await handler(mockEvent)
@@ -247,27 +247,27 @@ describe('GET /api/leads/[id]', () => {
 
   it('doit générer un résumé avec leadSummary', async () => {
     const mockLead: Lead = {
-      id: 1,
+      accessToken: 'valid-token-123',
       answers: {
         email: 'test@example.com',
         name: 'Test User'
       },
       completedAt: '2024-01-01T00:00:00Z',
-      stepCount: 5,
-      accessToken: 'valid-token-123',
       createdAt: '2024-01-01T00:00:00Z',
+      id: 1,
+      stepCount: 5,
       updatedAt: '2024-01-01T00:00:00Z'
     }
 
     vi.mocked(getLeadByIdAndToken).mockResolvedValue(mockLead)
 
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {
           id: '1'
         }
-      }
+      },
+      method: 'GET'
     }
 
     await handler(mockEvent)
@@ -275,8 +275,8 @@ describe('GET /api/leads/[id]', () => {
     expect(leadSummary).toHaveBeenCalledWith({
       answers: mockLead.answers,
       completedAt: mockLead.completedAt,
-      stepCount: mockLead.stepCount,
-      metadata: mockLead.metadata
+      metadata: mockLead.metadata,
+      stepCount: mockLead.stepCount
     })
   })
 
@@ -286,26 +286,26 @@ describe('GET /api/leads/[id]', () => {
     })
 
     const mockLead: Lead = {
-      id: 1,
+      accessToken: 'valid-token-123',
       answers: {
         email: 'test@example.com'
       },
       completedAt: '2024-01-01T00:00:00Z',
-      stepCount: 3,
-      accessToken: 'valid-token-123',
       createdAt: '2024-01-01T00:00:00Z',
+      id: 1,
+      stepCount: 3,
       updatedAt: '2024-01-01T00:00:00Z'
     }
 
     vi.mocked(getLeadByIdAndToken).mockResolvedValue(mockLead)
 
     const mockEvent = {
-      method: 'GET',
       context: {
         params: {
           id: '1'
         }
-      }
+      },
+      method: 'GET'
     }
 
     await handler(mockEvent)

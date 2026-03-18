@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi, beforeAll, afterAll } from 'vitest'
+import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Mock de fetch global
 const mockFetch = vi.fn()
@@ -90,18 +90,18 @@ describe('GET /api/podcast/rss', () => {
     expect(Array.isArray(result)).toBe(true)
     expect(result.length).toBe(1)
     expect(result[0]).toMatchObject({
-      title: 'Test Episode',
-      description: 'Description de test',
-      link: 'https://podcast.ausha.co/test-episode',
-      guid: 'test-guid-123',
       audioUrl: 'https://audio.ausha.co/test.mp3',
-      duration: '05:44',
       cover: 'https://image.ausha.co/test.jpg',
+      description: 'Description de test',
+      duration: '05:44',
       episode: 1,
+      featured: false,
+      guid: 'test-guid-123',
+      link: 'https://podcast.ausha.co/test-episode',
       season: 1,
       subtitle: 'Sous-titre de test',
       tags: ['test', 'podcast', 'episode'],
-      featured: false
+      title: 'Test Episode'
     })
     expect(result[0].date).toBeInstanceOf(Date)
   })

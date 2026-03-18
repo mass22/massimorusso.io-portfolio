@@ -11,8 +11,8 @@ export default defineConfig({
     maxWorkers: 1,
     alias: {
       '#imports': path.resolve(__dirname, './.nuxt/imports.d.ts'),
-      '~': path.resolve(__dirname, '.'),
-      '@': path.resolve(__dirname, '.')
+      '@': path.resolve(__dirname, '.'),
+      '~': path.resolve(__dirname, '.')
     },
     globals: true,
     setupFiles: ['./tests/setup.ts'],

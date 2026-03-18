@@ -44,28 +44,26 @@ const availableLocales = computed(() => {
   return Array.isArray(list) ? list : []
 })
 
-const alternateLinks = computed(() => {
-  return availableLocales.value
-    .map((entry) => {
-      const localeObj = typeof entry === 'string' ? { code: entry } : entry
-      if (!localeObj?.code) {
-        return null
-      }
-      const targetPath = switchLocalePath(localeObj.code)
-      if (!targetPath) {
-        return null
-      }
-      const href = toAbsoluteUrl(targetPath)
-      // Utiliser iso pour hreflang (fr-CA ou en), sinon fallback sur code
-      const hreflang = typeof localeObj === 'string' ? localeObj : (localeObj.iso || localeObj.code)
-      return {
-        href, hreflang, id: `alt-${localeObj.code}`, rel: 'alternate'
-      }
-    })
-    .filter((link): link is { id: string, rel: string, hreflang: string, href: string } => Boolean(link))
-})
+const alternateLinks = computed(() => availableLocales.value
+  .map((entry) => {
+    const localeObj = typeof entry === 'string' ? { code: entry } : entry
+    if (!localeObj?.code) {
+      return null
+    }
+    const targetPath = switchLocalePath(localeObj.code)
+    if (!targetPath) {
+      return null
+    }
+    const href = toAbsoluteUrl(targetPath)
+    // Utiliser iso pour hreflang (fr-CA ou en), sinon fallback sur code
+    const hreflang = typeof localeObj === 'string' ? localeObj : (localeObj.iso || localeObj.code)
+    return {
+      href, hreflang, id: `alt-${localeObj.code}`, rel: 'alternate'
+    }
+  })
+  .filter((link): link is { id: string, rel: string, hreflang: string, href: string } => Boolean(link)))
 
-// x-default doit pointer vers la version française (locale par défaut)
+// X-default doit pointer vers la version française (locale par défaut)
 const xDefaultLink = computed(() => {
   const defaultLocalePath = locale.value === 'fr' ? route.path : switchLocalePath('fr')
   const defaultHref = defaultLocalePath ? toAbsoluteUrl(defaultLocalePath) : canonicalUrl.value
@@ -86,18 +84,18 @@ useHead(() => {
       lang: locale.value
     }, link: [
       ...filteredLinks,
-      { rel: 'icon', href: '/favicon.ico' },
+      { href: '/favicon.ico', rel: 'icon' },
       {
+        href: canonicalUrl.value,
         id: 'canonical',
-        rel: 'canonical',
-        href: canonicalUrl.value
+        rel: 'canonical'
       },
       ...alternateLinks.value,
       xDefaultLink.value
     ], meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { key: 'theme-color', name: 'theme-color', content: color.value },
+      { content: 'width=device-width, initial-scale=1', name: 'viewport' },
+      { content: color.value, key: 'theme-color', name: 'theme-color' },
       ...meta
     ]
   }
@@ -108,13 +106,13 @@ const { global } = useAppConfig()
 // Métadonnées SEO améliorées
 useSeoMeta({
   ogImage: () => global.picture?.light || 'https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png',
-  ogUrl: () => canonicalUrl.value,
-  ogType: 'website',
   ogSiteName: 'Massimo Russo',
+  ogType: 'website',
+  ogUrl: () => canonicalUrl.value,
   titleTemplate: () => t('seo.titleTemplate'),
   twitterCard: 'summary_large_image',
-  twitterImage: () => global.picture?.light || 'https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png',
   twitterCreator: '@massimorusso',
+  twitterImage: () => global.picture?.light || 'https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png',
   twitterSite: '@massimorusso'
 })
 
@@ -122,51 +120,47 @@ useSeoMeta({
 const structuredData = computed(() => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
-  'name': 'Massimo Russo',
-  'jobTitle': 'Consultant Frontend Sénior',
+  'address': {
+    '@type': 'PostalAddress',
+    'addressCountry': 'US',
+    'addressLocality': 'Boston'
+  },
+  'alumniOf': {
+    '@type': 'CollegeOrUniversity',
+    'department': 'Interactive Design',
+    'name': 'Boston University'
+  },
   'description': t('index.description') || 'Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d\'Architecture',
-  'url': siteUrl.value,
-  'image': global.picture?.light,
   'email': global.email,
+  'image': global.picture?.light,
+  'jobTitle': 'Consultant Frontend Sénior',
+  'knowsAbout': ['Vue.js', 'Nuxt.js', 'UX/UI Design', 'Frontend Development', 'Architecture Modernization'],
+  'name': 'Massimo Russo',
   'sameAs': [
     'https://www.linkedin.com/in/russomassimo-frontend-consultant',
     'https://bsky.app/profile/massimorusso.bsky.social'
   ],
-  'knowsAbout': ['Vue.js', 'Nuxt.js', 'UX/UI Design', 'Frontend Development', 'Architecture Modernization'],
-  'alumniOf': {
-    '@type': 'CollegeOrUniversity',
-    'name': 'Boston University',
-    'department': 'Interactive Design'
-  },
-  'address': {
-    '@type': 'PostalAddress',
-    'addressLocality': 'Boston',
-    'addressCountry': 'US'
-  }
+  'url': siteUrl.value
 }))
 
 useHead({
   script: [
     {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(structuredData.value)
+      innerHTML: JSON.stringify(structuredData.value),
+      type: 'application/ld+json'
     }
   ]
 })
 
-const { data: navigation } = await useAsyncData('navigation', () => {
-  return Promise.all([
-    queryCollectionNavigation('blog')
-  ])
-}, {
+const { data: navigation } = await useAsyncData('navigation', () => Promise.all([
+  queryCollectionNavigation('blog')
+]), {
   transform: data => data.flat()
 })
 
-const { data: files } = useLazyAsyncData('search', () => {
-  return Promise.all([
-    queryCollectionSearchSections('blog')
-  ])
-}, {
+const { data: files } = useLazyAsyncData('search', () => Promise.all([
+  queryCollectionSearchSections('blog')
+]), {
   server: false,
   transform: data => data.flat()
 })

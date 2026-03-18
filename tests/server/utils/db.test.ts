@@ -1,30 +1,30 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { LeadContext } from '~/types/content'
 
 // NODE_ENV est défini dans setup.ts pour permettre l'initialisation SQLite
 
 // Import après les mocks
 import {
-  insertLead,
+  closeDatabase,
+  countLeads,
+  getAllLeads,
   getLeadById,
   getLeadByIdAndToken,
-  getAllLeads,
-  countLeads,
-  closeDatabase
+  insertLead
 } from '~/server/utils/db'
 
 // Mock complet de better-sqlite3 et des modules Node.js AVANT l'import
 const mockDb = {
-  pragma: vi.fn(),
+  close: vi.fn(),
   exec: vi.fn(),
-  prepare: vi.fn(),
-  close: vi.fn()
+  pragma: vi.fn(),
+  prepare: vi.fn()
 }
 
 const mockStmt = {
-  run: vi.fn(),
+  all: vi.fn(),
   get: vi.fn(),
-  all: vi.fn()
+  run: vi.fn()
 }
 
 // Créer une classe mockée pour better-sqlite3
@@ -49,8 +49,8 @@ vi.mock('@neondatabase/serverless', () => ({
 }))
 
 vi.mock('node:fs', () => ({
-  mkdirSync: vi.fn(),
-  existsSync: vi.fn(() => true)
+  existsSync: vi.fn(() => true),
+  mkdirSync: vi.fn()
 }))
 
 vi.mock('node:path', () => ({
@@ -95,7 +95,7 @@ describe('db', () => {
 
     // Réinitialiser les mocks
     mockDb.prepare.mockReturnValue(mockStmt)
-    mockStmt.run.mockReturnValue({ lastInsertRowid: 1, changes: 1 })
+    mockStmt.run.mockReturnValue({ changes: 1, lastInsertRowid: 1 })
     mockStmt.get.mockReturnValue(null)
     mockStmt.all.mockReturnValue([])
   })
@@ -115,7 +115,7 @@ describe('db', () => {
         stepCount: 5
       }
 
-      mockStmt.run.mockReturnValue({ lastInsertRowid: 1, changes: 1 })
+      mockStmt.run.mockReturnValue({ changes: 1, lastInsertRowid: 1 })
 
       const leadId = await insertLead(context, 'test-token')
 
@@ -126,7 +126,7 @@ describe('db', () => {
     it('doit réinitialiser la connexion Postgres si nécessaire', async () => {
       // Ce test vérifie que la réinitialisation de connexion fonctionne
       // En mode SQLite (test), cette fonctionnalité n'est pas testée directement
-      // mais elle est couverte par les tests d'intégration
+      // Mais elle est couverte par les tests d'intégration
       const context: LeadContext = {
         answers: {
           email: 'test@example.com'
@@ -135,7 +135,7 @@ describe('db', () => {
         stepCount: 3
       }
 
-      mockStmt.run.mockReturnValue({ lastInsertRowid: 5, changes: 1 })
+      mockStmt.run.mockReturnValue({ changes: 1, lastInsertRowid: 5 })
 
       const leadId = await insertLead(context, 'test-token')
 
@@ -152,12 +152,12 @@ describe('db', () => {
       }
 
       const qualification = {
-        score: 5,
         level: 'high',
-        reasons: ['service_architecture_frontend']
+        reasons: ['service_architecture_frontend'],
+        score: 5
       }
 
-      mockStmt.run.mockReturnValue({ lastInsertRowid: 2, changes: 1 })
+      mockStmt.run.mockReturnValue({ changes: 1, lastInsertRowid: 2 })
 
       const leadId = await insertLead(context, 'test-token', qualification)
 
@@ -173,7 +173,7 @@ describe('db', () => {
         stepCount: 2
       }
 
-      mockStmt.run.mockReturnValue({ lastInsertRowid: 3, changes: 1 })
+      mockStmt.run.mockReturnValue({ changes: 1, lastInsertRowid: 3 })
 
       const leadId = await insertLead(context)
 
@@ -186,14 +186,14 @@ describe('db', () => {
           email: 'test@example.com'
         },
         completedAt: '2024-01-01T00:00:00Z',
-        stepCount: 4,
         metadata: {
-          userAgent: 'Mozilla/5.0',
-          referrer: 'https://example.com'
-        }
+          referrer: 'https://example.com',
+          userAgent: 'Mozilla/5.0'
+        },
+        stepCount: 4
       }
 
-      mockStmt.run.mockReturnValue({ lastInsertRowid: 4, changes: 1 })
+      mockStmt.run.mockReturnValue({ changes: 1, lastInsertRowid: 4 })
 
       const leadId = await insertLead(context, 'test-token')
 
@@ -212,14 +212,14 @@ describe('db', () => {
 
     it('doit récupérer un lead par son ID', async () => {
       const mockRow = {
-        id: 1,
+        accessToken: 'test-token',
         answers: JSON.stringify({ email: 'test@example.com', name: 'Test User' }),
         completedAt: '2024-01-01T00:00:00Z',
-        stepCount: 5,
+        createdAt: '2024-01-01T00:00:00Z',
+        id: 1,
         metadata: null,
         qualification: null,
-        accessToken: 'test-token',
-        createdAt: '2024-01-01T00:00:00Z',
+        stepCount: 5,
         updatedAt: '2024-01-01T00:00:00Z'
       }
 
@@ -253,14 +253,14 @@ describe('db', () => {
     it('doit récupérer un lead avec un token valide', async () => {
       const token = 'valid-token-123'
       const mockRow = {
-        id: 1,
+        accessToken: token,
         answers: JSON.stringify({ email: 'test@example.com', name: 'Test User' }),
         completedAt: '2024-01-01T00:00:00Z',
-        stepCount: 5,
+        createdAt: '2024-01-01T00:00:00Z',
+        id: 1,
         metadata: null,
         qualification: null,
-        accessToken: token,
-        createdAt: '2024-01-01T00:00:00Z',
+        stepCount: 5,
         updatedAt: '2024-01-01T00:00:00Z'
       }
 
@@ -286,13 +286,13 @@ describe('db', () => {
     it('doit respecter la limite', async () => {
       const mockRows = [
         {
-          id: 1,
+          accessToken: 'token1',
           answers: JSON.stringify({ email: 'test1@example.com' }),
           completedAt: '2024-01-01T00:00:00Z',
-          stepCount: 3,
-          metadata: null,
-          accessToken: 'token1',
           createdAt: '2024-01-01T00:00:00Z',
+          id: 1,
+          metadata: null,
+          stepCount: 3,
           updatedAt: '2024-01-01T00:00:00Z'
         }
       ]

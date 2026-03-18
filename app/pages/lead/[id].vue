@@ -26,18 +26,18 @@ const token = computed(() => {
 // Vérifier que l'ID et le token sont présents
 if (!id.value || !token.value) {
   throw createError({
+    fatal: true,
     statusCode: 400,
-    statusMessage: 'ID et token requis',
-    fatal: true
+    statusMessage: 'ID et token requis'
   })
 }
 
 // Appeler l'API pour récupérer le lead
 const { data: leadData, error, pending } = await useFetch(`/api/leads/${id.value}`, {
+  key: `lead-${id.value}-${token.value}`,
   query: {
     token: token.value
-  },
-  key: `lead-${id.value}-${token.value}`
+  }
 })
 
 // Gérer les erreurs
@@ -46,24 +46,26 @@ if (error.value) {
   const message = error.value.data?.message || 'Une erreur est survenue lors du chargement du lead.'
 
   throw createError({
+    fatal: true,
     statusCode,
-    statusMessage: message,
-    fatal: true
+    statusMessage: message
   })
 }
 
 // Vérifier que les données sont présentes
 if (!leadData.value) {
   throw createError({
+    fatal: true,
     statusCode: 404,
-    statusMessage: 'Lead introuvable',
-    fatal: true
+    statusMessage: 'Lead introuvable'
   })
 }
 
 // JSON formaté pour l'affichage
 const formattedJson = computed(() => {
-  if (!leadData.value?.context) return ''
+  if (!leadData.value?.context) {
+    return ''
+  }
   return JSON.stringify(leadData.value.context, null, 2)
 })
 
@@ -83,16 +85,16 @@ const copyJson = () => {
 
 // SEO - Empêcher l'indexation des pages de leads
 useSeoMeta({
-  title: `Lead #${id.value}`,
   description: `Détails du lead #${id.value}`,
-  robots: 'noindex, nofollow, noarchive, nosnippet'
+  robots: 'noindex, nofollow, noarchive, nosnippet',
+  title: `Lead #${id.value}`
 })
 
 // Empêcher également l'indexation via les balises meta supplémentaires
 useHead({
   meta: [
-    { name: 'robots', content: 'noindex, nofollow, noarchive, nosnippet' },
-    { name: 'googlebot', content: 'noindex, nofollow' }
+    { content: 'noindex, nofollow, noarchive, nosnippet', name: 'robots' },
+    { content: 'noindex, nofollow', name: 'googlebot' }
   ]
 })
 </script>

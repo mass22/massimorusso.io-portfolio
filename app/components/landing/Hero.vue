@@ -21,8 +21,10 @@ onMounted(() => {
 })
 
 // Transformer les liens du hero pour appliquer localePath
-const heroLinks = computed(() => {
-  if (!props.page?.hero?.links) return []
+const _heroLinks = computed(() => {
+  if (!props.page?.hero?.links) {
+    return []
+  }
   return props.page.hero.links.map(link => ({
     ...link,
     to: link.to ? localePath(link.to) : link.to
@@ -33,9 +35,14 @@ const heroLinks = computed(() => {
 // Toujours retourner le chemin sans hash pour éviter les problèmes d'hydratation
 // Le hash sera géré par le navigateur lors du clic
 const calendarLink = computed(() => {
-  if (!isAvailable.value) return undefined
+  if (!isAvailable.value) {
+    return undefined
+  }
   return localePath('/contact')
 })
+
+// Badges du hero (ex-compétences en tags discrets)
+const heroBadges = computed(() => props.page?.hero?.badges ?? [])
 
 // Mapper les liens du footer avec leurs aria-labels pour l'accessibilité
 const footerLinksWithLabels = computed(() => footer?.links?.map(link => ({
@@ -61,7 +68,7 @@ onMounted(() => {
       headline: 'flex flex-col items-start justify-start',
       title: 'text-shadow-md max-w-lg text-left mx-0',
       description: 'text-left',
-      links: 'mt-4 flex-col justify-center items-center'
+      links: 'mt-4 flex-col justify-center items-start'
     }"
   >
     <template #headline>
@@ -202,16 +209,30 @@ onMounted(() => {
             delay: 0.5
           }"
         >
-          <div class="flex flex-col items-center gap-3 w-full">
-            <!-- CTA Principaux côte à côte -->
-            <div class="flex items-center gap-3 w-full">
+          <div class="flex flex-col items-start gap-3 w-full">
+            <!-- Badges compétences -->
+            <div
+              v-if="heroBadges.length > 0"
+              class="flex flex-wrap gap-2"
+            >
+              <span
+                v-for="badge in heroBadges"
+                :key="badge"
+                class="inline-flex items-center px-2.5 py-1 rounded-md border border-vue/40 text-vue text-sm"
+              >
+                {{ badge }}
+              </span>
+            </div>
+
+            <!-- CTA principal unique -->
+            <div class="flex flex-col gap-3 w-full">
               <UButton
-                :to="localePath('/services')"
+                :to="localePath('/contact')"
                 color="primary"
                 variant="solid"
                 size="lg"
-                class="font-semibold px-8 py-3 flex-1 group justify-center"
-                :label="t('hero.cta.services')"
+                class="font-semibold px-8 py-3 w-full group justify-center"
+                :label="t('hero.cta.schedule')"
                 :ui="{ base: 'justify-center' }"
               >
                 <template #trailing>
@@ -223,22 +244,7 @@ onMounted(() => {
                 </template>
               </UButton>
 
-              <UButton
-                :to="localePath('/contact')"
-                color="neutral"
-                variant="outline"
-                size="lg"
-                class="font-semibold px-8 py-3 flex-1 group justify-center"
-                :label="t('hero.cta.contact')"
-                :ui="{ base: 'justify-center' }"
-              />
-            </div>
-
-            <!-- Boutons secondaires empilés -->
-            <div
-              v-if="heroLinks.length > 0"
-              class="flex flex-col items-center gap-2 w-full mt-2"
-            >
+              <!-- Signal disponibilité -->
               <UButton
                 :color="isAvailable ? 'success' : 'error'"
                 variant="ghost"
@@ -264,36 +270,44 @@ onMounted(() => {
                   </span>
                 </template>
               </UButton>
-              <UButton
-                v-if="page.hero.isResourcesAvailable"
-                v-bind="heroLinks[0]"
-                class="w-full justify-center"
-                :aria-label="heroLinks[0]?.label"
-                :ui="{ base: 'justify-center' }"
-              />
-              <UButton
-                v-else
-                v-bind="heroLinks[1]"
-                class="w-full justify-center"
-                :aria-label="heroLinks[1]?.label"
-                :ui="{ base: 'justify-center' }"
-              />
+
+              <!-- Lien secondaire À propos -->
+              <NuxtLink
+                :to="localePath('/about')"
+                class="text-sm text-muted hover:text-foreground transition-colors"
+              >
+                {{ t('hero.cta.about') }} →
+              </NuxtLink>
             </div>
           </div>
         </Motion>
         <div
           v-else
-          class="flex flex-col items-center gap-3 w-full"
+          class="flex flex-col items-start gap-3 w-full"
         >
-          <!-- CTA Principaux empilés verticalement -->
-          <div class="flex flex-col items-center gap-3 w-full">
+          <!-- Badges compétences -->
+          <div
+            v-if="heroBadges.length > 0"
+            class="flex flex-wrap gap-2"
+          >
+            <span
+              v-for="badge in heroBadges"
+              :key="badge"
+              class="inline-flex items-center px-2.5 py-1 rounded-md border border-vue/40 text-vue text-sm"
+            >
+              {{ badge }}
+            </span>
+          </div>
+
+          <!-- CTA principal unique -->
+          <div class="flex flex-col gap-3 w-full">
             <UButton
-              :to="localePath('/services')"
+              :to="localePath('/contact')"
               color="primary"
               variant="solid"
               size="lg"
               class="font-semibold px-8 py-3 w-full group justify-center"
-              :label="t('hero.cta.services')"
+              :label="t('hero.cta.schedule')"
               :ui="{ base: 'justify-center' }"
             >
               <template #trailing>
@@ -305,22 +319,7 @@ onMounted(() => {
               </template>
             </UButton>
 
-            <UButton
-              :to="localePath('/contact')"
-              color="neutral"
-              variant="outline"
-              size="lg"
-              class="font-semibold px-8 py-3 w-full group justify-center"
-              :label="t('hero.cta.contact')"
-              :ui="{ base: 'justify-center' }"
-            />
-          </div>
-
-          <!-- Boutons secondaires empilés -->
-          <div
-            v-if="heroLinks.length > 0"
-            class="flex flex-col items-center gap-2 w-full mt-2"
-          >
+            <!-- Signal disponibilité -->
             <UButton
               :color="isAvailable ? 'success' : 'error'"
               variant="ghost"
@@ -346,33 +345,41 @@ onMounted(() => {
                 </span>
               </template>
             </UButton>
-            <UButton
-              v-if="page.hero.isResourcesAvailable"
-              v-bind="heroLinks[0]"
-              class="w-full justify-center"
-              :aria-label="heroLinks[0]?.label"
-              :ui="{ base: 'justify-center' }"
-            />
-            <UButton
-              v-else
-              v-bind="heroLinks[1]"
-              class="w-full justify-center"
-              :aria-label="heroLinks[1]?.label"
-              :ui="{ base: 'justify-center' }"
-            />
+
+            <!-- Lien secondaire À propos -->
+            <NuxtLink
+              :to="localePath('/about')"
+              class="text-sm text-muted hover:text-foreground transition-colors"
+            >
+              {{ t('hero.cta.about') }} →
+            </NuxtLink>
           </div>
         </div>
         <template #fallback>
-          <div class="flex flex-col items-center gap-3 w-full">
-            <!-- CTA Principaux empilés verticalement -->
-            <div class="flex flex-col items-center gap-3 w-full">
+          <div class="flex flex-col items-start gap-3 w-full">
+            <!-- Badges compétences -->
+            <div
+              v-if="heroBadges.length > 0"
+              class="flex flex-wrap gap-2"
+            >
+              <span
+                v-for="badge in heroBadges"
+                :key="badge"
+                class="inline-flex items-center px-2.5 py-1 rounded-md border border-vue/40 text-vue text-sm"
+              >
+                {{ badge }}
+              </span>
+            </div>
+
+            <!-- CTA principal unique -->
+            <div class="flex flex-col gap-3 w-full">
               <UButton
-                :to="localePath('/services')"
+                :to="localePath('/contact')"
                 color="primary"
                 variant="solid"
                 size="lg"
                 class="font-semibold px-8 py-3 w-full group justify-center"
-                :label="t('hero.cta.services')"
+                :label="t('hero.cta.schedule')"
                 :ui="{ base: 'justify-center' }"
               >
                 <template #trailing>
@@ -384,22 +391,7 @@ onMounted(() => {
                 </template>
               </UButton>
 
-              <UButton
-                :to="localePath('/contact')"
-                color="neutral"
-                variant="outline"
-                size="lg"
-                class="font-semibold px-8 py-3 w-full group justify-center"
-                :label="t('hero.cta.contact')"
-                :ui="{ base: 'justify-center' }"
-              />
-            </div>
-
-            <!-- Boutons secondaires empilés -->
-            <div
-              v-if="heroLinks.length > 0"
-              class="flex flex-col items-center gap-2 w-full mt-2"
-            >
+              <!-- Signal disponibilité -->
               <UButton
                 :color="isAvailable ? 'success' : 'error'"
                 variant="ghost"
@@ -425,20 +417,14 @@ onMounted(() => {
                   </span>
                 </template>
               </UButton>
-              <UButton
-                v-if="page.hero.isResourcesAvailable"
-                v-bind="heroLinks[0]"
-                class="w-full justify-center"
-                :aria-label="heroLinks[0]?.label"
-                :ui="{ base: 'justify-center' }"
-              />
-              <UButton
-                v-else
-                v-bind="heroLinks[1]"
-                class="w-full justify-center"
-                :aria-label="heroLinks[1]?.label"
-                :ui="{ base: 'justify-center' }"
-              />
+
+              <!-- Lien secondaire À propos -->
+              <NuxtLink
+                :to="localePath('/about')"
+                class="text-sm text-muted hover:text-foreground transition-colors"
+              >
+                {{ t('hero.cta.about') }} →
+              </NuxtLink>
             </div>
           </div>
         </template>

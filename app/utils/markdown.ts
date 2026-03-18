@@ -3,7 +3,9 @@
  * Supports: headers, bold, italic, links, lists, paragraphs, code blocks
  */
 export function markdownToHtml(markdown: string): string {
-  if (!markdown) return ''
+  if (!markdown) {
+    return ''
+  }
 
   // Split into lines for better processing
   const lines = markdown.split('\n')
@@ -29,8 +31,12 @@ export function markdownToHtml(markdown: string): string {
 
     // Headers
     if (line.startsWith('### ')) {
-      if (inParagraph) result.push('</p>')
-      if (inList) result.push('</ul>')
+      if (inParagraph) {
+        result.push('</p>')
+      }
+      if (inList) {
+        result.push('</ul>')
+      }
       inParagraph = false
       inList = false
       const headerText = line.substring(4)
@@ -38,8 +44,12 @@ export function markdownToHtml(markdown: string): string {
       continue
     }
     if (line.startsWith('## ')) {
-      if (inParagraph) result.push('</p>')
-      if (inList) result.push('</ul>')
+      if (inParagraph) {
+        result.push('</p>')
+      }
+      if (inList) {
+        result.push('</ul>')
+      }
       inParagraph = false
       inList = false
       const headerText = line.substring(3)
@@ -47,8 +57,12 @@ export function markdownToHtml(markdown: string): string {
       continue
     }
     if (line.startsWith('# ')) {
-      if (inParagraph) result.push('</p>')
-      if (inList) result.push('</ul>')
+      if (inParagraph) {
+        result.push('</p>')
+      }
+      if (inList) {
+        result.push('</ul>')
+      }
       inParagraph = false
       inList = false
       const headerText = line.substring(2)
@@ -141,8 +155,12 @@ export function markdownToHtml(markdown: string): string {
   }
 
   // Close any open tags
-  if (inParagraph) result.push('</p>')
-  if (inList) result.push('</ul>')
+  if (inParagraph) {
+    result.push('</p>')
+  }
+  if (inList) {
+    result.push('</ul>')
+  }
 
   return result.join('')
 }

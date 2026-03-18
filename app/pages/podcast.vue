@@ -33,19 +33,16 @@ const { featuredEpisodes, regularEpisodes, allNonFeaturedEpisodes } = usePodcast
   page
 )
 
-const showMoreEpisodes = computed(() => {
-  // Afficher le bouton "Voir plus" s'il y a plus de 3 épisodes non-featured
-  return allNonFeaturedEpisodes.value.length > 3
-})
+const showMoreEpisodes = computed(() => allNonFeaturedEpisodes.value.length > 3)
 
 const displayAll = ref(false)
 
 // SEO
 useSeoMeta({
-  title: page.value?.seo?.title || page.value?.title || t('podcast.title', 'Podcast'),
   description: page.value?.seo?.description || page.value?.description || '',
+  ogDescription: page.value?.seo?.description || page.value?.description || '',
   ogTitle: page.value?.seo?.title || page.value?.title || t('podcast.title', 'Podcast'),
-  ogDescription: page.value?.seo?.description || page.value?.description || ''
+  title: page.value?.seo?.title || page.value?.title || t('podcast.title', 'Podcast')
 })
 </script>
 

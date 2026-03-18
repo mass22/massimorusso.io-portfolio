@@ -12,12 +12,14 @@ defineProps<{
 
 // UUser attend { name, description?, avatar?, to?, target? } — construit à partir des champs plats
 const getAuthorProps = (t: Testimonial) => {
-  if (!t?.authorName) return null
+  if (!t?.authorName) {
+    return null
+  }
   return {
     name: t.authorName,
     description: t.authorDescription,
-    avatar: t.authorAvatar ? { src: t.authorAvatar, alt: t.authorAvatarAlt || t.authorName } : undefined,
-    ...(t.authorLinkedin && { to: t.authorLinkedin, target: '_blank' as const })
+    avatar: t.authorAvatar ? { alt: t.authorAvatarAlt || t.authorName, src: t.authorAvatar } : undefined,
+    ...(t.authorLinkedin && { target: '_blank' as const, to: t.authorLinkedin })
   }
 }
 </script>

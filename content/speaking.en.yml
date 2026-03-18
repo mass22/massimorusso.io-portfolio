@@ -3,6 +3,12 @@ description: Talks, interviews and public appearances on Vue.js, frontend archit
 seo:
   title: Conferences & talks — Massimo Russo, Vue.js & frontend architecture
   description: Talks, interviews and public appearances on Vue.js, frontend architecture and the evolution of the developer role.
+organizedEvents:
+  title: Events I organize
+  items:
+    - name: Vue Montreal
+      description: Organizer of Vue Montreal — regular meetups for the Vue.js community in Montreal.
+      url: https://www.meetup.com/vue-js-montreal/
 events:
   - category: Conference
     title: Quand l’IA accélère tout… sauf la compréhension

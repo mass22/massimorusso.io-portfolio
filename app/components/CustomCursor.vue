@@ -19,7 +19,7 @@
 import { useMouse } from '@vueuse/core'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
-// useMouse: coordonnées relatives à la fenêtre (viewport)
+// UseMouse: coordonnées relatives à la fenêtre (viewport)
 const { x, y } = useMouse({ touch: false })
 const scrollX = ref(typeof window !== 'undefined' ? window.scrollX : 0)
 const scrollY = ref(typeof window !== 'undefined' ? window.scrollY : 0)

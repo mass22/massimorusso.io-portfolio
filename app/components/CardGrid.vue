@@ -35,30 +35,38 @@ const localePath = useLocalePath()
 const linkLabelText = computed(() => props.linkLabel || t('services.cta.learnMore'))
 
 const getItemIcon = (item: CardItem): string => {
-  if (props.getIcon) return props.getIcon(item)
+  if (props.getIcon) {
+    return props.getIcon(item)
+  }
   return item.icon || 'i-ph-circle'
 }
 
 const getItemImage = (item: CardItem): string => {
-  if (props.getImage) return props.getImage(item)
+  if (props.getImage) {
+    return props.getImage(item)
+  }
   return item.image || ''
 }
 
-const isWebPImage = (imagePath: string): boolean => {
-  return imagePath?.endsWith('.webp') ?? false
-}
+const isWebPImage = (imagePath: string): boolean => imagePath?.endsWith('.webp') ?? false
 
 const getItemLink = (item: CardItem): string => {
-  if (props.getLink) return props.getLink(item)
-  if (item.to) return localePath(item.to)
-  if (item.href) return item.href
-  if (item.slug) return localePath(`/${item.slug}`)
+  if (props.getLink) {
+    return props.getLink(item)
+  }
+  if (item.to) {
+    return localePath(item.to)
+  }
+  if (item.href) {
+    return item.href
+  }
+  if (item.slug) {
+    return localePath(`/${item.slug}`)
+  }
   return '#'
 }
 
-const isLinkDisabled = (link: string): boolean => {
-  return link === '#'
-}
+const isLinkDisabled = (link: string): boolean => link === '#'
 </script>
 
 <template>

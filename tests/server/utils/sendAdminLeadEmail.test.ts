@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { LeadContext } from '~/types/content'
 
 // Import après le mock
@@ -41,29 +41,29 @@ describe('sendAdminLeadEmail', () => {
       urgency: '3-6-mois'
     },
     completedAt: '2024-01-01T00:00:00Z',
-    stepCount: 5,
     metadata: {
       source: 'chatbot'
-    }
+    },
+    stepCount: 5
   }
 
   const mockQualification = {
-    score: 85,
     level: 'high',
     reasons: ['service_architecture_frontend', 'goal_performance'],
-    recommendedOffer: 'audit'
+    recommendedOffer: 'audit',
+    score: 85
   }
 
   it('devrait envoyer un email avec succès', async () => {
     mockFetch.mockResolvedValue({ id: 'email-123' })
 
     const result = await sendAdminLeadEmail({
-      email: 'test@example.com',
-      name: 'Test User',
       context: mockLeadContext,
-      qualification: mockQualification,
-      locale: 'fr',
+      email: 'test@example.com',
       leadId: 1,
+      locale: 'fr',
+      name: 'Test User',
+      qualification: mockQualification,
       token: 'test-token'
     })
 
@@ -72,17 +72,17 @@ describe('sendAdminLeadEmail', () => {
     expect(mockFetch).toHaveBeenCalledWith(
       'https://api.resend.com/emails',
       expect.objectContaining({
-        method: 'POST',
+        body: expect.objectContaining({
+          from: 'noreply@example.com',
+          subject: expect.stringContaining('[Lead]'),
+          text: expect.any(String),
+          to: ['admin@example.com']
+        }),
         headers: expect.objectContaining({
           'Authorization': 'Bearer test-api-key',
           'Content-Type': 'application/json'
         }),
-        body: expect.objectContaining({
-          from: 'noreply@example.com',
-          to: ['admin@example.com'],
-          subject: expect.stringContaining('[Lead]'),
-          text: expect.any(String)
-        }),
+        method: 'POST',
         timeout: 20000
       })
     )
@@ -92,8 +92,8 @@ describe('sendAdminLeadEmail', () => {
     delete process.env.RESEND_API_KEY
 
     const result = await sendAdminLeadEmail({
-      email: 'test@example.com',
       context: mockLeadContext,
+      email: 'test@example.com',
       leadId: 1,
       token: 'test-token'
     })
@@ -106,8 +106,8 @@ describe('sendAdminLeadEmail', () => {
     delete process.env.ADMIN_EMAIL
 
     const result = await sendAdminLeadEmail({
-      email: 'test@example.com',
       context: mockLeadContext,
+      email: 'test@example.com',
       leadId: 1,
       token: 'test-token'
     })
@@ -120,8 +120,8 @@ describe('sendAdminLeadEmail', () => {
     delete process.env.FROM_EMAIL
 
     const result = await sendAdminLeadEmail({
-      email: 'test@example.com',
       context: mockLeadContext,
+      email: 'test@example.com',
       leadId: 1,
       token: 'test-token'
     })
@@ -132,16 +132,16 @@ describe('sendAdminLeadEmail', () => {
 
   it('devrait gérer l\'erreur 403 (domaine non vérifié)', async () => {
     const error403 = {
-      status: 403,
-      statusCode: 403,
+      data: { message: 'Domain not verified' },
       message: 'Domain not verified',
-      data: { message: 'Domain not verified' }
+      status: 403,
+      statusCode: 403
     }
     mockFetch.mockRejectedValue(error403)
 
     const result = await sendAdminLeadEmail({
-      email: 'test@example.com',
       context: mockLeadContext,
+      email: 'test@example.com',
       leadId: 1,
       token: 'test-token'
     })
@@ -152,15 +152,15 @@ describe('sendAdminLeadEmail', () => {
 
   it('devrait gérer les autres erreurs', async () => {
     const error500 = {
+      message: 'Internal server error',
       status: 500,
-      statusCode: 500,
-      message: 'Internal server error'
+      statusCode: 500
     }
     mockFetch.mockRejectedValue(error500)
 
     const result = await sendAdminLeadEmail({
-      email: 'test@example.com',
       context: mockLeadContext,
+      email: 'test@example.com',
       leadId: 1,
       token: 'test-token'
     })
@@ -174,14 +174,14 @@ describe('sendAdminLeadEmail', () => {
     mockFetch.mockResolvedValue({ id: 'email-123' })
 
     await sendAdminLeadEmail({
-      email: 'test@example.com',
       context: mockLeadContext,
+      email: 'test@example.com',
       leadId: 1,
       token: 'test-token'
     })
 
     const callArgs = mockFetch.mock.calls[0]
-    const body = callArgs[1].body
+    const { body } = callArgs[1]
     expect(body.text).toContain('https://example.com/lead/1?token=test-token')
     expect(body.text).not.toContain('/lead/123')
   })
@@ -190,14 +190,14 @@ describe('sendAdminLeadEmail', () => {
     mockFetch.mockResolvedValue({ id: 'email-123' })
 
     await sendAdminLeadEmail({
-      email: 'test@example.com',
       context: mockLeadContext,
+      email: 'test@example.com',
       leadId: 1,
       token: 'test-token'
     })
 
     const callArgs = mockFetch.mock.calls[0]
-    const body = callArgs[1].body
+    const { body } = callArgs[1]
     expect(body.subject).toContain('architecture-frontend')
     expect(body.subject).toContain('3-6-mois')
   })
@@ -206,17 +206,17 @@ describe('sendAdminLeadEmail', () => {
     mockFetch.mockResolvedValue({ id: 'email-123' })
 
     await sendAdminLeadEmail({
-      email: 'test@example.com',
-      name: 'Test User',
       context: mockLeadContext,
-      qualification: mockQualification,
-      locale: 'fr',
+      email: 'test@example.com',
       leadId: 1,
+      locale: 'fr',
+      name: 'Test User',
+      qualification: mockQualification,
       token: 'test-token'
     })
 
     const callArgs = mockFetch.mock.calls[0]
-    const body = callArgs[1].body
+    const { body } = callArgs[1]
     expect(body.text).toContain('Test User')
     expect(body.text).toContain('test@example.com')
     expect(body.text).toContain('QUALIFICATION')
@@ -228,14 +228,14 @@ describe('sendAdminLeadEmail', () => {
     mockFetch.mockResolvedValue({ id: 'email-123' })
 
     await sendAdminLeadEmail({
-      email: 'test@example.com',
       context: mockLeadContext,
+      email: 'test@example.com',
       leadId: 1,
       token: 'test-token'
     })
 
     const callArgs = mockFetch.mock.calls[0]
-    const body = callArgs[1].body
+    const { body } = callArgs[1]
     expect(body.text).toContain('NEW LEAD')
     expect(body.text).not.toContain('NOUVEAU LEAD')
   })
@@ -245,14 +245,14 @@ describe('sendAdminLeadEmail', () => {
     mockFetch.mockResolvedValue({ id: 'email-123' })
 
     await sendAdminLeadEmail({
-      email: 'test@example.com',
       context: mockLeadContext,
+      email: 'test@example.com',
       leadId: 1,
       token: 'test-token'
     })
 
     const callArgs = mockFetch.mock.calls[0]
-    const body = callArgs[1].body
+    const { body } = callArgs[1]
     expect(body.text).toContain('https://massimorusso.io/lead/1')
   })
 })

@@ -3,24 +3,24 @@ const { t } = useI18n()
 
 const benefits = [
   {
+    descriptionKey: 'contact.why.benefits.expertise.description',
     icon: 'i-ph-stack',
-    titleKey: 'contact.why.benefits.expertise.title',
-    descriptionKey: 'contact.why.benefits.expertise.description'
+    titleKey: 'contact.why.benefits.expertise.title'
   },
   {
+    descriptionKey: 'contact.why.benefits.reactivity.description',
     icon: 'i-ph-lightning',
-    titleKey: 'contact.why.benefits.reactivity.title',
-    descriptionKey: 'contact.why.benefits.reactivity.description'
+    titleKey: 'contact.why.benefits.reactivity.title'
   },
   {
+    descriptionKey: 'contact.why.benefits.collaboration.description',
     icon: 'i-ph-handshake',
-    titleKey: 'contact.why.benefits.collaboration.title',
-    descriptionKey: 'contact.why.benefits.collaboration.description'
+    titleKey: 'contact.why.benefits.collaboration.title'
   },
   {
+    descriptionKey: 'contact.why.benefits.results.description',
     icon: 'i-ph-chart-line-up',
-    titleKey: 'contact.why.benefits.results.title',
-    descriptionKey: 'contact.why.benefits.results.description'
+    titleKey: 'contact.why.benefits.results.title'
   }
 ]
 </script>

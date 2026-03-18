@@ -90,9 +90,7 @@ const props = withDefaults(defineProps<{ links: NavigationMenuItem[], noLangSwit
 
 const showLocaleSwitcher = computed(() => !props.noLangSwitcher && uiLocales.value.length > 0)
 
-const inactiveLocale = computed(() => {
-  return uiLocales.value.find(loc => loc.code !== locale.value)
-})
+const inactiveLocale = computed(() => uiLocales.value.find(loc => loc.code !== locale.value))
 
 const isSwitchingLocale = ref(false)
 
@@ -128,9 +126,7 @@ const priorityLinks = computed(() => props.links.filter(link => isPriorityLink(l
 const secondaryLinks = computed(() => props.links.filter(link => !isPriorityLink(link)))
 
 // Fonction pour vérifier si un lien est actif
-const isLinkActive = (link: NavigationMenuItem) => {
-  return link.to && (route.path === String(link.to) || (String(link.to) !== '/' && route.path.startsWith(String(link.to))))
-}
+const isLinkActive = (link: NavigationMenuItem) => link.to && (route.path === String(link.to) || (String(link.to) !== '/' && route.path.startsWith(String(link.to))))
 
 // Fonction pour déterminer le style du widget selon l'état actif/inactif et la priorité
 const getWidgetClass = (link: NavigationMenuItem, isPriority: boolean) => {

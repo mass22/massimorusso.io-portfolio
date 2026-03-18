@@ -25,16 +25,18 @@ const props = defineProps<{
 
 // Fonction pour obtenir l'icône du service
 const getServiceIcon = (service: ServiceItem): string => {
-  if (service.icon) return service.icon
+  if (service.icon) {
+    return service.icon
+  }
   const iconMap: Record<string, string> = {
-    'developpement-vuejs': 'i-ph-code',
-    'vuejs-development': 'i-ph-code',
-    'architecture-frontend': 'i-ph-lightbulb',
-    'frontend-architecture': 'i-ph-lightbulb',
     'aide-decision-technique': 'i-ph-chalkboard-teacher',
-    'technical-decision-support': 'i-ph-chalkboard-teacher',
+    'architecture-frontend': 'i-ph-lightbulb',
+    'developpement-vuejs': 'i-ph-code',
+    'frontend-architecture': 'i-ph-lightbulb',
     'ia-pragmatique': 'i-ph-sparkle',
-    'pragmatic-ai': 'i-ph-sparkle'
+    'pragmatic-ai': 'i-ph-sparkle',
+    'technical-decision-support': 'i-ph-chalkboard-teacher',
+    'vuejs-development': 'i-ph-code'
   }
   return service.slug ? (iconMap[service.slug] || 'i-ph-circle') : 'i-ph-circle'
 }
@@ -72,25 +74,25 @@ const serviceItems = computed(() => {
   // Fallback vers les traductions avec slugs
   return [
     {
-      title: t('services.items.consulting.title'),
       description: t('services.items.consulting.description'),
       icon: 'i-ph-lightbulb',
       imageAlt: t('services.items.consulting.imageAlt'),
-      slug: 'consulting'
+      slug: 'consulting',
+      title: t('services.items.consulting.title')
     },
     {
-      title: t('services.items.workshops.title'),
       description: t('services.items.workshops.description'),
       icon: 'i-ph-chalkboard-teacher',
       imageAlt: t('services.items.workshops.imageAlt'),
-      slug: 'workshops'
+      slug: 'workshops',
+      title: t('services.items.workshops.title')
     },
     {
-      title: t('services.items.audit.title'),
       description: t('services.items.audit.description'),
       icon: 'i-ph-sparkle',
       imageAlt: t('services.items.audit.imageAlt'),
-      slug: 'audit'
+      slug: 'audit',
+      title: t('services.items.audit.title')
     }
   ]
 })

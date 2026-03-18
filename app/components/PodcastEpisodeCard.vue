@@ -28,19 +28,25 @@ const props = defineProps<{
 const { t, locale } = useI18n()
 
 const formattedDate = computed(() => {
-  if (!props.episode.date) return ''
+  if (!props.episode.date) {
+    return ''
+  }
   const date = typeof props.episode.date === 'string' ? new Date(props.episode.date) : props.episode.date
-  if (!date || !(date instanceof Date) || isNaN(date.getTime())) return ''
+  if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+    return ''
+  }
   return new Intl.DateTimeFormat(locale.value === 'fr' ? 'fr-CA' : 'en-US', {
-    year: 'numeric',
+    day: 'numeric',
     month: 'long',
-    day: 'numeric'
+    year: 'numeric'
   }).format(date)
 })
 
 // Nettoyer la description HTML du RSS pour l'affichage
 const cleanDescription = computed(() => {
-  if (!props.episode.description) return ''
+  if (!props.episode.description) {
+    return ''
+  }
 
   let text = props.episode.description
 
@@ -73,9 +79,7 @@ const extractedTags = computed(() => {
   return []
 })
 
-const isWebPImage = (imagePath: string): boolean => {
-  return imagePath?.endsWith('.webp') ?? false
-}
+const isWebPImage = (imagePath: string): boolean => imagePath?.endsWith('.webp') ?? false
 </script>
 
 <template>

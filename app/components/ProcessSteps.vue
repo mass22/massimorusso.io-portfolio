@@ -14,9 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
   withAnimation: true
 })
 
-const getStepIcon = (index: number, step: ProcessStep): string => {
-  return step.icon || props.icons?.[index] || 'i-ph-circle'
-}
+const getStepIcon = (index: number, step: ProcessStep): string => step.icon || props.icons?.[index] || 'i-ph-circle'
 </script>
 
 <template>

@@ -10,7 +10,9 @@ const props = defineProps<{
 
 // Helper pour convertir le contenu markdown en HTML
 const renderMarkdown = (content: string) => {
-  if (!content) return ''
+  if (!content) {
+    return ''
+  }
   return markdownToHtml(content)
 }
 
@@ -18,15 +20,13 @@ const items = computed(() => {
   if (!props.page?.faq?.categories) {
     return []
   }
-  return props.page.faq.categories.map((faq) => {
-    return {
-      label: faq.title,
-      questions: faq.questions.map(q => ({
-        label: q.label,
-        content: q.content
-      }))
-    }
-  })
+  return props.page.faq.categories.map(faq => ({
+    label: faq.title,
+    questions: faq.questions.map(q => ({
+      content: q.content,
+      label: q.label
+    }))
+  }))
 })
 
 const ui = {

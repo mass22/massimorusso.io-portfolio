@@ -36,31 +36,31 @@ const emailLabels: Record<Locale, {
   fullContext: string
   viewLead: string
 }> = {
-  fr: {
-    newLead: 'NOUVEAU LEAD',
-    contactInfo: '📧 INFORMATIONS DE CONTACT',
-    name: 'Nom',
-    email: 'Email',
-    qualification: 'QUALIFICATION',
-    match: 'Match',
-    recommendation: 'Recommandation',
-    reasons: 'Raisons',
-    summary: 'RÉSUMÉ',
-    fullContext: 'CONTEXTE COMPLET (JSON)',
-    viewLead: 'LIEN POUR VOIR LE LEAD'
-  },
   en: {
-    newLead: 'NEW LEAD',
     contactInfo: '📧 CONTACT INFORMATION',
-    name: 'Name',
     email: 'Email',
-    qualification: 'QUALIFICATION',
-    match: 'Match',
-    recommendation: 'Recommendation',
-    reasons: 'Reasons',
-    summary: 'SUMMARY',
     fullContext: 'FULL CONTEXT (JSON)',
+    match: 'Match',
+    name: 'Name',
+    newLead: 'NEW LEAD',
+    qualification: 'QUALIFICATION',
+    reasons: 'Reasons',
+    recommendation: 'Recommendation',
+    summary: 'SUMMARY',
     viewLead: 'LINK TO VIEW LEAD'
+  },
+  fr: {
+    contactInfo: '📧 INFORMATIONS DE CONTACT',
+    email: 'Email',
+    fullContext: 'CONTEXTE COMPLET (JSON)',
+    match: 'Match',
+    name: 'Nom',
+    newLead: 'NOUVEAU LEAD',
+    qualification: 'QUALIFICATION',
+    reasons: 'Raisons',
+    recommendation: 'Recommandation',
+    summary: 'RÉSUMÉ',
+    viewLead: 'LIEN POUR VOIR LE LEAD'
   }
 }
 
@@ -68,27 +68,6 @@ const emailLabels: Record<Locale, {
  * Traductions pour les codes de raison
  */
 const reasonTranslations: Record<Locale, Record<string, string>> = {
-  fr: {
-    // Services
-    service_architecture_frontend: 'Architecture Frontend',
-    service_vue_nuxt: 'Vue/Nuxt',
-    service_ai_orchestration: 'IA Pragmatique',
-    // Goals
-    goal_modernize: 'Modernisation',
-    goal_performance: 'Performance',
-    goal_reduce_costs: 'Réduction des coûts',
-    goal_accelerate: 'Accélération',
-    goal_other: 'Autre objectif',
-    // Teams
-    team_4_10: 'Équipe 4-10 développeurs',
-    team_10_plus: 'Équipe 10+ développeurs',
-    // Urgency
-    urgency_urgent: 'Urgence immédiate',
-    urgency_1_month: 'Urgence 1-2 mois',
-    urgency_3_months: 'Urgence 3-6 mois',
-    // Stack
-    stack_vue_nuxt: 'Stack Vue/Nuxt'
-  },
   en: {
     // Services
     service_architecture_frontend: 'Frontend Architecture',
@@ -109,6 +88,27 @@ const reasonTranslations: Record<Locale, Record<string, string>> = {
     urgency_3_months: 'Urgency 3-6 months',
     // Stack
     stack_vue_nuxt: 'Vue/Nuxt stack'
+  },
+  fr: {
+    // Services
+    service_architecture_frontend: 'Architecture Frontend',
+    service_vue_nuxt: 'Vue/Nuxt',
+    service_ai_orchestration: 'IA Pragmatique',
+    // Goals
+    goal_modernize: 'Modernisation',
+    goal_performance: 'Performance',
+    goal_reduce_costs: 'Réduction des coûts',
+    goal_accelerate: 'Accélération',
+    goal_other: 'Autre objectif',
+    // Teams
+    team_4_10: 'Équipe 4-10 développeurs',
+    team_10_plus: 'Équipe 10+ développeurs',
+    // Urgency
+    urgency_urgent: 'Urgence immédiate',
+    urgency_1_month: 'Urgence 1-2 mois',
+    urgency_3_months: 'Urgence 3-6 mois',
+    // Stack
+    stack_vue_nuxt: 'Stack Vue/Nuxt'
   }
 }
 
@@ -116,15 +116,15 @@ const reasonTranslations: Record<Locale, Record<string, string>> = {
  * Traductions pour les niveaux de qualification
  */
 const levelTranslations: Record<Locale, Record<string, string>> = {
-  fr: {
-    high: 'élevé',
-    medium: 'moyen',
-    low: 'faible'
-  },
   en: {
     high: 'high',
-    medium: 'medium',
-    low: 'low'
+    low: 'low',
+    medium: 'medium'
+  },
+  fr: {
+    high: 'élevé',
+    low: 'faible',
+    medium: 'moyen'
   }
 }
 
@@ -132,12 +132,12 @@ const levelTranslations: Record<Locale, Record<string, string>> = {
  * Traductions pour les offres recommandées
  */
 const offerTranslations: Record<Locale, Record<string, string>> = {
-  fr: {
+  en: {
     audit: 'Audit',
     coaching: 'Coaching',
     mission: 'Mission'
   },
-  en: {
+  fr: {
     audit: 'Audit',
     coaching: 'Coaching',
     mission: 'Mission'
@@ -346,18 +346,18 @@ export async function sendAdminLeadEmail(params: SendAdminLeadEmailParams): Prom
     // Appel à l'API Resend avec $fetch de Nuxt (meilleure compatibilité Vercel)
     const requestBody = {
       from: fromEmail,
-      to: [adminEmail],
       subject,
-      text: body
+      text: body,
+      to: [adminEmail]
     }
 
     const result = await $fetch<{ id: string }>('https://api.resend.com/emails', {
-      method: 'POST',
+      body: requestBody,
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
-      body: requestBody,
+      method: 'POST',
       timeout: 20000 // 20 secondes de timeout
     })
 

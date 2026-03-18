@@ -17,11 +17,11 @@ export default defineEventHandler(async (event) => {
 
   if (!databaseUrl) {
     throw createError({
-      statusCode: 500,
-      statusMessage: 'Database not configured',
       data: {
         message: 'DATABASE_URL n\'est pas configuré. Vérifiez votre configuration Vercel/Neon.'
-      }
+      },
+      statusCode: 500,
+      statusMessage: 'Database not configured'
     })
   }
 
@@ -43,12 +43,12 @@ export default defineEventHandler(async (event) => {
     console.error('[DB] Erreur lors de la vérification de la version:', error)
 
     throw createError({
-      statusCode: 500,
-      statusMessage: 'Database connection failed',
       data: {
-        message: error.message || 'Erreur de connexion à la base de données',
-        error: error.message
-      }
+        error: error.message,
+        message: error.message || 'Erreur de connexion à la base de données'
+      },
+      statusCode: 500,
+      statusMessage: 'Database connection failed'
     })
   }
 })

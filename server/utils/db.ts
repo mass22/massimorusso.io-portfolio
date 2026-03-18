@@ -4,7 +4,7 @@ import type { LeadContext } from '~/types/content'
 // Détection de l'environnement
 const isVercel = process.env.VERCEL === '1' || process.env.VERCEL_ENV
 const databaseUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL || process.env.POSTGRES_PRISMA_URL
-const usePostgres = isVercel || !!databaseUrl
+const usePostgres = isVercel || Boolean(databaseUrl)
 
 // Instance de connexion Neon
 let sql: ReturnType<typeof neon> | null = null
@@ -15,16 +15,16 @@ if (usePostgres && databaseUrl) {
     console.log('[DB] Connexion Neon initialisée')
   } catch (error: any) {
     console.error('[DB] Erreur lors de l\'initialisation de la connexion Neon:', error)
-    console.error('[DB] DATABASE_URL présent:', !!databaseUrl)
+    console.error('[DB] DATABASE_URL présent:', Boolean(databaseUrl))
   }
 } else if (usePostgres && !databaseUrl) {
   console.error('[DB] ⚠️  Postgres requis mais DATABASE_URL non configuré!')
   console.error('[DB] Variables disponibles:', {
+    DATABASE_URL: Boolean(process.env.DATABASE_URL),
+    POSTGRES_PRISMA_URL: Boolean(process.env.POSTGRES_PRISMA_URL),
+    POSTGRES_URL: Boolean(process.env.POSTGRES_URL),
     VERCEL: process.env.VERCEL,
-    VERCEL_ENV: process.env.VERCEL_ENV,
-    DATABASE_URL: !!process.env.DATABASE_URL,
-    POSTGRES_URL: !!process.env.POSTGRES_URL,
-    POSTGRES_PRISMA_URL: !!process.env.POSTGRES_PRISMA_URL
+    VERCEL_ENV: process.env.VERCEL_ENV
   })
 }
 
@@ -139,7 +139,7 @@ async function initPostgresDatabase(): Promise<void> {
 if (usePostgres && sql && import.meta.server) {
   initPostgresDatabase().catch((error) => {
     console.error('[DB] Erreur lors de l\'initialisation au démarrage:', error)
-    console.error('[DB] DATABASE_URL configuré:', !!databaseUrl)
+    console.error('[DB] DATABASE_URL configuré:', Boolean(databaseUrl))
     console.error('[DB] L\'initialisation sera réessayée à la première requête')
   })
 }
@@ -224,7 +224,7 @@ export async function insertLead(
       console.error('[DB] Erreur lors de l\'insertion:', error)
       console.error('[DB] Message:', error.message)
       console.error('[DB] Code:', error.code)
-      console.error('[DB] DATABASE_URL configuré:', !!databaseUrl)
+      console.error('[DB] DATABASE_URL configuré:', Boolean(databaseUrl))
       console.error('[DB] Stack:', error.stack)
       throw error
     }
@@ -294,14 +294,14 @@ export async function getLeadById(id: number): Promise<Lead | null> {
       return null
     }
     return {
-      id: row.id,
+      accessToken: row.accessToken || undefined,
       answers: row.answers as LeadContext['answers'],
       completedAt: row.completedAt,
-      stepCount: row.stepCount,
+      createdAt: row.createdAt,
+      id: row.id,
       metadata: row.metadata as LeadContext['metadata'] | undefined,
       qualification: row.qualification as Lead['qualification'] | undefined,
-      accessToken: row.accessToken || undefined,
-      createdAt: row.createdAt,
+      stepCount: row.stepCount,
       updatedAt: row.updatedAt
     }
   } else {
@@ -333,14 +333,14 @@ export async function getLeadById(id: number): Promise<Lead | null> {
     }
 
     return {
-      id: row.id,
+      accessToken: row.accessToken || undefined,
       answers: JSON.parse(row.answers),
       completedAt: row.completedAt,
-      stepCount: row.stepCount,
+      createdAt: row.createdAt,
+      id: row.id,
       metadata: row.metadata ? JSON.parse(row.metadata) : undefined,
       qualification: row.qualification ? JSON.parse(row.qualification) : undefined,
-      accessToken: row.accessToken || undefined,
-      createdAt: row.createdAt,
+      stepCount: row.stepCount,
       updatedAt: row.updatedAt
     }
   }
@@ -388,14 +388,14 @@ export async function getLeadByIdAndToken(id: number, token: string): Promise<Le
       return null
     }
     return {
-      id: row.id,
+      accessToken: row.accessToken || undefined,
       answers: row.answers as LeadContext['answers'],
       completedAt: row.completedAt,
-      stepCount: row.stepCount,
+      createdAt: row.createdAt,
+      id: row.id,
       metadata: row.metadata as LeadContext['metadata'] | undefined,
       qualification: row.qualification as Lead['qualification'] | undefined,
-      accessToken: row.accessToken || undefined,
-      createdAt: row.createdAt,
+      stepCount: row.stepCount,
       updatedAt: row.updatedAt
     }
   } else {
@@ -427,14 +427,14 @@ export async function getLeadByIdAndToken(id: number, token: string): Promise<Le
     }
 
     return {
-      id: row.id,
+      accessToken: row.accessToken || undefined,
       answers: JSON.parse(row.answers),
       completedAt: row.completedAt,
-      stepCount: row.stepCount,
+      createdAt: row.createdAt,
+      id: row.id,
       metadata: row.metadata ? JSON.parse(row.metadata) : undefined,
       qualification: row.qualification ? JSON.parse(row.qualification) : undefined,
-      accessToken: row.accessToken || undefined,
-      createdAt: row.createdAt,
+      stepCount: row.stepCount,
       updatedAt: row.updatedAt
     }
   }
@@ -473,13 +473,13 @@ export async function getAllLeads(limit: number = 100, offset: number = 0): Prom
     }>
 
     return result.map(row => ({
-      id: row.id,
+      accessToken: row.accessToken || undefined,
       answers: row.answers,
       completedAt: row.completedAt,
-      stepCount: row.stepCount,
-      metadata: row.metadata,
-      accessToken: row.accessToken || undefined,
       createdAt: row.createdAt,
+      id: row.id,
+      metadata: row.metadata,
+      stepCount: row.stepCount,
       updatedAt: row.updatedAt
     }))
   } else {
@@ -507,13 +507,13 @@ export async function getAllLeads(limit: number = 100, offset: number = 0): Prom
     const rows = stmt.all(limit, offset) as any[]
 
     return rows.map(row => ({
-      id: row.id,
+      accessToken: row.accessToken || undefined,
       answers: JSON.parse(row.answers),
       completedAt: row.completedAt,
-      stepCount: row.stepCount,
-      metadata: row.metadata ? JSON.parse(row.metadata) : undefined,
-      accessToken: row.accessToken || undefined,
       createdAt: row.createdAt,
+      id: row.id,
+      metadata: row.metadata ? JSON.parse(row.metadata) : undefined,
+      stepCount: row.stepCount,
       updatedAt: row.updatedAt
     }))
   }

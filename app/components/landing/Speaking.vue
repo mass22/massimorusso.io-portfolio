@@ -18,9 +18,7 @@ type SpeakingSection = {
 const { t, locale } = useI18n()
 
 // Fonction helper pour obtenir la route speaking/conferences selon la locale
-const getSpeakingRoute = () => {
-  return locale.value === 'fr' ? '/conferences' : '/en/speaking'
-}
+const getSpeakingRoute = () => locale.value === 'fr' ? '/conferences' : '/en/speaking'
 
 defineProps<{
   page: IndexCollectionItem & { speaking?: SpeakingSection }
@@ -40,13 +38,15 @@ const { data: speakingPage } = await useAsyncData(`speaking-${locale.value}`, as
 
 function normalizeAndSortEvents(all: any[]): Event[] {
   return [...all]
-    .filter(event => !!event && !!event.date)
+    .filter(event => Boolean(event) && Boolean(event.date))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) as Event[]
 }
 
 // Récupérer les derniers TALKS (Conference + Live talk)
 const latestTalks = computed(() => {
-  if (!speakingPage.value?.events) return []
+  if (!speakingPage.value?.events) {
+    return []
+  }
   const events = normalizeAndSortEvents(speakingPage.value.events)
     .filter(e => e.category === 'Conference' || e.category === 'Live talk')
     .slice(0, 3)
@@ -55,7 +55,9 @@ const latestTalks = computed(() => {
 
 // Récupérer les derniers PODCASTS
 const latestPodcasts = computed(() => {
-  if (!speakingPage.value?.events) return []
+  if (!speakingPage.value?.events) {
+    return []
+  }
   const events = normalizeAndSortEvents(speakingPage.value.events)
     .filter(e => e.category === 'Podcast')
     .slice(0, 3)

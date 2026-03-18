@@ -13,10 +13,10 @@ if (!page.value) {
 
 // SEO Meta pour la page d'accueil
 useSeoMeta({
-  title: page.value?.seo?.title || page.value?.title,
   description: page.value?.seo?.description || page.value?.description,
+  ogDescription: page.value?.seo?.description || page.value?.description,
   ogTitle: page.value?.seo?.title || page.value?.title,
-  ogDescription: page.value?.seo?.description || page.value?.description
+  title: page.value?.seo?.title || page.value?.title
 })
 
 // Preload de l'image LCP pour optimiser le Largest Contentful Paint

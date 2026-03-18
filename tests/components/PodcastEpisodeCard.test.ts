@@ -1,26 +1,26 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import PodcastEpisodeCard from '~/app/components/PodcastEpisodeCard.vue'
 
 // Mock des composables Nuxt
 const mockUseI18n = vi.fn(() => ({
-  t: (key: string, fallback?: string) => fallback || key,
-  locale: { value: 'fr' }
+  locale: { value: 'fr' },
+  t: (key: string, fallback?: string) => fallback || key
 }))
 
 vi.stubGlobal('useI18n', mockUseI18n)
 
 describe('PodcastEpisodeCard', () => {
   const mockEpisode = {
-    title: 'Test Episode',
-    description: 'Description de test',
-    date: new Date('2024-12-16'),
-    duration: '05:44',
-    link: 'https://podcast.ausha.co/test',
     audioUrl: 'https://audio.ausha.co/test.mp3',
     cover: 'https://image.ausha.co/test.jpg',
+    date: new Date('2024-12-16'),
+    description: 'Description de test',
+    duration: '05:44',
+    featured: false,
+    link: 'https://podcast.ausha.co/test',
     tags: ['test', 'podcast'],
-    featured: false
+    title: 'Test Episode'
   }
 
   beforeEach(() => {
@@ -29,14 +29,15 @@ describe('PodcastEpisodeCard', () => {
 
   it('doit afficher le titre de l\'épisode', () => {
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: mockEpisode
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -46,19 +47,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: mockEpisode
       }
     })
 
@@ -67,14 +67,15 @@ describe('PodcastEpisodeCard', () => {
 
   it('doit afficher la date formatée', () => {
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: mockEpisode
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -84,19 +85,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: mockEpisode
       }
     })
 
@@ -105,14 +105,15 @@ describe('PodcastEpisodeCard', () => {
 
   it('doit afficher la durée si fournie', () => {
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: mockEpisode
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -122,19 +123,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: mockEpisode
       }
     })
 
@@ -144,14 +144,15 @@ describe('PodcastEpisodeCard', () => {
   it('doit afficher le badge featured si l\'épisode est featured', () => {
     const featuredEpisode = { ...mockEpisode, featured: true }
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: featuredEpisode
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -161,19 +162,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: featuredEpisode
       }
     })
 
@@ -183,14 +183,15 @@ describe('PodcastEpisodeCard', () => {
 
   it('doit afficher les tags', () => {
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: mockEpisode
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -200,19 +201,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: mockEpisode
       }
     })
 
@@ -227,14 +227,15 @@ describe('PodcastEpisodeCard', () => {
     }
 
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: episodeWithHtml
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -244,19 +245,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: episodeWithHtml
       }
     })
 
@@ -274,14 +274,15 @@ describe('PodcastEpisodeCard', () => {
     }
 
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: episodeWithLongDesc
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -291,19 +292,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: episodeWithLongDesc
       }
     })
 
@@ -319,14 +319,15 @@ describe('PodcastEpisodeCard', () => {
     }
 
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: episodeWithStringDate
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -336,19 +337,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: episodeWithStringDate
       }
     })
 
@@ -357,14 +357,15 @@ describe('PodcastEpisodeCard', () => {
 
   it('doit afficher l\'image de couverture si fournie', () => {
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: mockEpisode
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -374,19 +375,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: mockEpisode
       }
     })
 
@@ -396,14 +396,15 @@ describe('PodcastEpisodeCard', () => {
 
   it('doit afficher le bouton de téléchargement si audioUrl est fourni', () => {
     const wrapper = mount(PodcastEpisodeCard, {
-      props: {
-        episode: mockEpisode
-      },
       global: {
         stubs: {
-          UCard: {
-            template: '<div class="u-card"><slot /></div>',
-            props: ['class']
+          ClientOnly: {
+            template: '<div><slot /></div>',
+            props: []
+          },
+          NuxtImg: {
+            template: '<img :src="src" :alt="alt" />',
+            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
           },
           UBadge: {
             template: '<span class="u-badge"><slot /></span>',
@@ -413,19 +414,18 @@ describe('PodcastEpisodeCard', () => {
             template: '<a :href="to" :aria-label="ariaLabel" class="u-button"><slot /></a>',
             props: ['to', 'target', 'rel', 'color', 'variant', 'icon', 'label', 'aria-label', 'size']
           },
+          UCard: {
+            template: '<div class="u-card"><slot /></div>',
+            props: ['class']
+          },
           UIcon: {
             template: '<span class="u-icon"></span>',
             props: ['name']
-          },
-          NuxtImg: {
-            template: '<img :src="src" :alt="alt" />',
-            props: ['src', 'alt', 'width', 'height', 'loading', 'format', 'quality']
-          },
-          ClientOnly: {
-            template: '<div><slot /></div>',
-            props: []
           }
         }
+      },
+      props: {
+        episode: mockEpisode
       }
     })
 

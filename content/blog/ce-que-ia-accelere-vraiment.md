@@ -1,12 +1,16 @@
 ---
 title: Ce que l'IA accélère vraiment
+author:
+  name: Massimo Russo
+  to: ""
 date: 2026-02-05T00:00:00.000Z
-image: https://media.licdn.com/dms/image/v2/D4D12AQEmIJBieKRBOg/article-cover_image-shrink_720_1280/B4DZwvHrkoIcAM-/0/1770317068943?e=1774483200&v=beta&t=-fXZLOWR0fnpbRMuTW0TFGOGHwnnYeCiSJhefPrEUCo
+image: ""
 locale: fr
 minRead: 5
+audience: decision
 navigation:
   title: Ce que l'IA accélère vraiment
-slug: What-AI-Really-Accelerates
+slug: ce-que-ia-accelere-vraiment
 ---
 
 > *Cet article prolonge une conférence que j'ai récemment donnée au meetup Vue Montréal, où plusieurs échanges m'ont fait prendre conscience à quel point cette tension est répandue.*

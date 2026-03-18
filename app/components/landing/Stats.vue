@@ -4,23 +4,23 @@ const { t } = useI18n()
 const stats = [
   {
     icon: 'i-ph-users',
-    valueKey: 'services.stats.clients.value',
-    labelKey: 'services.stats.clients.label'
+    labelKey: 'services.stats.clients.label',
+    valueKey: 'services.stats.clients.value'
   },
   {
     icon: 'i-ph-folder-open',
-    valueKey: 'services.stats.projects.value',
-    labelKey: 'services.stats.projects.label'
+    labelKey: 'services.stats.projects.label',
+    valueKey: 'services.stats.projects.value'
   },
   {
     icon: 'i-ph-graduation-cap',
-    valueKey: 'services.stats.training.value',
-    labelKey: 'services.stats.training.label'
+    labelKey: 'services.stats.training.label',
+    valueKey: 'services.stats.training.value'
   },
   {
     icon: 'i-ph-star',
-    valueKey: 'services.stats.satisfaction.value',
-    labelKey: 'services.stats.satisfaction.label'
+    labelKey: 'services.stats.satisfaction.label',
+    valueKey: 'services.stats.satisfaction.value'
   }
 ]
 </script>

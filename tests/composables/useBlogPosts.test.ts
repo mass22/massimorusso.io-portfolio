@@ -15,12 +15,12 @@ vi.stubGlobal('computed', (fn: any) => ({ value: fn() }))
 
 describe('useBlogPosts', () => {
   it('should filter posts by locale', async () => {
-    mockUseI18n.mockReturnValue({ locale: { value: 'en' }, defaultLocale: 'fr' } as any)
+    mockUseI18n.mockReturnValue({ defaultLocale: 'fr', locale: { value: 'en' } } as any)
     mockUseLocalePath.mockReturnValue(((path: string) => `/en${path}`) as any)
 
     const postsData = [
-      { locale: 'fr', title: 'Post FR', slug: 'post-fr' },
-      { locale: 'en', title: 'Post EN', slug: 'post-en' }
+      { locale: 'fr', slug: 'post-fr', title: 'Post FR' },
+      { locale: 'en', slug: 'post-en', title: 'Post EN' }
     ]
 
     mockUseAsyncData.mockImplementation(async (key: any, handler: any) => {

@@ -28,22 +28,26 @@ if (!page.value) {
 useSeoMeta({
   description: page.value?.seo?.description || page.value?.description,
   ogDescription: page.value?.seo?.description || page.value?.description,
+  ogImage: global.picture?.light,
   ogTitle: page.value?.seo?.title || page.value?.title,
   ogType: 'website',
-  ogImage: global.picture?.light,
   title: page.value?.seo?.title || page.value?.title
 })
 
 // Mapping des icônes par slug si non fourni
 const getServiceIcon = (item: { slug?: string, icon?: string }): string => {
-  if (item.icon) return item.icon
+  if (item.icon) {
+    return item.icon
+  }
   const iconMap: Record<string, string> = {
-    'architecture-frontend': 'i-ph-lightbulb',
-    'frontend-architecture': 'i-ph-lightbulb',
     'aide-decision-technique': 'i-ph-chalkboard-teacher',
-    'technical-decision-support': 'i-ph-chalkboard-teacher',
+    'architecture-frontend': 'i-ph-lightbulb',
+    'developpement-vuejs': 'i-ph-code',
+    'frontend-architecture': 'i-ph-lightbulb',
     'ia-pragmatique': 'i-ph-sparkle',
-    'pragmatic-ai': 'i-ph-sparkle'
+    'pragmatic-ai': 'i-ph-sparkle',
+    'technical-decision-support': 'i-ph-chalkboard-teacher',
+    'vuejs-development': 'i-ph-code'
   }
   return item.slug ? (iconMap[item.slug] || 'i-ph-circle') : 'i-ph-circle'
 }
@@ -51,14 +55,18 @@ const getServiceIcon = (item: { slug?: string, icon?: string }): string => {
 // Génération d'une image stable par slug pour le placeholder
 // Les images sont dans public/services/ et accessibles via /services/
 const getServiceImage = (item: { slug?: string, image?: string }): string => {
-  if (item.image) return item.image
+  if (item.image) {
+    return item.image
+  }
   const imageMap: Record<string, number> = {
-    'architecture-frontend': 1,
-    'frontend-architecture': 1,
     'aide-decision-technique': 2,
-    'technical-decision-support': 2,
+    'architecture-frontend': 1,
+    'developpement-vuejs': 4,
+    'frontend-architecture': 1,
     'ia-pragmatique': 3,
-    'pragmatic-ai': 3
+    'pragmatic-ai': 3,
+    'technical-decision-support': 2,
+    'vuejs-development': 4
   }
   const imageNumber = item.slug ? (imageMap[item.slug] || 1) : 1
   // Chemin vers les images dans public/services/
@@ -66,20 +74,18 @@ const getServiceImage = (item: { slug?: string, image?: string }): string => {
 }
 
 // Génération du lien pour les services
-const getServiceLink = (item: { slug?: string }): string => {
-  return item.slug ? localePath(`/services/${item.slug}`) : '#'
-}
+const getServiceLink = (item: { slug?: string }): string => item.slug ? localePath(`/services/${item.slug}`) : '#'
 
 // JSON-LD structuré pour le SEO avec replacer pour éviter undefined
 const serviceStructuredData = computed(() => {
   const serviceTypeMap: Record<string, string> = {
-    fr: 'Conseil en architecture frontend & IA pragmatique',
-    en: 'Frontend Architecture & Pragmatic AI Consulting'
+    en: 'Frontend Architecture & Pragmatic AI Consulting',
+    fr: 'Conseil en architecture frontend & IA pragmatique'
   }
 
   const areaServedMap: Record<string, string> = {
-    fr: 'Monde entier',
-    en: 'Worldwide'
+    en: 'Worldwide',
+    fr: 'Monde entier'
   }
 
   const items = page.value?.items || []
@@ -90,8 +96,8 @@ const serviceStructuredData = computed(() => {
       '@type': 'Offer' as const,
       'itemOffered': {
         '@type': 'Service' as const,
-        'name': item.title,
-        'description': item.description
+        'description': item.description,
+        'name': item.title
       },
       'position': index + 1
     }))
@@ -99,26 +105,26 @@ const serviceStructuredData = computed(() => {
   const structuredData: Record<string, any> = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    'inLanguage': locale.value,
-    'serviceType': serviceTypeMap[locale.value] || serviceTypeMap.fr,
-    'provider': {
-      '@type': 'Person',
-      'name': 'Massimo Russo',
-      'url': siteUrl,
-      'email': global.email,
-      'jobTitle': locale.value === 'fr' ? 'Consultant senior en architecture frontend' : 'Senior Frontend Consultant'
-    },
     'areaServed': {
       '@type': 'Country',
       'name': areaServedMap[locale.value] || areaServedMap.fr
-    }
+    },
+    'inLanguage': locale.value,
+    'provider': {
+      '@type': 'Person',
+      'email': global.email,
+      'jobTitle': locale.value === 'fr' ? 'Consultant senior en architecture frontend' : 'Senior Frontend Consultant',
+      'name': 'Massimo Russo',
+      'url': siteUrl
+    },
+    'serviceType': serviceTypeMap[locale.value] || serviceTypeMap.fr
   }
 
   if (itemListElement.length > 0) {
     structuredData.hasOfferCatalog = {
       '@type': 'OfferCatalog',
-      'name': locale.value === 'fr' ? 'Services' : 'Services',
-      itemListElement
+      itemListElement,
+      'name': locale.value === 'fr' ? 'Services' : 'Services'
     }
   }
 
@@ -128,11 +134,8 @@ const serviceStructuredData = computed(() => {
 useHead({
   script: [
     {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(serviceStructuredData.value, (key, value) => {
-        // Supprimer les valeurs undefined pour éviter les erreurs JSON-LD
-        return value === undefined ? null : value
-      })
+      innerHTML: JSON.stringify(serviceStructuredData.value, (key, value) => value === undefined ? null : value),
+      type: 'application/ld+json'
     }
   ]
 })

@@ -24,15 +24,15 @@ export const useAboutPage = async () => {
   const { global } = useAppConfig()
 
   useSeoMeta({
-    title: page.value?.seo?.title || page.value?.title,
     description: page.value?.seo?.description || page.value?.description,
+    ogDescription: page.value?.seo?.description || page.value?.description,
     ogTitle: page.value?.seo?.title || page.value?.title,
-    ogDescription: page.value?.seo?.description || page.value?.description
+    title: page.value?.seo?.title || page.value?.title
   })
 
   return {
-    page,
     global,
+    page,
     t
   }
 }

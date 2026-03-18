@@ -7,8 +7,8 @@ const showButton = computed(() => y.value > 400)
 
 const scrollToTop = () => {
   window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
+    behavior: 'smooth',
+    top: 0
   })
 }
 </script>

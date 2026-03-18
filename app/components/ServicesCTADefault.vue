@@ -25,9 +25,9 @@ type Props = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  title: undefined,
-  description: undefined,
   cta: undefined,
+  description: undefined,
+  title: undefined,
   variant: 'solid',
   withAnimation: true
 })
@@ -41,38 +41,38 @@ const links = computed(() => {
     return [
       ...(props.cta.primary
         ? [{
+            color: 'primary' as const,
             label: props.cta.primary.label,
             to: localePath(props.cta.primary.href),
             trailingIcon: 'i-lucide-arrow-right',
-            variant: 'solid' as const,
-            color: 'primary' as const
+            variant: 'solid' as const
           }]
         : []),
       ...(props.cta.secondary
         ? [{
+            color: 'neutral' as const,
             label: props.cta.secondary.label,
             to: localePath(props.cta.secondary.href),
             trailingIcon: 'i-lucide-calendar',
-            variant: 'outline' as const,
-            color: 'neutral' as const
+            variant: 'outline' as const
           }]
         : [])
     ]
   }
   return [
     {
+      color: 'primary' as const,
       label: t('services.cta.contact'),
       to: localePath('/contact'),
       trailingIcon: 'i-lucide-arrow-right',
-      variant: 'solid' as const,
-      color: 'primary' as const
+      variant: 'solid' as const
     },
     {
+      color: 'neutral' as const,
       label: t('services.cta.booking'),
       to: localePath('/contact#calendar'),
       trailingIcon: 'i-lucide-calendar',
-      variant: 'outline' as const,
-      color: 'neutral' as const
+      variant: 'outline' as const
     }
   ]
 })

@@ -10,20 +10,16 @@ type Props = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  icons: () => ['i-ph-users', 'i-ph-folder-open', 'i-ph-graduation-cap', 'i-ph-star'],
   columns: 4,
+  icons: () => ['i-ph-users', 'i-ph-folder-open', 'i-ph-graduation-cap', 'i-ph-star'],
   withAnimation: true
 })
 
-const gridClasses = computed(() => {
-  return props.columns === 2
-    ? 'grid-cols-2'
-    : 'grid-cols-2 lg:grid-cols-4'
-})
+const gridClasses = computed(() => props.columns === 2
+  ? 'grid-cols-2'
+  : 'grid-cols-2 lg:grid-cols-4')
 
-const getStatIcon = (index: number, stat: Stat): string => {
-  return stat.icon || props.icons?.[index] || 'i-ph-circle'
-}
+const getStatIcon = (index: number, stat: Stat): string => stat.icon || props.icons?.[index] || 'i-ph-circle'
 </script>
 
 <template>
