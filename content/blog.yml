@@ -2,6 +2,6 @@ locale: 'fr'
 title: Articles & réflexions
 description: Retours terrain, analyses et réflexions sur Vue.js, l'architecture frontend, les décisions techniques et l'usage pragmatique de l'IA. Du concret, pas de la théorie.
 seo:
-  title: Blog — Vue.js, architecture frontend & décisions techniques
+  title: Blog : Vue.js, architecture frontend & décisions techniques
   description: Retours terrain, analyses et réflexions sur Vue.js, l'architecture frontend, les décisions techniques et l'usage pragmatique de l'IA. Du concret, pas de la théorie.
 links: []

@@ -76,7 +76,7 @@ Stop.
 - Is it a real need or "it would be nice"?
 - How many people are affected?
 
-Often — too often — we launch into complex solutions for problems that don't exist. False bugs. Premature optimizations. Architectures designed for a future scale that will never come.
+Often, too often, we launch into complex solutions for problems that don't exist. False bugs. Premature optimizations. Architectures designed for a future scale that will never come.
 
 ### How to Fix It
 
@@ -84,7 +84,7 @@ Often — too often — we launch into complex solutions for problems that don't
 
 If you need a table or diagram to explain it, you haven't understood it.
 
-"Lists with 10k elements freeze for 5 seconds" — that's simple. Clear problem.
+"Lists with 10k elements freeze for 5 seconds" : that's simple. Clear problem.
 
 Then, **challenge your solution**:
 
@@ -124,7 +124,7 @@ Try this:
 
 That's simple. A junior understands. A senior sees the logic. No jargon. No pattern name-dropping.
 
-If you have to say: "We use hexagonal architecture with a Mediator pattern and CQRS..." — that's a red flag.
+If you have to say: "We use hexagonal architecture with a Mediator pattern and CQRS..." : that's a red flag.
 
 Then, when you review code (yours or others):
 

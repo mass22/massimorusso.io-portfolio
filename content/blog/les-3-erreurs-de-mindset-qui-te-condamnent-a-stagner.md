@@ -76,7 +76,7 @@ Stop.
 - C'est un vrai besoin ou un "ça serait cool" ?
 - Combien de personnes sont affectées ?
 
-Souvent — trop souvent — on se lance dans des solutions complexes pour des problèmes qui n'existent pas. Des faux bugs. Des optimisations prématurées. Des architectures pensées pour un scale futur qui ne viendra jamais.
+Souvent, trop souvent, on se lance dans des solutions complexes pour des problèmes qui n'existent pas. Des faux bugs. Des optimisations prématurées. Des architectures pensées pour un scale futur qui ne viendra jamais.
 
 ### Comment corriger ça
 
@@ -84,7 +84,7 @@ Souvent — trop souvent — on se lance dans des solutions complexes pour des p
 
 Si tu dois utiliser un tableau ou un diagramme pour l'expliquer, c'est que tu ne l'as pas compris.
 
-"Les listes avec 10k éléments freezent pendant 5 secondes" — c'est simple. Problème clair.
+"Les listes avec 10k éléments freezent pendant 5 secondes" : c'est simple. Problème clair.
 
 Ensuite, **challenge ta solution** :
 
@@ -124,7 +124,7 @@ Essaie :
 
 C'est simple. Un junior comprend. Un senior voit la logique. Pas de jargon. Pas de pattern name-dropping.
 
-Si tu dois dire : "On utilise une architecture hexagonale avec un pattern Mediator et du CQRS..." — c'est un drapeau rouge.
+Si tu dois dire : "On utilise une architecture hexagonale avec un pattern Mediator et du CQRS..." : c'est un drapeau rouge.
 
 Ensuite, quand tu revois du code (le tien ou celui des autres) :
 

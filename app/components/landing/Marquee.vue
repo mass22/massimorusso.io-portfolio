@@ -6,7 +6,7 @@ const { t } = useI18n()
 type MarqueeLogo = {
   name: string
   icon?: string
-  /** Image logo — string (path) ou { src, alt }. Formats: JPEG, PNG, SVG, WebP */
+  /** Image logo : string (path) ou { src, alt }. Formats: JPEG, PNG, SVG, WebP */
   image?: string | { src: string, alt: string }
   color?: string
   url?: string

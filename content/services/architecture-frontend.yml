@@ -64,6 +64,6 @@ images:
     alt: Architecture frontend et prise de décision technique
 locale: fr
 seo:
-  title: Architecture frontend Vue.js — Audit, trajectoire & modernisation progressive
+  title: Architecture frontend Vue.js : Audit, trajectoire & modernisation progressive
   description: Accompagnement en architecture frontend pour clarifier, évaluer et faire évoluer des stacks complexes sans réécriture aveugle ni dogme technique.
 slug: architecture-frontend

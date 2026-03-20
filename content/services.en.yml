@@ -1,7 +1,7 @@
 title: Services
-description: Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making — depending on what your team needs.
+description: Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making : depending on what your team needs.
 heroContext: |
-  I work with teams who want to build solid frontends, structure their technical decisions and move forward with clarity — no pointless rewrites, no hype, no bullshit.
+  I work with teams who want to build solid frontends, structure their technical decisions and move forward with clarity : no pointless rewrites, no hype, no bullshit.
 items:
   - slug: vuejs-development
     title: Vue.js / Nuxt Development
@@ -39,14 +39,14 @@ process:
     - title: Construction or analysis
       description: "Depending on the need : joining the team to build features, or a targeted audit to map risks and identify realistic options."
     - title: Documented decisions
-      description: "Every structuring choice is clarified, arbitrated and documented. Not for show — so the team can own it over time without depending on me."
+      description: "Every structuring choice is clarified, arbitrated and documented. Not for show : so the team can own it over time without depending on me."
     - title: Autonomy & follow-up
       description: "My goal is to make the team autonomous, not to create dependency. Follow-up sessions, code or architecture reviews depending on the context."
 content: |
   ## How I Intervene
 
   ### Vue.js / Nuxt Development
-  I join an existing team to build features, modules or complete applications in Vue.js and Nuxt. I work 4 days per week, remotely, on building — not pure maintenance.
+  I join an existing team to build features, modules or complete applications in Vue.js and Nuxt. I work 4 days per week, remotely, on building : not pure maintenance.
 
   ### Frontend architecture
   I help evaluate an existing architecture, identify points of fragility and define a realistic modernization trajectory. The goal is not a perfect rewrite, but an architecture that is understandable, maintainable, and aligned with the team's capabilities.
@@ -86,7 +86,7 @@ faq:
       questions:
         - label: Do you work as a developer or as a consultant?
           content: |
-            Both. I build Vue.js and Nuxt applications by joining a team, and I bring an architectural perspective on structuring decisions. It's not one or the other — that's what sets me apart.
+            Both. I build Vue.js and Nuxt applications by joining a team, and I bring an architectural perspective on structuring decisions. It's not one or the other : that's what sets me apart.
         - label: Do you only work on Vue.js and Nuxt?
           content: |
             Yes. It's been my ecosystem since 2011. I'd rather be excellent in one domain than average across several.
@@ -111,8 +111,8 @@ cta:
     label: Schedule a call
     href: /contact#booking
 seo:
-  title: Services — Vue.js Development, Frontend Architecture & Technical Decision-Making
-  description: Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making — depending on what your team needs.
+  title: Services : Vue.js Development, Frontend Architecture & Technical Decision-Making
+  description: Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making : depending on what your team needs.
 stats:
   - value: 50+
     label: Satisfied Clients

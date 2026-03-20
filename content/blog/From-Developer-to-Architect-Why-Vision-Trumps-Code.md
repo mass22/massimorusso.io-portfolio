@@ -26,7 +26,7 @@ slug: from-developer-to-architect-why-vision-trumps-code
 
 Have you ever had that moment? When a simple question makes you realize you already know the answer, but without ever realizing it. It was an ordinary job interview. Familiar stack (Vue.js), solid technical skills, the usual confidence. And then the fatal question: **"How would you evolve our product and our tech stack?"**
 
-At that precise moment, I understood something essential: I already had an architect's mindset within me. Not because I knew every design pattern by heart or had degrees hanging around. No. Because I had a **vision** — the ability to see how systems fit together, how they should evolve, how to anticipate friction before it explodes into technical debt.
+At that precise moment, I understood something essential: I already had an architect's mindset within me. Not because I knew every design pattern by heart or had degrees hanging around. No. Because I had a **vision** : the ability to see how systems fit together, how they should evolve, how to anticipate friction before it explodes into technical debt.
 
 This revelation forced me to question a fundamental myth: **What really differentiates a developer from an architect?**
 
@@ -38,7 +38,7 @@ It's sold to us everywhere. Want to become an architect? Master frameworks, know
 
 False. Or rather, **insufficient**.
 
-Technically, yes, you can be the best developer in the world. Code quickly, cleanly, with elegant abstractions. But if you don't understand *where the product is going*, how it needs to evolve in 6 months, what will break tomorrow — **you're still a developer**. And there's nothing wrong with that. But it's a target you aim for or not.
+Technically, yes, you can be the best developer in the world. Code quickly, cleanly, with elegant abstractions. But if you don't understand *where the product is going*, how it needs to evolve in 6 months, what will break tomorrow : **you're still a developer**. And there's nothing wrong with that. But it's a target you aim for or not.
 
 The difference is that code is just a **means**. Architecture is **vision**.
 
@@ -115,7 +115,7 @@ You don't need to know everything. You need **mental discipline**.
 
 Why use Vue instead of React? Why Webpack instead of Vite? Why Redux instead of Context API?
 
-Every stack, every pattern has context. There's ALWAYS a trade-off. Architecture without explicit "why" is architecture that only holds up on luck — and luck runs out.
+Every stack, every pattern has context. There's ALWAYS a trade-off. Architecture without explicit "why" is architecture that only holds up on luck : and luck runs out.
 
 ---
 

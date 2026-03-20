@@ -27,7 +27,7 @@ slug: dev-architecte-pourquoi-la-vision-depasse-le-code
 
 Vous avez déjà vécu ce moment ? Celui où une question toute simple vous fait réaliser que vous savez déjà la réponse, mais sans vous en être jamais rendu compte. C'était un entretien d'embauche ordinaire. Stack familier (Vue.js), compétences techniques solides, confiance de circonstance. Et puis la question fatale : **"Comment ferais-tu évoluer notre produit et notre stack ?"**
 
-À ce moment précis, j'ai compris quelque chose d'essentiel : j'avais déjà en moi la mentalité d'un architecte. Pas parce que je connaissais tous les design patterns par cœur ou que j'avais des diplômes qui traînent. Non. Parce que j'avais une **vision** — la capacité de voir comment les systèmes s'assemblent, comment ils doivent évoluer, comment anticiper les frictions avant qu'elles explosent en dette technique.
+À ce moment précis, j'ai compris quelque chose d'essentiel : j'avais déjà en moi la mentalité d'un architecte. Pas parce que je connaissais tous les design patterns par cœur ou que j'avais des diplômes qui traînent. Non. Parce que j'avais une **vision** : la capacité de voir comment les systèmes s'assemblent, comment ils doivent évoluer, comment anticiper les frictions avant qu'elles explosent en dette technique.
 
 Cette révélation m'a forcé à interroger un mythe fondamental : **qu'est-ce qui différencie vraiment un développeur d'un architecte ?**
 
@@ -39,7 +39,7 @@ On nous le vend partout. Devenir architecte ? Maîtrise des frameworks, connaiss
 
 C'est faux. Ou plutôt, c'est **insuffisant**.
 
-Techniquement, oui, vous pouvez être le meilleur développeur du monde. Coder rapidement, proprement, avec des abstractions élégantes. Mais si vous ne comprenez pas *où va le produit*, comment il devra évoluer dans 6 mois, ce qui va casser demain — **vous restez un développeur**. Et il n'y a rien de mal à ça. Mais c'est une cible qu'on vise ou pas.
+Techniquement, oui, vous pouvez être le meilleur développeur du monde. Coder rapidement, proprement, avec des abstractions élégantes. Mais si vous ne comprenez pas *où va le produit*, comment il devra évoluer dans 6 mois, ce qui va casser demain : **vous restez un développeur**. Et il n'y a rien de mal à ça. Mais c'est une cible qu'on vise ou pas.
 
 La différence, c'est que le code n'est qu'un **moyen**. L'architecture, c'est la **vision**.
 
@@ -116,7 +116,7 @@ Vous n'avez pas besoin de tout savoir. Vous avez besoin d'une **discipline menta
 
 Pourquoi utiliser Vue plutôt que React ? Pourquoi Webpack plutôt que Vite ? Pourquoi Redux plutôt que Context API ?
 
-Chaque stack, chaque pattern a un contexte. Il y a TOUJOURS un compromis. Une architecture sans "pourquoi" explicite est une architecture qui ne tient que sur la chance — et la chance, ça s'épuise.
+Chaque stack, chaque pattern a un contexte. Il y a TOUJOURS un compromis. Une architecture sans "pourquoi" explicite est une architecture qui ne tient que sur la chance : et la chance, ça s'épuise.
 
 ---
 

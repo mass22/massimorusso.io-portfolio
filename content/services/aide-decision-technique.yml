@@ -1,6 +1,6 @@
 title: Conseil & aide à la décision technique
 content: |
-  Certaines décisions techniques ne peuvent pas être prises à l’intuition, ni au consensus mou. Après 14 ans sur des projets Vue.js complexes, j'ai appris que les vrais blocages sont rarement techniques — ils sont décisionnels. Mon rôle n’est pas de trancher à votre place.
+  Certaines décisions techniques ne peuvent pas être prises à l’intuition, ni au consensus mou. Après 14 ans sur des projets Vue.js complexes, j'ai appris que les vrais blocages sont rarement techniques : ils sont décisionnels. Mon rôle n’est pas de trancher à votre place.
   Il est d’aider à poser un cadre de décision clair, compréhensible et assumé dans le temps.
 
   ---
@@ -55,13 +55,13 @@ cta:
   secondary:
     label: Planifier un appel
     href: /contact#booking
-description: Certaines décisions techniques ne peuvent pas être prises à l'intuition, ni au consensus mou. Après 14 ans sur des projets Vue.js complexes, j'ai appris que les vrais blocages sont rarement techniques — ils sont décisionnels. Mon rôle n'est pas de trancher à votre place. Il est d'aider à poser un cadre de décision clair, compréhensible et assumé dans le temps.
+description: Certaines décisions techniques ne peuvent pas être prises à l'intuition, ni au consensus mou. Après 14 ans sur des projets Vue.js complexes, j'ai appris que les vrais blocages sont rarement techniques : ils sont décisionnels. Mon rôle n'est pas de trancher à votre place. Il est d'aider à poser un cadre de décision clair, compréhensible et assumé dans le temps.
 icon: i-ph-chalkboard-teacher
 images:
   - src: /services/service-2.webp
     alt: Aide à la décision technique et arbitrage
 locale: fr
 seo:
-  title: Aide à la décision technique frontend — Clarifier, arbitrer, documenter
+  title: Aide à la décision technique frontend : Clarifier, arbitrer, documenter
   description: Accompagnement pour clarifier, structurer et assumer des décisions techniques complexes dans des contextes à forts enjeux.
 slug: aide-decision-technique

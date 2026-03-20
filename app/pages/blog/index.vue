@@ -112,7 +112,7 @@ const cleanedPosts = computed(() => posts.value?.map((post) => {
   return post
 }) || [])
 
-// Filtrer par audience (côté client) — comparaison exacte, insensible à la casse et aux espaces
+// Filtrer par audience (côté client) : comparaison exacte, insensible à la casse et aux espaces
 const validPosts = computed(() => {
   const list = cleanedPosts.value
   if (activeFilter.value === 'all') {

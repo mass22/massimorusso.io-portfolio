@@ -1,10 +1,10 @@
 title: À propos
 description: Développeur Vue.js senior depuis 2011. Je construis des applications frontend robustes et j'aide les équipes à structurer les décisions techniques qui impactent le long terme.
 seo:
-  title: À propos — Massimo Russo, développeur Vue.js senior & architecte frontend
+  title: À propos : Massimo Russo, développeur Vue.js senior & architecte frontend
   description: Développeur Vue.js senior depuis 2011. Je construis des applications frontend robustes et j'aide les équipes à structurer les décisions techniques qui impactent le long terme.
 content: |
-  Je construis des applications Vue.js et Nuxt depuis 2011. Avec le temps, j'ai compris que les projets qui échouent ne manquent pas de bons développeurs. Ils manquent de décisions claires, assumées et comprises par toute l'équipe. Alors j'ai appris à faire les deux — construire et structurer. Pas l'un ou l'autre.
+  Je construis des applications Vue.js et Nuxt depuis 2011. Avec le temps, j'ai compris que les projets qui échouent ne manquent pas de bons développeurs. Ils manquent de décisions claires, assumées et comprises par toute l'équipe. Alors j'ai appris à faire les deux : construire et structurer. Pas l'un ou l'autre.
 
   ---
 
@@ -87,7 +87,7 @@ content: |
   - Des décisions techniques structurantes doivent être clarifiées ou arbitrées
   - Vous voulez un regard externe, expérimenté et indépendant
 
-  Si vous cherchez quelqu'un qui construit ET qui structure — pas juste l'un ou l'autre — alors la discussion vaut la peine d'avoir lieu.
+  Si vous cherchez quelqu'un qui construit ET qui structure, pas juste l'un ou l'autre, alors la discussion vaut la peine d'avoir lieu.
 
   J'organise Vue Montreal, le meetup Vue.js de Montréal. Je suis aussi présent régulièrement aux conférences Vue.js internationales comme VueConf US et Vue Amsterdam.
 images: []

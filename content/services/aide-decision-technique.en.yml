@@ -1,11 +1,11 @@
 locale: 'en'
 slug: 'technical-decision-support'
 title: Technical Decision Advisory
-description: "Some technical decisions can't be made on instinct or weak consensus. After 14 years on complex Vue.js projects, I've learned that real blockers are rarely technical — they're decisional. My role isn't to decide for you. It's to help build a clear, understandable decision framework that your team can own over time."
+description: "Some technical decisions can't be made on instinct or weak consensus. After 14 years on complex Vue.js projects, I've learned that real blockers are rarely technical : they're decisional. My role isn't to decide for you. It's to help build a clear, understandable decision framework that your team can own over time."
 icon: 'i-ph-chalkboard-teacher'
 
 content: |
-  Some technical decisions can't be made on instinct or weak consensus. After 14 years on complex Vue.js projects, I've learned that real blockers are rarely technical — they're decisional. My role isn't to decide for you. It's to help build a clear, understandable decision framework that your team can own over time.
+  Some technical decisions can't be made on instinct or weak consensus. After 14 years on complex Vue.js projects, I've learned that real blockers are rarely technical : they're decisional. My role isn't to decide for you. It's to help build a clear, understandable decision framework that your team can own over time.
 
   ---
 
@@ -56,7 +56,7 @@ images:
     alt: Technical decision advisory and arbitration
 
 seo:
-  title: Frontend Technical Decision Support — Clarify, arbitrate, document
+  title: Frontend Technical Decision Support : Clarify, arbitrate, document
   description: Advisory support to clarify, structure, and consciously own complex technical decisions in high-stakes contexts.
 
 cta:

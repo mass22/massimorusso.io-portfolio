@@ -25,7 +25,7 @@
     "cta": {
       "services": "Découvrir mes services",
       "contact": "Me contacter",
-      "schedule": "Planifier un échange — 30 min →",
+      "schedule": "Planifier un échange : 30 min →",
       "about": "À propos"
     },
     "image": {
@@ -35,7 +35,7 @@
   "homepage": {
     "cta": {
       "title": "Votre projet mérite mieux qu'un dev qui exécute sans réfléchir.",
-      "description": "J'intègre votre équipe pour construire, structurer et prendre les bonnes décisions techniques — pas juste livrer des tickets.",
+      "description": "J'intègre votre équipe pour construire, structurer et prendre les bonnes décisions techniques : pas juste livrer des tickets.",
       "button": "Me contacter"
     },
     "speaking": {
@@ -81,7 +81,7 @@
   "services": {
     "hero": {
       "title": "Services",
-      "description": "J’accompagne les entreprises sur des sujets d’architecture frontend, de modernisation de stacks (Vue/Nuxt) et d’aide à la décision technique — avec une approche pragmatique de l’IA quand elle apporte une valeur réelle."
+      "description": "J’accompagne les entreprises sur des sujets d’architecture frontend, de modernisation de stacks (Vue/Nuxt) et d’aide à la décision technique : avec une approche pragmatique de l’IA quand elle apporte une valeur réelle."
     },
     "process": {
       "title": "Comment j’interviens",
@@ -108,7 +108,7 @@
     "items": {
       "consulting": {
         "title": "Architecture frontend",
-        "description": "Audit d’architecture, trajectoires cibles et stratégies de modernisation pour des frontends complexes — avec des arbitrages explicites, une vision long terme et des migrations maîtrisées (notamment Vue/Nuxt).",
+        "description": "Audit d’architecture, trajectoires cibles et stratégies de modernisation pour des frontends complexes : avec des arbitrages explicites, une vision long terme et des migrations maîtrisées (notamment Vue/Nuxt).",
         "imageAlt": "Architecture et modernisation frontend"
       },
       "workshops": {
@@ -118,7 +118,7 @@
       },
       "audit": {
         "title": "Usage pragmatique de l’IA",
-        "description": "Identification des cas d’usage IA réellement pertinents et des modes d’intégration adaptés — avec une valeur mesurable, des risques explicites et sans complexité inutile.",
+        "description": "Identification des cas d’usage IA réellement pertinents et des modes d’intégration adaptés : avec une valeur mesurable, des risques explicites et sans complexité inutile.",
         "imageAlt": "IA pragmatique et intégration produit"
       }
     },
@@ -150,12 +150,12 @@
   },
   "contact": {
     "seo": {
-      "title": "Contact — Massimo Russo, développeur Vue.js senior disponible",
+      "title": "Contact : Massimo Russo, développeur Vue.js senior disponible",
       "description": "Contactez-moi pour discuter d’architecture frontend, de modernisation de stack ou d’aide à la décision technique. Disponible pour des accompagnements de conseil stratégique. Contactez-moi à {email}"
     },
     "hero": {
       "title": "Parlons de votre projet",
-      "description": "Que vous cherchiez un dev Vue.js senior pour construire, ou un regard expérimenté pour structurer vos décisions techniques — discutons de votre contexte.",
+      "description": "Que vous cherchiez un dev Vue.js senior pour construire, ou un regard expérimenté pour structurer vos décisions techniques : discutons de votre contexte.",
       "cta": {
         "booking": "Planifier un appel",
         "write": "Écrire un message"
@@ -221,7 +221,7 @@
         },
         "reactivity": {
           "title": "Vision architecturale",
-          "description": "Je ne livre pas juste des tickets. J'apporte une perspective sur ce qui tient dans la durée — structure, patterns, décisions."
+          "description": "Je ne livre pas juste des tickets. J'apporte une perspective sur ce qui tient dans la durée : structure, patterns, décisions."
         },
         "collaboration": {
           "title": "Intégration dans votre équipe",
@@ -229,7 +229,7 @@
         },
         "results": {
           "title": "Décisions clarifiées",
-          "description": "Quand les choix techniques deviennent complexes, j'aide à structurer, arbitrer et documenter — pour que l'équipe avance avec clarté."
+          "description": "Quand les choix techniques deviennent complexes, j'aide à structurer, arbitrer et documenter : pour que l'équipe avance avec clarté."
         }
       }
     }

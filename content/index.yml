@@ -8,7 +8,7 @@ about:
 
     Ils manquent de décisions claires, assumées et comprises par toute l’équipe.
 
-    Je construis et je structure — les deux à la fois.
+    Je construis et je structure : les deux à la fois.
 blog:
   title: Notes & analyses
   description: Analyses courtes et retours terrain sur l’architecture frontend, la modernisation de stacks et l’usage pragmatique de l’IA. Du concret, orienté décision.
@@ -69,7 +69,7 @@ faq:
           content: |
             Un dev senior exécute et livre. Quelqu’un avec une vision architecturale construit en pensant à ce que ça coûtera à maintenir dans 2 ans.
 
-            Je fais les deux — c’est ce qui me différencie.
+            Je fais les deux : c’est ce qui me différencie.
         - label: Travaillez-vous uniquement sur des projets Vue.js et Nuxt ?
           content: |
             Oui. Vue.js et Nuxt sont mon domaine d’expertise depuis 2011.
@@ -149,14 +149,14 @@ marquee:
     - image: /logos/brother.webp
     - image: /logos/intact.webp
 podcast:
-  title: Podcast — On parle dev
+  title: Podcast : On parle dev
   description: Un podcast dédié à l’architecture frontend, aux décisions techniques et à l’évolution de carrière des développeurs seniors.
 seo:
-  title: Développeur Vue.js senior — Construction & architecture frontend
+  title: Développeur Vue.js senior : Construction & architecture frontend
   description: Massimo Russo est consultant senior en architecture frontend et usage pragmatique de l’IA. Il aide les entreprises à décider quand et comment utiliser l’IA face au legacy, à la complexité et à la hype.
 services:
   title: Services
-  description: Développeur Vue.js senior depuis 2011, j’interviens en construction, en architecture et en décision technique — selon les besoins de l’équipe et du projet.
+  description: Développeur Vue.js senior depuis 2011, j’interviens en construction, en architecture et en décision technique : selon les besoins de l’équipe et du projet.
   items:
     - title: Développement Vue.js / Nuxt
       slug: developpement-vuejs

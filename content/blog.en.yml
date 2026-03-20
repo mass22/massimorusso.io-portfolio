@@ -2,6 +2,6 @@ locale: 'en'
 title: Articles & Reflections
 description: Field notes, analyses and thoughts on Vue.js, frontend architecture, technical decisions and pragmatic AI. Concrete, not theoretical.
 seo:
-  title: Blog — Vue.js, frontend architecture & technical decisions
+  title: Blog : Vue.js, frontend architecture & technical decisions
   description: Field notes, analyses and thoughts on Vue.js, frontend architecture, technical decisions and pragmatic AI. Concrete, not theoretical.
 links: []

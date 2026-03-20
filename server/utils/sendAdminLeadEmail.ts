@@ -201,7 +201,7 @@ function generateSubject(service?: string, urgency?: string, locale: Locale = 'e
   const newLeadLabel = locale === 'fr' ? 'Nouveau lead' : 'New lead'
 
   if (parts.length > 0) {
-    return `[Lead] ${parts.join(' — ')}`
+    return `[Lead] ${parts.join(' | ')}`
   }
 
   return `[Lead] ${newLeadLabel}`

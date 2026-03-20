@@ -10,7 +10,7 @@ defineProps<{
   page: IndexCollectionItem & { testimonials?: Testimonial[] }
 }>()
 
-// UUser attend { name, description?, avatar?, to?, target? } — construit à partir des champs plats
+// UUser attend { name, description?, avatar?, to?, target? } : construit à partir des champs plats
 const getAuthorProps = (t: Testimonial) => {
   if (!t?.authorName) {
     return null

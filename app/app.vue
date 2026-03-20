@@ -130,7 +130,7 @@ const structuredData = computed(() => ({
     'department': 'Interactive Design',
     'name': 'Boston University'
   },
-  'description': t('index.description') || 'Consultant Frontend Sénior — Vue.js, Nuxt & Modernisation d\'Architecture',
+  'description': t('index.description') || 'Consultant Frontend Sénior : Vue.js, Nuxt & Modernisation d\'Architecture',
   'email': global.email,
   'image': global.picture?.light,
   'jobTitle': 'Consultant Frontend Sénior',

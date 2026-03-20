@@ -25,7 +25,7 @@
     "cta": {
       "services": "Discover my services",
       "contact": "Contact me",
-      "schedule": "Schedule a call — 30 min →",
+      "schedule": "Schedule a call : 30 min →",
       "about": "About"
     },
     "image": {
@@ -35,7 +35,7 @@
   "homepage": {
     "cta": {
       "title": "Your project deserves more than a developer who ships without thinking.",
-      "description": "I join your team to build, structure and make the right technical decisions — not just ship tickets.",
+      "description": "I join your team to build, structure and make the right technical decisions : not just ship tickets.",
       "button": "Get in touch"
     },
     "speaking": {
@@ -81,7 +81,7 @@
   "services": {
     "hero": {
       "title": "Services",
-      "description": "I support companies on frontend architecture, stack modernization (Vue/Nuxt) and technical decision support — with a pragmatic approach to AI when it brings real value."
+      "description": "I support companies on frontend architecture, stack modernization (Vue/Nuxt) and technical decision support : with a pragmatic approach to AI when it brings real value."
     },
     "process": {
       "title": "How I work",
@@ -108,7 +108,7 @@
     "items": {
       "consulting": {
         "title": "Frontend architecture",
-        "description": "Architecture audits, target trajectories and modernization strategies for complex frontends — with explicit trade-offs, long-term clarity and controlled migrations (especially Vue/Nuxt).",
+        "description": "Architecture audits, target trajectories and modernization strategies for complex frontends : with explicit trade-offs, long-term clarity and controlled migrations (especially Vue/Nuxt).",
         "imageAlt": "Frontend architecture and modernization"
       },
       "workshops": {
@@ -118,7 +118,7 @@
       },
       "audit": {
         "title": "Pragmatic AI usage",
-        "description": "Identification of meaningful AI use cases and integration paths into existing systems — with measurable value, explicit risks and no unnecessary complexity.",
+        "description": "Identification of meaningful AI use cases and integration paths into existing systems : with measurable value, explicit risks and no unnecessary complexity.",
         "imageAlt": "Pragmatic AI and product integration"
       }
     },
@@ -150,12 +150,12 @@
   },
   "contact": {
     "seo": {
-      "title": "Contact — Massimo Russo, senior Vue.js developer available",
+      "title": "Contact : Massimo Russo, senior Vue.js developer available",
       "description": "Contact me to discuss frontend architecture, stack modernization or technical decision support. Available for strategic advisory engagements. Contact me at {email}"
     },
     "hero": {
       "title": "Let's talk about your project",
-      "description": "Whether you need a senior Vue.js dev to build, or an experienced eye to structure your technical decisions — let's discuss your context.",
+      "description": "Whether you need a senior Vue.js dev to build, or an experienced eye to structure your technical decisions : let's discuss your context.",
       "cta": {
         "booking": "Schedule a call",
         "write": "Write a message"
@@ -221,7 +221,7 @@
         },
         "reactivity": {
           "title": "Architectural vision",
-          "description": "I don't just ship tickets. I bring perspective on what holds over time — structure, patterns, decisions."
+          "description": "I don't just ship tickets. I bring perspective on what holds over time : structure, patterns, decisions."
         },
         "collaboration": {
           "title": "Integration with your team",
@@ -229,7 +229,7 @@
         },
         "results": {
           "title": "Clarified decisions",
-          "description": "When technical choices become complex, I help clarify, arbitrate and document — so your team moves forward with confidence."
+          "description": "When technical choices become complex, I help clarify, arbitrate and document : so your team moves forward with confidence."
         }
       }
     }
