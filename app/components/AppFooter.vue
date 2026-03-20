@@ -5,7 +5,7 @@ const { footer: footerConfig } = useAppConfig()
 
 const { t } = useI18n()
 // Utiliser une valeur constante pour éviter les problèmes d'hydratation
-const currentYear = 2025
+const currentYear = new Date().getFullYear()
 
 // Mapper les liens du footer avec leurs aria-labels pour l'accessibilité
 const footerLinksWithLabels = computed(() => footerConfig?.links?.map(link => ({

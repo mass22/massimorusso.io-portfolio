@@ -41,4 +41,19 @@ describe('usePageData', () => {
 
     expect(result).toEqual({ locale: 'fr', title: 'French' })
   })
+
+  it('should use first page when locale is missing on documents', async () => {
+    mockUseI18n.mockReturnValue({ locale: { value: 'en' } })
+    mockUseAsyncData.mockImplementation((key: any, handler: any) => ({ data: { value: handler() } }))
+
+    const mockAll = vi.fn().mockResolvedValue([
+      { title: 'Only doc', noLocale: true }
+    ])
+    mockQueryCollection.mockReturnValue({ all: mockAll })
+
+    const { data } = await usePageData('index')
+    const result = await data.value
+
+    expect(result).toEqual({ title: 'Only doc', noLocale: true })
+  })
 })

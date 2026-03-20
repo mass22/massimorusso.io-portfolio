@@ -33,7 +33,7 @@ companies:
       logo: i-simple-icons-vuedotjs
     - name: 4 jours/semaine
       logo: i-lucide-calendar
-description: "Pour les équipes Vue.js qui veulent avancer vite sans accumuler une dette technique qu'elles ne pourront plus démêler."
+description: Pour les équipes Vue.js qui veulent avancer vite sans accumuler une dette technique qu'elles ne pourront plus démêler.
 experience:
   title: Expertise & écosystème
   items:
@@ -138,9 +138,9 @@ hero:
     - src: /hero/random-9.avif
       alt: Image aléatoire 9
   isResourcesAvailable: false
-locale: fr
+locale: en
 marquee:
-  title: "Ils m'ont fait confiance"
+  title: Ils m'ont fait confiance
   logos:
     - image: /logos/aircanada.webp
     - image: /logos/porsche.webp
@@ -150,10 +150,10 @@ marquee:
     - image: /logos/intact.webp
 podcast:
   title: "Podcast : On parle dev"
-  description: "Un podcast dédié à l'architecture frontend, aux décisions techniques et à l'évolution de carrière des développeurs seniors."
+  description: Un podcast dédié à l'architecture frontend, aux décisions techniques et à l'évolution de carrière des développeurs seniors.
 seo:
   title: "Développeur Vue.js senior : construction & architecture frontend"
-  description: "Massimo Russo est consultant senior en architecture frontend et usage pragmatique de l'IA. Il aide les entreprises à décider quand et comment utiliser l'IA face au legacy, à la complexité et à la hype."
+  description: Massimo Russo est consultant senior en architecture frontend et usage pragmatique de l'IA. Il aide les entreprises à décider quand et comment utiliser l'IA face au legacy, à la complexité et à la hype.
 services:
   title: Services
   description: "Développeur Vue.js senior depuis 2011, j'interviens en construction, en architecture et en décision technique : selon les besoins de l'équipe et du projet."
