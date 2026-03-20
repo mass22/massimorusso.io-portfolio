@@ -1,0 +1,238 @@
+locale: en
+seo:
+  title: "Massimo Russo — Senior Vue.js developer: building & frontend architecture"
+  description: "Massimo Russo is a senior frontend architecture consultant focused on pragmatic AI. He helps organizations decide when and how to use AI in the face of legacy systems, complexity, and hype."
+title: I build and I structure.
+description: For Vue.js teams that want to move fast without piling up technical debt they can no longer untangle.
+hero:
+  tags:
+    - Your frontend grows.
+    - Your architecture does not.
+  badges:
+    - Vue.js & Nuxt
+    - Frontend architecture
+    - Technical decisions
+    - Pragmatic AI
+  links:
+    - label: Explore my services
+      to: /services
+      color: primary
+    - label: About
+      to: /about
+      trailingIcon: i-lucide-arrow-right
+  images:
+    - src: /hero/random-1.avif
+      alt: Random image 1
+    - src: /hero/random-2.avif
+      alt: Random image 2
+    - src: /hero/random-3.avif
+      alt: Random image 3
+    - src: /hero/random-4.avif
+      alt: Random image 4
+    - src: /hero/random-5.avif
+      alt: Random image 5
+    - src: /hero/random-6.avif
+      alt: Random image 6
+    - src: /hero/random-7.avif
+      alt: Random image 7
+    - src: /hero/random-8.avif
+      alt: Random image 8
+    - src: /hero/random-9.avif
+      alt: Random image 9
+  isResourcesAvailable: false
+about:
+  title: About
+  description: |
+    I've been a frontend developer since 2011, working exclusively with Vue.js and Nuxt since their early days.
+
+    Over time, I've learned that projects that fail rarely lack good developers.
+
+    They lack clear decisions, owned and understood by the whole team.
+
+    I build and I structure: both at once.
+services:
+  title: Services
+  description: "Senior Vue.js developer since 2011, I focus on building, architecture, and technical decisions—depending on what the team and project need."
+  items:
+    - title: Vue.js / Nuxt development
+      slug: vuejs-development
+      icon: i-ph-code
+      description: |
+        I join teams to build robust, performant, and maintainable Vue.js and Nuxt applications.
+
+        I work on building—not bugfix-only or migration-only work.
+      bullets:
+        - Vue.js / Nuxt development
+        - Design system integration
+        - Frontend performance
+        - Code review & best practices
+
+    - title: Frontend architecture
+      slug: frontend-architecture
+      icon: i-ph-lightbulb
+      description: |
+        I help teams structure and evolve their frontend in complex contexts.
+
+        Stack analysis, target architecture, progressive modernization strategies, and trade-offs that last.
+      bullets:
+        - Frontend stack audit
+        - Vue / Nuxt architecture
+        - Modernization strategies
+        - Performance & scalability
+
+    - title: Consulting & decision support
+      slug: technical-decision-support
+      icon: i-ph-chalkboard-teacher
+      description: |
+        With 14 years on complex frontend projects, I bring an experienced perspective to clarify and structure high-impact technical decisions.
+
+        My role is to reduce uncertainty—not add to it.
+      bullets:
+        - Architecture review
+        - Technology arbitration
+        - Tech Lead support
+        - Long-term vision
+
+    - title: Pragmatic AI usage
+      slug: pragmatic-ai
+      icon: i-ph-sparkle
+      description: |
+        I help teams integrate AI without getting lost in the hype.
+
+        The question is no longer whether it is possible, but whether it is relevant—and at what cost.
+      bullets:
+        - Real use case identification
+        - AI orchestration
+        - Product integration
+        - Risk & impact framing
+experience:
+  title: Expertise & ecosystem
+  isCertificationsAvailable: false
+  items:
+    - position: Vue.js Mid-Level Developer
+      date: "2026"
+      company:
+        name: Vue.js
+        logo: i-simple-icons-vuedotjs
+        url: https://certification.vuejs.org/certification-badge.html
+        color: "#00DC82"
+    - position: Vue.js Senior Developer
+      date: "2026"
+      company:
+        name: Vue.js
+        logo: i-simple-icons-vuedotjs
+        url: https://certification.vuejs.org/certification-badge.html
+        color: "#00DC82"
+    - position: Nuxt Mid-Level Developer
+      date: "2026"
+      company:
+        name: Nuxt.js
+        logo: i-simple-icons-nuxtdotjs
+        url: https://certification.nuxtjs.org/certification-badge.html
+        color: "#00DC82"
+blog:
+  title: Notes & analysis
+  description: Short analyses and field notes on frontend architecture, stack modernization, and pragmatic AI—concrete and decision-oriented.
+speaking:
+  title: Conferences & talks
+  description: Public talks, presentations, and podcasts on frontend architecture, technical decision-making, and the evolution of the senior developer role.
+companies:
+  title: Contexts I work in
+  description: I work on Vue.js and Nuxt projects where building products and making technical decisions go hand in hand.
+  patterns:
+    - title: Active builds with real architecture stakes
+      description: ""
+    - title: Teams that ship fast but want to last
+      description: ""
+    - title: Vue/Nuxt stacks to structure or evolve gradually
+      description: ""
+    - title: AI integration when it makes sense—not for hype
+      description: ""
+  companies:
+    - name: Scale-ups & tech products
+      logo: i-lucide-trending-up
+    - name: Frontend teams of 3 to 15 devs
+      logo: i-lucide-users
+    - name: Vue.js & Nuxt
+      logo: i-simple-icons-vuedotjs
+    - name: 4 days a week
+      logo: i-lucide-calendar
+marquee:
+  title: They trusted me
+  logos:
+    - name: Air Canada
+      image: /logos/aircanada.webp
+    - name: Porsche
+      image: /logos/porsche.webp
+    - name: FTQ
+      image: /logos/ftq.webp
+    - name: FÉRIQUE
+      image: /logos/ferique.webp
+    - name: Brother
+      image: /logos/brother.webp
+    - name: Intact
+      image: /logos/intact.webp
+podcast:
+  title: "Podcast: On parle dev"
+  description: A podcast about frontend architecture, technical decisions, and the career path of senior developers.
+faq:
+  title: Frequently asked questions
+  description: Answers to common questions about my role, how I work, and how I engage with teams.
+  categories:
+    - title: Architecture & technical decisions
+      questions:
+        - label: What's the difference between a senior developer and someone who focuses on architecture?
+          content: |
+            A senior developer executes and ships. Someone with an architectural mindset builds while thinking about what it costs to maintain in two years.
+
+            I do both—that's what sets me apart.
+        - label: Do you only work on Vue.js and Nuxt projects?
+          content: |
+            Yes. Vue.js and Nuxt have been my focus since 2011.
+
+            I'd rather be excellent in one ecosystem than average across several.
+        - label: What kind of engagements do you take on?
+          content: |
+            Building features, structuring architecture, technical reviews, or decision support.
+
+            I don't do bugfix-only work or migrations without a construction angle.
+    - title: Collaboration & format
+      questions:
+        - label: What does an engagement look like in practice?
+          content: |
+            I join the existing team, understand context and constraints, then build and structure in parallel.
+
+            I work four days a week.
+        - label: Remote or on-site?
+          content: |
+            Mostly remote from Belgium.
+
+            Occasional on-site visits are possible depending on context.
+    - title: AI & modernization
+      questions:
+        - label: How do you use AI in your work?
+          content: |
+            As a tool, not an oracle. I use AI to explore options, speed up some tasks, and challenge my decisions.
+
+            Not to replace technical judgment.
+        - label: Can you help integrate AI into an existing product?
+          content: |
+            Yes, when it makes sense. My approach: identify real problems first, assess whether AI delivers measurable value, then integrate progressively without weakening the existing architecture.
+testimonials:
+  - quote: I have worked with Massimo at VACV and found him to be knowledgeable and dedicated, particularly with Vue.js. He is always keen to stay updated and improve his skills. Massimo has a knack for leaving things better than he found them, which is a great asset in any team.
+    author:
+      name: Martin Kilmartin
+    authorName: "Martin Kilmartin "
+    authorDescription: Results-driven Senior Full-Stack Software Engineer
+  - quote: I add the chance to work with Massimo at FTQ Fonds de Solidarité. He is highly skilled and very pleasant to work with. I would definitely recommend him.
+    author:
+      name: Georges De La Jungle
+      description: Tech Lead @ Jungle Corp
+    authorName: "Achille Kamgang "
+    authorDescription: Software Architect / Senior Expert Advisor
+  - quote: J'ai eu le plaisir de travailler avec Massimo chez Logient, où il a démontré une expertise exceptionnelle en Vue.js.  Il a joué un rôle clé dans plusieurs projets complexes, proposant des solutions innovantes et écrivant du code propre et efficace.  En plus de ses compétences techniques, Massimo est un excellent communicateur et un formidable coéquipier, apportant toujours une attitude positive et une grande passion pour le développement.  Je recommande vivement Massimo pour toute opportunité nécessitant une expertise en Vue.js.
+    author:
+      name: Hubert Bonisseur De La Batte
+      description: Lead Dev Frontend @ Acme
+    authorName: Firas Kallel
+    authorDescription: Analyste développeur .NET à la trésorerie chez Desjardins
