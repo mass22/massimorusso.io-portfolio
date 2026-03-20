@@ -149,63 +149,70 @@ marquee:
     - image: /logos/brother.webp
     - image: /logos/intact.webp
 podcast:
-  title: Podcast : On parle dev
-  description: Un podcast dédié à l’architecture frontend, aux décisions techniques et à l’évolution de carrière des développeurs seniors.
+  title:
+    Podcast: On parle dev
+    description: Un podcast dédié à l’architecture frontend, aux décisions techniques et à l’évolution de carrière des développeurs seniors.
 seo:
-  title: Développeur Vue.js senior : Construction & architecture frontend
-  description: Massimo Russo est consultant senior en architecture frontend et usage pragmatique de l’IA. Il aide les entreprises à décider quand et comment utiliser l’IA face au legacy, à la complexité et à la hype.
+  title:
+    Développeur Vue:
+      js senior: Construction & architecture frontend
+    description: Massimo Russo est consultant senior en architecture frontend et usage pragmatique de l’IA. Il aide les entreprises à décider quand et comment utiliser l’IA face au legacy, à la complexité et à la hype.
+  description: Pour les équipes Vue.js qui veulent avancer vite sans accumuler une dette technique qu'elles ne pourront plus démêler.
 services:
   title: Services
-  description: Développeur Vue.js senior depuis 2011, j’interviens en construction, en architecture et en décision technique : selon les besoins de l’équipe et du projet.
-  items:
-    - title: Développement Vue.js / Nuxt
-      slug: developpement-vuejs
-      icon: i-ph-code
-      description: |
-        J’intègre des équipes pour construire des applications Vue.js et Nuxt robustes, performantes et maintenables.
+  description:
+    Développeur Vue:
+      js senior depuis 2011, j’interviens en construction, en architecture et en décision technique: selon les besoins de l’équipe et du projet.
+    items:
+      - title: Développement Vue.js / Nuxt
+        slug: developpement-vuejs
+        icon: i-ph-code
+        description: |
+          J’intègre des équipes pour construire des applications Vue.js et Nuxt robustes, performantes et maintenables.
 
-        Je travaille sur de la construction, pas du bugfix ou de la migration.
-      bullets:
-        - Développement Vue.js / Nuxt
-        - Intégration design system
-        - Performance frontend
-        - Code review & bonnes pratiques
-    - title: Architecture frontend
-      slug: architecture-frontend
-      icon: i-ph-lightbulb
-      description: |
-        J’aide les équipes à structurer et faire évoluer leur frontend en contexte complexe.
+          Je travaille sur de la construction, pas du bugfix ou de la migration.
+        bullets:
+          - Développement Vue.js / Nuxt
+          - Intégration design system
+          - Performance frontend
+          - Code review & bonnes pratiques
+      - title: Architecture frontend
+        slug: architecture-frontend
+        icon: i-ph-lightbulb
+        description: |
+          J’aide les équipes à structurer et faire évoluer leur frontend en contexte complexe.
 
-        Analyse de stack, définition d’une architecture cible, stratégies de modernisation progressives et arbitrage des choix structurants.
-      bullets:
-        - Audit de stack frontend
-        - Architecture Vue / Nuxt
-        - Stratégies de modernisation
-        - Performance & scalabilité
-    - title: Conseil & aide à la décision
-      slug: aide-decision-technique
-      icon: i-ph-chalkboard-teacher
-      description: |
-        Fort de 14 ans sur des projets frontend complexes, j’apporte un regard expérimenté pour aider à clarifier et structurer les décisions techniques à fort impact.
+          Analyse de stack, définition d’une architecture cible, stratégies de modernisation progressives et arbitrage des choix structurants.
+        bullets:
+          - Audit de stack frontend
+          - Architecture Vue / Nuxt
+          - Stratégies de modernisation
+          - Performance & scalabilité
+      - title: Conseil & aide à la décision
+        slug: aide-decision-technique
+        icon: i-ph-chalkboard-teacher
+        description: |
+          Fort de 14 ans sur des projets frontend complexes, j’apporte un regard expérimenté pour aider à clarifier et structurer les décisions techniques à fort impact.
 
-        Mon rôle est de réduire l’incertitude, pas d’en ajouter.
-      bullets:
-        - Revue d’architecture
-        - Arbitrage technologique
-        - Support Tech Leads
-        - Vision long terme
-    - title: Usage pragmatique de l’IA
-      slug: ia-pragmatique
-      icon: i-ph-sparkle
-      description: |
-        J’accompagne les équipes qui veulent intégrer l’IA sans se perdre dans la hype.
+          Mon rôle est de réduire l’incertitude, pas d’en ajouter.
+        bullets:
+          - Revue d’architecture
+          - Arbitrage technologique
+          - Support Tech Leads
+          - Vision long terme
+      - title: Usage pragmatique de l’IA
+        slug: ia-pragmatique
+        icon: i-ph-sparkle
+        description: |
+          J’accompagne les équipes qui veulent intégrer l’IA sans se perdre dans la hype.
 
-        La question n’est plus "est-ce possible ?" mais "est-ce pertinent, et à quel coût ?".
-      bullets:
-        - Identification des vrais cas d’usage
-        - Orchestration IA
-        - Intégration produit
-        - Cadrage des risques & impacts
+          La question n’est plus "est-ce possible ?" mais "est-ce pertinent, et à quel coût ?".
+        bullets:
+          - Identification des vrais cas d’usage
+          - Orchestration IA
+          - Intégration produit
+          - Cadrage des risques & impacts
+  items: []
 speaking:
   title: Conférences & prises de parole
   description: Interventions publiques, talks et podcasts autour de l’architecture frontend, de la prise de décision technique et de l’évolution du métier de développeur.
