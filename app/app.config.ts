@@ -40,8 +40,8 @@ export default defineAppConfig({
     meetingLink: 'https://cal.com/massimorusso/let-s-connect',
     picture: {
       altKey: 'global.picture.alt',
-      dark: '/hero/avatar.webp',
-      light: '/hero/avatar.webp'
+      dark: '/hero/photo.webp',
+      light: '/hero/photo.webp'
     }
   }, ui: {
     colors: {

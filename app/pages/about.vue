@@ -17,8 +17,6 @@ if (!page.value) {
   })
 }
 
-const { global } = useAppConfig()
-
 const htmlContent = computed(() => {
   if (!page.value?.content) {
     return ''
@@ -47,23 +45,27 @@ useSeoMeta({
         links: 'justify-start'
       }"
     >
-      <UColorModeAvatar
-        class="sm:rotate-0 size-36 rounded-lg ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
+      <!-- <UColorModeAvatar
+        v-if="!global.picture"
+        class="sm:rotate-0 rounded-lg ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
         :light="global.picture?.light!"
         :dark="global.picture?.dark!"
         :alt="t(global.picture?.altKey ?? 'global.picture.alt')"
-      />
+      /> -->
     </UPageHero>
     <UPageSection
       :ui="{
         container: '!pt-0'
       }"
     >
+      <!-- Markdown → HTML (contenu du site) -->
+      <!-- eslint-disable vue/no-v-html -->
       <div
         v-if="htmlContent"
         class="prose prose-lg prose-neutral dark:prose-invert max-w-none prose-headings:font-bold prose-headings:text-highlighted prose-headings:leading-tight prose-h1:text-3xl md:prose-h1:text-4xl lg:prose-h1:text-5xl prose-h1:mb-8 prose-h1:mt-0 prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-12 prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-5 prose-h3:mt-10 prose-p:text-base md:prose-p:text-lg prose-p:leading-relaxed prose-p:text-muted prose-p:mb-8 prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-a:transition-all prose-strong:text-highlighted prose-strong:font-semibold prose-ul:my-8 prose-ul:space-y-4 prose-li:text-muted prose-li:leading-relaxed prose-ol:my-8 prose-ol:space-y-4"
         v-html="htmlContent"
       />
+      <!-- eslint-enable vue/no-v-html -->
       <!-- Vue Montreal logo près de la mention -->
       <div
         v-if="page.content?.includes('Vue Montreal')"

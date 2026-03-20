@@ -17,8 +17,6 @@ if (!page.value) {
   })
 }
 
-const { global } = useAppConfig()
-
 const htmlContent = computed(() => {
   if (!page.value?.content) {
     return ''
@@ -47,23 +45,26 @@ useSeoMeta({
         links: 'justify-start'
       }"
     >
-      <UColorModeAvatar
+      <!-- <UColorModeAvatar
         class="sm:rotate-0 size-36 rounded-lg ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
         :light="global.picture?.light!"
         :dark="global.picture?.dark!"
         :alt="t(global.picture?.altKey ?? 'global.picture.alt')"
-      />
+      /> -->
     </UPageHero>
     <UPageSection
       :ui="{
         container: '!pt-0'
       }"
     >
+      <!-- Markdown → HTML (contenu du site) -->
+      <!-- eslint-disable vue/no-v-html -->
       <div
         v-if="htmlContent"
         class="prose prose-neutral dark:prose-invert max-w-none"
         v-html="htmlContent"
       />
+      <!-- eslint-enable vue/no-v-html -->
       <!-- Logo Vue Montreal près de la mention -->
       <div
         v-if="page.content?.includes('Vue Montreal')"

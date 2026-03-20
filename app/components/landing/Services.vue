@@ -23,6 +23,29 @@ const props = defineProps<{
   page: IndexCollectionItem & { services?: ServicesSection }
 }>()
 
+/** Nuxt Content / Studio peuvent exposer certains champs texte comme objet (MDC, AST) : UPageSection attend une string. */
+function normalizePlainText(value: unknown): string {
+  if (value == null) {
+    return ''
+  }
+  if (typeof value === 'string') {
+    return value
+  }
+  if (typeof value === 'object' && value !== null) {
+    const o = value as Record<string, unknown>
+    if (typeof o.body === 'string') {
+      return o.body
+    }
+  }
+  return ''
+}
+
+const servicesSectionDescription = computed(() => {
+  const raw = props.page?.services?.description ?? t('services.hero.description')
+  const s = normalizePlainText(raw)
+  return s || t('services.hero.description')
+})
+
 // Fonction pour obtenir l'icône du service
 const getServiceIcon = (service: ServiceItem): string => {
   if (service.icon) {
@@ -48,60 +71,61 @@ const getServicePath = (service: ServiceItem) => {
     return localePath(`/services/${service.slug}`)
   }
 
-  // Mapping des services vers leurs slugs (fallback si pas de slug dans les données)
-  const serviceSlugs: Record<string, string> = {
-    [t('services.items.consulting.title')]: 'consulting',
-    [t('services.items.workshops.title')]: 'workshops',
-    [t('services.items.audit.title')]: 'audit'
+  // Aligné sur les routes réelles (content/index.yml et app/pages/services/*.vue)
+  const titleToSlug: Record<string, string> = {
+    [t('services.items.consulting.title')]: 'architecture-frontend',
+    [t('services.items.workshops.title')]: 'aide-decision-technique',
+    [t('services.items.audit.title')]: 'ia-pragmatique'
   }
 
-  // Utiliser le mapping par titre
-  const slug = serviceSlugs[service.title]
-  if (slug) {
-    return localePath(`/services/${slug}`)
+  const slugFromTitle = titleToSlug[service.title]
+  if (slugFromTitle) {
+    return localePath(`/services/${slugFromTitle}`)
   }
 
-  // Fallback vers la page services générale
   return localePath('/services')
 }
 
-// Fallback vers les traductions si pas de données dans page
+// Fallback vers les traductions si pas de données dans page (slugs = routes réelles, pas consulting/workshops/audit)
 const serviceItems = computed(() => {
-  if (props.page?.services?.items && props.page.services.items.length > 0) {
-    return props.page.services.items
-  }
+  const rawItems
+    = props.page?.services?.items && props.page.services.items.length > 0
+      ? props.page.services.items
+      : [
+          {
+            description: t('services.items.consulting.description'),
+            icon: 'i-ph-lightbulb',
+            imageAlt: t('services.items.consulting.imageAlt'),
+            slug: 'architecture-frontend',
+            title: t('services.items.consulting.title')
+          },
+          {
+            description: t('services.items.workshops.description'),
+            icon: 'i-ph-chalkboard-teacher',
+            imageAlt: t('services.items.workshops.imageAlt'),
+            slug: 'aide-decision-technique',
+            title: t('services.items.workshops.title')
+          },
+          {
+            description: t('services.items.audit.description'),
+            icon: 'i-ph-sparkle',
+            imageAlt: t('services.items.audit.imageAlt'),
+            slug: 'ia-pragmatique',
+            title: t('services.items.audit.title')
+          }
+        ]
 
-  // Fallback vers les traductions avec slugs
-  return [
-    {
-      description: t('services.items.consulting.description'),
-      icon: 'i-ph-lightbulb',
-      imageAlt: t('services.items.consulting.imageAlt'),
-      slug: 'consulting',
-      title: t('services.items.consulting.title')
-    },
-    {
-      description: t('services.items.workshops.description'),
-      icon: 'i-ph-chalkboard-teacher',
-      imageAlt: t('services.items.workshops.imageAlt'),
-      slug: 'workshops',
-      title: t('services.items.workshops.title')
-    },
-    {
-      description: t('services.items.audit.description'),
-      icon: 'i-ph-sparkle',
-      imageAlt: t('services.items.audit.imageAlt'),
-      slug: 'audit',
-      title: t('services.items.audit.title')
-    }
-  ]
+  return rawItems.map(item => ({
+    ...item,
+    description: normalizePlainText(item.description)
+  }))
 })
 </script>
 
 <template>
   <UPageSection
     :title="page.services?.title || t('services.hero.title')"
-    :description="page.services?.description || t('services.hero.description')"
+    :description="servicesSectionDescription"
     :ui="{
       container: 'px-0 !pt-16 sm:!pt-20 lg:!pt-24 gap-6 sm:gap-8 bg-elevated/30 dark:bg-elevated/20 rounded-2xl p-6 sm:p-8 lg:p-12 mb-12 sm:mb-16',
       title: 'text-left text-3xl sm:text-4xl lg:text-5xl font-bold text-highlighted',
