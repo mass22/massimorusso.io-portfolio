@@ -138,7 +138,7 @@ hero:
     - src: /hero/random-9.avif
       alt: Image aléatoire 9
   isResourcesAvailable: false
-locale: en
+locale: fr
 marquee:
   title: Ils m'ont fait confiance
   logos:
