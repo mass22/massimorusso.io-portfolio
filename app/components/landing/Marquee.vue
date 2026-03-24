@@ -59,7 +59,6 @@ const hasLogos = computed(() => logos.value.length > 0)
       <UMarquee
         pause-on-hover
         :repeat="4"
-        :aria-label="t('homepage.marquee.ariaLabel')"
         :ui="{
           root: '[--gap:--spacing(12)]',
           content: 'w-auto py-4'
@@ -84,6 +83,8 @@ const hasLogos = computed(() => logos.value.length > 0)
               <img
                 :src="getImageProps(logo)!.src"
                 :alt="getImageProps(logo)!.alt"
+                width="96"
+                height="40"
                 class="marquee-logo-img max-h-10 max-w-24 object-contain object-center"
                 loading="lazy"
               >
@@ -108,6 +109,8 @@ const hasLogos = computed(() => logos.value.length > 0)
               <img
                 :src="getImageProps(logo)!.src"
                 :alt="getImageProps(logo)!.alt"
+                width="96"
+                height="40"
                 class="marquee-logo-img max-h-10 max-w-24 object-contain object-center"
                 loading="lazy"
               >

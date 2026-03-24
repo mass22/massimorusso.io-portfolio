@@ -116,7 +116,7 @@ hero:
       to: /services
       color: primary
     - label: À propos
-      to: /about
+      to: /a-propos
       trailingIcon: i-lucide-arrow-right
   images:
     - src: /hero/random-1.avif
@@ -142,12 +142,18 @@ locale: fr
 marquee:
   title: Ils m'ont fait confiance
   logos:
-    - image: /logos/aircanada.webp
-    - image: /logos/porsche.webp
-    - image: /logos/ftq.webp
-    - image: /logos/ferique.webp
-    - image: /logos/brother.webp
-    - image: /logos/intact.webp
+    - name: Air Canada
+      image: /logos/aircanada.webp
+    - name: Porsche
+      image: /logos/porsche.webp
+    - name: FTQ
+      image: /logos/ftq.webp
+    - name: FÉRIQUE
+      image: /logos/ferique.webp
+    - name: Brother
+      image: /logos/brother.webp
+    - name: Intact
+      image: /logos/intact.webp
 podcast:
   title: "Podcast : On parle dev"
   description: Un podcast dédié à l'architecture frontend, aux décisions techniques et à l'évolution de carrière des développeurs seniors.
