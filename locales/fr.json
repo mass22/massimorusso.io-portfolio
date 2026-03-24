@@ -294,7 +294,24 @@
     }
   },
   "seo": {
-    "titleTemplate": "%s - Massimo Russo"
+    "defaultDescription": "Consultant senior en architecture frontend, Vue.js et Nuxt — décisions techniques, modernisation de stacks et IA pragmatique.",
+    "siteName": "Massimo Russo",
+    "titleTemplate": "%s - Massimo Russo",
+    "pages": {
+      "generic": "Vue.js, architecture frontend & décisions techniques",
+      "home": "Développeur Vue.js senior : construction & architecture frontend",
+      "blog": "Blog : analyses Vue.js, architecture frontend & décisions techniques",
+      "about": "À propos : parcours développeur Vue.js senior & architecte frontend",
+      "services": "Services : développement Vue.js, architecture & décision technique",
+      "conferences": "Conférences & talks : Vue.js, architecture frontend & évolution développeur",
+      "speaking": "Conférences & talks : Vue.js, architecture frontend & évolution développeur",
+      "podcast": "Podcast On parle Dev : architecture frontend & décisions techniques",
+      "ressources": "Ressources : cadres de décision & checklists architecture frontend",
+      "blogPost": "Article : Vue.js, architecture & décisions techniques",
+      "lead": "Fiche lead (prospect)",
+      "adminPodcast": "Admin — gestion des épisodes podcast",
+      "service": "Accompagnement Vue.js, architecture & décision technique"
+    }
   },
   "accessibility": {
     "skipToContent": "Aller au contenu principal"

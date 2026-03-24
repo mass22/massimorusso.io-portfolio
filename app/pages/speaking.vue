@@ -24,11 +24,15 @@ if (!page.value) {
   })
 }
 
-useSeoMeta({
-  description: page.value?.seo?.description || page.value?.description, ogDescription: page.value?.seo?.description || page.value?.description, ogTitle: page.value?.seo?.title || page.value?.title, title: page.value?.seo?.title || page.value?.title
-})
-
 const { global } = useAppConfig()
+
+usePageSeo({
+  description: () => page.value?.seo?.description || page.value?.description,
+  image: () => global.picture?.light,
+  ogType: 'website',
+  title: () => page.value?.seo?.title || page.value?.title,
+  titleFallbackKey: 'seo.pages.speaking'
+})
 
 // Fonction pour formater les événements avec la bonne locale
 const formatEvents = (events: Event[], dateLocale: string): Record<Event['category'], (Event & { formattedDate: string })[]> => {

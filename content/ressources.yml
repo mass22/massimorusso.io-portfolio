@@ -1,6 +1,9 @@
 locale: 'fr'
 title: "Ressources"
 description: "Ressources, cadres de réflexion et outils d’aide à la décision autour de l’architecture frontend, de la complexité technique et de l’IA pragmatique."
+seo:
+  title: "Ressources gratuites : cadres de décision, checklists & IA pragmatique"
+  description: "Ressources, cadres de réflexion et outils d’aide à la décision autour de l’architecture frontend, de la complexité technique et de l’IA pragmatique."
 
 links:
   - label: "Proposer une ressource"

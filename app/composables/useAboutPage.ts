@@ -23,11 +23,11 @@ export const useAboutPage = async () => {
 
   const { global } = useAppConfig()
 
-  useSeoMeta({
-    description: page.value?.seo?.description || page.value?.description,
-    ogDescription: page.value?.seo?.description || page.value?.description,
-    ogTitle: page.value?.seo?.title || page.value?.title,
-    title: page.value?.seo?.title || page.value?.title
+  usePageSeo({
+    description: () => page.value?.seo?.description || page.value?.description,
+    image: () => page.value?.images?.[0]?.src,
+    ogType: 'website',
+    title: () => page.value?.seo?.title || page.value?.title
   })
 
   return {

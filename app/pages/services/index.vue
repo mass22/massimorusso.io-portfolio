@@ -24,14 +24,12 @@ if (!page.value) {
   })
 }
 
-// SEO Meta
-useSeoMeta({
-  description: page.value?.seo?.description || page.value?.description,
-  ogDescription: page.value?.seo?.description || page.value?.description,
-  ogImage: global.picture?.light,
-  ogTitle: page.value?.seo?.title || page.value?.title,
+usePageSeo({
+  description: () => page.value?.seo?.description || page.value?.description,
+  image: () => global.picture?.light,
   ogType: 'website',
-  title: page.value?.seo?.title || page.value?.title
+  title: () => page.value?.seo?.title || page.value?.title,
+  titleFallbackKey: 'seo.pages.services'
 })
 
 // Mapping des icônes par slug si non fourni
@@ -131,14 +129,15 @@ const serviceStructuredData = computed(() => {
   return structuredData
 })
 
-useHead({
+useHead(() => ({
   script: [
     {
+      key: 'ld-json-services-index',
       innerHTML: JSON.stringify(serviceStructuredData.value, (key, value) => value === undefined ? null : value),
       type: 'application/ld+json'
     }
   ]
-})
+}))
 </script>
 
 <template>

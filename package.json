@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "preview": "nuxt preview",
     "preprod": "nuxt build && nuxt preview --port 3001",
-    "postinstall": "nuxt prepare",
+    "postinstall": "nuxt prepare && node scripts/sync-nuxt-content-cache.mjs",
+    "content:cache": "node scripts/sync-nuxt-content-cache.mjs",
     "prepare": "husky",
     "test": "vitest",
     "test:run": "vitest run",
@@ -32,7 +33,7 @@
     "better-sqlite3": "^12.4.1",
     "motion-v": "^1.7.3",
     "nuxt": "^4.2.1",
-    "nuxt-og-image": "^5.1.12",
+    "nuxt-og-image": "^5.1.13",
     "nuxt-studio": "beta",
     "zod": "^3.25.76",
     "zod-to-json-schema": "^3.24.6"

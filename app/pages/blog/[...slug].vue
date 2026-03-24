@@ -131,20 +131,22 @@ if (page.value.image) {
   })
 }
 
-const title = page.value?.seo?.title || page.value?.title
-const description = page.value?.seo?.description || page.value?.description
+const title = computed(() => page.value?.seo?.title || page.value?.title || '')
+const description = computed(() => page.value?.seo?.description || page.value?.description || '')
 const { global } = useAppConfig()
 const siteUrl = useSiteUrl()
 
-useSeoMeta({
-  articleAuthor: page.value?.author?.name ? [page.value.author.name] : ['Massimo Russo'],
-  articlePublishedTime: page.value?.date ? new Date(page.value.date).toISOString() : undefined,
+usePageSeo({
   description,
-  ogDescription: description,
-  ogImage: page.value?.image || global.picture?.light,
-  ogTitle: title,
+  image: () => page.value?.image || global.picture?.light,
   ogType: 'article',
-  title
+  title,
+  titleFallbackKey: 'seo.pages.blogPost'
+})
+
+useSeoMeta({
+  articleAuthor: () => (page.value?.author?.name ? [page.value.author.name] : ['Massimo Russo']),
+  articlePublishedTime: () => (page.value?.date ? new Date(page.value.date).toISOString() : undefined)
 })
 
 // Données structurées Article pour le SEO
@@ -163,8 +165,8 @@ const articleStructuredData = computed(() => {
     },
     'dateModified': page.value.date ? new Date(page.value.date).toISOString() : undefined,
     'datePublished': page.value.date ? new Date(page.value.date).toISOString() : undefined,
-    description,
-    'headline': title,
+    'description': description.value,
+    'headline': title.value,
     'image': page.value.image ? [page.value.image] : [],
     'mainEntityOfPage': {
       '@id': `${siteUrl}${route.path}`,
@@ -196,11 +198,12 @@ const breadcrumbStructuredData = computed(() => {
   }
 })
 
-useHead({
+useHead(() => ({
   script: [
     ...(articleStructuredData.value
       ? [
           {
+            key: 'ld-json-article',
             innerHTML: JSON.stringify(articleStructuredData.value),
             type: 'application/ld+json'
           }
@@ -209,13 +212,14 @@ useHead({
     ...(breadcrumbStructuredData.value
       ? [
           {
+            key: 'ld-json-breadcrumb',
             innerHTML: JSON.stringify(breadcrumbStructuredData.value),
             type: 'application/ld+json'
           }
         ]
       : [])
   ]
-})
+}))
 
 const articleLink = computed(() => {
   const base = siteUrl.replace(/\/$/, '')

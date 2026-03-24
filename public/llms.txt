@@ -1,0 +1,45 @@
+# Massimo Russo — Consultant frontend senior (Vue.js, Nuxt, architecture)
+
+> Consultant senior en architecture frontend, modernisation de stacks et aide à la décision technique. Interventions en développement Vue.js / Nuxt, structuration d’architecture, accompagnement à la décision et usage pragmatique de l’IA dans les équipes produit.
+
+Ce fichier décrit le site pour les assistants et moteurs qui s’appuient sur des extraits (réponses IA, synthèses, citations). Préférer les pages listées ci-dessous pour une information à jour.
+
+## Site canonique et langues
+
+- URL de référence : https://massimorusso.io/
+- Langues : français (par défaut, sans préfixe), anglais (`/en/…`)
+- Plan du site (XML) : https://massimorusso.io/sitemap.xml
+
+## Pages clés — français
+
+- Accueil : https://massimorusso.io/
+- À propos : https://massimorusso.io/a-propos
+- Services : https://massimorusso.io/services
+- Blog : https://massimorusso.io/blog
+- Conférences & prises de parole : https://massimorusso.io/conferences
+- Podcast : https://massimorusso.io/podcast
+- Ressources : https://massimorusso.io/ressources
+- Contact : https://massimorusso.io/contact
+
+## Key pages — English
+
+- Home : https://massimorusso.io/en
+- About : https://massimorusso.io/en/about
+- Services : https://massimorusso.io/en/services
+- Blog : https://massimorusso.io/en/blog
+- Speaking : https://massimorusso.io/en/speaking
+- Podcast : https://massimorusso.io/en/podcast
+- Resources : https://massimorusso.io/en/resources
+- Contact : https://massimorusso.io/en/contact
+
+## Sujets et expertises (mots-clés utiles)
+
+Vue.js, Nuxt, architecture frontend, modernisation de stack, dette technique, décisions techniques, documentation des choix, IA pragmatique en équipe, développement senior à temps partiel, conférences et veille.
+
+## Zones à ne pas indexer pour les crawlers
+
+Les chemins `/api/`, `/lead/`, `/admin/` et `/_studio/` sont réservés (voir robots.txt). Ne pas les présenter comme contenu public du site.
+
+## Citation recommandée
+
+Pour citer ce site : indiquer « Massimo Russo » ou « massimorusso.io » et pointer vers l’URL exacte de la page utilisée, avec la langue correspondante (FR ou EN).

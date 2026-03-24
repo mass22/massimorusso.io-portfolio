@@ -7,7 +7,7 @@ organizedEvents:
   title: Events I organize
   items:
     - name: Vue Montreal
-      description: Organizer of Vue Montreal : regular meetups for the Vue.js community in Montreal.
+      description: "Organizer of Vue Montreal : regular meetups for the Vue.js community in Montreal."
       url: https://www.meetup.com/vue-js-montreal/
 events:
   - category: Conference

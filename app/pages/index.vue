@@ -3,6 +3,8 @@ import type { IndexCollectionItem } from '@nuxt/content'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+const { global } = useAppConfig()
+const siteUrl = useSiteUrl()
 
 const { data: page } = await usePageData<IndexCollectionItem>('index')
 if (!page.value) {
@@ -11,12 +13,23 @@ if (!page.value) {
   })
 }
 
-// SEO Meta pour la page d'accueil
-useSeoMeta({
-  description: page.value?.seo?.description || page.value?.description,
-  ogDescription: page.value?.seo?.description || page.value?.description,
-  ogTitle: page.value?.seo?.title || page.value?.title,
-  title: page.value?.seo?.title || page.value?.title
+const ogShareImage = computed(() => {
+  const src = page.value?.hero?.images?.[0]?.src
+  if (src && typeof src === 'string' && src.startsWith('/')) {
+    return `${siteUrl.replace(/\/$/, '')}${src}`
+  }
+  if (src && typeof src === 'string' && src.startsWith('http')) {
+    return src
+  }
+  return global.picture?.light
+})
+
+usePageSeo({
+  description: () => page.value?.seo?.description || page.value?.description,
+  image: ogShareImage,
+  ogType: 'website',
+  title: () => page.value?.seo?.title || page.value?.title,
+  titleFallbackKey: 'seo.pages.home'
 })
 
 // Preload de l'image LCP pour optimiser le Largest Contentful Paint

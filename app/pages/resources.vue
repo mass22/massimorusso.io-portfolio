@@ -18,9 +18,14 @@ if (!page.value) {
   })
 }
 
-useSeoMeta({
-  description: page.value?.description ?? '',
-  title: page.value?.title ?? t('ressources.title')
+const { global } = useAppConfig()
+
+usePageSeo({
+  description: () => page.value?.seo?.description || page.value?.description || '',
+  image: () => global.picture?.light,
+  ogType: 'website',
+  title: () => page.value?.seo?.title || page.value?.title || t('ressources.title'),
+  titleFallbackKey: 'seo.pages.ressources'
 })
 </script>
 

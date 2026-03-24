@@ -1,10 +1,14 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Contexte et pages prioritaires pour assistants / recherche augmentée (AIO)
+# https://massimorusso.io/llms.txt
+
+# Sitemap (généré par @nuxtjs/sitemap à la racine)
 Sitemap: https://massimorusso.io/sitemap.xml
 
-# Disallow admin and private paths
+# Ne pas indexer les zones privées ou techniques
 Disallow: /api/
-Disallow: /_nuxt/
 Disallow: /lead/
+Disallow: /admin/
+Disallow: /_studio/

@@ -116,41 +116,78 @@ useSeoMeta({
   twitterSite: '@massimorusso'
 })
 
-// Données structurées JSON-LD pour le SEO
-const structuredData = computed(() => ({
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  'address': {
-    '@type': 'PostalAddress',
-    'addressCountry': 'US',
-    'addressLocality': 'Boston'
-  },
-  'alumniOf': {
-    '@type': 'CollegeOrUniversity',
-    'department': 'Interactive Design',
-    'name': 'Boston University'
-  },
-  'description': t('index.description') || 'Consultant Frontend Sénior : Vue.js, Nuxt & Modernisation d\'Architecture',
-  'email': global.email,
-  'image': global.picture?.light,
-  'jobTitle': 'Consultant Frontend Sénior',
-  'knowsAbout': ['Vue.js', 'Nuxt.js', 'UX/UI Design', 'Frontend Development', 'Architecture Modernization'],
-  'name': 'Massimo Russo',
-  'sameAs': [
-    'https://www.linkedin.com/in/russomassimo-frontend-consultant',
-    'https://bsky.app/profile/massimorusso.bsky.social'
-  ],
-  'url': siteUrl.value
-}))
+// Données structurées JSON-LD (SEO + AIO : entités Person + WebSite, sameAs complet)
+const siteBase = computed(() => siteUrl.value.replace(/\/$/, ''))
+const structuredData = computed(() => {
+  const personId = `${siteBase.value}#person`
+  const websiteId = `${siteBase.value}#website`
+  const description = t('index.description')
+  const rawImg = global.picture?.light
+  const imageUrl = rawImg
+    ? toAbsoluteUrl(String(rawImg).startsWith('/') ? String(rawImg) : `/${String(rawImg)}`)
+    : undefined
 
-useHead({
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': personId,
+        'address': {
+          '@type': 'PostalAddress',
+          'addressCountry': 'US',
+          'addressLocality': 'Boston'
+        },
+        'alumniOf': {
+          '@type': 'CollegeOrUniversity',
+          'department': 'Interactive Design',
+          'name': 'Boston University'
+        },
+        'description': description,
+        'email': global.email,
+        'image': imageUrl,
+        'jobTitle': 'Consultant frontend senior',
+        'knowsAbout': [
+          'Vue.js',
+          'Nuxt',
+          'Architecture frontend',
+          'Décisions techniques',
+          'Modernisation de stacks',
+          'IA pragmatique'
+        ],
+        'knowsLanguage': ['fr', 'en'],
+        'name': 'Massimo Russo',
+        'sameAs': [
+          'https://www.linkedin.com/in/russomassimo-frontend-consultant',
+          'https://bsky.app/profile/massimorusso.bsky.social',
+          'https://github.com/mass22',
+          'https://x.com/Massimo_Russo_X',
+          'https://discord.com/invite/mass22'
+        ],
+        'url': siteBase.value
+      },
+      {
+        '@type': 'WebSite',
+        '@id': websiteId,
+        'description': description,
+        'inLanguage': ['fr-CA', 'en'],
+        'name': 'Massimo Russo',
+        'publisher': { '@id': personId },
+        'url': `${siteBase.value}/`
+      }
+    ]
+  }
+})
+
+useHead(() => ({
   script: [
     {
+      key: 'ld-json-person',
       innerHTML: JSON.stringify(structuredData.value),
       type: 'application/ld+json'
     }
   ]
-})
+}))
 
 const { data: navigation } = await useAsyncData('navigation', () => Promise.all([
   queryCollectionNavigation('blog')

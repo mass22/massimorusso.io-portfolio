@@ -83,11 +83,15 @@ const copyJson = () => {
   }
 }
 
-// SEO - Empêcher l'indexation des pages de leads
+usePageSeo({
+  description: () => `Détails du lead #${id.value}`,
+  ogType: 'website',
+  title: () => `Lead #${id.value}`,
+  titleFallbackKey: 'seo.pages.lead'
+})
+
 useSeoMeta({
-  description: `Détails du lead #${id.value}`,
-  robots: 'noindex, nofollow, noarchive, nosnippet',
-  title: `Lead #${id.value}`
+  robots: 'noindex, nofollow, noarchive, nosnippet'
 })
 
 // Empêcher également l'indexation via les balises meta supplémentaires

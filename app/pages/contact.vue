@@ -7,11 +7,12 @@ const linkedinUrl = 'https://www.linkedin.com/in/russomassimo-frontend-consultan
 const seoDescription = computed(() => t('contact.seo.description', { email: global.email }))
 const seoTitle = computed(() => t('contact.seo.title'))
 
-useSeoMeta({
+usePageSeo({
   description: seoDescription,
-  ogDescription: seoDescription,
-  ogTitle: seoTitle,
-  title: seoTitle
+  image: () => global.picture?.light,
+  ogType: 'website',
+  title: seoTitle,
+  titleFallbackKey: 'contact.seo.title'
 })
 </script>
 

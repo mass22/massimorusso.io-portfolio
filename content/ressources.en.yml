@@ -1,6 +1,9 @@
 locale: 'en'
 title: "Resources"
 description: "Decision frameworks, thinking tools and practical resources around frontend architecture, technical complexity and pragmatic AI."
+seo:
+  title: "Free resources: decision frameworks, checklists & pragmatic AI"
+  description: "Decision frameworks, thinking tools and practical resources around frontend architecture, technical complexity and pragmatic AI."
 
 links:
   - label: "Suggest a resource"

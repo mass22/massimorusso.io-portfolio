@@ -19,8 +19,15 @@ useHead({
   }
 })
 
+usePageSeo({
+  description: () => t('error.description'),
+  ogType: 'website',
+  title: () => t('error.title'),
+  titleFallbackKey: 'error.title'
+})
+
 useSeoMeta({
-  description: t('error.description'), title: t('error.title')
+  robots: 'noindex, nofollow'
 })
 
 const [{ data: navigation }, { data: files }] = await Promise.all([

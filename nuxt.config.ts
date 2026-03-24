@@ -1,6 +1,27 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 /* eslint-disable */
+import { execSync } from 'node:child_process'
+import path from 'node:path'
+
+/** Après `nuxt prepare`, la base Content peut être vide : restauration depuis le cache (voir scripts/sync-nuxt-content-cache.mjs). */
+function runNuxtContentCacheSync() {
+  try {
+    execSync(`node ${JSON.stringify(path.join(process.cwd(), 'scripts/sync-nuxt-content-cache.mjs'))}`, {
+      cwd: process.cwd(),
+      stdio: 'inherit'
+    })
+  } catch {
+    // Le script sort en 0 même si rien à faire ; erreurs déjà affichées
+  }
+}
+
 export default defineNuxtConfig({
+  hooks: {
+    // Après les hooks @nuxt/content (modules:done) : sinon on restaure avant l’écriture du dump.
+    'modules:done'() {
+      setImmediate(() => runNuxtContentCacheSync())
+    }
+  },
   modules: [
     '@nuxt/eslint',
     '@nuxt/image',
@@ -255,7 +276,7 @@ export default defineNuxtConfig({
     minify: true,
     sourceMap: true, // Source maps pour le code serveur
     prerender: {
-      // Forcer la génération de la route /blog pour la locale par défaut (fr)
+      // Forcer la génération de la route /blog pour la locale par défaut (fr) et du sitemap
       routes: ['/blog']
     },
     // Optimisations pour réduire la taille des bundles

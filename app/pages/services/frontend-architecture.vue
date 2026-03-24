@@ -57,16 +57,15 @@ if (page.value?.images && page.value.images.length > 0 && page.value.images[0]?.
   defineOgImage({ url: global.picture.light })
 }
 
-const title = page.value?.seo?.title || page.value?.title
-const description = page.value?.seo?.description || page.value?.description
+const title = computed(() => page.value?.seo?.title || page.value?.title || '')
+const description = computed(() => page.value?.seo?.description || page.value?.description || '')
 
-useSeoMeta({
+usePageSeo({
   description,
-  ogDescription: description,
-  ogImage: page.value?.images?.[0]?.src || global.picture?.light,
-  ogTitle: title,
+  image: () => page.value?.images?.[0]?.src || global.picture?.light,
   ogType: 'website',
-  title
+  title,
+  titleFallbackKey: 'seo.pages.service'
 })
 
 const serviceStructuredData = computed(() => {
@@ -81,9 +80,9 @@ const serviceStructuredData = computed(() => {
       '@type': 'Country',
       'name': 'Worldwide'
     },
-    description,
+    'description': description.value,
     'image': page.value.images?.[0]?.src || [],
-    'name': title,
+    'name': title.value,
     'provider': {
       '@type': 'Person',
       'email': global.email,
@@ -127,11 +126,12 @@ const breadcrumbStructuredData = computed(() => {
   }
 })
 
-useHead({
+useHead(() => ({
   script: [
     ...(serviceStructuredData.value
       ? [
           {
+            key: 'ld-json-service',
             innerHTML: JSON.stringify(serviceStructuredData.value),
             type: 'application/ld+json'
           }
@@ -140,13 +140,14 @@ useHead({
     ...(breadcrumbStructuredData.value
       ? [
           {
+            key: 'ld-json-breadcrumb',
             innerHTML: JSON.stringify(breadcrumbStructuredData.value),
             type: 'application/ld+json'
           }
         ]
       : [])
   ]
-})
+}))
 </script>
 
 <template>

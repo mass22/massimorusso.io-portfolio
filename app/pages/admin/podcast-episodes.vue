@@ -81,7 +81,13 @@ const filteredEpisodes = computed(() => {
   )
 })
 
-// SEO - Empêcher l'indexation
+usePageSeo({
+  description: 'Interface admin : épisodes du podcast RSS et sélection des épisodes à la une.',
+  ogType: 'website',
+  title: 'Admin — Podcast RSS',
+  titleFallbackKey: 'seo.pages.adminPodcast'
+})
+
 useSeoMeta({
   robots: 'noindex, nofollow'
 })

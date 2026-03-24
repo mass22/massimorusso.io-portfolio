@@ -22,14 +22,15 @@ if (!page.value) {
   })
 }
 
-useSeoMeta({
-  description: page.value?.seo?.description || page.value?.description,
-  ogDescription: page.value?.seo?.description || page.value?.description,
-  ogTitle: page.value?.seo?.title || page.value?.title,
-  title: page.value?.seo?.title || page.value?.title
-})
-
 const { global } = useAppConfig()
+
+usePageSeo({
+  description: () => page.value?.seo?.description || page.value?.description,
+  image: () => global.picture?.light,
+  ogType: 'website',
+  title: () => page.value?.seo?.title || page.value?.title,
+  titleFallbackKey: 'seo.pages.conferences'
+})
 
 const groupedEvents = computed((): Record<Event['category'], Event[]> => {
   const events = page.value?.events || []

@@ -37,12 +37,14 @@ const showMoreEpisodes = computed(() => allNonFeaturedEpisodes.value.length > 3)
 
 const displayAll = ref(false)
 
-// SEO
-useSeoMeta({
-  description: page.value?.seo?.description || page.value?.description || '',
-  ogDescription: page.value?.seo?.description || page.value?.description || '',
-  ogTitle: page.value?.seo?.title || page.value?.title || t('podcast.title', 'Podcast'),
-  title: page.value?.seo?.title || page.value?.title || t('podcast.title', 'Podcast')
+const { global } = useAppConfig()
+
+usePageSeo({
+  description: () => page.value?.seo?.description || page.value?.description || '',
+  image: () => global.picture?.light,
+  ogType: 'website',
+  title: () => page.value?.seo?.title || page.value?.title || t('podcast.title'),
+  titleFallbackKey: 'seo.pages.podcast'
 })
 </script>
 
