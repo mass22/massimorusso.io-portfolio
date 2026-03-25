@@ -3,7 +3,16 @@ import { randomBytes } from 'node:crypto'
 import { insertLead } from '../utils/db'
 import { checkRateLimit, getResetTime } from '../utils/rateLimit'
 import { sendAdminLeadEmail } from '../utils/sendAdminLeadEmail'
+import { notifyLeadWebhookCreated } from '../utils/notifyLeadWebhook'
 import type { LeadContext } from '~/types/content'
+
+/**
+ * Notifications email (Resend) désactivées par défaut.
+ * Mettre `LEAD_EMAIL_NOTIFICATIONS=true` + variables Resend pour réactiver.
+ */
+function shouldSendLeadEmailNotification(consent: boolean): boolean {
+  return consent && process.env.LEAD_EMAIL_NOTIFICATIONS === 'true'
+}
 
 // Schéma de validation pour QualificationResult (validation minimale)
 const QualificationResultSchema = z.object({
@@ -173,9 +182,8 @@ export default defineEventHandler(async (event) => {
     // Insérer le lead dans la base de données avec la qualification
     const leadId = await insertLead(leadContext, accessToken, data.qualification)
 
-    // Si consent est true, envoyer l'email de notification
-    // Ne pas faire échouer la requête si l'envoi d'email échoue
-    if (data.consent) {
+    // Notification email (optionnelle, désactivée par défaut)
+    if (shouldSendLeadEmailNotification(data.consent)) {
       console.log('[API] 📧 Tentative d\'envoi d\'email pour le lead:', leadId)
       sendAdminLeadEmail({
         context: leadContext,
@@ -200,9 +208,16 @@ export default defineEventHandler(async (event) => {
           console.error('[API]   Message:', error.message)
           console.error('[API]   Stack:', error.stack)
         })
+    } else if (data.consent) {
+      console.log('[API] ⏭️  Notifications email désactivées (LEAD_EMAIL_NOTIFICATIONS≠true), email non envoyé')
     } else {
       console.log('[API] ⏭️  Consentement non donné, email non envoyé')
     }
+
+    notifyLeadWebhookCreated({
+      leadId,
+      qualificationScore: data.qualification?.score
+    })
 
     // Retourner l'ID et le token
     return {
@@ -224,8 +239,7 @@ export default defineEventHandler(async (event) => {
       try {
         const leadId = await insertLead(leadContext, newToken, data.qualification)
 
-        // Si consent est true, envoyer l'email de notification
-        if (data.consent) {
+        if (shouldSendLeadEmailNotification(data.consent)) {
           sendAdminLeadEmail({
             context: leadContext,
             email: data.email,
@@ -238,6 +252,11 @@ export default defineEventHandler(async (event) => {
             console.error('[API] Erreur lors de l\'envoi de l\'email (non bloquante):', error)
           })
         }
+
+        notifyLeadWebhookCreated({
+          leadId,
+          qualificationScore: data.qualification?.score
+        })
 
         return {
           id: leadId,

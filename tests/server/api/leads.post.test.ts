@@ -73,6 +73,10 @@ describe('POST /api/leads', () => {
     console.warn = originalConsoleWarn
   })
 
+  afterEach(() => {
+    vi.unstubAllEnvs()
+  })
+
   beforeEach(() => {
     vi.clearAllMocks()
 
@@ -223,7 +227,25 @@ describe('POST /api/leads', () => {
     await expect(handler(mockEvent)).rejects.toThrow()
   })
 
-  it('doit envoyer un email si consent est true', async () => {
+  it('ne doit pas envoyer d\'email par défaut même si consent est true (LEAD_EMAIL_NOTIFICATIONS)', async () => {
+    vi.stubEnv('LEAD_EMAIL_NOTIFICATIONS', undefined)
+    vi.mocked(insertLead).mockResolvedValue(1)
+
+    const mockEvent = {
+      headers: {},
+      method: 'POST',
+      node: { req: { socket: { remoteAddress: '127.0.0.1' } } }
+    }
+
+    await handler(mockEvent)
+
+    await new Promise(resolve => setTimeout(resolve, 100))
+
+    expect(sendAdminLeadEmail).not.toHaveBeenCalled()
+  })
+
+  it('doit envoyer un email si LEAD_EMAIL_NOTIFICATIONS=true et consent est true', async () => {
+    vi.stubEnv('LEAD_EMAIL_NOTIFICATIONS', 'true')
     vi.mocked(insertLead).mockResolvedValue(1)
 
     const mockEvent = {
