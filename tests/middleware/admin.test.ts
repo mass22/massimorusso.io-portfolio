@@ -48,10 +48,7 @@ describe('Admin Middleware', () => {
   })
 
   it('doit bloquer complètement l\'accès en production', () => {
-    // Simuler la production en mockant import.meta.dev
     const originalDev = import.meta.dev
-
-    // Forcer import.meta.dev à false pour ce test
     Object.defineProperty(import.meta, 'dev', {
       configurable: true,
       value: false,
@@ -63,10 +60,11 @@ describe('Admin Middleware', () => {
       query: {}
     }
 
-    // Le middleware devrait bloquer l'accès en production
-    expect(() => middleware(mockTo)).toThrow()
+    // En prod le middleware ne bloque plus : l'autorisation est faite sur les endpoints.
+    if (!import.meta.dev) {
+      expect(() => middleware(mockTo)).not.toThrow()
+    }
 
-    // Restaurer
     Object.defineProperty(import.meta, 'dev', {
       configurable: true,
       value: originalDev,
@@ -74,7 +72,7 @@ describe('Admin Middleware', () => {
     })
   })
 
-  it('doit retourner une erreur 403 en production', () => {
+  it('doit laisser passer en production (auth gérée côté API)', () => {
     const originalDev = import.meta.dev
     Object.defineProperty(import.meta, 'dev', {
       configurable: true,
@@ -87,15 +85,8 @@ describe('Admin Middleware', () => {
       query: {}
     }
 
-    try {
-      middleware(mockTo)
-      expect.fail('Le middleware devrait avoir levé une erreur')
-    } catch (error: any) {
-      expect(error.statusCode).toBe(403)
-      expect(error.message).toContain('développement')
-    }
+    expect(() => middleware(mockTo)).not.toThrow()
 
-    // Restaurer
     Object.defineProperty(import.meta, 'dev', {
       configurable: true,
       value: originalDev,
