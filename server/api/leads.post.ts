@@ -214,7 +214,7 @@ export default defineEventHandler(async (event) => {
       console.log('[API] ⏭️  Consentement non donné, email non envoyé')
     }
 
-    notifyLeadWebhookCreated({
+    await notifyLeadWebhookCreated({
       leadId,
       qualificationScore: data.qualification?.score
     })
@@ -253,7 +253,7 @@ export default defineEventHandler(async (event) => {
           })
         }
 
-        notifyLeadWebhookCreated({
+        await notifyLeadWebhookCreated({
           leadId,
           qualificationScore: data.qualification?.score
         })

@@ -18,9 +18,8 @@ describe('notifyLeadWebhook', () => {
     globalThis.fetch = fetchMock as unknown as typeof fetch
 
     const { notifyLeadWebhookCreated } = await import('~/server/utils/notifyLeadWebhook')
-    notifyLeadWebhookCreated({ leadId: 1 })
+    await notifyLeadWebhookCreated({ leadId: 1 })
 
-    await new Promise(r => setTimeout(r, 0))
     expect(fetchMock).not.toHaveBeenCalled()
   })
 
@@ -30,16 +29,33 @@ describe('notifyLeadWebhook', () => {
     globalThis.fetch = fetchMock as unknown as typeof fetch
 
     const { notifyLeadWebhookCreated } = await import('~/server/utils/notifyLeadWebhook')
-    notifyLeadWebhookCreated({ leadId: 42, qualificationScore: 5 })
+    await notifyLeadWebhookCreated({ leadId: 42, qualificationScore: 5 })
 
     await vi.waitFor(() => expect(fetchMock).toHaveBeenCalled())
     const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit]
     expect(url).toBe('https://ntfy.sh/my-topic')
     expect(init.method).toBe('POST')
-    expect(init.headers).toMatchObject({ 'Content-Type': 'text/plain; charset=utf-8' })
+    expect(init.headers).toMatchObject({
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Title': 'Nouveau lead',
+      'Priority': 'high'
+    })
     expect(init.body).toContain('Nouveau lead #42')
     expect(init.body).toContain('score 5')
     expect(init.body).toContain('https://example.com/lead')
+  })
+
+  it('ajoute https:// si l’URL n’a pas de schéma (ntfy)', async () => {
+    vi.stubEnv('LEAD_NOTIFY_URL', 'ntfy.sh/my-topic')
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, text: async () => '' })
+    globalThis.fetch = fetchMock as unknown as typeof fetch
+
+    const { notifyLeadWebhookCreated } = await import('~/server/utils/notifyLeadWebhook')
+    await notifyLeadWebhookCreated({ leadId: 7 })
+
+    await vi.waitFor(() => expect(fetchMock).toHaveBeenCalled())
+    const [url] = fetchMock.mock.calls[0] as [string, RequestInit]
+    expect(url).toBe('https://ntfy.sh/my-topic')
   })
 
   it('envoie du JSON pour Discord', async () => {
@@ -48,7 +64,7 @@ describe('notifyLeadWebhook', () => {
     globalThis.fetch = fetchMock as unknown as typeof fetch
 
     const { notifyLeadWebhookCreated } = await import('~/server/utils/notifyLeadWebhook')
-    notifyLeadWebhookCreated({ leadId: 1 })
+    await notifyLeadWebhookCreated({ leadId: 1 })
 
     await vi.waitFor(() => expect(fetchMock).toHaveBeenCalled())
     const [, init] = fetchMock.mock.calls[0] as [string, RequestInit]
