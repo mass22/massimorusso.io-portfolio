@@ -1,7 +1,30 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 /* eslint-disable */
+import { defineNuxtModule } from '@nuxt/kit'
 import { execSync } from 'node:child_process'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
+
+/**
+ * Avec `content.preview.api` (Nuxt Studio), @nuxt/content installe `nuxt-component-meta`
+ * après le scan des composants : `components:extend` ne repasse pas, le fichier
+ * `.nuxt/component-meta.mjs` n’est jamais créé et Nitro plante sur
+ * virtual:#nuxt-component-meta/nitro (ENOENT).
+ */
+function contentPreviewComponentMetaStub() {
+  return defineNuxtModule({
+    meta: { name: 'content-preview-component-meta-stub' },
+    setup(_options, nuxt) {
+      nuxt.hook('nitro:config', () => {
+        const file = path.join(nuxt.options.buildDir, 'component-meta.mjs')
+        if (!existsSync(file)) {
+          mkdirSync(nuxt.options.buildDir, { recursive: true })
+          writeFileSync(file, 'export default {}\n', 'utf-8')
+        }
+      })
+    }
+  })
+}
 
 /** Après `nuxt prepare`, la base Content peut être vide : restauration depuis le cache (voir scripts/sync-nuxt-content-cache.mjs). */
 function runNuxtContentCacheSync() {
@@ -23,6 +46,7 @@ export default defineNuxtConfig({
     }
   },
   modules: [
+    contentPreviewComponentMetaStub(),
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/ui',
@@ -79,6 +103,11 @@ export default defineNuxtConfig({
     '/lead/**': {
       headers: {
         'X-Robots-Tag': 'noindex, nofollow, noarchive, nosnippet'
+      }
+    },
+    '/lp/audit': {
+      headers: {
+        'X-Robots-Tag': 'noindex, nofollow'
       }
     },
     // Protéger les routes d'administration
@@ -392,7 +421,12 @@ export default defineNuxtConfig({
         en: '/resources'
       },
       // Exclure la route /lead de la localisation i18n
-      'lead/[id]': false
+      'lead/[id]': false,
+      // Landing vente : même URL pour FR et EN (lien direct, non indexée)
+      'lp/audit': {
+        en: '/lp/audit',
+        fr: '/lp/audit'
+      }
     }
   },
   image: {

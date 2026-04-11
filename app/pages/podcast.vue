@@ -114,7 +114,9 @@ usePageSeo({
     >
       <div class="flex flex-col gap-6">
         <PodcastEpisodeCard
-          v-for="(episode, index) in (displayAll ? allNonFeaturedEpisodes : regularEpisodes)"
+          v-for="(episode, index) in displayAll
+            ? allNonFeaturedEpisodes
+            : regularEpisodes"
           :key="`episode-${episode.guid || episode.link || index}`"
           :episode="episode"
         />
@@ -126,7 +128,11 @@ usePageSeo({
         class="flex justify-center mt-8"
       >
         <UButton
-          :label="displayAll ? t('podcast.showLess', 'Afficher moins') : t('podcast.showMore', 'Voir tous les épisodes')"
+          :label="
+            displayAll
+              ? t('podcast.showLess', 'Afficher moins')
+              : t('podcast.showMore', 'Voir tous les épisodes')
+          "
           :icon="displayAll ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
           color="neutral"
           variant="outline"
@@ -139,6 +145,6 @@ usePageSeo({
     v-else
     class="text-muted text-center py-16"
   >
-    {{ t('podcast.noneAvailable', 'Aucun épisode disponible') }}
+    {{ t("podcast.noneAvailable", "Aucun épisode disponible") }}
   </div>
 </template>

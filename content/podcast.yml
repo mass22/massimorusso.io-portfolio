@@ -1,5 +1,5 @@
 title: On parle Dev
-description: Le podcast pour les développeurs qui veulent penser plus loin que le code. Architecture, décisions techniques, évolution de carrière : du vécu, pas de la théorie.
+description: "Le podcast pour les développeurs qui veulent penser plus loin que le code. Architecture, décisions techniques, évolution de carrière : du vécu, pas de la théorie."
 episodes: []
 featuredEpisodes:
   - f4b514c7c74836f5784767e725ceef70268dc3f6
@@ -28,5 +28,5 @@ platforms:
 player:
   enabled: false
 seo:
-  title: On parle Dev : Le podcast Vue.js, architecture frontend & évolution développeur
-  description: Le podcast pour les développeurs qui veulent penser plus loin que le code. Architecture, décisions techniques, évolution de carrière : du vécu, pas de la théorie.
+  title: "On parle Dev : Le podcast Vue.js, architecture frontend & évolution développeur"
+  description: "Le podcast pour les développeurs qui veulent penser plus loin que le code. Architecture, décisions techniques, évolution de carrière : du vécu, pas de la théorie."

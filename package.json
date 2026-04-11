@@ -69,6 +69,7 @@
   },
   "pnpm": {
     "overrides": {
+      "nuxt-component-meta": "0.16.0",
       "sharp": "^0.34.5"
     },
     "patchedDependencies": {

@@ -39,6 +39,9 @@ const getColorClass = (color?: string) =>
   color && !color.startsWith('#') ? color : ''
 
 const hasLogos = computed(() => logos.value.length > 0)
+
+const logoShellClass
+  = 'flex items-center justify-center rounded-lg bg-white px-4 py-2 ring-1 ring-zinc-200/90 dark:ring-zinc-600/50'
 </script>
 
 <template>
@@ -74,54 +77,65 @@ const hasLogos = computed(() => logos.value.length > 0)
             target="_blank"
             rel="noopener noreferrer"
             :aria-label="`${logo.name} - ${t('homepage.companies.visit')}`"
-            class="group flex shrink-0 items-center justify-center gap-3 rounded-xl border border-default/30 px-8 py-4 min-h-20 marquee-card transition-colors"
+            class="group flex min-h-18 shrink-0 items-center justify-center gap-3 rounded-xl border border-default/40 bg-default/30 px-4 py-3 transition-colors hover:border-default"
           >
             <div
               v-if="getImageProps(logo)"
-              class="marquee-logo-wrap flex h-12 w-28 shrink-0 items-center justify-center"
+              :class="logoShellClass"
             >
-              <img
-                :src="getImageProps(logo)!.src"
-                :alt="getImageProps(logo)!.alt"
-                width="96"
-                height="40"
-                class="marquee-logo-img max-h-10 max-w-24 object-contain object-center"
-                loading="lazy"
-              >
+              <div class="marquee-logo-wrap flex h-10 w-28 shrink-0 items-center justify-center">
+                <img
+                  :src="getImageProps(logo)!.src"
+                  :alt="getImageProps(logo)!.alt"
+                  width="96"
+                  height="40"
+                  class="marquee-logo-img max-h-8 max-w-24 object-contain object-center"
+                  loading="lazy"
+                >
+              </div>
             </div>
-            <UIcon
+            <div
               v-else-if="logo.icon"
-              :name="logo.icon"
-              :class="['size-10 shrink-0', getColorClass(logo.color) || 'text-muted']"
-              :style="getColorStyle(logo.color)"
-            />
-            <span class="marquee-logo-name">{{ logo.name }}</span>
+              :class="logoShellClass"
+            >
+              <UIcon
+                :name="logo.icon"
+                :class="['size-8 shrink-0', getColorClass(logo.color) || 'text-zinc-700']"
+                :style="getColorStyle(logo.color)"
+              />
+            </div>
+            <span class="marquee-logo-name max-w-28 truncate text-sm font-medium text-highlighted">{{ logo.name }}</span>
           </ULink>
           <div
             v-else
-            class="flex shrink-0 items-center justify-center gap-3 rounded-xl border border-default/30 px-8 py-4 min-h-20 marquee-card"
+            class="flex min-h-18 shrink-0 items-center justify-center gap-3 rounded-xl border border-default/40 bg-default/30 px-4 py-3"
             :aria-label="logo.name"
           >
             <div
               v-if="getImageProps(logo)"
-              class="marquee-logo-wrap flex h-12 w-28 shrink-0 items-center justify-center"
+              :class="logoShellClass"
             >
-              <img
-                :src="getImageProps(logo)!.src"
-                :alt="getImageProps(logo)!.alt"
-                width="96"
-                height="40"
-                class="marquee-logo-img max-h-10 max-w-24 object-contain object-center"
-                loading="lazy"
-              >
+              <div class="marquee-logo-wrap flex h-10 w-28 shrink-0 items-center justify-center">
+                <img
+                  :src="getImageProps(logo)!.src"
+                  :alt="getImageProps(logo)!.alt"
+                  width="96"
+                  height="40"
+                  class="marquee-logo-img max-h-8 max-w-24 object-contain object-center"
+                  loading="lazy"
+                >
+              </div>
             </div>
-            <UIcon
+            <div
               v-else-if="logo.icon"
-              :name="logo.icon"
-              :class="['size-10 shrink-0', getColorClass(logo.color) || 'text-muted']"
-              :style="getColorStyle(logo.color)"
-            />
-            <span class="marquee-logo-name">{{ logo.name }}</span>
+              :class="logoShellClass"
+            >
+              <UIcon
+                :name="logo.icon"
+                :class="['size-8 shrink-0', getColorClass(logo.color) || 'text-zinc-700']"
+                :style="getColorStyle(logo.color)"
+              />
+            </div>
           </div>
         </template>
       </UMarquee>
@@ -130,51 +144,18 @@ const hasLogos = computed(() => logos.value.length > 0)
 </template>
 
 <style scoped>
-/* Conteneur standardisé : taille fixe pour tous les logos */
 .marquee-logo-wrap {
-  min-height: 3rem;
+  min-height: 2.5rem;
   min-width: 7rem;
 }
 
-/* Noms des logos : noir pour lisibilité (évite l'héritage bleu des liens) */
-.marquee-logo-name {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgb(24 24 27);
-  max-width: 100px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.dark .marquee-logo-name {
-  color: rgb(244 244 245);
-}
-
-/* Logo images : noir et blanc, fond zinc pour bonne visibilité */
 .marquee-logo-img {
-  filter: grayscale(100%) brightness(1.2) contrast(1.15);
-  transition: filter 0.3s ease;
+  filter: none;
+  transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
 .group:hover .marquee-logo-img {
-  filter: grayscale(0%) brightness(1) contrast(1);
-}
-
-/* Fond cohérent avec le site, contraste optimisé pour logos clairs et foncés */
-.marquee-card {
-  background-color: rgb(228 228 231 / 0.95); /* zinc-200, contraste pour logos blancs */
-}
-
-.dark .marquee-card {
-  background-color: rgb(39 39 42 / 0.95); /* zinc-800, contraste pour logos clairs */
-}
-
-.group:hover.marquee-card {
-  background-color: rgb(212 212 216 / 0.98); /* zinc-300 au survol */
-}
-
-.dark .group:hover.marquee-card {
-  background-color: rgb(63 63 70 / 0.98); /* zinc-700 au survol */
+  filter: none;
+  opacity: 1;
 }
 </style>

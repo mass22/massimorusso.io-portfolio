@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { LeadContext as LeadContextType } from '~/types/content'
 import { getChatConfig } from './chatConfig'
-import type { LeadContext } from './chatConfig'
+import type { ChatConfig, LeadContext } from './chatConfig'
 import type { Locale } from './i18n'
-import { qualifyLead } from './qualification'
+import { qualifyAuditLead, qualifyLead } from './qualification'
 import type { QualificationResult } from './qualification'
 
 interface Message {
@@ -14,6 +14,7 @@ interface Message {
 }
 
 const props = defineProps<{
+  config?: ChatConfig
   locale: Locale
 }>()
 
@@ -30,7 +31,7 @@ const messagesContainer = ref<HTMLElement | null>(null)
 const qualificationResult = ref<QualificationResult | null>(null)
 
 // Configuration réactive selon la locale
-const chatConfig = computed(() => getChatConfig(props.locale))
+const chatConfig = computed(() => props.config ?? getChatConfig(props.locale))
 
 // Initialiser currentQuestionId avec la config
 watch(() => chatConfig.value.startQuestionId, (startId) => {
@@ -135,8 +136,9 @@ const handleOptionSelect = (option: { label: string, value: string, nextQuestion
 
 // Afficher le message d'évaluation
 const showAssessmentMessage = () => {
-  // Qualifier le lead
-  const result = qualifyLead(context.value)
+  const result = chatConfig.value.startQuestionId === 'audit_situation'
+    ? qualifyAuditLead(context.value)
+    : qualifyLead(context.value)
   qualificationResult.value = result
 
   // Passer directement au formulaire (le message sera affiché dans LeadCaptureForm)

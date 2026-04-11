@@ -140,10 +140,109 @@ export function qualifyLead(context: LeadContext): QualificationResult {
 }
 
 /**
+ * Qualification dédiée au flux landing `/lp/audit` (`getAuditChatConfig`).
+ * Alignée sur les offres Clarté / Structure / Transformation de la page.
+ *
+ * Pondération : douleur forte ou intention d’audit explicite, taille d’équipe, urgence (démarrage ASAP = fort signal).
+ * Seuils : high ≥ 7, medium ≥ 4, sinon low.
+ *
+ * Offres : `mission` (Transformation ~ gros périmètre / crise à l’échelle), `audit` (Structure — cas principal),
+ * `coaching` (Clarté / profil léger).
+ */
+export function qualifyAuditLead(context: LeadContext): QualificationResult {
+  let score = 0
+  const reasons: string[] = []
+
+  const situation = context.audit_situation
+  const team = context.audit_team
+  const urgency = context.audit_urgency
+
+  if (
+    situation === 'architecture_floue'
+    || situation === 'dette_technique'
+    || situation === 'scaling'
+  ) {
+    score += 2
+    reasons.push(`audit_situation_${situation}`)
+  } else if (situation === 'regard_externe') {
+    score += 2
+    reasons.push('audit_situation_regard_externe')
+  }
+
+  if (team === '1-3') {
+    score += 1
+    reasons.push('audit_team_1_3')
+  } else if (team === '4-10') {
+    score += 2
+    reasons.push('audit_team_4_10')
+  } else if (team === '10+') {
+    score += 3
+    reasons.push('audit_team_10_plus')
+  }
+
+  if (urgency === 'immediat') {
+    score += 3
+    reasons.push('audit_urgency_immediat')
+  } else if (urgency === '1-2-mois') {
+    score += 1
+    reasons.push('audit_urgency_1_2_mois')
+  } else if (urgency === '3-6-mois') {
+    reasons.push('audit_urgency_3_6_mois')
+  }
+
+  let level: 'high' | 'medium' | 'low'
+  if (score >= 7) {
+    level = 'high'
+  } else if (score >= 4) {
+    level = 'medium'
+  } else {
+    level = 'low'
+  }
+
+  let recommendedOffer: QualificationResult['recommendedOffer'] = 'audit'
+
+  const crisisAtScale
+    = situation === 'dette_technique'
+      || situation === 'scaling'
+
+  if (team === '10+') {
+    recommendedOffer = 'mission'
+  } else if (crisisAtScale && team === '4-10' && urgency === 'immediat') {
+    recommendedOffer = 'mission'
+  } else if (score <= 3 && team === '1-3') {
+    recommendedOffer = 'coaching'
+  } else if (
+    team === '1-3'
+    && urgency === '3-6-mois'
+    && situation === 'regard_externe'
+  ) {
+    recommendedOffer = 'coaching'
+  }
+
+  return {
+    level,
+    reasons,
+    recommendedOffer,
+    score
+  }
+}
+
+/**
  * Dictionnaires de traduction pour les codes de raison
  */
 const reasonTranslations: Record<Locale, Record<string, string>> = {
   en: {
+    // Audit LP (/lp/audit)
+    audit_situation_architecture_floue: 'Unclear architecture',
+    audit_situation_dette_technique: 'Technical debt',
+    audit_situation_scaling: 'Scaling strain',
+    audit_situation_regard_externe: 'Outside perspective',
+    audit_team_1_3: 'Team 1–3 devs',
+    audit_team_4_10: 'Team 4–10 devs',
+    audit_team_10_plus: 'Team 10+ devs',
+    audit_urgency_immediat: 'ASAP',
+    audit_urgency_1_2_mois: '1–2 months',
+    audit_urgency_3_6_mois: '3–6 months',
     // Services
     service_architecture_frontend: 'Frontend Architecture',
     service_vue_nuxt: 'Vue/Nuxt',
@@ -165,6 +264,17 @@ const reasonTranslations: Record<Locale, Record<string, string>> = {
     stack_vue_nuxt: 'Vue/Nuxt stack'
   },
   fr: {
+    // Audit LP (/lp/audit)
+    audit_situation_architecture_floue: 'Architecture peu claire',
+    audit_situation_dette_technique: 'Dette technique',
+    audit_situation_scaling: 'Montée en charge',
+    audit_situation_regard_externe: 'Regard externe',
+    audit_team_1_3: 'Équipe 1–3 devs',
+    audit_team_4_10: 'Équipe 4–10 devs',
+    audit_team_10_plus: 'Équipe 10+ devs',
+    audit_urgency_immediat: 'Démarrage immédiat',
+    audit_urgency_1_2_mois: '1 à 2 mois',
+    audit_urgency_3_6_mois: '3 à 6 mois',
     // Services
     service_architecture_frontend: 'Architecture Frontend',
     service_vue_nuxt: 'Vue/Nuxt',

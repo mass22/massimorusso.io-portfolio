@@ -220,7 +220,7 @@ const { data: files } = useLazyAsyncData('search', () => Promise.all([
         :links="navLinks"
         :fuse="{ resultLimit: 42 }"
       />
-      <ChatbotWidget v-if="!route.path.startsWith('/lead/')" />
+      <ChatbotWidget v-if="!route.path.startsWith('/lead/') && !route.path.startsWith('/lp/audit')" />
     </ClientOnly>
   </UApp>
 </template>

@@ -24,6 +24,35 @@ export interface LeadContext {
   [key: string]: string | undefined
 }
 
+/** Libellés alignés sur `getAuditChatConfig` (résumé fidèle, pas de faux « service »). */
+const AUDIT_SITUATION_SUMMARY: Record<'en' | 'fr', Record<string, string>> = {
+  fr: {
+    architecture_floue: 'Personne ne comprend vraiment l\'architecture',
+    dette_technique: 'La dette technique freine tout',
+    scaling: 'On scale et ça commence à craquer',
+    regard_externe: 'On veut un regard externe avant de continuer'
+  },
+  en: {
+    architecture_floue: 'Nobody really understands the architecture',
+    dette_technique: 'Technical debt is slowing everything down',
+    scaling: 'We\'re scaling and things are breaking',
+    regard_externe: 'We want an outside perspective before moving forward'
+  }
+}
+
+const AUDIT_TEAM_SUMMARY: Record<'en' | 'fr', Record<string, string>> = {
+  fr: {
+    '1-3': '1 à 3 développeurs',
+    '4-10': '4 à 10 développeurs',
+    '10+': 'Plus de 10 développeurs'
+  },
+  en: {
+    '1-3': '1 to 3 developers',
+    '4-10': '4 to 10 developers',
+    '10+': 'More than 10 developers'
+  }
+}
+
 /**
  * Données de traduction pour les questions et options
  */
@@ -301,6 +330,28 @@ export function getChatConfig(locale: 'fr' | 'en'): ChatConfig {
  * @returns Un résumé formaté du contexte
  */
 export function formatContextSummary(context: LeadContext, locale: Locale = 'fr'): string {
+  const loc: 'en' | 'fr' = locale === 'fr' ? 'fr' : 'en'
+
+  if (context.audit_situation || context.audit_team || context.audit_urgency) {
+    const parts: string[] = []
+    const t = translations[locale].contextLabels
+
+    if (context.audit_situation) {
+      const label = AUDIT_SITUATION_SUMMARY[loc][context.audit_situation] || context.audit_situation
+      parts.push(loc === 'fr' ? `Situation : ${label}` : `Situation: ${label}`)
+    }
+    if (context.audit_team) {
+      const label = AUDIT_TEAM_SUMMARY[loc][context.audit_team] || context.audit_team
+      parts.push(loc === 'fr' ? `Équipe frontend : ${label}` : `Frontend team: ${label}`)
+    }
+    if (context.audit_urgency) {
+      const urgencyLabel = t.urgency[context.audit_urgency as keyof typeof t.urgency] || context.audit_urgency
+      parts.push(loc === 'fr' ? `Démarrage souhaité : ${urgencyLabel}` : `Desired start: ${urgencyLabel}`)
+    }
+
+    return parts.join('\n')
+  }
+
   const t = translations[locale].contextLabels
   const parts: string[] = []
 
@@ -330,4 +381,93 @@ export function formatContextSummary(context: LeadContext, locale: Locale = 'fr'
   }
 
   return parts.join('\n')
+}
+
+export function getAuditChatConfig(locale: 'fr' | 'en'): ChatConfig {
+  const questions: ChatQuestion[] = [
+    {
+      id: 'audit_situation',
+      text: locale === 'fr'
+        ? 'Quelle est la situation de votre équipe frontend en ce moment ?'
+        : 'What\'s the current situation with your frontend team?',
+      options: [
+        {
+          label: locale === 'fr'
+            ? 'Personne ne comprend vraiment l\'architecture'
+            : 'Nobody really understands the architecture',
+          value: 'architecture_floue',
+          nextQuestionId: 'audit_team'
+        },
+        {
+          label: locale === 'fr'
+            ? 'La dette technique freine tout'
+            : 'Technical debt is slowing everything down',
+          value: 'dette_technique',
+          nextQuestionId: 'audit_team'
+        },
+        {
+          label: locale === 'fr'
+            ? 'On scale et ça commence à craquer'
+            : 'We\'re scaling and things are breaking',
+          value: 'scaling',
+          nextQuestionId: 'audit_team'
+        },
+        {
+          label: locale === 'fr'
+            ? 'On veut un regard externe avant de continuer'
+            : 'We want an outside perspective before moving forward',
+          value: 'regard_externe',
+          nextQuestionId: 'audit_team'
+        }
+      ]
+    },
+    {
+      id: 'audit_team',
+      text: locale === 'fr'
+        ? 'Combien de devs frontend dans votre équipe ?'
+        : 'How many frontend developers on your team?',
+      options: [
+        {
+          label: locale === 'fr' ? '1 à 3 développeurs' : '1 to 3 developers',
+          value: '1-3',
+          nextQuestionId: 'audit_urgency'
+        },
+        {
+          label: locale === 'fr' ? '4 à 10 développeurs' : '4 to 10 developers',
+          value: '4-10',
+          nextQuestionId: 'audit_urgency'
+        },
+        {
+          label: locale === 'fr' ? 'Plus de 10 développeurs' : 'More than 10 developers',
+          value: '10+',
+          nextQuestionId: 'audit_urgency'
+        }
+      ]
+    },
+    {
+      id: 'audit_urgency',
+      text: locale === 'fr'
+        ? 'Quand souhaitez-vous démarrer ?'
+        : 'When would you like to start?',
+      options: [
+        {
+          label: locale === 'fr' ? 'Le plus tôt possible' : 'As soon as possible',
+          value: 'immediat'
+        },
+        {
+          label: locale === 'fr' ? 'Dans 1 à 2 mois' : 'In 1 to 2 months',
+          value: '1-2-mois'
+        },
+        {
+          label: locale === 'fr' ? 'Dans 3 à 6 mois' : 'In 3 to 6 months',
+          value: '3-6-mois'
+        }
+      ]
+    }
+  ]
+
+  return {
+    questions,
+    startQuestionId: 'audit_situation'
+  }
 }

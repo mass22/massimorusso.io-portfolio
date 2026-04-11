@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import type { LeadContext as LeadContextType } from '~/types/content'
 import ChatFlow from './ChatFlow.vue'
+import type { ChatConfig } from './chatConfig'
 import type { Locale } from './i18n'
 import { t } from './i18n'
 
 import LeadCaptureForm from './LeadCaptureForm.vue'
+
+const props = defineProps<{
+  config?: ChatConfig
+}>()
 
 const { y } = useWindowScroll()
 
@@ -224,6 +229,7 @@ onUnmounted(() => {
           >
             <ChatFlow
               ref="chatFlowRef"
+              :config="props.config"
               :locale="locale"
               @complete="handleFlowComplete"
             />

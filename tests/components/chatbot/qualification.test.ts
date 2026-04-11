@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { LeadContext } from '~/app/components/chatbot/chatConfig'
-import { formatQualificationMessage, formatReasons, qualifyLead } from '~/app/components/chatbot/qualification.ts'
+import { formatQualificationMessage, formatReasons, qualifyAuditLead, qualifyLead } from '~/app/components/chatbot/qualification.ts'
 import type { QualificationResult } from '~/app/components/chatbot/qualification.ts'
 
 describe('qualification', () => {
@@ -760,6 +760,63 @@ describe('qualification', () => {
         expect(message).toBeTruthy()
         expect(typeof message).toBe('string')
       })
+    })
+  })
+
+  describe('qualifyAuditLead', () => {
+    it('doit scorer fort et recommander mission (très grosse équipe + urgence)', () => {
+      const context: LeadContext = {
+        audit_situation: 'dette_technique',
+        audit_team: '10+',
+        audit_urgency: 'immediat'
+      }
+      const r = qualifyAuditLead(context)
+
+      expect(r.score).toBe(8)
+      expect(r.level).toBe('high')
+      expect(r.recommendedOffer).toBe('mission')
+      expect(r.reasons).toContain('audit_situation_dette_technique')
+      expect(r.reasons).toContain('audit_team_10_plus')
+      expect(r.reasons).toContain('audit_urgency_immediat')
+    })
+
+    it('doit être high + Structure (audit) pour regard externe, équipe 4–10 et démarrage immédiat', () => {
+      const context: LeadContext = {
+        audit_situation: 'regard_externe',
+        audit_team: '4-10',
+        audit_urgency: 'immediat'
+      }
+      const r = qualifyAuditLead(context)
+
+      expect(r.score).toBe(7)
+      expect(r.level).toBe('high')
+      expect(r.recommendedOffer).toBe('audit')
+    })
+
+    it('doit recommander coaching pour un profil léger', () => {
+      const context: LeadContext = {
+        audit_situation: 'regard_externe',
+        audit_team: '1-3',
+        audit_urgency: '3-6-mois'
+      }
+      const r = qualifyAuditLead(context)
+
+      expect(r.score).toBe(3)
+      expect(r.level).toBe('low')
+      expect(r.recommendedOffer).toBe('coaching')
+    })
+
+    it('doit recommander audit pour un score intermédiaire typique', () => {
+      const context: LeadContext = {
+        audit_situation: 'architecture_floue',
+        audit_team: '4-10',
+        audit_urgency: '1-2-mois'
+      }
+      const r = qualifyAuditLead(context)
+
+      expect(r.score).toBe(5)
+      expect(r.level).toBe('medium')
+      expect(r.recommendedOffer).toBe('audit')
     })
   })
 
