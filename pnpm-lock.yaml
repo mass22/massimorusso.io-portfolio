@@ -65,6 +65,9 @@ importers:
       nuxt-studio:
         specifier: beta
         version: 1.0.0-beta.3(db0@0.3.4(better-sqlite3@12.5.0))(ioredis@5.8.2)(magicast@0.5.1)(vue@3.5.26(typescript@5.9.3))
+      sharp:
+        specifier: ^0.34.5
+        version: 0.34.5
       zod:
         specifier: ^3.25.76
         version: 3.25.76
@@ -105,9 +108,6 @@ importers:
       sass-embedded:
         specifier: ^1.93.2
         version: 1.97.1
-      sharp:
-        specifier: ^0.34.5
-        version: 0.34.5
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
