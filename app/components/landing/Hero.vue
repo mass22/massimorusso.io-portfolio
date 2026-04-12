@@ -509,6 +509,7 @@ onMounted(() => {
     <!-- Image LCP : doit être dans le HTML initial, pas dans ClientOnly -->
     <!-- Optimisée avec taille fixe pour réduire la taille téléchargée -->
     <NuxtImg
+      provider="none"
       src="/hero/photo.webp"
       :alt="t('hero.image.alt')"
       width="695"

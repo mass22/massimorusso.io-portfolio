@@ -115,6 +115,7 @@ const scrollToContact = () => {
             :aria-label="t('lpAudit.header.logoAria')"
           >
             <NuxtImg
+              provider="none"
               class="size-10 shrink-0 rounded-full object-cover ring-1 ring-default"
               height="40"
               :src="global.picture?.light || '/hero/photo.webp'"

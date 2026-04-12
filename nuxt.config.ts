@@ -455,7 +455,9 @@ export default defineNuxtConfig({
     provider: 'ipx',
     ipx: {
       maxAge: 31536000 // 1 an en secondes (géré par le middleware server/middleware/ipx-cache.ts)
-    }
+    },
+    /** Passe-through sans IPX — requis pour `provider="none"` sur `<NuxtImg>` (assets déjà optimisés dans /public). */
+    none: {}
   },
   devtools: {
     enabled: process.env.NODE_ENV === 'development'

@@ -8,6 +8,7 @@ const { global } = useAppConfig()
     <div class="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 md:grid-cols-2 md:items-start">
       <div class="flex justify-center md:justify-start">
         <NuxtImg
+          provider="none"
           :src="global.picture?.light || '/hero/photo.webp'"
           :alt="t('global.picture.alt')"
           width="400"

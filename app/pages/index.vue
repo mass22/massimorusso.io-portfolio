@@ -32,9 +32,7 @@ usePageSeo({
   titleFallbackKey: 'seo.pages.home'
 })
 
-// Preload de l'image LCP pour optimiser le Largest Contentful Paint
-// Note: Le preload sera géré automatiquement par NuxtImg avec fetchpriority="high"
-// Pas besoin de preload manuel car NuxtImg génère l'URL optimisée dynamiquement
+// Preload de l'image LCP : géré par NuxtImg dans Hero (fetchpriority="high", provider none → /hero/photo.webp)
 
 const ctaLinks = computed(() => ([
   {
