@@ -3,7 +3,7 @@ content: |
   ## Comment j'interviens
 
   ### Développement Vue.js / Nuxt
-  J'intègre une équipe existante pour construire des fonctionnalités, des modules ou des applications complètes en Vue.js et Nuxt. Je travaille en 4 jours par semaine, à distance, sur de la construction, pas de la maintenance pure.
+  J'intègre une équipe existante pour construire des fonctionnalités, des modules ou des applications complètes en Vue.js et Nuxt, principalement à distance, sur de la construction, pas de la maintenance pure.
 
   ### Architecture frontend
   J'aide à évaluer une architecture existante, identifier les points de fragilité et définir une trajectoire de modernisation réaliste. L'objectif n'est pas la réécriture parfaite, mais une architecture compréhensible, maintenable et alignée avec les capacités de l'équipe.
@@ -59,7 +59,7 @@ faq:
             Oui. C'est mon écosystème depuis 2011. Je préfère être excellent dans un domaine que moyen sur plusieurs.
         - label: Quel est votre rythme de travail ?
           content: |
-            4 jours par semaine, principalement à distance depuis la Belgique. Des déplacements ponctuels sont possibles selon le contexte.
+            Principalement à distance depuis la Belgique. Volume, durée et rythme (mission ciblée, accompagnement continu, ateliers) s’adaptent au contexte — nous les définissons ensemble. Des déplacements ponctuels sont possibles selon les besoins.
     - title: IA & modernisation
       questions:
         - label: Proposez-vous des solutions IA clé en main ?

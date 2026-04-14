@@ -14,25 +14,30 @@ blog:
   description: Analyses courtes et retours terrain sur l’architecture frontend, la modernisation de stacks et l’usage pragmatique de l’IA. Du concret, orienté décision.
 companies:
   title: Contextes d'intervention
-  description: J'interviens sur des projets Vue.js et Nuxt où construction et décisions techniques vont de pair.
+  description: |
+    Frontend Architect & Advisor sur l'écosystème Vue.js et Nuxt — pour les organisations qui doivent moderniser sans casser la production, structurer à grande échelle et trancher sur des choix techniques à fort impact.
   patterns:
-    - title: Projets en construction active avec des enjeux d'architecture
-      description: ""
-    - title: Équipes qui construisent vite mais veulent tenir dans la durée
-      description: ""
-    - title: Stacks Vue/Nuxt à structurer ou faire évoluer progressivement
-      description: ""
-    - title: Intégration d'IA quand c'est pertinent, pas par effet de mode
-      description: ""
+    - title: Audit & modernisation de systèmes (legacy)
+      description: |
+        Diagnostiquer l'existant, prioriser les risques et cadrer une trajectoire réaliste pour migrer des écosystèmes complexes (Vue 2, Nuxt 2) vers TypeScript, Vue 3 et Nuxt 3 — sans rupture de service ni big bang irréaliste.
+    - title: Architecture de plateforme & services partagés
+      description: |
+        Concevoir des fondations techniques solides, des librairies de composants et un Storybook qui tient la route : standardiser le développement, réduire la duplication et accélérer le travail des équipes produit.
+    - title: Performance & résilience opérationnelle
+      description: |
+        Stabiliser la production en traitant les goulots d'étranglement (vitesse perçue, bundle, rendu) et en instrumentant des garde-fous durables — tests automatisés (Vitest, Playwright) et pipelines CI/CD fiables.
+    - title: Leadership technique & aide à la décision
+      description: |
+        Soutenir les décideurs (CTO, leads) pour arbitrer vite et documenter clairement ; mentorat des équipes pour renforcer l'autonomie, la relecture de fond et une documentation utile au quotidien.
   companies:
-    - name: Scale-ups & produits tech
-      logo: i-lucide-trending-up
-    - name: Équipes frontend de 3 à 15 devs
-      logo: i-lucide-users
-    - name: Vue.js & Nuxt
-      logo: i-simple-icons-vuedotjs
-    - name: 4 jours/semaine
-      logo: i-lucide-calendar
+    - name: Audit & trajectoire legacy → moderne
+      logo: i-lucide-file-search
+    - name: Plateforme, design system & Storybook
+      logo: i-lucide-blocks
+    - name: Performance, tests & CI/CD
+      logo: i-lucide-shield-check
+    - name: Conseil technique & mentorat
+      logo: i-lucide-handshake
 description: Pour les équipes Vue.js qui veulent avancer vite sans accumuler une dette technique qu'elles ne pourront plus démêler.
 experience:
   title: Expertise & écosystème
@@ -86,7 +91,7 @@ faq:
           content: |
             J’intègre l’équipe existante, je comprends le contexte et les contraintes, puis je construis et structure en parallèle.
 
-            Je travaille en 4 jours par semaine.
+            Le rythme et le format (accompagnement continu, mission ciblée, ateliers) s’adaptent à votre organisation : nous les définissons ensemble dès le premier échange.
         - label: Travaillez-vous à distance ou sur site ?
           content: |
             Principalement à distance depuis la Belgique.

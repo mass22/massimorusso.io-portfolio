@@ -138,25 +138,30 @@ speaking:
   description: Public talks, presentations, and podcasts on frontend architecture, technical decision-making, and the evolution of the senior developer role.
 companies:
   title: Contexts I work in
-  description: I work on Vue.js and Nuxt projects where building products and making technical decisions go hand in hand.
+  description: |
+    Frontend Architect & Advisor on the Vue.js and Nuxt ecosystem—for organizations that must modernize without breaking production, scale their foundations, and make high-impact technical calls with confidence.
   patterns:
-    - title: Active builds with real architecture stakes
-      description: ""
-    - title: Teams that ship fast but want to last
-      description: ""
-    - title: Vue/Nuxt stacks to structure or evolve gradually
-      description: ""
-    - title: AI integration when it makes sense—not for hype
-      description: ""
+    - title: Legacy system audit & modernization
+      description: |
+        Diagnose the current state, prioritize risks, and define a realistic path to move complex stacks (Vue 2, Nuxt 2) toward TypeScript, Vue 3, and Nuxt 3—without service disruption or an unrealistic big bang.
+    - title: Platform architecture & shared services
+      description: |
+        Design robust technical foundations, component libraries, and a Storybook setup that holds up in production: standardize development, cut duplication, and speed up product teams at scale.
+    - title: Performance & operational resilience
+      description: |
+        Stabilize delivery by removing bottlenecks (perceived speed, bundle size, rendering) and adding durable safeguards—automated tests (Vitest, Playwright) and reliable CI/CD pipelines.
+    - title: Technical leadership & decision support
+      description: |
+        Support executives and leads (CTO, engineering leads) to decide quickly and document clearly; mentor teams to grow autonomy, deep review habits, and documentation that teams actually use.
   companies:
-    - name: Scale-ups & tech products
-      logo: i-lucide-trending-up
-    - name: Frontend teams of 3 to 15 devs
-      logo: i-lucide-users
-    - name: Vue.js & Nuxt
-      logo: i-simple-icons-vuedotjs
-    - name: 4 days a week
-      logo: i-lucide-calendar
+    - name: Audit & path from legacy to modern
+      logo: i-lucide-file-search
+    - name: Platform, design system & Storybook
+      logo: i-lucide-blocks
+    - name: Performance, testing & CI/CD
+      logo: i-lucide-shield-check
+    - name: Technical advisory & mentoring
+      logo: i-lucide-handshake
 marquee:
   title: They trusted me
   logos:
@@ -202,7 +207,7 @@ faq:
           content: |
             I join the existing team, understand context and constraints, then build and structure in parallel.
 
-            I work four days a week.
+            Pace and format (ongoing support, a focused engagement, workshops) adapt to your organization—we align on this from the first conversation.
         - label: Remote or on-site?
           content: |
             Mostly remote from Belgium.

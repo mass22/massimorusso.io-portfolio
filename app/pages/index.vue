@@ -6,6 +6,8 @@ const localePath = useLocalePath()
 const { global } = useAppConfig()
 const siteUrl = useSiteUrl()
 
+const isVisible = ref(false)
+
 const { data: page } = await usePageData<IndexCollectionItem>('index')
 if (!page.value) {
   throw createError({
@@ -88,6 +90,7 @@ const ctaLinks = computed(() => ([
 
     <!-- 10. FAQ -->
     <UPageSection
+      v-if="isVisible"
       :ui="{
         container: '!pt-12 sm:!pt-16 lg:!pt-20'
       }"

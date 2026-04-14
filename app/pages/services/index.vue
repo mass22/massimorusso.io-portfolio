@@ -16,6 +16,8 @@ const { data: page } = await useAsyncData(`services-${locale.value}`, async () =
   return result
 })
 
+const isVisible = ref(false)
+
 if (!page.value) {
   throw createError({
     fatal: true,
@@ -236,7 +238,7 @@ useHead(() => ({
 
     <!-- FAQ Section -->
     <FAQ
-      v-if="page?.faq"
+      v-if="page?.faq && isVisible"
       :title="page.faq.title"
       :description="page.faq.description"
       :categories="page.faq.categories"
