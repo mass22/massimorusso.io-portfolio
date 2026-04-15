@@ -1,5 +1,5 @@
 title: Services
-description: Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making : depending on what your team needs.
+description: "Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making : depending on what your team needs."
 heroContext: |
   I work with teams who want to build solid frontends, structure their technical decisions and move forward with clarity : no pointless rewrites, no hype, no bullshit.
 items:
@@ -15,7 +15,7 @@ items:
     icon: i-ph-lightbulb
   - slug: technical-decision-support
     title: Consulting & decision support
-    description: With 14 years on complex Vue.js projects, I bring an experienced perspective to clarify and structure high-impact technical decisions. My role: reduce uncertainty, not add to it.
+    description: "With 14 years on complex Vue.js projects, I bring an experienced perspective to clarify and structure high-impact technical decisions. My role: reduce uncertainty, not add to it."
     imageAlt: Consulting and technical decision support
     icon: i-ph-chalkboard-teacher
   - slug: pragmatic-ai
@@ -80,27 +80,30 @@ content: |
   - A reduction in uncertainty and decision debt
 faq:
   title: Frequently Asked Questions
-  description: Answers to the most common questions about my support.
+  description: Answers to the most common questions about my support and expertise.
   categories:
-    - title: Missions & collaboration
+    - title: Engagements & Collaboration
       questions:
-        - label: Do you work as a developer or as a consultant?
+        - label: Do you step in as a developer or as an architect?
           content: |
-            Both. I build Vue.js and Nuxt applications by joining a team, and I bring an architectural perspective on structuring decisions. It's not one or the other : that's what sets me apart.
-        - label: Do you only work on Vue.js and Nuxt?
+            Both. My approach is hands-on: I build your Vue.js/Nuxt applications while bringing the architectural vision needed for structuring decisions. I don't just advise, I implement solutions to ensure they are viable in the real world.
+        - label: Do you only work with Vue.js and Nuxt?
           content: |
-            Yes. It's been my ecosystem since 2011. I'd rather be excellent in one domain than average across several.
-        - label: What is your working rhythm?
+            That's my core expertise, where my added value is immediate. However, AI and 14 years of experience have removed the syntax barrier: I'm able to step in and become productive quickly on **React** or **Angular** stacks when the project requires it.
+        - label: What is your collaboration model and location?
           content: |
-            Mostly remote from Belgium. Scope, duration, and pace (targeted engagement, ongoing support, workshops) depend on the context—we define them together. Occasional on-site visits are possible when needed.
-    - title: AI & modernization
+            I'm based in Greater Montreal (North Shore). I work primarily remotely to maximize focus, but I travel for critical milestones, architecture sessions, or to immerse myself in your team's culture. The pace adapts to your context (ongoing mandate or focused mission).
+    - title: AI & Modernization
       questions:
-        - label: Do you offer turnkey AI solutions?
+        - label: Do you help integrate AI into our products?
           content: |
-            No. I integrate AI only when it's relevant. My role is to help decide if AI brings real value, where, and how to integrate it without creating unnecessary dependency.
-        - label: Do you work with teams that are not AI experts?
+            Yes, with a pragmatic approach. I don't integrate AI to follow hype, but to solve real problems (workflow automation, intelligent search, etc.). My role is to help you decide where AI brings measurable value without weakening your architecture.
+        - label: Do you support teams working on legacy code?
           content: |
-            Yes. What matters is not the initial level, but the ability to make informed decisions. I adapt my approach to the context and maturity of the team.
+            That's a major part of my work. I help teams stabilize existing applications (often Vue 2 / Nuxt 2) and define a secure migration path toward modern technologies while continuing to ship new features.
+        - label: How does AI change the way you work?
+          content: |
+            It makes me a multiplier. I use AI to accelerate implementation and explore technical options, which frees up time to focus on what matters most: business logic, security, and the robustness of your platform.
 cta:
   title: Looking for a senior Vue.js dev who thinks architecture?
   description: Let's discuss your project, your constraints and what you want to build.
@@ -111,8 +114,8 @@ cta:
     label: Schedule a call
     href: /contact#booking
 seo:
-  title: Services : Vue.js Development, Frontend Architecture & Technical Decision-Making
-  description: Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making : depending on what your team needs.
+  title: "Services : Vue.js Development, Frontend Architecture & Technical Decision-Making"
+  description: "Senior Vue.js developer since 2011, I work on building, structuring and technical decision-making : depending on what your team needs."
 stats:
   - value: 50+
     label: Satisfied Clients

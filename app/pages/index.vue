@@ -6,7 +6,7 @@ const localePath = useLocalePath()
 const { global } = useAppConfig()
 const siteUrl = useSiteUrl()
 
-const isVisible = ref(false)
+const isVisible = ref(true)
 
 const { data: page } = await usePageData<IndexCollectionItem>('index')
 if (!page.value) {

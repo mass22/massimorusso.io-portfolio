@@ -64,47 +64,43 @@ experience:
   isCertificationsAvailable: false
 faq:
   title: Questions fréquentes
-  description: Réponses aux questions les plus courantes sur mon rôle, mon positionnement et la manière dont j’interviens.
+  description: Réponses aux questions sur mon rôle hybride entre développement senior et architecture stratégique.
   categories:
-    - title: Architecture & Décision technique
+    - title: Architecture & Expertise Technique
       questions:
-        - label: Quelle différence entre un dev senior et quelqu’un qui travaille sur l’architecture ?
+        - label: Quelle différence entre un dev senior et un architecte frontend ?
           content: |
-            Un dev senior exécute et livre. Quelqu’un avec une vision architecturale construit en pensant à ce que ça coûtera à maintenir dans 2 ans.
+            Un dev senior livre des fonctionnalités de haute qualité. Un architecte s'assure que ces fonctionnalités ne deviennent pas une dette technique insurmontable dans 2 ans.
 
-            Je fais les deux : c’est ce qui me différencie.
-        - label: Travaillez-vous uniquement sur des projets Vue.js et Nuxt ?
+            Dans mes interventions, je combine les deux : j'implémente les solutions tout en structurant les fondations pour l'équipe.
+        - label: Travaillez-vous exclusivement sur Vue.js et Nuxt ?
           content: |
-            Oui. Vue.js et Nuxt sont mon domaine d’expertise depuis 2011.
+            Vue et Nuxt sont mes outils de prédilection où ma productivité est maximale. Cependant, mon rôle de Senior/Architecte dépasse aujourd'hui la simple maîtrise d'un framework.
 
-            Je préfère être excellent dans un écosystème que moyen sur plusieurs.
-        - label: Sur quel type de mission intervenez-vous ?
+            Avec l'avènement de l'IA et mes 14 ans d'expérience, la barrière de la syntaxe a disparu. Je maîtrise les concepts fondamentaux du web moderne (Signals, SSR, State Management) qui sont transversaux à **React** ou **Angular**. Cela me permet d'être "up and running" en quelques jours sur n'importe quelle stack, en utilisant l'IA pour accélérer l'implémentation tout en conservant mon jugement humain pour les décisions architecturales critiques.
+        - label: Intervenez-vous sur le code ou seulement sur le conseil ?
           content: |
-            Construction de fonctionnalités, structuration d’architecture, revue technique ou aide à la décision.
+            Je reste "hands-on". Mon approche est de prêcher par l'exemple : je code les parties critiques, je bâtis les services partagés et je participe activement aux revues de code pour élever les standards de l'équipe.
 
-            Je ne fais pas de bugfix pur ni de migration sans construction associée.
-    - title: Collaboration & format
+    - title: Collaboration & Localisation
       questions:
-        - label: Comment se passe concrètement une mission ?
+        - label: Où êtes-vous basé et comment collaborez-vous ?
           content: |
-            J’intègre l’équipe existante, je comprends le contexte et les contraintes, puis je construis et structure en parallèle.
+            Je suis basé dans le Grand Montréal (Rive-Nord). Je privilégie le télétravail pour la concentration qu'il permet, mais je me déplace avec plaisir pour des sessions d'architecture, des lancements ou des rencontres d'équipe régulières.
 
-            Le rythme et le format (accompagnement continu, mission ciblée, ateliers) s’adaptent à votre organisation : nous les définissons ensemble dès le premier échange.
-        - label: Travaillez-vous à distance ou sur site ?
+        - label: Quel format de mission proposez-vous ?
           content: |
-            Principalement à distance depuis la Belgique.
+            De l'intégration d'équipe à long terme (Senior Dev/Lead) à l'audit ponctuel de 3 jours pour débloquer une situation critique. Mon but est de m'adapter à votre vélocité actuelle tout en préparant le terrain pour la suite.
 
-            Des déplacements ponctuels sont possibles selon le contexte.
-    - title: IA & modernisation
+    - title: IA & Modernisation
       questions:
-        - label: Comment utilisez-vous l’IA dans votre travail ?
+        - label: Quelle est votre vision de l'IA dans le développement ?
           content: |
-            Comme un outil, pas comme un oracle. J’utilise l’IA pour explorer des options, accélérer certaines tâches et challenger mes décisions.
+            L'IA est un accélérateur de syntaxe, pas un substitut au jugement technique. Je l'utilise pour automatiser les tâches répétitives et explorer des patterns, mais les décisions architecturales restent humaines et basées sur l'expérience réelle.
 
-            Pas pour remplacer le jugement technique.
-        - label: Pouvez-vous aider à intégrer l’IA dans un produit existant ?
+        - label: Aidez-vous à moderniser des "Legacy codebases" ?
           content: |
-            Oui, si ça a du sens. Mon approche : identifier les vrais problèmes d’abord, évaluer si l’IA apporte une valeur mesurable, puis intégrer progressivement sans fragiliser l’architecture existante.
+            C'est une de mes spécialités. Mon approche n'est pas de tout réécrire ("Big Bang"), mais de créer une trajectoire de migration progressive (Vue 2 vers Vue 3/4) qui permet de continuer à livrer des fonctionnalités pendant la transition.
 hero:
   tags:
     - Votre frontend grandit.

@@ -16,7 +16,7 @@ const { data: page } = await useAsyncData(`services-${locale.value}`, async () =
   return result
 })
 
-const isVisible = ref(false)
+const isVisible = ref(true)
 
 if (!page.value) {
   throw createError({

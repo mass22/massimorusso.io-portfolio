@@ -180,47 +180,43 @@ podcast:
   description: A podcast about frontend architecture, technical decisions, and the career path of senior developers.
 faq:
   title: Frequently asked questions
-  description: Answers to common questions about my role, how I work, and how I engage with teams.
+  description: Answers to questions about my hybrid role between senior development and strategic architecture.
   categories:
-    - title: Architecture & technical decisions
+    - title: Architecture & Technical Expertise
       questions:
-        - label: What's the difference between a senior developer and someone who focuses on architecture?
+        - label: What's the difference between a senior developer and a frontend architect?
           content: |
-            A senior developer executes and ships. Someone with an architectural mindset builds while thinking about what it costs to maintain in two years.
+            A senior developer delivers high-quality features. An architect makes sure those features don't turn into unmanageable technical debt two years from now.
 
-            I do both—that's what sets me apart.
-        - label: Do you only work on Vue.js and Nuxt projects?
+            In my engagements, I combine both: I implement solutions while structuring the foundations for the team.
+        - label: Do you work exclusively with Vue.js and Nuxt?
           content: |
-            Yes. Vue.js and Nuxt have been my focus since 2011.
+            Vue and Nuxt are my preferred tools, where my productivity is at its highest. That said, my role as a Senior Developer/Architect now goes beyond mastering a single framework.
 
-            I'd rather be excellent in one ecosystem than average across several.
-        - label: What kind of engagements do you take on?
+            With the rise of AI and 14 years of experience, the syntax barrier is gone. I master the core concepts of modern web engineering (Signals, SSR, State Management), which apply equally to **React** and **Angular**. That lets me get "up and running" in a few days on any stack, using AI to accelerate implementation while keeping human judgment for critical architectural decisions.
+        - label: Do you get involved in coding, or only in advisory work?
           content: |
-            Building features, structuring architecture, technical reviews, or decision support.
+            I stay hands-on. My approach is to lead by example: I code critical parts, build shared services, and actively contribute to code reviews to raise the team's standards.
 
-            I don't do bugfix-only work or migrations without a construction angle.
-    - title: Collaboration & format
+    - title: Collaboration & Location
       questions:
-        - label: What does an engagement look like in practice?
+        - label: Where are you based, and how do you collaborate?
           content: |
-            I join the existing team, understand context and constraints, then build and structure in parallel.
+            I'm based in Greater Montreal (North Shore). I prefer remote work for the focus it enables, but I'm happy to travel for architecture sessions, launches, or recurring team meetings.
 
-            Pace and format (ongoing support, a focused engagement, workshops) adapt to your organization—we align on this from the first conversation.
-        - label: Remote or on-site?
+        - label: What engagement formats do you offer?
           content: |
-            Mostly remote from Belgium.
+            From long-term team integration (Senior Dev/Lead) to focused 3-day audits to unblock critical situations. My goal is to match your current velocity while preparing the ground for what's next.
 
-            Occasional on-site visits are possible depending on context.
-    - title: AI & modernization
+    - title: AI & Modernization
       questions:
-        - label: How do you use AI in your work?
+        - label: What's your view on AI in software development?
           content: |
-            As a tool, not an oracle. I use AI to explore options, speed up some tasks, and challenge my decisions.
+            AI is a syntax accelerator, not a substitute for technical judgment. I use it to automate repetitive tasks and explore patterns, but architectural decisions remain human and grounded in real-world experience.
 
-            Not to replace technical judgment.
-        - label: Can you help integrate AI into an existing product?
+        - label: Do you help modernize legacy codebases?
           content: |
-            Yes, when it makes sense. My approach: identify real problems first, assess whether AI delivers measurable value, then integrate progressively without weakening the existing architecture.
+            That's one of my specialties. My approach is not to rewrite everything ("Big Bang"), but to build a progressive migration path (Vue 2 to Vue 3/4) that lets teams keep shipping features during the transition.
 testimonials:
   - quote: I have worked with Massimo at VACV and found him to be knowledgeable and dedicated, particularly with Vue.js. He is always keen to stay updated and improve his skills. Massimo has a knack for leaving things better than he found them, which is a great asset in any team.
     author:

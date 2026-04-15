@@ -47,27 +47,30 @@ cta:
 description: Développeur Vue.js senior depuis 2011, j'interviens en construction, en architecture et en décision technique, selon les besoins de l'équipe et du projet.
 faq:
   title: Questions fréquentes
-  description: Réponses aux questions les plus courantes concernant mon accompagnement.
+  description: Réponses aux questions les plus courantes concernant mon accompagnement et mon expertise.
   categories:
-    - title: Missions & collaboration
+    - title: Missions & Collaboration
       questions:
-        - label: Travaillez-vous comme développeur ou comme consultant ?
+        - label: Intervenez-vous comme développeur ou comme architecte ?
           content: |
-            Les deux. Je construis des applications Vue.js et Nuxt en intégrant une équipe, et j'apporte une vision architecturale sur les décisions structurantes. Ce n'est pas l'un ou l'autre : c'est ce qui me différencie.
+            Les deux. Mon approche est "hands-on" : je bâtis vos applications Vue.js/Nuxt tout en apportant la vision architecturale nécessaire aux décisions structurantes. Je ne me contente pas de conseiller, j'implémente les solutions pour garantir leur viabilité.
         - label: Travaillez-vous uniquement sur Vue.js et Nuxt ?
           content: |
-            Oui. C'est mon écosystème depuis 2011. Je préfère être excellent dans un domaine que moyen sur plusieurs.
-        - label: Quel est votre rythme de travail ?
+            C'est mon cœur d'expertise, là où ma valeur ajoutée est immédiate. Cependant, l'IA et mes 14 ans d'expérience ont supprimé la barrière de la syntaxe : je suis capable d'intervenir et d'être productif rapidement sur des stacks **React** ou **Angular** si le projet le demande.
+        - label: Quel est votre mode de collaboration et localisation ?
           content: |
-            Principalement à distance depuis la Belgique. Volume, durée et rythme (mission ciblée, accompagnement continu, ateliers) s’adaptent au contexte — nous les définissons ensemble. Des déplacements ponctuels sont possibles selon les besoins.
-    - title: IA & modernisation
+            Je suis basé dans le Grand Montréal (Rive-Nord). Je travaille principalement à distance pour maximiser la concentration, mais je me déplace pour les jalons critiques, les sessions d'architecture ou pour m'imprégner de la culture de votre équipe. Le rythme s'adapte à votre contexte (mandat continu ou mission ciblée).
+    - title: IA & Modernisation
       questions:
-        - label: Proposez-vous des solutions IA clé en main ?
+        - label: Proposez-vous d'intégrer l'IA dans nos produits ?
           content: |
-            Non. J'intègre l'IA uniquement si c'est pertinent. Mon rôle est d'aider à décider si l'IA apporte une vraie valeur, où, et comment l'intégrer sans créer de dépendance inutile.
-        - label: Travaillez-vous avec des équipes non expertes en IA ?
+            Oui, mais avec une approche pragmatique. Je n'intègre pas l'IA pour suivre une mode, mais pour résoudre des problèmes réels (automatisation de workflows, recherche intelligente, etc.). Mon rôle est de vous aider à décider où l'IA apporte une valeur mesurable sans fragiliser votre architecture.
+        - label: Accompagnez-vous des équipes sur du code Legacy ?
           content: |
-            Oui. L'essentiel n'est pas le niveau initial, mais la capacité à prendre des décisions éclairées. J'adapte mon approche au contexte et à la maturité de l'équipe.
+            C'est une grande partie de mes interventions. J'aide les équipes à stabiliser leurs applications existantes (souvent en Vue 2 / Nuxt 2) et à tracer une route de migration sécurisée vers des technologies modernes, tout en continuant de livrer de nouvelles fonctionnalités.
+        - label: Comment l'IA change-t-elle votre manière de travailler ?
+          content: |
+            Elle me permet d'être un "multiplicateur". J'utilise l'IA pour accélérer l'implémentation et explorer des options techniques, ce qui me libère du temps pour me concentrer sur ce qui compte vraiment : la logique d'affaires, la sécurité et la robustesse de votre plateforme.
 heroContext: |
   Je m'adresse aux équipes qui veulent construire des frontends solides, structurer leurs décisions techniques et avancer avec lucidité, sans réécriture inutile, sans hype, sans bullshit.
 images:
@@ -107,11 +110,11 @@ process:
     - title: Construction ou analyse
       description: "Selon le besoin : intégration dans l'équipe pour construire des fonctionnalités, ou audit ciblé pour cartographier les risques et identifier les options réalistes."
     - title: Décisions documentées
-      description: Chaque choix structurant est explicité, arbitré et documenté. Pas pour faire joli : pour que l'équipe puisse l'assumer dans le temps sans dépendre de moi.
+      description: "Chaque choix structurant est explicité, arbitré et documenté. Pas pour faire joli : pour que l'équipe puisse l'assumer dans le temps sans dépendre de moi."
     - title: Autonomie & suivi
       description: Mon objectif est de rendre l'équipe autonome, pas de créer une dépendance. Sessions de suivi, revues de code ou d'architecture selon le contexte.
 seo:
-  title: Services : Développement Vue.js, Architecture frontend & Décision technique
+  title: "Services : Développement Vue.js, Architecture frontend & Décision technique"
   description: Développeur Vue.js senior depuis 2011, j'interviens en construction, en architecture et en décision technique, selon les besoins de l'équipe et du projet.
 stats:
   - value: 50+
