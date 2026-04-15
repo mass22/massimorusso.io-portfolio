@@ -37,7 +37,7 @@ defineProps<{
   >
     <UPageSection
       :title="page.companies?.title || t('homepage.companies.title')"
-      :description="page.companies?.description || t('homepage.companies.description')"
+      :description="page.companies?.description"
       :ui="{
         container: 'px-0 !pt-12 sm:!pt-16 lg:!pt-20',
         title: 'text-left text-2xl sm:text-3xl lg:text-4xl font-bold text-highlighted',
@@ -61,7 +61,7 @@ defineProps<{
           </div>
         </div>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 mt-8">
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <Motion
           v-for="(company, index) in page.companies.companies"
           :key="index"
@@ -75,34 +75,38 @@ defineProps<{
             :to="company.url"
             target="_blank"
             :aria-label="`${company.name} - ${t('homepage.companies.visit')}`"
-            class="group flex flex-col items-center justify-center p-6 rounded-xl bg-elevated/50 hover:bg-elevated/80 border-2 border-transparent hover:border-primary/20 transition-all duration-300 ease-out hover:scale-105 active:scale-95"
+            class="group h-full rounded-xl border border-default/20 bg-elevated/30 px-5 py-4 transition-all duration-300 ease-out hover:border-primary/20 hover:bg-elevated/50"
           >
             <div
               v-if="company.logo"
-              class="flex items-center justify-center w-full h-16 mb-3"
-              style="min-height: 4rem;"
+              class="mb-3 flex h-10 w-10 items-center justify-center rounded-md bg-muted/40"
             >
               <UIcon
                 :name="company.logo"
-                class="size-12 text-muted group-hover:text-primary transition-colors duration-300"
+                class="size-5 text-muted group-hover:text-primary transition-colors duration-300"
                 aria-hidden="true"
               />
             </div>
-            <span
+            <div
               v-if="company.name"
-              class="text-sm font-medium text-muted group-hover:text-default text-center transition-colors duration-300"
+              class="text-sm font-semibold text-highlighted transition-colors duration-300"
             >
               {{ company.name }}
-            </span>
+            </div>
+            <div
+              v-if="company.description"
+              class="mt-1 text-sm leading-relaxed text-muted"
+            >
+              {{ company.description }}
+            </div>
           </ULink>
           <div
             v-else
-            class="group flex flex-col items-center justify-center p-6 rounded-xl bg-elevated/50 border-2 border-transparent"
+            class="group h-full rounded-xl border border-default/20 bg-muted/40 px-5 py-4 flex flex-col items-center"
           >
             <div
               v-if="company.logo"
-              class="flex items-center justify-center w-full h-16 mb-3"
-              style="min-height: 4rem;"
+              class="mb-4 flex h-10 items-center justify-center rounded-md"
             >
               <UIcon
                 :name="company.logo"
@@ -110,12 +114,18 @@ defineProps<{
                 aria-hidden="true"
               />
             </div>
-            <span
+            <div
               v-if="company.name"
-              class="text-sm font-medium text-muted text-center"
+              class="text-sm font-semibold text-highlighted"
             >
               {{ company.name }}
-            </span>
+            </div>
+            <div
+              v-if="company.description"
+              class="mt-1 text-sm leading-relaxed text-muted text-center"
+            >
+              {{ company.description }}
+            </div>
           </div>
         </Motion>
       </div>

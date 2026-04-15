@@ -14,30 +14,28 @@ blog:
   description: Analyses courtes et retours terrain sur l’architecture frontend, la modernisation de stacks et l’usage pragmatique de l’IA. Du concret, orienté décision.
 companies:
   title: Contextes d'intervention
-  description: |
-    Frontend Architect & Advisor sur l'écosystème Vue.js et Nuxt — pour les organisations qui doivent moderniser sans casser la production, structurer à grande échelle et trancher sur des choix techniques à fort impact.
   patterns:
-    - title: Audit & modernisation de systèmes (legacy)
-      description: |
-        Diagnostiquer l'existant, prioriser les risques et cadrer une trajectoire réaliste pour migrer des écosystèmes complexes (Vue 2, Nuxt 2) vers TypeScript, Vue 3 et Nuxt 3 — sans rupture de service ni big bang irréaliste.
-    - title: Architecture de plateforme & services partagés
-      description: |
-        Concevoir des fondations techniques solides, des librairies de composants et un Storybook qui tient la route : standardiser le développement, réduire la duplication et accélérer le travail des équipes produit.
-    - title: Performance & résilience opérationnelle
-      description: |
-        Stabiliser la production en traitant les goulots d'étranglement (vitesse perçue, bundle, rendu) et en instrumentant des garde-fous durables — tests automatisés (Vitest, Playwright) et pipelines CI/CD fiables.
-    - title: Leadership technique & aide à la décision
-      description: |
-        Soutenir les décideurs (CTO, leads) pour arbitrer vite et documenter clairement ; mentorat des équipes pour renforcer l'autonomie, la relecture de fond et une documentation utile au quotidien.
+    - title: Modernisation legacy
+      description: Développer des stratégies de migration et implémenter les ponts techniques pour passer de Vue 2 à Vue 3 sans interruption.
+    - title: Développement plateforme
+      description: Bâtir des librairies UI et des services réutilisables qui servent de fondation concrète à toute l'équipe.
+    - title: Qualité & performance
+      description: Implémenter des tests automatisés (Playwright, Vitest) et optimiser le code pour garantir une production fluide.
+    - title: Mentorat par le code
+      description: Élever le niveau de l'équipe via des revues exigeantes et du pair programming sur des problématiques complexes.
   companies:
-    - name: Audit & trajectoire legacy → moderne
-      logo: i-lucide-file-search
-    - name: Plateforme, design system & Storybook
-      logo: i-lucide-blocks
-    - name: Performance, tests & CI/CD
-      logo: i-lucide-shield-check
-    - name: Conseil technique & mentorat
-      logo: i-lucide-handshake
+    - name: Produits à forte traction
+      description: Intervention sur des SPA servant des milliers d'utilisateurs quotidiens (e-commerce, fintech).
+      logo: i-lucide-chart-column
+    - name: Équipes en croissance
+      description: Apporter de la structure et des standards de développement pour des équipes de 3 à 15 développeurs.
+      logo: i-lucide-users
+    - name: Expertise Nuxt full-cycle
+      description: Accompagner la conception, l'implémentation et la mise en production sur Nuxt 2, 3 et 4.
+      logo: i-simple-icons-vuedotjs
+    - name: IA & outillage
+      description: Intégrer l'IA au workflow de développement pour gagner en vélocité sans perdre en jugement technique.
+      logo: i-lucide-lightbulb
 description: Pour les équipes Vue.js qui veulent avancer vite sans accumuler une dette technique qu'elles ne pourront plus démêler.
 experience:
   title: Expertise & écosystème

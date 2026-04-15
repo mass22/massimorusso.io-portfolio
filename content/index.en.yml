@@ -138,30 +138,28 @@ speaking:
   description: Public talks, presentations, and podcasts on frontend architecture, technical decision-making, and the evolution of the senior developer role.
 companies:
   title: Contexts I work in
-  description: |
-    Frontend Architect & Advisor on the Vue.js and Nuxt ecosystem—for organizations that must modernize without breaking production, scale their foundations, and make high-impact technical calls with confidence.
   patterns:
-    - title: Legacy system audit & modernization
-      description: |
-        Diagnose the current state, prioritize risks, and define a realistic path to move complex stacks (Vue 2, Nuxt 2) toward TypeScript, Vue 3, and Nuxt 3—without service disruption or an unrealistic big bang.
-    - title: Platform architecture & shared services
-      description: |
-        Design robust technical foundations, component libraries, and a Storybook setup that holds up in production: standardize development, cut duplication, and speed up product teams at scale.
-    - title: Performance & operational resilience
-      description: |
-        Stabilize delivery by removing bottlenecks (perceived speed, bundle size, rendering) and adding durable safeguards—automated tests (Vitest, Playwright) and reliable CI/CD pipelines.
-    - title: Technical leadership & decision support
-      description: |
-        Support executives and leads (CTO, engineering leads) to decide quickly and document clearly; mentor teams to grow autonomy, deep review habits, and documentation that teams actually use.
+    - title: Legacy modernization
+      description: Develop migration strategies and implement technical bridges to move from Vue 2 to Vue 3 without service interruption.
+    - title: Platform development
+      description: Build UI component libraries and reusable services that become practical foundations for the whole team.
+    - title: Quality & performance
+      description: Implement automated tests (Playwright, Vitest) and optimize code to keep production smooth.
+    - title: Mentoring through code
+      description: Raise team standards through rigorous code reviews and pair programming on complex topics.
   companies:
-    - name: Audit & path from legacy to modern
-      logo: i-lucide-file-search
-    - name: Platform, design system & Storybook
-      logo: i-lucide-blocks
-    - name: Performance, testing & CI/CD
-      logo: i-lucide-shield-check
-    - name: Technical advisory & mentoring
-      logo: i-lucide-handshake
+    - name: High-traction products
+      description: Hands-on delivery on SPAs serving thousands of daily users (e-commerce, fintech).
+      logo: i-lucide-chart-column
+    - name: Growing teams
+      description: Bring structure and engineering standards for teams of 3 to 15 developers.
+      logo: i-lucide-users
+    - name: Nuxt full-cycle expertise
+      description: Support design, implementation, and production rollout across Nuxt 2, 3, and 4.
+      logo: i-simple-icons-vuedotjs
+    - name: AI & tooling
+      description: Integrate AI into the development workflow to gain velocity without losing engineering judgment.
+      logo: i-lucide-lightbulb
 marquee:
   title: They trusted me
   logos:
