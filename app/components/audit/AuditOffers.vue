@@ -1,86 +1,129 @@
 <script setup lang="ts">
+import { appendStripeCheckoutLocale, resolveStripeCheckoutLocale } from '~/utils/stripeCheckout'
+
 type OfferId = 'clarite' | 'structure' | 'transformation'
 
 interface TimelineStep {
   label: string
   title: string
   text: string
-  isBonus: boolean
 }
 
-const { t } = useI18n()
+interface OfferCard {
+  id: OfferId
+  name: string
+  price: string
+  tagline: string
+  deliverable: string
+  duration: string
+  badge: string | null
+  disabled?: boolean
+  cta: {
+    label: string
+    href: string
+  }
+}
+
+const { t, locale } = useI18n()
+const runtimeConfig = useRuntimeConfig()
 
 const selectedOffer = ref<OfferId | null>('structure')
 
 const toggleOffer = (id: OfferId) => {
+  if (id === 'transformation') {
+    return
+  }
   selectedOffer.value = selectedOffer.value === id ? null : id
 }
 
 const onOfferKeydown = (e: KeyboardEvent, id: OfferId) => {
+  if (id === 'transformation') {
+    return
+  }
   if (e.key === 'Enter' || e.key === ' ') {
     e.preventDefault()
     toggleOffer(id)
   }
 }
 
-const getTimeline = (id: OfferId): TimelineStep[] => [
-  {
-    label: t(`audit.timeline.${id}.step1.label`),
-    title: t(`audit.timeline.${id}.step1.title`),
-    text: t(`audit.timeline.${id}.step1.text`),
-    isBonus: false
-  },
-  {
-    label: t(`audit.timeline.${id}.step2.label`),
-    title: t(`audit.timeline.${id}.step2.title`),
-    text: t(`audit.timeline.${id}.step2.text`),
-    isBonus: false
-  },
-  {
-    label: t(`audit.timeline.${id}.step3.label`),
-    title: t(`audit.timeline.${id}.step3.title`),
-    text: t(`audit.timeline.${id}.step3.text`),
-    isBonus: false
-  },
-  {
-    label: t(`audit.timeline.${id}.step4.label`),
-    title: t(`audit.timeline.${id}.step4.title`),
-    text: t(`audit.timeline.${id}.step4.text`),
-    isBonus: true
+const getTimeline = (id: OfferId): TimelineStep[] => {
+  if (id === 'transformation') {
+    return []
   }
-]
+  return [
+    {
+      label: t('audit.timeline.async.step1.label'),
+      title: t('audit.timeline.async.step1.title'),
+      text: t('audit.timeline.async.step1.text')
+    },
+    {
+      label: t('audit.timeline.async.step2.label'),
+      title: t('audit.timeline.async.step2.title'),
+      text: t('audit.timeline.async.step2.text')
+    },
+    {
+      label: t('audit.timeline.async.step3.label'),
+      title: t('audit.timeline.async.step3.title'),
+      text: t('audit.timeline.async.step3.text')
+    }
+  ]
+}
 
 const currentTimeline = computed(() =>
   selectedOffer.value ? getTimeline(selectedOffer.value) : []
 )
 
-const offers = computed(() => [
+const checkoutLinks = computed(() => {
+  const stripeLocale = resolveStripeCheckoutLocale(locale.value)
+  const clarite = runtimeConfig.public.audit?.stripeCheckout?.clarite ?? ''
+  const structure = runtimeConfig.public.audit?.stripeCheckout?.structure ?? ''
+
+  return {
+    clarite: appendStripeCheckoutLocale(clarite, stripeLocale),
+    structure: appendStripeCheckoutLocale(structure, stripeLocale)
+  }
+})
+
+const offers = computed((): OfferCard[] => [
   {
-    id: 'clarite' as OfferId,
+    id: 'clarite',
     name: t('audit.offers.clarite.name'),
     price: '$800',
     tagline: t('audit.offers.clarite.tagline'),
     deliverable: t('audit.offers.clarite.deliverable'),
     duration: t('audit.offers.clarite.duration'),
-    badge: null as string | null
+    badge: null,
+    cta: {
+      label: t('audit.offers.cta.buy'),
+      href: checkoutLinks.value.clarite
+    }
   },
   {
-    id: 'structure' as OfferId,
+    id: 'structure',
     name: t('audit.offers.structure.name'),
     price: '$2 000',
     tagline: t('audit.offers.structure.tagline'),
     deliverable: t('audit.offers.structure.deliverable'),
     duration: t('audit.offers.structure.duration'),
-    badge: t('audit.offers.recommended')
+    badge: t('audit.offers.recommended'),
+    cta: {
+      label: t('audit.offers.cta.buy'),
+      href: checkoutLinks.value.structure
+    }
   },
   {
-    id: 'transformation' as OfferId,
+    id: 'transformation',
     name: t('audit.offers.transformation.name'),
     price: '$6 500',
     tagline: t('audit.offers.transformation.tagline'),
     deliverable: t('audit.offers.transformation.deliverable'),
     duration: t('audit.offers.transformation.duration'),
-    badge: null as string | null
+    badge: null,
+    disabled: true,
+    cta: {
+      label: t('audit.offers.cta.unavailable'),
+      href: ''
+    }
   }
 ])
 </script>
@@ -91,17 +134,24 @@ const offers = computed(() => [
       <div
         v-for="offer in offers"
         :key="offer.id"
-        role="button"
-        tabindex="0"
-        class="cursor-pointer rounded-2xl border p-6 transition-all sm:p-7 min-h-48 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-default"
+        :role="offer.disabled ? undefined : 'button'"
+        :tabindex="offer.disabled ? undefined : 0"
+        class="rounded-2xl border p-6 transition-all sm:p-7 min-h-48 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-default"
         :class="[
-          offer.id === 'structure'
+          offer.disabled
+            ? 'cursor-not-allowed opacity-50'
+            : 'cursor-pointer',
+          offer.id === 'structure' && !offer.disabled
             ? 'z-10 border-primary bg-primary/10 shadow-lg shadow-primary/10 md:scale-[1.02]'
-            : selectedOffer === offer.id
+            : !offer.disabled && selectedOffer === offer.id
               ? 'border-primary bg-primary/5 shadow-md ring-2 ring-primary/35'
-              : 'border-default bg-elevated/40 shadow-sm hover:border-muted hover:shadow-md'
+              : 'border-default bg-elevated/40 shadow-sm',
+          !offer.disabled && offer.id !== 'structure' && selectedOffer !== offer.id
+            ? 'hover:border-muted hover:shadow-md'
+            : ''
         ]"
-        :aria-expanded="selectedOffer === offer.id"
+        :aria-expanded="!offer.disabled && selectedOffer === offer.id"
+        :aria-disabled="offer.disabled ? 'true' : undefined"
         :aria-label="offer.name"
         @click="toggleOffer(offer.id)"
         @keydown="onOfferKeydown($event, offer.id)"
@@ -143,7 +193,32 @@ const offers = computed(() => [
           </p>
         </div>
 
+        <div class="mt-6">
+          <UButton
+            v-if="!offer.disabled"
+            color="primary"
+            variant="solid"
+            class="w-full justify-center"
+            :to="offer.cta.href || '#'"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click.stop
+          >
+            {{ offer.cta.label }}
+          </UButton>
+          <UButton
+            v-else
+            color="neutral"
+            variant="soft"
+            class="w-full cursor-not-allowed justify-center"
+            disabled
+          >
+            {{ offer.cta.label }}
+          </UButton>
+        </div>
+
         <div
+          v-if="!offer.disabled"
           class="mt-4 flex items-center gap-1.5 text-xs"
           :class="selectedOffer === offer.id ? 'text-primary' : 'text-muted'"
         >
@@ -168,7 +243,7 @@ const offers = computed(() => [
 
     <Transition name="slide-down">
       <div
-        v-if="selectedOffer"
+        v-if="selectedOffer && currentTimeline.length"
         class="rounded-2xl border border-default bg-elevated/60 p-6 shadow-sm ring-1 ring-default/50 sm:p-8"
       >
         <h4 class="mb-6 font-mono text-xs uppercase tracking-wider text-muted">
@@ -184,18 +259,14 @@ const offers = computed(() => [
             class="relative flex gap-4 pb-6 last:pb-0"
           >
             <div
-              class="relative z-10 mt-0.5 size-6 shrink-0 rounded-full border-2 bg-elevated"
-              :class="step.isBonus ? 'border-muted' : 'border-primary'"
+              class="relative z-10 mt-0.5 size-6 shrink-0 rounded-full border-2 border-primary bg-elevated"
             />
             <div>
               <span class="font-mono text-xs text-muted">{{ step.label }}</span>
               <h5 class="mt-0.5 text-sm font-medium text-foreground">
                 {{ step.title }}
               </h5>
-              <p
-                class="mt-1 text-sm"
-                :class="step.isBonus ? 'text-muted' : 'text-foreground/80'"
-              >
+              <p class="mt-1 text-sm text-foreground/80">
                 {{ step.text }}
               </p>
             </div>

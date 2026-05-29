@@ -557,7 +557,7 @@ describe('qualification', () => {
         const message = formatQualificationMessage('fr', context, result)
 
         expect(message).toContain('D\'après ce que tu m\'as indiqué, je peux t\'aider.')
-        expect(message).toContain('Laisse ton email et je te réponds avec une première piste concrète.')
+        expect(message).toContain('Laisse ton email et je t\'envoie le lien Stripe de commande')
       })
 
       it('doit formater un message high en français avec raisons', () => {
@@ -588,7 +588,7 @@ describe('qualification', () => {
         const message = formatQualificationMessage('en', context, result)
 
         expect(message).toContain('Based on what you\'ve told me, I can help you.')
-        expect(message).toContain('Leave your email and I\'ll reply with a concrete first step.')
+        expect(message).toContain('Leave your email and I\'ll send the direct Stripe checkout link')
       })
 
       it('doit formater un message high en anglais avec raisons', () => {
@@ -643,7 +643,7 @@ describe('qualification', () => {
         const message = formatQualificationMessage('fr', context, result)
 
         expect(message).toContain('Je peux peut-être t\'aider.')
-        expect(message).toContain('Laisse ton email et je te dis rapidement si ça vaut un échange.')
+        expect(message).toContain('Laisse ton email et je te confirme si l\'audit asynchrone est adapté')
       })
 
       it('doit formater un message medium en français avec raisons', () => {
@@ -690,7 +690,7 @@ describe('qualification', () => {
         const message = formatQualificationMessage('fr', context, result)
 
         expect(message).toContain('Je ne suis probablement pas la meilleure personne pour ton cas.')
-        expect(message).toContain('Si tu veux, laisse ton email et je te redirige vers la meilleure option.')
+        expect(message).toContain('Si tu veux, laisse ton email et je te redirige vers la meilleure suite.')
       })
 
       it('doit formater un message low en français avec raisons', () => {

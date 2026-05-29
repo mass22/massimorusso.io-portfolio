@@ -57,47 +57,11 @@ const switchLang = async (code: 'fr' | 'en') => {
   }
 }
 
-/**
- * Cal.com (iframe) tente souvent le focus au chargement : le navigateur fait alors défiler
- * la fenêtre pour afficher l’iframe, même sans hash — d’où un « saut » vers le bas au load.
- * On ne monte l’iframe qu’à l’approche de la section ou au clic sur le CTA hero.
- */
-const calendarSectionRef = ref<HTMLElement | null>(null)
-const meetingIframeActive = ref(false)
-
-let calendarSectionObserver: IntersectionObserver | null = null
-
-onMounted(() => {
-  const el = calendarSectionRef.value
-  if (!el) {
-    return
-  }
-  calendarSectionObserver = new IntersectionObserver(
-    (entries) => {
-      if (entries.some(e => e.isIntersecting)) {
-        meetingIframeActive.value = true
-        calendarSectionObserver?.disconnect()
-        calendarSectionObserver = null
-      }
-    },
-    { root: null, rootMargin: '0px 0px 120px 0px', threshold: 0.01 }
-  )
-  calendarSectionObserver.observe(el)
-})
-
-onUnmounted(() => {
-  calendarSectionObserver?.disconnect()
-  calendarSectionObserver = null
-})
-
-const scrollToContact = () => {
+const scrollToOffers = () => {
   if (import.meta.client) {
-    meetingIframeActive.value = true
-    nextTick(() => {
-      document.getElementById('calendar')?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      })
+    document.getElementById('lp-audit-offers')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
     })
   }
 }
@@ -177,7 +141,7 @@ const scrollToContact = () => {
                     color="primary"
                     size="lg"
                     class="w-full justify-center shadow-md shadow-primary/15 sm:w-auto sm:min-w-56"
-                    @click="scrollToContact"
+                    @click="scrollToOffers"
                   >
                     {{ t('lpAudit.hero.cta') }}
                   </UButton>
@@ -220,7 +184,8 @@ const scrollToContact = () => {
 
           <!-- Offres : grille un peu plus large que le texte -->
           <section
-            class="mb-16 sm:mb-24"
+            id="lp-audit-offers"
+            class="mb-16 scroll-mt-24 sm:mb-24"
             aria-labelledby="lp-audit-offers-heading"
           >
             <div class="mx-auto mb-10 max-w-3xl">
@@ -266,44 +231,6 @@ const scrollToContact = () => {
           </section>
 
           <USeparator class="my-16 sm:my-24" />
-
-          <section
-            class="mt-12 sm:mt-16"
-            aria-labelledby="lp-audit-calendar-heading"
-          >
-            <div
-              id="calendar"
-              ref="calendarSectionRef"
-              class="w-full max-w-6xl scroll-mt-24"
-            >
-              <div class="text-center mb-6">
-                <h2 class="text-2xl sm:text-3xl font-semibold mb-2">
-                  {{ t('contact.booking.title') }}
-                </h2>
-                <p class="text-muted text-sm sm:text-base">
-                  {{ t('contact.booking.description') }}
-                </p>
-              </div>
-              <UCard class="w-full shadow-2xl p-0 overflow-hidden">
-                <div class="flex flex-col items-center gap-3 py-8">
-                  <div
-                    v-if="!meetingIframeActive"
-                    class="flex min-h-[630px] w-full items-center justify-center bg-elevated/40"
-                    aria-hidden="true"
-                  />
-                  <iframe
-                    v-else
-                    loading="lazy"
-                    :src="global.meetingLink"
-                    width="100%"
-                    style="min-height:630px; height:100%; border:0; background: white"
-                    allow="camera; microphone; fullscreen;"
-                    :title="t('contact.iframe.title')"
-                  />
-                </div>
-              </UCard>
-            </div>
-          </section>
 
           <!-- Chat -->
           <section

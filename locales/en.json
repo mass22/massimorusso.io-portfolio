@@ -59,7 +59,7 @@
   "lpAudit": {
     "seo": {
       "title": "Frontend architecture audit",
-      "description": "Frontend audit offers: clarity, structure, or transformation. USD pricing, deliverables and timelines — get in touch via chat."
+      "description": "Async frontend audits: Clarity or Structure. Pay online, autonomous analysis, deliverable within 5 business days."
     },
     "header": {
       "logoAria": "Back to home — Massimo Russo"
@@ -70,8 +70,8 @@
       "line2": "Your technical decisions never were.",
       "pitch1": "An architecture audit isn't another report to file away.",
       "pitch2": "It's the clarity your team needs to stop being held hostage by its own codebase.",
-      "cta": "Discuss my context",
-      "ctaHint": "Quick reply — no commitment."
+      "cta": "Start my audit",
+      "ctaHint": "Secure payment · Delivery within 5 business days"
     },
     "pain": {
       "eyebrow": "The symptoms",
@@ -92,11 +92,15 @@
     "offers": {
       "sectionEyebrow": "Pricing & deliverables",
       "sectionTitle": "Pick the level that matches your situation",
-      "sectionSubtitle": "Three frontend audits. Tap a card to see the day-by-day timeline.",
+      "sectionSubtitle": "Two fully async audits. Tap a card to see how it works.",
       "recommended": "Recommended",
+      "cta": {
+        "buy": "Order audit",
+        "unavailable": "Currently unavailable (Fully booked)"
+      },
       "showTimeline": "See the timeline",
       "hideTimeline": "Hide the timeline",
-      "usdNote": "* All prices are in USD.",
+      "usdNote": "* All prices are in CAD.",
       "label": {
         "deliverable": "Deliverable",
         "duration": "Duration"
@@ -104,14 +108,14 @@
       "clarite": {
         "name": "Clarity",
         "tagline": "Know where you stand.",
-        "deliverable": "2-page report + prioritized recommendations",
-        "duration": "4 hours"
+        "deliverable": "2-page report + prioritized recommendations, delivered by email after the analysis",
+        "duration": "5 business days"
       },
       "structure": {
         "name": "Structure",
         "tagline": "Understand what's broken and why.",
-        "deliverable": "5–8 page report + 1h live debrief",
-        "duration": "1 day"
+        "deliverable": "5–8 page report + personalized 30-minute video debrief (via Loom)",
+        "duration": "5 business days"
       },
       "transformation": {
         "name": "Transformation",
@@ -122,70 +126,21 @@
     },
     "timeline": {
       "title": "What to expect",
-      "clarite": {
+      "async": {
         "step1": {
-          "label": "Morning — Day 1",
-          "title": "Scoping",
-          "text": "30-minute call. I understand your context and you give me access to the codebase."
+          "label": "Step 1",
+          "title": "Payment & access",
+          "text": "Secure online payment, then access to your codebase (GitHub or GitLab)."
         },
         "step2": {
-          "label": "Afternoon — Day 1",
-          "title": "Quick diagnostic",
-          "text": "I scan the whole picture and zoom in on what's actually causing problems. The goal: find the 3 to 5 critical issues, not document everything."
+          "label": "Step 2",
+          "title": "Autonomous analysis",
+          "text": "In-depth technical analysis, 100% async — no meetings and no interruptions for your developers."
         },
         "step3": {
-          "label": "End of Day 1",
+          "label": "Step 3",
           "title": "Delivery",
-          "text": "2-page report delivered with prioritized recommendations."
-        },
-        "step4": {
-          "label": "30 days later",
-          "title": "Check-in",
-          "text": "A short call, free of charge. To see what's moved and answer questions."
-        }
-      },
-      "structure": {
-        "step1": {
-          "label": "Morning — Day 1",
-          "title": "Scoping",
-          "text": "30-minute call. I understand your context, your constraints, what brought you to request an audit. You give me access to the codebase."
-        },
-        "step2": {
-          "label": "During Day 1",
-          "title": "In-depth analysis",
-          "text": "I read every layer — components, state, routing, patterns, conventions. I document everything worth documenting."
-        },
-        "step3": {
-          "label": "End of Day 1",
-          "title": "Debrief",
-          "text": "One hour with your team. Written report + recommendations you can act on the next day."
-        },
-        "step4": {
-          "label": "30 days later",
-          "title": "Check-in",
-          "text": "A short call, free of charge. To see what's moved and answer questions."
-        }
-      },
-      "transformation": {
-        "step1": {
-          "label": "Day 1",
-          "title": "Scoping + interviews",
-          "text": "Scoping call + codebase access + interviews with key team members."
-        },
-        "step2": {
-          "label": "Days 2 and 3",
-          "title": "Full analysis",
-          "text": "Every axis: architecture, state, performance, CI/CD, frontend security, code quality, conventions."
-        },
-        "step3": {
-          "label": "End of Day 3",
-          "title": "Debrief + roadmap",
-          "text": "Live session with the team. Detailed report + progressive modernization plan delivered."
-        },
-        "step4": {
-          "label": "30 days later",
-          "title": "Check-in",
-          "text": "A short call, free of charge. To see what's moved and answer questions."
+          "text": "Your action plan and report delivered within 5 business days."
         }
       }
     },

@@ -346,7 +346,7 @@ export function formatContextSummary(context: LeadContext, locale: Locale = 'fr'
     }
     if (context.audit_urgency) {
       const urgencyLabel = t.urgency[context.audit_urgency as keyof typeof t.urgency] || context.audit_urgency
-      parts.push(loc === 'fr' ? `Démarrage souhaité : ${urgencyLabel}` : `Desired start: ${urgencyLabel}`)
+      parts.push(loc === 'fr' ? `Livraison souhaitée : ${urgencyLabel}` : `Desired delivery: ${urgencyLabel}`)
     }
 
     return parts.join('\n')
@@ -447,8 +447,8 @@ export function getAuditChatConfig(locale: 'fr' | 'en'): ChatConfig {
     {
       id: 'audit_urgency',
       text: locale === 'fr'
-        ? 'Quand souhaitez-vous démarrer ?'
-        : 'When would you like to start?',
+        ? 'Quand souhaitez-vous recevoir votre rapport ?'
+        : 'When would you like to receive your report?',
       options: [
         {
           label: locale === 'fr' ? 'Le plus tôt possible' : 'As soon as possible',

@@ -321,7 +321,7 @@ const qualificationMessages: Record<Locale, Record<'high' | 'medium' | 'low', {
         }
         return `Based on what you've told me (${reasons.slice(0, 2).join(', ')}), I can help you.`
       },
-      cta: 'Leave your email and I\'ll reply with a concrete first step.'
+      cta: 'Leave your email and I\'ll send the direct Stripe checkout link (secure payment, async analysis, report within 5 business days).'
     },
     low: {
       rationale: (reasons) => {
@@ -330,7 +330,7 @@ const qualificationMessages: Record<Locale, Record<'high' | 'medium' | 'low', {
         }
         return `I'm probably not the best person for your case. ${reasons.slice(0, 2).join(', ')}.`
       },
-      cta: 'If you want, leave your email and I\'ll redirect you to the best option.'
+      cta: 'If you want, leave your email and I\'ll point you to the best next step.'
     },
     medium: {
       rationale: (reasons) => {
@@ -339,7 +339,7 @@ const qualificationMessages: Record<Locale, Record<'high' | 'medium' | 'low', {
         }
         return `I might be able to help you. ${reasons.slice(0, 2).join(', ')}.`
       },
-      cta: 'Leave your email and I\'ll quickly tell you if it\'s worth an exchange.'
+      cta: 'Leave your email and I\'ll tell you if the async audit is the right fit, then send the right checkout link.'
     }
   },
   fr: {
@@ -350,7 +350,7 @@ const qualificationMessages: Record<Locale, Record<'high' | 'medium' | 'low', {
         }
         return `D'après ce que tu m'as indiqué (${reasons.slice(0, 2).join(', ')}), je peux t'aider.`
       },
-      cta: 'Laisse ton email et je te réponds avec une première piste concrète.'
+      cta: 'Laisse ton email et je t\'envoie le lien Stripe de commande (paiement sécurisé, analyse asynchrone, rapport sous 5 jours ouvrables).'
     },
     low: {
       rationale: (reasons) => {
@@ -359,7 +359,7 @@ const qualificationMessages: Record<Locale, Record<'high' | 'medium' | 'low', {
         }
         return `Je ne suis probablement pas la meilleure personne pour ton cas. ${reasons.slice(0, 2).join(', ')}.`
       },
-      cta: 'Si tu veux, laisse ton email et je te redirige vers la meilleure option.'
+      cta: 'Si tu veux, laisse ton email et je te redirige vers la meilleure suite.'
     },
     medium: {
       rationale: (reasons) => {
@@ -368,7 +368,7 @@ const qualificationMessages: Record<Locale, Record<'high' | 'medium' | 'low', {
         }
         return `Je peux peut-être t'aider. ${reasons.slice(0, 2).join(', ')}.`
       },
-      cta: 'Laisse ton email et je te dis rapidement si ça vaut un échange.'
+      cta: 'Laisse ton email et je te confirme si l\'audit asynchrone est adapté, puis je t\'envoie le bon lien de commande.'
     }
   }
 }

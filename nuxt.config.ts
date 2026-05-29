@@ -464,7 +464,13 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://massimorusso.io'
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://massimorusso.io',
+      audit: {
+        stripeCheckout: {
+          clarite: process.env.NUXT_PUBLIC_STRIPE_AUDIT_CLARITE_URL || '',
+          structure: process.env.NUXT_PUBLIC_STRIPE_AUDIT_STRUCTURE_URL || ''
+        }
+      }
     }
   }
 })

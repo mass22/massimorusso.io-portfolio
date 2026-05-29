@@ -59,7 +59,7 @@
   "lpAudit": {
     "seo": {
       "title": "Audit d'architecture frontend",
-      "description": "Offres d'audit frontend : clarté, structure ou transformation. Tarifs en USD, livrables et durées précisés — contact via le chat."
+      "description": "Audits frontend asynchrones : clarté ou structure. Paiement en ligne, analyse autonome, livrable sous 5 jours ouvrables."
     },
     "header": {
       "logoAria": "Retour à l'accueil — Massimo Russo"
@@ -70,8 +70,8 @@
       "line2": "Vos décisions techniques, elles, n'ont jamais été prises.",
       "pitch1": "Un audit d'architecture, c'est pas un rapport de plus.",
       "pitch2": "C'est la clarté dont votre équipe a besoin pour arrêter de subir son propre code.",
-      "cta": "Discuter de mon contexte",
-      "ctaHint": "Réponse rapide — sans engagement."
+      "cta": "Lancer mon audit",
+      "ctaHint": "Paiement sécurisé · Livraison sous 5 jours ouvrables"
     },
     "pain": {
       "eyebrow": "Les symptômes",
@@ -92,11 +92,15 @@
     "offers": {
       "sectionEyebrow": "Tarifs & livrables",
       "sectionTitle": "Choisissez le niveau qui correspond à votre besoin",
-      "sectionSubtitle": "Trois audits frontend. Cliquez sur une carte pour voir le déroulé jour par jour.",
+      "sectionSubtitle": "Deux audits en mode 100 % asynchrone. Cliquez sur une carte pour voir le déroulé.",
       "recommended": "Recommandé",
+      "cta": {
+        "buy": "Commander l'audit",
+        "unavailable": "Indisponible actuellement (Saturé)"
+      },
       "showTimeline": "Voir le déroulé",
       "hideTimeline": "Masquer le déroulé",
-      "usdNote": "* Tous les tarifs sont en USD.",
+      "usdNote": "* Tous les tarifs sont en CAD.",
       "label": {
         "deliverable": "Livrable",
         "duration": "Durée"
@@ -104,14 +108,14 @@
       "clarite": {
         "name": "Clarté",
         "tagline": "Pour savoir où vous en êtes.",
-        "deliverable": "Rapport 2 pages + recommandations priorisées",
-        "duration": "4 heures"
+        "deliverable": "Rapport 2 pages + recommandations priorisées, envoyé par courriel après l'analyse",
+        "duration": "5 jours ouvrables"
       },
       "structure": {
         "name": "Structure",
         "tagline": "Pour comprendre ce qui ne fonctionne pas et pourquoi.",
-        "deliverable": "Rapport 5–8 pages + 1h restitution live",
-        "duration": "1 journée"
+        "deliverable": "Rapport 5–8 pages + restitution vidéo personnalisée de 30 minutes (via Loom)",
+        "duration": "5 jours ouvrables"
       },
       "transformation": {
         "name": "Transformation",
@@ -122,70 +126,21 @@
     },
     "timeline": {
       "title": "Ce à quoi vous pouvez vous attendre",
-      "clarite": {
+      "async": {
         "step1": {
-          "label": "Matin — Jour 1",
-          "title": "Cadrage",
-          "text": "Appel de 30 minutes. Je comprends votre contexte et vous me donnez accès à la codebase."
+          "label": "Étape 1",
+          "title": "Paiement & accès",
+          "text": "Paiement sécurisé en ligne, puis accès à votre codebase (GitHub ou GitLab)."
         },
         "step2": {
-          "label": "Après-midi — Jour 1",
-          "title": "Diagnostic rapide",
-          "text": "Je survole l'ensemble et je zoome sur ce qui pose vraiment problème. L'objectif : trouver les 3 à 5 points critiques, pas tout documenter."
+          "label": "Étape 2",
+          "title": "Analyse autonome",
+          "text": "Analyse technique en profondeur, 100 % asynchrone — sans réunions ni sollicitation de vos développeurs."
         },
         "step3": {
-          "label": "Fin de journée — Jour 1",
+          "label": "Étape 3",
           "title": "Livraison",
-          "text": "Rapport de 2 pages livré avec les recommandations priorisées."
-        },
-        "step4": {
-          "label": "30 jours après",
-          "title": "Check-in",
-          "text": "Un appel court, gratuit. Pour voir ce qui a avancé et répondre aux questions."
-        }
-      },
-      "structure": {
-        "step1": {
-          "label": "Matin — Jour 1",
-          "title": "Cadrage",
-          "text": "Appel de 30 minutes. Je comprends votre contexte, vos contraintes, ce qui vous a amené à demander un audit. Vous me donnez accès à la codebase."
-        },
-        "step2": {
-          "label": "Journée — Jour 1",
-          "title": "Analyse en profondeur",
-          "text": "Je lis chaque couche — composants, state, routing, patterns, conventions. Je documente tout ce qui mérite d'être documenté."
-        },
-        "step3": {
-          "label": "Fin de journée — Jour 1",
-          "title": "Restitution",
-          "text": "Une heure avec votre équipe. Rapport écrit + recommandations applicables dès le lendemain."
-        },
-        "step4": {
-          "label": "30 jours après",
-          "title": "Check-in",
-          "text": "Un appel court, gratuit. Pour voir ce qui a avancé et répondre aux questions."
-        }
-      },
-      "transformation": {
-        "step1": {
-          "label": "Jour 1",
-          "title": "Cadrage + entretiens",
-          "text": "Appel de cadrage + accès codebase + entretiens avec les membres clés de l'équipe."
-        },
-        "step2": {
-          "label": "Jours 2 et 3",
-          "title": "Analyse complète",
-          "text": "Tous les axes : architecture, state, performance, CI/CD, sécurité frontend, qualité du code, conventions."
-        },
-        "step3": {
-          "label": "Fin du Jour 3",
-          "title": "Restitution + feuille de route",
-          "text": "Session live avec l'équipe. Rapport détaillé + plan de modernisation progressive livré."
-        },
-        "step4": {
-          "label": "30 jours après",
-          "title": "Check-in",
-          "text": "Un appel court, gratuit. Pour voir ce qui a avancé et répondre aux questions."
+          "text": "Votre plan d'action et votre rapport livrés sous 5 jours ouvrables."
         }
       }
     },

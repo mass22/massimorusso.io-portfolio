@@ -123,8 +123,8 @@ const translations: Record<Locale, Record<string, string>> = {
     'qualification.level.high': 'High match',
     'qualification.level.medium': 'Medium match',
     'qualification.level.low': 'Low match',
-    'qualification.recommendation': 'Recommendation:',
-    'qualification.offer.audit': 'Audit',
+    'qualification.recommendation': 'Recommended async package:',
+    'qualification.offer.audit': 'Audit (direct purchase)',
     'qualification.offer.coaching': 'Coaching',
     'qualification.offer.mission': 'Mission',
 
@@ -161,8 +161,8 @@ const translations: Record<Locale, Record<string, string>> = {
     'qualification.level.high': 'Match élevé',
     'qualification.level.medium': 'Match moyen',
     'qualification.level.low': 'Match faible',
-    'qualification.recommendation': 'Recommandation :',
-    'qualification.offer.audit': 'Audit',
+    'qualification.recommendation': 'Offre asynchrone recommandée :',
+    'qualification.offer.audit': 'Audit (achat direct)',
     'qualification.offer.coaching': 'Coaching',
     'qualification.offer.mission': 'Mission',
 
