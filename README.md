@@ -287,7 +287,7 @@ This project is private and owned by Massimo Russo.
 **Massimo Russo**
 
 - Website: [massimorusso.io](https://massimorusso.io)
-- LinkedIn: [@russomassimo-frontend-consultant](https://www.linkedin.com/in/russomassimo-frontend-consultant)
+- LinkedIn: [@russomassimo](https://www.linkedin.com/in/russomassimo)
 - Bluesky: [@massimorusso.bsky.social](https://bsky.app/profile/massimorusso.bsky.social)
 
 ## 🙏 Acknowledgments

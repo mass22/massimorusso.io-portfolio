@@ -7,7 +7,7 @@ export default defineAppConfig({
         ariaLabelKey: 'footer.links.linkedin',
         icon: 'i-simple-icons-linkedin',
         target: '_blank',
-        to: 'https://www.linkedin.com/in/russomassimo-frontend-consultant'
+        to: 'https://www.linkedin.com/in/russomassimo'
       },
       {
         ariaLabelKey: 'footer.links.bluesky',

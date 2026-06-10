@@ -158,7 +158,7 @@ const structuredData = computed(() => {
         'knowsLanguage': ['fr', 'en'],
         'name': 'Massimo Russo',
         'sameAs': [
-          'https://www.linkedin.com/in/russomassimo-frontend-consultant',
+          'https://www.linkedin.com/in/russomassimo',
           'https://bsky.app/profile/massimorusso.bsky.social',
           'https://github.com/mass22',
           'https://x.com/Massimo_Russo_X',

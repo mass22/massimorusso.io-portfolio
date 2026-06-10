@@ -94,7 +94,7 @@ Toutes les routes référencées dans le code existent :
 
 **Tous les liens externes sont valides**
 
-- ✅ LinkedIn: `https://www.linkedin.com/in/russomassimo-frontend-consultant`
+- ✅ LinkedIn: `https://www.linkedin.com/in/russomassimo`
 - ✅ Bluesky: `https://bsky.app/profile/massimorusso.bsky.social`
 - ✅ Cal.com: `https://cal.com/massimorusso/let-s-connect`
 - ✅ Podcasts (Ausha, YouTube, Apple, Spotify, Deezer, etc.)

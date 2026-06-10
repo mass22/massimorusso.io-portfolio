@@ -2,7 +2,7 @@
 const { global } = useAppConfig()
 const { t } = useI18n()
 
-const linkedinUrl = 'https://www.linkedin.com/in/russomassimo-frontend-consultant'
+const linkedinUrl = 'https://www.linkedin.com/in/russomassimo'
 
 const seoDescription = computed(() => t('contact.seo.description', { email: global.email }))
 const seoTitle = computed(() => t('contact.seo.title'))
